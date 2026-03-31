@@ -1,0 +1,217 @@
+(rag_anything) amax@amax-Super-Server:/media/disk2/wzh/RAG-Anything$ python pdf_rag_pipeline.py
+INFO: RAGAnything initialized with config:
+INFO:   Working directory: ./rag_storage
+INFO:   Parser: mineru
+INFO:   Parse method: auto
+INFO:   Multimodal processing - Image: True, Table: True, Equation: True
+INFO:   Max concurrent files: 1
+🚀 开始解析 PDF 并构建知识图谱（此过程可能较长，请耐心等待）...
+INFO: Parser 'mineru' installation verified
+INFO: Initializing LightRAG with parameters: {'working_dir': './rag_storage', 'addon_params': {'entity_types': ['农药', '病害', '虫害', '农作物', '防治方法', '危害症状', '形态特征', '生活习性']}}
+INFO: [] Created new empty graph file: ./rag_storage/graph_chunk_entity_relation.graphml
+INFO:nano-vectordb:Init {'embedding_dim': 3072, 'metric': 'cosine', 'storage_file': './rag_storage/vdb_entities.json'} 0 data
+INFO:nano-vectordb:Init {'embedding_dim': 3072, 'metric': 'cosine', 'storage_file': './rag_storage/vdb_relationships.json'} 0 data
+INFO:nano-vectordb:Init {'embedding_dim': 3072, 'metric': 'cosine', 'storage_file': './rag_storage/vdb_chunks.json'} 0 data
+INFO: [] Process 9654 KV load full_docs with 1 records
+INFO: [] Process 9654 KV load text_chunks with 0 records
+INFO: [] Process 9654 KV load full_entities with 0 records
+INFO: [] Process 9654 KV load full_relations with 0 records
+INFO: [] Process 9654 KV load entity_chunks with 0 records
+INFO: [] Process 9654 KV load relation_chunks with 0 records
+INFO: [] Process 9654 KV load llm_response_cache with 0 records
+INFO: [] Process 9654 doc status load doc_status with 1 records
+INFO: [] Process 9654 KV load parse_cache with 1 records
+INFO: Multimodal processors initialized with context support
+INFO: Available processors: ['image', 'table', 'equation', 'generic']
+INFO: Context configuration: ContextConfig(context_window=1, context_mode='page', max_context_tokens=2000, include_headers=True, include_captions=True, filter_content_types=['text'])
+INFO: LightRAG, parse cache, and multimodal processors initialized
+INFO: Starting complete document processing: docs/test1.pdf
+INFO: Starting document parsing: docs/test1.pdf
+INFO: Using cached parsing result for: docs/test1.pdf
+INFO: * Total blocks in cached content_list: 25
+INFO: Content separation complete:
+INFO:   - Text content length: 1075 characters
+INFO:   - Multimodal items count: 18
+INFO:   - Multimodal type distribution: {'image': 11, 'header': 3, 'page_number': 3, 'table': 1}
+INFO: Setting content source for context-aware multimodal processing...
+INFO: Content source set with format: minerU
+INFO: Content source set with format: minerU
+INFO: Content source set with format: minerU
+INFO: Content source set with format: minerU
+INFO: Content source set for context extraction (format: minerU)
+INFO: Starting text content insertion into LightRAG...
+WARNING: Duplicate document detected: doc-524d6508413bf3cc1ccfccb9d9091c39 (test1.pdf)
+INFO: Created 1 duplicate document records with track_id: insert_20260331_180338_dab6d966
+WARNING: No new unique documents were found.
+INFO: Preserving 1 failed document entries for manual review
+INFO: Reset 1 documents from PROCESSING/FAILED to PENDING status
+INFO: Processing 1 document(s)
+INFO: Extracting stage 1/1: test1.pdf
+INFO: Processing d-id: doc-524d6508413bf3cc1ccfccb9d9091c39
+INFO: Embedding func: 8 new workers initialized (Timeouts: Func: 30s, Worker: 60s, Health Check: 75s)
+INFO: LLM func: 4 new workers initialized (Timeouts: Func: 180s, Worker: 360s, Health Check: 375s)
+INFO:  == LLM cache == saving: default:extract:dbdacea65d1cdf41bf883e7739a572ea
+INFO:  == LLM cache == saving: default:extract:43279c014a5ef376c5db01c06193dfe4
+INFO: Chunk 1 of 1 extracted 14 Ent + 18 Rel chunk-9ae0286819f96308a689c0d50268cdab
+INFO: Merging stage 1/1: test1.pdf
+INFO: Phase 1: Processing 14 entities from doc-524d6508413bf3cc1ccfccb9d9091c39 (async: 8)
+INFO: Phase 2: Processing 18 relations from doc-524d6508413bf3cc1ccfccb9d9091c39 (async: 8)
+INFO: Phase 3: Updating final 14(14+0) entities and  18 relations from doc-524d6508413bf3cc1ccfccb9d9091c39
+INFO: Completed merging: 14 entities, 0 extra entities, 18 relations
+INFO: [] Writing graph with 14 nodes, 18 edges
+INFO: In memory DB persist to disk
+INFO: Completed processing file 1/1: test1.pdf
+INFO: Enqueued document processing pipeline stopped
+INFO: Text content insertion complete
+INFO: Document doc-524d6508413bf3cc1ccfccb9d9091c39 text processing is complete, but multimodal content still needs processing
+INFO: Starting multimodal content processing...
+INFO: Starting to process 18 multimodal content items
+INFO: Multimodal chunk generation progress: 1/18 (5.6%)
+INFO: Multimodal chunk generation progress: 2/18 (11.1%)
+INFO: Multimodal chunk generation progress: 3/18 (16.7%)
+INFO: Multimodal chunk generation progress: 4/18 (22.2%)
+INFO: Multimodal chunk generation progress: 5/18 (27.8%)
+INFO: Multimodal chunk generation progress: 6/18 (33.3%)
+INFO: Multimodal chunk generation progress: 7/18 (38.9%)
+INFO: Multimodal chunk generation progress: 8/18 (44.4%)
+INFO: Multimodal chunk generation progress: 9/18 (50.0%)
+INFO: Multimodal chunk generation progress: 10/18 (55.6%)
+INFO: Multimodal chunk generation progress: 11/18 (61.1%)
+INFO: Multimodal chunk generation progress: 12/18 (66.7%)
+INFO: Multimodal chunk generation progress: 13/18 (72.2%)
+INFO: Multimodal chunk generation progress: 14/18 (77.8%)
+INFO: Multimodal chunk generation progress: 15/18 (83.3%)
+INFO: Multimodal chunk generation progress: 16/18 (88.9%)
+INFO: Multimodal chunk generation progress: 17/18 (94.4%)
+INFO: Multimodal chunk generation progress: 18/18 (100.0%)
+INFO: Generated descriptions for 18/18 multimodal items using correct processors
+INFO:  == LLM cache == saving: default:extract:4cc2a1d2a09bbc99c0646c137c08616d
+INFO:  == LLM cache == saving: default:extract:8a16370eadee8b5fad92995eb9167044
+INFO:  == LLM cache == saving: default:extract:9a85dc8200339bea76cf23c9a20a2017
+INFO:  == LLM cache == saving: default:extract:427e52210916d7e1aa95b86cb1fa225c
+INFO:  == LLM cache == saving: default:extract:21a3330808320eff0965f254ba6435c5
+INFO: Chunk 1 of 18 extracted 6 Ent + 3 Rel chunk-814ee7678b7872e2d3dbeddd2d47a978
+INFO:  == LLM cache == saving: default:extract:5c6f9b50ae1112e7b77148c216652898
+INFO: Chunk 2 of 18 extracted 6 Ent + 5 Rel chunk-a3041611a6947af332e3fc49d34f0e82
+INFO:  == LLM cache == saving: default:extract:39cbecb81368be9d3c02d1a4cc9c1c1f
+INFO: Chunk 3 of 18 extracted 5 Ent + 5 Rel chunk-08af1db863ea81eafc02d1671a1aba16
+INFO:  == LLM cache == saving: default:extract:0348fcd1e2fbbd01c467ac4f01c530c0
+INFO:  == LLM cache == saving: default:extract:835651a5c891eb67eb8cc2f18a5baced
+INFO:  == LLM cache == saving: default:extract:e5999f903cdf35574527d1b03d5fe4b5
+INFO: Chunk 4 of 18 extracted 8 Ent + 7 Rel chunk-fb3240bc5585852ff309fe0b2d3a44c0
+INFO:  == LLM cache == saving: default:extract:36afbffc2fad5a12a5772a8263e43a74
+INFO: Chunk 5 of 18 extracted 6 Ent + 5 Rel chunk-05762c969d0beeb803dd84b0f28501e3
+INFO:  == LLM cache == saving: default:extract:6405d3baea62d87edd3dbbbd540ebd8f
+INFO: Chunk 6 of 18 extracted 3 Ent + 1 Rel chunk-9a83bc1c98one, status=None)) after connection broken by 'RemoteDisconnected('Remote end closed connection without response')': /coINFO:  == LLM cache == saving: default:extract:5f460f43221dd32d86aed6d6f6daf676
+INFO:  == LLM cache == saving: default:extract:b4efb1839cc0983002c4eff6393ea5e3
+INFO:  == LLM cache == saving: default:extract:7271f197edfcf555540b00b1cdbf5e3c
+INFO: Chunk 7 of 18 extracted 6 Ent + 9 Rel chunk-6f313de4c1858cbff2e5653f6a8e8ae6
+INFO:  == LLM cache == saving: default:extract:118ef2f5ee3cfdc881d06067cdafc4a8
+INFO: Chunk 8 of 18 extracted 6 Ent + 5 Rel chunk-4c6482940e28c4c6b83a082e2dab6cb9
+INFO:  == LLM cache == saving: default:extract:b66a0abbd1011e6e46f06ea83a2a1833
+INFO:  == LLM cache == saving: default:extract:0490c81b8b6ab9fc029dbc6952736767
+INFO: Chunk 9 of 18 extracted 6 Ent + 4 Rel chunk-512e4c7edbcfb044a7cfd673266f0a87
+INFO:  == LLM cache == saving: default:extract:053fb67fb3e86e51a292eeebb9d1cdd0
+INFO:  == LLM cache == saving: default:extract:aa653e270f4b45e15dbf2c7ef5b0ebd5
+INFO: Chunk 10 of 18 extracted 11 Ent + 9 Rel chunk-92d5d9c7089cd89435687f0c99a411ec
+INFO:  == LLM cache == saving: default:extract:c9c6c9b864c7c2e4dbb22e3cd053a5a7
+INFO:  == LLM cache == saving: default:extract:659288a241223e8ba0bf55de8e2c22ed
+INFO:  == LLM cache == saving: default:extract:d18679d9784f35d104db0ddb3650e6a6
+INFO:  == LLM cache == saving: default:extract:dda20a1d98c339753451fb3c294fa2b5
+INFO: Chunk 11 of 18 extracted 5 Ent + 4 Rel chunk-211291288386ab0464c3ce894fd8da7a
+INFO:  == LLM cache == saving: default:extract:4a194ed65c17681012eab584b0cee10c
+INFO: Chunk 12 of 18 extracted 4 Ent + 4 Rel chunk-f68ccb347678586389f0f79deddb121a
+INFO:  == LLM cache == saving: default:extract:914e855bfc6f66a6cef5e2e86fda9328
+INFO: Chunk 13 of 18 extracted 4 Ent + 2 Rel chunk-ef6c1f48e8f35c4c7db6466c38f101a4
+INFO:  == LLM cache == saving: default:extract:8c83255af64c0192ec15239f1809d5da
+INFO: Chunk 14 of 18 extracted 6 Ent + 4 Rel chunk-2c456289512c2ea8d974de3eb30df764
+INFO:  == LLM cache == saving: default:extract:5d27c7217d44a8096dd222fca61a5009
+INFO:  == LLM cache == saving: default:extract:fdcd3c2a8db9775c420ae6ac99d2af64
+INFO:  == LLM cache == saving: default:extract:877b166505da62c2e49c260b43e5c7e9
+INFO:  == LLM cache == saving: default:extract:e0032b2fb06092306c21b98e8553af3c
+INFO: Chunk 15 of 18 extracted 5 Ent + 4 Rel chunk-dd697b582f65014c034bcbb8a2f6b58e
+INFO:  == LLM cache == saving: default:extract:fb472e90bfc03055836695c07ec7ab4f
+INFO: Chunk 16 of 18 extracted 5 Ent + 5 Rel chunk-fba26948ade3d5fa6b5b9d63104bb4c1
+INFO:  == LLM cache == saving: default:extract:b1990b0fbc988565a8562d49d16dae86
+INFO: Chunk 17 of 18 extracted 6 Ent + 3 Rel chunk-f65f81a862143b76841bf7ac8a5b922a
+INFO:  == LLM cache == saving: default:extract:e0d71b3edb2d18c3af2a741b346bafc3
+INFO:  == LLM cache == saving: default:extract:fe3bd2fc078053d9e6573c9d5aea6438
+INFO: Chunk 18 of 18 extracted 8 Ent + 8 Rel chunk-490645d09f8a312a61cf9184df8c1906
+INFO: Extracted entities from 18 multimodal chunks
+INFO: Added 106 belongs_to relations for multimodal entities
+INFO: Merging stage 1/1: test1.pdf
+INFO: Phase 1: Processing 74 entities from doc-524d6508413bf3cc1ccfccb9d9091c39 (async: 8)
+INFO: Merged: `小猿叶甲` | 1+5
+INFO: Merged: `大猿叶甲` | 1+3
+INFO: Merged: `成虫` | 1+1
+INFO: Merged: `幼虫` | 1+1
+INFO:openai._base_client:Retrying request to /embeddings in 0.496899 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.499160 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.435703 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.421800 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.479567 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.409554 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.453102 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.422446 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.484307 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.398815 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.490789 seconds
+INFO: Merged: `十字花科蔬菜` | 1+1
+INFO: Phase 2: Processing 191 relations from doc-524d6508413bf3cc1ccfccb9d9091c39 (async: 8)
+INFO: Merged: `小猿叶甲`~`成虫` | 1+1
+INFO: Merged: `大猿叶甲`~`成虫` | 1+1
+INFO: Merged: `小猿叶甲`~`幼虫` | 1+1
+INFO: Merged: `大猿叶甲`~`幼虫` | 1+1
+INFO:openai._base_client:Retrying request to /embeddings in 0.438985 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.444756 seconds
+INFO: Phase 3: Updating final 74(74+0) entities and  191 relations from doc-524d6508413bf3cc1ccfccb9d9091c39
+INFO: Completed merging: 74 entities, 0 extra entities, 191 relations
+INFO: [] Writing graph with 101 nodes, 205 edges
+INFO: In memory DB persist to disk
+INFO: Updated doc_status: added 18 multimodal chunks to standard chunks_list (total chunks: 19)
+INFO: Multimodal content processing complete
+INFO: Document docs/test1.pdf processing complete!
+✅ 知识图谱构建完成！数据已保存在 ./rag_storage 目录。
+
+🔍 开始进行 RAG 查询测试...
+问：小猿叶甲幼虫的形态特征是什么？
+INFO: Executing VLM enhanced query: 小猿叶甲幼虫的形态特征是什么？...
+INFO:  == LLM cache == saving: hybrid:keywords:746be329bcf411fd7c044c299d45b051
+INFO: Query nodes: Morphology, 特征, 昆虫生物学, 分类, 生态 (top_k:40, cosine:0.2)
+INFO: Local query: 40 entites, 112 relations
+INFO: Query edges: 小猿叶甲, 幼虫, 形态特征 (top_k:40, cosine:0.2)
+INFO: Global query: 35 entites, 40 relations
+INFO: Raw search results: 49 entities, 113 relations, 0 vector chunks
+INFO: After truncation: 49 entities, 113 relations
+INFO: Selecting 13 from 13 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 113 relations
+INFO: Round-robin merged chunks: 13 -> 13 (deduplicated 0)
+WARNING: Rerank is enabled but no rerank model is configured. Please set up a rerank model or set enable_rerank=False in query parameters.
+INFO: Final context: 49 entities, 113 relations, 13 chunks
+INFO: Final chunks S+F/O: E9/1 E6/2 E6/3 E5/4 E5/5 E3/6 E7/7 E6/8 E4/9 E5/10 E5/11 E4/12 E1/13
+INFO: Found 10 image path matches in prompt
+INFO: Processed 10 images for VLM
+INFO: VLM enhanced query completed
+答：
+### 小猿叶甲幼虫的形态特征
+
+小猿叶甲幼虫在形态上具有以下特征：
+
+- **颜色变化**：幼虫初孵阶段呈淡黄色，随着发育逐渐变为褐色。其头部黑色并带有光泽，具有显著的视觉特征。
+- **体节特征**：幼虫身体表面分布有黑色肉瘤，数量为8个，这些肉瘤上生长有刚毛。沿亚背线的一行肉瘤最大，越向下越小，形成明显的生理特点。
+- **分布环境和行为**：小猿叶甲幼虫常群聚于十字花科蔬菜叶片上，包括白菜、萝卜等，并通过啃食叶片对植物造成严重损害。虫害的特点包括形成圆孔或网状破坏，仅留叶脉。
+
+### 图像描述与支持
+
+与上述文字描述对应的图像分析进一步证实了小猿叶甲幼虫的形态特征：
+- 在图片中，幼虫的体表呈深褐色或黑色，身躯有明显的段节和粗糙的表面结构。
+- 周围的植株叶片受到显著损害，叶片出现多个大小不一的圆形或不规则孔洞，同时有虫粪分布，反映出幼虫的破坏性啃食特点。
+- 幼虫多集中在叶片表面，直观展示其行为模式。
+
+### References
+
+- [1] test1.pdf
+
+INFO: Successfully finalized 12 storages
+INFO: Successfully finalized all RAGAnything storages
+(rag_anything) amax@amax-Super-Server:/media/disk2/wzh/RAG-Anything$ 

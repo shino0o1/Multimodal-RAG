@@ -1,0 +1,94 @@
+(rag_anything) amax@amax-Super-Server:/media/disk2/wzh/RAG-Anything$ python pdf_rag_pipeline.py
+
+# ==========================================
+# 1. 初始化阶段 (配置与加载)
+# ==========================================
+INFO: RAGAnything initialized with config:
+# 系统读取配置文件，设置工作目录、解析器为 MinerU，并开启图片、表格、公式解析。
+INFO:   Working directory: ./rag_storage
+INFO:   Parser: mineru
+INFO:   Parse method: auto
+INFO:   Multimodal processing - Image: True, Table: True, Equation: True
+INFO:   Max concurrent files: 1
+🚀 开始解析 PDF 并构建知识图谱（此过程可能较长，请耐心等待）...
+INFO: Parser 'mineru' installation verified
+# 初始化底层的 LightRAG 系统，加载我们自定义的实体类别（农药、病害、虫害等）。
+INFO: Initializing LightRAG with parameters: {'working_dir': './rag_storage', 'addon_params': {'entity_types': ['农药', '病害', '虫害', '农作物', '防治方法', '危害症状', '形态特征', '生活习性']}}
+# 初始化图谱库和向量数据库（用于存储实体、关系和文本块）。
+INFO: [] Created new empty graph file: ./rag_storage/graph_chunk_entity_relation.graphml
+INFO:nano-vectordb:Init ...
+
+# ==========================================
+# 2. PDF 解析与纯文本处理阶段
+# ==========================================
+INFO: Starting complete document processing: docs/test1.pdf
+# 使用 MinerU 解析 PDF。这里系统发现之前有缓存，直接读取了缓存的解析结果。
+INFO: Using cached parsing result for: docs/test1.pdf
+INFO: Content separation complete:
+# 成功分离出 1075 个字符的纯文本内容，以及 18 个多模态片段（包含 11 张图片、1 个表格等）。
+INFO:   - Text content length: 1075 characters
+INFO:   - Multimodal items count: 18
+INFO:   - Multimodal type distribution: {'image': 11, 'header': 3, 'page_number': 3, 'table': 1}
+# 开始处理纯文本部分，调用大模型（LLM）针对文本段落进行第 1 次实体和关系抽取。
+INFO: Starting text content insertion into LightRAG...
+INFO: Chunk 1 of 1 extracted 14 Ent + 18 Rel chunk-9ae0286819f96308a689c0d50268cdab
+# 将从纯文本中抽取的 14 个实体和 18 个关系合并并写入初始图谱中。
+INFO: Completed merging: 14 entities, 0 extra entities, 18 relations
+INFO: [] Writing graph with 14 nodes, 18 edges
+
+# ==========================================
+# 3. 多模态内容（图片/表格等）处理阶段
+# ==========================================
+INFO: Starting multimodal content processing...
+INFO: Starting to process 18 multimodal content items
+# 将刚分离出的 18 个多模态内容送入视觉大模型（VLM）生成文字描述，进度从 1% 到 100%。
+INFO: Multimodal chunk generation progress: 1/18 (5.6%)
+...
+INFO: Generated descriptions for 18/18 multimodal items using correct processors
+# 针对这 18 个多模态内容的文字描述/图片，系统再次调用大模型，继续提取其中的实体和关系。
+INFO: Chunk 1 of 18 extracted 6 Ent + 3 Rel...
+INFO: Chunk 2 of 18 extracted 6 Ent + 5 Rel...
+... (处理完所有 18 个分块)
+INFO: Extracted entities from 18 multimodal chunks
+INFO: Added 106 belongs_to relations for multimodal entities
+
+# ==========================================
+# 4. 图谱合并与持久化保存阶段
+# ==========================================
+INFO: Merging stage 1/1: test1.pdf
+# 第 1 步：将多模态提取出的 74 个新实体合并到现有图谱中。系统会自动进行去重（如合并“小猿叶甲”、“成虫”等概念）。
+INFO: Phase 1: Processing 74 entities...
+INFO: Merged: `小猿叶甲` | 1+5
+...
+# 第 2 步：将对应的 191 条新关系合并到图谱中。在此过程中系统会调用 Embedding 模型（由于并发可能触发了几次重试）。
+INFO: Phase 2: Processing 191 relations...
+...
+# 第 3 步：最终确认图谱的规模。总计 101 个实体节点，205 条关系边，并将其持久化保存到硬盘（./rag_storage）。
+INFO: Completed merging: 74 entities, 0 extra entities, 191 relations
+INFO: [] Writing graph with 101 nodes, 205 edges
+INFO: Document docs/test1.pdf processing complete!
+✅ 知识图谱构建完成！数据已保存在 ./rag_storage 目录。
+
+# ==========================================
+# 5. 多模态 RAG 查询测试阶段
+# ==========================================
+🔍 开始进行 RAG 查询测试...
+问：小猿叶甲幼虫的形态特征是什么？
+INFO: Executing VLM enhanced query: 小猿叶甲幼虫的形态特征是什么？...
+# 首先从用户问题中提取关键词节点（Morphology, 特征, 昆虫生物学等）。
+INFO: Query nodes: Morphology, 特征, 昆虫生物学, 分类, 生态 (top_k:40, cosine:0.2)
+# 分别在图谱的本地（局部知识）和全局（宏观知识）中进行实体和关系的检索。
+INFO: Local query: 40 entites, 112 relations
+INFO: Global query: 35 entites, 40 relations
+# 汇总找到的相关知识片段（共包含 49 个实体，113 条关系，13 个原始知识块）。
+INFO: Final context: 49 entities, 113 relations, 13 chunks
+# 由于启用了多模态，系统自动在检索到的知识中发现了 10 张相关的图片。
+INFO: Found 10 image path matches in prompt
+# 系统将上述找出的文本知识，配合这 10 张图片，一起打包发送给视觉大模型（gpt-4o）进行最终的高级增强分析。
+INFO: Processed 10 images for VLM
+INFO: VLM enhanced query completed
+答：
+### 小猿叶甲幼虫的形态特征
+...（输出高质量的多模态综合回答）...
+
+INFO: Successfully finalized 12 storages

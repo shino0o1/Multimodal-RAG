@@ -1,0 +1,121 @@
+import asyncio
+from raganything import RAGAnything, RAGAnythingConfig
+from lightrag.llm.openai import openai_complete_if_cache, openai_embed
+from lightrag.utils import EmbeddingFunc
+
+async def main():
+    # ==========================================
+    # 1. 环境与模型配置
+    # ==========================================
+    api_key = "sk-MwcAPesgu8ol4F0ePPNP0hkGiseYaNEbfoLv4phN03ldl3AV" # 替换为您的 API Key
+    base_url = "https://yunwu.ai/v1" # 如果使用代理可以修改此处
+
+    # 核心配置：指定解析器并开启多模态开关
+    config = RAGAnythingConfig(
+        working_dir="./rag_storage",  # 知识图谱和向量库存储路径
+        parser="mineru",              # 使用 MinerU 进行专业级 PDF 解析
+        parse_method="auto",           # 强制使用 OCR 方法识别 PDF（也可以填 "auto"）
+        enable_image_processing=True, # 开启图像识别与图谱节点构建
+        enable_table_processing=True, # 开启表格解析
+        enable_equation_processing=True, # 开启公式解析
+    )
+
+    # 定义文本大模型回调（用于文本知识抽取和最终回答）
+    def llm_model_func(prompt, system_prompt=None, history_messages=[], **kwargs):
+        return openai_complete_if_cache(
+            "gpt-4o-mini",
+            prompt,
+            system_prompt=system_prompt,
+            history_messages=history_messages,
+            api_key=api_key,
+            base_url=base_url,
+            **kwargs,
+        )
+
+    # 定义视觉大模型回调（用于图片 OCR 后的语义理解和多模态抽取）
+    def vision_model_func(prompt, system_prompt=None, history_messages=[], image_data=None, messages=None, **kwargs):
+        if messages:
+            return openai_complete_if_cache("gpt-4o", "", system_prompt=None, history_messages=[], messages=messages, api_key=api_key, base_url=base_url, **kwargs)
+        elif image_data:
+            return openai_complete_if_cache(
+                "gpt-4o",
+                "",
+                system_prompt=None,
+                history_messages=[],
+                messages=[
+                    {"role": "system", "content": system_prompt} if system_prompt else None,
+                    {
+                        "role": "user",
+                        "content": [
+                            {"type": "text", "text": prompt},
+                            {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{image_data}"}},
+                        ],
+                    }
+                ],
+                api_key=api_key,
+                base_url=base_url,
+                **kwargs,
+            )
+        else:
+            return llm_model_func(prompt, system_prompt, history_messages, **kwargs)
+
+    # 定义 Embedding 模型回调
+    embedding_func = EmbeddingFunc(
+        embedding_dim=3072,
+        max_token_size=8192,
+        func=lambda texts: openai_embed.func(
+            texts, model="text-embedding-3-large", api_key=api_key, base_url=base_url
+        ),
+    )
+
+    # 初始化系统
+    rag = RAGAnything(
+        config=config,
+        llm_model_func=llm_model_func,
+        vision_model_func=vision_model_func,
+        embedding_func=embedding_func,
+        lightrag_kwargs={
+            "addon_params": {
+                "entity_types": ["农药", "病害","虫害", "农作物", "防治方法", "危害症状", "形态特征", "生活习性"] # 完全自定义你想抽取的实体类别
+            }
+        }
+    )
+
+    # ==========================================
+    # 2. PDF OCR 识别与多模态知识图谱构建
+    # ==========================================
+    print("🚀 开始解析 PDF 并构建知识图谱（此过程可能较长，请耐心等待）...")
+    await rag.process_document_complete(
+        file_path="docs/test1.pdf",  # 替换为您的 PDF 路径
+        output_dir="./output",
+        parse_method="auto"
+    )
+    print("✅ 知识图谱构建完成！数据已保存在 ./rag_storage 目录。")
+
+    # ==========================================
+    # 3. 多模态 RAG 测试查询
+    # ==========================================
+    print("\n🔍 开始进行 RAG 查询测试...")
+    
+    # 测试A：常规查询（系统会自动检索图表描述、文本并利用 VLM 增强分析）
+    question_1 = "小猿叶甲幼虫的形态特征是什么？"
+    print(f"问：{question_1}")
+    text_result = await rag.aquery(question_1, mode="hybrid")
+    print(f"答：\n{text_result}\n")
+
+    # # 测试B：携带特定模态片段进行联合提问（高级用法）
+    # question_2 = "结合文档内容，详细解释这个公式的含义"
+    # print(f"问：{question_2}")
+    # multimodal_result = await rag.aquery_with_multimodal(
+    #     question_2,
+    #     multimodal_content=[{
+    #         "type": "equation",
+    #         "latex": "E = mc^2",  # 这里可以换成你在 PDF 中关注的任意公式或表格
+    #         "equation_caption": "质能等价公式"
+    #     }],
+    #     mode="hybrid"
+    # )
+    # print(f"答：\n{multimodal_result}\n")
+
+if __name__ == "__main__":
+    asyncio.run(main())
