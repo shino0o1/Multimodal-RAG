@@ -153,6 +153,28 @@ class ProcessorMixin:
         except Exception as exc:
             self.logger.warning(f"KG quality cleanup failed: {exc}")
 
+    def _apply_source_noise_filter_if_enabled(
+        self, content_list: List[Dict[str, Any]]
+    ) -> List[Dict[str, Any]]:
+        """Apply source-level hard noise filtering before insertion/extraction."""
+        manager = getattr(self, "kg_quality_manager", None)
+        if not manager or not getattr(manager, "enabled", False):
+            return content_list
+
+        try:
+            filtered, report = manager.filter_parsed_content(content_list)
+            self.logger.info(
+                "KG source filter: kept=%s dropped=%s by_type=%s by_pattern=%s",
+                report.get("kept"),
+                report.get("dropped"),
+                report.get("drop_by_type", {}),
+                report.get("drop_by_pattern", {}),
+            )
+            return filtered
+        except Exception as exc:
+            self.logger.warning(f"KG source filter failed, skip filtering: {exc}")
+            return content_list
+
     async def _get_cached_result(
         self, cache_key: str, file_path: Path, parse_method: str = None, **kwargs
     ) -> tuple[List[Dict[str, Any]], str] | None:
@@ -1606,6 +1628,7 @@ class ProcessorMixin:
             content_list, content_based_doc_id = await self.parse_document(
                 file_path, output_dir, parse_method, display_stats, **kwargs
             )
+            content_list = self._apply_source_noise_filter_if_enabled(content_list)
 
             # Use provided doc_id or fall back to content-based doc_id
             if doc_id is None:
@@ -1812,6 +1835,7 @@ class ProcessorMixin:
                 content_list, content_based_doc_id = await self.parse_document(
                     file_path, output_dir, parse_method, display_stats, **kwargs
                 )
+                content_list = self._apply_source_noise_filter_if_enabled(content_list)
             except MineruExecutionError as e:
                 error_message = e.error_msg
                 if isinstance(e.error_msg, list):
@@ -1993,6 +2017,7 @@ class ProcessorMixin:
                 self.logger.info(f"  - {block_type}: {count}")
 
         # Step 1: Separate text and multimodal content
+        content_list = self._apply_source_noise_filter_if_enabled(content_list)
         text_content, multimodal_items = separate_content(content_list)
 
         # Step 1.5: Set content source for context extraction in multimodal processing

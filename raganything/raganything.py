@@ -123,9 +123,16 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
             enabled=self.config.kg_quality_enabled,
             canonical_language=self.config.kg_canonical_language,
             relation_schema=self.config.kg_relation_schema,
+            extraction_mode=self.config.kg_extraction_mode,
             ontology_profile=self.config.kg_ontology_profile,
             enforce_ontology=self.config.kg_enforce_ontology,
             merge_threshold=self.config.kg_merge_threshold,
+            description_policy=self.config.kg_description_policy,
+            core_entity_types=self.config.kg_core_entity_types,
+            anchor_node_types=self.config.kg_anchor_node_types,
+            attribute_fields=self.config.kg_attribute_fields,
+            noise_drop_types=self.config.kg_noise_drop_types,
+            noise_drop_patterns=self.config.kg_noise_drop_patterns,
         )
 
         # Keep prompts and summary language aligned with canonical language.
@@ -166,12 +173,14 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
         )
         self.logger.info(f"  Max concurrent files: {self.config.max_concurrent_files}")
         self.logger.info(
-            "  KG quality - enabled: %s, canonical_language: %s, relation_schema: %s, ontology_profile: %s, enforce_ontology: %s",
+            "  KG quality - enabled: %s, canonical_language: %s, relation_schema: %s, extraction_mode: %s, ontology_profile: %s, enforce_ontology: %s, description_policy: %s",
             self.config.kg_quality_enabled,
             self.config.kg_canonical_language,
             self.config.kg_relation_schema,
+            self.config.kg_extraction_mode,
             self.config.kg_ontology_profile,
             self.config.kg_enforce_ontology,
+            self.config.kg_description_policy,
         )
 
     def close(self):

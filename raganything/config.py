@@ -9,6 +9,11 @@ from typing import List
 from lightrag.utils import get_env_value
 
 
+def _get_env_list(name: str, default: str) -> List[str]:
+    raw = get_env_value(name, default, str)
+    return [item.strip() for item in raw.split(",") if item.strip()]
+
+
 @dataclass
 class RAGAnythingConfig:
     """Configuration class for RAGAnything with environment variable support"""
@@ -124,6 +129,50 @@ class RAGAnythingConfig:
         default=get_env_value("KG_RELATION_SCHEMA", "fixed", str)
     )
     """Relation schema policy. 'fixed' enables controlled relation enums."""
+
+    kg_extraction_mode: str = field(
+        default=get_env_value("KG_EXTRACTION_MODE", "ppe", str)
+    )
+    """KG extraction mode: 'ppe' (default) or 'legacy'."""
+
+    kg_core_entity_types: List[str] = field(
+        default_factory=lambda: _get_env_list(
+            "KG_CORE_ENTITY_TYPES", "虫害,病害,作物,病原菌,药剂,生长期,生物分类"
+        )
+    )
+    """Core entity types retained as main nodes."""
+
+    kg_anchor_node_types: List[str] = field(
+        default_factory=lambda: _get_env_list("KG_ANCHOR_NODE_TYPES", "部位,时间")
+    )
+    """Anchor node types retained for temporal/spatial linking."""
+
+    kg_attribute_fields: List[str] = field(
+        default_factory=lambda: _get_env_list(
+            "KG_ATTRIBUTE_FIELDS", "形态特征,危害症状,发病诱因,发生时期,防治要点,生活习性,发生规律"
+        )
+    )
+    """Attribute fields attached to entities instead of fragment nodes."""
+
+    kg_noise_drop_types: List[str] = field(
+        default_factory=lambda: _get_env_list(
+            "KG_NOISE_DROP_TYPES", "header,page_number"
+        )
+    )
+    """Content block types dropped at source before extraction."""
+
+    kg_noise_drop_patterns: List[str] = field(
+        default_factory=lambda: _get_env_list(
+            "KG_NOISE_DROP_PATTERNS",
+            r"^\s*None\s*$,^\s*\d+\s*$,蔬菜病虫害诊断[与于]防治原色图谱,(?:QR|qr|二维码|QR码|扫码),^(?:[A-Za-z]:)?[/\\].+\.(?:jpg|jpeg|png|bmp|gif|webp|tiff?)\s*$",
+        )
+    )
+    """Regex patterns for dropping noisy OCR/parsing content."""
+
+    kg_description_policy: str = field(
+        default=get_env_value("KG_DESCRIPTION_POLICY", "multimodal_only", str)
+    )
+    """Description policy. 'multimodal_only' keeps descriptions only on multimodal nodes."""
 
     kg_ontology_profile: str = field(
         default=get_env_value("KG_ONTOLOGY_PROFILE", "cruciferous_pest_disease", str)
