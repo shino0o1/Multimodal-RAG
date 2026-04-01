@@ -1,5 +1,6 @@
 import asyncio
-from raganything import RAGAnything, RAGAnythingConfig
+import os
+from raganything import RAGAnything, RAGAnythingConfig, set_prompt_language
 from lightrag.llm.openai import openai_complete_if_cache, openai_embed
 from lightrag.utils import EmbeddingFunc
 
@@ -9,6 +10,8 @@ async def main():
     # ==========================================
     api_key = "sk-MwcAPesgu8ol4F0ePPNP0hkGiseYaNEbfoLv4phN03ldl3AV" # 替换为您的 API Key
     base_url = "https://yunwu.ai/v1" # 如果使用代理可以修改此处
+    set_prompt_language("zh")
+    os.environ["SUMMARY_LANGUAGE"] = "Chinese"
 
     # 核心配置：指定解析器并开启多模态开关
     config = RAGAnythingConfig(
@@ -18,6 +21,12 @@ async def main():
         enable_image_processing=True, # 开启图像识别与图谱节点构建
         enable_table_processing=True, # 开启表格解析
         enable_equation_processing=True, # 开启公式解析
+        kg_quality_enabled=True,      # 开启知识图谱质量治理
+        kg_canonical_language="zh",   # 统一中文主实体
+        kg_relation_schema="fixed",   # 固定关系枚举
+        kg_ontology_profile="cruciferous_pest_disease",  # 十字花科病虫害本体（可扩展到多作物）
+        kg_enforce_ontology=True,     # 强制关系主宾类型校验
+        kg_merge_threshold=0.85,      # 语义合并阈值
     )
 
     # 定义文本大模型回调（用于文本知识抽取和最终回答）
@@ -86,7 +95,7 @@ async def main():
     # ==========================================
     print("🚀 开始解析 PDF 并构建知识图谱（此过程可能较长，请耐心等待）...")
     await rag.process_document_complete(
-        file_path="docs/test1.pdf",  # 替换为您的 PDF 路径
+        file_path="docs/test3.pdf",  # 替换为您的 PDF 路径
         output_dir="./output",
         parse_method="auto"
     )

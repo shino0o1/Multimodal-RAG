@@ -35,6 +35,7 @@ from raganything.batch import BatchMixin
 from raganything.utils import get_processor_supports
 from raganything.parser import MineruParser, SUPPORTED_PARSERS, get_parser
 from raganything.callbacks import CallbackManager
+from raganything.kg_quality import KGQualityManager
 
 # Import specialized processors
 from raganything.modalprocessors import (
@@ -94,6 +95,9 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
     parse_cache: Optional[Any] = field(default=None, init=False)
     """Parse result cache storage using LightRAG KV storage."""
 
+    kg_quality_manager: Optional[KGQualityManager] = field(default=None, init=False)
+    """Knowledge graph quality manager for normalization and cleanup."""
+
     callback_manager: CallbackManager = field(
         default_factory=CallbackManager, init=False, repr=False
     )
@@ -113,6 +117,31 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
 
         # Set up logger (use existing logger, don't configure it)
         self.logger = logger
+
+        # Initialize KG quality manager early so all pipelines can reuse it.
+        self.kg_quality_manager = KGQualityManager(
+            enabled=self.config.kg_quality_enabled,
+            canonical_language=self.config.kg_canonical_language,
+            relation_schema=self.config.kg_relation_schema,
+            ontology_profile=self.config.kg_ontology_profile,
+            enforce_ontology=self.config.kg_enforce_ontology,
+            merge_threshold=self.config.kg_merge_threshold,
+        )
+
+        # Keep prompts and summary language aligned with canonical language.
+        if (
+            self.kg_quality_manager.enabled
+            and self.config.kg_canonical_language.lower() == "zh"
+        ):
+            try:
+                from raganything.prompt_manager import set_prompt_language
+
+                set_prompt_language("zh")
+                self.logger.info("Prompt language set to Chinese for KG consistency")
+            except Exception as exc:
+                self.logger.warning(f"Failed to set prompt language to zh: {exc}")
+
+            os.environ["SUMMARY_LANGUAGE"] = "Chinese"
 
         # Set up document parser
         self.doc_parser = get_parser(self.config.parser)
@@ -136,6 +165,14 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
             f"Equation: {self.config.enable_equation_processing}"
         )
         self.logger.info(f"  Max concurrent files: {self.config.max_concurrent_files}")
+        self.logger.info(
+            "  KG quality - enabled: %s, canonical_language: %s, relation_schema: %s, ontology_profile: %s, enforce_ontology: %s",
+            self.config.kg_quality_enabled,
+            self.config.kg_canonical_language,
+            self.config.kg_relation_schema,
+            self.config.kg_ontology_profile,
+            self.config.kg_enforce_ontology,
+        )
 
     def close(self):
         """Cleanup resources when object is destroyed.
@@ -216,6 +253,7 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
                 lightrag=self.lightrag,
                 modal_caption_func=self.vision_model_func or self.llm_model_func,
                 context_extractor=self.context_extractor,
+                kg_quality_manager=self.kg_quality_manager,
             )
 
         if self.config.enable_table_processing:
@@ -223,6 +261,7 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
                 lightrag=self.lightrag,
                 modal_caption_func=self.llm_model_func,
                 context_extractor=self.context_extractor,
+                kg_quality_manager=self.kg_quality_manager,
             )
 
         if self.config.enable_equation_processing:
@@ -230,6 +269,7 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
                 lightrag=self.lightrag,
                 modal_caption_func=self.llm_model_func,
                 context_extractor=self.context_extractor,
+                kg_quality_manager=self.kg_quality_manager,
             )
 
         # Always include generic processor as fallback
@@ -237,6 +277,7 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
             lightrag=self.lightrag,
             modal_caption_func=self.llm_model_func,
             context_extractor=self.context_extractor,
+            kg_quality_manager=self.kg_quality_manager,
         )
 
         self.logger.info("Multimodal processors initialized with context support")
@@ -488,6 +529,14 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
                 "supported_file_extensions": self.config.supported_file_extensions,
                 "recursive_folder_processing": self.config.recursive_folder_processing,
             },
+            "kg_quality": {
+                "kg_quality_enabled": self.config.kg_quality_enabled,
+                "kg_canonical_language": self.config.kg_canonical_language,
+                "kg_relation_schema": self.config.kg_relation_schema,
+                "kg_ontology_profile": self.config.kg_ontology_profile,
+                "kg_enforce_ontology": self.config.kg_enforce_ontology,
+                "kg_merge_threshold": self.config.kg_merge_threshold,
+            },
             "logging": {
                 "note": "Logging fields have been removed - configure logging externally",
             },
@@ -513,6 +562,32 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
             }
 
         return config_info
+
+    def clean_kg(self, graphml_path: str | None = None, rewrite: bool = True) -> Dict[str, Any]:
+        """
+        Run one-shot GraphML quality cleanup.
+
+        Args:
+            graphml_path: Optional custom GraphML path.
+            rewrite: Rewrite file in-place if True.
+
+        Returns:
+            cleanup report dictionary.
+        """
+        if not self.kg_quality_manager or not self.kg_quality_manager.enabled:
+            return {"enabled": False, "message": "KG quality manager disabled"}
+
+        target_path = graphml_path or os.path.join(
+            self.config.working_dir, "graph_chunk_entity_relation.graphml"
+        )
+        report = self.kg_quality_manager.clean_graphml_file(target_path, rewrite=rewrite)
+        self.logger.info(
+            "KG cleanup complete: nodes=%s edges=%s non_cjk_entity_ratio=%.4f",
+            report.get("nodes_after"),
+            report.get("edges_after"),
+            report.get("non_cjk_entity_ratio", 0.0),
+        )
+        return report
 
     def set_content_source_for_context(
         self, content_source, content_format: str = "auto"

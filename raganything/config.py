@@ -108,6 +108,38 @@ class RAGAnythingConfig:
     use_full_path: bool = field(default=get_env_value("USE_FULL_PATH", False, bool))
     """Whether to use full file path (True) or just basename (False) for file references in LightRAG."""
 
+    # KG Quality Configuration
+    # ---
+    kg_quality_enabled: bool = field(
+        default=get_env_value("KG_QUALITY_ENABLED", True, bool)
+    )
+    """Enable knowledge graph quality governance."""
+
+    kg_canonical_language: str = field(
+        default=get_env_value("KG_CANONICAL_LANGUAGE", "zh", str)
+    )
+    """Canonical language for entity naming (e.g. 'zh')."""
+
+    kg_relation_schema: str = field(
+        default=get_env_value("KG_RELATION_SCHEMA", "fixed", str)
+    )
+    """Relation schema policy. 'fixed' enables controlled relation enums."""
+
+    kg_ontology_profile: str = field(
+        default=get_env_value("KG_ONTOLOGY_PROFILE", "cruciferous_pest_disease", str)
+    )
+    """Domain ontology profile, e.g. cruciferous_pest_disease."""
+
+    kg_enforce_ontology: bool = field(
+        default=get_env_value("KG_ENFORCE_ONTOLOGY", True, bool)
+    )
+    """Enable ontology domain-range validation for relation types."""
+
+    kg_merge_threshold: float = field(
+        default=get_env_value("KG_MERGE_THRESHOLD", 0.85, float)
+    )
+    """Merge threshold for semantic deduplication (reserved for iterative tuning)."""
+
     def __post_init__(self):
         """Post-initialization setup for backward compatibility"""
         # Support legacy environment variable names for backward compatibility

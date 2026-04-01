@@ -130,6 +130,29 @@ class ProcessorMixin:
 
         return doc_id
 
+    async def _run_kg_quality_cleanup_if_enabled(self):
+        """Run graph cleanup after ingestion to cover text + multimodal pipelines."""
+        manager = getattr(self, "kg_quality_manager", None)
+        if not manager or not getattr(manager, "enabled", False):
+            return
+
+        graph_path = os.path.join(
+            self.config.working_dir, "graph_chunk_entity_relation.graphml"
+        )
+        if not os.path.exists(graph_path):
+            return
+
+        try:
+            report = manager.clean_graphml_file(graph_path, rewrite=True)
+            self.logger.info(
+                "KG quality cleanup complete: nodes=%s, edges=%s, non_cjk_ratio=%.4f",
+                report.get("nodes_after"),
+                report.get("edges_after"),
+                report.get("non_cjk_entity_ratio", 0.0),
+            )
+        except Exception as exc:
+            self.logger.warning(f"KG quality cleanup failed: {exc}")
+
     async def _get_cached_result(
         self, cache_key: str, file_path: Path, parse_method: str = None, **kwargs
     ) -> tuple[List[Dict[str, Any]], str] | None:
@@ -905,6 +928,20 @@ class ProcessorMixin:
             self.logger.warning("No valid multimodal descriptions generated")
             return
 
+        manager = getattr(self, "kg_quality_manager", None)
+        if manager and manager.enabled:
+            for data in multimodal_data_list:
+                entity_info = data.get("entity_info", {})
+                normalized = manager.normalize_entity(
+                    entity_info.get("entity_name", ""),
+                    entity_info.get("entity_type", ""),
+                )
+                entity_info["entity_name"] = normalized["entity_name"]
+                entity_info["entity_type"] = normalized["entity_type"]
+                aliases = normalized.get("aliases", [])
+                if aliases:
+                    entity_info["aliases"] = aliases
+
         self.logger.info(
             f"Generated descriptions for {len(multimodal_data_list)}/{len(multimodal_items)} multimodal items using correct processors"
         )
@@ -1261,6 +1298,10 @@ class ProcessorMixin:
             text_chunks_storage=self.lightrag.text_chunks,
         )
 
+        manager = getattr(self, "kg_quality_manager", None)
+        if manager and manager.enabled:
+            chunk_results = manager.preprocess_chunk_results(chunk_results)
+
         self.logger.info(
             f"Extracted entities from {len(lightrag_chunks)} multimodal chunks"
         )
@@ -1302,6 +1343,11 @@ class ProcessorMixin:
             if chunk_id and chunk_id in chunk_to_modal_entity:
                 modal_entity_name = chunk_to_modal_entity[chunk_id]
                 file_path = chunk_to_file_path.get(chunk_id, "multimodal_content")
+                manager = getattr(self, "kg_quality_manager", None)
+                if manager and manager.enabled:
+                    modal_entity_name = manager.normalize_entity(
+                        modal_entity_name, "其他"
+                    )["entity_name"]
 
                 # Add belongs_to relations for all extracted entities
                 for entity_name in maybe_nodes.keys():
@@ -1311,6 +1357,8 @@ class ProcessorMixin:
                             "tgt_id": modal_entity_name,
                             "description": f"Entity {entity_name} belongs to {modal_entity_name}",
                             "keywords": "belongs_to,part_of,contained_in",
+                            "raw_keywords": "belongs_to,part_of,contained_in",
+                            "relation_type": "属于",
                             "source_id": chunk_id,
                             "weight": 10.0,
                             "file_path": file_path,
@@ -1324,6 +1372,12 @@ class ProcessorMixin:
                         belongs_to_count += 1
 
             enhanced_chunk_results.append((maybe_nodes, maybe_edges))
+
+        manager = getattr(self, "kg_quality_manager", None)
+        if manager and manager.enabled:
+            enhanced_chunk_results = manager.preprocess_chunk_results(
+                enhanced_chunk_results
+            )
 
         self.logger.info(
             f"Added {belongs_to_count} belongs_to relations for multimodal entities"
@@ -1619,6 +1673,8 @@ class ProcessorMixin:
                     "marked multimodal processing as complete",
                 )
 
+            await self._run_kg_quality_cleanup_if_enabled()
+
         except Exception as exc:
             if callback_manager is not None:
                 callback_manager.dispatch(
@@ -1815,6 +1871,8 @@ class ProcessorMixin:
                     scheme_name=scheme_name,
                 )
 
+            await self._run_kg_quality_cleanup_if_enabled()
+
             self.logger.info(f"Document {file_path} processing completed successfully")
             return True
 
@@ -1988,6 +2046,8 @@ class ProcessorMixin:
             self.logger.debug(
                 f"No multimodal content found in document {doc_id}, marked multimodal processing as complete"
             )
+
+        await self._run_kg_quality_cleanup_if_enabled()
 
         self.logger.info(f"Content list insertion complete for: {file_path}")
         if callback_manager is not None:

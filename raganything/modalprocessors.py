@@ -28,6 +28,7 @@ from lightrag.operate import extract_entities, merge_nodes_and_edges
 
 # Import prompt templates
 from raganything.prompt import PROMPTS
+from raganything.kg_quality import KGQualityManager
 
 
 @dataclass
@@ -365,6 +366,7 @@ class BaseModalProcessor:
         lightrag: LightRAG,
         modal_caption_func,
         context_extractor: ContextExtractor = None,
+        kg_quality_manager: KGQualityManager = None,
     ):
         """Initialize base processor
 
@@ -375,6 +377,7 @@ class BaseModalProcessor:
         """
         self.lightrag = lightrag
         self.modal_caption_func = modal_caption_func
+        self.kg_quality_manager = kg_quality_manager
 
         # Use LightRAG's storage instances
         self.text_chunks_db = lightrag.text_chunks
@@ -742,6 +745,8 @@ class BaseModalProcessor:
                     relation_data = {
                         "description": f"Entity {entity_name} belongs to {modal_entity_name}",
                         "keywords": "belongs_to,part_of,contained_in",
+                        "raw_keywords": "belongs_to,part_of,contained_in",
+                        "relation_type": "属于",
                         "source_id": chunk_id,
                         "weight": 10.0,
                         "file_path": chunk_data.get("file_path", "manual_creation"),
@@ -770,11 +775,16 @@ class BaseModalProcessor:
 
             processed_chunk_results.append((maybe_nodes, maybe_edges))
 
+        if self.kg_quality_manager and self.kg_quality_manager.enabled:
+            processed_chunk_results = self.kg_quality_manager.preprocess_chunk_results(
+                processed_chunk_results
+            )
+
         if not batch_mode:
             # Merge with correct file_path parameter
             file_path = chunk_data.get("file_path", "manual_creation")
             await merge_nodes_and_edges(
-                chunk_results=chunk_results,
+                chunk_results=processed_chunk_results,
                 knowledge_graph_inst=self.knowledge_graph_inst,
                 entity_vdb=self.entities_vdb,
                 relationships_vdb=self.relationships_vdb,
@@ -801,6 +811,7 @@ class ImageModalProcessor(BaseModalProcessor):
         lightrag: LightRAG,
         modal_caption_func,
         context_extractor: ContextExtractor = None,
+        kg_quality_manager: KGQualityManager = None,
     ):
         """Initialize image processor
 
@@ -809,7 +820,12 @@ class ImageModalProcessor(BaseModalProcessor):
             modal_caption_func: Function for generating descriptions (supporting image understanding)
             context_extractor: Context extractor instance
         """
-        super().__init__(lightrag, modal_caption_func, context_extractor)
+        super().__init__(
+            lightrag,
+            modal_caption_func,
+            context_extractor,
+            kg_quality_manager=kg_quality_manager,
+        )
 
     def _encode_image_to_base64(self, image_path: str) -> str:
         """Encode image to base64"""

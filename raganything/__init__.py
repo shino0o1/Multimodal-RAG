@@ -1,5 +1,6 @@
 from .raganything import RAGAnything as RAGAnything
 from .config import RAGAnythingConfig as RAGAnythingConfig
+from .kg_quality import KGQualityManager as KGQualityManager
 
 # Core parser class is always available.
 from .parser import Parser as Parser
@@ -66,6 +67,7 @@ __all__ = ["RAGAnything", "RAGAnythingConfig"]
 __all__ = [
     "RAGAnything",
     "RAGAnythingConfig",
+    "KGQualityManager",
     "Parser",
 ]
 
