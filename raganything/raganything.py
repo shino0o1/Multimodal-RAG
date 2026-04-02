@@ -131,8 +131,11 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
             core_entity_types=self.config.kg_core_entity_types,
             anchor_node_types=self.config.kg_anchor_node_types,
             attribute_fields=self.config.kg_attribute_fields,
+            attribute_host_types=self.config.kg_attribute_host_types,
             noise_drop_types=self.config.kg_noise_drop_types,
             noise_drop_patterns=self.config.kg_noise_drop_patterns,
+            multimodal_min_desc_chars=self.config.kg_multimodal_min_desc_chars,
+            drop_empty_multimodal=self.config.kg_drop_empty_multimodal,
         )
 
         # Keep prompts and summary language aligned with canonical language.
@@ -181,6 +184,12 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
             self.config.kg_ontology_profile,
             self.config.kg_enforce_ontology,
             self.config.kg_description_policy,
+        )
+        self.logger.info(
+            "  KG quality - attribute_hosts: %s, multimodal_min_desc_chars: %s, drop_empty_multimodal: %s",
+            self.config.kg_attribute_host_types,
+            self.config.kg_multimodal_min_desc_chars,
+            self.config.kg_drop_empty_multimodal,
         )
 
     def close(self):

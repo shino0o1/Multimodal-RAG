@@ -506,6 +506,14 @@ class BaseModalProcessor:
         await self.chunks_vdb.upsert(chunk_vdb_data)
 
         # Create entity node
+        content_modality = (
+            entity_info.get("content_modality")
+            or {
+                "image": "image",
+                "table": "table",
+                "equation": "equation",
+            }.get(str(entity_info.get("entity_type", "")).lower(), "")
+        )
         node_data = {
             "entity_id": entity_info["entity_name"],
             "entity_type": entity_info["entity_type"],
@@ -514,6 +522,8 @@ class BaseModalProcessor:
             "file_path": file_path,
             "created_at": int(time.time()),
         }
+        if content_modality:
+            node_data["content_modality"] = content_modality
 
         await self.knowledge_graph_inst.upsert_node(
             entity_info["entity_name"], node_data
@@ -527,6 +537,7 @@ class BaseModalProcessor:
                 "content": f"{entity_info['entity_name']}\n{entity_info['summary']}",
                 "source_id": chunk_id,
                 "file_path": file_path,
+                "content_modality": content_modality,
             }
         }
         await self.entities_vdb.upsert(entity_vdb_data)

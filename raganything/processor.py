@@ -8,6 +8,7 @@ import os
 import time
 import hashlib
 import json
+import re
 from typing import Dict, List, Any, Tuple, Optional
 from pathlib import Path
 
@@ -174,6 +175,66 @@ class ProcessorMixin:
         except Exception as exc:
             self.logger.warning(f"KG source filter failed, skip filtering: {exc}")
             return content_list
+
+    def _is_qr_like_multimodal_item(self, item: Dict[str, Any]) -> bool:
+        parts: List[str] = []
+        for key in ["img_path", "text"]:
+            val = item.get(key)
+            if isinstance(val, str):
+                parts.append(val)
+        for key in ["image_caption", "img_caption", "table_caption", "image_footnote", "img_footnote", "table_footnote"]:
+            val = item.get(key)
+            if isinstance(val, list):
+                parts.extend([str(x) for x in val if x is not None])
+            elif isinstance(val, str):
+                parts.append(val)
+        joined = " ".join(parts)
+        return bool(re.search(r"(?:qr|qrcode|二维码|条形码|支付码|扫码)", joined, re.IGNORECASE))
+
+    def _is_empty_multimodal_result(
+        self, description: str, entity_info: Dict[str, Any]
+    ) -> bool:
+        desc = (description or "").strip()
+        summary = str(entity_info.get("summary", "") or "").strip()
+        if not desc and not summary:
+            return True
+        if desc.startswith("```"):
+            desc = re.sub(r"^```(?:json)?\s*", "", desc, flags=re.IGNORECASE)
+            desc = re.sub(r"\s*```$", "", desc)
+        try:
+            payload = json.loads(desc)
+            if isinstance(payload, dict):
+                detailed = str(payload.get("detailed_description", "") or "").strip()
+                info = payload.get("entity_info", {}) or {}
+                parsed_summary = ""
+                if isinstance(info, dict):
+                    parsed_summary = str(info.get("summary", "") or "").strip()
+                if not detailed and not parsed_summary:
+                    return True
+        except (TypeError, ValueError, json.JSONDecodeError):
+            pass
+        if re.search(
+            r'"detailed_description"\s*:\s*""[\s\S]*"summary"\s*:\s*""',
+            desc,
+            re.IGNORECASE,
+        ):
+            return True
+        return False
+
+    def _should_retry_multimodal_description(
+        self,
+        description: str,
+        entity_info: Dict[str, Any],
+        item: Dict[str, Any],
+    ) -> bool:
+        if self._is_qr_like_multimodal_item(item):
+            return False
+        if self._is_empty_multimodal_result(description, entity_info):
+            return False
+        threshold = int(getattr(self.config, "kg_multimodal_min_desc_chars", 80) or 0)
+        if threshold <= 0:
+            return False
+        return len((description or "").strip()) < threshold
 
     async def _get_cached_result(
         self, cache_key: str, file_path: Path, parse_method: str = None, **kwargs
@@ -895,6 +956,23 @@ class ProcessorMixin:
                         entity_name=None,  # Let LLM auto-generate
                     )
 
+                    if self._should_retry_multimodal_description(
+                        description, entity_info, item
+                    ):
+                        retry_description, retry_entity_info = (
+                            await processor.generate_description_only(
+                                modal_content=item,
+                                content_type=content_type,
+                                item_info=item_info,
+                                entity_name=None,
+                            )
+                        )
+                        if len((retry_description or "").strip()) > len(
+                            (description or "").strip()
+                        ):
+                            description = retry_description
+                            entity_info = retry_entity_info
+
                     # Update progress (non-blocking)
                     async with progress_lock:
                         completed_count += 1
@@ -973,10 +1051,35 @@ class ProcessorMixin:
                 aliases = normalized.get("aliases", [])
                 if aliases:
                     entity_info["aliases"] = aliases
+                modality = {"image": "image", "table": "table", "equation": "equation"}.get(
+                    data.get("content_type", "")
+                )
+                if modality:
+                    entity_info["content_modality"] = modality
+
+        if bool(getattr(self.config, "kg_drop_empty_multimodal", True)):
+            filtered_multimodal_data_list = []
+            dropped_items = 0
+            for data in multimodal_data_list:
+                if self._is_empty_multimodal_result(
+                    str(data.get("description", "")),
+                    data.get("entity_info", {}) or {},
+                ):
+                    dropped_items += 1
+                    continue
+                filtered_multimodal_data_list.append(data)
+            if dropped_items:
+                self.logger.info(
+                    "Dropped %s empty multimodal items before extraction", dropped_items
+                )
+            multimodal_data_list = filtered_multimodal_data_list
 
         self.logger.info(
             f"Generated descriptions for {len(multimodal_data_list)}/{len(multimodal_items)} multimodal items using correct processors"
         )
+        if not multimodal_data_list:
+            self.logger.warning("All multimodal items were filtered out")
+            return
 
         # Stage 2: Convert to LightRAG chunks format
         lightrag_chunks = self._convert_to_lightrag_chunks_type_aware(
@@ -1203,6 +1306,12 @@ class ProcessorMixin:
                 "content": entity_info.get("summary", description),
                 "source_id": chunk_id,
                 "file_path": file_ref,
+                "content_modality": entity_info.get(
+                    "content_modality",
+                    {"image": "image", "table": "table", "equation": "equation"}.get(
+                        content_type, ""
+                    ),
+                ),
             }
 
             entities_to_store[entity_id] = entity_data
@@ -1220,6 +1329,7 @@ class ProcessorMixin:
                         "description": entity_data["content"],
                         "source_id": entity_data["source_id"],
                         "file_path": entity_data["file_path"],
+                        "content_modality": entity_data.get("content_modality", ""),
                         "created_at": int(time.time()),
                     }
 
@@ -1431,6 +1541,12 @@ class ProcessorMixin:
 
         # Use full path or basename based on config
         file_ref = self._get_file_reference(file_path)
+
+        for _maybe_nodes, maybe_edges in enhanced_chunk_results:
+            for _edge_key, edge_list in maybe_edges.items():
+                for edge_data in edge_list:
+                    if not str(edge_data.get("description", "")).strip():
+                        edge_data["description"] = "N/A"
 
         await merge_nodes_and_edges(
             chunk_results=enhanced_chunk_results,

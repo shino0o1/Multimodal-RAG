@@ -161,6 +161,13 @@ class RAGAnythingConfig:
     )
     """Attribute fields attached to entities instead of fragment nodes."""
 
+    kg_attribute_host_types: List[str] = field(
+        default_factory=lambda: _get_env_list(
+            "KG_ATTRIBUTE_HOST_TYPES", "虫害,病害,病原菌"
+        )
+    )
+    """Entity types that are allowed to host projected attribute fields."""
+
     kg_noise_drop_types: List[str] = field(
         default_factory=lambda: _get_env_list(
             "KG_NOISE_DROP_TYPES", "header,page_number"
@@ -180,6 +187,16 @@ class RAGAnythingConfig:
         default=get_env_value("KG_DESCRIPTION_POLICY", "multimodal_only", str)
     )
     """Description policy. 'multimodal_only' keeps descriptions only on multimodal nodes."""
+
+    kg_multimodal_min_desc_chars: int = field(
+        default=get_env_value("KG_MULTIMODAL_MIN_DESC_CHARS", 80, int)
+    )
+    """Minimum multimodal description length before one retry is attempted."""
+
+    kg_drop_empty_multimodal: bool = field(
+        default=get_env_value("KG_DROP_EMPTY_MULTIMODAL", True, bool)
+    )
+    """Drop multimodal nodes/items whose detailed description and summary are both empty."""
 
     kg_ontology_profile: str = field(
         default=get_env_value("KG_ONTOLOGY_PROFILE", "cruciferous_pest_disease", str)

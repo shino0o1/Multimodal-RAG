@@ -90,6 +90,8 @@ PROMPTS[
     "detailed_description": "Keep only information useful for agricultural pest/disease KG extraction:
     - Prioritize entities: crop, disease, pest, pathogen, pesticide, plant part, growth stage, time
     - Prioritize attributes: morphology, symptoms, occurrence period/stage, control points
+    - Use normalized single taxonomy names (e.g., "Coleoptera" or "Chrysomelidae"), avoid concatenated forms like "Coleoptera-Chrysomelidae"
+    - Write detailed_description with explicit sections: [Candidate Entities], [Attribute Statements], [Relation Cues], [Evidence Sentences]
     - Keep relation cues for downstream extraction (e.g., causes, affects, occurs_in, uses_pesticide, controls, located_in, belongs_to)
     - If text exists in the image, extract pest/disease-relevant terms and phrases
     - Ignore irrelevant visual details (layout decoration, style, unrelated people/background)
@@ -129,6 +131,8 @@ PROMPTS[
     "detailed_description": "Keep only information useful for agricultural pest/disease KG extraction:
     - Prioritize entities: crop, disease, pest, pathogen, pesticide, plant part, growth stage, time
     - Prioritize attributes: morphology, symptoms, occurrence period/stage, control points
+    - Use normalized single taxonomy names (e.g., "Coleoptera" or "Chrysomelidae"), avoid concatenated forms like "Coleoptera-Chrysomelidae"
+    - Write detailed_description with explicit sections: [Candidate Entities], [Attribute Statements], [Relation Cues], [Evidence Sentences]
     - Use context to resolve references and avoid fragmented descriptions
     - Keep relation cues for downstream extraction (e.g., causes, affects, occurs_in, uses_pesticide, controls, located_in, belongs_to)
     - If text exists in the image, extract pest/disease-relevant terms and phrases
@@ -181,6 +185,9 @@ PROMPTS[
     "detailed_description": "Keep only table information useful for agricultural pest/disease KG extraction:
     - Columns/fields related to crop, disease, pest, pathogen, pesticide, plant part, growth stage, time
     - Morphology, symptoms, occurrence period/stage, control points
+    - Use normalized single taxonomy names; avoid concatenated taxonomy labels
+    - Structure findings as object-field-value statements whenever possible (e.g., pest=..., field=形态特征, value=...)
+    - Write detailed_description with explicit sections: [Candidate Entities], [Attribute Statements], [Relation Cues], [Evidence Sentences]
     - Relation cues for downstream extraction (e.g., causes, affects, occurs_in, uses_pesticide, controls, located_in, belongs_to)
     - Key values such as dosage, frequency, period, threshold, condition
     - Ignore irrelevant columns/notes and non-pest/disease content
@@ -213,6 +220,9 @@ PROMPTS[
     "detailed_description": "Keep only table information useful for agricultural pest/disease KG extraction:
     - Columns/fields related to crop, disease, pest, pathogen, pesticide, plant part, growth stage, time
     - Morphology, symptoms, occurrence period/stage, control points
+    - Use normalized single taxonomy names; avoid concatenated taxonomy labels
+    - Structure findings as object-field-value statements whenever possible (e.g., pest=..., field=形态特征, value=...)
+    - Write detailed_description with explicit sections: [Candidate Entities], [Attribute Statements], [Relation Cues], [Evidence Sentences]
     - Use context to resolve references and relations
     - Relation cues for downstream extraction (e.g., causes, affects, occurs_in, uses_pesticide, controls, located_in, belongs_to)
     - Key values such as dosage, frequency, period, threshold, condition

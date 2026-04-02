@@ -54,7 +54,7 @@ async def main():
     # 定义视觉大模型回调（用于图片 OCR 后的语义理解和多模态抽取）
     def vision_model_func(prompt, system_prompt=None, history_messages=[], image_data=None, messages=None, **kwargs):
         if messages:
-            return openai_complete_if_cache("gpt-4o", "", system_prompt=None, history_messages=[], messages=messages, api_key=api_key, base_url=base_url, **kwargs)
+            return openai_complete_if_cache("gemini-2.5-flash", "", system_prompt=None, history_messages=[], messages=messages, api_key=api_key, base_url=base_url, **kwargs)
         elif image_data:
             return openai_complete_if_cache(
                 "gemini-2.5-flash",

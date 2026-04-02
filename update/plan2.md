@@ -86,3 +86,5 @@ entity_continue_extraction_user_prompt
 
 ### 待办
 把影响改为危害
+属性提取的还是不够好
+图里还是有"部位"，明明已经删掉了

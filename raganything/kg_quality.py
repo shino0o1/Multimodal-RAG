@@ -28,6 +28,7 @@ NODE_DEFAULT_WHITELIST = [
     "生物分类",
     "药剂",
     "别名",
+    "时间",
     "危害症状",
     "形态特征",
     "发病诱因",
@@ -75,8 +76,9 @@ RELATION_DOMAIN_RANGE_CRUCIFEROUS: Dict[str, set[Tuple[str, str]]] = {
 }
 
 DEFAULT_CORE_ENTITY_TYPES = ["虫害", "病害", "作物", "病原菌", "药剂", "生长期", "生物分类"]
-DEFAULT_ANCHOR_NODE_TYPES = ["部位", "时间"]
+DEFAULT_ANCHOR_NODE_TYPES = ["时间"]
 DEFAULT_ATTRIBUTE_FIELDS = ["形态特征", "危害症状", "发病诱因", "发生时期", "防治要点", "生活习性", "发生规律"]
+DEFAULT_ATTRIBUTE_HOST_TYPES = ["虫害", "病害", "病原菌"]
 DEFAULT_NOISE_DROP_TYPES = ["header", "page_number"]
 DEFAULT_NOISE_DROP_PATTERNS = [
     r"^\s*None\s*$",
@@ -194,6 +196,9 @@ class KGQualityManager:
     attribute_fields: List[str] = field(
         default_factory=lambda: DEFAULT_ATTRIBUTE_FIELDS.copy()
     )
+    attribute_host_types: List[str] = field(
+        default_factory=lambda: DEFAULT_ATTRIBUTE_HOST_TYPES.copy()
+    )
     noise_drop_types: List[str] = field(
         default_factory=lambda: DEFAULT_NOISE_DROP_TYPES.copy()
     )
@@ -203,6 +208,8 @@ class KGQualityManager:
     allowed_entity_types: List[str] = field(
         default_factory=lambda: NODE_DEFAULT_WHITELIST.copy()
     )
+    multimodal_min_desc_chars: int = 80
+    drop_empty_multimodal: bool = True
     ontology_registry: OntologyRegistry | None = field(default=None, init=False, repr=False)
     _noise_type_set: Set[str] = field(default_factory=set, init=False, repr=False)
     _noise_regexes: List[re.Pattern[str]] = field(default_factory=list, init=False, repr=False)
@@ -293,6 +300,7 @@ class KGQualityManager:
 
     def _normalize_entity_name(self, entity_name: str) -> Tuple[str, List[str]]:
         raw = _normalize_space(_clean_suffix(entity_name))
+        raw = raw.strip(" \t\r\n,，。;；:：()（）[]【】<>《》-_/|")
         if not raw:
             return "未命名实体", []
 
@@ -358,6 +366,80 @@ class KGQualityManager:
             or entity_type == "多模态元素"
         )
 
+    def _is_attribute_host_type(self, entity_type: str) -> bool:
+        return entity_type in set(self.attribute_host_types)
+
+    def _extract_multimodal_empty_markers(self, text: str) -> Tuple[str | None, str | None]:
+        raw = text or ""
+        candidate = raw.strip()
+        if candidate.startswith("```"):
+            candidate = re.sub(r"^```(?:json)?\s*", "", candidate, flags=re.IGNORECASE)
+            candidate = re.sub(r"\s*```$", "", candidate)
+        detailed = None
+        summary = None
+
+        try:
+            payload = json.loads(candidate)
+            if isinstance(payload, dict):
+                detailed = payload.get("detailed_description")
+                entity_info = payload.get("entity_info", {}) or {}
+                if isinstance(entity_info, dict):
+                    summary = entity_info.get("summary")
+        except (TypeError, ValueError, json.JSONDecodeError):
+            pass
+
+        if detailed is None:
+            match = re.search(
+                r'"detailed_description"\s*:\s*"([^"]*(?:\\.[^"]*)*)"',
+                raw,
+                re.DOTALL,
+            )
+            if match:
+                detailed = match.group(1)
+        if summary is None:
+            match = re.search(
+                r'"summary"\s*:\s*"([^"]*(?:\\.[^"]*)*)"',
+                raw,
+                re.DOTALL,
+            )
+            if match:
+                summary = match.group(1)
+
+        return (
+            _normalize_space(str(detailed or "")),
+            _normalize_space(str(summary or "")),
+        )
+
+    def _is_empty_multimodal_description(self, text: str, summary: str = "") -> bool:
+        normalized_text = _normalize_space(text)
+        normalized_summary = _normalize_space(summary)
+
+        if not normalized_text and not normalized_summary:
+            return True
+        if (
+            normalized_text.lower() in {"n/a", "none", "null", "{}"}
+            and not normalized_summary
+        ):
+            return True
+
+        detailed, extracted_summary = self._extract_multimodal_empty_markers(text)
+        has_structured_markers = (
+            '"detailed_description"' in (text or "")
+            or '"entity_info"' in (text or "")
+            or '"summary"' in (text or "")
+        )
+        if has_structured_markers and detailed == "" and extracted_summary == "":
+            return True
+        if (
+            has_structured_markers
+            and detailed == ""
+            and not normalized_summary
+            and extracted_summary == ""
+        ):
+            return True
+
+        return False
+
     def _apply_node_description_policy(self, node_data: Dict[str, Any]) -> Dict[str, Any]:
         normalized = dict(node_data)
         if self.description_policy == "multimodal_only":
@@ -414,6 +496,7 @@ class KGQualityManager:
 
         attrs: Dict[str, List[str]]
         existing_attrs = node_data.get("attributes", "{}")
+        attrs_as_dict = isinstance(existing_attrs, dict)
         if isinstance(existing_attrs, dict):
             attrs = {k: list(v) for k, v in existing_attrs.items()}
         else:
@@ -425,9 +508,13 @@ class KGQualityManager:
         if value not in attr_values:
             attr_values.append(value)
         attrs[field_name] = attr_values
-        node_data["attributes"] = json.dumps(attrs, ensure_ascii=False)
+        if attrs_as_dict:
+            node_data["attributes"] = attrs
+        else:
+            node_data["attributes"] = json.dumps(attrs, ensure_ascii=False)
 
         existing_evidence = node_data.get("attribute_evidence", "{}")
+        evidence_as_dict = isinstance(existing_evidence, dict)
         if isinstance(existing_evidence, dict):
             evidence_map = {k: list(v) for k, v in existing_evidence.items()}
         else:
@@ -439,7 +526,10 @@ class KGQualityManager:
         if evidence not in evidence_list:
             evidence_list.append(evidence)
         evidence_map[field_name] = evidence_list
-        node_data["attribute_evidence"] = json.dumps(evidence_map, ensure_ascii=False)
+        if evidence_as_dict:
+            node_data["attribute_evidence"] = evidence_map
+        else:
+            node_data["attribute_evidence"] = json.dumps(evidence_map, ensure_ascii=False)
 
     def filter_parsed_content(
         self, content_list: List[Dict[str, Any]]
@@ -535,7 +625,7 @@ class KGQualityManager:
             relation = "发生于"
         elif any(k in text for k in ["control", "prevention", "management", "防治"]):
             relation = "防治"
-        elif any(k in text for k in ["impact", "affect", "cause", "影响"]):
+        elif any(k in text for k in ["impact", "affect", "cause", "damage", "影响"]):
             relation = "影响"
         elif any(
             k in text
@@ -552,6 +642,22 @@ class KGQualityManager:
         ):
             return ""
         return relation
+
+    def _is_alias_relation(self, keywords: str, description: str = "") -> bool:
+        text = f"{keywords or ''} {description or ''}".lower()
+        return any(
+            token in text
+            for token in [
+                "alias",
+                "same as",
+                "sameas",
+                "aka",
+                "别名",
+                "又称",
+                "简称",
+                "俗称",
+            ]
+        )
 
     def _relation_allowed(self, relation: str, src_type: str, tgt_type: str) -> bool:
         if relation in {"属于"}:
@@ -578,10 +684,19 @@ class KGQualityManager:
     ) -> Dict[str, Any]:
         raw_keywords = _normalize_space(str(edge_data.get("keywords", "")))
         description = str(edge_data.get("description", ""))
+        normalized = dict(edge_data)
+
+        if self._is_alias_relation(raw_keywords, description):
+            normalized["raw_keywords"] = raw_keywords
+            normalized["relation_type"] = "别名"
+            normalized["keywords"] = "别名"
+            if not _normalize_space(str(normalized.get("description", ""))):
+                normalized["description"] = "N/A"
+            return normalized
+
         relation_type = self.map_relation_type(
             raw_keywords, description, src_type=src_type, tgt_type=tgt_type
         )
-        normalized = dict(edge_data)
         normalized["raw_keywords"] = raw_keywords
         normalized["relation_type"] = relation_type
         # Keep compatibility with current retrieval that still reads "keywords".
@@ -718,6 +833,12 @@ class KGQualityManager:
                         tgt_type=node_type_map.get(norm_tgt, ""),
                     )
 
+                    if normalized_edge.get("relation_type") == "别名":
+                        self._append_alias_to_node_records(new_nodes, norm_src, norm_tgt)
+                        self._append_alias_to_node_records(new_nodes, norm_tgt, norm_src)
+                        continue
+                    if not normalized_edge.get("relation_type"):
+                        continue
                     new_edges[key].append(normalized_edge)
 
             new_edges = {k: v for k, v in new_edges.items() if v}
@@ -751,6 +872,15 @@ class KGQualityManager:
                     normalized_type = self._normalize_entity_type(
                         str(nd.get("entity_type", first_type))
                     )
+                    if (
+                        self.drop_empty_multimodal
+                        and normalized_type == "多模态元素"
+                        and self._is_empty_multimodal_description(
+                            str(nd.get("description", "")),
+                            str(nd.get("summary", "")),
+                        )
+                    ):
+                        continue
                     nd["entity_id"] = canonical
                     nd["entity_type"] = normalized_type
                     node_type_map[canonical] = normalized_type
@@ -770,6 +900,10 @@ class KGQualityManager:
                     nd.setdefault("attribute_evidence", "{}")
                     normalized_nodes_by_name[canonical].append(nd)
 
+                if not normalized_nodes_by_name.get(canonical):
+                    normalized_nodes_by_name.pop(canonical, None)
+                    node_type_map.pop(canonical, None)
+
             normalized_edges: List[Tuple[str, str, Dict[str, Any]]] = []
             for (src, tgt), edge_list in maybe_edges.items():
                 norm_src = alias_map.get(src, src)
@@ -783,6 +917,14 @@ class KGQualityManager:
                     normalized_edge = self.normalize_edge(
                         ed, src_type=src_type, tgt_type=tgt_type
                     )
+                    if normalized_edge.get("relation_type") == "别名":
+                        self._append_alias_to_node_records(
+                            normalized_nodes_by_name, norm_src, norm_tgt
+                        )
+                        self._append_alias_to_node_records(
+                            normalized_nodes_by_name, norm_tgt, norm_src
+                        )
+                        continue
 
                     normalized_edges.append((norm_src, norm_tgt, normalized_edge))
 
@@ -814,6 +956,10 @@ class KGQualityManager:
                             "page": str(attr_node.get("page_idx", "")),
                         }
                         for rec in kept_nodes[tgt]:
+                            if not self._is_attribute_host_type(
+                                str(rec.get("entity_type", ""))
+                            ):
+                                continue
                             self._append_attribute_to_node(rec, field, value, evidence)
                 if tgt in dropped_attribute_nodes and src in kept_nodes:
                     for attr_node in dropped_attribute_nodes[tgt]:
@@ -829,6 +975,10 @@ class KGQualityManager:
                             "page": str(attr_node.get("page_idx", "")),
                         }
                         for rec in kept_nodes[src]:
+                            if not self._is_attribute_host_type(
+                                str(rec.get("entity_type", ""))
+                            ):
+                                continue
                             self._append_attribute_to_node(rec, field, value, evidence)
 
             # PPE Round 3: relation extraction under ontology whitelist.
@@ -861,6 +1011,10 @@ class KGQualityManager:
                     if src not in merged_nodes:
                         continue
                     for rec in merged_nodes[src]:
+                        if not self._is_attribute_host_type(
+                            str(rec.get("entity_type", ""))
+                        ):
+                            continue
                         self._append_attribute_to_node(
                             rec,
                             field,
@@ -876,9 +1030,26 @@ class KGQualityManager:
                 k: [self._apply_node_description_policy(v[0])]
                 for k, v in merged_nodes.items()
             }
+            if self.drop_empty_multimodal:
+                merged_nodes = {
+                    k: v
+                    for k, v in merged_nodes.items()
+                    if not (
+                        str(v[0].get("entity_type", "")) == "多模态元素"
+                        and self._is_empty_multimodal_description(
+                            str(v[0].get("description", "")),
+                            str(v[0].get("summary", "")),
+                        )
+                    )
+                }
             final_edges = {
                 k: [self._apply_edge_description_policy(ed) for ed in v]
                 for k, v in final_edges.items()
+            }
+            final_edges = {
+                k: v
+                for k, v in final_edges.items()
+                if k[0] in merged_nodes and k[1] in merged_nodes
             }
             normalized_results.append((merged_nodes, final_edges))
 
@@ -890,6 +1061,75 @@ class KGQualityManager:
         if self.extraction_mode.lower() == "legacy":
             return self._preprocess_chunk_results_legacy(chunk_results)
         return self._preprocess_chunk_results_ppe(chunk_results)
+
+    def _project_attribute_nodes_for_graph_cleanup(
+        self,
+        merged_nodes: Dict[str, Dict[str, Any]],
+        merged_edges: Dict[Tuple[str, str, str], Dict[str, Any]],
+    ) -> None:
+        if self.extraction_mode.lower() != "ppe":
+            return
+
+        for (src, tgt, relation_type), edge_data in merged_edges.items():
+            src_node = merged_nodes.get(src)
+            tgt_node = merged_nodes.get(tgt)
+            if not src_node or not tgt_node:
+                continue
+
+            src_type = str(src_node.get("entity_type", ""))
+            tgt_type = str(tgt_node.get("entity_type", ""))
+
+            if self._is_attribute_type(src_type) and self._is_attribute_host_type(tgt_type):
+                field = src_type or self._relation_to_attribute_field(
+                    relation_type,
+                    _join_sep_values(edge_data.get("raw_keywords", [])),
+                    _join_sep_values(edge_data.get("description", [])),
+                )
+                value = self._extract_attribute_value(
+                    src,
+                    {"description": _join_sep_values(src_node.get("description", []))},
+                    {"description": _join_sep_values(edge_data.get("description", []))},
+                )
+                self._append_attribute_to_node(
+                    tgt_node,
+                    field,
+                    value,
+                    {
+                        "chunk": _join_sep_values(edge_data.get("source_id", [])),
+                        "file": _join_sep_values(edge_data.get("file_path", [])),
+                        "page": "",
+                    },
+                )
+
+            if self._is_attribute_type(tgt_type) and self._is_attribute_host_type(src_type):
+                field = tgt_type or self._relation_to_attribute_field(
+                    relation_type,
+                    _join_sep_values(edge_data.get("raw_keywords", [])),
+                    _join_sep_values(edge_data.get("description", [])),
+                )
+                value = self._extract_attribute_value(
+                    tgt,
+                    {"description": _join_sep_values(tgt_node.get("description", []))},
+                    {"description": _join_sep_values(edge_data.get("description", []))},
+                )
+                self._append_attribute_to_node(
+                    src_node,
+                    field,
+                    value,
+                    {
+                        "chunk": _join_sep_values(edge_data.get("source_id", [])),
+                        "file": _join_sep_values(edge_data.get("file_path", [])),
+                        "page": "",
+                    },
+                )
+
+        drop_nodes = [
+            name
+            for name, node in merged_nodes.items()
+            if self._is_attribute_type(str(node.get("entity_type", "")))
+        ]
+        for name in drop_nodes:
+            merged_nodes.pop(name, None)
 
     def clean_graphml_file(self, graphml_path: str, rewrite: bool = True) -> Dict[str, Any]:
         if not os.path.exists(graphml_path):
@@ -1023,13 +1263,6 @@ class KGQualityManager:
             except (TypeError, ValueError, json.JSONDecodeError):
                 pass
 
-        if self.extraction_mode.lower() == "ppe":
-            merged_nodes = {
-                k: v
-                for k, v in merged_nodes.items()
-                if self._keep_as_node_type(v.get("entity_type", "其他"))
-            }
-
         # Parse and normalize edges.
         edges = graph.findall("g:edge", ns)
         merged_edges: Dict[Tuple[str, str, str], Dict[str, Any]] = {}
@@ -1051,6 +1284,12 @@ class KGQualityManager:
                 src_type=merged_node_type_map.get(src, ""),
                 tgt_type=merged_node_type_map.get(tgt, ""),
             )
+            if normalized_edge.get("relation_type") == "别名":
+                if src in merged_nodes:
+                    merged_nodes[src]["aliases"].add(tgt)
+                if tgt in merged_nodes:
+                    merged_nodes[tgt]["aliases"].add(src)
+                continue
             relation_type = normalized_edge.get("relation_type", "")
             if not relation_type:
                 continue
@@ -1088,6 +1327,33 @@ class KGQualityManager:
                 slot["weight"] = max(slot["weight"], float(normalized_edge.get("weight", 0.0)))
             except (TypeError, ValueError):
                 pass
+
+        self._project_attribute_nodes_for_graph_cleanup(merged_nodes, merged_edges)
+
+        if self.extraction_mode.lower() == "ppe":
+            merged_nodes = {
+                k: v
+                for k, v in merged_nodes.items()
+                if self._keep_as_node_type(str(v.get("entity_type", "其他")))
+            }
+
+        if self.drop_empty_multimodal:
+            merged_nodes = {
+                k: v
+                for k, v in merged_nodes.items()
+                if not (
+                    str(v.get("entity_type", "")) == "多模态元素"
+                    and self._is_empty_multimodal_description(
+                        _join_sep_values(v.get("description", []))
+                    )
+                )
+            }
+
+        merged_edges = {
+            k: v
+            for k, v in merged_edges.items()
+            if k[0] in merged_nodes and k[1] in merged_nodes
+        }
 
         # Rewrite graph structure.
         for elem in list(graph):
