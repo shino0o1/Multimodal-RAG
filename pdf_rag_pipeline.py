@@ -15,7 +15,7 @@ async def main():
 
     # 核心配置：指定解析器并开启多模态开关
     config = RAGAnythingConfig(
-        working_dir="./rag_storage_test2",  # 知识图谱和向量库存储路径, 每次新的PDF用独立的
+        working_dir="./rag_storage_test4",  # 知识图谱和向量库存储路径, 每次新的PDF用独立的
         parser="mineru",              # 使用 MinerU 进行专业级 PDF 解析
         parse_method="auto",           # 强制使用 OCR 方法识别 PDF（也可以填 "auto"）
         enable_image_processing=True, # 开启图像识别与图谱节点构建
@@ -100,7 +100,7 @@ async def main():
     # ==========================================
     print("🚀 开始解析 PDF 并构建知识图谱（此过程可能较长，请耐心等待）...")
     await rag.process_document_complete(
-        file_path="docs/test3_single.pdf",  # 替换为您的 PDF 路径
+        file_path="docs/test4.pdf",  # 替换为您的 PDF 路径
         output_dir="./output",
         parse_method="auto"
     )

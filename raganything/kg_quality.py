@@ -48,6 +48,7 @@ RELATION_SCHEMA_FIXED_ORDERED = [
     "发生于",
     "属类隶属",
     "影响",
+    "使用药剂",
     "防治",
     "生命周期",
     "地理位置",
@@ -740,8 +741,9 @@ class KGQualityManager:
 
         if self._is_alias_relation(raw_keywords, description):
             normalized["raw_keywords"] = raw_keywords
-            normalized["relation_type"] = "别名"
-            normalized["keywords"] = "别名"
+            normalized["_alias_relation"] = True
+            normalized["relation_type"] = ""
+            normalized["keywords"] = ""
             if not _normalize_space(str(normalized.get("description", ""))):
                 normalized["description"] = "N/A"
             return normalized
@@ -749,6 +751,7 @@ class KGQualityManager:
         relation_type = self.map_relation_type(
             raw_keywords, description, src_type=src_type, tgt_type=tgt_type
         )
+        normalized["_alias_relation"] = False
         normalized["raw_keywords"] = raw_keywords
         normalized["relation_type"] = relation_type
         # Keep compatibility with current retrieval that still reads "keywords".
@@ -812,6 +815,7 @@ class KGQualityManager:
 
         # Keep original description during preprocess/merge.
         # Final description policy is enforced when rewriting GraphML.
+        self._sync_aliases_as_attribute(merged)
         return merged
 
     def _append_alias_to_node_records(
@@ -825,6 +829,49 @@ class KGQualityManager:
             aliases = _split_sep_values(str(rec.get("aliases", "")))
             aliases.append(alias)
             rec["aliases"] = _join_sep_values(aliases)
+            self._append_attribute_to_node(
+                rec,
+                "别名",
+                alias,
+                {"chunk": "", "file": "", "page": ""},
+            )
+
+    def _append_alias_to_merged_node(
+        self, nodes: Dict[str, Dict[str, Any]], canonical: str, alias: str
+    ) -> None:
+        if not canonical or not alias or canonical == alias:
+            return
+        if canonical not in nodes:
+            return
+        node = nodes[canonical]
+        node.setdefault("aliases", set())
+        if isinstance(node["aliases"], set):
+            node["aliases"].add(alias)
+        else:
+            aliases = _split_sep_values(str(node.get("aliases", "")))
+            aliases.append(alias)
+            node["aliases"] = _join_sep_values(aliases)
+        self._append_attribute_to_node(
+            node,
+            "别名",
+            alias,
+            {"chunk": "", "file": "", "page": ""},
+        )
+
+    def _sync_aliases_as_attribute(self, node_data: Dict[str, Any]) -> None:
+        canonical = _normalize_space(
+            str(node_data.get("entity_id") or node_data.get("entity_name") or "")
+        )
+        aliases = _split_sep_values(str(node_data.get("aliases", "")))
+        for alias in aliases:
+            if not alias or alias == canonical:
+                continue
+            self._append_attribute_to_node(
+                node_data,
+                "别名",
+                alias,
+                {"chunk": "", "file": "", "page": ""},
+            )
 
     def _preprocess_chunk_results_legacy(self, chunk_results: List[Tuple]) -> List[Tuple]:
         normalized_results = []
@@ -865,6 +912,7 @@ class KGQualityManager:
                     if raw_name != canonical:
                         aliases.append(raw_name)
                     nd["aliases"] = _join_sep_values(aliases)
+                    self._sync_aliases_as_attribute(nd)
                     new_nodes[canonical].append(self._apply_node_description_policy(nd))
 
             new_edges: Dict[Tuple[str, str], List[Dict[str, Any]]] = {}
@@ -885,7 +933,7 @@ class KGQualityManager:
                         tgt_type=node_type_map.get(norm_tgt, ""),
                     )
 
-                    if normalized_edge.get("relation_type") == "别名":
+                    if normalized_edge.get("_alias_relation"):
                         self._append_alias_to_node_records(new_nodes, norm_src, norm_tgt)
                         self._append_alias_to_node_records(new_nodes, norm_tgt, norm_src)
                         continue
@@ -948,6 +996,7 @@ class KGQualityManager:
                     if raw_name != canonical:
                         aliases.append(raw_name)
                     nd["aliases"] = _join_sep_values(aliases)
+                    self._sync_aliases_as_attribute(nd)
                     nd.setdefault("attributes", "{}")
                     nd.setdefault("attribute_evidence", "{}")
                     normalized_nodes_by_name[canonical].append(nd)
@@ -969,7 +1018,7 @@ class KGQualityManager:
                     normalized_edge = self.normalize_edge(
                         ed, src_type=src_type, tgt_type=tgt_type
                     )
-                    if normalized_edge.get("relation_type") == "别名":
+                    if normalized_edge.get("_alias_relation"):
                         self._append_alias_to_node_records(
                             normalized_nodes_by_name, norm_src, norm_tgt
                         )
@@ -1290,8 +1339,16 @@ class KGQualityManager:
             )
             if node_data.get("truncate"):
                 slot["truncate"] = node_data.get("truncate", "")
+            slot["aliases"].update(_split_sep_values(node_data.get("aliases", "")))
             slot["aliases"].add(entity_name)
-            slot["aliases"].add(node_id)
+            for alias in list(slot["aliases"]):
+                if alias and alias != canonical:
+                    self._append_attribute_to_node(
+                        slot,
+                        "别名",
+                        alias,
+                        {"chunk": "", "file": "", "page": ""},
+                    )
             try:
                 attributes = json.loads(node_data.get("attributes", "{}") or "{}")
                 for k, v in attributes.items():
@@ -1336,11 +1393,9 @@ class KGQualityManager:
                 src_type=merged_node_type_map.get(src, ""),
                 tgt_type=merged_node_type_map.get(tgt, ""),
             )
-            if normalized_edge.get("relation_type") == "别名":
-                if src in merged_nodes:
-                    merged_nodes[src]["aliases"].add(tgt)
-                if tgt in merged_nodes:
-                    merged_nodes[tgt]["aliases"].add(src)
+            if normalized_edge.get("_alias_relation"):
+                self._append_alias_to_merged_node(merged_nodes, src, tgt)
+                self._append_alias_to_merged_node(merged_nodes, tgt, src)
                 continue
             relation_type = normalized_edge.get("relation_type", "")
             if not relation_type:

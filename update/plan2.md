@@ -82,10 +82,3 @@ entity_continue_extraction_user_prompt
 文件：operate.py
 在关系合并处把空 description 回填为 N/A
 原先 raise ValueError("Relation ... has no description") 的致命路径改为 fallback，不再直接中断
-
-
-### 待办
-把影响改为危害
-属性提取的还是不够好
-图里还是有"部位"，明明已经删掉了
-到底用了哪些prompt？
