@@ -46,11 +46,11 @@ ONTOLOGY_ENTITY_TYPES_CRUCIFEROUS = set(NODE_DEFAULT_WHITELIST)
 RELATION_SCHEMA_FIXED_ORDERED = [
     "致病",
     "发生于",
-    "属于",
+    "属类隶属",
     "影响",
     "防治",
     "生命周期",
-    "位于",
+    "地理位置",
 ]
 
 RELATION_SCHEMA_FIXED = set(RELATION_SCHEMA_FIXED_ORDERED)
@@ -77,7 +77,7 @@ RELATION_DOMAIN_RANGE_CRUCIFEROUS: Dict[str, set[Tuple[str, str]]] = {
 
 DEFAULT_CORE_ENTITY_TYPES = ["虫害", "病害", "作物", "病原菌", "药剂", "生长期", "生物分类"]
 DEFAULT_ANCHOR_NODE_TYPES = ["时间"]
-DEFAULT_ATTRIBUTE_FIELDS = ["形态特征", "危害症状", "发病诱因", "发生时期", "防治要点", "生活习性", "发生规律"]
+DEFAULT_ATTRIBUTE_FIELDS = ["别名", "形态特征", "危害症状", "发病诱因", "发生时期", "防治要点", "生活习性", "发生规律"]
 DEFAULT_ATTRIBUTE_HOST_TYPES = ["虫害", "病害", "病原菌"]
 DEFAULT_NOISE_DROP_TYPES = ["header", "page_number"]
 DEFAULT_NOISE_DROP_PATTERNS = [
@@ -88,6 +88,29 @@ DEFAULT_NOISE_DROP_PATTERNS = [
     r"(?:QR|qr|二维码|QR码|扫码)",
     r"^(?:[A-Za-z]:)?[/\\].+\.(?:jpg|jpeg|png|bmp|gif|webp|tiff?)\s*$",
 ]
+
+PEST_STAGE_TERMS_ZH = [
+    "低龄幼虫",
+    "高龄幼虫",
+    "老熟幼虫",
+    "越冬成虫",
+    "越冬幼虫",
+    "越冬卵",
+    "越冬蛹",
+    "成虫",
+    "幼虫",
+    "若虫",
+    "虫卵",
+    "卵",
+    "蛹",
+]
+
+_PEST_STAGE_ALT = "|".join(
+    sorted((re.escape(term) for term in PEST_STAGE_TERMS_ZH), key=len, reverse=True)
+)
+PEST_STAGE_SUFFIX_REGEX = re.compile(
+    rf"^(?P<base>.+?)(?:[\s\-_/]*)[（(【\[]?(?P<stage>(?:{_PEST_STAGE_ALT}|[一二三四五六七八九十0-9]+龄幼虫))[）)】\]]?$"
+)
 
 
 @dataclass
@@ -306,6 +329,27 @@ class KGQualityManager:
 
         return raw, [raw]
 
+    def _split_pest_stage_suffix(self, entity_name: str) -> Tuple[str, str]:
+        """Split pest lifecycle suffix from entity name.
+
+        Examples:
+        - 大猿叶甲成虫 -> (大猿叶甲, 成虫)
+        - 大猿叶甲（幼虫） -> (大猿叶甲, 幼虫)
+        """
+        raw = _normalize_space(entity_name)
+        if not raw:
+            return "", ""
+        match = PEST_STAGE_SUFFIX_REGEX.match(raw)
+        if not match:
+            return raw, ""
+
+        base = _normalize_space(match.group("base") or "")
+        stage = _normalize_space(match.group("stage") or "")
+        base = base.strip(" \t\r\n,，。;；:：()（）[]【】<>《》-_/|")
+        if not base:
+            return raw, ""
+        return base, stage
+
     def _enforce_type_name_consistency(
         self, entity_name: str, entity_type: str
     ) -> Tuple[str, str]:
@@ -335,8 +379,21 @@ class KGQualityManager:
         canonical_name, canonical_type = self._enforce_type_name_consistency(
             entity_name, entity_type
         )
-        _, aliases = self._normalize_entity_name(entity_name)
+        raw_name, aliases = self._normalize_entity_name(entity_name)
+
+        # Normalize pest lifecycle variants into canonical pest node names:
+        # e.g., "大猿叶甲成虫" -> canonical "大猿叶甲", while keeping stage form as alias.
+        if canonical_type == "虫害":
+            base_name, stage_token = self._split_pest_stage_suffix(canonical_name)
+            if stage_token and base_name and base_name != canonical_name:
+                aliases.append(canonical_name)
+                canonical_name = base_name
+
+        if raw_name and raw_name != canonical_name:
+            aliases.append(raw_name)
+
         aliases = [a for a in aliases if a and a != canonical_name]
+        aliases = list(dict.fromkeys(aliases))
         return {
             "entity_name": canonical_name,
             "entity_type": canonical_type,
@@ -442,15 +499,10 @@ class KGQualityManager:
 
     def _apply_node_description_policy(self, node_data: Dict[str, Any]) -> Dict[str, Any]:
         normalized = dict(node_data)
-        if self.description_policy == "multimodal_only":
-            if normalized.get("entity_type") != "多模态元素":
-                normalized["description"] = ""
         return normalized
 
     def _apply_edge_description_policy(self, edge_data: Dict[str, Any]) -> Dict[str, Any]:
         normalized = dict(edge_data)
-        if self.description_policy == "multimodal_only":
-            normalized["description"] = ""
         return normalized
 
     def _relation_to_attribute_field(
@@ -606,8 +658,8 @@ class KGQualityManager:
 
         text = f"{keywords or ''} {description or ''}".lower()
 
-        if any(k in text for k in ["belongs_to", "part_of", "contained_in", "属于"]):
-            relation = "属于"
+        if any(k in text for k in ["belongs_to", "part_of", "contained_in", "属于", "隶属", "属类","从属","subordinate"]):
+            relation = "属类隶属"
         elif any(k in text for k in ["pathogen", "致病菌", "致病"]):
             relation = "致病"
         elif any(
@@ -633,7 +685,7 @@ class KGQualityManager:
         ):
             relation = "生命周期"
         elif any(k in text for k in ["location", "located", "位于", "地理位置", "page "]):
-            relation = "位于"
+            relation = "地理位置"
         else:
             relation = ""
 
@@ -660,7 +712,7 @@ class KGQualityManager:
         )
 
     def _relation_allowed(self, relation: str, src_type: str, tgt_type: str) -> bool:
-        if relation in {"属于"}:
+        if relation in {"属类隶属"}:
             return True
         if not relation:
             return False

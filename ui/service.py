@@ -7,6 +7,7 @@ import ast
 import json
 import os
 import re
+import threading
 import time
 import uuid
 import xml.etree.ElementTree as ET
@@ -233,20 +234,23 @@ class RAGUIService:
 
         self._rag_cache: Dict[str, Any] = {}
         self._job_manager = JobManager(self._build_rag, on_job_update=self._on_job_update)
+        self._async_loop = asyncio.new_event_loop()
+        self._async_thread = threading.Thread(
+            target=self._run_async_loop_forever,
+            name="rag-ui-async-loop",
+            daemon=True,
+        )
+        self._async_thread.start()
+
+    def _run_async_loop_forever(self) -> None:
+        """Run a dedicated event loop for all async LightRAG operations."""
+        asyncio.set_event_loop(self._async_loop)
+        self._async_loop.run_forever()
 
     def _run_async(self, coro: Any) -> Any:
-        """Run coroutine from sync context."""
-        try:
-            asyncio.get_running_loop()
-        except RuntimeError:
-            return asyncio.run(coro)
-
-        # Fallback for environments with active loop.
-        import concurrent.futures
-
-        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
-            future = executor.submit(asyncio.run, coro)
-            return future.result()
+        """Run coroutine on the dedicated persistent event loop."""
+        future = asyncio.run_coroutine_threadsafe(coro, self._async_loop)
+        return future.result()
 
     def _build_rag(
         self,
@@ -902,6 +906,15 @@ class RAGUIService:
     ) -> Dict[str, Any]:
         """Run query and return structured answer + citations + graph focus."""
         rag = self._get_or_create_rag(kb_id)
+
+        # Ensure LightRAG backend is initialized before calling aquery().
+        # QueryMixin.aquery() raises immediately when self.lightrag is None.
+        init_result = self._run_async(rag._ensure_lightrag_initialized())
+        if isinstance(init_result, dict) and not init_result.get("success", False):
+            raise RuntimeError(
+                init_result.get("error")
+                or "Failed to initialize LightRAG for querying"
+            )
 
         answer = self._run_async(rag.aquery(question, mode=mode))
 

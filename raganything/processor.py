@@ -1238,6 +1238,59 @@ class ProcessorMixin:
             # Fallback to just the description if template fails
             return description
 
+    def _stringify_entity_retrieval_field(self, value: Any) -> str:
+        if value is None:
+            return ""
+        if isinstance(value, dict):
+            parts = []
+            for key, item in value.items():
+                item_text = self._stringify_entity_retrieval_field(item)
+                if item_text:
+                    parts.append(f"{key}:{item_text}")
+            return "；".join(parts)
+        if isinstance(value, (list, tuple, set)):
+            parts = [self._stringify_entity_retrieval_field(item) for item in value]
+            return "；".join([part for part in parts if part])
+        if isinstance(value, str):
+            text = value.strip()
+            if not text:
+                return ""
+            if text[0] in {"{", "["}:
+                try:
+                    return self._stringify_entity_retrieval_field(json.loads(text))
+                except Exception:
+                    return text
+            return text
+        return str(value).strip()
+
+    def _build_multimodal_entity_vector_content(
+        self, entity_name: str, entity_info: Dict[str, Any], description: str
+    ) -> str:
+        entity_type = str(entity_info.get("entity_type", "")).strip()
+        summary = self._stringify_entity_retrieval_field(
+            entity_info.get("summary", description)
+        )
+        aliases = self._stringify_entity_retrieval_field(entity_info.get("aliases", ""))
+        attributes = self._stringify_entity_retrieval_field(
+            entity_info.get("attributes", "")
+        )
+        modality = self._stringify_entity_retrieval_field(
+            entity_info.get("content_modality", "")
+        )
+
+        lines = [f"实体:{entity_name}"]
+        if entity_type:
+            lines.append(f"类型:{entity_type}")
+        if summary:
+            lines.append(f"描述:{summary}")
+        if aliases:
+            lines.append(f"别名:{aliases}")
+        if attributes:
+            lines.append(f"属性:{attributes}")
+        if modality:
+            lines.append(f"模态:{modality}")
+        return "\n".join(lines)
+
     async def _store_chunks_to_lightrag_storage_type_aware(
         self, chunks: Dict[str, Any]
     ):
@@ -1300,10 +1353,14 @@ class ProcessorMixin:
             entity_id = compute_mdhash_id(entity_name, prefix="ent-")
 
             # Create entity data in LightRAG format
+            retrieval_content = self._build_multimodal_entity_vector_content(
+                entity_name, entity_info, description
+            )
             entity_data = {
                 "entity_name": entity_name,
                 "entity_type": entity_info.get("entity_type", content_type),
-                "content": entity_info.get("summary", description),
+                "content": retrieval_content,
+                "description": entity_info.get("summary", description),
                 "source_id": chunk_id,
                 "file_path": file_ref,
                 "content_modality": entity_info.get(
@@ -1326,7 +1383,7 @@ class ProcessorMixin:
                     node_data = {
                         "entity_id": entity_name,
                         "entity_type": entity_data["entity_type"],
-                        "description": entity_data["content"],
+                        "description": entity_data.get("description", ""),
                         "source_id": entity_data["source_id"],
                         "file_path": entity_data["file_path"],
                         "content_modality": entity_data.get("content_modality", ""),
