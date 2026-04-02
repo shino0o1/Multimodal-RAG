@@ -67,3 +67,22 @@
 - 默认以十字花科病虫害为主，但本体注册中心保持可扩展到多作物。
 - 首版重点是“结构质量和可解释性”，允许召回轻微波动；后续通过别名词典与属性补全迭代提升召回。
 - 兼容现有链路：保留 `legacy` 模式可回退；`ppe` 模式作为新默认用于新文档构建。
+
+
+
+
+### 修改记录
+/media/disk2/lhy/anaconda/envs/rag_anything/lib/python3.12/site-packages/lightrag/prompt.py
+entity_extraction_system_prompt
+entity_extraction_user_prompt
+entity_continue_extraction_user_prompt
+
+
+防止 relation description 为空导致崩溃
+文件：operate.py
+在关系合并处把空 description 回填为 N/A
+原先 raise ValueError("Relation ... has no description") 的致命路径改为 fallback，不再直接中断
+
+
+### 待办
+把影响改为危害

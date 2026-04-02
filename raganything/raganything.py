@@ -400,6 +400,20 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
             # Merge user-provided lightrag_kwargs, which can override defaults
             lightrag_params.update(self.lightrag_kwargs)
 
+            # Unify extraction white-lists from kg_quality manager.
+            manager = self.kg_quality_manager
+            if manager and manager.enabled:
+                addon_params = dict(lightrag_params.get("addon_params", {}))
+                addon_params["entity_types"] = manager.get_lightrag_entity_types()
+                addon_params["relationship_types"] = manager.get_lightrag_relation_types()
+                addon_params.setdefault(
+                    "language",
+                    "Chinese"
+                    if self.config.kg_canonical_language.lower() == "zh"
+                    else "English",
+                )
+                lightrag_params["addon_params"] = addon_params
+
             # Log the parameters being used for initialization (excluding sensitive data)
             log_params = {
                 k: v

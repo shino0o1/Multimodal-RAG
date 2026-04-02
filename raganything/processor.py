@@ -782,6 +782,16 @@ class ProcessorMixin:
                 get_namespace_data,
                 get_pipeline_status_lock,
             )
+            manager = getattr(self, "kg_quality_manager", None)
+            if manager and manager.enabled:
+                all_chunk_results = manager.preprocess_chunk_results(all_chunk_results)
+
+            # LightRAG requires non-empty relation descriptions at merge time.
+            for _maybe_nodes, maybe_edges in all_chunk_results:
+                for _edge_key, edge_list in maybe_edges.items():
+                    for edge_data in edge_list:
+                        if not str(edge_data.get("description", "")).strip():
+                            edge_data["description"] = "N/A"
 
             # Get pipeline status and lock from shared storage
             pipeline_status = await get_namespace_data("pipeline_status")

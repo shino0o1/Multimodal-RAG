@@ -66,13 +66,13 @@ PROMPTS = PromptRegistry()
 
 # System prompts for different analysis types
 PROMPTS["IMAGE_ANALYSIS_SYSTEM"] = (
-    "You are an expert image analyst. Provide detailed, accurate descriptions."
+    "You are an agricultural pest-and-disease knowledge extraction expert. Extract only information useful for building a pest/disease knowledge graph, and output strict JSON only."
 )
 PROMPTS["IMAGE_ANALYSIS_FALLBACK_SYSTEM"] = (
     "You are an expert image analyst. Provide detailed analysis based on available information."
 )
 PROMPTS["TABLE_ANALYSIS_SYSTEM"] = (
-    "You are an expert data analyst. Provide detailed table analysis with specific insights."
+    "You are an agricultural pest-and-disease data extraction expert. Extract only table information useful for building a pest/disease knowledge graph, and output strict JSON only."
 )
 PROMPTS["EQUATION_ANALYSIS_SYSTEM"] = (
     "You are an expert mathematician. Provide detailed mathematical analysis."
@@ -84,52 +84,74 @@ PROMPTS["GENERIC_ANALYSIS_SYSTEM"] = (
 # Image analysis prompt template
 PROMPTS[
     "vision_prompt"
-] = """Please analyze this image in detail and provide a JSON response with the following structure:
+] = """Please analyze this image for agricultural pest-and-disease knowledge extraction and provide a JSON response with the following structure:
 
 {{
-    "detailed_description": "A comprehensive and detailed visual description of the image following these guidelines:
-    - Describe the overall composition and layout
-    - Identify all objects, people, text, and visual elements
-    - Explain relationships between elements
-    - Note colors, lighting, and visual style
-    - Describe any actions or activities shown
-    - Include technical details if relevant (charts, diagrams, etc.)
-    - Always use specific names instead of pronouns",
+    "detailed_description": "Keep only information useful for agricultural pest/disease KG extraction:
+    - Prioritize entities: crop, disease, pest, pathogen, pesticide, plant part, growth stage, time
+    - Prioritize attributes: morphology, symptoms, occurrence period/stage, control points
+    - Keep relation cues for downstream extraction (e.g., causes, affects, occurs_in, uses_pesticide, controls, located_in, belongs_to)
+    - If text exists in the image, extract pest/disease-relevant terms and phrases
+    - Ignore irrelevant visual details (layout decoration, style, unrelated people/background)
+    - Use explicit entity names instead of pronouns",
     "entity_info": {{
         "entity_name": "{entity_name}",
         "entity_type": "image",
-        "summary": "concise summary of the image content and its significance (max 100 words)"
+        "summary": "concise pest/disease extraction summary (max 100 words)"
     }}
 }}
+
+Hard constraints:
+1. If the image is mainly a QR code/barcode/payment code/link code, return only this empty-result JSON:
+   {{
+     "detailed_description": "",
+     "entity_info": {{
+       "entity_name": "{entity_name}",
+       "entity_type": "image",
+       "summary": ""
+     }}
+   }}
+2. Output JSON only; do not output any extra explanation.
 
 Additional context:
 - Image Path: {image_path}
 - Captions: {captions}
 - Footnotes: {footnotes}
 
-Focus on providing accurate, detailed visual analysis that would be useful for knowledge retrieval."""
+Focus on maximizing downstream entity and relation extraction quality."""
 
 # Image analysis prompt with context support
 PROMPTS[
     "vision_prompt_with_context"
-] = """Please analyze this image in detail, considering the surrounding context. Provide a JSON response with the following structure:
+] = """Please analyze this image for agricultural pest-and-disease knowledge extraction, considering surrounding context. Provide a JSON response with the following structure:
 
 {{
-    "detailed_description": "A comprehensive and detailed visual description of the image following these guidelines:
-    - Describe the overall composition and layout
-    - Identify all objects, people, text, and visual elements
-    - Explain relationships between elements and how they relate to the surrounding context
-    - Note colors, lighting, and visual style
-    - Describe any actions or activities shown
-    - Include technical details if relevant (charts, diagrams, etc.)
-    - Reference connections to the surrounding content when relevant
-    - Always use specific names instead of pronouns",
+    "detailed_description": "Keep only information useful for agricultural pest/disease KG extraction:
+    - Prioritize entities: crop, disease, pest, pathogen, pesticide, plant part, growth stage, time
+    - Prioritize attributes: morphology, symptoms, occurrence period/stage, control points
+    - Use context to resolve references and avoid fragmented descriptions
+    - Keep relation cues for downstream extraction (e.g., causes, affects, occurs_in, uses_pesticide, controls, located_in, belongs_to)
+    - If text exists in the image, extract pest/disease-relevant terms and phrases
+    - Ignore irrelevant visual details (layout decoration, style, unrelated people/background)
+    - Use explicit entity names instead of pronouns",
     "entity_info": {{
         "entity_name": "{entity_name}",
         "entity_type": "image",
-        "summary": "concise summary of the image content, its significance, and relationship to surrounding content (max 100 words)"
+        "summary": "concise pest/disease extraction summary with context (max 100 words)"
     }}
 }}
+
+Hard constraints:
+1. If the image is mainly a QR code/barcode/payment code/link code, return only this empty-result JSON:
+   {{
+     "detailed_description": "",
+     "entity_info": {{
+       "entity_name": "{entity_name}",
+       "entity_type": "image",
+       "summary": ""
+     }}
+   }}
+2. Output JSON only; do not output any extra explanation.
 
 Context from surrounding content:
 {context}
@@ -139,7 +161,7 @@ Image details:
 - Captions: {captions}
 - Footnotes: {footnotes}
 
-Focus on providing accurate, detailed visual analysis that incorporates the context and would be useful for knowledge retrieval."""
+Focus on maximizing downstream entity and relation extraction quality."""
 
 # Image analysis prompt with text fallback
 PROMPTS["text_prompt"] = """Based on the following image information, provide analysis:
@@ -153,23 +175,26 @@ Footnotes: {footnotes}
 # Table analysis prompt template
 PROMPTS[
     "table_prompt"
-] = """Please analyze this table content and provide a JSON response with the following structure:
+] = """Please analyze this table for agricultural pest-and-disease knowledge extraction and provide a JSON response with the following structure:
 
 {{
-    "detailed_description": "A comprehensive analysis of the table including:
-    - Table structure and organization
-    - Column headers and their meanings
-    - Key data points and patterns
-    - Statistical insights and trends
-    - Relationships between data elements
-    - Significance of the data presented
-    Always use specific names and values instead of general references.",
+    "detailed_description": "Keep only table information useful for agricultural pest/disease KG extraction:
+    - Columns/fields related to crop, disease, pest, pathogen, pesticide, plant part, growth stage, time
+    - Morphology, symptoms, occurrence period/stage, control points
+    - Relation cues for downstream extraction (e.g., causes, affects, occurs_in, uses_pesticide, controls, located_in, belongs_to)
+    - Key values such as dosage, frequency, period, threshold, condition
+    - Ignore irrelevant columns/notes and non-pest/disease content
+    Always use explicit entity names, field names, and values.",
     "entity_info": {{
         "entity_name": "{entity_name}",
         "entity_type": "table",
-        "summary": "concise summary of the table's purpose and key findings (max 100 words)"
+        "summary": "concise pest/disease extraction summary (max 100 words)"
     }}
 }}
+
+Hard constraints:
+1. Output JSON only; do not output any extra explanation.
+2. If table content is not related to agricultural pest/disease, return an empty-result JSON (keep fields, leave content empty).
 
 Table Information:
 Image Path: {table_img_path}
@@ -177,29 +202,32 @@ Caption: {table_caption}
 Body: {table_body}
 Footnotes: {table_footnote}
 
-Focus on extracting meaningful insights and relationships from the tabular data."""
+Focus on maximizing downstream entity and relation extraction quality."""
 
 # Table analysis prompt with context support
 PROMPTS[
     "table_prompt_with_context"
-] = """Please analyze this table content considering the surrounding context, and provide a JSON response with the following structure:
+] = """Please analyze this table for agricultural pest-and-disease knowledge extraction considering surrounding context, and provide a JSON response with the following structure:
 
 {{
-    "detailed_description": "A comprehensive analysis of the table including:
-    - Table structure and organization
-    - Column headers and their meanings
-    - Key data points and patterns
-    - Statistical insights and trends
-    - Relationships between data elements
-    - Significance of the data presented in relation to surrounding context
-    - How the table supports or illustrates concepts from the surrounding content
-    Always use specific names and values instead of general references.",
+    "detailed_description": "Keep only table information useful for agricultural pest/disease KG extraction:
+    - Columns/fields related to crop, disease, pest, pathogen, pesticide, plant part, growth stage, time
+    - Morphology, symptoms, occurrence period/stage, control points
+    - Use context to resolve references and relations
+    - Relation cues for downstream extraction (e.g., causes, affects, occurs_in, uses_pesticide, controls, located_in, belongs_to)
+    - Key values such as dosage, frequency, period, threshold, condition
+    - Ignore irrelevant columns/notes and non-pest/disease content
+    Always use explicit entity names, field names, and values.",
     "entity_info": {{
         "entity_name": "{entity_name}",
         "entity_type": "table",
-        "summary": "concise summary of the table's purpose, key findings, and relationship to surrounding content (max 100 words)"
+        "summary": "concise pest/disease extraction summary with context (max 100 words)"
     }}
 }}
+
+Hard constraints:
+1. Output JSON only; do not output any extra explanation.
+2. If table content is not related to agricultural pest/disease, return an empty-result JSON (keep fields, leave content empty).
 
 Context from surrounding content:
 {context}
@@ -210,7 +238,7 @@ Caption: {table_caption}
 Body: {table_body}
 Footnotes: {table_footnote}
 
-Focus on extracting meaningful insights and relationships from the tabular data in the context of the surrounding content."""
+Focus on maximizing downstream entity and relation extraction quality."""
 
 # Equation analysis prompt template
 PROMPTS[

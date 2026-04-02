@@ -7,6 +7,11 @@ Contains configuration dataclasses with environment variable support
 from dataclasses import dataclass, field
 from typing import List
 from lightrag.utils import get_env_value
+from raganything.kg_quality import (
+    DEFAULT_CORE_ENTITY_TYPES,
+    DEFAULT_ANCHOR_NODE_TYPES,
+    DEFAULT_ATTRIBUTE_FIELDS,
+)
 
 
 def _get_env_list(name: str, default: str) -> List[str]:
@@ -137,19 +142,21 @@ class RAGAnythingConfig:
 
     kg_core_entity_types: List[str] = field(
         default_factory=lambda: _get_env_list(
-            "KG_CORE_ENTITY_TYPES", "虫害,病害,作物,病原菌,药剂,生长期,生物分类"
+            "KG_CORE_ENTITY_TYPES", ",".join(DEFAULT_CORE_ENTITY_TYPES)
         )
     )
     """Core entity types retained as main nodes."""
 
     kg_anchor_node_types: List[str] = field(
-        default_factory=lambda: _get_env_list("KG_ANCHOR_NODE_TYPES", "部位,时间")
+        default_factory=lambda: _get_env_list(
+            "KG_ANCHOR_NODE_TYPES", ",".join(DEFAULT_ANCHOR_NODE_TYPES)
+        )
     )
     """Anchor node types retained for temporal/spatial linking."""
 
     kg_attribute_fields: List[str] = field(
         default_factory=lambda: _get_env_list(
-            "KG_ATTRIBUTE_FIELDS", "形态特征,危害症状,发病诱因,发生时期,防治要点,生活习性,发生规律"
+            "KG_ATTRIBUTE_FIELDS", ",".join(DEFAULT_ATTRIBUTE_FIELDS)
         )
     )
     """Attribute fields attached to entities instead of fragment nodes."""

@@ -18,7 +18,7 @@ from collections import Counter
 from dataclasses import dataclass, field
 from typing import Any, Dict, Iterable, List, Set, Tuple
 
-
+# 只要改这个
 NODE_DEFAULT_WHITELIST = [
     "病害",
     "虫害",
@@ -26,9 +26,8 @@ NODE_DEFAULT_WHITELIST = [
     "作物",
     "生长期",
     "生物分类",
-    "部位",
     "药剂",
-    "时间",
+    "别名",
     "危害症状",
     "形态特征",
     "发病诱因",
@@ -42,18 +41,18 @@ NODE_DEFAULT_WHITELIST = [
 
 ONTOLOGY_ENTITY_TYPES_CRUCIFEROUS = set(NODE_DEFAULT_WHITELIST)
 
-RELATION_SCHEMA_FIXED = {
+# 只要改这个
+RELATION_SCHEMA_FIXED_ORDERED = [
     "致病",
     "发生于",
-    "使用药剂",
     "属于",
     "影响",
     "防治",
-    "症状",
     "生命周期",
-    "别名",
     "位于",
-}
+]
+
+RELATION_SCHEMA_FIXED = set(RELATION_SCHEMA_FIXED_ORDERED)
 
 MULTIMODAL_TYPE_MAP = {
     "image": "多模态元素",
@@ -71,9 +70,7 @@ RELATION_DOMAIN_RANGE_CRUCIFEROUS: Dict[str, set[Tuple[str, str]]] = {
         ("病害", "生长期"),
         ("虫害", "生长期"),
     },
-    "使用药剂": {("病害", "药剂"), ("虫害", "药剂")},
-    "位于": {("病害", "部位"), ("虫害", "部位"), ("药剂", "作物")},
-    "影响": {("病害", "作物"), ("虫害", "作物"), ("病害", "部位"), ("虫害", "部位")},
+    "影响": {("病害", "作物"), ("虫害", "作物")},
     "防治": {("病害", "药剂"), ("虫害", "药剂"), ("药剂", "病害"), ("药剂", "虫害")},
 }
 
@@ -248,6 +245,41 @@ class KGQualityManager:
             self.allowed_entity_types = sorted(
                 set(self.allowed_entity_types) | self.ontology_registry.node_whitelist
             )
+
+    def get_lightrag_entity_types(self) -> List[str]:
+        """Entity whitelist exposed to LightRAG extraction prompt."""
+        excluded = {"其他", "多模态元素"}
+        preferred_order = NODE_DEFAULT_WHITELIST
+        picked: List[str] = []
+        seen: Set[str] = set()
+        for item in preferred_order:
+            if item in self.allowed_entity_types and item not in excluded and item not in seen:
+                picked.append(item)
+                seen.add(item)
+        for item in self.allowed_entity_types:
+            if item not in excluded and item not in seen:
+                picked.append(item)
+                seen.add(item)
+        return picked
+
+    def get_lightrag_relation_types(self) -> List[str]:
+        """Relation whitelist exposed to LightRAG extraction prompt."""
+        whitelist = (
+            set(self.ontology_registry.relation_whitelist)
+            if self.ontology_registry
+            else set(RELATION_SCHEMA_FIXED)
+        )
+        picked: List[str] = []
+        seen: Set[str] = set()
+        for rel in RELATION_SCHEMA_FIXED_ORDERED:
+            if rel in whitelist and rel not in seen:
+                picked.append(rel)
+                seen.add(rel)
+        for rel in sorted(whitelist):
+            if rel not in seen:
+                picked.append(rel)
+                seen.add(rel)
+        return picked
 
     def _normalize_entity_type(self, entity_type: str) -> str:
         raw = _normalize_space(entity_type)
@@ -486,8 +518,6 @@ class KGQualityManager:
 
         if any(k in text for k in ["belongs_to", "part_of", "contained_in", "属于"]):
             relation = "属于"
-        elif any(k in text for k in ["alias", "same as", "aka", "别名"]):
-            relation = "别名"
         elif any(k in text for k in ["pathogen", "致病菌", "致病"]):
             relation = "致病"
         elif any(
@@ -503,14 +533,10 @@ class KGQualityManager:
             ]
         ):
             relation = "发生于"
-        elif any(k in text for k in ["drug", "pesticide", "药剂", "治疗药剂"]):
-            relation = "使用药剂"
         elif any(k in text for k in ["control", "prevention", "management", "防治"]):
             relation = "防治"
         elif any(k in text for k in ["impact", "affect", "cause", "影响"]):
             relation = "影响"
-        elif any(k in text for k in ["symptom", "damage", "harm", "危害"]):
-            relation = "症状"
         elif any(
             k in text
             for k in ["life cycle", "lifecycle", "stage", "overwinter", "生命周期"]
@@ -528,7 +554,7 @@ class KGQualityManager:
         return relation
 
     def _relation_allowed(self, relation: str, src_type: str, tgt_type: str) -> bool:
-        if relation in {"属于", "别名"}:
+        if relation in {"属于"}:
             return True
         if not relation:
             return False
@@ -560,7 +586,15 @@ class KGQualityManager:
         normalized["relation_type"] = relation_type
         # Keep compatibility with current retrieval that still reads "keywords".
         normalized["keywords"] = relation_type
-        return self._apply_edge_description_policy(normalized)
+        # LightRAG merge requires relation descriptions to exist; guard against
+        # model outputs that violate prompt constraints.
+        if not _normalize_space(str(normalized.get("description", ""))):
+            normalized["description"] = "N/A"
+        # NOTE:
+        # LightRAG merge requires relation descriptions to be present.
+        # Do not clear relation descriptions in preprocess stage; defer cleanup
+        # to GraphML rewrite stage where final policy is enforced.
+        return normalized
 
     def _merge_ieu_nodes(self, records: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Incremental entity update with "main attribute first" policy."""
@@ -609,7 +643,9 @@ class KGQualityManager:
                     base[k] = current
                 merged[field] = json.dumps(base, ensure_ascii=False)
 
-        return self._apply_node_description_policy(merged)
+        # Keep original description during preprocess/merge.
+        # Final description policy is enforced when rewriting GraphML.
+        return merged
 
     def _append_alias_to_node_records(
         self, nodes: Dict[str, List[Dict[str, Any]]], canonical: str, alias: str
@@ -622,19 +658,6 @@ class KGQualityManager:
             aliases = _split_sep_values(str(rec.get("aliases", "")))
             aliases.append(alias)
             rec["aliases"] = _join_sep_values(aliases)
-
-    def _consume_alias_edge(
-        self,
-        nodes: Dict[str, List[Dict[str, Any]]],
-        src: str,
-        tgt: str,
-        edge_data: Dict[str, Any],
-    ) -> bool:
-        if edge_data.get("relation_type") != "别名":
-            return False
-        self._append_alias_to_node_records(nodes, src, tgt)
-        self._append_alias_to_node_records(nodes, tgt, src)
-        return True
 
     def _preprocess_chunk_results_legacy(self, chunk_results: List[Tuple]) -> List[Tuple]:
         normalized_results = []
@@ -694,10 +717,7 @@ class KGQualityManager:
                         src_type=node_type_map.get(norm_src, ""),
                         tgt_type=node_type_map.get(norm_tgt, ""),
                     )
-                    if self._consume_alias_edge(
-                        new_nodes, norm_src, norm_tgt, normalized_edge
-                    ):
-                        continue
+
                     new_edges[key].append(normalized_edge)
 
             new_edges = {k: v for k, v in new_edges.items() if v}
@@ -763,10 +783,7 @@ class KGQualityManager:
                     normalized_edge = self.normalize_edge(
                         ed, src_type=src_type, tgt_type=tgt_type
                     )
-                    if self._consume_alias_edge(
-                        normalized_nodes_by_name, norm_src, norm_tgt, normalized_edge
-                    ):
-                        continue
+
                     normalized_edges.append((norm_src, norm_tgt, normalized_edge))
 
             # Build final node set with core + anchor + multimodal nodes only.
@@ -1036,11 +1053,6 @@ class KGQualityManager:
             )
             relation_type = normalized_edge.get("relation_type", "")
             if not relation_type:
-                continue
-            if relation_type == "别名":
-                if src in merged_nodes and tgt in merged_nodes and src != tgt:
-                    merged_nodes[src]["aliases"].add(tgt)
-                    merged_nodes[tgt]["aliases"].add(src)
                 continue
             if self.ontology_registry and relation_type not in self.ontology_registry.relation_whitelist:
                 continue

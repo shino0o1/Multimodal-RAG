@@ -1016,7 +1016,9 @@ class ImageModalProcessor(BaseModalProcessor):
             description = response_data.get("detailed_description", "")
             entity_data = response_data.get("entity_info", {})
 
-            if not description or not entity_data:
+            # Allow empty detailed_description (e.g., QR-code empty-result JSON),
+            # but still require the field to exist and entity_info to be present.
+            if "detailed_description" not in response_data or not entity_data:
                 raise ValueError("Missing required fields in response")
 
             if not all(
@@ -1210,7 +1212,8 @@ class TableModalProcessor(BaseModalProcessor):
             description = response_data.get("detailed_description", "")
             entity_data = response_data.get("entity_info", {})
 
-            if not description or not entity_data:
+            # Allow empty detailed_description while keeping schema validation.
+            if "detailed_description" not in response_data or not entity_data:
                 raise ValueError("Missing required fields in response")
 
             if not all(
@@ -1394,7 +1397,8 @@ class EquationModalProcessor(BaseModalProcessor):
             description = response_data.get("detailed_description", "")
             entity_data = response_data.get("entity_info", {})
 
-            if not description or not entity_data:
+            # Allow empty detailed_description while keeping schema validation.
+            if "detailed_description" not in response_data or not entity_data:
                 raise ValueError("Missing required fields in response")
 
             if not all(
@@ -1556,7 +1560,8 @@ class GenericModalProcessor(BaseModalProcessor):
             description = response_data.get("detailed_description", "")
             entity_data = response_data.get("entity_info", {})
 
-            if not description or not entity_data:
+            # Allow empty detailed_description while keeping schema validation.
+            if "detailed_description" not in response_data or not entity_data:
                 raise ValueError("Missing required fields in response")
 
             if not all(
