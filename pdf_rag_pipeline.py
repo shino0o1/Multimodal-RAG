@@ -93,6 +93,12 @@ async def main():
         llm_model_func=llm_model_func,
         vision_model_func=vision_model_func,
         embedding_func=embedding_func,
+        lightrag_kwargs={
+            # 关闭二次抽取（gleaning），减少超时与格式噪声
+            "entity_extract_max_gleaning": 0,
+            # 限制抽取阶段输入上限，控制提示词长度
+            "max_extract_input_tokens": 5120,
+        },
     )
 
     # ==========================================
