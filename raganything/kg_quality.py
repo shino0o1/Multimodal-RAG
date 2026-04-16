@@ -55,7 +55,7 @@ RELATION_SCHEMA_FIXED_ORDERED = [
     "致病",
     "发生于",
     "属类隶属",
-    "影响",
+    "危害",
     "使用药剂",
     "防治",
     "生命周期",
@@ -82,7 +82,7 @@ RELATION_DOMAIN_RANGE_CRUCIFEROUS: Dict[str, set[Tuple[str, str]]] = {
         ("病害", "部位"),
         ("虫害", "部位"),
     },
-    "影响": {
+    "危害": {
         ("病害", "作物"),
         ("虫害", "作物"),
         ("病害", "部位"),
@@ -1243,8 +1243,8 @@ class KGQualityManager:
             relation = "发生于"
         elif any(k in text for k in ["control", "prevention", "management", "防治"]):
             relation = "防治"
-        elif any(k in text for k in ["impact", "affect", "cause", "damage", "影响", "危害", "为害"]):
-            relation = "影响"
+        elif any(k in text for k in ["impact", "affect", "cause", "damage", "危害", "危害", "为害"]):
+            relation = "危害"
         elif any(
             k in text
             for k in ["life cycle", "lifecycle", "stage", "overwinter", "生命周期"]

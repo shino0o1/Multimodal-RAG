@@ -1,8 +1,106 @@
 import asyncio
 import os
+import time
+from pathlib import Path
 from raganything import RAGAnything, RAGAnythingConfig, set_prompt_language
 from lightrag.llm.openai import openai_complete_if_cache, openai_embed
 from lightrag.utils import EmbeddingFunc
+
+BUILD_GLOBAL_TIMEOUT_SECONDS = 2 * 60 * 60  # 2 hours
+BUILD_STALL_TIMEOUT_SECONDS = 10 * 60        # no file write for 110 minutes
+BUILD_WATCH_INTERVAL_SECONDS = 30            # check every 30s
+
+
+def _latest_mtime_in_dir(target_dir: str) -> float:
+    root = Path(target_dir)
+    if not root.exists():
+        return 0.0
+    latest = root.stat().st_mtime
+    for path in root.rglob("*"):
+        if not path.is_file():
+            continue
+        try:
+            mtime = path.stat().st_mtime
+        except OSError:
+            continue
+        if mtime > latest:
+            latest = mtime
+    return latest
+
+
+async def _watch_build_progress(
+    process_task: asyncio.Task,
+    working_dir: str,
+    stall_timeout_seconds: int,
+    watch_interval_seconds: int,
+) -> str:
+    last_mtime = _latest_mtime_in_dir(working_dir)
+    last_progress_ts = time.monotonic()
+    while not process_task.done():
+        await asyncio.sleep(watch_interval_seconds)
+        current_mtime = _latest_mtime_in_dir(working_dir)
+        if current_mtime > last_mtime:
+            last_mtime = current_mtime
+            last_progress_ts = time.monotonic()
+            print(f"[watchdog] 检测到工作目录更新：{working_dir}")
+            continue
+        idle_seconds = time.monotonic() - last_progress_ts
+        if idle_seconds >= stall_timeout_seconds:
+            return (
+                f"构建流程疑似卡住：{working_dir} 已 {int(idle_seconds)}s 无文件写入"
+            )
+    return ""
+
+
+async def _run_build_with_guard(
+    rag: RAGAnything,
+    file_path: str,
+    output_dir: str,
+    parse_method: str,
+) -> None:
+    process_task = asyncio.create_task(
+        rag.process_document_complete(
+            file_path=file_path,
+            output_dir=output_dir,
+            parse_method=parse_method,
+        )
+    )
+    watchdog_task = asyncio.create_task(
+        _watch_build_progress(
+            process_task=process_task,
+            working_dir=rag.config.working_dir,
+            stall_timeout_seconds=BUILD_STALL_TIMEOUT_SECONDS,
+            watch_interval_seconds=BUILD_WATCH_INTERVAL_SECONDS,
+        )
+    )
+
+    done, pending = await asyncio.wait(
+        {process_task, watchdog_task},
+        timeout=BUILD_GLOBAL_TIMEOUT_SECONDS,
+        return_when=asyncio.FIRST_COMPLETED,
+    )
+
+    if not done:
+        for task in pending:
+            task.cancel()
+        await asyncio.gather(*pending, return_exceptions=True)
+        raise TimeoutError(
+            f"构建超时：超过 {BUILD_GLOBAL_TIMEOUT_SECONDS}s 仍未完成"
+        )
+
+    if process_task in done:
+        # process finished, cancel watchdog
+        watchdog_task.cancel()
+        await asyncio.gather(watchdog_task, return_exceptions=True)
+        await process_task
+        return
+
+    # watchdog finished first
+    stall_reason = watchdog_task.result()
+    process_task.cancel()
+    await asyncio.gather(process_task, return_exceptions=True)
+    raise TimeoutError(stall_reason or "构建疑似卡住，被 watchdog 终止")
+
 
 async def main():
     # ==========================================
@@ -12,15 +110,17 @@ async def main():
     base_url = "https://yunwu.ai/v1" # 如果使用代理可以修改此处
     set_prompt_language("zh")
     os.environ["SUMMARY_LANGUAGE"] = "Chinese"
+    # LLM 单次调用超时（秒）
+    os.environ.setdefault("LLM_TIMEOUT", "180")
 
     # 核心配置：指定解析器并开启多模态开关
     config = RAGAnythingConfig(
-        working_dir="./rag_storage_test4",  # 知识图谱和向量库存储路径, 每次新的PDF用独立的
+        working_dir="./rag_storage_test5",  # 知识图谱和向量库存储路径, 每次新的PDF用独立的
         parser="mineru",              # 使用 MinerU 进行专业级 PDF 解析
         parse_method="auto",           # 强制使用 OCR 方法识别 PDF（也可以填 "auto"）
         enable_image_processing=True, # 开启图像识别与图谱节点构建
         enable_table_processing=True, # 开启表格解析
-        enable_equation_processing=True, # 开启公式解析
+        enable_equation_processing=False, # 开启公式解析
         kg_quality_enabled=True,      # 开启知识图谱质量治理
         kg_extraction_mode="ppe",     # PPE三轮抽取模式（可切换 legacy 回退）
         kg_canonical_language="zh",   # 统一中文主实体
@@ -112,12 +212,59 @@ async def main():
     # 2. PDF OCR 识别与多模态知识图谱构建
     # ==========================================
     print("🚀 开始解析 PDF 并构建知识图谱（此过程可能较长，请耐心等待）...")
-    await rag.process_document_complete(
-        file_path="docs/test4.pdf",  # 替换为您的 PDF 路径
-        output_dir="./output",
-        parse_method="auto"
-    )
-    print("✅ 知识图谱构建完成！数据已保存在 ./rag_storage 目录。")
+    rag_for_query = rag
+    try:
+        await _run_build_with_guard(
+            rag=rag,
+            file_path="docs/test4.pdf",
+            output_dir="./output",
+            parse_method="auto",
+        )
+    except TimeoutError as exc:
+        print(f"⚠️ 首次构建触发防卡死保护：{exc}")
+        print("⚠️ 自动降级重试：关闭 LLM 语义去重，避免 merge 阶段长时间等待...")
+        fallback_config = RAGAnythingConfig(
+            working_dir="./rag_storage_test5_fallback",
+            parser=config.parser,
+            parse_method=config.parse_method,
+            enable_image_processing=config.enable_image_processing,
+            enable_table_processing=config.enable_table_processing,
+            enable_equation_processing=config.enable_equation_processing,
+            kg_quality_enabled=config.kg_quality_enabled,
+            kg_extraction_mode=config.kg_extraction_mode,
+            kg_canonical_language=config.kg_canonical_language,
+            kg_relation_schema=config.kg_relation_schema,
+            kg_noise_drop_types=config.kg_noise_drop_types,
+            kg_noise_drop_patterns=config.kg_noise_drop_patterns,
+            kg_description_policy=config.kg_description_policy,
+            kg_ontology_profile=config.kg_ontology_profile,
+            kg_enforce_ontology=config.kg_enforce_ontology,
+            kg_merge_threshold=config.kg_merge_threshold,
+            kg_llm_semantic_merge_enabled=False,
+        )
+        rag_fallback = RAGAnything(
+            config=fallback_config,
+            llm_model_func=llm_model_func,
+            vision_model_func=vision_model_func,
+            embedding_func=embedding_func,
+            lightrag_kwargs={
+                "entity_extract_max_gleaning": 0,
+                "max_extract_input_tokens": 5120,
+                "llm_model_max_async": 12,
+                "embedding_func_max_async": 16,
+                "max_parallel_insert": 4,
+            },
+        )
+        await _run_build_with_guard(
+            rag=rag_fallback,
+            file_path="docs/test4.pdf",
+            output_dir="./output",
+            parse_method="auto",
+        )
+        rag_for_query = rag_fallback
+        print("✅ 降级重试构建完成！数据已保存在 ./rag_storage_test5_fallback 目录。")
+    else:
+        print(f"✅ 知识图谱构建完成！数据已保存在 {config.working_dir} 目录。")
 
     # ==========================================
     # 3. 多模态 RAG 测试查询
@@ -127,7 +274,7 @@ async def main():
     # 测试A：常规查询（系统会自动检索图表描述、文本并利用 VLM 增强分析）
     question_1 = "小猿叶甲幼虫的形态特征是什么？"
     print(f"问：{question_1}")
-    text_result = await rag.aquery(question_1, mode="hybrid")
+    text_result = await rag_for_query.aquery(question_1, mode="hybrid")
     print(f"答：\n{text_result}\n")
 
     # # 测试B：携带特定模态片段进行联合提问（高级用法）

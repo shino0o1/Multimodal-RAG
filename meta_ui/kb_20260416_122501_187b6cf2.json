@@ -1,0 +1,19 @@
+{
+  "kb_id": "kb_20260416_122501_187b6cf2",
+  "file_name": "test4.pdf",
+  "upload_path": "uploads_ui/kb_20260416_122501_187b6cf2/test4.pdf",
+  "upload_paths": [
+    "uploads_ui/kb_20260416_122501_187b6cf2/test4.pdf"
+  ],
+  "file_count": 1,
+  "working_dir": "rag_storage_ui/kb_20260416_122501_187b6cf2",
+  "output_dir": "output_ui/kb_20260416_122501_187b6cf2",
+  "status": "failed",
+  "stage": "error",
+  "progress": 5,
+  "error": "Missing dependency `lightrag-hku`. Install requirements first.",
+  "parser": "mineru",
+  "job_id": "job-3e6c33b81a",
+  "created_at": 1776313501.1127477,
+  "updated_at": 1776313502.9893994
+}

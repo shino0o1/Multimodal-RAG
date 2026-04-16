@@ -404,7 +404,7 @@ class RAGUIService:
             parse_method="auto",
             enable_image_processing=True,
             enable_table_processing=True,
-            enable_equation_processing=True,
+            enable_equation_processing=False,
             kg_quality_enabled=True,
         )
 
