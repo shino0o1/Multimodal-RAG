@@ -15,6 +15,7 @@ from difflib import SequenceMatcher
 import inspect
 import json
 import logging
+import math
 import os
 import re
 import threading
@@ -433,6 +434,36 @@ class KGQualityManager:
         text = re.sub(r"[^\u4e00-\u9fffA-Za-z0-9]", "", text)
         return text
 
+    def _char_ngram_vector(self, name: str, n: int = 2) -> Counter[str]:
+        text = self._normalize_compare_name(name)
+        if not text:
+            return Counter()
+        if len(text) < n:
+            return Counter(text)
+        grams = [text[i : i + n] for i in range(len(text) - n + 1)]
+        return Counter(grams)
+
+    def _cosine_counter_similarity(self, a: Counter[str], b: Counter[str]) -> float:
+        if not a or not b:
+            return 0.0
+        dot = 0.0
+        for key, av in a.items():
+            bv = b.get(key)
+            if bv:
+                dot += float(av * bv)
+        if dot <= 0.0:
+            return 0.0
+        na = math.sqrt(sum(float(v * v) for v in a.values()))
+        nb = math.sqrt(sum(float(v * v) for v in b.values()))
+        if na <= 0.0 or nb <= 0.0:
+            return 0.0
+        return float(dot / (na * nb))
+
+    def _vector_name_similarity(self, left: str, right: str) -> float:
+        va = self._char_ngram_vector(left, n=2)
+        vb = self._char_ngram_vector(right, n=2)
+        return self._cosine_counter_similarity(va, vb)
+
     def _name_similarity(self, left: str, right: str) -> float:
         a = self._normalize_compare_name(left)
         b = self._normalize_compare_name(right)
@@ -440,9 +471,17 @@ class KGQualityManager:
             return 0.0
         if a == b:
             return 1.0
-        return SequenceMatcher(None, a, b).ratio()
+        seq_sim = SequenceMatcher(None, a, b).ratio()
+        vec_sim = self._vector_name_similarity(a, b)
+        return max(seq_sim, vec_sim)
 
-    def _build_candidate_groups(self, names: List[str]) -> List[List[str]]:
+    def _build_candidate_groups(
+        self,
+        names: List[str],
+        threshold: float,
+        upper_threshold: float | None = None,
+        include_containment: bool = False,
+    ) -> List[List[str]]:
         if len(names) < 2:
             return []
 
@@ -464,10 +503,12 @@ class KGQualityManager:
                 a = names[i]
                 b = names[j]
                 sim = self._name_similarity(a, b)
+                if upper_threshold is not None and sim >= upper_threshold:
+                    continue
                 na = self._normalize_compare_name(a)
                 nb = self._normalize_compare_name(b)
                 contain = bool(na and nb and (na in nb or nb in na))
-                if sim >= self.llm_semantic_name_sim_threshold or contain:
+                if sim >= threshold or (include_containment and contain):
                     union(a, b)
 
         groups: Dict[str, List[str]] = {}
@@ -483,6 +524,31 @@ class KGQualityManager:
                 continue
             merged_groups.append(sorted(members))
         return merged_groups
+
+    def _select_canonical_name(
+        self, entity_type: str, members: List[str], merged_nodes: Dict[str, Dict[str, Any]]
+    ) -> str:
+        if not members:
+            return ""
+
+        def _score(name: str) -> Tuple[int, int, int, int, str]:
+            node = merged_nodes.get(name, {})
+            aliases = node.get("aliases", set())
+            alias_count = len(aliases) if isinstance(aliases, set) else 0
+            attrs = node.get("attributes", {}) or {}
+            attr_count = len(attrs.keys()) if isinstance(attrs, dict) else 0
+            desc = _join_sep_values(node.get("description", []))
+            desc_score = min(len(desc), 300)
+            cjk_score = 1 if _contains_cjk(name) else 0
+            return (
+                cjk_score,
+                attr_count + alias_count,
+                desc_score,
+                -len(name),  # Prefer shorter canonical name when information is comparable.
+                name,
+            )
+
+        return sorted(members, key=_score, reverse=True)[0]
 
     def _run_awaitable_blocking(self, awaitable: Any) -> Any:
         result_box: Dict[str, Any] = {}
@@ -709,15 +775,35 @@ class KGQualityManager:
         merged_nodes: Dict[str, Dict[str, Any]],
         merged_edges: Dict[Tuple[str, str, str], Dict[str, Any]],
     ) -> Dict[str, Any]:
+        strict_threshold = min(
+            0.99, max(float(self.merge_threshold) + 0.08, 0.92)
+        )
+        gray_threshold = max(
+            0.0, min(float(self.merge_threshold), strict_threshold - 0.02)
+        )
+        llm_gray_enabled = bool(self.llm_semantic_merge_enabled and self.llm_model_func)
         report = {
-            "enabled": bool(self.llm_semantic_merge_enabled),
+            "enabled": True,
+            "mode": "vector_primary_llm_gray",
+            "vector_merge_enabled": True,
+            "llm_gray_enabled": llm_gray_enabled,
+            "vector_threshold_strict": strict_threshold,
+            "vector_threshold_gray": gray_threshold,
             "groups_considered": 0,
             "groups_merged": 0,
             "node_pairs_merged": 0,
             "edge_pairs_merged": 0,
             "canonical_mapping_count": 0,
+            "vector_groups_considered": 0,
+            "vector_groups_merged": 0,
+            "vector_node_pairs_merged": 0,
+            "vector_edge_pairs_merged": 0,
+            "llm_groups_considered": 0,
+            "llm_groups_merged": 0,
+            "llm_node_pairs_merged": 0,
+            "llm_edge_pairs_merged": 0,
         }
-        if not self.llm_semantic_merge_enabled or not self.llm_model_func:
+        if not self._llm_semantic_type_set:
             return report
 
         names_by_type: Dict[str, List[str]] = {}
@@ -727,7 +813,85 @@ class KGQualityManager:
                 continue
             names_by_type.setdefault(typ, []).append(name)
 
+        # Stage 1: vector-similarity strict merge (no LLM required).
         canonical_map: Dict[str, str] = {}
+        vector_groups_seen = 0
+        vector_groups_merged = 0
+        for entity_type, names in names_by_type.items():
+            strict_groups = self._build_candidate_groups(
+                names,
+                threshold=strict_threshold,
+                include_containment=False,
+            )
+            for members in strict_groups:
+                vector_groups_seen += 1
+                canonical = self._select_canonical_name(
+                    entity_type, members, merged_nodes
+                )
+                if not canonical:
+                    continue
+                changed = False
+                for m in members:
+                    if m != canonical:
+                        canonical_map[m] = canonical
+                        changed = True
+                if changed:
+                    vector_groups_merged += 1
+
+        vector_mapping_rows = sorted(
+            [
+                (old_name, canonical, str(merged_nodes.get(old_name, {}).get("entity_type", "")))
+                for old_name, canonical in canonical_map.items()
+                if old_name != canonical
+            ],
+            key=lambda x: (x[2], x[1], x[0]),
+        )
+        if vector_mapping_rows:
+            table = self._render_canonical_map_table(vector_mapping_rows)
+            logger.info(
+                "Vector semantic dedup canonical mapping (%s rows):\n%s",
+                len(vector_mapping_rows),
+                table,
+            )
+
+        vector_node_pairs, vector_edge_pairs = self._apply_canonical_merge_map(
+            merged_nodes, merged_edges, canonical_map
+        )
+
+        report.update(
+            {
+                "vector_groups_considered": vector_groups_seen,
+                "vector_groups_merged": vector_groups_merged,
+                "vector_node_pairs_merged": vector_node_pairs,
+                "vector_edge_pairs_merged": vector_edge_pairs,
+            }
+        )
+
+        # Stage 2: LLM arbitration on gray-zone candidates (optional).
+        if not llm_gray_enabled:
+            report.update(
+                {
+                    "groups_considered": vector_groups_seen,
+                    "groups_merged": vector_groups_merged,
+                    "node_pairs_merged": vector_node_pairs,
+                    "edge_pairs_merged": vector_edge_pairs,
+                    "canonical_mapping_count": len(vector_mapping_rows),
+                    "canonical_mappings_preview": [
+                        {"from": old_name, "to": canonical, "type": entity_type}
+                        for old_name, canonical, entity_type in vector_mapping_rows[:100]
+                    ],
+                }
+            )
+            return report
+
+        names_by_type = {}
+        for name, data in merged_nodes.items():
+            typ = str(data.get("entity_type", ""))
+            if typ not in self._llm_semantic_type_set:
+                continue
+            names_by_type.setdefault(typ, []).append(name)
+
+        canonical_map = {}
         groups_seen = 0
         groups_merged = 0
         decisions: List[Dict[str, Any]] = []
@@ -735,7 +899,12 @@ class KGQualityManager:
             name: str(data.get("entity_type", "")) for name, data in merged_nodes.items()
         }
         for entity_type, names in names_by_type.items():
-            candidate_groups = self._build_candidate_groups(names)
+            candidate_groups = self._build_candidate_groups(
+                names,
+                threshold=gray_threshold,
+                upper_threshold=strict_threshold,
+                include_containment=False,
+            )
             for members in candidate_groups:
                 groups_seen += 1
                 if groups_seen > self.llm_semantic_merge_max_groups:
@@ -787,24 +956,28 @@ class KGQualityManager:
 
         if decisions:
             logger.info(
-                "LLM semantic dedup decisions: %s groups accepted (min_confidence=%.2f)",
+                "LLM gray-zone semantic dedup decisions: %s groups accepted (min_confidence=%.2f)",
                 len(decisions),
                 self.llm_semantic_merge_min_confidence,
             )
 
-        node_pairs, edge_pairs = self._apply_canonical_merge_map(
+        llm_node_pairs, llm_edge_pairs = self._apply_canonical_merge_map(
             merged_nodes, merged_edges, canonical_map
         )
         report.update(
             {
-                "groups_considered": groups_seen,
-                "groups_merged": groups_merged,
-                "node_pairs_merged": node_pairs,
-                "edge_pairs_merged": edge_pairs,
-                "canonical_mapping_count": len(mapping_rows),
+                "groups_considered": vector_groups_seen + groups_seen,
+                "groups_merged": vector_groups_merged + groups_merged,
+                "node_pairs_merged": vector_node_pairs + llm_node_pairs,
+                "edge_pairs_merged": vector_edge_pairs + llm_edge_pairs,
+                "canonical_mapping_count": len(vector_mapping_rows) + len(mapping_rows),
+                "llm_groups_considered": groups_seen,
+                "llm_groups_merged": groups_merged,
+                "llm_node_pairs_merged": llm_node_pairs,
+                "llm_edge_pairs_merged": llm_edge_pairs,
                 "canonical_mappings_preview": [
                     {"from": old_name, "to": canonical, "type": entity_type}
-                    for old_name, canonical, entity_type in mapping_rows[:100]
+                    for old_name, canonical, entity_type in (vector_mapping_rows + mapping_rows)[:100]
                 ],
             }
         )

@@ -7,7 +7,7 @@ from lightrag.llm.openai import openai_complete_if_cache, openai_embed
 from lightrag.utils import EmbeddingFunc
 
 BUILD_GLOBAL_TIMEOUT_SECONDS = 2 * 60 * 60  # 2 hours
-BUILD_STALL_TIMEOUT_SECONDS = 10 * 60        # no file write for 110 minutes
+BUILD_STALL_TIMEOUT_SECONDS = 20 * 60        # no file write for 110 minutes
 BUILD_WATCH_INTERVAL_SECONDS = 30            # check every 30s
 
 
@@ -136,8 +136,8 @@ async def main():
         kg_description_policy="multimodal_only",  # 仅多模态元素保留description
         kg_ontology_profile="cruciferous_pest_disease",  # 十字花科病虫害本体（可扩展到多作物）
         kg_enforce_ontology=True,     # 强制关系主宾类型校验
-        kg_merge_threshold=0.85,      # 语义合并阈值
-        kg_llm_semantic_merge_enabled=True,  # 启用LLM辅助canonical去重
+        kg_merge_threshold=0.85,      # 向量主导去重的灰区阈值（严格阈值在质量层内自动推导）
+        kg_llm_semantic_merge_enabled=False,  # 默认关闭LLM灰区仲裁（避免卡顿）
         kg_llm_semantic_merge_types=["作物", "生物分类", "病原菌", "药剂", "病害", "虫害"],
         kg_llm_semantic_name_sim_threshold=0.75,  # 候选分组阈值（规则预筛）
         kg_llm_semantic_merge_min_confidence=0.90,  # LLM输出最小置信度
@@ -222,7 +222,7 @@ async def main():
         )
     except TimeoutError as exc:
         print(f"⚠️ 首次构建触发防卡死保护：{exc}")
-        print("⚠️ 自动降级重试：关闭 LLM 语义去重，避免 merge 阶段长时间等待...")
+        print("⚠️ 自动降级重试：关闭 LLM 灰区仲裁，避免 merge 阶段长时间等待...")
         fallback_config = RAGAnythingConfig(
             working_dir="./rag_storage_test5_fallback",
             parser=config.parser,
@@ -276,6 +276,19 @@ async def main():
     print(f"问：{question_1}")
     text_result = await rag_for_query.aquery(question_1, mode="hybrid")
     print(f"答：\n{text_result}\n")
+
+    # 测试A-2：先规划再检索（Graph-RFT 简版）
+    # - Planner先决定是否启用WEB
+    # - 默认融合 KG 证据 + WEB 证据
+    question_plan = "最近有哪些关于十字花科害虫绿色防控的新建议？"
+    print(f"问（计划检索）：{question_plan}")
+    plan_result = await rag_for_query.aquery_plan_then_retrieve(
+        question_plan,
+        mode="hybrid",
+        force_web=True,  # True: 强制启用网络检索；False: 由 Planner 自动决策
+        max_web_results=3,
+    )
+    print(f"答（计划检索）：\n{plan_result}\n")
 
     # # 测试B：携带特定模态片段进行联合提问（高级用法）
     # question_2 = "结合文档内容，详细解释这个公式的含义"

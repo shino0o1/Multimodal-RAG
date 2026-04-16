@@ -63,6 +63,9 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
     vision_model_func: Optional[Callable] = field(default=None)
     """Vision model function for image analysis."""
 
+    web_search_func: Optional[Callable] = field(default=None)
+    """Optional web search function for plan-then-retrieve querying."""
+
     embedding_func: Optional[Callable] = field(default=None)
     """Embedding function for text vectorization."""
 
@@ -94,6 +97,9 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
 
     parse_cache: Optional[Any] = field(default=None, init=False)
     """Parse result cache storage using LightRAG KV storage."""
+
+    multimodal_desc_cache: Optional[Any] = field(default=None, init=False)
+    """Multimodal description cache keyed by doc_id + item hash."""
 
     kg_quality_manager: Optional[KGQualityManager] = field(default=None, init=False)
     """Knowledge graph quality manager for normalization and cleanup."""
@@ -198,6 +204,11 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
             self.config.kg_attribute_host_types,
             self.config.kg_multimodal_min_desc_chars,
             self.config.kg_drop_empty_multimodal,
+        )
+        self.logger.info(
+            "  Multimodal cache - desc_cache_enabled: %s, hard_skip_enabled: %s",
+            self.config.multimodal_desc_cache_enabled,
+            self.config.multimodal_hard_skip_enabled,
         )
 
     def close(self):
@@ -382,6 +393,22 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
                             )
                         )
                         await self.parse_cache.initialize()
+                    if (
+                        self.config.multimodal_desc_cache_enabled
+                        and self.multimodal_desc_cache is None
+                    ):
+                        self.logger.info(
+                            "Initializing multimodal description cache for pre-provided LightRAG instance"
+                        )
+                        self.multimodal_desc_cache = (
+                            self.lightrag.key_string_value_json_storage_cls(
+                                namespace="multimodal_desc_cache",
+                                workspace=self.lightrag.workspace,
+                                global_config=self.lightrag.__dict__,
+                                embedding_func=self.embedding_func,
+                            )
+                        )
+                        await self.multimodal_desc_cache.initialize()
 
                     # Initialize processors if not already done
                     if not self.modal_processors:
@@ -458,12 +485,22 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
                     embedding_func=self.embedding_func,
                 )
                 await self.parse_cache.initialize()
+                if self.config.multimodal_desc_cache_enabled:
+                    self.multimodal_desc_cache = (
+                        self.lightrag.key_string_value_json_storage_cls(
+                            namespace="multimodal_desc_cache",
+                            workspace=self.lightrag.workspace,
+                            global_config=self.lightrag.__dict__,
+                            embedding_func=self.embedding_func,
+                        )
+                    )
+                    await self.multimodal_desc_cache.initialize()
 
                 # Initialize processors after LightRAG is ready
                 self._initialize_processors()
 
                 self.logger.info(
-                    "LightRAG, parse cache, and multimodal processors initialized"
+                    "LightRAG, parse cache, multimodal desc cache, and multimodal processors initialized"
                 )
                 return {"success": True}
 
@@ -506,6 +543,9 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
             if self.parse_cache is not None:
                 tasks.append(self.parse_cache.finalize())
                 self.logger.debug("Scheduled parse cache finalization")
+            if self.multimodal_desc_cache is not None:
+                tasks.append(self.multimodal_desc_cache.finalize())
+                self.logger.debug("Scheduled multimodal desc cache finalization")
 
             # Finalize LightRAG storages if LightRAG is initialized
             if self.lightrag is not None:

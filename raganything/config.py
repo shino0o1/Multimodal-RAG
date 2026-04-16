@@ -61,6 +61,16 @@ class RAGAnythingConfig:
     )
     """Enable equation content processing."""
 
+    multimodal_desc_cache_enabled: bool = field(
+        default=get_env_value("MULTIMODAL_DESC_CACHE_ENABLED", True, bool)
+    )
+    """Enable multimodal description cache keyed by doc_id + item hash."""
+
+    multimodal_hard_skip_enabled: bool = field(
+        default=get_env_value("MULTIMODAL_HARD_SKIP_ENABLED", True, bool)
+    )
+    """Enable hard-skip when multimodal completion state matches current item signature."""
+
     # Batch Processing Configuration
     # ---
     max_concurrent_files: int = field(
@@ -211,12 +221,12 @@ class RAGAnythingConfig:
     kg_merge_threshold: float = field(
         default=get_env_value("KG_MERGE_THRESHOLD", 0.85, float)
     )
-    """Merge threshold for semantic deduplication (reserved for iterative tuning)."""
+    """Gray-zone lower threshold for semantic deduplication (vector strict threshold is derived internally)."""
 
     kg_llm_semantic_merge_enabled: bool = field(
         default=get_env_value("KG_LLM_SEMANTIC_MERGE_ENABLED", False, bool)
     )
-    """Enable LLM-assisted semantic node deduplication during GraphML cleanup."""
+    """Enable LLM arbitration only for vector gray-zone candidates during GraphML cleanup."""
 
     kg_llm_semantic_merge_types: List[str] = field(
         default_factory=lambda: _get_env_list(
@@ -229,7 +239,7 @@ class RAGAnythingConfig:
     kg_llm_semantic_name_sim_threshold: float = field(
         default=get_env_value("KG_LLM_SEMANTIC_NAME_SIM_THRESHOLD", 0.75, float)
     )
-    """Name similarity threshold for generating LLM dedup candidate groups."""
+    """Name similarity threshold used for generating semantic dedup candidate groups."""
 
     kg_llm_semantic_merge_min_confidence: float = field(
         default=get_env_value("KG_LLM_SEMANTIC_MERGE_MIN_CONFIDENCE", 0.90, float)

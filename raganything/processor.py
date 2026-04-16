@@ -149,14 +149,17 @@ class ProcessorMixin:
             )
             llm_merge = report.get("llm_semantic_merge", {}) or {}
             self.logger.info(
-                "KG quality cleanup complete: nodes=%s, edges=%s, non_cjk_ratio=%.4f, llm_merge(groups=%s,mappings=%s,node_pairs=%s,edge_pairs=%s)",
+                "KG quality cleanup complete: nodes=%s, edges=%s, non_cjk_ratio=%.4f, semantic_merge(mode=%s,total_groups=%s,total_mappings=%s,total_node_pairs=%s,total_edge_pairs=%s,vector_node_pairs=%s,llm_node_pairs=%s)",
                 report.get("nodes_after"),
                 report.get("edges_after"),
                 report.get("non_cjk_entity_ratio", 0.0),
+                llm_merge.get("mode", "legacy_llm_only"),
                 llm_merge.get("groups_merged", 0),
                 llm_merge.get("canonical_mapping_count", 0),
                 llm_merge.get("node_pairs_merged", 0),
                 llm_merge.get("edge_pairs_merged", 0),
+                llm_merge.get("vector_node_pairs_merged", 0),
+                llm_merge.get("llm_node_pairs_merged", 0),
             )
         except Exception as exc:
             self.logger.warning(f"KG quality cleanup failed: {exc}")
@@ -242,6 +245,172 @@ class ProcessorMixin:
         if threshold <= 0:
             return False
         return len((description or "").strip()) < threshold
+
+    def _get_multimodal_item_cache_key(self, doc_id: str, item_hash: str) -> str:
+        return f"{doc_id}::item::{item_hash}"
+
+    def _get_multimodal_meta_cache_key(self, doc_id: str) -> str:
+        return f"{doc_id}::meta"
+
+    def _stable_multimodal_payload(
+        self, item: Dict[str, Any], index: Optional[int] = None
+    ) -> Dict[str, Any]:
+        """Build a stable payload for multimodal item hashing."""
+        selected_keys = [
+            "type",
+            "page_idx",
+            "img_path",
+            "text",
+            "table_body",
+            "table_caption",
+            "table_footnote",
+            "image_caption",
+            "img_caption",
+            "image_footnote",
+            "img_footnote",
+        ]
+        payload: Dict[str, Any] = {
+            key: item.get(key) for key in selected_keys if key in item
+        }
+        if not payload:
+            payload = dict(item)
+        if index is not None:
+            payload["index"] = index
+        return payload
+
+    def _build_multimodal_item_hash(
+        self, item: Dict[str, Any], index: Optional[int] = None
+    ) -> str:
+        payload = self._stable_multimodal_payload(item, index=index)
+        payload_str = json.dumps(payload, ensure_ascii=False, sort_keys=True, default=str)
+        return hashlib.md5(payload_str.encode("utf-8")).hexdigest()
+
+    def _build_multimodal_item_hashes(
+        self, multimodal_items: List[Dict[str, Any]]
+    ) -> List[str]:
+        return [
+            self._build_multimodal_item_hash(item, index=i)
+            for i, item in enumerate(multimodal_items)
+        ]
+
+    def _build_multimodal_signature(self, item_hashes: List[str]) -> str:
+        payload = "||".join(item_hashes)
+        return hashlib.md5(payload.encode("utf-8")).hexdigest()
+
+    async def _get_multimodal_item_cache(
+        self, doc_id: str, item_hash: str
+    ) -> Optional[Dict[str, Any]]:
+        cache = getattr(self, "multimodal_desc_cache", None)
+        if not cache or not getattr(self.config, "multimodal_desc_cache_enabled", True):
+            return None
+        try:
+            return await cache.get_by_id(self._get_multimodal_item_cache_key(doc_id, item_hash))
+        except Exception as exc:
+            self.logger.debug(
+                "Failed to get multimodal cache item doc_id=%s item_hash=%s: %s",
+                doc_id,
+                item_hash,
+                exc,
+            )
+            return None
+
+    async def _batch_store_multimodal_item_cache(
+        self, doc_id: str, multimodal_data_list: List[Dict[str, Any]]
+    ) -> None:
+        cache = getattr(self, "multimodal_desc_cache", None)
+        if (
+            not cache
+            or not multimodal_data_list
+            or not getattr(self.config, "multimodal_desc_cache_enabled", True)
+        ):
+            return
+        try:
+            upsert_data: Dict[str, Dict[str, Any]] = {}
+            now = int(time.time())
+            for data in multimodal_data_list:
+                item_hash = str(data.get("item_hash", "") or "").strip()
+                if not item_hash:
+                    continue
+                key = self._get_multimodal_item_cache_key(doc_id, item_hash)
+                upsert_data[key] = {
+                    "doc_id": doc_id,
+                    "item_hash": item_hash,
+                    "content_type": data.get("content_type", "unknown"),
+                    "description": str(data.get("description", "") or ""),
+                    "entity_info": data.get("entity_info", {}) or {},
+                    "item_info": data.get("item_info", {}) or {},
+                    "empty_result": self._is_empty_multimodal_result(
+                        str(data.get("description", "") or ""),
+                        data.get("entity_info", {}) or {},
+                    ),
+                    "cached_at": now,
+                }
+            if upsert_data:
+                await cache.upsert(upsert_data)
+                await cache.index_done_callback()
+        except Exception as exc:
+            self.logger.warning(
+                "Failed to batch store multimodal cache for doc_id=%s: %s", doc_id, exc
+            )
+
+    async def _get_multimodal_completion_state(
+        self, doc_id: str
+    ) -> Optional[Dict[str, Any]]:
+        cache = getattr(self, "multimodal_desc_cache", None)
+        if not cache or not getattr(self.config, "multimodal_desc_cache_enabled", True):
+            return None
+        try:
+            return await cache.get_by_id(self._get_multimodal_meta_cache_key(doc_id))
+        except Exception as exc:
+            self.logger.debug(
+                "Failed to get multimodal completion state for doc_id=%s: %s",
+                doc_id,
+                exc,
+            )
+            return None
+
+    async def _set_multimodal_completion_state(
+        self, doc_id: str, item_hashes: List[str]
+    ) -> None:
+        cache = getattr(self, "multimodal_desc_cache", None)
+        if not cache or not getattr(self.config, "multimodal_desc_cache_enabled", True):
+            return
+        try:
+            signature = self._build_multimodal_signature(item_hashes)
+            key = self._get_multimodal_meta_cache_key(doc_id)
+            await cache.upsert(
+                {
+                    key: {
+                        "doc_id": doc_id,
+                        "completed": True,
+                        "item_count": len(item_hashes),
+                        "items_signature": signature,
+                        "item_hashes": item_hashes,
+                        "completed_at": int(time.time()),
+                    }
+                }
+            )
+            await cache.index_done_callback()
+        except Exception as exc:
+            self.logger.warning(
+                "Failed to persist multimodal completion state for doc_id=%s: %s",
+                doc_id,
+                exc,
+            )
+
+    async def _should_hard_skip_multimodal(
+        self, doc_id: str, item_hashes: List[str]
+    ) -> bool:
+        if not getattr(self.config, "multimodal_hard_skip_enabled", True):
+            return False
+        state = await self._get_multimodal_completion_state(doc_id)
+        if not state or not state.get("completed"):
+            return False
+        cached_signature = str(state.get("items_signature", "") or "")
+        if not cached_signature:
+            return False
+        current_signature = self._build_multimodal_signature(item_hashes)
+        return cached_signature == current_signature
 
     async def _get_cached_result(
         self, cache_key: str, file_path: Path, parse_method: str = None, **kwargs
@@ -633,6 +802,26 @@ class ProcessorMixin:
         if not multimodal_items:
             self.logger.debug("No multimodal content to process")
             return
+        item_hashes = self._build_multimodal_item_hashes(multimodal_items)
+
+        # Hard skip if cached completion signature matches current multimodal items.
+        try:
+            if await self._should_hard_skip_multimodal(doc_id, item_hashes):
+                self.logger.info(
+                    "Hard-skip multimodal processing for doc_id=%s (signature matched, items=%s)",
+                    doc_id,
+                    len(multimodal_items),
+                )
+                await self._mark_multimodal_processing_complete(
+                    doc_id, item_hashes=item_hashes
+                )
+                return
+        except Exception as exc:
+            self.logger.debug(
+                "Failed to check multimodal hard-skip state for doc_id=%s: %s",
+                doc_id,
+                exc,
+            )
 
         callback_manager = getattr(self, "callback_manager", None)
         mm_start_time = time.time()
@@ -657,6 +846,7 @@ class ProcessorMixin:
                     self.logger.info(
                         f"Document {doc_id} multimodal content is already processed"
                     )
+                    await self._set_multimodal_completion_state(doc_id, item_hashes)
                     return
 
                 # Even if status is DocStatus.PROCESSED (text processing done),
@@ -694,7 +884,9 @@ class ProcessorMixin:
             )
 
             # Mark multimodal content as processed and update final status
-            await self._mark_multimodal_processing_complete(doc_id)
+            await self._mark_multimodal_processing_complete(
+                doc_id, item_hashes=item_hashes
+            )
 
             log_message = "Multimodal content processing complete"
             self.logger.info(log_message)
@@ -718,14 +910,20 @@ class ProcessorMixin:
             # Fallback to individual processing if batch processing fails
             self.logger.warning("Falling back to individual multimodal processing")
             await self._process_multimodal_content_individual(
-                multimodal_items, file_path, doc_id
+                multimodal_items, file_path, doc_id, item_hashes=item_hashes
             )
 
             # Mark multimodal content as processed even after fallback
-            await self._mark_multimodal_processing_complete(doc_id)
+            await self._mark_multimodal_processing_complete(
+                doc_id, item_hashes=item_hashes
+            )
 
     async def _process_multimodal_content_individual(
-        self, multimodal_items: List[Dict[str, Any]], file_path: str, doc_id: str
+        self,
+        multimodal_items: List[Dict[str, Any]],
+        file_path: str,
+        doc_id: str,
+        item_hashes: Optional[List[str]] = None,
     ):
         """
         Process multimodal content individually (fallback method)
@@ -887,7 +1085,7 @@ class ProcessorMixin:
         self.logger.info("Individual multimodal content processing complete")
 
         # Mark multimodal content as processed
-        await self._mark_multimodal_processing_complete(doc_id)
+        await self._mark_multimodal_processing_complete(doc_id, item_hashes=item_hashes)
 
     async def _process_multimodal_content_batch_type_aware(
         self, multimodal_items: List[Dict[str, Any]], file_path: str, doc_id: str
@@ -951,34 +1149,50 @@ class ProcessorMixin:
                         "index": index,
                         "type": content_type,
                     }
+                    item_hash = self._build_multimodal_item_hash(item, index=index)
+                    cache_hit = False
 
-                    # Call the correct processor's description generation method
-                    (
-                        description,
-                        entity_info,
-                    ) = await processor.generate_description_only(
-                        modal_content=item,
-                        content_type=content_type,
-                        item_info=item_info,
-                        entity_name=None,  # Let LLM auto-generate
+                    description = ""
+                    entity_info: Dict[str, Any] = {}
+                    cached_data = await self._get_multimodal_item_cache(
+                        doc_id, item_hash
                     )
+                    if cached_data:
+                        cached_desc = str(cached_data.get("description", "") or "")
+                        cached_entity_info = cached_data.get("entity_info", {}) or {}
+                        if isinstance(cached_entity_info, dict):
+                            description = cached_desc
+                            entity_info = cached_entity_info
+                            cache_hit = True
 
-                    if self._should_retry_multimodal_description(
-                        description, entity_info, item
-                    ):
-                        retry_description, retry_entity_info = (
-                            await processor.generate_description_only(
-                                modal_content=item,
-                                content_type=content_type,
-                                item_info=item_info,
-                                entity_name=None,
-                            )
+                    if not cache_hit:
+                        # Call the correct processor's description generation method
+                        (
+                            description,
+                            entity_info,
+                        ) = await processor.generate_description_only(
+                            modal_content=item,
+                            content_type=content_type,
+                            item_info=item_info,
+                            entity_name=None,  # Let LLM auto-generate
                         )
-                        if len((retry_description or "").strip()) > len(
-                            (description or "").strip()
+
+                        if self._should_retry_multimodal_description(
+                            description, entity_info, item
                         ):
-                            description = retry_description
-                            entity_info = retry_entity_info
+                            retry_description, retry_entity_info = (
+                                await processor.generate_description_only(
+                                    modal_content=item,
+                                    content_type=content_type,
+                                    item_info=item_info,
+                                    entity_name=None,
+                                )
+                            )
+                            if len((retry_description or "").strip()) > len(
+                                (description or "").strip()
+                            ):
+                                description = retry_description
+                                entity_info = retry_entity_info
 
                     # Update progress (non-blocking)
                     async with progress_lock:
@@ -1002,6 +1216,8 @@ class ProcessorMixin:
                         "chunk_order_index": existing_chunks_count + index,
                         "processor": processor,  # Keep reference to the processor used
                         "file_path": file_path,  # Add file_path to the result
+                        "item_hash": item_hash,
+                        "cache_hit": cache_hit,
                     }
 
                 except Exception as e:
@@ -1044,6 +1260,15 @@ class ProcessorMixin:
         if not multimodal_data_list:
             self.logger.warning("No valid multimodal descriptions generated")
             return
+        cache_hit_count = sum(
+            1 for data in multimodal_data_list if bool(data.get("cache_hit"))
+        )
+        if cache_hit_count:
+            self.logger.info(
+                "Multimodal description cache hits: %s/%s",
+                cache_hit_count,
+                len(multimodal_data_list),
+            )
 
         manager = getattr(self, "kg_quality_manager", None)
         if manager and manager.enabled:
@@ -1063,6 +1288,9 @@ class ProcessorMixin:
                 )
                 if modality:
                     entity_info["content_modality"] = modality
+
+        # Persist per-item multimodal description cache by doc_id + item_hash.
+        await self._batch_store_multimodal_item_cache(doc_id, multimodal_data_list)
 
         if bool(getattr(self.config, "kg_drop_empty_multimodal", True)):
             filtered_multimodal_data_list = []
@@ -1672,8 +1900,10 @@ class ProcessorMixin:
                 f"Error updating doc_status with multimodal chunks: {e}"
             )
 
-    async def _mark_multimodal_processing_complete(self, doc_id: str):
-        """Mark multimodal content processing as complete in the document status."""
+    async def _mark_multimodal_processing_complete(
+        self, doc_id: str, item_hashes: Optional[List[str]] = None
+    ):
+        """Mark multimodal content processing as complete in doc_status and multimodal cache."""
         try:
             current_doc_status = await self.lightrag.doc_status.get_by_id(doc_id)
             if current_doc_status:
@@ -1690,6 +1920,8 @@ class ProcessorMixin:
                 self.logger.debug(
                     f"Marked multimodal content processing as complete for document {doc_id}"
                 )
+            if item_hashes is not None:
+                await self._set_multimodal_completion_state(doc_id, item_hashes)
         except Exception as e:
             self.logger.warning(
                 f"Error marking multimodal processing as complete for document {doc_id}: {e}"
@@ -1826,6 +2058,21 @@ class ProcessorMixin:
 
             # Step 2: Separate text and multimodal content
             text_content, multimodal_items = separate_content(content_list)
+            multimodal_item_hashes = (
+                self._build_multimodal_item_hashes(multimodal_items)
+                if multimodal_items
+                else []
+            )
+            skip_document_reprocessing = False
+            if multimodal_items and await self.is_document_fully_processed(doc_id):
+                if await self._should_hard_skip_multimodal(
+                    doc_id, multimodal_item_hashes
+                ):
+                    skip_document_reprocessing = True
+                    self.logger.info(
+                        "Hard-skip full document reprocessing for doc_id=%s (text+multimodal already completed)",
+                        doc_id,
+                    )
 
             # Step 2.5: Set content source for context extraction in multimodal processing
             if hasattr(self, "set_content_source_for_context") and multimodal_items:
@@ -1838,7 +2085,12 @@ class ProcessorMixin:
 
             # Step 3: Insert pure text content with all parameters
             stage = "text_insert"
-            if text_content.strip():
+            if skip_document_reprocessing:
+                self.logger.info(
+                    "Skip text insertion for doc_id=%s due to hard-skip completion state",
+                    doc_id,
+                )
+            elif text_content.strip():
                 if file_name is None:
                     # Use full path or basename based on config
                     file_name = self._get_file_reference(file_path)
@@ -1873,14 +2125,19 @@ class ProcessorMixin:
 
             # Step 4: Process multimodal content (using specialized processors)
             stage = "multimodal"
-            if multimodal_items:
+            if skip_document_reprocessing:
+                self.logger.info(
+                    "Skip multimodal insertion for doc_id=%s due to hard-skip completion state",
+                    doc_id,
+                )
+            elif multimodal_items:
                 await self._process_multimodal_content(
                     multimodal_items, file_name, doc_id
                 )
             else:
                 # If no multimodal content, mark multimodal processing as complete
                 # This ensures the document status properly reflects completion of all processing
-                await self._mark_multimodal_processing_complete(doc_id)
+                await self._mark_multimodal_processing_complete(doc_id, item_hashes=[])
                 self.logger.debug(
                     f"No multimodal content found in document {doc_id}, "
                     "marked multimodal processing as complete",
@@ -2062,6 +2319,23 @@ class ProcessorMixin:
 
             # Step 2: Separate text and multimodal content
             text_content, multimodal_items = separate_content(content_list)
+            multimodal_item_hashes = (
+                self._build_multimodal_item_hashes(multimodal_items)
+                if multimodal_items
+                else []
+            )
+            if multimodal_items and await self.is_document_fully_processed(doc_id):
+                if await self._should_hard_skip_multimodal(
+                    doc_id, multimodal_item_hashes
+                ):
+                    self.logger.info(
+                        "Hard-skip LightRAG API insert for doc_id=%s (text+multimodal already completed)",
+                        doc_id,
+                    )
+                    await self._mark_multimodal_processing_complete(
+                        doc_id, item_hashes=multimodal_item_hashes
+                    )
+                    return True
 
             # Step 2.5: Set content source for context extraction in multimodal processing
             if hasattr(self, "set_content_source_for_context") and multimodal_items:
@@ -2209,6 +2483,19 @@ class ProcessorMixin:
         # Step 1: Separate text and multimodal content
         content_list = self._apply_source_noise_filter_if_enabled(content_list)
         text_content, multimodal_items = separate_content(content_list)
+        multimodal_item_hashes = (
+            self._build_multimodal_item_hashes(multimodal_items)
+            if multimodal_items
+            else []
+        )
+        skip_document_reprocessing = False
+        if multimodal_items and await self.is_document_fully_processed(doc_id):
+            if await self._should_hard_skip_multimodal(doc_id, multimodal_item_hashes):
+                skip_document_reprocessing = True
+                self.logger.info(
+                    "Hard-skip full content-list insertion for doc_id=%s (text+multimodal already completed)",
+                    doc_id,
+                )
 
         # Step 1.5: Set content source for context extraction in multimodal processing
         if hasattr(self, "set_content_source_for_context") and multimodal_items:
@@ -2220,7 +2507,12 @@ class ProcessorMixin:
             )
 
         # Step 2: Insert pure text content with all parameters
-        if text_content.strip():
+        if skip_document_reprocessing:
+            self.logger.info(
+                "Skip text insertion for doc_id=%s due to hard-skip completion state",
+                doc_id,
+            )
+        elif text_content.strip():
             # Use full path or basename based on config
             file_ref = self._get_file_reference(file_path)
             if callback_manager is not None:
@@ -2252,12 +2544,17 @@ class ProcessorMixin:
             file_ref = self._get_file_reference(file_path)
 
         # Step 3: Process multimodal content (using specialized processors)
-        if multimodal_items:
+        if skip_document_reprocessing:
+            self.logger.info(
+                "Skip multimodal insertion for doc_id=%s due to hard-skip completion state",
+                doc_id,
+            )
+        elif multimodal_items:
             await self._process_multimodal_content(multimodal_items, file_ref, doc_id)
         else:
             # If no multimodal content, mark multimodal processing as complete
             # This ensures the document status properly reflects completion of all processing
-            await self._mark_multimodal_processing_complete(doc_id)
+            await self._mark_multimodal_processing_complete(doc_id, item_hashes=[])
             self.logger.debug(
                 f"No multimodal content found in document {doc_id}, marked multimodal processing as complete"
             )
