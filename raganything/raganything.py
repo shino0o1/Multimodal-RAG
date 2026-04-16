@@ -136,6 +136,14 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
             noise_drop_patterns=self.config.kg_noise_drop_patterns,
             multimodal_min_desc_chars=self.config.kg_multimodal_min_desc_chars,
             drop_empty_multimodal=self.config.kg_drop_empty_multimodal,
+            llm_model_func=self.llm_model_func,
+            llm_semantic_merge_enabled=self.config.kg_llm_semantic_merge_enabled,
+            llm_semantic_merge_types=self.config.kg_llm_semantic_merge_types,
+            llm_semantic_name_sim_threshold=self.config.kg_llm_semantic_name_sim_threshold,
+            llm_semantic_merge_min_confidence=self.config.kg_llm_semantic_merge_min_confidence,
+            llm_semantic_merge_max_group_size=self.config.kg_llm_semantic_merge_max_group_size,
+            llm_semantic_merge_max_groups=self.config.kg_llm_semantic_merge_max_groups,
+            llm_timeout_seconds=self.config.kg_llm_timeout_seconds,
         )
 
         # Keep prompts and summary language aligned with canonical language.
@@ -335,6 +343,8 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
                 ):
                     self.llm_model_func = self.lightrag.llm_model_func
                     self.logger.debug("Inherited llm_model_func from LightRAG instance")
+                if self.kg_quality_manager is not None:
+                    self.kg_quality_manager.set_llm_model_func(self.llm_model_func)
 
                 if self.embedding_func is None and hasattr(
                     self.lightrag, "embedding_func"
@@ -435,6 +445,8 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
             try:
                 # Create LightRAG instance with merged parameters
                 self.lightrag = LightRAG(**lightrag_params)
+                if self.kg_quality_manager is not None:
+                    self.kg_quality_manager.set_llm_model_func(self.llm_model_func)
                 await self.lightrag.initialize_storages()
                 await initialize_pipeline_status()
 
@@ -568,6 +580,10 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
                 "kg_ontology_profile": self.config.kg_ontology_profile,
                 "kg_enforce_ontology": self.config.kg_enforce_ontology,
                 "kg_merge_threshold": self.config.kg_merge_threshold,
+                "kg_llm_semantic_merge_enabled": self.config.kg_llm_semantic_merge_enabled,
+                "kg_llm_semantic_merge_types": self.config.kg_llm_semantic_merge_types,
+                "kg_llm_semantic_name_sim_threshold": self.config.kg_llm_semantic_name_sim_threshold,
+                "kg_llm_semantic_merge_min_confidence": self.config.kg_llm_semantic_merge_min_confidence,
             },
             "logging": {
                 "note": "Logging fields have been removed - configure logging externally",

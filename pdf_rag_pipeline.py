@@ -37,6 +37,13 @@ async def main():
         kg_ontology_profile="cruciferous_pest_disease",  # 十字花科病虫害本体（可扩展到多作物）
         kg_enforce_ontology=True,     # 强制关系主宾类型校验
         kg_merge_threshold=0.85,      # 语义合并阈值
+        kg_llm_semantic_merge_enabled=True,  # 启用LLM辅助canonical去重
+        kg_llm_semantic_merge_types=["作物", "生物分类", "病原菌", "药剂", "病害", "虫害"],
+        kg_llm_semantic_name_sim_threshold=0.75,  # 候选分组阈值（规则预筛）
+        kg_llm_semantic_merge_min_confidence=0.90,  # LLM输出最小置信度
+        kg_llm_semantic_merge_max_group_size=12,
+        kg_llm_semantic_merge_max_groups=80,
+        kg_llm_timeout_seconds=90,
     )
 
     # 定义文本大模型回调（用于文本知识抽取和最终回答）

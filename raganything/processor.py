@@ -144,12 +144,19 @@ class ProcessorMixin:
             return
 
         try:
-            report = manager.clean_graphml_file(graph_path, rewrite=True)
+            report = await asyncio.to_thread(
+                manager.clean_graphml_file, graph_path, True
+            )
+            llm_merge = report.get("llm_semantic_merge", {}) or {}
             self.logger.info(
-                "KG quality cleanup complete: nodes=%s, edges=%s, non_cjk_ratio=%.4f",
+                "KG quality cleanup complete: nodes=%s, edges=%s, non_cjk_ratio=%.4f, llm_merge(groups=%s,mappings=%s,node_pairs=%s,edge_pairs=%s)",
                 report.get("nodes_after"),
                 report.get("edges_after"),
                 report.get("non_cjk_entity_ratio", 0.0),
+                llm_merge.get("groups_merged", 0),
+                llm_merge.get("canonical_mapping_count", 0),
+                llm_merge.get("node_pairs_merged", 0),
+                llm_merge.get("edge_pairs_merged", 0),
             )
         except Exception as exc:
             self.logger.warning(f"KG quality cleanup failed: {exc}")

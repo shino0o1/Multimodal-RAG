@@ -15,13 +15,38 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional
 
-from .job_manager import JobManager
+try:
+    from .job_manager import JobManager
+except ImportError:
+    # Fallback when imported as top-level module (e.g. from ui/app.py local import).
+    from job_manager import JobManager
 
 CHUNK_ID_PATTERN = re.compile(r"\bchunk-[0-9a-f]{32}\b", re.IGNORECASE)
 IMAGE_PATH_PATTERN = re.compile(
     r"(?:Image\s*Path|图片路径)\s*[:：]\s*([^\n\r]*?\.(?:jpg|jpeg|png|gif|bmp|webp|tiff|tif))",
     re.IGNORECASE,
 )
+SUPPORTED_UPLOAD_SUFFIXES = {
+    ".pdf",
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".bmp",
+    ".gif",
+    ".webp",
+    ".tif",
+    ".tiff",
+}
+SUPPORTED_QUERY_IMAGE_SUFFIXES = {
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".bmp",
+    ".gif",
+    ".webp",
+    ".tif",
+    ".tiff",
+}
 
 
 @dataclass
@@ -241,6 +266,16 @@ class RAGUIService:
             daemon=True,
         )
         self._async_thread.start()
+
+    @staticmethod
+    def supported_upload_types() -> List[str]:
+        """Return supported upload extensions for Streamlit file_uploader(type=...)."""
+        return sorted(s.lstrip(".") for s in SUPPORTED_UPLOAD_SUFFIXES)
+
+    @staticmethod
+    def supported_query_image_types() -> List[str]:
+        """Return supported query-image extensions for Streamlit file_uploader(type=...)."""
+        return sorted(s.lstrip(".") for s in SUPPORTED_QUERY_IMAGE_SUFFIXES)
 
     def _run_async_loop_forever(self) -> None:
         """Run a dedicated event loop for all async LightRAG operations."""
@@ -514,23 +549,62 @@ class RAGUIService:
         except Exception:
             return {}
 
-    def _save_uploaded_pdf(self, kb_id: str, pdf_file: Any) -> Path:
-        filename = getattr(pdf_file, "name", "uploaded.pdf")
+    def _read_uploaded_bytes(self, uploaded_file: Any) -> bytes:
+        """Read bytes from Streamlit UploadedFile-like object safely."""
+        if hasattr(uploaded_file, "getvalue"):
+            data = uploaded_file.getvalue()
+        elif hasattr(uploaded_file, "read"):
+            data = uploaded_file.read()
+        else:
+            data = bytes(uploaded_file)
+        return data or b""
+
+    def _save_uploaded_file(self, kb_id: str, uploaded_file: Any) -> Path:
+        filename = getattr(uploaded_file, "name", "uploaded")
         suffix = Path(filename).suffix.lower()
-        if suffix != ".pdf":
-            raise ValueError("Only PDF uploads are supported in this version")
+        if suffix not in SUPPORTED_UPLOAD_SUFFIXES:
+            allowed = ", ".join(sorted(SUPPORTED_UPLOAD_SUFFIXES))
+            raise ValueError(f"Unsupported upload type: {suffix or '<none>'}. Allowed: {allowed}")
 
         kb_upload_dir = self.uploads_root / kb_id
         kb_upload_dir.mkdir(parents=True, exist_ok=True)
 
-        target = kb_upload_dir / Path(filename).name
-        data = pdf_file.read() if hasattr(pdf_file, "read") else bytes(pdf_file)
+        base_name = Path(filename).name
+        target = kb_upload_dir / base_name
+        if target.exists():
+            stem = Path(base_name).stem
+            ext = Path(base_name).suffix
+            target = kb_upload_dir / f"{stem}_{uuid.uuid4().hex[:6]}{ext}"
+        data = self._read_uploaded_bytes(uploaded_file)
         if not data:
-            raise ValueError("Uploaded PDF is empty")
+            raise ValueError("Uploaded file is empty")
 
         with target.open("wb") as f:
             f.write(data)
         return target
+
+    def _save_query_image_input(self, kb_id: str, image_file: Any) -> Path:
+        """Save ad-hoc query image (not ingested into KB) under uploads folder."""
+        filename = getattr(image_file, "name", "query_image.png")
+        suffix = Path(filename).suffix.lower()
+        if suffix not in SUPPORTED_QUERY_IMAGE_SUFFIXES:
+            allowed = ", ".join(sorted(SUPPORTED_QUERY_IMAGE_SUFFIXES))
+            raise ValueError(
+                f"Unsupported query image type: {suffix or '<none>'}. Allowed: {allowed}"
+            )
+
+        kb_upload_dir = self.uploads_root / kb_id / "query_inputs"
+        kb_upload_dir.mkdir(parents=True, exist_ok=True)
+        ts = time.strftime("%Y%m%d_%H%M%S")
+        target = kb_upload_dir / f"{ts}_{uuid.uuid4().hex[:6]}_{Path(filename).name}"
+
+        data = self._read_uploaded_bytes(image_file)
+        if not data:
+            raise ValueError("Uploaded query image is empty")
+
+        with target.open("wb") as f:
+            f.write(data)
+        return target.resolve()
 
     def register_existing_kb(
         self,
@@ -585,12 +659,20 @@ class RAGUIService:
         self._write_meta(kb_id, meta)
         return {"kb_id": kb_id, "existed": False}
 
-    def create_kb(self, pdf_file: Any) -> Dict[str, str]:
-        """Create isolated KB directories, save file, and start ingest job."""
+    def create_kb(self, uploaded_file: Any) -> Dict[str, str]:
+        """Create isolated KB directories, save file(s), and start ingest job."""
         ts = time.strftime("%Y%m%d_%H%M%S")
         kb_id = f"kb_{ts}_{uuid.uuid4().hex[:8]}"
 
-        upload_path = self._save_uploaded_pdf(kb_id, pdf_file)
+        files: List[Any]
+        if isinstance(uploaded_file, list):
+            files = [f for f in uploaded_file if f is not None]
+        else:
+            files = [uploaded_file] if uploaded_file is not None else []
+        if not files:
+            raise ValueError("No files provided for KB creation")
+
+        upload_paths = [self._save_uploaded_file(kb_id, f) for f in files]
 
         working_dir = self.rag_storage_root / kb_id
         output_dir = self.output_root / kb_id
@@ -599,15 +681,26 @@ class RAGUIService:
 
         job_id = self._job_manager.create_ingest_job(
             kb_id=kb_id,
-            file_path=str(upload_path),
+            file_path=str(upload_paths[0]),
             working_dir=str(working_dir),
             output_dir=str(output_dir),
+            file_paths=[str(p) for p in upload_paths],
         )
+
+        file_names = [p.name for p in upload_paths]
+        if len(file_names) == 1:
+            file_name_label = file_names[0]
+        else:
+            file_name_label = f"{len(file_names)} files: " + ", ".join(file_names[:3])
+            if len(file_names) > 3:
+                file_name_label += " ..."
 
         meta = {
             "kb_id": kb_id,
-            "file_name": upload_path.name,
-            "upload_path": str(upload_path),
+            "file_name": file_name_label,
+            "upload_path": str(upload_paths[0]),
+            "upload_paths": [str(p) for p in upload_paths],
+            "file_count": len(upload_paths),
             "working_dir": str(working_dir),
             "output_dir": str(output_dir),
             "status": "queued",
@@ -944,5 +1037,62 @@ class RAGUIService:
             citations=citations,
             graph_focus=graph_focus,
             debug={"context_raw": context_raw} if debug else {},
+        )
+        return asdict(response)
+
+    def query_with_image(
+        self,
+        kb_id: str,
+        question: str,
+        image_file: Any,
+        mode: str = "hybrid",
+        debug: bool = False,
+    ) -> Dict[str, Any]:
+        """Run multimodal query with user-provided image + optional text question."""
+        rag = self._get_or_create_rag(kb_id)
+
+        query_text = (question or "").strip()
+        if not query_text:
+            query_text = "请结合知识库分析这张图片，并给出关键判断依据。"
+
+        image_path = self._save_query_image_input(kb_id, image_file)
+        multimodal_content = [{"type": "image", "img_path": str(image_path)}]
+        answer = self._run_async(
+            rag.aquery_with_multimodal(
+                query=query_text,
+                multimodal_content=multimodal_content,
+                mode=mode,
+            )
+        )
+
+        context_raw = ""
+        citations: List[Dict[str, Any]] = []
+        graph_focus = {"node_ids": [], "edge_ids": [], "chunk_ids": []}
+        try:
+            context_raw = self._fetch_query_context(rag, query_text, mode)
+            citation_bundle = self._build_citations(kb_id, context_raw)
+            citations = citation_bundle["citations"]
+            chunk_ids = citation_bundle["chunk_ids"]
+
+            graph_payload = self.get_graph(kb_id, focus_chunk_ids=chunk_ids, full=False)
+            graph_focus = {
+                "node_ids": graph_payload.get("highlight_node_ids", []),
+                "edge_ids": graph_payload.get("highlight_edge_ids", []),
+                "chunk_ids": chunk_ids,
+            }
+        except Exception:
+            citations = []
+            graph_focus = {"node_ids": [], "edge_ids": [], "chunk_ids": []}
+
+        debug_payload: Dict[str, Any] = {}
+        if debug:
+            debug_payload["context_raw"] = context_raw
+            debug_payload["query_image_path"] = str(image_path)
+
+        response = QueryResponse(
+            answer=str(answer),
+            citations=citations,
+            graph_focus=graph_focus,
+            debug=debug_payload,
         )
         return asdict(response)

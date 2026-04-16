@@ -24,6 +24,7 @@ class JobRecord:
     job_id: str
     kb_id: str
     file_path: str
+    file_paths: List[str]
     working_dir: str
     output_dir: str
     status: str = "queued"
@@ -145,9 +146,8 @@ class _JobProgressCallback(_BaseCallback):
     ) -> None:
         self._manager.update_job(
             self._job_id,
-            status="completed",
-            stage="completed",
-            progress=100,
+            stage="document_complete",
+            progress=max(self._manager.get_job_progress(self._job_id), 90),
             event={
                 "event": "on_document_complete",
                 "file_path": file_path,
@@ -197,13 +197,16 @@ class JobManager:
         file_path: str,
         working_dir: str,
         output_dir: str,
+        file_paths: Optional[List[str]] = None,
     ) -> str:
         """Create and start a new ingestion job."""
         job_id = f"job-{uuid.uuid4().hex[:10]}"
+        normalized_paths = [p for p in (file_paths or [file_path]) if p]
         record = JobRecord(
             job_id=job_id,
             kb_id=kb_id,
-            file_path=file_path,
+            file_path=normalized_paths[0] if normalized_paths else "",
+            file_paths=normalized_paths,
             working_dir=working_dir,
             output_dir=output_dir,
         )
@@ -234,7 +237,10 @@ class JobManager:
                 status="running",
                 stage="initializing",
                 progress=5,
-                event={"event": "job_started"},
+                event={
+                    "event": "job_started",
+                    "file_count": len(job.get("file_paths") or []),
+                },
             )
 
             callback = _JobProgressCallback(self, job_id)
@@ -244,13 +250,47 @@ class JobManager:
                 callback,
             )
 
-            asyncio.run(
-                rag.process_document_complete(
-                    file_path=job["file_path"],
-                    output_dir=job["output_dir"],
-                    parse_method="auto",
+            file_paths = [p for p in (job.get("file_paths") or []) if p]
+            if not file_paths and job.get("file_path"):
+                file_paths = [job["file_path"]]
+            if not file_paths:
+                raise ValueError("No input file paths for ingestion job")
+
+            total_files = len(file_paths)
+            for idx, file_path in enumerate(file_paths, start=1):
+                start_progress = 5 + int(((idx - 1) / total_files) * 90)
+                self.update_job(
+                    job_id,
+                    stage=f"ingesting_{idx}/{total_files}",
+                    progress=start_progress,
+                    event={
+                        "event": "ingest_file_started",
+                        "file_index": idx,
+                        "total_files": total_files,
+                        "file_path": file_path,
+                    },
                 )
-            )
+
+                asyncio.run(
+                    rag.process_document_complete(
+                        file_path=file_path,
+                        output_dir=job["output_dir"],
+                        parse_method="auto",
+                    )
+                )
+
+                done_progress = 5 + int((idx / total_files) * 90)
+                self.update_job(
+                    job_id,
+                    stage=f"ingesting_{idx}/{total_files}",
+                    progress=done_progress,
+                    event={
+                        "event": "ingest_file_completed",
+                        "file_index": idx,
+                        "total_files": total_files,
+                        "file_path": file_path,
+                    },
+                )
 
             latest = self.get_job(job_id)
             if latest and latest["status"] != "completed":
@@ -341,6 +381,7 @@ class JobManager:
             "job_id": record.job_id,
             "kb_id": record.kb_id,
             "file_path": record.file_path,
+            "file_paths": list(record.file_paths),
             "working_dir": record.working_dir,
             "output_dir": record.output_dir,
             "status": record.status,

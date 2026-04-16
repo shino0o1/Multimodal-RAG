@@ -35,6 +35,8 @@ log/
 .gradio/
 .history/
 temp/
+rag_storage*/
+
 
 # IDE / Editor Files
 .idea/

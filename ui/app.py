@@ -14,7 +14,12 @@ try:
 except Exception:  # pragma: no cover - dependency handled at runtime
     st_echarts = None
 
-from ui.service import RAGUIService
+try:
+    # Preferred import when running as package/module from project root.
+    from ui.service import RAGUIService
+except ModuleNotFoundError:
+    # Fallback for `streamlit run ui/app.py` when cwd/sys.path points to `ui/`.
+    from service import RAGUIService
 
 
 @st.cache_resource(show_spinner=False)
@@ -130,15 +135,23 @@ def _build_graph_option(payload: Dict[str, Any]) -> Dict[str, Any]:
 def _render_kb_panel(service: RAGUIService) -> str:
     st.subheader("1) 知识库管理")
 
-    uploaded = st.file_uploader("上传 PDF 并建库", type=["pdf"], key="uploader_pdf")
+    upload_types = service.supported_upload_types()
+    uploaded_files = st.file_uploader(
+        "上传文档（PDF/图片）并建库",
+        type=upload_types,
+        accept_multiple_files=True,
+        key="uploader_doc",
+    )
+    st.caption(f"支持类型：{', '.join(upload_types)}")
     if st.button("开始建库", type="primary", use_container_width=True):
-        if uploaded is None:
-            st.warning("请先选择 PDF 文件")
+        valid_files = [f for f in (uploaded_files or []) if f is not None]
+        if not valid_files:
+            st.warning("请先选择至少一个待建库文件（PDF 或图片）")
         else:
             try:
-                result = service.create_kb(uploaded)
+                result = service.create_kb(valid_files)
                 st.session_state["selected_kb_id"] = result["kb_id"]
-                st.success(f"建库任务已创建：{result['job_id']}")
+                st.success(f"建库任务已创建：{result['job_id']}（共 {len(valid_files)} 个文件）")
             except Exception as exc:
                 st.error(f"建库失败：{exc}")
 
@@ -209,16 +222,32 @@ def _render_qa_panel(service: RAGUIService, kb_id: str) -> None:
         return
 
     question = st.text_area("输入问题", height=110, placeholder="例如：小猿叶甲幼虫的形态特征是什么？")
+    query_image = st.file_uploader(
+        "可选：上传查询图片（用于识别/检索增强）",
+        type=service.supported_query_image_types(),
+        key="query_image_uploader",
+    )
+    if query_image is not None:
+        st.image(query_image, caption=f"查询图片：{getattr(query_image, 'name', '')}", use_container_width=True)
     mode = st.selectbox("检索模式", ["hybrid", "mix", "local", "global", "naive", "bypass"], index=0)
     debug = st.checkbox("返回调试上下文", value=False)
 
     if st.button("生成回答", use_container_width=True):
-        if not question.strip():
-            st.warning("请输入问题")
+        if not question.strip() and query_image is None:
+            st.warning("请输入问题或上传查询图片")
         else:
             with st.spinner("检索与生成中..."):
                 try:
-                    result = service.query(kb_id, question.strip(), mode=mode, debug=debug)
+                    if query_image is not None:
+                        result = service.query_with_image(
+                            kb_id,
+                            question.strip(),
+                            query_image,
+                            mode=mode,
+                            debug=debug,
+                        )
+                    else:
+                        result = service.query(kb_id, question.strip(), mode=mode, debug=debug)
                     st.session_state["last_query_result"] = result
                     st.session_state["focus_chunk_ids"] = result.get("graph_focus", {}).get("chunk_ids", [])
                     st.success("回答已生成")

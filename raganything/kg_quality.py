@@ -10,13 +10,20 @@ This module provides:
 from __future__ import annotations
 
 import argparse
+import asyncio
+from difflib import SequenceMatcher
+import inspect
 import json
+import logging
 import os
 import re
+import threading
 import xml.etree.ElementTree as ET
 from collections import Counter
 from dataclasses import dataclass, field
 from typing import Any, Dict, Iterable, List, Set, Tuple
+
+logger = logging.getLogger(__name__)
 
 # 只要改这个
 NODE_DEFAULT_WHITELIST = [
@@ -28,6 +35,7 @@ NODE_DEFAULT_WHITELIST = [
     "生物分类",
     "药剂",
     "别名",
+    "部位",
     "时间",
     "危害症状",
     "形态特征",
@@ -71,13 +79,20 @@ RELATION_DOMAIN_RANGE_CRUCIFEROUS: Dict[str, set[Tuple[str, str]]] = {
         ("虫害", "时间"),
         ("病害", "生长期"),
         ("虫害", "生长期"),
+        ("病害", "部位"),
+        ("虫害", "部位"),
     },
-    "影响": {("病害", "作物"), ("虫害", "作物")},
+    "影响": {
+        ("病害", "作物"),
+        ("虫害", "作物"),
+        ("病害", "部位"),
+        ("虫害", "部位"),
+    },
     "防治": {("病害", "药剂"), ("虫害", "药剂"), ("药剂", "病害"), ("药剂", "虫害")},
 }
 
 DEFAULT_CORE_ENTITY_TYPES = ["虫害", "病害", "作物", "病原菌", "药剂", "生长期", "生物分类"]
-DEFAULT_ANCHOR_NODE_TYPES = ["时间"]
+DEFAULT_ANCHOR_NODE_TYPES = ["时间", "部位"]
 DEFAULT_ATTRIBUTE_FIELDS = ["别名", "形态特征", "危害症状", "发病诱因", "发生时期", "防治要点", "生活习性", "发生规律"]
 DEFAULT_ATTRIBUTE_HOST_TYPES = ["虫害", "病害", "病原菌"]
 DEFAULT_NOISE_DROP_TYPES = ["header", "page_number"]
@@ -112,6 +127,90 @@ _PEST_STAGE_ALT = "|".join(
 PEST_STAGE_SUFFIX_REGEX = re.compile(
     rf"^(?P<base>.+?)(?:[\s\-_/]*)[（(【\[]?(?P<stage>(?:{_PEST_STAGE_ALT}|[一二三四五六七八九十0-9]+龄幼虫))[）)】\]]?$"
 )
+
+PLANT_PART_TERMS_ZH = {
+    "心叶",
+    "叶片",
+    "叶面",
+    "叶背",
+    "叶缘",
+    "叶柄",
+    "叶脉",
+    "叶肉",
+    "嫩叶",
+    "老叶",
+    "子叶",
+    "真叶",
+    "根",
+    "根部",
+    "根系",
+    "主根",
+    "须根",
+    "茎",
+    "茎部",
+    "茎基部",
+    "茎秆",
+    "花",
+    "花蕾",
+    "花序",
+    "花器",
+    "果实",
+    "果荚",
+    "种子",
+    "嫩梢",
+    "生长点",
+    "顶芽",
+    "侧芽",
+}
+
+CROP_GROUP_TERMS_ZH = {
+    "蔬菜",
+    "蔬菜作物",
+    "十字花科蔬菜",
+    "十字花科植物",
+    "旋花科蔬菜",
+    "旋花科植物",
+    "茄科蔬菜",
+    "茄科植物",
+    "葫芦科蔬菜",
+    "葫芦科植物",
+}
+
+TAXONOMY_SUFFIX_RE = re.compile(r"(界|门|纲|目|科|属|种|亚种|变种|族)$")
+TAXONOMY_COMPOSITE_RE = re.compile(r"(科|属|目|纲|门)(植物|蔬菜)$")
+GROUP_NAME_RE = re.compile(r"(蔬菜|植物|作物)$")
+
+LLM_CANONICAL_SYSTEM_PROMPT = """你是农业病虫害知识图谱去重专家。
+任务：在同一实体类型候选节点中判断哪些是“同一实体”，并为每个重复簇选择 canonical 名称。
+要求：
+1. 只在同一实体类型内判断，不跨类型合并。
+2. 如果候选并非同一实体，必须分开。
+3. canonical 应优先选择：中文、命名规范、证据更完整的名称。
+4. 只输出 JSON，不要解释。"""
+
+LLM_CANONICAL_USER_PROMPT = """请对以下候选节点做去重分组并选择 canonical。
+
+输入实体类型：{entity_type}
+候选节点：
+{candidates_json}
+
+输出 JSON 格式（严格）：
+{{
+  "groups": [
+    {{
+      "canonical": "规范名称",
+      "members": ["成员1","成员2"],
+      "confidence": 0.0
+    }}
+  ],
+  "keep_separate": ["无需合并名称1","无需合并名称2"]
+}}
+
+约束：
+- groups 只包含需要合并的簇，members 长度至少 2。
+- canonical 必须来自 members。
+- confidence 取 0~1。
+"""
 
 
 @dataclass
@@ -234,9 +333,20 @@ class KGQualityManager:
     )
     multimodal_min_desc_chars: int = 80
     drop_empty_multimodal: bool = True
+    llm_model_func: Any = None
+    llm_semantic_merge_enabled: bool = False
+    llm_semantic_merge_types: List[str] = field(
+        default_factory=lambda: ["作物", "生物分类", "病原菌", "药剂", "病害", "虫害"]
+    )
+    llm_semantic_name_sim_threshold: float = 0.75
+    llm_semantic_merge_min_confidence: float = 0.90
+    llm_semantic_merge_max_group_size: int = 12
+    llm_semantic_merge_max_groups: int = 80
+    llm_timeout_seconds: int = 90
     ontology_registry: OntologyRegistry | None = field(default=None, init=False, repr=False)
     _noise_type_set: Set[str] = field(default_factory=set, init=False, repr=False)
     _noise_regexes: List[re.Pattern[str]] = field(default_factory=list, init=False, repr=False)
+    _llm_semantic_type_set: Set[str] = field(default_factory=set, init=False, repr=False)
 
     def __post_init__(self):
         relation_whitelist = set(RELATION_SCHEMA_FIXED)
@@ -256,6 +366,9 @@ class KGQualityManager:
         self._noise_regexes = [
             re.compile(pattern, re.IGNORECASE) for pattern in self.noise_drop_patterns if pattern
         ]
+        self._llm_semantic_type_set = {
+            _normalize_space(x) for x in self.llm_semantic_merge_types if _normalize_space(x)
+        }
 
         if self.ontology_profile in {
             "cruciferous_pest_disease",
@@ -312,6 +425,391 @@ class KGQualityManager:
                 seen.add(rel)
         return picked
 
+    def set_llm_model_func(self, llm_model_func: Any) -> None:
+        self.llm_model_func = llm_model_func
+
+    def _normalize_compare_name(self, name: str) -> str:
+        text = _normalize_space(name)
+        text = re.sub(r"[^\u4e00-\u9fffA-Za-z0-9]", "", text)
+        return text
+
+    def _name_similarity(self, left: str, right: str) -> float:
+        a = self._normalize_compare_name(left)
+        b = self._normalize_compare_name(right)
+        if not a or not b:
+            return 0.0
+        if a == b:
+            return 1.0
+        return SequenceMatcher(None, a, b).ratio()
+
+    def _build_candidate_groups(self, names: List[str]) -> List[List[str]]:
+        if len(names) < 2:
+            return []
+
+        parent = {n: n for n in names}
+
+        def find(x: str) -> str:
+            while parent[x] != x:
+                parent[x] = parent[parent[x]]
+                x = parent[x]
+            return x
+
+        def union(x: str, y: str) -> None:
+            rx, ry = find(x), find(y)
+            if rx != ry:
+                parent[ry] = rx
+
+        for i in range(len(names)):
+            for j in range(i + 1, len(names)):
+                a = names[i]
+                b = names[j]
+                sim = self._name_similarity(a, b)
+                na = self._normalize_compare_name(a)
+                nb = self._normalize_compare_name(b)
+                contain = bool(na and nb and (na in nb or nb in na))
+                if sim >= self.llm_semantic_name_sim_threshold or contain:
+                    union(a, b)
+
+        groups: Dict[str, List[str]] = {}
+        for name in names:
+            root = find(name)
+            groups.setdefault(root, []).append(name)
+
+        merged_groups: List[List[str]] = []
+        for members in groups.values():
+            if len(members) < 2:
+                continue
+            if len(members) > self.llm_semantic_merge_max_group_size:
+                continue
+            merged_groups.append(sorted(members))
+        return merged_groups
+
+    def _run_awaitable_blocking(self, awaitable: Any) -> Any:
+        result_box: Dict[str, Any] = {}
+        error_box: Dict[str, BaseException] = {}
+
+        def _runner() -> None:
+            try:
+                result_box["value"] = asyncio.run(awaitable)
+            except BaseException as exc:
+                error_box["error"] = exc
+
+        thread = threading.Thread(target=_runner, daemon=True)
+        thread.start()
+        thread.join(self.llm_timeout_seconds)
+        if thread.is_alive():
+            raise TimeoutError(
+                f"LLM canonical merge timeout after {self.llm_timeout_seconds}s"
+            )
+        if "error" in error_box:
+            raise error_box["error"]
+        return result_box.get("value")
+
+    def _call_llm_for_canonical_group(
+        self, entity_type: str, candidates: List[Dict[str, Any]]
+    ) -> str:
+        if not self.llm_model_func:
+            return ""
+        prompt = LLM_CANONICAL_USER_PROMPT.format(
+            entity_type=entity_type,
+            candidates_json=json.dumps(candidates, ensure_ascii=False, indent=2),
+        )
+        result = self.llm_model_func(
+            prompt,
+            system_prompt=LLM_CANONICAL_SYSTEM_PROMPT,
+            history_messages=[],
+        )
+        if inspect.isawaitable(result):
+            result = self._run_awaitable_blocking(result)
+        if result is None:
+            return ""
+        return str(result)
+
+    def _parse_llm_canonical_groups(
+        self, llm_text: str, allowed_names: Set[str]
+    ) -> List[Tuple[str, List[str], float]]:
+        raw = (llm_text or "").strip()
+        if not raw:
+            return []
+        if raw.startswith("```"):
+            raw = re.sub(r"^```(?:json)?\s*", "", raw, flags=re.IGNORECASE)
+            raw = re.sub(r"\s*```$", "", raw)
+
+        try:
+            payload = json.loads(raw)
+        except (TypeError, ValueError, json.JSONDecodeError):
+            return []
+
+        groups = payload.get("groups", [])
+        if not isinstance(groups, list):
+            return []
+
+        parsed: List[Tuple[str, List[str], float]] = []
+        for g in groups:
+            if not isinstance(g, dict):
+                continue
+            canonical = _normalize_space(str(g.get("canonical", "")))
+            members_raw = g.get("members", [])
+            if not isinstance(members_raw, list):
+                continue
+            members = [_normalize_space(str(x)) for x in members_raw if _normalize_space(str(x))]
+            try:
+                confidence = float(g.get("confidence", 0.0) or 0.0)
+            except (TypeError, ValueError):
+                confidence = 0.0
+            members = [m for m in members if m in allowed_names]
+            if canonical not in members:
+                continue
+            if len(members) < 2:
+                continue
+            if confidence < self.llm_semantic_merge_min_confidence:
+                continue
+            parsed.append((canonical, members, confidence))
+        return parsed
+
+    def _merge_node_slot(
+        self, base: Dict[str, Any], incoming: Dict[str, Any], incoming_name: str = ""
+    ) -> None:
+        if base.get("entity_type") == "其他" and incoming.get("entity_type") != "其他":
+            base["entity_type"] = incoming.get("entity_type")
+        if not base.get("content_modality") and incoming.get("content_modality"):
+            base["content_modality"] = incoming.get("content_modality")
+        base["description"].extend(incoming.get("description", []))
+        base["source_id"].extend(incoming.get("source_id", []))
+        base["file_path"].extend(incoming.get("file_path", []))
+        base["created_at"] = max(
+            _safe_int(base.get("created_at"), 0),
+            _safe_int(incoming.get("created_at"), 0),
+        )
+        if incoming.get("truncate"):
+            base["truncate"] = incoming.get("truncate", "")
+        if isinstance(base.get("aliases"), set):
+            base["aliases"].update(incoming.get("aliases", set()))
+            if incoming_name and incoming_name != base.get("entity_id"):
+                base["aliases"].add(incoming_name)
+        for key, values in (incoming.get("attributes", {}) or {}).items():
+            cur = list(base["attributes"].get(key, []))
+            for item in values:
+                if item not in cur:
+                    cur.append(item)
+            base["attributes"][key] = cur
+        for key, values in (incoming.get("attribute_evidence", {}) or {}).items():
+            cur = list(base["attribute_evidence"].get(key, []))
+            for item in values:
+                if item not in cur:
+                    cur.append(item)
+            base["attribute_evidence"][key] = cur
+        self._sync_aliases_as_attribute(base)
+
+    def _apply_canonical_merge_map(
+        self,
+        merged_nodes: Dict[str, Dict[str, Any]],
+        merged_edges: Dict[Tuple[str, str, str], Dict[str, Any]],
+        canonical_map: Dict[str, str],
+    ) -> Tuple[int, int]:
+        if not canonical_map:
+            return 0, 0
+
+        remapped_nodes: Dict[str, Dict[str, Any]] = {}
+        merged_node_pairs = 0
+        for old_name, node_data in merged_nodes.items():
+            target = canonical_map.get(old_name, old_name)
+            if target not in remapped_nodes:
+                copied = {
+                    "entity_id": target,
+                    "entity_type": node_data.get("entity_type", "其他"),
+                    "content_modality": node_data.get("content_modality", ""),
+                    "description": list(node_data.get("description", [])),
+                    "source_id": list(node_data.get("source_id", [])),
+                    "file_path": list(node_data.get("file_path", [])),
+                    "created_at": _safe_int(node_data.get("created_at"), 0),
+                    "truncate": node_data.get("truncate", ""),
+                    "aliases": set(node_data.get("aliases", set())),
+                    "attributes": dict(node_data.get("attributes", {})),
+                    "attribute_evidence": dict(node_data.get("attribute_evidence", {})),
+                }
+                if old_name != target:
+                    copied["aliases"].add(old_name)
+                self._sync_aliases_as_attribute(copied)
+                remapped_nodes[target] = copied
+                continue
+            merged_node_pairs += 1
+            self._merge_node_slot(remapped_nodes[target], node_data, incoming_name=old_name)
+
+        remapped_edges: Dict[Tuple[str, str, str], Dict[str, Any]] = {}
+        merged_edge_pairs = 0
+        for (src, tgt, rel), edge_data in merged_edges.items():
+            nsrc = canonical_map.get(src, src)
+            ntgt = canonical_map.get(tgt, tgt)
+            if nsrc == ntgt:
+                continue
+            key = (nsrc, ntgt, rel)
+            if key not in remapped_edges:
+                remapped_edges[key] = {
+                    "description": list(edge_data.get("description", [])),
+                    "keywords": edge_data.get("keywords", rel),
+                    "raw_keywords": list(edge_data.get("raw_keywords", [])),
+                    "relation_type": rel,
+                    "source_id": list(edge_data.get("source_id", [])),
+                    "file_path": list(edge_data.get("file_path", [])),
+                    "created_at": _safe_int(edge_data.get("created_at"), 0),
+                    "truncate": edge_data.get("truncate", ""),
+                    "weight": float(edge_data.get("weight", 0.0) or 0.0),
+                }
+                continue
+            slot = remapped_edges[key]
+            slot["description"].extend(edge_data.get("description", []))
+            slot["raw_keywords"].extend(edge_data.get("raw_keywords", []))
+            slot["source_id"].extend(edge_data.get("source_id", []))
+            slot["file_path"].extend(edge_data.get("file_path", []))
+            slot["created_at"] = max(slot["created_at"], _safe_int(edge_data.get("created_at"), 0))
+            if edge_data.get("truncate"):
+                slot["truncate"] = edge_data.get("truncate", "")
+            try:
+                slot["weight"] = max(slot["weight"], float(edge_data.get("weight", 0.0) or 0.0))
+            except (TypeError, ValueError):
+                pass
+            merged_edge_pairs += 1
+
+        merged_nodes.clear()
+        merged_nodes.update(remapped_nodes)
+        merged_edges.clear()
+        merged_edges.update(remapped_edges)
+        return merged_node_pairs, merged_edge_pairs
+
+    def _render_canonical_map_table(
+        self,
+        mapping_rows: List[Tuple[str, str, str]],
+        max_rows: int = 200,
+    ) -> str:
+        rows = mapping_rows[:max_rows]
+        if not rows:
+            return ""
+
+        old_w = max(len("from"), *(len(x[0]) for x in rows))
+        new_w = max(len("canonical"), *(len(x[1]) for x in rows))
+        type_w = max(len("type"), *(len(x[2]) for x in rows))
+        sep = f"+-{'-' * old_w}-+-{'-' * new_w}-+-{'-' * type_w}-+"
+        lines = [
+            sep,
+            f"| {'from'.ljust(old_w)} | {'canonical'.ljust(new_w)} | {'type'.ljust(type_w)} |",
+            sep,
+        ]
+        for old_name, canonical, entity_type in rows:
+            lines.append(
+                f"| {old_name.ljust(old_w)} | {canonical.ljust(new_w)} | {entity_type.ljust(type_w)} |"
+            )
+        lines.append(sep)
+        if len(mapping_rows) > max_rows:
+            lines.append(f"... truncated {len(mapping_rows) - max_rows} rows")
+        return "\n".join(lines)
+
+    def _apply_llm_semantic_merge(
+        self,
+        merged_nodes: Dict[str, Dict[str, Any]],
+        merged_edges: Dict[Tuple[str, str, str], Dict[str, Any]],
+    ) -> Dict[str, Any]:
+        report = {
+            "enabled": bool(self.llm_semantic_merge_enabled),
+            "groups_considered": 0,
+            "groups_merged": 0,
+            "node_pairs_merged": 0,
+            "edge_pairs_merged": 0,
+            "canonical_mapping_count": 0,
+        }
+        if not self.llm_semantic_merge_enabled or not self.llm_model_func:
+            return report
+
+        names_by_type: Dict[str, List[str]] = {}
+        for name, data in merged_nodes.items():
+            typ = str(data.get("entity_type", ""))
+            if typ not in self._llm_semantic_type_set:
+                continue
+            names_by_type.setdefault(typ, []).append(name)
+
+        canonical_map: Dict[str, str] = {}
+        groups_seen = 0
+        groups_merged = 0
+        decisions: List[Dict[str, Any]] = []
+        pre_merge_type_map = {
+            name: str(data.get("entity_type", "")) for name, data in merged_nodes.items()
+        }
+        for entity_type, names in names_by_type.items():
+            candidate_groups = self._build_candidate_groups(names)
+            for members in candidate_groups:
+                groups_seen += 1
+                if groups_seen > self.llm_semantic_merge_max_groups:
+                    break
+                candidate_payload = []
+                for name in members:
+                    node = merged_nodes.get(name, {})
+                    attrs = node.get("attributes", {}) or {}
+                    candidate_payload.append(
+                        {
+                            "name": name,
+                            "aliases": sorted(list(node.get("aliases", set())))[:8],
+                            "description": _join_sep_values(node.get("description", []))[:280],
+                            "attribute_keys": sorted(list(attrs.keys())),
+                        }
+                    )
+                llm_output = self._call_llm_for_canonical_group(entity_type, candidate_payload)
+                parsed_groups = self._parse_llm_canonical_groups(llm_output, set(members))
+                for canonical, group_members, _confidence in parsed_groups:
+                    for m in group_members:
+                        canonical_map[m] = canonical
+                    groups_merged += 1
+                    decisions.append(
+                        {
+                            "entity_type": entity_type,
+                            "canonical": canonical,
+                            "members": list(group_members),
+                            "confidence": float(_confidence),
+                        }
+                    )
+            if groups_seen > self.llm_semantic_merge_max_groups:
+                break
+
+        mapping_rows = sorted(
+            [
+                (old_name, canonical, pre_merge_type_map.get(old_name, ""))
+                for old_name, canonical in canonical_map.items()
+                if old_name != canonical
+            ],
+            key=lambda x: (x[2], x[1], x[0]),
+        )
+        if mapping_rows:
+            table = self._render_canonical_map_table(mapping_rows)
+            logger.info(
+                "LLM semantic dedup canonical mapping (%s rows):\n%s",
+                len(mapping_rows),
+                table,
+            )
+
+        if decisions:
+            logger.info(
+                "LLM semantic dedup decisions: %s groups accepted (min_confidence=%.2f)",
+                len(decisions),
+                self.llm_semantic_merge_min_confidence,
+            )
+
+        node_pairs, edge_pairs = self._apply_canonical_merge_map(
+            merged_nodes, merged_edges, canonical_map
+        )
+        report.update(
+            {
+                "groups_considered": groups_seen,
+                "groups_merged": groups_merged,
+                "node_pairs_merged": node_pairs,
+                "edge_pairs_merged": edge_pairs,
+                "canonical_mapping_count": len(mapping_rows),
+                "canonical_mappings_preview": [
+                    {"from": old_name, "to": canonical, "type": entity_type}
+                    for old_name, canonical, entity_type in mapping_rows[:100]
+                ],
+            }
+        )
+        return report
+
     def _normalize_entity_type(self, entity_type: str) -> str:
         raw = _normalize_space(entity_type)
         if not raw:
@@ -351,6 +849,63 @@ class KGQualityManager:
             return raw, ""
         return base, stage
 
+    def _is_plant_part_name(self, entity_name: str) -> bool:
+        name = _normalize_space(entity_name)
+        if not name:
+            return False
+        if name in PLANT_PART_TERMS_ZH:
+            return True
+        if name.endswith("部位"):
+            return True
+        if len(name) <= 4 and name.endswith(("叶", "根", "茎", "花", "芽")):
+            return True
+        return False
+
+    def _is_taxonomy_or_crop_group_name(self, entity_name: str) -> bool:
+        name = _normalize_space(entity_name)
+        if not name:
+            return False
+        if name in CROP_GROUP_TERMS_ZH:
+            return True
+        if TAXONOMY_SUFFIX_RE.search(name):
+            return True
+        if TAXONOMY_COMPOSITE_RE.search(name):
+            return True
+        if len(name) >= 3 and GROUP_NAME_RE.search(name):
+            return True
+        if "十字花科" in name or "旋花科" in name:
+            return True
+        return False
+
+    def _route_type_by_name(self, entity_name: str, entity_type: str) -> str:
+        # Keep explicit non-crop-like ontology types untouched.
+        if entity_type in {
+            "病害",
+            "虫害",
+            "病原菌",
+            "药剂",
+            "生长期",
+            "时间",
+            "多模态元素",
+        }:
+            return entity_type
+
+        # "心叶/叶片/根/茎..." cannot be crops.
+        if self._is_plant_part_name(entity_name):
+            if "部位" in self.allowed_entity_types:
+                return "部位"
+            return entity_type
+
+        # "蔬菜/十字花科植物/旋花科蔬菜/xx科" should go to taxonomy class.
+        if entity_type in {"作物", "生物分类", "其他"} and self._is_taxonomy_or_crop_group_name(
+            entity_name
+        ):
+            if "生物分类" in self.allowed_entity_types:
+                return "生物分类"
+            return entity_type
+
+        return entity_type
+
     def _enforce_type_name_consistency(
         self, entity_name: str, entity_type: str
     ) -> Tuple[str, str]:
@@ -371,6 +926,10 @@ class KGQualityManager:
                 else set()
             )
         ):
+            normalized_type = "其他"
+
+        normalized_type = self._route_type_by_name(normalized_name, normalized_type)
+        if normalized_type not in self.allowed_entity_types:
             normalized_type = "其他"
 
         return normalized_name, normalized_type
@@ -673,19 +1232,28 @@ class KGQualityManager:
                 "history",
                 "record time",
                 "时间",
+                "危害部位",
+                "发病部位",
+                "侵染部位",
+                "部位",
+                "site",
+                "plant part",
             ]
         ):
             relation = "发生于"
         elif any(k in text for k in ["control", "prevention", "management", "防治"]):
             relation = "防治"
-        elif any(k in text for k in ["impact", "affect", "cause", "damage", "影响"]):
+        elif any(k in text for k in ["impact", "affect", "cause", "damage", "影响", "危害", "为害"]):
             relation = "影响"
         elif any(
             k in text
             for k in ["life cycle", "lifecycle", "stage", "overwinter", "生命周期"]
         ):
             relation = "生命周期"
-        elif any(k in text for k in ["location", "located", "位于", "地理位置", "page "]):
+        elif any(
+            k in text
+            for k in ["地理位置", "地理分布", "分布于", "地区", "省", "市", "县", "region", "page "]
+        ):
             relation = "地理位置"
         else:
             relation = ""
@@ -862,7 +1430,13 @@ class KGQualityManager:
         canonical = _normalize_space(
             str(node_data.get("entity_id") or node_data.get("entity_name") or "")
         )
-        aliases = _split_sep_values(str(node_data.get("aliases", "")))
+        raw_aliases = node_data.get("aliases", "")
+        if isinstance(raw_aliases, set):
+            aliases = [str(x).strip() for x in raw_aliases if str(x).strip()]
+        elif isinstance(raw_aliases, list):
+            aliases = [str(x).strip() for x in raw_aliases if str(x).strip()]
+        else:
+            aliases = _split_sep_values(str(raw_aliases))
         for alias in aliases:
             if not alias or alias == canonical:
                 continue
@@ -896,9 +1470,9 @@ class KGQualityManager:
                 for node_data in node_list:
                     nd = dict(node_data)
                     nd["entity_id"] = canonical
-                    nd["entity_type"] = self._normalize_entity_type(
-                        nd.get("entity_type", first_type)
-                    )
+                    nd["entity_type"] = self._enforce_type_name_consistency(
+                        canonical, str(nd.get("entity_type", first_type))
+                    )[1]
                     node_type_map[canonical] = nd["entity_type"]
                     modality = (
                         norm.get("content_modality")
@@ -969,9 +1543,9 @@ class KGQualityManager:
 
                 for node_data in node_list:
                     nd = dict(node_data)
-                    normalized_type = self._normalize_entity_type(
-                        str(nd.get("entity_type", first_type))
-                    )
+                    normalized_type = self._enforce_type_name_consistency(
+                        canonical, str(nd.get("entity_type", first_type))
+                    )[1]
                     if (
                         self.drop_empty_multimodal
                         and normalized_type == "多模态元素"
@@ -1456,6 +2030,8 @@ class KGQualityManager:
                 )
             }
 
+        llm_merge_report = self._apply_llm_semantic_merge(merged_nodes, merged_edges)
+
         merged_edges = {
             k: v
             for k, v in merged_edges.items()
@@ -1561,6 +2137,7 @@ class KGQualityManager:
             "non_cjk_entity_ratio": (non_cjk_nodes / total_nodes) if total_nodes else 0.0,
             "entity_type_distribution": dict(type_counter),
             "relation_type_distribution": dict(relation_counter),
+            "llm_semantic_merge": llm_merge_report,
         }
 
         if rewrite:

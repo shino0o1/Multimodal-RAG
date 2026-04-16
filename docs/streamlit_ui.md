@@ -27,7 +27,8 @@ streamlit run ui/app.py
 
 ## Features (v1)
 
-- Upload PDF and build isolated KB (`rag_storage_ui/{kb_id}`)
+- Upload multiple PDFs/images (`png/jpg/jpeg/bmp/gif/webp/tif/tiff`) in one batch and build one isolated KB (`rag_storage_ui/{kb_id}`)
+- Ask with text only or text + query image (image is analyzed and fused into retrieval/answer generation)
 - Connect existing local KB storage directory (for example `./rag_storage_test2`)
 - Async ingestion with stage progress and job events
 - Query with structured citations (`answer + citations + graph_focus`)

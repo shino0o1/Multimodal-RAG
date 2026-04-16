@@ -152,7 +152,7 @@ class RAGAnythingConfig:
             "KG_ANCHOR_NODE_TYPES", ",".join(DEFAULT_ANCHOR_NODE_TYPES)
         )
     )
-    """Anchor node types retained for temporal/spatial linking."""
+    """Anchor node types retained for temporal/spatial/plant-part linking."""
 
     kg_attribute_fields: List[str] = field(
         default_factory=lambda: _get_env_list(
@@ -212,6 +212,44 @@ class RAGAnythingConfig:
         default=get_env_value("KG_MERGE_THRESHOLD", 0.85, float)
     )
     """Merge threshold for semantic deduplication (reserved for iterative tuning)."""
+
+    kg_llm_semantic_merge_enabled: bool = field(
+        default=get_env_value("KG_LLM_SEMANTIC_MERGE_ENABLED", False, bool)
+    )
+    """Enable LLM-assisted semantic node deduplication during GraphML cleanup."""
+
+    kg_llm_semantic_merge_types: List[str] = field(
+        default_factory=lambda: _get_env_list(
+            "KG_LLM_SEMANTIC_MERGE_TYPES",
+            "作物,生物分类,病原菌,药剂,病害,虫害",
+        )
+    )
+    """Entity types eligible for LLM-assisted semantic deduplication."""
+
+    kg_llm_semantic_name_sim_threshold: float = field(
+        default=get_env_value("KG_LLM_SEMANTIC_NAME_SIM_THRESHOLD", 0.75, float)
+    )
+    """Name similarity threshold for generating LLM dedup candidate groups."""
+
+    kg_llm_semantic_merge_min_confidence: float = field(
+        default=get_env_value("KG_LLM_SEMANTIC_MERGE_MIN_CONFIDENCE", 0.90, float)
+    )
+    """Minimum LLM confidence required to apply a dedup merge decision."""
+
+    kg_llm_semantic_merge_max_group_size: int = field(
+        default=get_env_value("KG_LLM_SEMANTIC_MERGE_MAX_GROUP_SIZE", 12, int)
+    )
+    """Maximum candidate group size sent to LLM for one dedup decision."""
+
+    kg_llm_semantic_merge_max_groups: int = field(
+        default=get_env_value("KG_LLM_SEMANTIC_MERGE_MAX_GROUPS", 80, int)
+    )
+    """Maximum number of LLM dedup groups processed per cleanup run."""
+
+    kg_llm_timeout_seconds: int = field(
+        default=get_env_value("KG_LLM_TIMEOUT_SECONDS", 90, int)
+    )
+    """Timeout in seconds for one LLM dedup call."""
 
     def __post_init__(self):
         """Post-initialization setup for backward compatibility"""
