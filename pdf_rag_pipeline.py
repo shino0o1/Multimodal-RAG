@@ -7,7 +7,7 @@ from lightrag.llm.openai import openai_complete_if_cache, openai_embed
 from lightrag.utils import EmbeddingFunc
 
 BUILD_GLOBAL_TIMEOUT_SECONDS = 2 * 60 * 60  # 2 hours
-BUILD_STALL_TIMEOUT_SECONDS = 20 * 60        # no file write for 110 minutes
+BUILD_STALL_TIMEOUT_SECONDS = 100 * 60        # no file write for 110 minutes
 BUILD_WATCH_INTERVAL_SECONDS = 30            # check every 30s
 
 
@@ -106,8 +106,10 @@ async def main():
     # ==========================================
     # 1. 环境与模型配置
     # ==========================================
-    api_key = "sk-MwcAPesgu8ol4F0ePPNP0hkGiseYaNEbfoLv4phN03ldl3AV" # 替换为您的 API Key
-    base_url = "https://yunwu.ai/v1" # 如果使用代理可以修改此处
+    api_key = "sk-uwqgblktuqsujrieppjbujsrdkwtirmxtlkfjuwsmwcaloag" # 替换为您的 API Key
+    # api_key = "sk-MwcAPesgu8ol4F0ePPNP0hkGiseYaNEbfoLv4phN03ldl3AV" # 替换为您的 API Key
+    base_url = "https://api.siliconflow.cn/v1" # 如果使用代理可以修改此处
+    # base_url = "https://yunwu.ai/v1" # 如果使用代理可以修改此处
     set_prompt_language("zh")
     os.environ["SUMMARY_LANGUAGE"] = "Chinese"
     # LLM 单次调用超时（秒）
@@ -149,7 +151,7 @@ async def main():
     # 定义文本大模型回调（用于文本知识抽取和最终回答）
     def llm_model_func(prompt, system_prompt=None, history_messages=[], **kwargs):
         return openai_complete_if_cache(
-            "gemini-2.5-flash",
+            "Qwen/Qwen3.5-397B-A17B",
             prompt,
             system_prompt=system_prompt,
             history_messages=history_messages,
@@ -161,10 +163,10 @@ async def main():
     # 定义视觉大模型回调（用于图片 OCR 后的语义理解和多模态抽取）
     def vision_model_func(prompt, system_prompt=None, history_messages=[], image_data=None, messages=None, **kwargs):
         if messages:
-            return openai_complete_if_cache("gemini-2.5-flash", "", system_prompt=None, history_messages=[], messages=messages, api_key=api_key, base_url=base_url, **kwargs)
+            return openai_complete_if_cache("Qwen/Qwen3.5-397B-A17B", "", system_prompt=None, history_messages=[], messages=messages, api_key=api_key, base_url=base_url, **kwargs)
         elif image_data:
             return openai_complete_if_cache(
-                "gemini-2.5-flash",
+                "Qwen/Qwen3.5-397B-A17B",
                 "",
                 system_prompt=None,
                 history_messages=[],
@@ -187,10 +189,12 @@ async def main():
 
     # 定义 Embedding 模型回调
     embedding_func = EmbeddingFunc(
-        embedding_dim=3072,
+        embedding_dim=2560,
+        # embedding_dim=3072,
         max_token_size=8192,
         func=lambda texts: openai_embed.func(
-            texts, model="text-embedding-3-large", api_key=api_key, base_url=base_url
+            texts, model="Qwen/Qwen3-Embedding-4B", api_key=api_key, base_url=base_url
+            # texts, model="text-embedding-3-large", api_key=api_key, base_url=base_url
         ),
     )
 
@@ -205,6 +209,7 @@ async def main():
             "entity_extract_max_gleaning": 0,
             # 限制抽取阶段输入上限，控制提示词长度
             "max_extract_input_tokens": 5120,
+            "max_parallel_insert" :8
         },
     )
 
@@ -278,15 +283,12 @@ async def main():
     print(f"答：\n{text_result}\n")
 
     # 测试A-2：先规划再检索（Graph-RFT 简版）
-    # - Planner先决定是否启用WEB
-    # - 默认融合 KG 证据 + WEB 证据
+    # - Planner先拆解问题，再基于本地KG检索与回答
     question_plan = "最近有哪些关于十字花科害虫绿色防控的新建议？"
     print(f"问（计划检索）：{question_plan}")
     plan_result = await rag_for_query.aquery_plan_then_retrieve(
         question_plan,
         mode="hybrid",
-        force_web=True,  # True: 强制启用网络检索；False: 由 Planner 自动决策
-        max_web_results=3,
     )
     print(f"答（计划检索）：\n{plan_result}\n")
 

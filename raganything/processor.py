@@ -353,6 +353,46 @@ class ProcessorMixin:
                 "Failed to batch store multimodal cache for doc_id=%s: %s", doc_id, exc
             )
 
+    async def _store_single_multimodal_item_cache(
+        self, doc_id: str, data: Dict[str, Any]
+    ) -> None:
+        """Store one multimodal item cache entry immediately as checkpoint."""
+        cache = getattr(self, "multimodal_desc_cache", None)
+        if (
+            not cache
+            or not data
+            or not getattr(self.config, "multimodal_desc_cache_enabled", True)
+        ):
+            return
+        item_hash = str(data.get("item_hash", "") or "").strip()
+        if not item_hash:
+            return
+        try:
+            key = self._get_multimodal_item_cache_key(doc_id, item_hash)
+            payload = {
+                "doc_id": doc_id,
+                "item_hash": item_hash,
+                "content_type": data.get("content_type", "unknown"),
+                "description": str(data.get("description", "") or ""),
+                "entity_info": data.get("entity_info", {}) or {},
+                "item_info": data.get("item_info", {}) or {},
+                "empty_result": self._is_empty_multimodal_result(
+                    str(data.get("description", "") or ""),
+                    data.get("entity_info", {}) or {},
+                ),
+                "cached_at": int(time.time()),
+            }
+            await cache.upsert({key: payload})
+            # Force immediate flush for resumable checkpoint.
+            await cache.index_done_callback()
+        except Exception as exc:
+            self.logger.warning(
+                "Failed to store multimodal checkpoint doc_id=%s item_hash=%s: %s",
+                doc_id,
+                item_hash,
+                exc,
+            )
+
     async def _get_multimodal_completion_state(
         self, doc_id: str
     ) -> Optional[Dict[str, Any]]:
@@ -1115,29 +1155,79 @@ class ProcessorMixin:
         # Use LightRAG's concurrency control
         semaphore = asyncio.Semaphore(getattr(self.lightrag, "max_parallel_insert", 2))
 
-        # Progress tracking variables
+        # Stage 1: recover from per-item checkpoint first, then process remaining items.
+        multimodal_data_list: List[Dict[str, Any]] = []
+        pending_items: List[Tuple[int, Dict[str, Any], str]] = []
+        for index, item in enumerate(multimodal_items):
+            item_hash = self._build_multimodal_item_hash(item, index=index)
+            cached_data = await self._get_multimodal_item_cache(doc_id, item_hash)
+            cached_desc = str((cached_data or {}).get("description", "") or "")
+            cached_entity_info = (cached_data or {}).get("entity_info", {}) or {}
+            if isinstance(cached_entity_info, dict) and (
+                cached_desc or cached_entity_info
+            ):
+                content_type = str(item.get("type", "unknown") or "unknown")
+                item_info = {
+                    "page_idx": item.get("page_idx", 0),
+                    "index": index,
+                    "type": content_type,
+                }
+                multimodal_data_list.append(
+                    {
+                        "index": index,
+                        "content_type": content_type,
+                        "description": cached_desc,
+                        "entity_info": cached_entity_info,
+                        "original_item": item,
+                        "item_info": item_info,
+                        "chunk_order_index": existing_chunks_count + index,
+                        "processor": get_processor_for_type(
+                            self.modal_processors, content_type
+                        ),
+                        "file_path": file_path,
+                        "item_hash": item_hash,
+                        "cache_hit": True,
+                    }
+                )
+            else:
+                pending_items.append((index, item, item_hash))
+
+        restored_count = len(multimodal_data_list)
+        remaining_count = len(pending_items)
         total_items = len(multimodal_items)
+        if restored_count:
+            self.logger.info(
+                "Resumed multimodal checkpoint: restored=%s remaining=%s total=%s",
+                restored_count,
+                remaining_count,
+                total_items,
+            )
+        if remaining_count == 0:
+            self.logger.info(
+                "All multimodal items restored from checkpoint for doc_id=%s", doc_id
+            )
+        else:
+            self.logger.info(
+                "Starting to process %s/%s remaining multimodal content items",
+                remaining_count,
+                total_items,
+            )
+
+        # Progress tracking variables for remaining items only
         completed_count = 0
         progress_lock = asyncio.Lock()
 
-        # Log processing start
-        self.logger.info(f"Starting to process {total_items} multimodal content items")
-
-        # Stage 1: Concurrent generation of descriptions using correct processors for each type
         async def process_single_item_with_correct_processor(
-            item: Dict[str, Any], index: int, file_path: str
+            index: int, item: Dict[str, Any], item_hash: str, file_path: str
         ):
-            """Process single item using the correct processor for its type"""
+            """Process one remaining item and checkpoint immediately."""
             nonlocal completed_count
+            content_type = str(item.get("type", "unknown") or "unknown")
             async with semaphore:
                 try:
-                    content_type = item.get("type", "unknown")
-
-                    # Select the correct processor based on content type
                     processor = get_processor_for_type(
                         self.modal_processors, content_type
                     )
-
                     if not processor:
                         self.logger.warning(
                             f"No processor found for type: {content_type}"
@@ -1149,64 +1239,32 @@ class ProcessorMixin:
                         "index": index,
                         "type": content_type,
                     }
-                    item_hash = self._build_multimodal_item_hash(item, index=index)
-                    cache_hit = False
 
-                    description = ""
-                    entity_info: Dict[str, Any] = {}
-                    cached_data = await self._get_multimodal_item_cache(
-                        doc_id, item_hash
+                    description, entity_info = await processor.generate_description_only(
+                        modal_content=item,
+                        content_type=content_type,
+                        item_info=item_info,
+                        entity_name=None,
                     )
-                    if cached_data:
-                        cached_desc = str(cached_data.get("description", "") or "")
-                        cached_entity_info = cached_data.get("entity_info", {}) or {}
-                        if isinstance(cached_entity_info, dict):
-                            description = cached_desc
-                            entity_info = cached_entity_info
-                            cache_hit = True
 
-                    if not cache_hit:
-                        # Call the correct processor's description generation method
-                        (
-                            description,
-                            entity_info,
-                        ) = await processor.generate_description_only(
-                            modal_content=item,
-                            content_type=content_type,
-                            item_info=item_info,
-                            entity_name=None,  # Let LLM auto-generate
+                    if self._should_retry_multimodal_description(
+                        description, entity_info, item
+                    ):
+                        retry_description, retry_entity_info = (
+                            await processor.generate_description_only(
+                                modal_content=item,
+                                content_type=content_type,
+                                item_info=item_info,
+                                entity_name=None,
+                            )
                         )
-
-                        if self._should_retry_multimodal_description(
-                            description, entity_info, item
+                        if len((retry_description or "").strip()) > len(
+                            (description or "").strip()
                         ):
-                            retry_description, retry_entity_info = (
-                                await processor.generate_description_only(
-                                    modal_content=item,
-                                    content_type=content_type,
-                                    item_info=item_info,
-                                    entity_name=None,
-                                )
-                            )
-                            if len((retry_description or "").strip()) > len(
-                                (description or "").strip()
-                            ):
-                                description = retry_description
-                                entity_info = retry_entity_info
+                            description = retry_description
+                            entity_info = retry_entity_info
 
-                    # Update progress (non-blocking)
-                    async with progress_lock:
-                        completed_count += 1
-                        if (
-                            completed_count % max(1, total_items // 10) == 0
-                            or completed_count == total_items
-                        ):
-                            progress_percent = (completed_count / total_items) * 100
-                            self.logger.info(
-                                f"Multimodal chunk generation progress: {completed_count}/{total_items} ({progress_percent:.1f}%)"
-                            )
-
-                    return {
+                    result = {
                         "index": index,
                         "content_type": content_type,
                         "description": description,
@@ -1214,52 +1272,71 @@ class ProcessorMixin:
                         "original_item": item,
                         "item_info": item_info,
                         "chunk_order_index": existing_chunks_count + index,
-                        "processor": processor,  # Keep reference to the processor used
-                        "file_path": file_path,  # Add file_path to the result
+                        "processor": processor,
+                        "file_path": file_path,
                         "item_hash": item_hash,
-                        "cache_hit": cache_hit,
+                        "cache_hit": False,
                     }
+                    # Immediate per-item checkpoint flush for resumability after interruption.
+                    await self._store_single_multimodal_item_cache(doc_id, result)
 
-                except Exception as e:
-                    # Update progress even on error (non-blocking)
                     async with progress_lock:
                         completed_count += 1
                         if (
-                            completed_count % max(1, total_items // 10) == 0
-                            or completed_count == total_items
+                            completed_count % max(1, remaining_count // 10) == 0
+                            or completed_count == remaining_count
                         ):
-                            progress_percent = (completed_count / total_items) * 100
+                            progress_percent = (completed_count / remaining_count) * 100
                             self.logger.info(
-                                f"Multimodal chunk generation progress: {completed_count}/{total_items} ({progress_percent:.1f}%)"
+                                "Multimodal chunk generation progress: %s/%s (%.1f%%)",
+                                completed_count,
+                                remaining_count,
+                                progress_percent,
                             )
 
+                    return result
+
+                except Exception as e:
+                    async with progress_lock:
+                        completed_count += 1
+                        if (
+                            completed_count % max(1, remaining_count // 10) == 0
+                            or completed_count == remaining_count
+                        ):
+                            progress_percent = (completed_count / remaining_count) * 100
+                            self.logger.info(
+                                "Multimodal chunk generation progress: %s/%s (%.1f%%)",
+                                completed_count,
+                                remaining_count,
+                                progress_percent,
+                            )
                     self.logger.error(
                         f"Error generating description for {content_type} item {index}: {e}"
                     )
                     return None
 
-        # Process all items concurrently with correct processors
-        tasks = [
-            asyncio.create_task(
-                process_single_item_with_correct_processor(item, i, file_path)
-            )
-            for i, item in enumerate(multimodal_items)
-        ]
+        if pending_items:
+            tasks = [
+                asyncio.create_task(
+                    process_single_item_with_correct_processor(
+                        index, item, item_hash, file_path
+                    )
+                )
+                for index, item, item_hash in pending_items
+            ]
 
-        results = await asyncio.gather(*tasks, return_exceptions=True)
-
-        # Filter successful results
-        multimodal_data_list = []
-        for result in results:
-            if isinstance(result, Exception):
-                self.logger.error(f"Task failed: {result}")
-                continue
-            if result is not None:
-                multimodal_data_list.append(result)
+            results = await asyncio.gather(*tasks, return_exceptions=True)
+            for result in results:
+                if isinstance(result, Exception):
+                    self.logger.error(f"Task failed: {result}")
+                    continue
+                if result is not None:
+                    multimodal_data_list.append(result)
 
         if not multimodal_data_list:
             self.logger.warning("No valid multimodal descriptions generated")
             return
+        multimodal_data_list.sort(key=lambda x: int(x.get("index", 0)))
         cache_hit_count = sum(
             1 for data in multimodal_data_list if bool(data.get("cache_hit"))
         )
@@ -1288,9 +1365,6 @@ class ProcessorMixin:
                 )
                 if modality:
                     entity_info["content_modality"] = modality
-
-        # Persist per-item multimodal description cache by doc_id + item_hash.
-        await self._batch_store_multimodal_item_cache(doc_id, multimodal_data_list)
 
         if bool(getattr(self.config, "kg_drop_empty_multimodal", True)):
             filtered_multimodal_data_list = []

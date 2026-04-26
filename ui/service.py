@@ -317,10 +317,12 @@ class RAGUIService:
 
         base_url_env = os.getenv("OPENAI_BASE_URL", "").strip()
         base_url = base_url_env or fallback_cfg.get("base_url", "").strip() or None
-        llm_model = os.getenv("RAG_UI_LLM_MODEL", "gemini-2.5-flash")
-        vision_model = os.getenv("RAG_UI_VISION_MODEL", "gemini-2.5-flash")
-        embedding_model = os.getenv("RAG_UI_EMBED_MODEL", "text-embedding-3-large")
-        embedding_dim = int(os.getenv("EMBEDDING_DIM", "3072"))
+        llm_model = os.getenv("RAG_UI_LLM_MODEL", "Qwen/Qwen3.5-397B-A17B")
+        vision_model = os.getenv("RAG_UI_VISION_MODEL", "Qwen/Qwen3.5-397B-A17B")
+        embedding_model = os.getenv("RAG_UI_EMBED_MODEL", "Qwen/Qwen3-Embedding-4B")
+        # Keep default dimension aligned with the default embedding model above.
+        # Qwen/Qwen3-Embedding-4B typically returns 2560-d vectors on common OpenAI-compatible endpoints.
+        embedding_dim = int(os.getenv("EMBEDDING_DIM", "2560"))
 
         set_prompt_language("zh")
         os.environ.setdefault("SUMMARY_LANGUAGE", "Chinese")
@@ -996,6 +998,7 @@ class RAGUIService:
         question: str,
         mode: str = "hybrid",
         debug: bool = False,
+        planner_enabled: bool = False,
     ) -> Dict[str, Any]:
         """Run query and return structured answer + citations + graph focus."""
         rag = self._get_or_create_rag(kb_id)
@@ -1009,7 +1012,25 @@ class RAGUIService:
                 or "Failed to initialize LightRAG for querying"
             )
 
-        answer = self._run_async(rag.aquery(question, mode=mode))
+        planner_payload: Dict[str, Any] = {}
+        if planner_enabled:
+            planner_result = self._run_async(
+                rag.aquery_plan_then_retrieve(
+                    query=question,
+                    mode=mode,
+                    return_debug=True,
+                )
+            )
+            if isinstance(planner_result, dict):
+                answer = str(planner_result.get("answer", ""))
+                planner_payload = {
+                    "plan": planner_result.get("plan", {}),
+                    "kg_context_preview": planner_result.get("kg_context_preview", ""),
+                }
+            else:
+                answer = str(planner_result)
+        else:
+            answer = self._run_async(rag.aquery(question, mode=mode))
 
         context_raw = ""
         citations: List[Dict[str, Any]] = []
@@ -1036,7 +1057,10 @@ class RAGUIService:
             answer=str(answer),
             citations=citations,
             graph_focus=graph_focus,
-            debug={"context_raw": context_raw} if debug else {},
+            debug={
+                **planner_payload,
+                **({"context_raw": context_raw} if debug else {}),
+            },
         )
         return asdict(response)
 
@@ -1047,6 +1071,7 @@ class RAGUIService:
         image_file: Any,
         mode: str = "hybrid",
         debug: bool = False,
+        planner_enabled: bool = False,
     ) -> Dict[str, Any]:
         """Run multimodal query with user-provided image + optional text question."""
         rag = self._get_or_create_rag(kb_id)
@@ -1057,6 +1082,22 @@ class RAGUIService:
 
         image_path = self._save_query_image_input(kb_id, image_file)
         multimodal_content = [{"type": "image", "img_path": str(image_path)}]
+
+        planner_payload: Dict[str, Any] = {}
+        if planner_enabled:
+            planner_result = self._run_async(
+                rag.aquery_plan_then_retrieve(
+                    query=query_text,
+                    mode=mode,
+                    return_debug=True,
+                )
+            )
+            if isinstance(planner_result, dict):
+                planner_payload = {
+                    "plan": planner_result.get("plan", {}),
+                    "kg_context_preview": planner_result.get("kg_context_preview", ""),
+                }
+
         answer = self._run_async(
             rag.aquery_with_multimodal(
                 query=query_text,
@@ -1088,6 +1129,8 @@ class RAGUIService:
         if debug:
             debug_payload["context_raw"] = context_raw
             debug_payload["query_image_path"] = str(image_path)
+        if planner_payload:
+            debug_payload.update(planner_payload)
 
         response = QueryResponse(
             answer=str(answer),

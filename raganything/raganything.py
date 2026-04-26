@@ -63,9 +63,6 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
     vision_model_func: Optional[Callable] = field(default=None)
     """Vision model function for image analysis."""
 
-    web_search_func: Optional[Callable] = field(default=None)
-    """Optional web search function for plan-then-retrieve querying."""
-
     embedding_func: Optional[Callable] = field(default=None)
     """Embedding function for text vectorization."""
 

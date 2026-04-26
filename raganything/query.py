@@ -8,12 +8,9 @@ import json
 import hashlib
 import re
 import time
-import asyncio
 import inspect
 from typing import Dict, List, Any
 from pathlib import Path
-from urllib import parse as urllib_parse
-from urllib import request as urllib_request
 from lightrag import QueryParam
 from lightrag.utils import always_get_an_event_loop
 from raganything.prompt import PROMPTS
@@ -79,31 +76,11 @@ class QueryMixin:
                         return {}
         return {}
 
-    def _heuristic_need_web(self, query: str) -> bool:
-        query_lower = (query or "").lower()
-        temporal_tokens = [
-            "最新",
-            "最近",
-            "近期",
-            "今年",
-            "本月",
-            "今天",
-            "昨日",
-            "yesterday",
-            "today",
-            "latest",
-            "recent",
-        ]
-        return any(token in query_lower for token in temporal_tokens)
-
-    async def _build_plan_for_query(
-        self, query: str, force_web: bool = False
-    ) -> Dict[str, Any]:
+    async def _build_plan_for_query(self, query: str) -> Dict[str, Any]:
         fallback = {
             "sub_questions": [query],
-            "tool_plan": ["kg"] + (["web"] if (force_web or self._heuristic_need_web(query)) else []),
-            "need_web": bool(force_web or self._heuristic_need_web(query)),
-            "reason": "fallback_heuristic",
+            "tool_plan": ["kg"],
+            "reason": "fallback_local_kg",
         }
 
         llm_func = getattr(self, "llm_model_func", None)
@@ -119,15 +96,13 @@ class QueryMixin:
 输出格式(仅JSON，不要解释):
 {{
   "sub_questions": ["子问题1", "子问题2"],
-  "tool_plan": ["kg", "web"],
-  "need_web": true,
+  "tool_plan": ["kg"],
   "reason": "简短说明"
 }}
 
 规则:
-1. 如果本地KG很可能足够，tool_plan优先["kg"]，need_web=false。
-2. 如果问题显式要求最新信息/政策/新闻，加入web并设need_web=true。
-3. sub_questions最多3条，避免冗余。
+1. tool_plan 固定为 ["kg"]。
+2. sub_questions最多3条，避免冗余。
 """.strip()
 
         try:
@@ -147,144 +122,14 @@ class QueryMixin:
                 sub_questions = [query]
             sub_questions = sub_questions[:3]
 
-            tool_plan = parsed.get("tool_plan", [])
-            if not isinstance(tool_plan, list):
-                tool_plan = []
-            normalized_tool_plan = []
-            for tool in tool_plan:
-                t = str(tool).strip().lower()
-                if t in {"kg", "web"} and t not in normalized_tool_plan:
-                    normalized_tool_plan.append(t)
-            if not normalized_tool_plan:
-                normalized_tool_plan = ["kg"]
-
-            need_web = bool(parsed.get("need_web", False))
-            need_web = bool(need_web or force_web)
-            if need_web and "web" not in normalized_tool_plan:
-                normalized_tool_plan.append("web")
-
-            if not need_web and self._heuristic_need_web(query) and "web" in normalized_tool_plan:
-                need_web = True
-
             return {
                 "sub_questions": sub_questions,
-                "tool_plan": normalized_tool_plan,
-                "need_web": need_web,
+                "tool_plan": ["kg"],
                 "reason": str(parsed.get("reason", "")).strip(),
             }
         except Exception as exc:
             self.logger.warning(f"Plan generation failed, using heuristic fallback: {exc}")
             return fallback
-
-    def _duckduckgo_instant_search_sync(
-        self, query: str, max_results: int = 5, timeout: int = 10
-    ) -> List[Dict[str, str]]:
-        params = {
-            "q": query,
-            "format": "json",
-            "no_redirect": "1",
-            "no_html": "1",
-            "skip_disambig": "1",
-        }
-        url = "https://api.duckduckgo.com/?" + urllib_parse.urlencode(params)
-        req = urllib_request.Request(
-            url,
-            headers={"User-Agent": "Mozilla/5.0 (RAGAnything Planner)"},
-        )
-
-        with urllib_request.urlopen(req, timeout=timeout) as resp:
-            raw = resp.read().decode("utf-8", errors="ignore")
-        payload = json.loads(raw)
-
-        results: List[Dict[str, str]] = []
-        abstract = str(payload.get("AbstractText", "")).strip()
-        abstract_url = str(payload.get("AbstractURL", "")).strip()
-        heading = str(payload.get("Heading", "")).strip() or query
-        if abstract:
-            results.append(
-                {
-                    "title": heading,
-                    "snippet": abstract,
-                    "url": abstract_url,
-                    "source": "duckduckgo_abstract",
-                }
-            )
-
-        def _collect_related(items: List[Any]) -> None:
-            for item in items:
-                if len(results) >= max_results:
-                    return
-                if isinstance(item, dict) and "Topics" in item:
-                    _collect_related(item.get("Topics") or [])
-                    continue
-                if not isinstance(item, dict):
-                    continue
-                text = str(item.get("Text", "")).strip()
-                first_url = str(item.get("FirstURL", "")).strip()
-                if not text:
-                    continue
-                title = text.split(" - ")[0].strip()
-                results.append(
-                    {
-                        "title": title or query,
-                        "snippet": text,
-                        "url": first_url,
-                        "source": "duckduckgo_related",
-                    }
-                )
-
-        _collect_related(payload.get("RelatedTopics") or [])
-        return results[:max_results]
-
-    async def _run_web_search(
-        self, query: str, max_results: int = 5, timeout: int = 10
-    ) -> List[Dict[str, str]]:
-        custom_web_search = getattr(self, "web_search_func", None)
-
-        try:
-            if callable(custom_web_search):
-                try:
-                    raw = custom_web_search(
-                        query, max_results=max_results, timeout=timeout
-                    )
-                except TypeError:
-                    raw = custom_web_search(query)
-                raw = await self._maybe_await(raw)
-                if isinstance(raw, list):
-                    normalized = []
-                    for item in raw:
-                        if isinstance(item, dict):
-                            normalized.append(
-                                {
-                                    "title": str(item.get("title", "")).strip(),
-                                    "snippet": str(item.get("snippet", "")).strip(),
-                                    "url": str(item.get("url", "")).strip(),
-                                    "source": str(item.get("source", "custom_web")).strip(),
-                                }
-                            )
-                        elif isinstance(item, str) and item.strip():
-                            normalized.append(
-                                {
-                                    "title": query,
-                                    "snippet": item.strip(),
-                                    "url": "",
-                                    "source": "custom_web",
-                                }
-                            )
-                    return [r for r in normalized if r.get("snippet")][:max_results]
-        except Exception as exc:
-            self.logger.warning(f"Custom web_search_func failed, fallback to default: {exc}")
-
-        try:
-            return await asyncio.to_thread(
-                self._duckduckgo_instant_search_sync,
-                query,
-                max_results,
-                timeout,
-            )
-        except Exception as exc:
-            self.logger.warning(f"Default web search failed: {exc}")
-            return []
 
     async def _get_kg_context_for_planner_query(
         self, query: str, mode: str = "hybrid", **kwargs
@@ -478,9 +323,6 @@ class QueryMixin:
         self,
         query: str,
         mode: str = "hybrid",
-        force_web: bool = False,
-        max_web_results: int = 5,
-        web_timeout: int = 10,
         return_debug: bool = False,
         system_prompt: str | None = None,
         **kwargs,
@@ -489,62 +331,22 @@ class QueryMixin:
         Simple Graph-RFT style plan-then-retrieve query.
 
         Workflow:
-        1) Plan which tools to use (kg/web).
-        2) Retrieve evidence from KG and optional web search.
-        3) Generate final answer with fused evidence.
+        1) Plan how to decompose query into sub-questions.
+        2) Retrieve evidence from local KG.
+        3) Generate final answer with plan + KG evidence.
         """
         await self._ensure_lightrag_initialized()
 
-        plan = await self._build_plan_for_query(query, force_web=force_web)
-        tool_plan = [str(t).lower() for t in plan.get("tool_plan", [])]
-        need_web = bool(plan.get("need_web", False) or force_web)
-        if need_web and "web" not in tool_plan:
-            tool_plan.append("web")
-        if "kg" not in tool_plan:
-            tool_plan.insert(0, "kg")
+        plan = await self._build_plan_for_query(query)
 
         kg_context = ""
-        if "kg" in tool_plan:
+        if "kg" in [str(t).lower() for t in plan.get("tool_plan", [])]:
             kg_context = await self._get_kg_context_for_planner_query(
                 query, mode=mode, **kwargs
             )
 
-        web_evidences: List[Dict[str, str]] = []
-        if "web" in tool_plan:
-            for sub_q in plan.get("sub_questions", [query])[:3]:
-                hits = await self._run_web_search(
-                    str(sub_q),
-                    max_results=max_web_results,
-                    timeout=web_timeout,
-                )
-                web_evidences.extend(hits)
-
-        # Deduplicate web snippets
-        seen = set()
-        deduped_web = []
-        for item in web_evidences:
-            key = (
-                str(item.get("title", "")).strip(),
-                str(item.get("snippet", "")).strip(),
-                str(item.get("url", "")).strip(),
-            )
-            if key in seen:
-                continue
-            seen.add(key)
-            deduped_web.append(item)
-        web_evidences = deduped_web[: max_web_results * 2]
-
-        web_context_lines = []
-        for idx, hit in enumerate(web_evidences, start=1):
-            web_context_lines.append(
-                f"[WEB#{idx}] 标题: {hit.get('title','')}\n"
-                f"摘要: {hit.get('snippet','')}\n"
-                f"链接: {hit.get('url','')}\n"
-            )
-        web_context = "\n".join(web_context_lines)
-
         final_prompt = f"""
-你是农业病虫害问答助手。请基于给定证据回答问题，并明确区分本地知识库与网络证据。
+你是农业病虫害问答助手。请基于给定证据回答问题。
 
 用户问题:
 {query}
@@ -555,14 +357,10 @@ class QueryMixin:
 本地KG检索证据:
 {kg_context[:12000] if kg_context else "（无）"}
 
-网络检索证据:
-{web_context[:6000] if web_context else "（无）"}
-
 回答要求:
-1. 优先使用本地KG证据；网络证据仅做补充。
-2. 若网络证据与KG冲突，优先KG并指出冲突点。
-3. 不要编造事实；证据不足时明确说明。
-4. 以中文回答，结尾给出“证据来源简表”（KG / WEB）。
+1. 优先使用本地KG证据。
+2. 不要编造事实；证据不足时明确说明。
+3. 以中文回答，结尾给出“证据来源简表”（KG）。
 """.strip()
 
         final_system_prompt = (
@@ -576,7 +374,6 @@ class QueryMixin:
                 "answer": answer,
                 "plan": plan,
                 "kg_context_preview": kg_context[:2000],
-                "web_evidences": web_evidences,
             }
         return answer
 
@@ -969,6 +766,14 @@ class QueryMixin:
         Returns:
             tuple: (processed prompt, image count)
         """
+        if prompt is None:
+            raise ValueError(
+                "VLM enhanced query received empty retrieval prompt. "
+                "This usually means upstream retrieval failed."
+            )
+        if not isinstance(prompt, str):
+            prompt = str(prompt)
+
         enhanced_prompt = prompt
         images_processed = 0
 
@@ -1241,9 +1046,6 @@ class QueryMixin:
         self,
         query: str,
         mode: str = "hybrid",
-        force_web: bool = False,
-        max_web_results: int = 5,
-        web_timeout: int = 10,
         return_debug: bool = False,
         **kwargs,
     ) -> Any:
@@ -1255,9 +1057,6 @@ class QueryMixin:
             self.aquery_plan_then_retrieve(
                 query=query,
                 mode=mode,
-                force_web=force_web,
-                max_web_results=max_web_results,
-                web_timeout=web_timeout,
                 return_debug=return_debug,
                 **kwargs,
             )

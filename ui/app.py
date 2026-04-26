@@ -230,6 +230,7 @@ def _render_qa_panel(service: RAGUIService, kb_id: str) -> None:
     if query_image is not None:
         st.image(query_image, caption=f"查询图片：{getattr(query_image, 'name', '')}", use_container_width=True)
     mode = st.selectbox("检索模式", ["hybrid", "mix", "local", "global", "naive", "bypass"], index=0)
+    planner_enabled = st.toggle("启用先规划再检索（Graph-RFT 简版）", value=False)
     debug = st.checkbox("返回调试上下文", value=False)
 
     if st.button("生成回答", use_container_width=True):
@@ -245,9 +246,19 @@ def _render_qa_panel(service: RAGUIService, kb_id: str) -> None:
                             query_image,
                             mode=mode,
                             debug=debug,
+                            planner_enabled=planner_enabled,
                         )
                     else:
-                        result = service.query(kb_id, question.strip(), mode=mode, debug=debug)
+                        if planner_enabled:
+                            result = service.query(
+                                kb_id,
+                                question.strip(),
+                                mode=mode,
+                                debug=debug,
+                                planner_enabled=True,
+                            )
+                        else:
+                            result = service.query(kb_id, question.strip(), mode=mode, debug=debug)
                     st.session_state["last_query_result"] = result
                     st.session_state["focus_chunk_ids"] = result.get("graph_focus", {}).get("chunk_ids", [])
                     st.success("回答已生成")
@@ -309,6 +320,14 @@ def _render_qa_panel(service: RAGUIService, kb_id: str) -> None:
             if chunk_id and st.button("定位该引用到图谱", key=f"focus_chunk_{idx}"):
                 st.session_state["focus_chunk_ids"] = [chunk_id]
                 st.rerun()
+
+    planner_debug = result.get("debug", {}) or {}
+    plan_obj = planner_debug.get("plan", {})
+    if plan_obj:
+        with st.expander("规划结果", expanded=False):
+            if plan_obj:
+                st.markdown("**规划结果（Planner）**")
+                st.json(plan_obj)
 
     if debug and result.get("debug", {}).get("context_raw"):
         with st.expander("Debug Context", expanded=False):

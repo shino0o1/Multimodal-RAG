@@ -199,7 +199,7 @@ class RAGAnythingConfig:
     """Description policy. 'multimodal_only' keeps descriptions only on multimodal nodes."""
 
     kg_multimodal_min_desc_chars: int = field(
-        default=get_env_value("KG_MULTIMODAL_MIN_DESC_CHARS", 80, int)
+        default=get_env_value("KG_MULTIMODAL_MIN_DESC_CHARS", 30, int)
     )
     """Minimum multimodal description length before one retry is attempted."""
 

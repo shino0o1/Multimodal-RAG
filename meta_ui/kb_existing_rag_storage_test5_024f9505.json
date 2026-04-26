@@ -1,0 +1,16 @@
+{
+  "kb_id": "kb_existing_rag_storage_test5_024f9505",
+  "file_name": "[existing] rag_storage_test5",
+  "upload_path": "",
+  "working_dir": "/media/disk2/wzh/RAG-Anything/rag_storage_test5",
+  "output_dir": "/media/disk2/wzh/RAG-Anything/output",
+  "status": "ready",
+  "stage": "ready",
+  "progress": 100,
+  "error": "",
+  "parser": "mineru",
+  "job_id": "",
+  "source": "existing",
+  "created_at": 1776338488.2753334,
+  "updated_at": 1776338488.2753336
+}
