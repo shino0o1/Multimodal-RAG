@@ -817,6 +817,16 @@ class BaseModalProcessor:
 class ImageModalProcessor(BaseModalProcessor):
     """Processor specialized for image content"""
 
+    IMAGE_NOISE_PATTERNS = [
+        re.compile(r"(二维码|QR\s*码|qrcode|qr\s*code|条形码|barcode|扫码|扫一扫)", re.I),
+        re.compile(r"(页眉|页码|第\s*\d+\s*页|^\s*\d+\s*$|page\s*\d+)", re.I),
+        re.compile(r"蔬菜病虫害诊断[与于]防治原色图谱", re.I),
+    ]
+    PATH_ONLY_PATTERN = re.compile(
+        r"^\s*(?:[A-Za-z]:)?[\\/].+\.(?:png|jpe?g|webp|bmp|gif|tiff?)\s*$",
+        re.I,
+    )
+
     def __init__(
         self,
         lightrag: LightRAG,
@@ -847,6 +857,79 @@ class ImageModalProcessor(BaseModalProcessor):
         except Exception as e:
             logger.error(f"Failed to encode image {image_path}: {e}")
             return ""
+
+    def _empty_image_result(
+        self, modal_content: Any, entity_name: str | None, reason: str
+    ) -> Tuple[str, Dict[str, Any]]:
+        """Return an empty image result that downstream empty-node filters can drop."""
+        fallback_name = (
+            entity_name if entity_name else f"image_{compute_mdhash_id(str(modal_content))}"
+        )
+        return "", {
+            "entity_name": fallback_name,
+            "entity_type": "image",
+            "summary": "",
+            "content_modality": "image",
+            "skip_reason": reason,
+        }
+
+    def _stringify_image_metadata(self, value: Any) -> str:
+        if value is None:
+            return ""
+        if isinstance(value, list):
+            return " ".join(str(item) for item in value if item is not None)
+        return str(value)
+
+    def _is_blank_image_file(self, image_path: Path) -> bool:
+        """Best-effort blank image detection; silently skip if Pillow is unavailable."""
+        try:
+            from PIL import Image, ImageStat
+
+            with Image.open(image_path) as img:
+                img = img.convert("RGB")
+                img.thumbnail((64, 64))
+                extrema = img.getextrema()
+                if all((high - low) <= 3 for low, high in extrema):
+                    return True
+                stat = ImageStat.Stat(img)
+                return max(stat.var) <= 3
+        except Exception:
+            return False
+
+    def _image_noise_reason(self, content_data: Dict[str, Any], image_path: Path) -> str | None:
+        """Detect QR/header/path/blank images before calling the vision model."""
+        if not image_path.exists():
+            return "missing_image_file"
+        try:
+            if image_path.stat().st_size <= 0:
+                return "empty_image_file"
+        except OSError:
+            return "unreadable_image_file"
+
+        metadata_text = " ".join(
+            self._stringify_image_metadata(content_data.get(key))
+            for key in (
+                "image_caption",
+                "img_caption",
+                "image_footnote",
+                "img_footnote",
+                "text",
+                "description",
+                "alt",
+            )
+        ).strip()
+        text_for_noise = f"{metadata_text} {image_path.name}".strip()
+        for pattern in self.IMAGE_NOISE_PATTERNS:
+            if pattern.search(text_for_noise):
+                return "noise_metadata"
+
+        if metadata_text and self.PATH_ONLY_PATTERN.match(metadata_text):
+            return "path_only_metadata"
+
+        if self._is_blank_image_file(image_path):
+            return "blank_image"
+
+        return None
 
     async def generate_description_only(
         self,
@@ -888,14 +971,17 @@ class ImageModalProcessor(BaseModalProcessor):
 
             # Validate image path
             if not image_path:
-                raise ValueError(
-                    f"No image path provided in modal_content: {modal_content}"
+                logger.info("Skipping image before VLM call: missing_image_path")
+                return self._empty_image_result(
+                    modal_content, entity_name, "missing_image_path"
                 )
 
             # Convert to Path object and check if it exists
             image_path_obj = Path(image_path)
-            if not image_path_obj.exists():
-                raise FileNotFoundError(f"Image file not found: {image_path}")
+            noise_reason = self._image_noise_reason(content_data, image_path_obj)
+            if noise_reason:
+                logger.info(f"Skipping image before VLM call: {noise_reason} | {image_path}")
+                return self._empty_image_result(modal_content, entity_name, noise_reason)
 
             # Extract context for current item
             context = ""
@@ -930,29 +1016,47 @@ class ImageModalProcessor(BaseModalProcessor):
             if not image_base64:
                 raise RuntimeError(f"Failed to encode image to base64: {image_path}")
 
-            # Call vision model with encoded image
-            response = await self.modal_caption_func(
-                vision_prompt,
-                image_data=image_base64,
-                system_prompt=PROMPTS["IMAGE_ANALYSIS_SYSTEM"],
+            last_error: Exception | None = None
+            retry_prompt = vision_prompt
+            for attempt in range(3):
+                # Call vision model with encoded image
+                response = await self.modal_caption_func(
+                    retry_prompt,
+                    image_data=image_base64,
+                    system_prompt=PROMPTS["IMAGE_ANALYSIS_SYSTEM"],
+                )
+
+                try:
+                    # Parse response (reuse existing logic)
+                    enhanced_caption, entity_info = self._parse_response(
+                        response, entity_name
+                    )
+                    return enhanced_caption, entity_info
+                except ValueError as parse_error:
+                    last_error = parse_error
+                    if attempt < 2:
+                        logger.warning(
+                            "Image analysis response failed schema validation; "
+                            f"retrying {attempt + 1}/2: {parse_error}"
+                        )
+                        retry_prompt = (
+                            f"{vision_prompt}\n\n"
+                            "上一次输出不是合格JSON。请重新输出，且必须只输出一个合法JSON对象，"
+                            "不要Markdown代码块，不要解释文字，不要在JSON前后添加任何字符。"
+                        )
+                    else:
+                        logger.error(
+                            "Image analysis response failed schema validation after "
+                            f"2 retries: {parse_error}"
+                        )
+
+            return self._empty_image_result(
+                modal_content, entity_name, f"invalid_model_response: {last_error}"
             )
-
-            # Parse response (reuse existing logic)
-            enhanced_caption, entity_info = self._parse_response(response, entity_name)
-
-            return enhanced_caption, entity_info
 
         except Exception as e:
             logger.error(f"Error generating image description: {e}")
-            # Fallback processing
-            fallback_entity = {
-                "entity_name": entity_name
-                if entity_name
-                else f"image_{compute_mdhash_id(str(modal_content))}",
-                "entity_type": "image",
-                "summary": f"Image content: {str(modal_content)[:100]}",
-            }
-            return str(modal_content), fallback_entity
+            return self._empty_image_result(modal_content, entity_name, str(e))
 
     async def process_multimodal_content(
         self,
@@ -1048,14 +1152,7 @@ class ImageModalProcessor(BaseModalProcessor):
         except (json.JSONDecodeError, AttributeError, ValueError) as e:
             logger.error(f"Error parsing image analysis response: {e}")
             logger.debug(f"Raw response: {response}")
-            fallback_entity = {
-                "entity_name": entity_name
-                if entity_name
-                else f"image_{compute_mdhash_id(response)}",
-                "entity_type": "image",
-                "summary": response[:100] + "..." if len(response) > 100 else response,
-            }
-            return response, fallback_entity
+            raise ValueError(f"Invalid image analysis response: {e}") from e
 
 
 class TableModalProcessor(BaseModalProcessor):

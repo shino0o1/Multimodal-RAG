@@ -66,7 +66,8 @@ PROMPTS = PromptRegistry()
 
 # System prompts for different analysis types
 PROMPTS["IMAGE_ANALYSIS_SYSTEM"] = (
-    "You are an agricultural pest-and-disease knowledge extraction expert. Extract only information useful for building a pest/disease knowledge graph, and output strict JSON only."
+    "You are an agricultural pest-and-disease knowledge extraction expert. Extract only information useful for building a pest/disease knowledge graph. "
+    "Output exactly one valid JSON object only. Do not use markdown code fences. Do not add explanations or any text before or after the JSON."
 )
 PROMPTS["IMAGE_ANALYSIS_FALLBACK_SYSTEM"] = (
     "You are an expert image analyst. Provide detailed analysis based on available information."
@@ -113,7 +114,7 @@ Hard constraints:
        "summary": ""
      }}
    }}
-2. Output JSON only; do not output any extra explanation.
+2. Output exactly one valid JSON object only. Do not use markdown code fences. Do not add explanations or any text before or after the JSON.
 
 Additional context:
 - Image Path: {image_path}
@@ -155,7 +156,7 @@ Hard constraints:
        "summary": ""
      }}
    }}
-2. Output JSON only; do not output any extra explanation.
+2. Output exactly one valid JSON object only. Do not use markdown code fences. Do not add explanations or any text before or after the JSON.
 
 Context from surrounding content:
 {context}
