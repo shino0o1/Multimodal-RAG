@@ -6,7 +6,7 @@ from raganything import RAGAnything, RAGAnythingConfig, set_prompt_language
 from lightrag.llm.openai import openai_complete_if_cache, openai_embed
 from lightrag.utils import EmbeddingFunc
 
-BUILD_GLOBAL_TIMEOUT_SECONDS = 2 * 60 * 60  # 2 hours
+BUILD_GLOBAL_TIMEOUT_SECONDS = 12 * 60 * 60  # 6 hours
 BUILD_STALL_TIMEOUT_SECONDS = 100 * 60        # no file write for 110 minutes
 BUILD_WATCH_INTERVAL_SECONDS = 30            # check every 30s
 
@@ -106,18 +106,19 @@ async def main():
     # ==========================================
     # 1. 环境与模型配置
     # ==========================================
-    api_key = "sk-uwqgblktuqsujrieppjbujsrdkwtirmxtlkfjuwsmwcaloag" # 替换为您的 API Key
-    # api_key = "sk-MwcAPesgu8ol4F0ePPNP0hkGiseYaNEbfoLv4phN03ldl3AV" # 替换为您的 API Key
-    base_url = "https://api.siliconflow.cn/v1" # 如果使用代理可以修改此处
-    # base_url = "https://yunwu.ai/v1" # 如果使用代理可以修改此处
+    # api_key = "sk-uwqgblktuqsujrieppjbujsrdkwtirmxtlkfjuwsmwcaloag" # 替换为您的 API Key
+    api_key = "sk-MwcAPesgu8ol4F0ePPNP0hkGiseYaNEbfoLv4phN03ldl3AV" # yunwu api
+    # base_url = "https://api.siliconflow.cn/v1" # 如果使用代理可以修改此处
+    base_url = "https://yunwu.ai/v1" # 如果使用代理可以修改此处
     set_prompt_language("zh")
     os.environ["SUMMARY_LANGUAGE"] = "Chinese"
     # LLM 单次调用超时（秒）
-    os.environ.setdefault("LLM_TIMEOUT", "180")
+    os.environ.setdefault("LLM_TIMEOUT", "200")
 
     # 核心配置：指定解析器并开启多模态开关
     config = RAGAnythingConfig(
-        working_dir="./rag_storage_test5",  # 知识图谱和向量库存储路径, 每次新的PDF用独立的
+        # working_dir="./rag_storage_test6",  # 知识图谱和向量库存储路径, 每次新的PDF用独立的
+        working_dir="./rag_storage_whole_book_gemini",  # 知识图谱和向量库存储路径, 每次新的PDF用独立的
         parser="mineru",              # 使用 MinerU 进行专业级 PDF 解析
         parse_method="auto",           # 强制使用 OCR 方法识别 PDF（也可以填 "auto"）
         enable_image_processing=True, # 开启图像识别与图谱节点构建
@@ -143,15 +144,14 @@ async def main():
         kg_llm_semantic_merge_types=["作物", "生物分类", "病原菌", "药剂", "病害", "虫害"],
         kg_llm_semantic_name_sim_threshold=0.75,  # 候选分组阈值（规则预筛）
         kg_llm_semantic_merge_min_confidence=0.90,  # LLM输出最小置信度
-        kg_llm_semantic_merge_max_group_size=12,
+        kg_llm_semantic_merge_max_group_size=20,
         kg_llm_semantic_merge_max_groups=80,
         kg_llm_timeout_seconds=90,
     )
 
-    # 定义文本大模型回调（用于文本知识抽取和最终回答）
-    def llm_model_func(prompt, system_prompt=None, history_messages=[], **kwargs):
+    def text_model_func(model_name, prompt, system_prompt=None, history_messages=[], **kwargs):
         return openai_complete_if_cache(
-            "Qwen/Qwen3.5-397B-A17B",
+            model_name,
             prompt,
             system_prompt=system_prompt,
             history_messages=history_messages,
@@ -160,13 +160,33 @@ async def main():
             **kwargs,
         )
 
-    # 定义视觉大模型回调（用于图片 OCR 后的语义理解和多模态抽取）
+    # 答案生成模型（Answer）
+    def llm_model_func(prompt, system_prompt=None, history_messages=[], **kwargs):
+        return text_model_func(
+            config.model_answer,
+            prompt,
+            system_prompt=system_prompt,
+            history_messages=history_messages,
+            **kwargs,
+        )
+
+    # 规划模型（Planner）
+    def planner_model_func(prompt, system_prompt=None, history_messages=[], **kwargs):
+        return text_model_func(
+            config.model_planner,
+            prompt,
+            system_prompt=system_prompt,
+            history_messages=history_messages,
+            **kwargs,
+        )
+
+    # 视觉问答模型（Vision）
     def vision_model_func(prompt, system_prompt=None, history_messages=[], image_data=None, messages=None, **kwargs):
         if messages:
-            return openai_complete_if_cache("Qwen/Qwen3.5-397B-A17B", "", system_prompt=None, history_messages=[], messages=messages, api_key=api_key, base_url=base_url, **kwargs)
+            return openai_complete_if_cache(config.model_vision, "", system_prompt=None, history_messages=[], messages=messages, api_key=api_key, base_url=base_url, **kwargs)
         elif image_data:
             return openai_complete_if_cache(
-                "Qwen/Qwen3.5-397B-A17B",
+                config.model_vision,
                 "",
                 system_prompt=None,
                 history_messages=[],
@@ -187,14 +207,55 @@ async def main():
         else:
             return llm_model_func(prompt, system_prompt, history_messages, **kwargs)
 
+    # 图片描述模型（Image Description）
+    def image_description_model_func(
+        prompt,
+        system_prompt=None,
+        history_messages=[],
+        image_data=None,
+        messages=None,
+        **kwargs,
+    ):
+        if messages:
+            return openai_complete_if_cache(
+                config.model_image_description,
+                "",
+                system_prompt=None,
+                history_messages=[],
+                messages=messages,
+                api_key=api_key,
+                base_url=base_url,
+                **kwargs,
+            )
+        elif image_data:
+            return openai_complete_if_cache(
+                config.model_image_description,
+                "",
+                system_prompt=None,
+                history_messages=[],
+                messages=[
+                    {"role": "system", "content": system_prompt} if system_prompt else None,
+                    {
+                        "role": "user",
+                        "content": [
+                            {"type": "text", "text": prompt},
+                            {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{image_data}"}},
+                        ],
+                    },
+                ],
+                api_key=api_key,
+                base_url=base_url,
+                **kwargs,
+            )
+        else:
+            return planner_model_func(prompt, system_prompt, history_messages, **kwargs)
+
     # 定义 Embedding 模型回调
     embedding_func = EmbeddingFunc(
-        embedding_dim=2560,
-        # embedding_dim=3072,
+        embedding_dim=config.embedding_dim,
         max_token_size=8192,
         func=lambda texts: openai_embed.func(
-            texts, model="Qwen/Qwen3-Embedding-4B", api_key=api_key, base_url=base_url
-            # texts, model="text-embedding-3-large", api_key=api_key, base_url=base_url
+            texts, model=config.model_embedding, api_key=api_key, base_url=base_url
         ),
     )
 
@@ -202,14 +263,19 @@ async def main():
     rag = RAGAnything(
         config=config,
         llm_model_func=llm_model_func,
+        planner_model_func=planner_model_func,
         vision_model_func=vision_model_func,
+        image_description_model_func=image_description_model_func,
         embedding_func=embedding_func,
         lightrag_kwargs={
             # 关闭二次抽取（gleaning），减少超时与格式噪声
             "entity_extract_max_gleaning": 0,
             # 限制抽取阶段输入上限，控制提示词长度
             "max_extract_input_tokens": 5120,
-            "max_parallel_insert" :8
+            # 控制并发，避免整书构建时触发上游 TPM 限流和 worker 超时
+            "llm_model_max_async": 4,
+            "embedding_func_max_async": 4,
+            "max_parallel_insert": 4,
         },
     )
 
@@ -218,58 +284,14 @@ async def main():
     # ==========================================
     print("🚀 开始解析 PDF 并构建知识图谱（此过程可能较长，请耐心等待）...")
     rag_for_query = rag
-    try:
-        await _run_build_with_guard(
-            rag=rag,
-            file_path="docs/test4.pdf",
-            output_dir="./output",
-            parse_method="auto",
-        )
-    except TimeoutError as exc:
-        print(f"⚠️ 首次构建触发防卡死保护：{exc}")
-        print("⚠️ 自动降级重试：关闭 LLM 灰区仲裁，避免 merge 阶段长时间等待...")
-        fallback_config = RAGAnythingConfig(
-            working_dir="./rag_storage_test5_fallback",
-            parser=config.parser,
-            parse_method=config.parse_method,
-            enable_image_processing=config.enable_image_processing,
-            enable_table_processing=config.enable_table_processing,
-            enable_equation_processing=config.enable_equation_processing,
-            kg_quality_enabled=config.kg_quality_enabled,
-            kg_extraction_mode=config.kg_extraction_mode,
-            kg_canonical_language=config.kg_canonical_language,
-            kg_relation_schema=config.kg_relation_schema,
-            kg_noise_drop_types=config.kg_noise_drop_types,
-            kg_noise_drop_patterns=config.kg_noise_drop_patterns,
-            kg_description_policy=config.kg_description_policy,
-            kg_ontology_profile=config.kg_ontology_profile,
-            kg_enforce_ontology=config.kg_enforce_ontology,
-            kg_merge_threshold=config.kg_merge_threshold,
-            kg_llm_semantic_merge_enabled=False,
-        )
-        rag_fallback = RAGAnything(
-            config=fallback_config,
-            llm_model_func=llm_model_func,
-            vision_model_func=vision_model_func,
-            embedding_func=embedding_func,
-            lightrag_kwargs={
-                "entity_extract_max_gleaning": 0,
-                "max_extract_input_tokens": 5120,
-                "llm_model_max_async": 12,
-                "embedding_func_max_async": 16,
-                "max_parallel_insert": 4,
-            },
-        )
-        await _run_build_with_guard(
-            rag=rag_fallback,
-            file_path="docs/test4.pdf",
-            output_dir="./output",
-            parse_method="auto",
-        )
-        rag_for_query = rag_fallback
-        print("✅ 降级重试构建完成！数据已保存在 ./rag_storage_test5_fallback 目录。")
-    else:
-        print(f"✅ 知识图谱构建完成！数据已保存在 {config.working_dir} 目录。")
+    await _run_build_with_guard(
+        rag=rag,
+        file_path="docs/十字花科蔬菜病虫害_3.pdf",
+        # file_path="docs/test4.pdf",
+        output_dir="./output",
+        parse_method="auto",
+    )
+    print(f"✅ 知识图谱构建完成！数据已保存在 {config.working_dir} 目录。")
 
     # ==========================================
     # 3. 多模态 RAG 测试查询
@@ -279,7 +301,7 @@ async def main():
     # 测试A：常规查询（系统会自动检索图表描述、文本并利用 VLM 增强分析）
     question_1 = "小猿叶甲幼虫的形态特征是什么？"
     print(f"问：{question_1}")
-    text_result = await rag_for_query.aquery(question_1, mode="hybrid")
+    text_result = await rag_for_query.aquery(question_1, mode=config.query_mode)
     print(f"答：\n{text_result}\n")
 
     # 测试A-2：先规划再检索（Graph-RFT 简版）
@@ -288,7 +310,7 @@ async def main():
     print(f"问（计划检索）：{question_plan}")
     plan_result = await rag_for_query.aquery_plan_then_retrieve(
         question_plan,
-        mode="hybrid",
+        mode=config.query_mode,
     )
     print(f"答（计划检索）：\n{plan_result}\n")
 

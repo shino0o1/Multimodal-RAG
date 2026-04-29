@@ -1,94 +1,102 @@
-(rag_anything) amax@amax-Super-Server:/media/disk2/wzh/RAG-Anything$ python pdf_rag_pipeline.py
-
-# ==========================================
-# 1. 初始化阶段 (配置与加载)
-# ==========================================
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+INFO: Prompt language set to Chinese for KG consistency
 INFO: RAGAnything initialized with config:
-# 系统读取配置文件，设置工作目录、解析器为 MinerU，并开启图片、表格、公式解析。
-INFO:   Working directory: ./rag_storage
+INFO:   Working directory: /media/disk2/wzh/RAG-Anything/rag_storage_test5
 INFO:   Parser: mineru
 INFO:   Parse method: auto
-INFO:   Multimodal processing - Image: True, Table: True, Equation: True
+INFO:   Multimodal processing - Image: True, Table: True, Equation: False
 INFO:   Max concurrent files: 1
-🚀 开始解析 PDF 并构建知识图谱（此过程可能较长，请耐心等待）...
+INFO:   KG quality - enabled: True, canonical_language: zh, relation_schema: fixed, extraction_mode: ppe, ontology_profile: cruciferous_pest_disease, enforce_ontology: True, description_policy: multimodal_only
+INFO:   KG quality - attribute_hosts: ['虫害', '病害', '病原菌'], multimodal_min_desc_chars: 30, drop_empty_multimodal: True
+INFO:   Multimodal cache - desc_cache_enabled: True, hard_skip_enabled: True
+INFO:   Query defaults - mode: hybrid, top_k: 10, vlm_enhanced: False, enable_rerank: False
+INFO:   Model routing - answer: Qwen/Qwen3.6-35B-A3B, planner: Qwen/Qwen3.6-35B-A3B, vision: Qwen/Qwen3.6-35B-A3B, image_desc: Qwen/Qwen3.6-35B-A3B, rerank: (unset)
 INFO: Parser 'mineru' installation verified
-# 初始化底层的 LightRAG 系统，加载我们自定义的实体类别（农药、病害、虫害等）。
-INFO: Initializing LightRAG with parameters: {'working_dir': './rag_storage', 'addon_params': {'entity_types': ['农药', '病害', '虫害', '农作物', '防治方法', '危害症状', '形态特征', '生活习性']}}
-# 初始化图谱库和向量数据库（用于存储实体、关系和文本块）。
-INFO: [] Created new empty graph file: ./rag_storage/graph_chunk_entity_relation.graphml
-INFO:nano-vectordb:Init ...
+INFO: Initializing LightRAG with parameters: {'working_dir': '/media/disk2/wzh/RAG-Anything/rag_storage_test5', 'addon_params': {'entity_types': ['病害', '虫害', '病原菌', '作物', '生长期', '生物分类', '药剂', '别名', '部位', '时间', '危害症状', '形态特征', '发病诱因', '发生时期', '防治要点', '生活习性', '发生规律'], 'relationship_types': ['致病', '发生于', '属类隶属', '危害', '使用药剂', '防治', '生命周期', '地理位置'], 'language': 'Chinese'}}
+INFO: [] Loaded graph from /media/disk2/wzh/RAG-Anything/rag_storage_test5/graph_chunk_entity_relation.graphml with 127 nodes, 84 edges
+INFO:nano-vectordb:Load (112, 2560) data
+INFO:nano-vectordb:Init {'embedding_dim': 2560, 'metric': 'cosine', 'storage_file': '/media/disk2/wzh/RAG-Anything/rag_storage_test5/vdb_entities.json'} 112 data
+INFO:nano-vectordb:Load (101, 2560) data
+INFO:nano-vectordb:Init {'embedding_dim': 2560, 'metric': 'cosine', 'storage_file': '/media/disk2/wzh/RAG-Anything/rag_storage_test5/vdb_relationships.json'} 101 data
+INFO:nano-vectordb:Load (36, 2560) data
+INFO:nano-vectordb:Init {'embedding_dim': 2560, 'metric': 'cosine', 'storage_file': '/media/disk2/wzh/RAG-Anything/rag_storage_test5/vdb_chunks.json'} 36 data
+INFO: [] Process 25113 KV load full_docs with 1 records
+INFO: [] Process 25113 KV load text_chunks with 40 records
+INFO: [] Process 25113 KV load full_entities with 1 records
+INFO: [] Process 25113 KV load full_relations with 1 records
+INFO: [] Process 25113 KV load entity_chunks with 63 records
+INFO: [] Process 25113 KV load relation_chunks with 37 records
+INFO: [] Process 25113 KV load llm_response_cache with 100 records
+INFO: [] Process 25113 doc status load doc_status with 6 records
+INFO: [] Process 25113 KV load parse_cache with 1 records
+INFO: [] Process 25113 KV load multimodal_desc_cache with 40 records
+INFO: Multimodal processors initialized with context support
+INFO: Available processors: ['image', 'table', 'generic']
+INFO: Context configuration: ContextConfig(context_window=1, context_mode='page', max_context_tokens=2000, include_headers=True, include_captions=True, filter_content_types=['text'])
+INFO: LightRAG, parse cache, multimodal desc cache, and multimodal processors initialized
+INFO: LLM func: 4 new workers initialized (Timeouts: Func: 180s, Worker: 360s, Health Check: 375s)
+INFO:  == LLM cache == saving: hybrid:keywords:5ec715bd486534f1ef0edebdf050356a
+INFO: Embedding func: 8 new workers initialized (Timeouts: Func: 30s, Worker: 60s, Health Check: 75s)
+INFO: Query nodes: 蔬菜生虫, 菜虫鉴定, 杀虫药, 农药选择 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 29 relations
+INFO: Query edges: 蔬菜种植, 病虫害防治, 虫害识别, 用药指导 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 9 relations
+INFO: Raw search results: 17 entities, 33 relations, 0 vector chunks
+INFO: After truncation: 17 entities, 33 relations
+WARNING: Vector similarity chunk selection: found 28 but expecting 32
+WARNING: No entity-related chunks selected by vector similarity, falling back to WEIGHT method
+INFO: Selecting 32 from 32 entity-related chunks by weighted polling
+INFO: Find no additional relations-related chunks from 33 relations
+INFO: Round-robin merged chunks: 32 -> 32 (deduplicated 0)
+INFO: Final context: 17 entities, 33 relations, 20 chunks
+INFO: Final chunks S+F/O: E6/1 E4/2 E3/3 E3/4 E3/5 E5/6 E4/7 E4/8 E3/9 E3/10 E3/11 E2/12 E5/13 E5/14 E4/15 E1/16 E1/17 E3/18 E3/19 E2/20
+INFO: Executing multimodal query: 我种的菜上面好像生虫了，这是什么虫？该打什么药？...
+INFO: Query mode: hybrid
+INFO: Starting multimodal query content processing...
+INFO: Processing 1/1 multimodal content: image
+INFO: Multimodal query content processing completed
+INFO: Generated enhanced query length: 726 characters
+INFO: Executing text query: User query: 我种的菜上面好像生虫了，这是什么虫？该打什么药？
 
-# ==========================================
-# 2. PDF 解析与纯文本处理阶段
-# ==========================================
-INFO: Starting complete document processing: docs/test1.pdf
-# 使用 MinerU 解析 PDF。这里系统发现之前有缓存，直接读取了缓存的解析结果。
-INFO: Using cached parsing result for: docs/test1.pdf
-INFO: Content separation complete:
-# 成功分离出 1075 个字符的纯文本内容，以及 18 个多模态片段（包含 11 张图片、1 个表格等）。
-INFO:   - Text content length: 1075 characters
-INFO:   - Multimodal items count: 18
-INFO:   - Multimodal type distribution: {'image': 11, 'header': 3, 'page_number': 3, 'table': 1}
-# 开始处理纯文本部分，调用大模型（LLM）针对文本段落进行第 1 次实体和关系抽取。
-INFO: Starting text content insertion into LightRAG...
-INFO: Chunk 1 of 1 extracted 14 Ent + 18 Rel chunk-9ae0286819f96308a689c0d50268cdab
-# 将从纯文本中抽取的 14 个实体和 18 个关系合并并写入初始图谱中。
-INFO: Completed merging: 14 entities, 0 extra entities, 18 relations
-INFO: [] Writing graph with 14 nodes, 18 edges
+Related image content: 
 
-# ==========================================
-# 3. 多模态内容（图片/表格等）处理阶段
-# ==========================================
-INFO: Starting multimodal content processing...
-INFO: Starting to process 18 multimodal content items
-# 将刚分离出的 18 个多模态内容送入视觉大模型（VLM）生成文字描述，进度从 1% 到 100%。
-INFO: Multimodal chunk generation progress: 1/18 (5.6%)
-...
-INFO: Generated descriptions for 18/18 multimodal items using correct processors
-# 针对这 18 个多模态内容的文字描述/图片，系统再次调用大模型，继续提取其中的实体和关系。
-INFO: Chunk 1 of 18 extracted 6 Ent + 3 Rel...
-INFO: Chunk 2 of 18 extracted 6 Ent + 5 Rel...
-... (处理完所有 18 个分块)
-INFO: Extracted entities from 18 multimodal chunks
-INFO: Added 106 belongs_to relations for multimodal entities
+这张图片展示了一个微距生态场景，主要记录了植物叶片及其上栖息的昆虫，反映了...
+INFO: Query mode: hybrid
+INFO:  == LLM cache == saving: hybrid:keywords:ea8ef976ebce29b0874fe8adc5be2a4c
+INFO: Query nodes: 蔬菜叶片, 细蛾科, 叶潜幼虫, 灰白色潜痕, 杀虫剂, 防治药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 23 relations
+INFO: Query edges: 蔬菜病虫害识别, 农业害虫防治, 农药用药指导 (top_k:10, cosine:0.2)
+INFO: Global query: 11 entites, 9 relations
+INFO: Raw search results: 19 entities, 27 relations, 0 vector chunks
+INFO: After truncation: 19 entities, 27 relations
+WARNING: Vector similarity chunk selection: found 25 but expecting 29
+WARNING: No entity-related chunks selected by vector similarity, falling back to WEIGHT method
+INFO: Selecting 29 from 29 entity-related chunks by weighted polling
+INFO: Find no additional relations-related chunks from 27 relations
+INFO: Round-robin merged chunks: 29 -> 29 (deduplicated 0)
+INFO: Final context: 19 entities, 27 relations, 20 chunks
+INFO: Final chunks S+F/O: E5/1 E5/2 E4/3 E3/4 E2/5 E2/6 E2/7 E1/8 E1/9 E2/10 E2/11 E2/12 E1/13 E4/14 E3/15 E5/16 E5/17 E4/18 E1/19 E1/20
+INFO:  == LLM cache == saving: hybrid:query:70d642f4b2e3ba7d6a29cd967d12a3ae
+INFO: Text query completed
+INFO: Saved multimodal query result to cache: multimodal_query...
+INFO: Multimodal query completed
+INFO: Query nodes: 蔬菜生虫, 菜虫鉴定, 杀虫药, 农药选择 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 29 relations
+INFO: Query edges: 蔬菜种植, 病虫害防治, 虫害识别, 用药指导 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 9 relations
+INFO: Raw search results: 17 entities, 33 relations, 0 vector chunks
+INFO: After truncation: 17 entities, 33 relations
+WARNING: Vector similarity chunk selection: found 28 but expecting 32
+WARNING: No entity-related chunks selected by vector similarity, falling back to WEIGHT method
+INFO: Selecting 32 from 32 entity-related chunks by weighted polling
+INFO: Find no additional relations-related chunks from 33 relations
+INFO: Round-robin merged chunks: 32 -> 32 (deduplicated 0)
+INFO: Final context: 17 entities, 33 relations, 20 chunks
+INFO: Final chunks S+F/O: E6/1 E4/2 E3/3 E3/4 E3/5 E5/6 E4/7 E4/8 E3/9 E3/10 E3/11 E2/12 E5/13 E5/14 E4/15 E1/16 E1/17 E3/18 E3/19 E2/20
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_test5_024f9505 mode=hybrid has_image=True planner_enabled=True | load_rag=0.0428s, save_query_image=0.0005s, initialize_lightrag=4.3069s, planner=443.3149s, answer_generation=92.5002s, context_fetch=0.3005s, citation_build=0.0061s, graph_focus=0.0137s, backend_total=540.4857s
+INFO:__main__:Frontend query timing | kb_id=kb_existing_rag_storage_test5_024f9505 mode=hybrid has_image=True planner_enabled=True | frontend_total=540.4861s
+2026-04-28 13:54:06.582 Please replace `use_container_width` with `width`.
 
-# ==========================================
-# 4. 图谱合并与持久化保存阶段
-# ==========================================
-INFO: Merging stage 1/1: test1.pdf
-# 第 1 步：将多模态提取出的 74 个新实体合并到现有图谱中。系统会自动进行去重（如合并“小猿叶甲”、“成虫”等概念）。
-INFO: Phase 1: Processing 74 entities...
-INFO: Merged: `小猿叶甲` | 1+5
-...
-# 第 2 步：将对应的 191 条新关系合并到图谱中。在此过程中系统会调用 Embedding 模型（由于并发可能触发了几次重试）。
-INFO: Phase 2: Processing 191 relations...
-...
-# 第 3 步：最终确认图谱的规模。总计 101 个实体节点，205 条关系边，并将其持久化保存到硬盘（./rag_storage）。
-INFO: Completed merging: 74 entities, 0 extra entities, 191 relations
-INFO: [] Writing graph with 101 nodes, 205 edges
-INFO: Document docs/test1.pdf processing complete!
-✅ 知识图谱构建完成！数据已保存在 ./rag_storage 目录。
+`use_container_width` will be removed after 2025-12-31.
 
-# ==========================================
-# 5. 多模态 RAG 查询测试阶段
-# ==========================================
-🔍 开始进行 RAG 查询测试...
-问：小猿叶甲幼虫的形态特征是什么？
-INFO: Executing VLM enhanced query: 小猿叶甲幼虫的形态特征是什么？...
-# 首先从用户问题中提取关键词节点（Morphology, 特征, 昆虫生物学等）。
-INFO: Query nodes: Morphology, 特征, 昆虫生物学, 分类, 生态 (top_k:40, cosine:0.2)
-# 分别在图谱的本地（局部知识）和全局（宏观知识）中进行实体和关系的检索。
-INFO: Local query: 40 entites, 112 relations
-INFO: Global query: 35 entites, 40 relations
-# 汇总找到的相关知识片段（共包含 49 个实体，113 条关系，13 个原始知识块）。
-INFO: Final context: 49 entities, 113 relations, 13 chunks
-# 由于启用了多模态，系统自动在检索到的知识中发现了 10 张相关的图片。
-INFO: Found 10 image path matches in prompt
-# 系统将上述找出的文本知识，配合这 10 张图片，一起打包发送给视觉大模型（gpt-4o）进行最终的高级增强分析。
-INFO: Processed 10 images for VLM
-INFO: VLM enhanced query completed
-答：
-### 小猿叶甲幼虫的形态特征
-...（输出高质量的多模态综合回答）...
-
-INFO: Successfully finalized 12 storages
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.

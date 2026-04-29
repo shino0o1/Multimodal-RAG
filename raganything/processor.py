@@ -204,7 +204,7 @@ class ProcessorMixin:
     def _is_empty_multimodal_result(
         self, description: str, entity_info: Dict[str, Any]
     ) -> bool:
-        desc = (description or "").strip()
+        desc = str(description or "").strip()
         summary = str(entity_info.get("summary", "") or "").strip()
         if not desc and not summary:
             return True
@@ -244,7 +244,7 @@ class ProcessorMixin:
         threshold = int(getattr(self.config, "kg_multimodal_min_desc_chars", 80) or 0)
         if threshold <= 0:
             return False
-        return len((description or "").strip()) < threshold
+        return len(str(description or "").strip()) < threshold
 
     def _get_multimodal_item_cache_key(self, doc_id: str, item_hash: str) -> str:
         return f"{doc_id}::item::{item_hash}"
@@ -986,8 +986,10 @@ class ProcessorMixin:
             existing_doc_status.get("chunks_count", 0) if existing_doc_status else 0
         )
 
-        for i, item in enumerate(multimodal_items):
-            try:
+        semaphore = asyncio.Semaphore(getattr(self.lightrag, "max_parallel_insert", 2))
+
+        async def process_single_item(i: int, item: Dict[str, Any]):
+            async with semaphore:
                 content_type = item.get("type", "unknown")
                 self.logger.info(
                     f"Processing item {i + 1}/{len(multimodal_items)}: {content_type} content"
@@ -996,48 +998,63 @@ class ProcessorMixin:
                 # Select appropriate processor
                 processor = get_processor_for_type(self.modal_processors, content_type)
 
-                if processor:
-                    # Prepare item info for context extraction
-                    item_info = {
-                        "page_idx": item.get("page_idx", 0),
-                        "index": i,
-                        "type": content_type,
-                    }
-
-                    # Process content and get chunk results instead of immediately merging
-                    (
-                        enhanced_caption,
-                        entity_info,
-                        chunk_results,
-                    ) = await processor.process_multimodal_content(
-                        modal_content=item,
-                        content_type=content_type,
-                        file_path=file_name,
-                        item_info=item_info,  # Pass item info for context extraction
-                        batch_mode=True,
-                        doc_id=doc_id,  # Pass doc_id for proper association
-                        chunk_order_index=existing_chunks_count
-                        + i,  # Proper order index
-                    )
-
-                    # Collect chunk results for batch processing
-                    all_chunk_results.extend(chunk_results)
-
-                    # Extract chunk ID from the entity_info (actual chunk_id created by processor)
-                    if entity_info and "chunk_id" in entity_info:
-                        chunk_id = entity_info["chunk_id"]
-                        multimodal_chunk_ids.append(chunk_id)
-
-                    self.logger.info(
-                        f"{content_type} processing complete: {entity_info.get('entity_name', 'Unknown')}"
-                    )
-                else:
+                if not processor:
                     self.logger.warning(
                         f"No suitable processor found for {content_type} type content"
                     )
+                    return [], None
 
-            except Exception as e:
-                self.logger.error(f"Error processing multimodal content: {str(e)}")
+                # Prepare item info for context extraction
+                item_info = {
+                    "page_idx": item.get("page_idx", 0),
+                    "index": i,
+                    "type": content_type,
+                }
+
+                # Process content and get chunk results instead of immediately merging
+                (
+                    _enhanced_caption,
+                    entity_info,
+                    chunk_results,
+                ) = await processor.process_multimodal_content(
+                    modal_content=item,
+                    content_type=content_type,
+                    file_path=file_name,
+                    item_info=item_info,  # Pass item info for context extraction
+                    batch_mode=True,
+                    doc_id=doc_id,  # Pass doc_id for proper association
+                    chunk_order_index=existing_chunks_count
+                    + i,  # Proper order index
+                )
+
+                chunk_id = None
+                if entity_info and "chunk_id" in entity_info:
+                    chunk_id = entity_info["chunk_id"]
+
+                self.logger.info(
+                    f"{content_type} processing complete: {entity_info.get('entity_name', 'Unknown')}"
+                )
+                return chunk_results, chunk_id
+
+        self.logger.info(
+            "Starting parallel individual multimodal processing with concurrency=%s",
+            getattr(self.lightrag, "max_parallel_insert", 2),
+        )
+        tasks = [
+            asyncio.create_task(process_single_item(i, item))
+            for i, item in enumerate(multimodal_items)
+        ]
+
+        for result in await asyncio.gather(*tasks, return_exceptions=True):
+            try:
+                if isinstance(result, Exception):
+                    raise result
+                chunk_results, chunk_id = result
+                all_chunk_results.extend(chunk_results or [])
+                if chunk_id:
+                    multimodal_chunk_ids.append(chunk_id)
+            except Exception as exc:
+                self.logger.error(f"Error processing multimodal content: {str(exc)}")
                 self.logger.debug("Exception details:", exc_info=True)
                 continue
 
@@ -1258,8 +1275,8 @@ class ProcessorMixin:
                                 entity_name=None,
                             )
                         )
-                        if len((retry_description or "").strip()) > len(
-                            (description or "").strip()
+                        if len(str(retry_description or "").strip()) > len(
+                            str(description or "").strip()
                         ):
                             description = retry_description
                             entity_info = retry_entity_info

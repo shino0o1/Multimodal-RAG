@@ -29,13 +29,34 @@ class QueryMixin:
             return await value
         return value
 
+    def _get_config_default(self, name: str, fallback: Any) -> Any:
+        config = getattr(self, "config", None)
+        if config is None:
+            return fallback
+        return getattr(config, name, fallback)
+
+    def _with_query_defaults(self, kwargs: Dict[str, Any]) -> Dict[str, Any]:
+        query_kwargs = dict(kwargs)
+        default_top_k = self._get_config_default("query_top_k", None)
+        if "top_k" not in query_kwargs and default_top_k is not None:
+            query_kwargs["top_k"] = default_top_k
+
+        default_enable_rerank = self._get_config_default("query_enable_rerank", None)
+        if "enable_rerank" not in query_kwargs and default_enable_rerank is not None:
+            query_kwargs["enable_rerank"] = bool(default_enable_rerank)
+
+        return query_kwargs
+
     async def _call_text_llm(
         self, prompt: str, system_prompt: str | None = None
     ) -> str:
-        llm_func = getattr(self, "llm_model_func", None)
+        llm_func = (
+            getattr(self, "llm_model_func", None)
+            or getattr(self, "planner_model_func", None)
+        )
         if llm_func is None:
             raise ValueError(
-                "llm_model_func is required for plan-then-retrieve query mode."
+                "llm_model_func or planner_model_func is required for query generation."
             )
 
         result = llm_func(
@@ -43,6 +64,22 @@ class QueryMixin:
             system_prompt=system_prompt,
             history_messages=[],
         )
+        result = await self._maybe_await(result)
+        return str(result)
+
+    async def _call_planner_llm(
+        self, prompt: str, system_prompt: str | None = None
+    ) -> str:
+        llm_func = (
+            getattr(self, "planner_model_func", None)
+            or getattr(self, "llm_model_func", None)
+        )
+        if llm_func is None:
+            raise ValueError(
+                "planner_model_func or llm_model_func is required for plan-then-retrieve query mode."
+            )
+
+        result = llm_func(prompt, system_prompt=system_prompt, history_messages=[])
         result = await self._maybe_await(result)
         return str(result)
 
@@ -83,7 +120,10 @@ class QueryMixin:
             "reason": "fallback_local_kg",
         }
 
-        llm_func = getattr(self, "llm_model_func", None)
+        llm_func = (
+            getattr(self, "planner_model_func", None)
+            or getattr(self, "llm_model_func", None)
+        )
         if llm_func is None:
             return fallback
 
@@ -106,7 +146,7 @@ class QueryMixin:
 """.strip()
 
         try:
-            raw = await self._call_text_llm(
+            raw = await self._call_planner_llm(
                 planner_prompt,
                 system_prompt="你是严谨的检索规划器，只输出合法JSON。",
             )
@@ -137,7 +177,7 @@ class QueryMixin:
         if self.lightrag is None:
             return ""
 
-        query_kwargs = dict(kwargs)
+        query_kwargs = self._with_query_defaults(dict(kwargs))
         try:
             query_param = QueryParam(mode=mode, only_need_context=True, **query_kwargs)
             context = await self.lightrag.aquery(query, param=query_param)
@@ -212,6 +252,7 @@ class QueryMixin:
                 "stream",
                 "response_type",
                 "top_k",
+                "enable_rerank",
                 "max_tokens",
                 "temperature",
                 # "only_need_context",
@@ -237,7 +278,7 @@ class QueryMixin:
             mode: Query mode ("local", "global", "hybrid", "naive", "mix", "bypass")
             system_prompt: Optional system prompt to include.
             **kwargs: Other query parameters, will be passed to QueryParam
-                - vlm_enhanced: bool, default True when vision_model_func is available.
+                - vlm_enhanced: bool, default from config.query_vlm_enhanced.
                   If True, will parse image paths in retrieved context and replace them
                   with base64 encoded images for VLM processing.
 
@@ -249,15 +290,21 @@ class QueryMixin:
                 "No LightRAG instance available. Please process documents first or provide a pre-initialized LightRAG instance."
             )
 
-        # Check if VLM enhanced query should be used
-        vlm_enhanced = kwargs.pop("vlm_enhanced", None)
+        query_kwargs = self._with_query_defaults(dict(kwargs))
 
-        # Auto-determine VLM enhanced based on availability
+        # Check if VLM enhanced query should be used
+        vlm_enhanced = query_kwargs.pop("vlm_enhanced", None)
+
+        # Default from config; when absent, keep legacy auto behavior.
         if vlm_enhanced is None:
-            vlm_enhanced = (
-                hasattr(self, "vision_model_func")
-                and self.vision_model_func is not None
-            )
+            cfg_default = self._get_config_default("query_vlm_enhanced", None)
+            if cfg_default is None:
+                vlm_enhanced = (
+                    hasattr(self, "vision_model_func")
+                    and self.vision_model_func is not None
+                )
+            else:
+                vlm_enhanced = bool(cfg_default)
 
         # Use VLM enhanced query if enabled and available
         if (
@@ -266,7 +313,7 @@ class QueryMixin:
             and self.vision_model_func
         ):
             return await self.aquery_vlm_enhanced(
-                query, mode=mode, system_prompt=system_prompt, **kwargs
+                query, mode=mode, system_prompt=system_prompt, **query_kwargs
             )
         elif vlm_enhanced and (
             not hasattr(self, "vision_model_func") or not self.vision_model_func
@@ -286,7 +333,7 @@ class QueryMixin:
             )
 
         # Create query parameters
-        query_param = QueryParam(mode=mode, **kwargs)
+        query_param = QueryParam(mode=mode, **query_kwargs)
 
         self.logger.info(f"Executing text query: {query[:100]}...")
         self.logger.info(f"Query mode: {mode}")
@@ -431,9 +478,11 @@ class QueryMixin:
             self.logger.info("No multimodal content provided, executing text query")
             return await self.aquery(query, mode=mode, **kwargs)
 
+        query_kwargs = self._with_query_defaults(dict(kwargs))
+
         # Generate cache key for multimodal query
         cache_key = self._generate_multimodal_cache_key(
-            query, multimodal_content, mode, **kwargs
+            query, multimodal_content, mode, **query_kwargs
         )
 
         # Check cache if available and enabled
@@ -471,7 +520,7 @@ class QueryMixin:
         )
 
         # Execute enhanced query
-        result = await self.aquery(enhanced_query, mode=mode, **kwargs)
+        result = await self.aquery(enhanced_query, mode=mode, **query_kwargs)
 
         # Save to cache if available and enabled
         if (
@@ -554,8 +603,10 @@ class QueryMixin:
         if hasattr(self, "_current_images_base64"):
             delattr(self, "_current_images_base64")
 
+        query_kwargs = self._with_query_defaults(dict(kwargs))
+
         # 1. Get original retrieval prompt (without generating final answer)
-        query_param = QueryParam(mode=mode, only_need_prompt=True, **kwargs)
+        query_param = QueryParam(mode=mode, only_need_prompt=True, **query_kwargs)
         raw_prompt = await self.lightrag.aquery(query, param=query_param)
 
         self.logger.debug("Retrieved raw prompt from LightRAG")
@@ -568,7 +619,7 @@ class QueryMixin:
         if not images_found:
             self.logger.info("No valid images found, falling back to normal query")
             # Fallback to normal query
-            query_param = QueryParam(mode=mode, **kwargs)
+            query_param = QueryParam(mode=mode, **query_kwargs)
             return await self.lightrag.aquery(
                 query, param=query_param, system_prompt=system_prompt
             )
@@ -682,12 +733,19 @@ class QueryMixin:
             image_base64 = processor._encode_image_to_base64(image_path)
             if image_base64:
                 prompt = PROMPTS["QUERY_IMAGE_DESCRIPTION"]
-                description = await processor.modal_caption_func(
-                    prompt,
-                    image_data=image_base64,
-                    system_prompt=PROMPTS["QUERY_IMAGE_ANALYST_SYSTEM"],
+                image_desc_func = (
+                    getattr(self, "image_description_model_func", None)
+                    or getattr(self, "vision_model_func", None)
+                    or getattr(processor, "modal_caption_func", None)
                 )
-                return description
+                if image_desc_func is not None:
+                    description = image_desc_func(
+                        prompt,
+                        image_data=image_base64,
+                        system_prompt=PROMPTS["QUERY_IMAGE_ANALYST_SYSTEM"],
+                    )
+                    description = await self._maybe_await(description)
+                    return str(description)
 
         # If image doesn't exist or processing failed, use existing information
         parts = []
@@ -1006,7 +1064,7 @@ class QueryMixin:
             query: Query text
             mode: Query mode ("local", "global", "hybrid", "naive", "mix", "bypass")
             **kwargs: Other query parameters, will be passed to QueryParam
-                - vlm_enhanced: bool, default True when vision_model_func is available.
+                - vlm_enhanced: bool, default from config.query_vlm_enhanced.
                   If True, will parse image paths in retrieved context and replace them
                   with base64 encoded images for VLM processing.
 

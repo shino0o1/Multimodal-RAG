@@ -1,24 +1,74 @@
-WARNING: chunk-ab612b77d068f6914591fbd218c8ff95: LLM output format error; found 5/4 fields on ENTITY `菜青虫` @ `菊科蔬菜`
-WARNING: chunk-ab612b77d068f6914591fbd218c8ff95: LLM output format error; found 5/4 fields on ENTITY `菜青虫` @ `旋花科蔬菜`
-WARNING: chunk-ab612b77d068f6914591fbd218c8ff95: LLM output format error; found 5/4 fields on ENTITY `菜青虫` @ `百合科蔬菜`
-WARNING: chunk-ab612b77d068f6914591fbd218c8ff95: LLM output format error; found 5/4 fields on ENTITY `菜青虫` @ `茄科蔬菜`
-WARNING: chunk-ab612b77d068f6914591fbd218c8ff95: LLM output format error; found 5/4 fields on ENTITY `菜青虫` @ `藜科蔬菜`
-WARNING: chunk-ab612b77d068f6914591fbd218c8ff95: LLM output format error; found 5/4 fields on ENTITY `菜青虫` @ `苋科蔬菜`
-WARNING: chunk-ab612b77d068f6914591fbd218c8ff95: LLM output format error; found 5/4 fields on ENTITY `菜青虫` @ `危害症状`
-INFO: Chunk 27 of 34 extracted 21 Ent + 20 Rel chunk-ab612b77d068f6914591fbd218c8ff95
-INFO:  == LLM cache == saving: default:extract:b9108b3dd25e3fb7fb3aaac1768cef19
-WARNING: chunk-0e346558ded34e94d02497dcb2b22468: LLM output format error; found 5/4 fields on ENTITY `菜粉蝶` @ `鳞翅目`
-WARNING: chunk-0e346558ded34e94d02497dcb2b22468: LLM output format error; found 5/4 fields on ENTITY `菜粉蝶` @ `粉蝶科`
-WARNING: chunk-0e346558ded34e94d02497dcb2b22468: LLM output format error; found 5/4 fields on ENTITY `菜粉蝶` @ `十字花科蔬菜`
-WARNING: chunk-0e346558ded34e94d02497dcb2b22468: LLM output format error; found 5/4 fields on ENTITY `菜粉蝶` @ `甘蓝`
-WARNING: chunk-0e346558ded34e94d02497dcb2b22468: LLM output format error; found 5/4 fields on ENTITY `菜粉蝶` @ `花椰菜`
-WARNING: chunk-0e346558ded34e94d02497dcb2b22468: LLM output format error; found 5/4 fields on ENTITY `菜粉蝶` @ `萝卜`
-WARNING: chunk-0e346558ded34e94d02497dcb2b22468: LLM output format error; found 5/4 fields on ENTITY `菜粉蝶` @ `白菜`
-WARNING: chunk-0e346558ded34e94d02497dcb2b22468: LLM output format error; found 5/4 fields on ENTITY `菜粉蝶` @ `菜粉蝶卵`
-WARNING: chunk-0e346558ded34e94d02497dcb2b22468: LLM output format error; found 5/4 fields on ENTITY `菜粉蝶` @ `菜粉蝶成虫`
-INFO:openai._base_client:Retrying request to /chat/completions in 0.417715 seconds
-INFO:  == LLM cache == saving: default:extract:a0d5153269e6c090752137e2a1a21180
-INFO: Chunk 28 of 34 extracted 19 Ent + 16 Rel chunk-af69c33f68c34e581e70da5655eb65de
-INFO:  == LLM cache == saving: default:extract:972d90c2317c3c6ec3e68ebe890d53dc
-WARNING: chunk-0e346558ded34e94d02497dcb2b22468: LLM output format error; found 5/4 fields on ENTITY `菜粉蝶成虫` @ `交尾`
-WARNING: chunk-0e346558ded34e94d02497dcb2b22468: LLM output format error; found 5/4 fields on ENTITY `菜粉蝶` @ `产卵`
+ERROR: Error generating description for image item 31: 'dict' object has no attribute 'strip'
+ERROR: OpenAI API Rate Limit Error: Error code: 429 - {'message': 'Request was rejected due to rate limiting. Details: TPM limit reached.', 'data': None}
+ERROR: Error generating image description: RetryError[<Future at 0x7f9d58e8b6b0 state=finished raised RateLimitError>]
+ERROR: Error in multimodal processing: C[68/216]: chunk-83d9539373069fd7ba94561a3af467a8: LLM func: Worker execution timeout after 360s
+⚠️ 首次构建触发防卡死保护：构建超时：超过 7200s 仍未完成
+⚠️ 自动降级重试：关闭 LLM 灰区仲裁，避免 merge 阶段长时间等待...
+ERROR: Error in multimodal processing: C[68/216]: chunk-83d9539373069fd7ba94561a3af467a8: LLM func: Worker execution timeout after 360s
+ERROR:raganything.parser:[MinerU] raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+ERROR:raganything.parser:[MinerU] │             │      │    │            └ SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)'))
+ERROR:raganything.parser:[MinerU] │             │      │    └ SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)'))
+INFO:raganything.parser:[MinerU] │             │      └ '/api/models/opendatalab/MinerU2.5-2509-1.2B/revision/main'
+INFO:raganything.parser:[MinerU] │             └ <urllib3.connectionpool.HTTPSConnectionPool object at 0x7f7a88a15d00>
+ERROR:raganything.parser:[MinerU] └ <class 'urllib3.exceptions.MaxRetryError'>
+ERROR:raganything.parser:[MinerU] urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='hf-mirror.com', port=443): Max retries exceeded with url: /api/models/opendatalab/MinerU2.5-2509-1.2B/revision/main (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))
+ERROR:raganything.parser:[MinerU] raise SSLError(e, request=request)
+INFO:raganything.parser:[MinerU] │                   └ <PreparedRequest [GET]>
+ERROR:raganything.parser:[MinerU] └ <class 'requests.exceptions.SSLError'>
+ERROR:raganything.parser:[MinerU] requests.exceptions.SSLError: (MaxRetryError("HTTPSConnectionPool(host='hf-mirror.com', port=443): Max retries exceeded with url: /api/models/opendatalab/MinerU2.5-2509-1.2B/revision/main (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))"), '(Request ID: 993331ba-1c69-45a6-b361-d34a2ab2d9e6)')
+INFO:raganything.parser:[MinerU] INFO:     Shutting down
+INFO:raganything.parser:[MinerU] Start MinerU FastAPI Service: http://127.0.0.1:57531
+INFO:raganything.parser:[MinerU] API documentation: http://127.0.0.1:57531/docs
+INFO:raganything.parser:[MinerU] INFO:     Waiting for application shutdown.
+INFO:raganything.parser:[MinerU] INFO:     Application shutdown complete.
+INFO:raganything.parser:[MinerU] INFO:     Finished server process [2136]
+ERROR:raganything.parser:[MinerU] Error: 1 task(s) failed while processing documents:
+ERROR:raganything.parser:[MinerU] - task#1 (test4): Task 67ce0557-0400-4972-8739-7ff1a199c42a failed for task#1 [test4]: {"task_id": "67ce0557-0400-4972-8739-7ff1a199c42a", "status": "failed", "backend": "hybrid-auto-engine", "file_names": ["test4"], "created_at": "2026-04-28T10:19:25.996531+00:00", "started_at": "2026-04-28T10:19:25.997669+00:00", "completed_at": "2026-04-28T10:19:33.977094+00:00", "error": "(MaxRetryError(\"HTTPSConnectionPool(host='hf-mirror.com', port=443): Max retries exceeded with url: /api/models/opendatalab/MinerU2.5-2509-1.2B/revision/main (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))\"), '(Request ID: 993331ba-1c69-45a6-b361-d34a2ab2d9e6)')", "status_url": "http://127.0.0.1:57531/tasks/67ce0557-0400-4972-8739-7ff1a199c42a", "result_url": "http://127.0.0.1:57531/tasks/67ce0557-0400-4972-8739-7ff1a199c42a/result", "queued_ahead": 0}
+INFO:raganything.parser:[MinerU] Command executed failed
+ERROR: Mineru command failed: Mineru command failed with return code 1: ['2026-04-28 18:19:33.977 | ERROR    | __main__:_process_task:1212 - Async task failed: 67ce0557-0400-4972-8739-7ff1a199c42a', 'urllib3.exceptions.SSLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)', 'raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]', "│             │      │    │            └ SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)'))", "│             │      │    └ SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)'))", "└ <class 'urllib3.exceptions.MaxRetryError'>", "urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='hf-mirror.com', port=443): Max retries exceeded with url: /api/models/opendatalab/MinerU2.5-2509-1.2B/revision/main (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))", 'raise SSLError(e, request=request)', "└ <class 'requests.exceptions.SSLError'>", 'requests.exceptions.SSLError: (MaxRetryError("HTTPSConnectionPool(host=\'hf-mirror.com\', port=443): Max retries exceeded with url: /api/models/opendatalab/MinerU2.5-2509-1.2B/revision/main (Caused by SSLError(SSLEOFError(8, \'[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)\')))"), \'(Request ID: 993331ba-1c69-45a6-b361-d34a2ab2d9e6)\')', 'Error: 1 task(s) failed while processing documents:', '- task#1 (test4): Task 67ce0557-0400-4972-8739-7ff1a199c42a failed for task#1 [test4]: {"task_id": "67ce0557-0400-4972-8739-7ff1a199c42a", "status": "failed", "backend": "hybrid-auto-engine", "file_names": ["test4"], "created_at": "2026-04-28T10:19:25.996531+00:00", "started_at": "2026-04-28T10:19:25.997669+00:00", "completed_at": "2026-04-28T10:19:33.977094+00:00", "error": "(MaxRetryError(\\"HTTPSConnectionPool(host=\'hf-mirror.com\', port=443): Max retries exceeded with url: /api/models/opendatalab/MinerU2.5-2509-1.2B/revision/main (Caused by SSLError(SSLEOFError(8, \'[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)\')))\\"), \'(Request ID: 993331ba-1c69-45a6-b361-d34a2ab2d9e6)\')", "status_url": "http://127.0.0.1:57531/tasks/67ce0557-0400-4972-8739-7ff1a199c42a", "result_url": "http://127.0.0.1:57531/tasks/67ce0557-0400-4972-8739-7ff1a199c42a/result", "queued_ahead": 0}']
+Traceback (most recent call last):
+  File "/media/disk2/wzh/RAG-Anything/pdf_rag_pipeline.py", line 284, in main
+    await _run_build_with_guard(
+  File "/media/disk2/wzh/RAG-Anything/pdf_rag_pipeline.py", line 87, in _run_build_with_guard
+    raise TimeoutError(
+TimeoutError: 构建超时：超过 7200s 仍未完成
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/media/disk2/wzh/RAG-Anything/pdf_rag_pipeline.py", line 384, in <module>
+    asyncio.run(main())
+  File "/media/disk2/lhy/anaconda/envs/rag_anything/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/media/disk2/lhy/anaconda/envs/rag_anything/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/disk2/lhy/anaconda/envs/rag_anything/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/media/disk2/wzh/RAG-Anything/pdf_rag_pipeline.py", line 337, in main
+    await _run_build_with_guard(
+  File "/media/disk2/wzh/RAG-Anything/pdf_rag_pipeline.py", line 95, in _run_build_with_guard
+    await process_task
+  File "/media/disk2/wzh/RAG-Anything/raganything/processor.py", line 2124, in process_document_complete
+    content_list, content_based_doc_id = await self.parse_document(
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/disk2/wzh/RAG-Anything/raganything/processor.py", line 688, in parse_document
+    content_list = await asyncio.to_thread(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/disk2/lhy/anaconda/envs/rag_anything/lib/python3.12/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/disk2/lhy/anaconda/envs/rag_anything/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/disk2/wzh/RAG-Anything/raganything/parser.py", line 999, in parse_pdf
+    self._run_mineru_command(
+  File "/media/disk2/wzh/RAG-Anything/raganything/parser.py", line 822, in _run_mineru_command
+    raise MineruExecutionError(return_code, error_lines)
+raganything.parser.MineruExecutionError: Mineru command failed with return code 1: ['2026-04-28 18:19:33.977 | ERROR    | __main__:_process_task:1212 - Async task failed: 67ce0557-0400-4972-8739-7ff1a199c42a', 'urllib3.exceptions.SSLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)', 'raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]', "│             │      │    │            └ SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)'))", "│             │      │    └ SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)'))", "└ <class 'urllib3.exceptions.MaxRetryError'>", "urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='hf-mirror.com', port=443): Max retries exceeded with url: /api/models/opendatalab/MinerU2.5-2509-1.2B/revision/main (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))", 'raise SSLError(e, request=request)', "└ <class 'requests.exceptions.SSLError'>", 'requests.exceptions.SSLError: (MaxRetryError("HTTPSConnectionPool(host=\'hf-mirror.com\', port=443): Max retries exceeded with url: /api/models/opendatalab/MinerU2.5-2509-1.2B/revision/main (Caused by SSLError(SSLEOFError(8, \'[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)\')))"), \'(Request ID: 993331ba-1c69-45a6-b361-d34a2ab2d9e6)\')', 'Error: 1 task(s) failed while processing documents:', '- task#1 (test4): Task 67ce0557-0400-4972-8739-7ff1a199c42a failed for task#1 [test4]: {"task_id": "67ce0557-0400-4972-8739-7ff1a199c42a", "status": "failed", "backend": "hybrid-auto-engine", "file_names": ["test4"], "created_at": "2026-04-28T10:19:25.996531+00:00", "started_at": "2026-04-28T10:19:25.997669+00:00", "completed_at": "2026-04-28T10:19:33.977094+00:00", "error": "(MaxRetryError(\\"HTTPSConnectionPool(host=\'hf-mirror.com\', port=443): Max retries exceeded with url: /api/models/opendatalab/MinerU2.5-2509-1.2B/revision/main (Caused by SSLError(SSLEOFError(8, \'[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)\')))\\"), \'(Request ID: 993331ba-1c69-45a6-b361-d34a2ab2d9e6)\')", "status_url": "http://127.0.0.1:57531/tasks/67ce0557-0400-4972-8739-7ff1a199c42a", "result_url": "http://127.0.0.1:57531/tasks/67ce0557-0400-4972-8739-7ff1a199c42a/result", "queued_ahead": 0}']
+INFO: Successfully finalized 12 storages
+INFO: Successfully finalized all RAGAnything storages
+INFO: Successfully finalized 12 storages
+INFO: Successfully finalized all RAGAnything storages

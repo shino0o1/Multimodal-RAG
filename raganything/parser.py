@@ -957,6 +957,40 @@ class MineruParser(Parser):
 
         return content_list, md_content
 
+    @classmethod
+    def _has_existing_mineru_content_list(
+        cls, output_dir: Path, file_stem: str, method: str = "auto"
+    ) -> bool:
+        """Return True if MinerU output already contains a readable content list."""
+        candidates = [
+            output_dir / f"{file_stem}_content_list.json",
+            output_dir / file_stem / method / f"{file_stem}_content_list.json",
+        ]
+        file_stem_subdir = output_dir / file_stem
+        if file_stem_subdir.is_dir():
+            candidates.extend(
+                subdir / f"{file_stem}_content_list.json"
+                for subdir in file_stem_subdir.iterdir()
+                if subdir.is_dir()
+            )
+
+        for candidate in candidates:
+            if not candidate.exists():
+                continue
+            try:
+                with open(candidate, "r", encoding="utf-8") as f:
+                    payload = json.load(f)
+                if isinstance(payload, list) and payload:
+                    cls.logger.info(
+                        f"Reusing existing MinerU content list: {candidate}"
+                    )
+                    return True
+            except Exception as exc:
+                cls.logger.warning(
+                    f"Existing MinerU content list is not readable: {candidate}: {exc}"
+                )
+        return False
+
     def parse_pdf(
         self,
         pdf_path: Union[str, Path],
@@ -995,6 +1029,27 @@ class MineruParser(Parser):
 
             base_output_dir.mkdir(parents=True, exist_ok=True)
 
+            # If a previous MinerU run already produced content_list JSON, reuse it.
+            # This avoids rerunning the expensive/fragile MinerU subprocess.
+            backend = kwargs.get("backend") or ""
+            read_method = method
+            if backend.startswith("vlm-"):
+                read_method = "vlm"
+            elif backend.startswith("hybrid-"):
+                read_method = "hybrid_auto"
+            elif not backend:
+                # MinerU 2.x defaults to hybrid-auto-engine, which writes hybrid_auto/.
+                read_method = "hybrid_auto"
+
+            if self._has_existing_mineru_content_list(
+                base_output_dir, name_without_suff, method=read_method
+            ):
+                content_list, _ = self._read_output_files(
+                    base_output_dir, name_without_suff, method=read_method
+                )
+                if content_list:
+                    return content_list
+
             # Run mineru command
             self._run_mineru_command(
                 input_path=pdf_path,
@@ -1013,7 +1068,6 @@ class MineruParser(Parser):
             # Note: _read_output_files() will scan subdirectories automatically,
             # so this mapping is just for optimization and fallback
             # Use `or ""` to handle both missing keys and explicit None values
-            backend = kwargs.get("backend") or ""
             if backend.startswith("vlm-"):
                 method = "vlm"
             elif backend.startswith("hybrid-"):

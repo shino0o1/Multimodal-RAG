@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import logging
+import time
 from io import StringIO
 from pathlib import Path
 from typing import Any, Dict, List
@@ -20,6 +22,10 @@ try:
 except ModuleNotFoundError:
     # Fallback for `streamlit run ui/app.py` when cwd/sys.path points to `ui/`.
     from service import RAGUIService
+
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 
 @st.cache_resource(show_spinner=False)
@@ -132,6 +138,66 @@ def _build_graph_option(payload: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
+TIMING_LABELS = {
+    "frontend_total": "前端总耗时",
+    "backend_total": "后端总耗时",
+    "load_rag": "加载 RAG 实例",
+    "save_query_image": "保存查询图片",
+    "initialize_lightrag": "初始化 LightRAG",
+    "planner_plan_llm": "Planner 生成计划",
+    "planner_context_fetch": "Planner 获取 KG 证据",
+    "planner_total": "Planner 总耗时",
+    "answer_generation": "检索与生成回答",
+    "context_fetch": "提取检索上下文",
+    "citation_build": "构建引用",
+    "graph_focus": "定位图谱",
+}
+
+
+def _format_seconds(seconds: Any) -> str:
+    try:
+        value = float(seconds)
+    except (TypeError, ValueError):
+        return "-"
+    if value >= 60:
+        return f"{value / 60:.2f} min"
+    return f"{value:.2f} s"
+
+
+def _render_query_timings(result: Dict[str, Any]) -> None:
+    timings = result.get("timings", {}) or {}
+    if not timings:
+        return
+
+    st.markdown("**耗时统计**")
+    metric_keys = [
+        "frontend_total",
+        "backend_total",
+        "planner_total",
+        "answer_generation",
+    ]
+    visible_metric_keys = [key for key in metric_keys if key in timings]
+    if visible_metric_keys:
+        cols = st.columns(len(visible_metric_keys))
+        for col, key in zip(cols, visible_metric_keys):
+            col.metric(TIMING_LABELS.get(key, key), _format_seconds(timings.get(key)))
+
+    stage_order = list(TIMING_LABELS)
+    ordered_keys = [key for key in stage_order if key in timings]
+    ordered_keys.extend(key for key in timings if key not in stage_order)
+    rows = []
+    for key in ordered_keys:
+        value = timings[key]
+        rows.append(
+            {
+                "环节": TIMING_LABELS.get(key, key),
+                "耗时": _format_seconds(value),
+                "秒": round(float(value), 4),
+            }
+        )
+    st.dataframe(rows, use_container_width=True, hide_index=True)
+
+
 def _render_kb_panel(service: RAGUIService) -> str:
     st.subheader("1) 知识库管理")
 
@@ -238,6 +304,7 @@ def _render_qa_panel(service: RAGUIService, kb_id: str) -> None:
             st.warning("请输入问题或上传查询图片")
         else:
             with st.spinner("检索与生成中..."):
+                frontend_started_at = time.perf_counter()
                 try:
                     if query_image is not None:
                         result = service.query_with_image(
@@ -259,6 +326,17 @@ def _render_qa_panel(service: RAGUIService, kb_id: str) -> None:
                             )
                         else:
                             result = service.query(kb_id, question.strip(), mode=mode, debug=debug)
+                    frontend_total = round(time.perf_counter() - frontend_started_at, 4)
+                    result.setdefault("timings", {})
+                    result["timings"]["frontend_total"] = frontend_total
+                    logger.info(
+                        "Frontend query timing | kb_id=%s mode=%s has_image=%s planner_enabled=%s | frontend_total=%.4fs",
+                        kb_id,
+                        mode,
+                        query_image is not None,
+                        planner_enabled,
+                        frontend_total,
+                    )
                     st.session_state["last_query_result"] = result
                     st.session_state["focus_chunk_ids"] = result.get("graph_focus", {}).get("chunk_ids", [])
                     st.success("回答已生成")
@@ -271,6 +349,8 @@ def _render_qa_panel(service: RAGUIService, kb_id: str) -> None:
 
     st.markdown("**回答**")
     st.write(result.get("answer", ""))
+
+    _render_query_timings(result)
 
     graph_focus = result.get("graph_focus", {})
     if graph_focus.get("chunk_ids"):

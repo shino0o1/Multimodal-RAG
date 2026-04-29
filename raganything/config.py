@@ -123,6 +123,53 @@ class RAGAnythingConfig:
     content_format: str = field(default=get_env_value("CONTENT_FORMAT", "minerU", str))
     """Default content format for context extraction when processing documents."""
 
+    # Query Runtime Configuration
+    # ---
+    query_mode: str = field(default=get_env_value("QUERY_MODE", "hybrid", str))
+    """Default query mode: 'local', 'global', 'hybrid', 'naive', 'mix', or 'bypass'."""
+
+    query_top_k: int = field(default=get_env_value("QUERY_TOP_K", 10, int))
+    """Default top_k used by query retrieval."""
+
+    query_enable_rerank: bool = field(
+        default=get_env_value("QUERY_ENABLE_RERANK", False, bool)
+    )
+    """Whether query-time rerank is enabled by default."""
+
+    query_vlm_enhanced: bool = field(
+        default=get_env_value("QUERY_VLM_ENHANCED", False, bool)
+    )
+    """Whether VLM-enhanced query branch is enabled by default."""
+
+    # Model Routing Configuration
+    # ---
+    model_answer: str = field(
+        default=get_env_value("RAG_MODEL_ANSWER", "gemini-2.5-flash", str)
+    )
+    """Model for final answer generation."""
+
+    model_planner: str = field(default=get_env_value("RAG_MODEL_PLANNER", "gemini-2.5-flash", str))
+    """Model for planning stage; empty means fallback to model_answer."""
+
+    model_vision: str = field(default=get_env_value("RAG_MODEL_VISION", "gemini-2.5-flash", str))
+    """Model for vision reasoning (image input); empty means fallback to model_answer."""
+    # 如果不配置RAG_MODEL_IMAGE_DESCRIPTION, 会复用RAG_MODEL_VISION
+    model_image_description: str = field(
+        default=get_env_value("RAG_MODEL_IMAGE_DESCRIPTION", "", str)
+    )
+    """Model for image description stage; empty means fallback to model_vision."""
+
+    model_embedding: str = field(
+        default=get_env_value("RAG_MODEL_EMBEDDING", "text-embedding-3-large", str)
+    )
+    """Embedding model for vector retrieval."""
+
+    embedding_dim: int = field(default=get_env_value("EMBEDDING_DIM", 3072, int))
+    """Embedding vector dimension."""
+
+    rerank_model: str = field(default=get_env_value("RAG_MODEL_RERANK", "", str))
+    """Rerank model identifier. Empty means no rerank model configured."""
+
     # Path Handling Configuration
     # ---
     use_full_path: bool = field(default=get_env_value("USE_FULL_PATH", False, bool))
@@ -274,6 +321,17 @@ class RAGAnythingConfig:
                 DeprecationWarning,
                 stacklevel=2,
             )
+
+        # Keep model routing predictable when optional stages are not configured.
+        if not self.model_planner:
+            self.model_planner = self.model_answer
+        if not self.model_vision:
+            self.model_vision = self.model_answer
+        if not self.model_image_description:
+            self.model_image_description = self.model_vision
+
+        if self.query_top_k <= 0:
+            self.query_top_k = 10
 
     @property
     def mineru_parse_method(self) -> str:

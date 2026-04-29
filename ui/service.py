@@ -5,6 +5,7 @@ from __future__ import annotations
 import asyncio
 import ast
 import json
+import logging
 import os
 import re
 import threading
@@ -48,6 +49,9 @@ SUPPORTED_QUERY_IMAGE_SUFFIXES = {
     ".tiff",
 }
 
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
 
 @dataclass
 class Citation:
@@ -66,6 +70,7 @@ class QueryResponse:
     citations: List[Dict[str, Any]]
     graph_focus: Dict[str, List[str]]
     debug: Dict[str, Any]
+    timings: Dict[str, float]
 
 
 def load_api_config_from_pipeline(script_path: Optional[Path] = None) -> Dict[str, str]:
@@ -317,24 +322,69 @@ class RAGUIService:
 
         base_url_env = os.getenv("OPENAI_BASE_URL", "").strip()
         base_url = base_url_env or fallback_cfg.get("base_url", "").strip() or None
-        llm_model = os.getenv("RAG_UI_LLM_MODEL", "Qwen/Qwen3.5-397B-A17B")
-        vision_model = os.getenv("RAG_UI_VISION_MODEL", "Qwen/Qwen3.5-397B-A17B")
-        embedding_model = os.getenv("RAG_UI_EMBED_MODEL", "Qwen/Qwen3-Embedding-4B")
-        # Keep default dimension aligned with the default embedding model above.
-        # Qwen/Qwen3-Embedding-4B typically returns 2560-d vectors on common OpenAI-compatible endpoints.
-        embedding_dim = int(os.getenv("EMBEDDING_DIM", "2560"))
+
+        config = RAGAnythingConfig(
+            working_dir=working_dir,
+            parser_output_dir=output_dir,
+            parser=self.parser,
+            parse_method="auto",
+            enable_image_processing=True,
+            enable_table_processing=True,
+            enable_equation_processing=False,
+            kg_quality_enabled=True,
+        )
+
+        # Backward compatibility for old UI env variable names.
+        legacy_llm_model = os.getenv("RAG_UI_LLM_MODEL", "").strip()
+        legacy_vision_model = os.getenv("RAG_UI_VISION_MODEL", "").strip()
+        legacy_embed_model = os.getenv("RAG_UI_EMBED_MODEL", "").strip()
+        if legacy_llm_model:
+            config.model_answer = legacy_llm_model
+        if legacy_vision_model:
+            config.model_vision = legacy_vision_model
+            if not os.getenv("RAG_MODEL_IMAGE_DESCRIPTION", "").strip():
+                config.model_image_description = legacy_vision_model
+        if legacy_embed_model:
+            config.model_embedding = legacy_embed_model
+
+        llm_model = config.model_answer
+        planner_model = config.model_planner
+        vision_model = config.model_vision
+        image_desc_model = config.model_image_description
+        embedding_model = config.model_embedding
+        embedding_dim = config.embedding_dim
 
         set_prompt_language("zh")
         os.environ.setdefault("SUMMARY_LANGUAGE", "Chinese")
 
-        def llm_model_func(prompt, system_prompt=None, history_messages=[], **kwargs):
+        def _text_model_func(
+            model_name: str, prompt, system_prompt=None, history_messages=[], **kwargs
+        ):
             return openai_complete_if_cache(
-                llm_model,
+                model_name,
                 prompt,
                 system_prompt=system_prompt,
                 history_messages=history_messages,
                 api_key=api_key,
                 base_url=base_url,
+                **kwargs,
+            )
+
+        def llm_model_func(prompt, system_prompt=None, history_messages=[], **kwargs):
+            return _text_model_func(
+                llm_model,
+                prompt,
+                system_prompt=system_prompt,
+                history_messages=history_messages,
+                **kwargs,
+            )
+
+        def planner_model_func(prompt, system_prompt=None, history_messages=[], **kwargs):
+            return _text_model_func(
+                planner_model,
+                prompt,
+                system_prompt=system_prompt,
+                history_messages=history_messages,
                 **kwargs,
             )
 
@@ -388,6 +438,56 @@ class RAGUIService:
 
             return llm_model_func(prompt, system_prompt, history_messages, **kwargs)
 
+        def image_description_model_func(
+            prompt,
+            system_prompt=None,
+            history_messages=[],
+            image_data=None,
+            messages=None,
+            **kwargs,
+        ):
+            if messages:
+                return openai_complete_if_cache(
+                    image_desc_model,
+                    "",
+                    system_prompt=None,
+                    history_messages=[],
+                    messages=messages,
+                    api_key=api_key,
+                    base_url=base_url,
+                    **kwargs,
+                )
+
+            if image_data:
+                return openai_complete_if_cache(
+                    image_desc_model,
+                    "",
+                    system_prompt=None,
+                    history_messages=[],
+                    messages=[
+                        {"role": "system", "content": system_prompt}
+                        if system_prompt
+                        else None,
+                        {
+                            "role": "user",
+                            "content": [
+                                {"type": "text", "text": prompt},
+                                {
+                                    "type": "image_url",
+                                    "image_url": {
+                                        "url": f"data:image/jpeg;base64,{image_data}"
+                                    },
+                                },
+                            ],
+                        },
+                    ],
+                    api_key=api_key,
+                    base_url=base_url,
+                    **kwargs,
+                )
+
+            return planner_model_func(prompt, system_prompt, history_messages, **kwargs)
+
         embedding_func = EmbeddingFunc(
             embedding_dim=embedding_dim,
             max_token_size=8192,
@@ -399,21 +499,12 @@ class RAGUIService:
             ),
         )
 
-        config = RAGAnythingConfig(
-            working_dir=working_dir,
-            parser_output_dir=output_dir,
-            parser=self.parser,
-            parse_method="auto",
-            enable_image_processing=True,
-            enable_table_processing=True,
-            enable_equation_processing=False,
-            kg_quality_enabled=True,
-        )
-
         rag = RAGAnything(
             config=config,
             llm_model_func=llm_model_func,
+            planner_model_func=planner_model_func,
             vision_model_func=vision_model_func,
+            image_description_model_func=image_description_model_func,
             embedding_func=embedding_func,
         )
         if callback is None:
@@ -778,6 +869,112 @@ class RAGUIService:
         self._rag_cache[kb_id] = rag
         return rag
 
+    def _record_timing(
+        self,
+        timings: Dict[str, float],
+        stage: str,
+        started_at: float,
+    ) -> None:
+        timings[stage] = round(time.perf_counter() - started_at, 4)
+
+    def _log_query_timings(
+        self,
+        *,
+        kb_id: str,
+        mode: str,
+        has_image: bool,
+        planner_enabled: bool,
+        timings: Dict[str, float],
+    ) -> None:
+        timing_text = ", ".join(f"{key}={value:.4f}s" for key, value in timings.items())
+        logger.info(
+            "UI query timing | kb_id=%s mode=%s has_image=%s planner_enabled=%s | %s",
+            kb_id,
+            mode,
+            has_image,
+            planner_enabled,
+            timing_text,
+        )
+
+    def _run_planner_only(
+        self,
+        rag: Any,
+        query_text: str,
+        mode: str,
+        timings: Dict[str, float],
+    ) -> Dict[str, Any]:
+        """Run planner and KG context fetch without generating a final answer."""
+        planner_started_at = time.perf_counter()
+
+        stage_started_at = time.perf_counter()
+        plan = self._run_async(rag._build_plan_for_query(query_text))
+        self._record_timing(timings, "planner_plan_llm", stage_started_at)
+
+        kg_context = ""
+        if "kg" in [str(t).lower() for t in plan.get("tool_plan", [])]:
+            stage_started_at = time.perf_counter()
+            kg_context = self._run_async(
+                rag._get_kg_context_for_planner_query(query_text, mode=mode)
+            )
+            self._record_timing(timings, "planner_context_fetch", stage_started_at)
+
+        self._record_timing(timings, "planner_total", planner_started_at)
+        return {
+            "plan": plan,
+            "kg_context": kg_context,
+            "kg_context_preview": kg_context[:2000],
+        }
+
+    def _build_planner_answer_prompt(
+        self,
+        query_text: str,
+        planner_payload: Dict[str, Any],
+    ) -> str:
+        """Build final-answer prompt from a planner-only result."""
+        plan = planner_payload.get("plan", {})
+        kg_context = str(planner_payload.get("kg_context", ""))
+        return f"""
+你是农业病虫害问答助手。请基于给定证据回答问题。
+
+用户问题:
+{query_text}
+
+规划结果:
+{json.dumps(plan, ensure_ascii=False)}
+
+本地KG检索证据:
+{kg_context[:12000] if kg_context else "（无）"}
+
+回答要求:
+1. 优先使用本地KG证据。
+2. 不要编造事实；证据不足时明确说明。
+3. 以中文回答，结尾给出“证据来源简表”（KG）。
+""".strip()
+
+    def _augment_query_with_planner_context(
+        self,
+        query_text: str,
+        planner_payload: Dict[str, Any],
+    ) -> str:
+        """Append planner output as guidance for the final multimodal answer."""
+        plan = planner_payload.get("plan", {})
+        kg_context = str(planner_payload.get("kg_context", ""))
+        if not plan and not kg_context:
+            return query_text
+
+        return f"""
+用户原始问题:
+{query_text}
+
+检索规划:
+{json.dumps(plan, ensure_ascii=False)}
+
+本地KG预检索证据:
+{kg_context[:8000] if kg_context else "（无）"}
+
+请先理解用户上传的图片，再结合上述规划和本地KG证据给出最终回答；证据不足时明确说明。
+""".strip()
+
     def _fetch_query_context(self, rag: Any, question: str, mode: str) -> str:
         """Try only_need_context first; fallback to only_need_prompt."""
         try:
@@ -791,12 +988,25 @@ class RAGUIService:
             self._run_async(rag._ensure_lightrag_initialized())
 
         assert rag.lightrag is not None
+        config = getattr(rag, "config", None)
+        query_kwargs: Dict[str, Any] = {}
+        if config is not None:
+            query_top_k = getattr(config, "query_top_k", None)
+            if query_top_k is not None:
+                query_kwargs["top_k"] = query_top_k
+            query_enable_rerank = getattr(config, "query_enable_rerank", None)
+            if query_enable_rerank is not None:
+                query_kwargs["enable_rerank"] = bool(query_enable_rerank)
 
         try:
             context = self._run_async(
                 rag.lightrag.aquery(
                     question,
-                    param=QueryParam(mode=mode, only_need_context=True),
+                    param=QueryParam(
+                        mode=mode,
+                        only_need_context=True,
+                        **query_kwargs,
+                    ),
                 )
             )
             return str(context)
@@ -804,7 +1014,11 @@ class RAGUIService:
             prompt = self._run_async(
                 rag.lightrag.aquery(
                     question,
-                    param=QueryParam(mode=mode, only_need_prompt=True),
+                    param=QueryParam(
+                        mode=mode,
+                        only_need_prompt=True,
+                        **query_kwargs,
+                    ),
                 )
             )
             return str(prompt)
@@ -1001,66 +1215,90 @@ class RAGUIService:
         planner_enabled: bool = False,
     ) -> Dict[str, Any]:
         """Run query and return structured answer + citations + graph focus."""
+        total_started_at = time.perf_counter()
+        timings: Dict[str, float] = {}
+
+        stage_started_at = time.perf_counter()
         rag = self._get_or_create_rag(kb_id)
+        self._record_timing(timings, "load_rag", stage_started_at)
 
         # Ensure LightRAG backend is initialized before calling aquery().
         # QueryMixin.aquery() raises immediately when self.lightrag is None.
+        stage_started_at = time.perf_counter()
         init_result = self._run_async(rag._ensure_lightrag_initialized())
         if isinstance(init_result, dict) and not init_result.get("success", False):
             raise RuntimeError(
                 init_result.get("error")
                 or "Failed to initialize LightRAG for querying"
             )
+        self._record_timing(timings, "initialize_lightrag", stage_started_at)
 
         planner_payload: Dict[str, Any] = {}
         if planner_enabled:
-            planner_result = self._run_async(
-                rag.aquery_plan_then_retrieve(
-                    query=question,
-                    mode=mode,
-                    return_debug=True,
+            planner_payload = self._run_planner_only(rag, question, mode, timings)
+            final_prompt = self._build_planner_answer_prompt(question, planner_payload)
+            stage_started_at = time.perf_counter()
+            answer = self._run_async(
+                rag._call_text_llm(
+                    final_prompt,
+                    system_prompt="你是严谨的农业病虫害专家助手，强调可验证和低幻觉。",
                 )
             )
-            if isinstance(planner_result, dict):
-                answer = str(planner_result.get("answer", ""))
-                planner_payload = {
-                    "plan": planner_result.get("plan", {}),
-                    "kg_context_preview": planner_result.get("kg_context_preview", ""),
-                }
-            else:
-                answer = str(planner_result)
         else:
+            stage_started_at = time.perf_counter()
             answer = self._run_async(rag.aquery(question, mode=mode))
+        self._record_timing(timings, "answer_generation", stage_started_at)
 
         context_raw = ""
         citations: List[Dict[str, Any]] = []
         graph_focus = {"node_ids": [], "edge_ids": [], "chunk_ids": []}
 
         try:
+            stage_started_at = time.perf_counter()
             context_raw = self._fetch_query_context(rag, question, mode)
+            self._record_timing(timings, "context_fetch", stage_started_at)
+
+            stage_started_at = time.perf_counter()
             citation_bundle = self._build_citations(kb_id, context_raw)
             citations = citation_bundle["citations"]
             chunk_ids = citation_bundle["chunk_ids"]
+            self._record_timing(timings, "citation_build", stage_started_at)
 
+            stage_started_at = time.perf_counter()
             graph_payload = self.get_graph(kb_id, focus_chunk_ids=chunk_ids, full=False)
             graph_focus = {
                 "node_ids": graph_payload.get("highlight_node_ids", []),
                 "edge_ids": graph_payload.get("highlight_edge_ids", []),
                 "chunk_ids": chunk_ids,
             }
+            self._record_timing(timings, "graph_focus", stage_started_at)
         except Exception:
             # Keep answer available even if evidence extraction fails.
             citations = []
             graph_focus = {"node_ids": [], "edge_ids": [], "chunk_ids": []}
+
+        self._record_timing(timings, "backend_total", total_started_at)
+        self._log_query_timings(
+            kb_id=kb_id,
+            mode=mode,
+            has_image=False,
+            planner_enabled=planner_enabled,
+            timings=timings,
+        )
 
         response = QueryResponse(
             answer=str(answer),
             citations=citations,
             graph_focus=graph_focus,
             debug={
-                **planner_payload,
+                **{
+                    key: value
+                    for key, value in planner_payload.items()
+                    if key != "kg_context"
+                },
                 **({"context_raw": context_raw} if debug else {}),
             },
+            timings=timings,
         )
         return asdict(response)
 
@@ -1074,53 +1312,72 @@ class RAGUIService:
         planner_enabled: bool = False,
     ) -> Dict[str, Any]:
         """Run multimodal query with user-provided image + optional text question."""
+        total_started_at = time.perf_counter()
+        timings: Dict[str, float] = {}
+
+        stage_started_at = time.perf_counter()
         rag = self._get_or_create_rag(kb_id)
+        self._record_timing(timings, "load_rag", stage_started_at)
 
         query_text = (question or "").strip()
         if not query_text:
             query_text = "请结合知识库分析这张图片，并给出关键判断依据。"
 
+        stage_started_at = time.perf_counter()
         image_path = self._save_query_image_input(kb_id, image_file)
         multimodal_content = [{"type": "image", "img_path": str(image_path)}]
+        self._record_timing(timings, "save_query_image", stage_started_at)
+
+        stage_started_at = time.perf_counter()
+        init_result = self._run_async(rag._ensure_lightrag_initialized())
+        if isinstance(init_result, dict) and not init_result.get("success", False):
+            raise RuntimeError(
+                init_result.get("error")
+                or "Failed to initialize LightRAG for querying"
+            )
+        self._record_timing(timings, "initialize_lightrag", stage_started_at)
 
         planner_payload: Dict[str, Any] = {}
         if planner_enabled:
-            planner_result = self._run_async(
-                rag.aquery_plan_then_retrieve(
-                    query=query_text,
-                    mode=mode,
-                    return_debug=True,
-                )
-            )
-            if isinstance(planner_result, dict):
-                planner_payload = {
-                    "plan": planner_result.get("plan", {}),
-                    "kg_context_preview": planner_result.get("kg_context_preview", ""),
-                }
+            planner_payload = self._run_planner_only(rag, query_text, mode, timings)
 
+        answer_query_text = (
+            self._augment_query_with_planner_context(query_text, planner_payload)
+            if planner_payload
+            else query_text
+        )
+        stage_started_at = time.perf_counter()
         answer = self._run_async(
             rag.aquery_with_multimodal(
-                query=query_text,
+                query=answer_query_text,
                 multimodal_content=multimodal_content,
                 mode=mode,
             )
         )
+        self._record_timing(timings, "answer_generation", stage_started_at)
 
         context_raw = ""
         citations: List[Dict[str, Any]] = []
         graph_focus = {"node_ids": [], "edge_ids": [], "chunk_ids": []}
         try:
+            stage_started_at = time.perf_counter()
             context_raw = self._fetch_query_context(rag, query_text, mode)
+            self._record_timing(timings, "context_fetch", stage_started_at)
+
+            stage_started_at = time.perf_counter()
             citation_bundle = self._build_citations(kb_id, context_raw)
             citations = citation_bundle["citations"]
             chunk_ids = citation_bundle["chunk_ids"]
+            self._record_timing(timings, "citation_build", stage_started_at)
 
+            stage_started_at = time.perf_counter()
             graph_payload = self.get_graph(kb_id, focus_chunk_ids=chunk_ids, full=False)
             graph_focus = {
                 "node_ids": graph_payload.get("highlight_node_ids", []),
                 "edge_ids": graph_payload.get("highlight_edge_ids", []),
                 "chunk_ids": chunk_ids,
             }
+            self._record_timing(timings, "graph_focus", stage_started_at)
         except Exception:
             citations = []
             graph_focus = {"node_ids": [], "edge_ids": [], "chunk_ids": []}
@@ -1130,12 +1387,28 @@ class RAGUIService:
             debug_payload["context_raw"] = context_raw
             debug_payload["query_image_path"] = str(image_path)
         if planner_payload:
-            debug_payload.update(planner_payload)
+            debug_payload.update(
+                {
+                    key: value
+                    for key, value in planner_payload.items()
+                    if key != "kg_context"
+                }
+            )
+
+        self._record_timing(timings, "backend_total", total_started_at)
+        self._log_query_timings(
+            kb_id=kb_id,
+            mode=mode,
+            has_image=True,
+            planner_enabled=planner_enabled,
+            timings=timings,
+        )
 
         response = QueryResponse(
             answer=str(answer),
             citations=citations,
             graph_focus=graph_focus,
             debug=debug_payload,
+            timings=timings,
         )
         return asdict(response)

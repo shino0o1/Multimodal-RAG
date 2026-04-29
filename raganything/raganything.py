@@ -60,8 +60,14 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
     llm_model_func: Optional[Callable] = field(default=None)
     """LLM model function for text analysis."""
 
+    planner_model_func: Optional[Callable] = field(default=None)
+    """Optional dedicated model function for query planning."""
+
     vision_model_func: Optional[Callable] = field(default=None)
     """Vision model function for image analysis."""
+
+    image_description_model_func: Optional[Callable] = field(default=None)
+    """Optional dedicated model function for image description in query/processing."""
 
     embedding_func: Optional[Callable] = field(default=None)
     """Embedding function for text vectorization."""
@@ -114,6 +120,13 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
         # Initialize configuration if not provided
         if self.config is None:
             self.config = RAGAnythingConfig()
+
+        if self.planner_model_func is None:
+            self.planner_model_func = self.llm_model_func
+        if self.image_description_model_func is None:
+            self.image_description_model_func = (
+                self.vision_model_func or self.llm_model_func
+            )
 
         # Set working directory
         self.working_dir = self.config.working_dir
@@ -207,6 +220,21 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
             self.config.multimodal_desc_cache_enabled,
             self.config.multimodal_hard_skip_enabled,
         )
+        self.logger.info(
+            "  Query defaults - mode: %s, top_k: %s, vlm_enhanced: %s, enable_rerank: %s",
+            self.config.query_mode,
+            self.config.query_top_k,
+            self.config.query_vlm_enhanced,
+            self.config.query_enable_rerank,
+        )
+        self.logger.info(
+            "  Model routing - answer: %s, planner: %s, vision: %s, image_desc: %s, rerank: %s",
+            self.config.model_answer,
+            self.config.model_planner,
+            self.config.model_vision,
+            self.config.model_image_description,
+            self.config.rerank_model or "(unset)",
+        )
 
     def close(self):
         """Cleanup resources when object is destroyed.
@@ -285,7 +313,11 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
         if self.config.enable_image_processing:
             self.modal_processors["image"] = ImageModalProcessor(
                 lightrag=self.lightrag,
-                modal_caption_func=self.vision_model_func or self.llm_model_func,
+                modal_caption_func=(
+                    self.image_description_model_func
+                    or self.vision_model_func
+                    or self.llm_model_func
+                ),
                 context_extractor=self.context_extractor,
                 kg_quality_manager=self.kg_quality_manager,
             )
@@ -351,6 +383,12 @@ class RAGAnything(QueryMixin, ProcessorMixin, BatchMixin):
                 ):
                     self.llm_model_func = self.lightrag.llm_model_func
                     self.logger.debug("Inherited llm_model_func from LightRAG instance")
+                if self.planner_model_func is None:
+                    self.planner_model_func = self.llm_model_func
+                if self.image_description_model_func is None:
+                    self.image_description_model_func = (
+                        self.vision_model_func or self.llm_model_func
+                    )
                 if self.kg_quality_manager is not None:
                     self.kg_quality_manager.set_llm_model_func(self.llm_model_func)
 
