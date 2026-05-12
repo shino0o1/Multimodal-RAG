@@ -151,6 +151,11 @@ class RAGAnythingConfig:
     model_planner: str = field(default=get_env_value("RAG_MODEL_PLANNER", "gemini-2.5-flash", str))
     """Model for planning stage; empty means fallback to model_answer."""
 
+    model_judge: str = field(
+        default=get_env_value("RAG_MODEL_JUDGE", "gemini-3.1-pro-preview", str)
+    )
+    """Model for evaluation dataset judging."""
+
     model_vision: str = field(default=get_env_value("RAG_MODEL_VISION", "gemini-2.5-flash", str))
     """Model for vision reasoning (image input); empty means fallback to model_answer."""
     # 如果不配置RAG_MODEL_IMAGE_DESCRIPTION, 会复用RAG_MODEL_VISION
@@ -325,6 +330,8 @@ class RAGAnythingConfig:
         # Keep model routing predictable when optional stages are not configured.
         if not self.model_planner:
             self.model_planner = self.model_answer
+        if not self.model_judge:
+            self.model_judge = "gemini-3.1-pro-preview"
         if not self.model_vision:
             self.model_vision = self.model_answer
         if not self.model_image_description:

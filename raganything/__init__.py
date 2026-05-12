@@ -1,9 +1,24 @@
-from .raganything import RAGAnything as RAGAnything
-from .config import RAGAnythingConfig as RAGAnythingConfig
-from .kg_quality import KGQualityManager as KGQualityManager
+try:
+    from .raganything import RAGAnything as RAGAnything
+except ModuleNotFoundError:
+    # Allows lightweight submodules (for example eval dataset tools) to be used
+    # in environments where optional runtime dependencies are not installed.
+    pass
 
-# Core parser class is always available.
-from .parser import Parser as Parser
+try:
+    from .config import RAGAnythingConfig as RAGAnythingConfig
+except ModuleNotFoundError:
+    pass
+
+try:
+    from .kg_quality import KGQualityManager as KGQualityManager
+except ModuleNotFoundError:
+    pass
+
+try:
+    from .parser import Parser as Parser
+except ModuleNotFoundError:
+    pass
 
 # Optional: parser plugin APIs (only present in newer versions / when feature PR is merged).
 try:
@@ -62,14 +77,11 @@ __version__ = "1.2.10"
 __author__ = "Zirui Guo"
 __url__ = "https://github.com/HKUDS/RAG-Anything"
 
-__all__ = ["RAGAnything", "RAGAnythingConfig"]
+__all__ = []
 
-__all__ = [
-    "RAGAnything",
-    "RAGAnythingConfig",
-    "KGQualityManager",
-    "Parser",
-]
+for name in ["RAGAnything", "RAGAnythingConfig", "KGQualityManager", "Parser"]:
+    if name in globals():
+        __all__.append(name)
 
 # Feature-gated exports: only add names that are actually available in this build.
 if "register_parser" in globals():
