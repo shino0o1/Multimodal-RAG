@@ -25,6 +25,7 @@ TASK_PREFIX = {
     "图像问答": "image",
     "证据不足": "unknown",
 }
+MAX_RETRIES = 3
 
 
 class EvalLLMClient:
@@ -88,8 +89,21 @@ class EvalLLMClient:
     def complete_json(
         self, prompt: str, system_prompt: str, model: Optional[str] = None
     ) -> Dict[str, Any]:
-        raw = self.complete(prompt, system_prompt, model=model)
-        return extract_json_object(raw)
+        last_exc: Optional[Exception] = None
+        for _ in range(MAX_RETRIES):
+            try:
+                raw = self.complete(prompt, system_prompt, model=model)
+                payload = extract_json_object(raw)
+                if payload:
+                    return payload
+            except Exception as exc:
+                if not _is_retryable_error(exc):
+                    raise
+                last_exc = exc
+                continue
+        if last_exc is not None:
+            raise RuntimeError(f"LLM JSON call failed after {MAX_RETRIES} retries: {last_exc}") from last_exc
+        return {}
 
     def describe_image(self, image_path: str, labels: Dict[str, Any], notes: str) -> str:
         if not self.enabled:
@@ -124,17 +138,25 @@ class EvalLLMClient:
                 ],
             },
         ]
-        return _resolve_maybe_awaitable(
-            openai_complete_if_cache(
-                self.vision_model,
-                "",
-                system_prompt=None,
-                history_messages=[],
-                messages=messages,
-                api_key=self.api_key,
-                base_url=self.base_url,
-            )
-        )
+        last_exc: Optional[Exception] = None
+        for _ in range(MAX_RETRIES):
+            try:
+                return _resolve_maybe_awaitable(
+                    openai_complete_if_cache(
+                        self.vision_model,
+                        "",
+                        system_prompt=None,
+                        history_messages=[],
+                        messages=messages,
+                        api_key=self.api_key,
+                        base_url=self.base_url,
+                    )
+                )
+            except Exception as exc:
+                if not _is_retryable_error(exc):
+                    raise
+                last_exc = exc
+        raise RuntimeError(f"Image describe failed after {MAX_RETRIES} retries: {last_exc}")
 
     def verify_image_match(self, image_path: str, labels: Dict[str, Any], notes: str) -> Dict[str, Any]:
         path = Path(image_path)
@@ -177,18 +199,30 @@ class EvalLLMClient:
                 ],
             },
         ]
-        raw = _resolve_maybe_awaitable(
-            openai_complete_if_cache(
-                self.vision_model,
-                "",
-                system_prompt=None,
-                history_messages=[],
-                messages=messages,
-                api_key=self.api_key,
-                base_url=self.base_url,
-            )
-        )
-        payload = extract_json_object(raw)
+        payload: Dict[str, Any] = {}
+        last_exc: Optional[Exception] = None
+        for _ in range(MAX_RETRIES):
+            try:
+                raw = _resolve_maybe_awaitable(
+                    openai_complete_if_cache(
+                        self.vision_model,
+                        "",
+                        system_prompt=None,
+                        history_messages=[],
+                        messages=messages,
+                        api_key=self.api_key,
+                        base_url=self.base_url,
+                    )
+                )
+                payload = extract_json_object(raw)
+                if payload:
+                    break
+            except Exception as exc:
+                if not _is_retryable_error(exc):
+                    raise
+                last_exc = exc
+        if not payload and last_exc is not None:
+            raise RuntimeError(f"Image verify failed after {MAX_RETRIES} retries: {last_exc}") from last_exc
         return {
             "match": bool(payload.get("match", False)),
             "confidence": float(payload.get("confidence", 0.0) or 0.0),
@@ -207,19 +241,39 @@ class SampleGenerator:
         task_type: str,
         pack: EvidencePack,
     ) -> Dict[str, Any]:
-        payload = self._generate_with_llm(sample_id, task_type, pack)
-        if not payload:
-            raise RuntimeError("LLM generation returned an empty payload.")
-        return payload
+        last_exc: Optional[Exception] = None
+        for _ in range(MAX_RETRIES):
+            try:
+                payload = self._generate_with_llm(sample_id, task_type, pack)
+                if payload and str(payload.get("question", "")).strip() and str(payload.get("gold_answer", "")).strip():
+                    return payload
+            except Exception as exc:
+                if not _is_retryable_error(exc):
+                    raise
+                last_exc = exc
+        if last_exc is not None:
+            raise RuntimeError(f"LLM generation failed after {MAX_RETRIES} retries: {last_exc}") from last_exc
+        raise RuntimeError("LLM generation returned invalid fields after retries.")
 
     def judge(self, sample: Dict[str, Any]) -> Dict[str, Any]:
         prompt = _judge_prompt(sample)
-        payload = self.llm_client.complete_json(
-            prompt,
-            system_prompt="你是评测集质量裁判，只能依据给定证据评分并输出JSON。",
-            model=self.llm_client.judge_model,
-        )
-        return normalize_judge(payload)
+        last_exc: Optional[Exception] = None
+        for _ in range(MAX_RETRIES):
+            try:
+                payload = self.llm_client.complete_json(
+                    prompt,
+                    system_prompt="你是评测集质量裁判，只能依据给定证据评分并输出JSON。",
+                    model=self.llm_client.judge_model,
+                )
+                if payload:
+                    return normalize_judge(payload)
+            except Exception as exc:
+                if not _is_retryable_error(exc):
+                    raise
+                last_exc = exc
+        if last_exc is not None:
+            raise RuntimeError(f"Judge failed after {MAX_RETRIES} retries: {last_exc}") from last_exc
+        raise RuntimeError("Judge returned invalid fields after retries.")
 
     def describe_image(self, pack: EvidencePack) -> str:
         if not pack.image_path:
@@ -255,19 +309,6 @@ def normalize_generated_sample(
 ) -> Dict[str, Any]:
     question = str(payload.get("question", "")).strip()
     answer = str(payload.get("gold_answer", "")).strip()
-    must_include = _string_list(payload.get("must_include")) or [
-        pack.core_entity,
-        *(pack.expected_entities[:2]),
-    ]
-    must_not_include = _string_list(payload.get("must_not_include")) or [
-        "无证据药剂",
-        "无证据剂量",
-        "确定为非证据病虫害",
-    ]
-    difficulty = str(payload.get("difficulty") or "medium").strip().lower()
-    if difficulty not in {"easy", "medium", "hard"}:
-        difficulty = "medium"
-
     return {
         "id": sample_id,
         "task_type": task_type,
@@ -275,27 +316,16 @@ def normalize_generated_sample(
         "question": question,
         "image_path": pack.image_path,
         "gold_answer": answer,
-        "expected_entities": _string_list(payload.get("expected_entities"))
-        or pack.expected_entities[:6],
-        "expected_relations": _string_list(payload.get("expected_relations"))
-        or pack.expected_relations[:5],
         "evidence": [asdict(item) for item in pack.evidence],
-        "must_include": must_include,
-        "must_not_include": must_not_include,
-        "difficulty": difficulty,
         "metadata": {
             "core_entity": pack.core_entity,
-            "entity_type": pack.entity_type,
-            "evidence_pack_id": pack.pack_id,
-            "image_labels": pack.image_labels,
-            "notes": pack.notes,
-            "generation_method": generation_method,
         },
         "quality": {
             "rule_score": 0.0,
             "evidence_score": 0.0,
             "judge_score": 0,
             "status": "candidate",
+            "reason": "",
         },
     }
 
@@ -362,12 +392,7 @@ def _generation_prompt(sample_id: str, task_type: str, pack: EvidencePack) -> st
 输出字段：
 {{
   "question": "真实用户风格问题",
-  "gold_answer": "基于证据的标准答案",
-  "expected_entities": ["实体1"],
-  "expected_relations": ["关系1"],
-  "must_include": ["必须出现的要点"],
-  "must_not_include": ["不能出现的错误"],
-  "difficulty": "easy|medium|hard"
+  "gold_answer": "基于证据的标准答案"
 }}
 """.strip()
 
@@ -376,13 +401,11 @@ def _judge_prompt(sample: Dict[str, Any]) -> str:
     payload = {
         "question": sample.get("question"),
         "gold_answer": sample.get("gold_answer"),
-        "expected_entities": sample.get("expected_entities"),
-        "expected_relations": sample.get("expected_relations"),
         "evidence": sample.get("evidence"),
     }
     return f"""
 请只依据给定证据判断评测样本质量，不能使用外部知识。
-重点检查 gold_answer 是否使用了同一大chunk中不属于 expected_entities / expected_relations 的内容。
+重点检查 gold_answer 是否由 evidence 支持，不要引入证据外细节。
 评分范围均为1-5分。
 
 样本：
@@ -419,6 +442,21 @@ def _resolve_maybe_awaitable(value: Any) -> str:
     if inspect.isawaitable(value):
         return str(asyncio.run(value))
     return str(value)
+
+
+def _is_retryable_error(exc: Exception) -> bool:
+    text = f"{type(exc).__name__}: {exc}".lower()
+    markers = [
+        "apiconnectionerror",
+        "connectionerror",
+        "timeout",
+        "temporarily unavailable",
+        "rate limit",
+        "server error",
+        "json",
+        "decode",
+    ]
+    return any(marker in text for marker in markers)
 
 
 def _load_rag_config_defaults() -> Dict[str, str]:

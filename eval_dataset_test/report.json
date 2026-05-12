@@ -1,82 +1,25 @@
 {
   "counts": {
-    "candidates": 18,
-    "accepted": 18,
-    "rejected": 13,
-    "acceptance_rate": 1.0
+    "candidates": 0,
+    "accepted": 0,
+    "rejected": 31,
+    "acceptance_rate": 0.0
   },
   "accepted_distribution": {
-    "task_type": {
-      "药剂推荐": 6,
-      "防治建议": 5,
-      "病虫害诊断": 3,
-      "证据不足": 2,
-      "图像问答": 1,
-      "症状识别": 1
-    },
-    "modality": {
-      "text": 17,
-      "image": 1
-    },
-    "difficulty": {
-      "easy": 10,
-      "medium": 8
-    },
-    "entity_type": {
-      "病害": 8,
-      "虫害": 5,
-      "药剂": 4,
-      "部位": 1
-    },
-    "core_entity_top20": {
-      "黑斑病": 2,
-      "霜霉病": 2,
-      "烟粉虱": 1,
-      "土壤": 1,
-      "中华稻蝗": 1,
-      "灭幼脲1号悬浮乳剂": 1,
-      "小菜蛾": 1,
-      "斜纹夜蛾": 1,
-      "炭疽病": 1,
-      "银纹夜蛾": 1,
-      "黑腐病": 1,
-      "印楝素": 1,
-      "病毒病": 1,
-      "氯氟·啶虫脒乳油": 1,
-      "氰氟虫脲": 1,
-      "细菌性软腐病": 1
-    },
-    "evidence_chunk_top20": {
-      "chunk-b3b74e94cd9e673214401f1d7e211970": 2,
-      "chunk-75c79c36d93e57136b72ac0107291bc6": 2,
-      "chunk-4f81aa7efe24d8dc3a429c05163875d9": 2,
-      "chunk-2711af80087a36171089b13436581425": 2,
-      "chunk-2732eb6195df6f6255819cca0b42029f": 2,
-      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e": 2,
-      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9": 1,
-      "chunk-8fcdba800e6f311738dd69c3bb11fcc6": 1,
-      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921": 1,
-      "chunk-ca141699f53529c2e47d2d719892c294": 1,
-      "chunk-af7dd67e1aecd6c6715c79478479c668": 1,
-      "chunk-157bd3addbb38750d6dff95f3d5a9e7d": 1,
-      "chunk-53e6356230579174bc1646371ab0629d": 1,
-      "chunk-5a2a424d35c8371bfe822398161732dd": 1,
-      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364": 1,
-      "chunk-7db27298b6bc94a19de9bdb6c76b2710": 1,
-      "chunk-0f80ba997fa22a606c08224fef24a3e1": 1,
-      "chunk-4fab5ac32aa4dad18361b99b22fbb787": 1,
-      "chunk-25a870883e30ca4e4e260db153e16de6": 1,
-      "chunk-6c9c5c1a89394df08c4521777314cc90": 1
-    }
+    "task_type": {},
+    "modality": {},
+    "difficulty": {},
+    "entity_type": {},
+    "core_entity_top20": {},
+    "evidence_chunk_top20": {}
   },
   "rejection_reasons": {
-    "judge_rejected": 8,
-    "image_target_mismatch": 4,
-    "judge_error:RetryError[<Future at 0x7f154d2f3e30 state=finished raised APIConnectionError>]": 1
+    "generation_error:No module named 'lightrag'": 26,
+    "generation_error:image_verification_error:No module named 'lightrag'": 5
   },
   "quality": {
-    "avg_rule_score": 0.9639,
-    "avg_evidence_score": 0.975,
-    "avg_judge_score": 19.2222
+    "avg_rule_score": 0.0,
+    "avg_evidence_score": 0.0,
+    "avg_judge_score": 0.0
   }
 }

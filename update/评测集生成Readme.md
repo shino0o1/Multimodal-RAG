@@ -1,4 +1,4 @@
-# 本地知识库驱动的评测集自动构建 Pipeline - codex计划
+# 本地知识库驱动的评测集自动构建 Pipeline - codex计划-复杂版-已废弃
 
 ## Summary
 
@@ -175,7 +175,7 @@ LLM judge：
 - 默认目标为 `200` 条 accepted 样本，实际会先生成更多候选再筛选。
 - 初版只做命令行工具，不接入 Streamlit 前端。
 
-# 评测集构建流程
+# 评测集构建流程-复杂版-已废弃
 现在 pipeline 流程是：
 
 1. 读取本地知识库  
@@ -303,3 +303,49 @@ eval_dataset/
 ```
 
 一句话：它不是凭空造题，而是先从 KG 和 chunk 里找证据，再围绕证据生成问题、标准答案和评测字段，最后自动过滤低质量和分布不均的样本。
+
+# 评测集构建-简单版
+可以，直接砍成一个“极简版”就行。
+
+**极简流程（建议）**
+1. 从 `rag-dir` 抽证据（entity/relation/chunk）。
+2. LLM 生成 `question + gold_answer + evidence`。
+3. 只做 3 条校验：
+   - `gold_answer` 非空
+   - `evidence` 至少 1 条且 `chunk_id` 存在
+   - LLM 裁判 `evidence_consistency >= 3`
+4. 通过就进 `accepted`，不通过进 `rejected`。  
+不做 `must_include/must_not_include`、不做复杂分布控制、不过多规则拒绝。
+
+**极简字段（保留）**
+1. `id`
+2. `task_type`
+3. `question`
+4. `gold_answer`
+5. `evidence`（只保留 `chunk_id`, `quote`, `file_path`）
+6. `image_path`（仅图像样本）
+7. `quality.status`
+8. `quality.reason`（简短拒绝原因）
+
+删除这些字段：
+- `expected_entities`
+- `expected_relations`
+- `must_include`
+- `must_not_include`
+- `difficulty`
+- 大部分 `metadata`
+- 复杂打分细项
+
+**为什么这样更稳**
+- 错判主要来自“规则过多”，不是答案本身差。
+- 只保留“证据存在 + 基本一致性”能大幅减少误拒。
+
+如果你同意，我下一步可以直接把当前脚本改成这个极简模式（默认开启）。
+python scripts/build_eval_dataset.py \
+  --rag-dir rag_storage_whole_book_gemini \
+  --image-manifest raganything/eval_dataset/manifest.jsonl \
+  --output-dir eval_dataset_test \
+  --target-size 20 
+
+powershell命令：
+python .\scripts\build_eval_dataset.py --rag-dir .\rag_storage_whole_book_gemini --image-manifest .\raganything\eval_dataset\manifest.jsonl --output-dir .\eval_dataset_test --target-size 20

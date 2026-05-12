@@ -84,7 +84,7 @@ class EvalDatasetBuilder:
             for pack in self._sample_packs(task_packs, needed):
                 counters[task_type] += 1
                 sample_id = f"{TASK_PREFIX.get(task_type, 'qa')}_{counters[task_type]:04d}"
-                if task_type == "图像问答":
+                if pack.modality == "image":
                     try:
                         match = self.generator.verify_image_match(pack)
                     except Exception as exc:
@@ -97,48 +97,24 @@ class EvalDatasetBuilder:
                             )
                         )
                         continue
-                    if not match.get("match") or float(match.get("confidence", 0.0)) < 0.6:
-                        preselection_rejected.append(
-                            {
-                                "id": sample_id,
-                                "task_type": task_type,
-                                "modality": "image",
-                                "question": "",
-                                "image_path": pack.image_path,
-                                "gold_answer": "",
-                                "expected_entities": pack.expected_entities,
-                                "expected_relations": pack.expected_relations,
-                                "evidence": [item.__dict__ for item in pack.evidence],
-                                "must_include": [],
-                                "must_not_include": [],
-                                "difficulty": "medium",
-                                "metadata": {
-                                    "core_entity": pack.core_entity,
-                                    "entity_type": pack.entity_type,
-                                    "evidence_pack_id": pack.pack_id,
-                                    "image_labels": pack.image_labels,
-                                    "image_match": match,
-                                },
-                                "quality": {
-                                    "status": "rejected",
-                                    "reasons": ["image_target_mismatch"],
-                                },
-                            }
-                        )
+                    if (not match.get("match")) or float(match.get("confidence", 0.0)) < 0.5:
+                        rejected = {
+                            "id": sample_id,
+                            "task_type": task_type,
+                            "modality": "image",
+                            "question": "",
+                            "image_path": pack.image_path,
+                            "gold_answer": "",
+                            "evidence": [item.__dict__ for item in pack.evidence],
+                            "metadata": {"core_entity": pack.core_entity},
+                            "quality": {
+                                "status": "rejected",
+                                "reasons": ["image_target_mismatch"],
+                                "reason": "image_target_mismatch",
+                            },
+                        }
+                        preselection_rejected.append(rejected)
                         continue
-                    try:
-                        visual_clues = self.generator.describe_image(pack)
-                    except Exception as exc:
-                        preselection_rejected.append(
-                            _generation_error_sample(
-                                sample_id,
-                                task_type,
-                                pack,
-                                RuntimeError("image_description_error:" + str(exc)[:180]),
-                            )
-                        )
-                        continue
-                    pack = self._pack_with_visual_notes(pack, visual_clues, match)
                 try:
                     sample = self.generator.generate(sample_id, task_type, pack)
                 except Exception as exc:
@@ -150,7 +126,6 @@ class EvalDatasetBuilder:
                 sample["quality"].update(scores)
                 if not ok:
                     preselection_rejected.append(mark_rejected(sample, reasons))
-                    candidates.append(sample)
                     continue
 
                 try:
@@ -163,14 +138,13 @@ class EvalDatasetBuilder:
                 if not judge_passed(judged):
                     preselection_rejected.append(mark_rejected(judged, ["judge_rejected"]))
                 else:
-                    candidates.append(judged)
+                    candidates.append(_minimize_sample(judged))
 
         valid_candidates = [
             row
             for row in candidates
             if (row.get("quality", {}) or {}).get("judge")
             and judge_passed(row)
-            and (row.get("quality", {}) or {}).get("evidence_score", 0) >= 0.65
         ]
         accepted, overflow_rejected = select_accepted_samples(
             valid_candidates,
@@ -303,19 +277,47 @@ def _generation_error_sample(
         "question": "",
         "image_path": pack.image_path,
         "gold_answer": "",
-        "expected_entities": pack.expected_entities,
-        "expected_relations": pack.expected_relations,
         "evidence": [item.__dict__ for item in pack.evidence],
-        "must_include": [],
-        "must_not_include": [],
-        "difficulty": "medium",
         "metadata": {
             "core_entity": pack.core_entity,
-            "entity_type": pack.entity_type,
-            "evidence_pack_id": pack.pack_id,
         },
         "quality": {
             "status": "rejected",
             "reasons": ["generation_error:" + str(exc)[:200]],
+            "reason": "generation_error",
         },
     }
+
+
+def _minimize_sample(sample: Dict[str, Any]) -> Dict[str, Any]:
+    quality = sample.get("quality", {}) or {}
+    metadata = sample.get("metadata", {}) or {}
+    minimized = {
+        "id": sample.get("id", ""),
+        "task_type": sample.get("task_type", ""),
+        "modality": sample.get("modality", ""),
+        "question": sample.get("question", ""),
+        "image_path": sample.get("image_path"),
+        "gold_answer": sample.get("gold_answer", ""),
+        "evidence": [
+            {
+                "chunk_id": item.get("chunk_id", ""),
+                "quote": item.get("quote", ""),
+                "file_path": item.get("file_path", ""),
+            }
+            for item in sample.get("evidence", [])
+        ],
+        "metadata": {"core_entity": metadata.get("core_entity", "")},
+        "quality": {
+            "status": quality.get("status", "candidate"),
+            "reason": quality.get("reason", ""),
+            "rule_score": quality.get("rule_score", 0.0),
+            "evidence_score": quality.get("evidence_score", 0.0),
+            "judge_score": quality.get("judge_score", 0),
+            "judge": quality.get("judge", {}),
+        },
+    }
+    reasons = quality.get("reasons")
+    if reasons:
+        minimized["quality"]["reasons"] = list(reasons)
+    return minimized
