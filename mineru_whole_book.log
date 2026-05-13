@@ -1,0 +1,14 @@
+nohup: ignoring input
+2026-04-29 00:19:45.110 | INFO     | mineru.cli.client:run_orchestrated_cli:874 - Started local mineru-api at http://127.0.0.1:42911
+2026-04-29 00:19:48.348 | INFO     | __main__:create_app:243 - Request concurrency limited to 3
+INFO:     Started server process [28549]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:42911 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [28549]
+Start MinerU FastAPI Service: http://127.0.0.1:42911
+API documentation: http://127.0.0.1:42911/docs
+Error: Timed out waiting for local mineru-api to become healthy. Failed to query MinerU API health from http://127.0.0.1:42911: 502 Bad Gateway

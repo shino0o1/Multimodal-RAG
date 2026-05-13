@@ -1,0 +1,7410 @@
+{
+  "309115c0406f857c4d7fc75454e2b615": {
+    "content_list": [
+      {
+        "type": "text",
+        "text": "一、十字花科蔬菜病虫害",
+        "text_level": 1,
+        "bbox": [
+          180,
+          188,
+          798,
+          229
+        ],
+        "page_idx": 0
+      },
+      {
+        "type": "text",
+        "text": "（一）十字花科蔬菜病害",
+        "text_level": 1,
+        "bbox": [
+          85,
+          315,
+          422,
+          339
+        ],
+        "page_idx": 0
+      },
+      {
+        "type": "text",
+        "text": "十字花科蔬菜霜霉病",
+        "text_level": 1,
+        "bbox": [
+          85,
+          369,
+          351,
+          394
+        ],
+        "page_idx": 0
+      },
+      {
+        "type": "text",
+        "text": "十字花科蔬菜霜霉病主要危害白菜、菜薹、萝卜、甘蓝等，苗期、成株期均可发生，主要危害叶片，也可危害茎、花、花梗及种荚。",
+        "bbox": [
+          30,
+          413,
+          952,
+          463
+        ],
+        "page_idx": 0
+      },
+      {
+        "type": "text",
+        "text": "症状：一般先从外部叶片开始发病，病叶表面初期出现边缘不明晰的水渍状褪绿、黄化，逐渐产生不均匀的枯黄斑，病斑边缘不明显。受叶脉限制，扩大后呈多角形淡褐色或黄褐色斑块，潮湿时叶背面或叶正面可产生灰色霉层。病叶由外向内发展，病斑多时可连片，也有破裂，叶缘卷缩，叶干枯，发病严重时田块一片枯黄。大白菜进入包心期后，叶片连片枯死，从外叶至内叶，层层干枯，最后只剩下一个叶球；采种株上，危害叶、花梗、花器及种荚，引起花梗肥肿、弯曲，花器被害后变畸形肥大，花瓣为绿色叶片状，不易凋落，种荚被害后呈淡黄色，瘦小，不结实或结实不良。",
+        "bbox": [
+          30,
+          467,
+          954,
+          684
+        ],
+        "page_idx": 0
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/8a7a719cb0d9f137bc7e9380d5f6945d651fa3c469dfcfc194e81608bcda879f.jpg",
+        "image_caption": [
+          "小白菜霜霉病前期症状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          30,
+          699,
+          484,
+          912
+        ],
+        "page_idx": 0,
+        "img_caption": [
+          "小白菜霜霉病前期症状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/d12ba135d4213affa22a0d40da21cf9210a09076adf4428914e1547ef476aea1.jpg",
+        "image_caption": [
+          "小白菜霜霉病病叶正面"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          497,
+          699,
+          952,
+          912
+        ],
+        "page_idx": 0,
+        "img_caption": [
+          "小白菜霜霉病病叶正面"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "header",
+        "text": "",
+        "bbox": [
+          35,
+          82,
+          233,
+          192
+        ],
+        "page_idx": 0
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/a2f25fd0d4257e4c88ae7d643ed3bf2471cb4671553a88328029476bf30d5e7d.jpg",
+        "image_caption": [
+          "小白菜霜霉病病叶背面灰白色霉层"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          47,
+          80,
+          500,
+          411
+        ],
+        "page_idx": 1,
+        "img_caption": [
+          "小白菜霜霉病病叶背面灰白色霉层"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/a90fcd40ec43196cbff49c7e0e6c626b9a2dd4008e2b92ab90089a99938ed4bc.jpg",
+        "image_caption": [
+          "花椰菜霜霉病病叶正面"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          512,
+          80,
+          964,
+          299
+        ],
+        "page_idx": 1,
+        "img_caption": [
+          "花椰菜霜霉病病叶正面"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/36a409b7a948acf3b1deed9ac56d47eb03aa9643081a82ea0f26721131f5c95a.jpg",
+        "image_caption": [
+          "大白菜霜霉病病叶正面"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          50,
+          459,
+          500,
+          682
+        ],
+        "page_idx": 1,
+        "img_caption": [
+          "大白菜霜霉病病叶正面"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/5ccde1b428509e7238cdd0862dacab14cb1f7f7a5e16201275739fc2cbb36f8c.jpg",
+        "image_caption": [
+          "花椰菜霜霉病病叶背面"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          512,
+          347,
+          964,
+          563
+        ],
+        "page_idx": 1,
+        "img_caption": [
+          "花椰菜霜霉病病叶背面"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/a54d3d0e0b018dd44085953530bce30235b9326b82dec396ece30c2ab6d55742.jpg",
+        "image_caption": [
+          "大白菜霜霉病病叶背面霉层"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          512,
+          612,
+          964,
+          825
+        ],
+        "page_idx": 1,
+        "img_caption": [
+          "大白菜霜霉病病叶背面霉层"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "萝卜叶片受害，多从下部向上部扩展，发病初期先在叶缘出现圆形至多角形褪绿黄斑，扩大后为多角形黄褐色病斑，后叶脉变黑色，最后使叶内变褐，全叶枯死。湿度大时叶背或叶面长出白霉，严重时致叶片干枯。",
+        "bbox": [
+          47,
+          853,
+          964,
+          930
+        ],
+        "page_idx": 1
+      },
+      {
+        "type": "page_number",
+        "text": "2 ",
+        "bbox": [
+          47,
+          36,
+          67,
+          51
+        ],
+        "page_idx": 1
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          105,
+          32,
+          444,
+          52
+        ],
+        "page_idx": 1
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/5d1ffb5c9b1c2f7ba7b0c6abe31c279a79bdab17ac78421007baab0c0fbf5c7c.jpg",
+        "image_caption": [
+          "萝卜霜霉病病叶正面"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          12,
+          80,
+          467,
+          315
+        ],
+        "page_idx": 2,
+        "img_caption": [
+          "萝卜霜霉病病叶正面"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/0ded6474f3e19d630ec69e0b6ded24abed396de6bfc02f5f0d7b416cd224dbcd.jpg",
+        "image_caption": [
+          "萝卜霜霉病病叶背面霉层 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          477,
+          80,
+          932,
+          315
+        ],
+        "page_idx": 2,
+        "img_caption": [
+          "萝卜霜霉病病叶背面霉层 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "发生规律：该病由霜霉菌侵染所致。病菌以菌丝体及卵孢子随病残体遗留在田间或潜伏在种子上越冬。病菌喜温暖高湿环境，最适发病温度为 $20\\sim 24\\%$ ，空气相对湿度 $90\\%$ 以上。栽培上多年连作、播种期过早、氮肥偏多、种植过密、通风透光差，发病重；早晚温差大、多雨多雾、重露、晴雨相隔，则发病重；地势低洼积水，排水不良的地块发病较早且重。该病主要发生在春秋两季，长江中下游地区在4月中旬至5月上中旬为春季发生高峰期，秋季9月初至11月大白菜莲座期至包心期形成发病高峰。",
+        "bbox": [
+          10,
+          362,
+          937,
+          551
+        ],
+        "page_idx": 2
+      },
+      {
+        "type": "text",
+        "text": "防治方法：①及时清除病苗、杂草，携出田外深埋或销毁。②提倡与其他类蔬菜实行2～3年轮作。③提倡深沟高畦栽培，适当密植，及时清沟排水，降低田间湿度。温室和大棚等保护地栽培，要合理控制浇水量，适时放风降雨。④播种前可用种子重量 $0.3\\%$ 的 $2.5\\%$ 咯菌腈悬浮种衣剂拌种包衣，也可使用10毫升上述药剂加水 $150\\sim 200$ 毫升混匀后拌种 $5\\sim 10$ 千克，包衣后播种。⑤田间出现中心病株时，应及时喷药保护，每隔 $7\\sim 10$ 天喷1次，连续喷 $2\\sim 3$ 次，喷药液时须均匀周到，特别注意叶背和雨前喷药，药剂要交替使用。发病前可选用 $70\\%$ 丙森锌可湿性粉剂 $400\\sim 600$ 倍液，或 $80\\%$ 代森锰锌可湿性粉剂 $600\\sim 800$ 倍液，或 $68.75\\%$ 嗅酮·锰锌可分散粒剂 $1000\\sim 1500$ 倍液。发病后可选用 $64\\%$ 嗅霜·锰锌可湿性粉剂500倍液，或 $68\\%$ 甲霜·锰锌水分散粒剂 $600\\sim 800$ 倍液，或 $72.2\\%$ 霜霉威水剂1000倍液，或 $60\\%$ 唑醚·代森联水分散粒剂1000倍液，或 $72\\%$ 霜脲·锰锌可湿性粉剂 $600\\sim 800$ 倍液，或 $10\\%$ 氰霜唑悬浮剂 $2500\\sim 3000$ 倍液，或 $52.5\\%$ 嗅酮·霜脲氰可分散粒剂 $2000\\sim 3000$ 倍液等。",
+        "bbox": [
+          10,
+          555,
+          937,
+          937
+        ],
+        "page_idx": 2
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          605,
+          32,
+          871,
+          52
+        ],
+        "page_idx": 2
+      },
+      {
+        "type": "page_number",
+        "text": "3 ",
+        "bbox": [
+          914,
+          36,
+          932,
+          52
+        ],
+        "page_idx": 2
+      },
+      {
+        "type": "text",
+        "text": "十字花科蔬菜软腐病",
+        "text_level": 1,
+        "bbox": [
+          118,
+          90,
+          381,
+          113
+        ],
+        "page_idx": 3
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/efa70240f983731e7cacee57119fa8f97bfee3903ebabb34964e24410992cc64.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          844,
+          93,
+          969,
+          177
+        ],
+        "page_idx": 3,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "软腐病又称“烂葫芦”“烂疮瘩”“水烂”“烂肠瘟”。主要危害十字花科中的白菜、甘蓝、萝卜、花椰菜，还可危害番茄、辣椒、马铃薯、黄瓜、芹菜等。",
+        "bbox": [
+          62,
+          131,
+          829,
+          210
+        ],
+        "page_idx": 3
+      },
+      {
+        "type": "text",
+        "text": "症状：大白菜多为包心期开始发病，叶柄基部与茎基部交界处首先发病，出现半透明水渍状微黄色病斑，前期症状不明显，随着病情发展，白天植株外围叶片在日光照射下表现萎蔫下垂，但早晚可恢复，几天后病株外叶萎蔫，平贴地面。天气干燥时，病叶可失水呈薄纸状，紧贴叶球，叶球外露。严重时叶柄基部和根茎心髓组织腐烂，充满黄色黏稠物，有臭味，一碰就倒。贮藏期病害继续发展，造成烂窖。",
+        "bbox": [
+          62,
+          215,
+          977,
+          373
+        ],
+        "page_idx": 3
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/fb5b6ac025b49ef2dfbfb13fd53147c3c57eeea598e6af45bf900cf626dc4f84.jpg",
+        "image_caption": [
+          "大白菜软腐病发病状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          62,
+          392,
+          515,
+          624
+        ],
+        "page_idx": 3,
+        "img_caption": [
+          "大白菜软腐病发病状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/e2baf90e83d59798b93a2a9c5b1cf71d28b46b14fd4ef6e2bdb9455439922ac1.jpg",
+        "image_caption": [
+          "大白菜软腐病心腐症状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          527,
+          392,
+          977,
+          624
+        ],
+        "page_idx": 3,
+        "img_caption": [
+          "大白菜软腐病心腐症状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/123c6970847c9f591287a21c3d64980dde2d8b40fd5daae9ab6e22e98bc974da.jpg",
+        "image_caption": [
+          "大白菜软腐病严重发病状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          65,
+          672,
+          517,
+          904
+        ],
+        "page_idx": 3,
+        "img_caption": [
+          "大白菜软腐病严重发病状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/db5288b468526add25ef52f51bcfa3c3acc7d031ca3507d74c0c0131a405fc71.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          530,
+          672,
+          733,
+          902
+        ],
+        "page_idx": 3,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/163d893bcc0a744717a0ac11ea0ecdaa381e31b7f308aed8e808defb2af256f2.jpg",
+        "image_caption": [
+          "大白菜软腐病干腐症状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          738,
+          672,
+          979,
+          902
+        ],
+        "page_idx": 3,
+        "img_caption": [
+          "大白菜软腐病干腐症状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "page_number",
+        "text": "4 ",
+        "bbox": [
+          62,
+          34,
+          80,
+          47
+        ],
+        "page_idx": 3
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          120,
+          32,
+          454,
+          49
+        ],
+        "page_idx": 3
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/f4aaa576e08c9d306c042a001ed90a4f972711c500c48854e53e7509d3d28ede.jpg",
+        "image_caption": [
+          "小白菜软腐病发病状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          42,
+          85,
+          497,
+          346
+        ],
+        "page_idx": 4,
+        "img_caption": [
+          "小白菜软腐病发病状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/7c4860400f9b70d30d9c5703fabe1a58de378641f69408dca30465ba76d9d98c.jpg",
+        "image_caption": [
+          "小白菜软腐病心腐症状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          510,
+          85,
+          964,
+          346
+        ],
+        "page_idx": 4,
+        "img_caption": [
+          "小白菜软腐病心腐症状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "甘蓝发病一般始于结球期，初在外叶或叶球基部出现水渍状斑，植株外层包叶中午萎蔫，早晚恢复，数天后外层叶片不再恢复，病部开始腐烂，叶球外露或植株基部逐渐腐烂成泥状，或塌倒溃烂，叶柄或根茎基部的组织呈灰褐色软腐，严重的全株腐烂，病部散发出恶臭味，有别于黑腐病。",
+        "bbox": [
+          42,
+          392,
+          479,
+          635
+        ],
+        "page_idx": 4
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/b378ae3042c83b471d9424fbc34ac1d046667bbd1d55696d483cdf843060ecfd.jpg",
+        "image_caption": [
+          "小白菜软腐病严重发病状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          510,
+          394,
+          964,
+          619
+        ],
+        "page_idx": 4,
+        "img_caption": [
+          "小白菜软腐病严重发病状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/9c25f0f6a1005b081bd0b7e70ac0e46798a5da9c06b27cf7f800c155455db7f6.jpg",
+        "image_caption": [
+          "甘蓝软腐病干腐症状 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          45,
+          666,
+          500,
+          916
+        ],
+        "page_idx": 4,
+        "img_caption": [
+          "甘蓝软腐病干腐症状 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/22573baa985f2700539f6c903f090c68c03496628c300aeb722fb6adc57c46d1.jpg",
+        "image_caption": [
+          "甘蓝软腐病湿腐症状 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          512,
+          666,
+          964,
+          916
+        ],
+        "page_idx": 4,
+        "img_caption": [
+          "甘蓝软腐病湿腐症状 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          635,
+          37,
+          904,
+          57
+        ],
+        "page_idx": 4
+      },
+      {
+        "type": "page_number",
+        "text": "5 ",
+        "bbox": [
+          944,
+          41,
+          964,
+          57
+        ],
+        "page_idx": 4
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/16320335729e6c316395356fffab1a520b9e4a418b971a5ce479a314d75eb9f6.jpg",
+        "image_caption": [
+          "甘蓝软腐病发病状 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          32,
+          85,
+          484,
+          308
+        ],
+        "page_idx": 5,
+        "img_caption": [
+          "甘蓝软腐病发病状 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/ab9c6eefdcd4208fe21119b559a422b0aff4eee9d976d74ba635648f8deedced.jpg",
+        "image_caption": [
+          "甘蓝软腐病病茎剖面"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          497,
+          85,
+          947,
+          309
+        ],
+        "page_idx": 5,
+        "img_caption": [
+          "甘蓝软腐病病茎剖面"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "该病主要危害萝卜根、短茎、叶柄及叶。根部多从根尖开始发病，出现油渍状的褐色病斑，发展后使根变软腐烂，病健分界明显，常有汁液渗出，继而向上蔓延致心叶变黑褐色软腐，发病组织呈黏滑的稀泥状；肉质根在贮藏期染病会部分或整个变黑褐色软腐。病菌也可从菜心基部侵入引起发病，而植株外部则发育正常，从菜心开始逐渐向外腐烂发病，最后使外部叶片、均发出一股难闻的臭味。",
+        "bbox": [
+          32,
+          355,
+          477,
+          678
+        ],
+        "page_idx": 5
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/8924d79c64894238cbb86ed78c0fcf33ebe63ab64afec1ebc1609b0a36fca4a7.jpg",
+        "image_caption": [
+          "萝卜软腐病严重发病状 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          497,
+          355,
+          947,
+          579
+        ],
+        "page_idx": 5,
+        "img_caption": [
+          "萝卜软腐病严重发病状 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/c65bef021f1d09fc4e4333986c5f38ada127dc5b98ba06b14ba811097a2d96eb.jpg",
+        "image_caption": [
+          "萝卜软腐病根颈腐烂症状（张发成提供）"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          32,
+          696,
+          484,
+          909
+        ],
+        "page_idx": 5,
+        "img_caption": [
+          "萝卜软腐病根颈腐烂症状（张发成提供）"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "叶柄腐烂。此外，植株所有发病部位",
+        "bbox": [
+          489,
+          630,
+          949,
+          652
+        ],
+        "page_idx": 5
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/71a856b5e618a21b5ee7d9ddd4287229e7e084287bad3ed6f6e357fa8f56d56e.jpg",
+        "image_caption": [
+          "萝卜软腐病肉质根腐烂（张发成提供）"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          497,
+          724,
+          949,
+          864
+        ],
+        "page_idx": 5,
+        "img_caption": [
+          "萝卜软腐病肉质根腐烂（张发成提供）"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "page_number",
+        "text": "6 ",
+        "bbox": [
+          35,
+          41,
+          52,
+          54
+        ],
+        "page_idx": 5
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          92,
+          39,
+          429,
+          56
+        ],
+        "page_idx": 5
+      },
+      {
+        "type": "text",
+        "text": "发生规律：病菌随病株残余组织遗留在田间越冬。病菌主要通过昆虫、雨水和灌溉水传播。从寄主机械伤口、虫伤口或自然裂口侵入，进行侵染。黄曲条跳甲、猿叶甲、菜青虫等昆虫取食不仅可造成伤口，而且还传播软腐病。长江中下游地区主要发病高峰在4—11月。连作地、前茬病重、土壤内病菌多发病重；地势低洼积水、排水不良、土质黏重、土壤偏酸易发病；氮肥施用过多，栽培过密，株行间郁闭，通风透光差，育苗用的营养土带菌、有机肥没有充分腐熟或带菌易发病；早春多雨或梅雨来得早、气候温暖、空气湿度大，秋季多雨、多雾、重露或寒流来得早时易发病。幼苗期发病轻，多从莲座期开始发病。",
+        "bbox": [
+          50,
+          78,
+          974,
+          321
+        ],
+        "page_idx": 6
+      },
+      {
+        "type": "text",
+        "text": "防治方法：①提倡轮作，尽可能回避与十字花科蔬菜连作，与禾本科作物实行2～3年轮作。②选用抗病品种。③推广采用深沟高畦栽培，做到小水勤灌，提倡喷灌，避免漫灌、串灌，减少病菌随水传播的机会。大棚要注意通风换气降湿，适当控制浇水量，浇水应选择晴朗天气进行，浇水后适当通风。田间操作防止人为的机械损伤。④及时收获，及时清除病残体，发现病株及时拔除，拔除后穴内撒石灰灭菌。⑤治虫防病。早期防地下害虫，如金针虫、蝼蛄、蛴螬等，幼苗期开始防黄曲条跳甲、菜青虫、小菜蛾、猿叶甲、甘蓝夜蛾等。⑥从莲座期开始勘查田头，发病初期7～10天喷药1次，发病盛期5～7天喷药1次，连续2～3次。重病田视病情发展，必要时还要增加喷药次数。发病前或初期及时浇灌病株及周围健株，每株0.25～0.5千克。药剂可选用20%噻菌铜悬浮剂500～600倍液，或40%噻唑锌悬浮剂600～800倍液，或47%春雷·氧氯铜可湿性粉剂800～1000倍液，或33.5%喹啉铜悬浮剂500～800倍液；或每亩*用30%噻森铜悬浮剂100～135毫升，或1000亿孢子/克枯草芽孢杆菌可湿性粉剂50～60克，或2%春雷霉素可湿性粉剂100～150克。注意喷在近地面和植物茎部，重点喷洒病株基部及地表，使药液流入菜心效果为好。",
+        "bbox": [
+          50,
+          326,
+          974,
+          761
+        ],
+        "page_idx": 6
+      },
+      {
+        "type": "text",
+        "text": "十字花科蔬菜病毒病",
+        "text_level": 1,
+        "bbox": [
+          108,
+          776,
+          376,
+          802
+        ],
+        "page_idx": 6
+      },
+      {
+        "type": "text",
+        "text": "病毒病主要危害白菜、菜薹、萝卜、芥菜、芜菁、花椰菜、甘蓝，蔬菜各生育期均可发病。",
+        "bbox": [
+          52,
+          819,
+          974,
+          871
+        ],
+        "page_idx": 6
+      },
+      {
+        "type": "text",
+        "text": "症状：幼苗受害首先心叶出现明脉及沿脉褪绿，后产生淡绿与浓绿相 ",
+        "bbox": [
+          105,
+          876,
+          974,
+          898
+        ],
+        "page_idx": 6
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          645,
+          32,
+          914,
+          52
+        ],
+        "page_idx": 6
+      },
+      {
+        "type": "page_number",
+        "text": "7 ",
+        "bbox": [
+          954,
+          34,
+          974,
+          50
+        ],
+        "page_idx": 6
+      },
+      {
+        "type": "page_footnote",
+        "text": "* 亩为非法定计量单位，1亩 = 1/15 公顷 ≈ 667 米²。——编者注",
+        "bbox": [
+          100,
+          917,
+          698,
+          937
+        ],
+        "page_idx": 6
+      },
+      {
+        "type": "text",
+        "text": "间的花叶斑驳，叶面皱缩、质脆，心叶扭曲畸形。成株受害时重病株叶片皱缩，叶硬而脆，外叶呈颜色不均匀的花叶，叶背主、侧脉可产生褐色条斑和黑褐色坏死斑点，外叶黄化。严重时植株矮化、畸形，甚至不能包心结球，或部分疏松结球。重病株根系不发达，须根少。留种株受害后，花梗未抽即死亡，病轻的花梗弯曲、畸形，花梗上有纵横裂口，花早枯、结实少、果荚瘦小，籽粒不饱满，发芽率低。",
+        "bbox": [
+          27,
+          77,
+          944,
+          238
+        ],
+        "page_idx": 7
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/316087a740706b3eeacc0b8f263d421702171876f33cd82ee61d3f13c243a2c2.jpg",
+        "image_caption": [
+          "小白菜病毒病症状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          25,
+          255,
+          477,
+          518
+        ],
+        "page_idx": 7,
+        "img_caption": [
+          "小白菜病毒病症状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/6eb480d5f796b7e27e9d477a43de18e87ff77c1206e90f293f80cd945aa3029b.jpg",
+        "image_caption": [
+          "花椰菜病毒病症状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          489,
+          255,
+          939,
+          517
+        ],
+        "page_idx": 7,
+        "img_caption": [
+          "花椰菜病毒病症状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "萝卜整株发病，心叶初现明脉，叶片叶绿素不均，产生深绿和浅绿相间的斑驳花叶，而且沿叶脉产生耳状突起，整个叶片皱缩，重病株矮化。",
+        "bbox": [
+          27,
+          563,
+          939,
+          614
+        ],
+        "page_idx": 7
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/4d6afb2dc9e7459b8c6916c418db1d79bced47703d89da839017a06d57d8b113.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          25,
+          634,
+          482,
+          902
+        ],
+        "page_idx": 7,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/65e846f2c1cf8e34db8f4accedb514fd429316c6325a3e6d37cd328d3e53aac4.jpg",
+        "image_caption": [
+          "萝卜病毒病症状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          484,
+          634,
+          939,
+          902
+        ],
+        "page_idx": 7,
+        "img_caption": [
+          "萝卜病毒病症状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "page_number",
+        "text": "8 ",
+        "bbox": [
+          25,
+          34,
+          42,
+          49
+        ],
+        "page_idx": 7
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          85,
+          32,
+          419,
+          49
+        ],
+        "page_idx": 7
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/a1317926bc6634c17b5368a2a22448a6407a11cc74ab1864587761a4015e3f88.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          35,
+          83,
+          494,
+          321
+        ],
+        "page_idx": 8,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/83179d2a58679cfe1555684754602bc43efe5b47d8739420436971e33a1695c5.jpg",
+        "image_caption": [
+          "萝卜病毒病症状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          497,
+          85,
+          954,
+          321
+        ],
+        "page_idx": 8,
+        "img_caption": [
+          "萝卜病毒病症状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "发生规律：病毒可在白菜类、甘蓝类、萝卜等采种株上越冬，也可在保护地十字花科蔬菜及宿根作物如荠菜、菠菜及田边寄主杂草的根部越冬。翌春通过有翅蚜传染，也可通过接触摩擦、农事操作等传播。大白菜苗期易感病，一般7叶期前的幼苗最易感病，特别是苗期遇高温干旱，有利于蚜虫的繁殖、迁飞，传毒频繁，同时不利于大白菜秧苗生长发育，植株抗病力下降，病毒潜育期也短，导致病害早发、重发。莲座期后一般不感病，因此病毒病防治关键时期为幼苗期。长江中下游地区主要发病盛期在春季4—6月，秋季9—12月。",
+        "bbox": [
+          35,
+          367,
+          959,
+          582
+        ],
+        "page_idx": 8
+      },
+      {
+        "type": "text",
+        "text": "防治方法：①避免十字花科蔬菜相邻而作。②高温干旱季节，苗期应经常灌水，以提高田间湿度，减轻蚜虫危害。③加强栽培管理，增强植株抗病能力。及时拔除病株，培育壮苗。④重点抓好查蚜治蚜工作，切断传毒途径。在7叶期前7～10天，治蚜1次。⑤在发病前或发病初期可喷洒20%盐酸吗啉呱可湿性粉剂400～600倍液，或2%氨基寡糖素水剂300倍液，或1%香菇多糖水剂400倍液，或20%吗胍·乙酸铜可湿性粉剂200～300倍液等，每隔7～10天喷1次，连续喷2～3次，有较明显的抑制病害扩展的效果。",
+        "bbox": [
+          35,
+          586,
+          959,
+          802
+        ],
+        "page_idx": 8
+      },
+      {
+        "type": "text",
+        "text": "十字花科蔬菜炭疽病",
+        "text_level": 1,
+        "bbox": [
+          92,
+          817,
+          359,
+          842
+        ],
+        "page_idx": 8
+      },
+      {
+        "type": "text",
+        "text": "十字花科蔬菜炭疽病主要危害白菜、萝卜、芥菜等蔬菜的叶片和叶柄。",
+        "bbox": [
+          92,
+          862,
+          944,
+          885
+        ],
+        "page_idx": 8
+      },
+      {
+        "type": "text",
+        "text": "症状：病害通常从基部叶片开始发生，初产生灰白色水渍状小点，后扩大为灰褐色的病斑。病斑中部稍凹陷，边缘灰褐色，稍突起，近圆形。",
+        "bbox": [
+          37,
+          889,
+          959,
+          940
+        ],
+        "page_idx": 8
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          625,
+          36,
+          894,
+          55
+        ],
+        "page_idx": 8
+      },
+      {
+        "type": "page_number",
+        "text": "9 ",
+        "bbox": [
+          937,
+          39,
+          954,
+          55
+        ],
+        "page_idx": 8
+      },
+      {
+        "type": "text",
+        "text": "最后病斑中央呈灰白色，半透明，易穿孔。叶脉上的病斑多发生在叶背面，病斑褐色，纺锤形或条状，凹陷较深。叶柄与花梗上的病斑长圆形至纺锤形或梭形，凹陷较深，中间灰白色，边缘深褐色。严重时整个叶面布满病斑，病斑间可相互融合，形成大而不规则形的斑块，使叶片变黄早枯。潮湿情况下，病斑上能产生淡红色黏质物。",
+        "bbox": [
+          37,
+          82,
+          952,
+          214
+        ],
+        "page_idx": 9
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/eb978162383edfd0bfd74151b3cdc54984d45233ab36a79e282d93e21db6d919.jpg",
+        "image_caption": [
+          "白菜炭疽病前期症状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          35,
+          235,
+          484,
+          436
+        ],
+        "page_idx": 9,
+        "img_caption": [
+          "白菜炭疽病前期症状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/22edca10e12e7ed60f11504f082c929232a2c9dea2c8e38b73330cc4e7eab4f6.jpg",
+        "image_caption": [
+          "白菜炭疽病急性期症状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          500,
+          237,
+          944,
+          436
+        ],
+        "page_idx": 9,
+        "img_caption": [
+          "白菜炭疽病急性期症状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/f3923d8ffa824546e86497daa5af5f49c22d09fc5b43efcbd8bc55f84a4bd5b0.jpg",
+        "image_caption": [
+          "白菜炭疽病病叶"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          37,
+          485,
+          484,
+          673
+        ],
+        "page_idx": 9,
+        "img_caption": [
+          "白菜炭疽病病叶"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/cfe97ee0856c322b583a6ca5066d39d86049bf37dd1f591fbbfb24c8b24ce47f.jpg",
+        "image_caption": [
+          "白菜炭疽病叶柄上的病斑"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          502,
+          485,
+          949,
+          673
+        ],
+        "page_idx": 9,
+        "img_caption": [
+          "白菜炭疽病叶柄上的病斑"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/b5651464b45b7b29a63a56bd78bc4771be961b6b1e22a550e0fe73394bfefb24.jpg",
+        "image_caption": [
+          "白菜炭疽病严重时病斑相连"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          37,
+          721,
+          484,
+          909
+        ],
+        "page_idx": 9,
+        "img_caption": [
+          "白菜炭疽病严重时病斑相连"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/ab02d8437065994ab538876f4b3ce24af2636dff8161559fcb6c15c9f6a8d31b.jpg",
+        "image_caption": [
+          "白菜炭疽病严重时病斑呈条状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          502,
+          721,
+          949,
+          909
+        ],
+        "page_idx": 9,
+        "img_caption": [
+          "白菜炭疽病严重时病斑呈条状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "page_number",
+        "text": "10 ",
+        "bbox": [
+          37,
+          37,
+          70,
+          54
+        ],
+        "page_idx": 9
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          92,
+          36,
+          429,
+          54
+        ],
+        "page_idx": 9
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/cbf00bf784ac50311e14f753e57421e60782d7dd017b9838dd5c20c60f1a2010.jpg",
+        "image_caption": [
+          "萝卜炭疽病前期症状 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          42,
+          83,
+          500,
+          321
+        ],
+        "page_idx": 10,
+        "img_caption": [
+          "萝卜炭疽病前期症状 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/de93d0beb1354e28b4e8ea17034eef2d919811365edbe7688e96e9b9f0077e0f.jpg",
+        "image_caption": [
+          "萝卜炭疽病后期症状 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          510,
+          85,
+          964,
+          321
+        ],
+        "page_idx": 10,
+        "img_caption": [
+          "萝卜炭疽病后期症状 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "发生规律：病菌主要以菌丝体随病残体遗留在田间越冬，也能以菌丝体黏附在种子上越冬。种子带菌也是重要的初侵染源，播种带菌的种子，在幼苗期即可发病。病菌发育最适温度为 $26 \\sim 30^{\\circ} \\mathrm{C}$ 。高温和高湿是该病流行的主要条件，特别是时晴时雨，更易诱发此病。主要发病期在8月中下旬至11月。",
+        "bbox": [
+          42,
+          367,
+          967,
+          500
+        ],
+        "page_idx": 10
+      },
+      {
+        "type": "text",
+        "text": "防治方法：① 发病地块提倡与其他蔬菜实行 $2 \\sim 3$ 年轮作。② 从无病留种株上采收种子，在播前要做好种子处理。用 $54^{\\circ} \\mathrm{C}$ 温汤浸种5分钟后，立即移入冷水中冷却，晾干后催芽播种。③ 收获后及时清除病株残体，并携出田外深埋或销毁；深翻土壤，加速病残体腐烂分解。④ 播种前用 $50 \\%$ 多菌灵可湿性粉剂600倍液浸种20分钟，后冲洗药液，晾干播种。或用种子重量 $0.4 \\%$ 的 $50 \\%$ 多菌灵可湿性粉剂拌种。⑤ 发病初期及时用药防治，药剂可选用 $80 \\%$ 代森锰锌可湿性粉剂 $600 \\sim 800$ 倍液，或 $68.75 \\%$ 唑菌酮·代森锰锌水分散粒剂800倍液，或 $20 \\%$ 咪鲜胺乳油 $1000 \\sim 1500$ 倍液，或 $10 \\%$ 苯醚甲环唑水分散粒剂1500倍液，或 $25 \\%$ 喹菌酯悬浮剂 $1000 \\sim 2000$ 倍液等。每隔 $7 \\sim 10$ 天喷1次，连续喷 $2 \\sim 3$ 次。",
+        "bbox": [
+          37,
+          502,
+          969,
+          776
+        ],
+        "page_idx": 10
+      },
+      {
+        "type": "text",
+        "text": "十字花科蔬菜黑斑病",
+        "text_level": 1,
+        "bbox": [
+          97,
+          789,
+          366,
+          814
+        ],
+        "page_idx": 10
+      },
+      {
+        "type": "text",
+        "text": "黑斑病又称黑霉病，是十字花科蔬菜的常见病害，除危害白菜外，还能危害甘蓝、花椰菜、芥菜、萝卜等。",
+        "bbox": [
+          40,
+          834,
+          962,
+          885
+        ],
+        "page_idx": 10
+      },
+      {
+        "type": "text",
+        "text": "症状：主要危害叶片，茎、叶柄、花梗和种荚也能受害。多危害老叶，叶片染病多从外叶开始，产生近圆形灰褐色斑。病斑周围产生黄色晕圈，",
+        "bbox": [
+          40,
+          889,
+          959,
+          942
+        ],
+        "page_idx": 10
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          638,
+          37,
+          904,
+          57
+        ],
+        "page_idx": 10
+      },
+      {
+        "type": "page_number",
+        "text": "11 ",
+        "bbox": [
+          934,
+          41,
+          962,
+          57
+        ],
+        "page_idx": 10
+      },
+      {
+        "type": "text",
+        "text": "中间有明显的同心轮纹，在潮湿气候条件下，病部长出黑色霉状物。病害严重时，病斑密布全叶，引起叶片穿孔或枯死。茎和叶柄染病，病班长梭形，呈暗褐色条状凹陷，具轮纹。花梗和种荚感病，出现纵行的长梭形黑色病斑，潮湿时病部也长黑霉。",
+        "bbox": [
+          20,
+          84,
+          939,
+          189
+        ],
+        "page_idx": 11
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/2ad09ce80dadb7e7fc2e5a54b72d602dff87631f0b2b06e4753592233a69f507.jpg",
+        "image_caption": [
+          "白菜黑斑病症状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          22,
+          205,
+          479,
+          433
+        ],
+        "page_idx": 11,
+        "img_caption": [
+          "白菜黑斑病症状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/1b655e6ac2ea55188d952a523e810c44e35d232b989fd53741e3c09c804bdb68.jpg",
+        "image_caption": [
+          "白菜黑斑病严重发病状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          487,
+          207,
+          939,
+          431
+        ],
+        "page_idx": 11,
+        "img_caption": [
+          "白菜黑斑病严重发病状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/6b75d7a95829dd91e1a417c8ae80e82034b79ac5b10b6751722dab4bc8dd5d30.jpg",
+        "image_caption": [
+          "甘蓝黑斑病症状 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          22,
+          477,
+          479,
+          703
+        ],
+        "page_idx": 11,
+        "img_caption": [
+          "甘蓝黑斑病症状 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/f1fd8266c44bcf57a651ed79768638a41f865dabdc5f123dfb6387a39df1d9a3.jpg",
+        "image_caption": [
+          "花椰菜黑斑病症状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          487,
+          477,
+          939,
+          703
+        ],
+        "page_idx": 11,
+        "img_caption": [
+          "花椰菜黑斑病症状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "发生规律：病原菌主要为芸薹链格孢，有较强的腐生能力。菌丝和分生孢子可在病残体或土壤中越冬、越夏；病荚所结的种子也可以带菌。病害的流行要求高湿度和稍偏低的温度（ $16\\sim 20^{\\circ}\\mathrm{C}$ 最适）。最适感病生育期在成株期至采收期。以春秋两季发生普遍，特别在寄主衰老的情况下，发展较快，危害也较重。在昼夜温差大及高湿条件下，病害发展迅速。春季雨水较多、田间湿度大，秋季易结露均有利于病害发生。",
+        "bbox": [
+          20,
+          749,
+          939,
+          907
+        ],
+        "page_idx": 11
+      },
+      {
+        "type": "text",
+        "text": "防治方法：①农业防治。发病地块注意与非十字花科蔬菜轮作。作物",
+        "bbox": [
+          77,
+          912,
+          939,
+          935
+        ],
+        "page_idx": 11
+      },
+      {
+        "type": "page_number",
+        "text": "12 ",
+        "bbox": [
+          25,
+          37,
+          57,
+          54
+        ],
+        "page_idx": 11
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          82,
+          37,
+          419,
+          54
+        ],
+        "page_idx": 11
+      },
+      {
+        "type": "text",
+        "text": "收获后彻底清园销毁病残体，翻晒土壤；高畦深沟植菜，增施优质有机底肥，适当增施磷、钾肥。②种子处理。在 $50^{\\circ}\\mathrm{C}$ 温汤中浸种约20分钟后，移入冷水中冷却，晾干播种；或用种子重量 $0.3\\%$ 的 $2.5\\%$ 咯菌腈悬浮种衣剂拌种包衣后播种。③应在大白菜封垄后病害流行前适时用 $70\\%$ 代森锰锌可湿性粉剂500倍液，或 $50\\%$ 异菌脲可湿性粉剂1000倍液预防，或发病初期选用 $2\\%$ 春雷霉素水剂 $250\\sim 300$ 倍液，或 $43\\%$ 戊唑醇悬浮剂 $2000\\sim 2500$ 倍液，或 $10\\%$ 苯醚甲环唑水分散粒剂 $1200\\sim 1500$ 倍液，隔 $7\\sim 10$ 天喷1次，连续喷 $2\\sim 3$ 次。",
+        "bbox": [
+          22,
+          83,
+          952,
+          300
+        ],
+        "page_idx": 12
+      },
+      {
+        "type": "text",
+        "text": "十字花科蔬菜黑腐病",
+        "text_level": 1,
+        "bbox": [
+          82,
+          316,
+          354,
+          341
+        ],
+        "page_idx": 12
+      },
+      {
+        "type": "text",
+        "text": "黑腐病是十字花科蔬菜的常见病害，主要危害甘蓝、花椰菜、萝卜、白菜、芥菜和芜菁等。主要危害叶片、叶球或球茎，苗期和成株期均可染病。",
+        "bbox": [
+          22,
+          359,
+          949,
+          410
+        ],
+        "page_idx": 12
+      },
+      {
+        "type": "text",
+        "text": "症状：幼苗受害，子叶初始产生水渍状斑，后变黄褐色萎蔫状、枯死，根髓部变黑。成株期染病，引起叶斑或黑脉。成株期发病多从叶缘向内扩展，形成V形的黄褐色至灰褐色叶斑，外围组织淡黄色，与健部无明显界限。病斑内叶脉灰褐色或黑褐色。严重时可导致全叶枯死或外叶局部腐烂，干燥时呈干腐状或穿孔。叶柄染病，沿维管束向上扩展，造成叶片干腐或弯折歪向一侧、脱落。病菌向下发展可使茎部和根部维管束变黑，髓腔中空，严重时植株死亡。病部菌脓不如软腐病明显，但潮湿时手摸病部有黏质感。",
+        "bbox": [
+          22,
+          413,
+          952,
+          630
+        ],
+        "page_idx": 12
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/6d86ad6f3086e939fdd95537577c66605d6cc0aaf042ba7bccb17138afb97214.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          27,
+          651,
+          489,
+          914
+        ],
+        "page_idx": 12,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/ab5fb2139038f7b54c93f13c87997ca85d857968a884aa3b77f072c75bff1e87.jpg",
+        "image_caption": [
+          "甘蓝黑腐病症状 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          494,
+          651,
+          952,
+          914
+        ],
+        "page_idx": 12,
+        "img_caption": [
+          "甘蓝黑腐病症状 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          620,
+          37,
+          886,
+          55
+        ],
+        "page_idx": 12
+      },
+      {
+        "type": "page_number",
+        "text": "13 ",
+        "bbox": [
+          917,
+          39,
+          949,
+          55
+        ],
+        "page_idx": 12
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/939e3b219b3614dfb401de0a954e26c8b9f7f23aeacd9c96a3b7a47b0eaa9a66.jpg",
+        "image_caption": [
+          "花椰菜黑腐病症状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          40,
+          82,
+          494,
+          306
+        ],
+        "page_idx": 13,
+        "img_caption": [
+          "花椰菜黑腐病症状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/b13429750fa9fb32607def916761290fdb857398b5705e1c986afda3f3366962.jpg",
+        "image_caption": [
+          "大白菜黑腐病症状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          502,
+          82,
+          954,
+          306
+        ],
+        "page_idx": 13,
+        "img_caption": [
+          "大白菜黑腐病症状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/b8771bbf26e23d218003d1c51f46a9b19c54966111db242f7594043c876b1f5d.jpg",
+        "image_caption": [
+          "小白菜黑腐病V形斑"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          40,
+          352,
+          494,
+          576
+        ],
+        "page_idx": 13,
+        "img_caption": [
+          "小白菜黑腐病V形斑"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/3cc2a81f40d708d9ea84e2500b4079ff4e4250cdc5823a8a0dd102594b2d9871.jpg",
+        "image_caption": [
+          "小白菜黑腐病症状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          502,
+          352,
+          954,
+          576
+        ],
+        "page_idx": 13,
+        "img_caption": [
+          "小白菜黑腐病症状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "在萝卜上该病多从叶缘和虫伤处开始发病，向内形成V形或不规则形黄褐色病斑，最后病斑可扩及全叶。肉质根染病出现灰褐色或灰黄色的斑",
+        "bbox": [
+          40,
+          622,
+          959,
+          673
+        ],
+        "page_idx": 13
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/b6b608afe9aafa65fa1103a2e4f036ff4fb3dc2fa3cd651c28720a09a5b928f2.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          40,
+          688,
+          500,
+          909
+        ],
+        "page_idx": 13,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/7e8d805cf9084b82903ff8c01e91cddbdffc6a87536cc311b9a27505050d1df6.jpg",
+        "image_caption": [
+          "萝卜黑腐病病叶 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          502,
+          688,
+          957,
+          909
+        ],
+        "page_idx": 13,
+        "img_caption": [
+          "萝卜黑腐病病叶 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "page_number",
+        "text": "14 ",
+        "bbox": [
+          42,
+          37,
+          72,
+          52
+        ],
+        "page_idx": 13
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          97,
+          34,
+          434,
+          52
+        ],
+        "page_idx": 13
+      },
+      {
+        "type": "text",
+        "text": "痕，表现为内部维管束变黑色，髓部腐烂，严重时内部组织干腐，最后形成空心，但外部症状不明显。随着病害的发展和软腐病菌侵入，加速病情扩展，使肉质根腐烂，并产生恶臭气味。病部菌脓不如软腐病明显，但潮湿时手摸病部有黏质感。",
+        "bbox": [
+          25,
+          87,
+          954,
+          193
+        ],
+        "page_idx": 14
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/da9114d9023b8d05f09c79a611849ba8ed0a5fe60b16f7125a63489e26bd7b18.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          27,
+          210,
+          489,
+          433
+        ],
+        "page_idx": 14,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/98a2e66ed966a66b9e6870fa970ba35f21380a4cd66282714858c4c51fa93777.jpg",
+        "image_caption": [
+          "萝卜黑腐病肉质根空心"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          492,
+          210,
+          952,
+          431
+        ],
+        "page_idx": 14,
+        "img_caption": [
+          "萝卜黑腐病肉质根空心"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "发生规律：病原菌为野油菜黄单胞菌野油菜致病变种，属薄壁菌门黄单胞菌属细菌。病菌能在种子和未分解的病残体内越冬，可存活 $2\\sim 3$ 年。病菌生长适温 $25\\sim 30^{\\circ}\\mathrm{C}$ ，耐干燥，高温多雨或露水、大雾天气，利于病菌侵入而发病。地势低洼、排水不良的田块发病较多。最适感病生育期为甘蓝莲座期至包心期、花椰菜花球初现期、萝卜近成熟期。长江中下游地区十字花科蔬菜黑腐病的发病盛期在5—11月。",
+        "bbox": [
+          25,
+          477,
+          954,
+          638
+        ],
+        "page_idx": 14
+      },
+      {
+        "type": "text",
+        "text": "防治方法：①选留无病种子或种子消毒。②合理轮作，重发病田块提倡与非十字花科作物实行2～3年轮作。③加强栽培管理，提倡高畦栽培，雨后及时开沟排水，防止田间积水。收获后清除病残体，并带出田外深埋或销毁。④治虫防病。在小菜蛾、菜青虫、甜菜夜蛾、斜纹夜蛾、蚜虫、猿叶甲、黄曲条跳甲等害虫盛发前及时防治，防止虫伤及害虫传病。⑤在发病初期开始喷药，药剂可选20%噻菌铜悬浮剂500～600倍液，或47%春雷·氧氯铜可湿性粉剂600～800倍液，或77%硫酸铜钙600倍液等。每隔7～10天喷1次，连续喷2～3次；重病田视病情发展，必要时还要增加喷药次数。",
+        "bbox": [
+          25,
+          643,
+          954,
+          888
+        ],
+        "page_idx": 14
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          623,
+          39,
+          891,
+          59
+        ],
+        "page_idx": 14
+      },
+      {
+        "type": "page_number",
+        "text": "15 ",
+        "bbox": [
+          919,
+          42,
+          949,
+          59
+        ],
+        "page_idx": 14
+      },
+      {
+        "type": "text",
+        "text": "十字花科蔬菜菌核病",
+        "text_level": 1,
+        "bbox": [
+          90,
+          98,
+          354,
+          120
+        ],
+        "page_idx": 15
+      },
+      {
+        "type": "text",
+        "text": "菌核病主要危害甘蓝、花椰菜、白菜等十字花科蔬菜，还能危害黄瓜、番茄、辣椒、莴苣、菠菜和菜豆等多种蔬菜。主要危害植株的茎基部，也可危害叶片、叶球、叶柄、茎及种荚，苗期和成株期均可发病。",
+        "bbox": [
+          32,
+          140,
+          949,
+          217
+        ],
+        "page_idx": 15
+      },
+      {
+        "type": "text",
+        "text": "症状：幼苗发病，在近地面的茎基部产生水渍状病斑，很快腐烂或猝倒，并产生明显的白霉。白菜、甘蓝成株发病，近地面的茎、叶柄或叶片上出现水渍状淡褐色凹陷病斑。后病部组织腐烂，引起茎基部或叶球腐烂，病部密生白色或灰白色棉絮状菌丝和散生黑色鼠粪状菌核，腐烂处无臭味。当茎基部病斑环茎一周后全株枯死。茎腐烂后，腐朽呈乱麻状，中空，有白色丝状物，生有黑色鼠粪状菌核。",
+        "bbox": [
+          32,
+          222,
+          949,
+          380
+        ],
+        "page_idx": 15
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/54ce5253709036c63903bacd9be8cdea67a63cf0267fb95c8be9023a34a169f1.jpg",
+        "image_caption": [
+          "小白菜菌核病发病状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          37,
+          398,
+          474,
+          627
+        ],
+        "page_idx": 15,
+        "img_caption": [
+          "小白菜菌核病发病状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/bb2248487afcce68ce98a8510c0e1c6261246bd95f63de61ab125b10a65a36dc.jpg",
+        "image_caption": [
+          "小白菜菌核病危害根颈状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          500,
+          398,
+          949,
+          627
+        ],
+        "page_idx": 15,
+        "img_caption": [
+          "小白菜菌核病危害根颈状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/3dc88d6c45a5f1dd3cac99f206e77eabd9314f7016a1d6a6c0360ae9b174036c.jpg",
+        "image_caption": [
+          "大白菜菌核病茎基部腐烂"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          37,
+          673,
+          487,
+          864
+        ],
+        "page_idx": 15,
+        "img_caption": [
+          "大白菜菌核病茎基部腐烂"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/07ddf92a68823ed55f0220eb161849f1314e5584648cdb66c8e426555ceb5b36.jpg",
+        "image_caption": [
+          "大白菜菌核病基部菌核"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          500,
+          673,
+          949,
+          864
+        ],
+        "page_idx": 15,
+        "img_caption": [
+          "大白菜菌核病基部菌核"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "page_number",
+        "text": "16 ",
+        "bbox": [
+          35,
+          41,
+          67,
+          57
+        ],
+        "page_idx": 15
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          92,
+          39,
+          427,
+          57
+        ],
+        "page_idx": 15
+      },
+      {
+        "type": "page_footnote",
+        "text": "* 莴苣按食用部分分为叶用莴苣（生菜）和茎用莴苣（莴笋）。莴苣指生菜和莴笋。——编辑注",
+        "bbox": [
+          82,
+          920,
+          939,
+          937
+        ],
+        "page_idx": 15
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/76f32ecbcc2f29fda129204fddd0924de62f9af6c79769b2be7d44886a77d741.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          32,
+          90,
+          494,
+          328
+        ],
+        "page_idx": 16,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/149a01f82eb025f4b727865e21f797afd9555ad2702dc68d312c77ecb20164b9.jpg",
+        "image_caption": [
+          "大白菜菌核病严重发病状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          497,
+          90,
+          954,
+          328
+        ],
+        "page_idx": 16,
+        "img_caption": [
+          "大白菜菌核病严重发病状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/5320c3ffcca10665a51940b766495fe402c87a987b6edcd2a190a9143133c253.jpg",
+        "image_caption": [
+          "大白菜菌核病大田发病状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          35,
+          377,
+          492,
+          625
+        ],
+        "page_idx": 16,
+        "img_caption": [
+          "大白菜菌核病大田发病状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/8dca1d31d5c400d17543463c327237a07b91ba9a1aff976862d843f97c681dcd.jpg",
+        "image_caption": [
+          "花椰菜菌核病发病状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          502,
+          377,
+          957,
+          625
+        ],
+        "page_idx": 16,
+        "img_caption": [
+          "花椰菜菌核病发病状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/dfa822e4d639c27625253845354a349af8c72e1d3d10cc5ed767039d922e8bc5.jpg",
+        "image_caption": [
+          "甘蓝菌核病前期症状（张发成提供）"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          37,
+          671,
+          494,
+          919
+        ],
+        "page_idx": 16,
+        "img_caption": [
+          "甘蓝菌核病前期症状（张发成提供）"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/73537e534ac5d45e6b9518f9c19dc97c5e809cfefe21b2e5852f2d2a9aba23cd.jpg",
+        "image_caption": [
+          "甘蓝菌核病后期灰白色棉絮状菌丝 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          502,
+          671,
+          959,
+          919
+        ],
+        "page_idx": 16,
+        "img_caption": [
+          "甘蓝菌核病后期灰白色棉絮状菌丝 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          625,
+          39,
+          894,
+          59
+        ],
+        "page_idx": 16
+      },
+      {
+        "type": "page_number",
+        "text": "17 ",
+        "bbox": [
+          922,
+          42,
+          954,
+          59
+        ],
+        "page_idx": 16
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/f371a89fe08980a37a05197818601333656c7ac65de6ca9a9ac2585a6723dede.jpg",
+        "image_caption": [
+          "甘蓝菌核病菌核 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          37,
+          82,
+          489,
+          327
+        ],
+        "page_idx": 17,
+        "img_caption": [
+          "甘蓝菌核病菌核 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/3d751715bd9e17fe8f0f41541cb3559b010165e5daba5e14d2619875015e7c66.jpg",
+        "image_caption": [
+          "甘蓝菌核病大田发病状 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          500,
+          85,
+          952,
+          327
+        ],
+        "page_idx": 17,
+        "img_caption": [
+          "甘蓝菌核病大田发病状 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "发生规律、防治方法：参考茄果类蔬菜病害中番茄菌核病。",
+        "bbox": [
+          90,
+          373,
+          801,
+          397
+        ],
+        "page_idx": 17
+      },
+      {
+        "type": "text",
+        "text": "十字花科蔬菜灰霉病",
+        "text_level": 1,
+        "bbox": [
+          92,
+          413,
+          361,
+          436
+        ],
+        "page_idx": 17
+      },
+      {
+        "type": "text",
+        "text": "十字花科蔬菜灰霉病主要危害甘蓝、花椰菜、白菜等。",
+        "bbox": [
+          90,
+          456,
+          748,
+          477
+        ],
+        "page_idx": 17
+      },
+      {
+        "type": "text",
+        "text": "症状：苗期、成株期均可发病。幼苗发病，幼苗呈水渍状腐烂，上生灰色霉层。成株期发病，多从地面较近的叶片开始。发病初期为水渍状，湿度大时病部迅速扩大，呈褐色或淡红褐色，引起腐烂，病部生灰霉后，会产生很小的近圆形黑色菌核。茎基部侵染，发病症状与叶片类似，病情从下向上扩展，或从外层叶延至内层叶，致叶球腐烂，其上生灰霉，后产生小的近圆形黑色菌核。",
+        "bbox": [
+          32,
+          482,
+          954,
+          642
+        ],
+        "page_idx": 17
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/ed07b81ea181736c344c7625a24684c4e3e05e2f1c5a3e9e6c7c3743f8d27fda.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          37,
+          665,
+          494,
+          909
+        ],
+        "page_idx": 17,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/3fc06df208cd194787a5569b2d7114503720994fe675a0e4b1ef750636c20946.jpg",
+        "image_caption": [
+          "白菜灰霉病病叶"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          497,
+          667,
+          954,
+          909
+        ],
+        "page_idx": 17,
+        "img_caption": [
+          "白菜灰霉病病叶"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "page_number",
+        "text": "18 ",
+        "bbox": [
+          37,
+          37,
+          70,
+          54
+        ],
+        "page_idx": 17
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          97,
+          36,
+          432,
+          54
+        ],
+        "page_idx": 17
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/9e8fbf461bd7a9f92d35b833dd930403f59778ac38b856ea0f774091ff424026.jpg",
+        "image_caption": [
+          "花椰菜灰霉病病叶正面"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          35,
+          78,
+          494,
+          303
+        ],
+        "page_idx": 18,
+        "img_caption": [
+          "花椰菜灰霉病病叶正面"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/deb7105062dbf11205708df01e130e2c8f5c9e66919521dabc7c0c8f3a789c71.jpg",
+        "image_caption": [
+          "花椰菜灰霉病病叶背面灰霉"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          502,
+          78,
+          959,
+          302
+        ],
+        "page_idx": 18,
+        "img_caption": [
+          "花椰菜灰霉病病叶背面灰霉"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "发生规律、防治方法：参考茄果类蔬菜病害中番茄灰霉病。",
+        "bbox": [
+          90,
+          349,
+          806,
+          372
+        ],
+        "page_idx": 18
+      },
+      {
+        "type": "text",
+        "text": "十字花科蔬菜根肿病",
+        "text_level": 1,
+        "bbox": [
+          92,
+          389,
+          361,
+          413
+        ],
+        "page_idx": 18
+      },
+      {
+        "type": "text",
+        "text": "根肿病是世界性具毁灭性病害，危害甘蓝、花椰菜、白菜、菜薹、芥菜、萝卜、芜菁等100多种栽培和野生的十字花科植物。",
+        "bbox": [
+          32,
+          431,
+          959,
+          482
+        ],
+        "page_idx": 18
+      },
+      {
+        "type": "text",
+        "text": "症状：田间蔬菜苗期易感病，主要危害根部。根部发病后形成肿瘤并逐渐膨大，多靠近上部，呈纺锤形、球形；侧根上的瘤多为手指状，须根上的瘤往往串生在一起，多达几十个。主根上肿瘤大而少。白菜、芥菜、甘蓝、花椰菜发病，肿瘤多在主根上；萝卜、芜菁等发病，肿瘤多在侧根上。肿瘤初期表面光滑，后期龟裂而粗糙。病株地上部生长迟缓、矮小。病株叶片色浅，外层叶中午萎蔫，下午恢复，晴天中午尤为明显。",
+        "bbox": [
+          32,
+          487,
+          962,
+          646
+        ],
+        "page_idx": 18
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/cc0d7bf984542f9acad89d51f969708cb2a09166067cc16dbbaf120db288808e.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          37,
+          663,
+          497,
+          908
+        ],
+        "page_idx": 18,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/ae359f2b96523c7fa3840b583d77f338bc5484217c9ec95d438c8936f55d7374.jpg",
+        "image_caption": [
+          "白菜根肿病发病状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          500,
+          663,
+          959,
+          908
+        ],
+        "page_idx": 18,
+        "img_caption": [
+          "白菜根肿病发病状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          630,
+          29,
+          899,
+          50
+        ],
+        "page_idx": 18
+      },
+      {
+        "type": "page_number",
+        "text": "19 ",
+        "bbox": [
+          927,
+          32,
+          959,
+          50
+        ],
+        "page_idx": 18
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/9bcc8ca4e7d09cc6c3178f5b4e5bae9122ba7f7c895cb2854be3ec115d1ddc4d.jpg",
+        "image_caption": [
+          "白菜苗期根肿病症状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          30,
+          74,
+          479,
+          281
+        ],
+        "page_idx": 19,
+        "img_caption": [
+          "白菜苗期根肿病症状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/09f071c80fdcf4f0c4f6fa4e4840b7af5ba3f17dd81ffd433d17680989e70dc7.jpg",
+        "image_caption": [
+          "白菜根肿病肿瘤"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          494,
+          74,
+          944,
+          281
+        ],
+        "page_idx": 19,
+        "img_caption": [
+          "白菜根肿病肿瘤"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "发生规律：该病由芸薹根肿菌侵染所致，病菌以休眠孢子囊随病根、病残体在土壤中越冬、越夏，可在土壤中存活 $6\\sim 7$ 年。通过雨水、灌溉水、昆虫、土壤线虫或耕作在田间传播。病菌喜酸性土壤，以 $\\mathrm{pH}5.4\\sim 6.5$ 的土壤最适宜。土壤温度 $20\\sim 25^{\\circ}C$ 、空气相对湿度 $60\\%$ 左右最适于此病发生。一般苗期发病重于成株期。夏秋多雨或梅雨期间多雨的年份发病重。田块连作地，地势低洼、排水不良的田块发病重。1年中9月中旬至11月和3—4月为发病盛期，以9月中旬至11月为全年发病高峰期。",
+        "bbox": [
+          30,
+          327,
+          947,
+          514
+        ],
+        "page_idx": 19
+      },
+      {
+        "type": "text",
+        "text": "防治方法：①与非十字花科蔬菜实行4～5年的水旱轮作和非十字花科作物轮作。②根肿病虽种子不带菌，但附在种子表面的泥土可带菌传病。③在收获后或病田换茬时要及时清除病株残体，在作物生长期田间发现病株要及时拔除，带出田外深埋或销毁，并在病株周围撒施生石灰消毒，以减少田间菌源。④采用深沟高畦栽培和抗旱小水勤浇有利于控制土壤湿度，减轻病害发生，切忌大水漫灌。多施农家肥和磷、钾肥，控制氮肥施用量。⑤药液灌根。每亩可用 $50\\%$ 氯溴异氰尿酸可溶性粉剂 $2\\sim 3$ 千克，在播前或移栽前混细土 $40\\sim 50$ 千克，施入播种沟或定植穴中。也可用 $50\\%$ 氟啶胺悬浮剂300毫升，兑水60升，对播种沟或定植穴的土壤喷雾，然后均匀混土，混土层 $10\\sim 15$ 厘米，进行土壤消毒。",
+        "bbox": [
+          30,
+          518,
+          947,
+          787
+        ],
+        "page_idx": 19
+      },
+      {
+        "type": "text",
+        "text": "十字花科蔬菜白锈病",
+        "text_level": 1,
+        "bbox": [
+          87,
+          805,
+          354,
+          828
+        ],
+        "page_idx": 19
+      },
+      {
+        "type": "text",
+        "text": "白锈病主要危害白菜、芥菜、苋菜、菠菜，还可危害甘蓝、萝卜等蔬菜。",
+        "bbox": [
+          32,
+          846,
+          947,
+          897
+        ],
+        "page_idx": 19
+      },
+      {
+        "type": "text",
+        "text": "症状：主要危害叶片，也可危害花器。叶片染病，发病初叶片正面产",
+        "bbox": [
+          87,
+          902,
+          947,
+          924
+        ],
+        "page_idx": 19
+      },
+      {
+        "type": "page_number",
+        "text": "20 ",
+        "bbox": [
+          32,
+          31,
+          62,
+          44
+        ],
+        "page_idx": 19
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          87,
+          28,
+          424,
+          46
+        ],
+        "page_idx": 19
+      },
+      {
+        "type": "text",
+        "text": "生暗褐绿色小斑，扩大后病斑黄绿色，近圆形至不规则形，叶表皮隆起，边缘不明显；叶背病部隆起，产生白色或乳白色疱斑，即孢子堆，病斑表面略有光泽。疱斑最初表面光滑，成熟后表皮破裂，散出白色粉末状物，即病菌的孢子囊。一片叶上疱斑多达几十个，严重时多个病斑连接成片，成为大型枯斑，使叶片枯黄。除危害叶片外，病菌还可侵染植株的茎、花梗及花器，种株的花梗和花器受害，致畸形弯曲肥大，引起不结实，其肉质茎也可现乳白色疱状斑。",
+        "bbox": [
+          37,
+          80,
+          964,
+          270
+        ],
+        "page_idx": 20
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/5a9bfb754efce59848a5474b5b21cf59bfd02b0c790eb9fda001270bc2b4fe95.jpg",
+        "image_caption": [
+          "小白菜白锈病病叶正面"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          40,
+          303,
+          494,
+          566
+        ],
+        "page_idx": 20,
+        "img_caption": [
+          "小白菜白锈病病叶正面"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/68f7d280de7ae82bb2bfdcce9463dba7694097031516d84726378c04f994c4d3.jpg",
+        "image_caption": [
+          "小白菜白锈病病叶背面隆起疱斑"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          505,
+          302,
+          959,
+          568
+        ],
+        "page_idx": 20,
+        "img_caption": [
+          "小白菜白锈病病叶背面隆起疱斑"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/7546c9553633b8e88484172949442e83487d9efda504f4046915d10fcb8c8277.jpg",
+        "image_caption": [
+          "小白菜白锈病病叶枯黄"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          42,
+          643,
+          494,
+          911
+        ],
+        "page_idx": 20,
+        "img_caption": [
+          "小白菜白锈病病叶枯黄"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/035ec6a55c1f3ddd721547b91f63bb090c6f02e52a1b447c0f7fbee5e3b9ffdf.jpg",
+        "image_caption": [
+          "三月青白锈病叶正面黄绿色病斑"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          507,
+          645,
+          959,
+          911
+        ],
+        "page_idx": 20,
+        "img_caption": [
+          "三月青白锈病叶正面黄绿色病斑"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          630,
+          32,
+          899,
+          52
+        ],
+        "page_idx": 20
+      },
+      {
+        "type": "page_number",
+        "text": "21 ",
+        "bbox": [
+          924,
+          36,
+          954,
+          52
+        ],
+        "page_idx": 20
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/f8dcc00151c91857eaa369927774d1910b4023920426c6382e8adf558f5a0278.jpg",
+        "image_caption": [
+          "三月青白锈病病叶背面疱斑"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          35,
+          80,
+          484,
+          303
+        ],
+        "page_idx": 21,
+        "img_caption": [
+          "三月青白锈病病叶背面疱斑"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/3007672e1a6a40f520ef4aeb7a08b72b7d2d215fbe6c87753fb434b7899e37bf.jpg",
+        "image_caption": [
+          "芥菜白锈病病叶 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          497,
+          80,
+          947,
+          304
+        ],
+        "page_idx": 21,
+        "img_caption": [
+          "芥菜白锈病病叶 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "发生规律、防治方法：详见绿叶菜类及其他蔬菜病害中苋菜白锈病。",
+        "bbox": [
+          90,
+          352,
+          907,
+          373
+        ],
+        "page_idx": 21
+      },
+      {
+        "type": "text",
+        "text": "萝卜根结线虫病",
+        "text_level": 1,
+        "bbox": [
+          90,
+          392,
+          296,
+          413
+        ],
+        "page_idx": 21
+      },
+      {
+        "type": "text",
+        "text": "症状：主要危害地下部须根和侧根。在受害处产生大小不等的瘤状根结。初生根结乳白色，后变为褐色。根结外部长出细弱的新根，新根上可依次染病，再长根结。轻病株地上部分无明显症状；重病株发育不良、株形矮小，干旱时中午萎蔫或提早枯死。",
+        "bbox": [
+          35,
+          434,
+          949,
+          537
+        ],
+        "page_idx": 21
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/af0a3a1987a4c93a5df0157dbf8920768d1ec6de431b2bc1a8d6e79f3cd8f8f1.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          35,
+          556,
+          484,
+          780
+        ],
+        "page_idx": 21,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/e2d3ffc886704f537658cee4105d152cf5b3e7a624e7a7cf8ebfc6b0303165ec.jpg",
+        "image_caption": [
+          "萝卜根结线虫病症状 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          494,
+          556,
+          942,
+          780
+        ],
+        "page_idx": 21,
+        "img_caption": [
+          "萝卜根结线虫病症状 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "发生规律：参考茄果类蔬菜根结线虫病。",
+        "bbox": [
+          90,
+          830,
+          577,
+          851
+        ],
+        "page_idx": 21
+      },
+      {
+        "type": "text",
+        "text": "防治方法：①合理轮作，与禾本科作物尤其是与水稻水旱轮作效果更好。重病田种植大葱、大蒜、韭菜、辣椒等抗病类蔬菜，可明显压低土壤中的线虫数量，减轻下茬受害程度。②有条件的可利用夏季休闲期翻耕晒",
+        "bbox": [
+          37,
+          858,
+          949,
+          935
+        ],
+        "page_idx": 21
+      },
+      {
+        "type": "page_number",
+        "text": "22 ",
+        "bbox": [
+          35,
+          37,
+          65,
+          51
+        ],
+        "page_idx": 21
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          92,
+          34,
+          427,
+          52
+        ],
+        "page_idx": 21
+      },
+      {
+        "type": "text",
+        "text": "田，也可病田淹水1个月，可杀死表层大部分线虫。③育苗移栽要用无病土，培育无病壮苗。其他可参考茄果类蔬菜根结线虫病。",
+        "bbox": [
+          42,
+          83,
+          962,
+          134
+        ],
+        "page_idx": 22
+      },
+      {
+        "type": "text",
+        "text": "缺硼 ",
+        "text_level": 1,
+        "bbox": [
+          97,
+          152,
+          158,
+          175
+        ],
+        "page_idx": 22
+      },
+      {
+        "type": "text",
+        "text": "症状：花椰菜及青花菜缺硼，茎部及花球的肥短花枝心部先呈水渍状，继而变成锈褐色湿腐，有时横裂成孔洞，裂面褐色。有时花球表面也有水渍状，继而变成锈褐色。",
+        "bbox": [
+          42,
+          193,
+          964,
+          272
+        ],
+        "page_idx": 22
+      },
+      {
+        "type": "text",
+        "text": "根茎类蔬菜缺硼，初期是在根部最粗部位出现深色斑点。生长缓慢，叶片少而且小。如萝卜等若缺硼，生长点萎缩、枯死，出现枯顶，幼叶畸形、扭曲；茎和叶柄粗短、龟裂、硬化，植株矮缩；肉质茎内部发生水渍状，横裂成孔洞。",
+        "bbox": [
+          42,
+          275,
+          964,
+          382
+        ],
+        "page_idx": 22
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/f4d7daa24370e9b51f06afee1aacbc4d6f6255b1a2d1acdb319c2018896b1939.jpg",
+        "image_caption": [
+          "小白菜缺硼症状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          42,
+          399,
+          959,
+          625
+        ],
+        "page_idx": 22,
+        "img_caption": [
+          "小白菜缺硼症状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/a66ae3b784f523b304c226b76fcde033bf15307da88ab9a5cc00b6f5453505a7.jpg",
+        "image_caption": [
+          "大白菜缺硼症状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          190,
+          671,
+          821,
+          914
+        ],
+        "page_idx": 22,
+        "img_caption": [
+          "大白菜缺硼症状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          633,
+          37,
+          899,
+          55
+        ],
+        "page_idx": 22
+      },
+      {
+        "type": "page_number",
+        "text": "23 ",
+        "bbox": [
+          927,
+          39,
+          962,
+          55
+        ],
+        "page_idx": 22
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/a1154093ac24b8160c59eede5c49ff25ec3497b9945e52a469a1a055ed8465e5.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          82,
+          42,
+          582,
+          308
+        ],
+        "page_idx": 23,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/132b60895d45021d66e681ac5c1456188e1578fec5b23304e3a27befa0faaefb.jpg",
+        "image_caption": [
+          "萝卜缺硼症状 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          618,
+          133,
+          914,
+          308
+        ],
+        "page_idx": 23,
+        "img_caption": [
+          "萝卜缺硼症状 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "防治方法：①增施有机肥。既可提高土壤的供硼水平，同时能改善土壤的结构和理化性状，增强土壤的保水保肥能力，提高土壤硼的有效性。②平衡氮、磷、钾肥。在合理增施有机肥的基础上，控制氮肥，特别是铵态氮过多，不仅导致蔬菜体内氮和硼的比例失调，还会抑制蔬菜对土壤中混合施用，既能提高施用硼肥的均匀性，又可增加施硼效果。硼肥全作基，每亩喷50千克，叶片正反两面均匀喷雾。叶菜类蔬菜宜在苗期喷施。缺硼防止土壤干裂，促进硼的吸收。不可一次性灌水过多，否则排土土壤水溶性硼淋失，导致土壤缺硼。",
+        "bbox": [
+          0,
+          322,
+          972,
+          647
+        ],
+        "page_idx": 23
+      },
+      {
+        "type": "text",
+        "text": "(二) 十字花科蔬菜害虫",
+        "text_level": 1,
+        "bbox": [
+          42,
+          632,
+          376,
+          686
+        ],
+        "page_idx": 23
+      },
+      {
+        "type": "text",
+        "text": "小菜蛾",
+        "text_level": 1,
+        "bbox": [
+          30,
+          686,
+          123,
+          713
+        ],
+        "page_idx": 23
+      },
+      {
+        "type": "text",
+        "text": "小菜蛾属鳞翅目菜蛾科，又名小青虫、两头尖、吊丝虫，小等十字花科植物形态特征：成虫体灰褐色，头部黄白色，触角丝状，褐色有白纹，静纹。成虫停息时两翅覆盖于体背呈屋脊状，接合处形成3个连串的菱",
+        "bbox": [
+          0,
+          728,
+          851,
+          970
+        ],
+        "page_idx": 23
+      },
+      {
+        "type": "page_number",
+        "text": "24 ",
+        "bbox": [
+          148,
+          0,
+          180,
+          11
+        ],
+        "page_idx": 23
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          206,
+          0,
+          537,
+          47
+        ],
+        "page_idx": 23
+      },
+      {
+        "type": "text",
+        "text": "形斑纹。卵椭圆形，稍扁平，初产时乳白色，后变淡黄色。多数为单粒产，大多产在叶背叶脉的凹陷处。幼虫绿色，头黄褐色，头部较尖细，纺锤形，俗称“两头尖”。身体上有稀而少的黑色刚毛。前胸背板上由淡褐色无毛的小点组成两个U形纹。初化蛹时绿色，渐变淡黄绿色，最后为灰褐色，茧呈纺锤形，灰白色丝质薄如网，可透见蛹体。",
+        "bbox": [
+          32,
+          85,
+          959,
+          218
+        ],
+        "page_idx": 24
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/d964936689e3d44badad89f953fa129e6d1fc26b0c846774f5da56ff21a663bf.jpg",
+        "image_caption": [
+          "小菜蛾春夏型成虫"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          35,
+          236,
+          489,
+          426
+        ],
+        "page_idx": 24,
+        "img_caption": [
+          "小菜蛾春夏型成虫"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/b35b0e5d9008c4974e1227cc92883a185e5ec8272aa4c841a54a6971a19025d8.jpg",
+        "image_caption": [
+          "小菜蛾冬型成虫"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          502,
+          236,
+          957,
+          426
+        ],
+        "page_idx": 24,
+        "img_caption": [
+          "小菜蛾冬型成虫"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/96e64e305273ad4ba67ab4e8fa696e1ac07dcfc3f7154e85af73f4a55ef8175f.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          37,
+          474,
+          494,
+          684
+        ],
+        "page_idx": 24,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/8e0c597ba15949a9c7f8633bb00c944ccd5ef79410a1c703fc1154da494d8bdd.jpg",
+        "image_caption": [
+          "小菜蛾卵"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          500,
+          474,
+          959,
+          684
+        ],
+        "page_idx": 24,
+        "img_caption": [
+          "小菜蛾卵"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/65cb1a18d4edc304980dfe13f4cc3b27832b893e6bab01fbdaf1119b4477e120.jpg",
+        "image_caption": [
+          "小菜蛾低龄幼虫"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          40,
+          732,
+          494,
+          916
+        ],
+        "page_idx": 24,
+        "img_caption": [
+          "小菜蛾低龄幼虫"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/e151ef8c6ddfbf9acde06c003ee3b6702aa73cb7991c25e4ee8340fdb4fce735.jpg",
+        "image_caption": [
+          "小菜蛾高龄幼虫"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          505,
+          732,
+          959,
+          914
+        ],
+        "page_idx": 24,
+        "img_caption": [
+          "小菜蛾高龄幼虫"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          625,
+          37,
+          894,
+          55
+        ],
+        "page_idx": 24
+      },
+      {
+        "type": "page_number",
+        "text": "25 ",
+        "bbox": [
+          922,
+          39,
+          957,
+          55
+        ],
+        "page_idx": 24
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/57754ede2d5903ec071435f43cb1b26abc5f8f8cb09a456fdb0813a55680d15a.jpg",
+        "image_caption": [
+          "小菜蛾茧"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          32,
+          85,
+          482,
+          316
+        ],
+        "page_idx": 25,
+        "img_caption": [
+          "小菜蛾茧"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/487710b7bae9134031d0fa6e09496dd05e3e4591d46faed9f83b8aeebe408b34.jpg",
+        "image_caption": [
+          "小菜蛾蛹"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          497,
+          85,
+          944,
+          316
+        ],
+        "page_idx": 25,
+        "img_caption": [
+          "小菜蛾蛹"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "危害状：低龄幼虫取食叶肉，留下一层透明的表皮，在叶片上形成一个个透明的斑，称为“开天窗”；三至四龄幼虫可将叶片食成许多大小不同的孔洞和缺刻，严重时全叶被吃成网状。在苗期，幼龄虫常群集于心叶危害生长点，形成“秃顶苗”，使菜不能包心。结球期钻蛀叶球，造成严重减产。在留种菜上危害嫩茎、幼荚和籽粒，影响结实。",
+        "bbox": [
+          32,
+          365,
+          462,
+          658
+        ],
+        "page_idx": 25
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/409c72f69f50ef6b13aabfb407daa8c2dba1f63a3c951cd19b70cadbf6d7be83.jpg",
+        "image_caption": [
+          "小菜蛾危害叶片状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          497,
+          367,
+          944,
+          612
+        ],
+        "page_idx": 25,
+        "img_caption": [
+          "小菜蛾危害叶片状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "生活习性：1年发生2～22代不等，在东北1年发生2～3代，华中、华北发生4～6代，长江流域9～14代，广东、广西18～21代，海南22代。以蛹在墙壁、树干、土缝、杂草及落叶上越冬。成虫昼伏夜出，有趋光性，世代重叠严重。幼虫性活泼，受惊扰时可扭曲身体后退，或吐丝下垂，所以也称“吊丝虫”。发育最适温度为20～30℃，喜干旱，潮湿多雨对其发育不利。十字花科蔬菜栽培面积大、连续种植或管理粗放都有利于此虫发生。东北、华北地区以5—6月和8—9月危害严重，且春季重于秋季。在南方以3—6月和8—11月为发生盛期，其中以8—9月发生数量最多，是全年危害最重的时期，而且秋季重于春季。",
+        "bbox": [
+          30,
+          665,
+          949,
+          906
+        ],
+        "page_idx": 25
+      },
+      {
+        "type": "text",
+        "text": "防治方法：①合理种植布局，避免十字花科蔬菜周年连作，尤其要避",
+        "bbox": [
+          87,
+          912,
+          947,
+          935
+        ],
+        "page_idx": 25
+      },
+      {
+        "type": "page_number",
+        "text": "26 ",
+        "bbox": [
+          35,
+          39,
+          67,
+          54
+        ],
+        "page_idx": 25
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          92,
+          37,
+          424,
+          54
+        ],
+        "page_idx": 25
+      },
+      {
+        "type": "text",
+        "text": "免夏季的连作。可与瓜类、豆类、茄果类、葱蒜类蔬菜轮作倒茬。小菜蛾发生严重的地区，应与水稻轮作，或夏季休耕。②用频振式杀虫灯、黑光灯和性诱剂诱杀成虫。③蔬菜收获后要及时清洁田间枯残菜叶，及时翻耕菜地，清除田边、路边等处杂草。④推广生物防治技术。可采用多杀霉素、苏云金杆菌、植物杀虫剂、多角体病毒等生物源杀虫剂防治，也可利用保护菜田中的小黑蚁、菜蛾啮小蜂、菜蛾绒茧蜂等天敌种群，控制抗药性害虫的猖獗。⑤合理使用农药。在小菜蛾大发生时，选用高效、低毒、低残留的农药进行防治，防治适期以一至二龄幼虫期为佳。药剂可选用 $2.5\\%$ 多杀霉素悬浮剂或 $6\\%$ 乙基多杀菌素悬浮剂 $1000\\sim 1500$ 倍液，或 $0.3\\%$ 印楝素乳油1000倍液，或32000国际单位/毫克苏云金杆菌 $1000\\sim 2000$ 倍液，或 $5\\%$ 氯虫苯甲酰胺 $1500\\sim 2000$ 倍液，或 $5\\%$ 氟虫隆乳油、 $5\\%$ 氟虫脲乳油1500倍液，或 $1\\%$ 甲氨基阿维菌素苯甲酸盐乳油4000倍液，或 $24\\%$ 甲氧虫酰肼悬浮剂 $2500\\sim 3000$ 倍液，或 $15\\%$ 唑虫酰胺乳油 $1200\\sim 2000$ 倍液，或 $10\\%$ 溴氰虫酰胺悬浮剂2000倍液，或 $22\\%$ 氰氟虫腙悬浮剂 $600\\sim 800$ 倍液，或 $10.5\\%$ 三氟甲吡醚乳油 $800\\sim 1200$ 倍液，或 $15\\%$ 荠虫威悬浮剂 $3000\\sim 4000$ 倍液。⑥提倡药剂混用、轮用，以延缓或阻止害虫抗药性产生。根据小菜蛾危害特点，重点抓好叶背和心叶的喷雾处理，以提高防效。",
+        "bbox": [
+          32,
+          87,
+          959,
+          579
+        ],
+        "page_idx": 26
+      },
+      {
+        "type": "text",
+        "text": "菜粉蝶",
+        "text_level": 1,
+        "bbox": [
+          92,
+          594,
+          188,
+          617
+        ],
+        "page_idx": 26
+      },
+      {
+        "type": "text",
+        "text": "菜粉蝶属鳞翅目粉蝶科，又称白粉蝶、白蝴蝶、粉蝶等。幼虫也称菜青虫，危害十字花科、菊科、旋花科、百合科、茄",
+        "bbox": [
+          35,
+          637,
+          811,
+          688
+        ],
+        "page_idx": 26
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/39322dd9fed81e58b6204562010ca26497ae156287abae93b96a0aa01352d8ed.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          824,
+          600,
+          957,
+          686
+        ],
+        "page_idx": 26,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "科、藜科、苋科等9科35种蔬菜，是十字花科蔬菜上的重要害虫，主要危害甘蓝、花椰菜、萝卜、白菜等十字花科蔬菜，偏嗜厚叶类蔬菜。",
+        "bbox": [
+          35,
+          692,
+          959,
+          743
+        ],
+        "page_idx": 26
+      },
+      {
+        "type": "text",
+        "text": "形态特征：雄蝶乳白色，雌蝶淡黄白色。虫体灰黑色，鳞粉细密。前翅顶角有1个三角形黑斑，翅中下方有2个黑色圆斑，后翅正面前缘离翅基2/3处有1个黑斑。卵散产，形似枪弹形，初产时淡黄色，后变橙黄色，表面有许多纵、横隆起的线。幼虫体青绿色，圆筒形，中段稍肥粗，体表密布细毛，背部有一条不明显的断续的黄色纵线，并有横皱纹，两侧气门线黄色，每节的线上有两个黄斑。蛹纺锤形，两端尖细，体背有3条纵脊，常有一丝吊连在化蛹场所的物体上，化蛹初期为青绿色，逐渐变为灰褐色。",
+        "bbox": [
+          35,
+          745,
+          962,
+          937
+        ],
+        "page_idx": 26
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          628,
+          39,
+          894,
+          59
+        ],
+        "page_idx": 26
+      },
+      {
+        "type": "page_number",
+        "text": "27 ",
+        "bbox": [
+          922,
+          42,
+          957,
+          59
+        ],
+        "page_idx": 26
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/2e7c6836926eb92c16a406dd7a5624648bba03432f6299d8cf03300240d78bbd.jpg",
+        "image_caption": [
+          "菜粉蝶成虫 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          37,
+          85,
+          489,
+          319
+        ],
+        "page_idx": 27,
+        "img_caption": [
+          "菜粉蝶成虫 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/4f830cf7495cea5388d57e0068481be41fa74b4673b83fd4d77343dcf366f7ee.jpg",
+        "image_caption": [
+          "菜粉蝶成虫交尾 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          500,
+          85,
+          954,
+          319
+        ],
+        "page_idx": 27,
+        "img_caption": [
+          "菜粉蝶成虫交尾 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/b17de5439584f42d3a51b2d25dd132268ac35ce2d2d3815d668d5af1e3cae72d.jpg",
+        "image_caption": [
+          "菜粉蝶卵 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          37,
+          380,
+          494,
+          614
+        ],
+        "page_idx": 27,
+        "img_caption": [
+          "菜粉蝶卵 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/9347b20545aee563e35c995c423c241d630584c4cc32fe53c37c54bf646f29f3.jpg",
+        "image_caption": [
+          "菜粉蝶低龄幼虫 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          502,
+          380,
+          954,
+          614
+        ],
+        "page_idx": 27,
+        "img_caption": [
+          "菜粉蝶低龄幼虫 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/54b88d7a048beaac7dc8aaef0bd87e3b478cc852e18609cc28f2b350848a855a.jpg",
+        "image_caption": [
+          "菜粉蝶高龄幼虫 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          40,
+          677,
+          494,
+          909
+        ],
+        "page_idx": 27,
+        "img_caption": [
+          "菜粉蝶高龄幼虫 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/ffafbb9076ee2b4dbe7d4b6630a2380e8a6b33d19aebc7fe7dec180f30c61d2a.jpg",
+        "image_caption": [
+          "菜粉蝶前期蛹 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          502,
+          677,
+          954,
+          909
+        ],
+        "page_idx": 27,
+        "img_caption": [
+          "菜粉蝶前期蛹 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "page_number",
+        "text": "28 ",
+        "bbox": [
+          37,
+          39,
+          70,
+          56
+        ],
+        "page_idx": 27
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          97,
+          37,
+          432,
+          56
+        ],
+        "page_idx": 27
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/ab3e6e69d276ddfb979ed7fd01f48f32feb4bde385642084ed348e273916c7c7.jpg",
+        "image_caption": [
+          "菜粉蝶后期蛹"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          27,
+          88,
+          484,
+          323
+        ],
+        "page_idx": 28,
+        "img_caption": [
+          "菜粉蝶后期蛹"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/e8ffb2f9943e1d64b3030a1c1ee150f6c45a9211c2fdd2e15815320dd9647398.jpg",
+        "image_caption": [
+          "菜粉蝶不同时期蛹"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          505,
+          88,
+          952,
+          323
+        ],
+        "page_idx": 28,
+        "img_caption": [
+          "菜粉蝶不同时期蛹"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "危害状：幼虫食叶，二龄前啃食叶肉，留下一层透明的表皮，三龄后可蚕食整个叶片，咬成孔洞和缺刻。老龄幼虫取食迅速，食量大，轻则虫口累累，重则仅剩下叶脉，幼苗受害严重时，整株死亡。菜青虫取食时，边取食边排出粪便，污染花椰菜球茎，所造成的伤口易引起软腐病、黑腐病。",
+        "bbox": [
+          27,
+          385,
+          467,
+          628
+        ],
+        "page_idx": 28
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/98a8f3a4b789296a61e12626ecefb67cb714b0332194cfea8bb7e4ae9939a505.jpg",
+        "image_caption": [
+          "菜粉蝶幼虫危害小白菜 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          497,
+          385,
+          954,
+          622
+        ],
+        "page_idx": 28,
+        "img_caption": [
+          "菜粉蝶幼虫危害小白菜 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/5b849ba19c429aa702b628c4e8ec52cd9f62d585fb953afc0020f57981e2a5cc.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          32,
+          681,
+          494,
+          917
+        ],
+        "page_idx": 28,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/b65f51bc041ae375d01496890af9878fd472dc7b6c0735e228e6faed08b0cfff.jpg",
+        "image_caption": [
+          "菜粉蝶幼虫危害甘蓝 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          494,
+          681,
+          954,
+          917
+        ],
+        "page_idx": 28,
+        "img_caption": [
+          "菜粉蝶幼虫危害甘蓝 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          623,
+          39,
+          891,
+          60
+        ],
+        "page_idx": 28
+      },
+      {
+        "type": "page_number",
+        "text": "29 ",
+        "bbox": [
+          917,
+          42,
+          949,
+          60
+        ],
+        "page_idx": 28
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/9e57af9887b5776803363e43640db6878e4753a0162c6fe28d49a90f93b6bced.jpg",
+        "image_caption": [
+          "菜粉蝶幼虫严重危害甘蓝 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          37,
+          82,
+          489,
+          306
+        ],
+        "page_idx": 29,
+        "img_caption": [
+          "菜粉蝶幼虫严重危害甘蓝 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/a4b9038bf44b90ab9d53dbcf25d3f755cef66e05bfe8a7429714900da86dd94e.jpg",
+        "image_caption": [
+          "菜粉蝶幼虫严重危害大白菜 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          500,
+          84,
+          949,
+          306
+        ],
+        "page_idx": 29,
+        "img_caption": [
+          "菜粉蝶幼虫严重危害大白菜 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/a2d8892b11f34e78eaa08fd5be48292224a056762ec1126b241181addecddea4.jpg",
+        "image_caption": [
+          "菜粉蝶幼虫严重危害花椰菜 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          37,
+          354,
+          489,
+          586
+        ],
+        "page_idx": 29,
+        "img_caption": [
+          "菜粉蝶幼虫严重危害花椰菜 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/6e64e4d3cb5ac37e1f3daab4b3ddfe8ded2d66c2836423c54dd3c5093b2d727a.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          502,
+          354,
+          949,
+          586
+        ],
+        "page_idx": 29,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/193b00bcf45f4caa710737b0dc2edf70a6c4c0cca00926b1e28fee4a391ca564.jpg",
+        "image_caption": [
+          "菜粉蝶幼虫危害花椰菜花球"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          502,
+          591,
+          952,
+          780
+        ],
+        "page_idx": 29,
+        "img_caption": [
+          "菜粉蝶幼虫危害花椰菜花球"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "生活习性：黑龙江1年发生3～4代，河北4～5代，山东5～6代，浙江8～9代，华南12代，以蛹在寄主植物附近的篱笆、风障、树干上及杂草或残枝落叶间越冬。世代重叠现象严重。雌虫产卵对十字花科蔬菜有很强的趋性，尤以厚叶类",
+        "bbox": [
+          37,
+          639,
+          469,
+          823
+        ],
+        "page_idx": 29
+      },
+      {
+        "type": "text",
+        "text": "的甘蓝和花椰菜着卵量大，卵散产，夏季多产于叶片背面，冬季多产在叶片正面。幼虫偏嗜十字花科蔬菜，其中又偏好甘蓝、花椰菜、白菜、萝卜等。幼虫可转株危害，有假死性。东北地区的发生危害盛期为7月和9月，华北地区5月中旬至6月和8—9月，长江中下游4月下旬至6月和9—10月，",
+        "bbox": [
+          37,
+          828,
+          954,
+          935
+        ],
+        "page_idx": 29
+      },
+      {
+        "type": "page_number",
+        "text": "30 ",
+        "bbox": [
+          37,
+          39,
+          70,
+          54
+        ],
+        "page_idx": 29
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          97,
+          36,
+          429,
+          54
+        ],
+        "page_idx": 29
+      },
+      {
+        "type": "text",
+        "text": "华南地区多在3月前后和10—11月。",
+        "bbox": [
+          25,
+          83,
+          459,
+          105
+        ],
+        "page_idx": 30
+      },
+      {
+        "type": "text",
+        "text": "防治方法：利用防虫网育苗，防止在苗上产卵。药剂防治一般在卵高峰后1周左右，即幼虫孵化盛期至三龄幼虫前用药，连续使用 $2\\sim 3$ 次。注意农药交替轮换使用，并于早上或傍晚在植株叶片背面、正面均匀喷药。其他参考小菜蛾防治。",
+        "bbox": [
+          25,
+          110,
+          949,
+          215
+        ],
+        "page_idx": 30
+      },
+      {
+        "type": "text",
+        "text": "菜螟 ",
+        "text_level": 1,
+        "bbox": [
+          82,
+          231,
+          145,
+          254
+        ],
+        "page_idx": 30
+      },
+      {
+        "type": "text",
+        "text": "菜螟属鳞翅目螟蛾科，俗称菜心野螟、萝卜螟、白菜螟、甘蓝螟、钻心虫，是一种钻蛀性害虫，主要危害十字花科白菜类、甘蓝类、芥菜类，以及萝卜、菠菜，尤以萝卜、白菜、甘蓝受害重。",
+        "bbox": [
+          27,
+          272,
+          949,
+          351
+        ],
+        "page_idx": 30
+      },
+      {
+        "type": "text",
+        "text": "形态特征：成虫体为灰褐色或黄褐色小型蛾类。前翅灰褐色至黄褐色，",
+        "bbox": [
+          82,
+          357,
+          947,
+          380
+        ],
+        "page_idx": 30
+      },
+      {
+        "type": "text",
+        "text": "有2条波状横纹，近翅中央有一灰黑色有白边肾形纹，斑外围有灰白色晕圈。翅外缘有一排黑色小点，后翅灰白色。卵椭圆形，扁平，表面有不规则网状纹，初产时淡黄色，孵化前橙黄色。幼虫共5龄，体淡黄绿色，体背有较模糊的5条褐色背线，各节体背长有毛瘤，中、后胸各6对，腹部各节前排8个，后排2个。幼虫老熟后变为桃红色。蛹 ",
+        "bbox": [
+          25,
+          385,
+          462,
+          653
+        ],
+        "page_idx": 30
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/61030418c968c6425603b42ccbf314f4d6fdd9b9738ce1807181a9bdfa239ff0.jpg",
+        "image_caption": [
+          "菜螟成虫 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          494,
+          397,
+          949,
+          632
+        ],
+        "page_idx": 30,
+        "img_caption": [
+          "菜螟成虫 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/1b4120c2300eeb735029b057a23b3dd282d4656d08282d3fce918f4b135a1db8.jpg",
+        "image_caption": [
+          "菜螟幼虫 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          30,
+          676,
+          484,
+          911
+        ],
+        "page_idx": 30,
+        "img_caption": [
+          "菜螟幼虫 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/d7f9015f153b43a8f8c971685f05a42f821cf47dcb0e9748ef51cfff969cf71f.jpg",
+        "image_caption": [
+          "菜螟幼虫及危害状 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          497,
+          676,
+          952,
+          912
+        ],
+        "page_idx": 30,
+        "img_caption": [
+          "菜螟幼虫及危害状 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          620,
+          34,
+          886,
+          54
+        ],
+        "page_idx": 30
+      },
+      {
+        "type": "page_number",
+        "text": "31 ",
+        "bbox": [
+          914,
+          37,
+          944,
+          54
+        ],
+        "page_idx": 30
+      },
+      {
+        "type": "text",
+        "text": "黄褐色，翅芽长达第四腹节的后缘，腹部末端略弯，其上有刺4根。",
+        "bbox": [
+          40,
+          80,
+          851,
+          102
+        ],
+        "page_idx": 31
+      },
+      {
+        "type": "text",
+        "text": "危害状：幼苗期受害，蛀食心叶及叶片，受害苗生长点被破坏而停止生长或萎蔫死亡，造成缺苗断垄。幼虫孵化后，大多潜入叶面表皮下，啃食叶肉，初孵幼虫隧道宽短；二龄后又钻出叶表皮，在叶面活动；三龄后多钻入菜心，吐丝将心叶缠结，藏身其中，食害心叶，使心叶枯死并且不能再抽出心叶；四至五龄幼虫可由心叶或叶柄蛀入茎髓或根部，蛀孔显著，孔外缀有细丝，并有排出的潮湿虫粪，易于识别。甘蓝、大白菜受害后则不能结球或包心，并能传播软腐病。",
+        "bbox": [
+          40,
+          107,
+          954,
+          294
+        ],
+        "page_idx": 31
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/6275e4fb177709767323f437c6927db978b4808e91a20741c92eb2dec5cff1f8.jpg",
+        "image_caption": [
+          "菜螟幼虫危害萝卜叶片"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          40,
+          313,
+          489,
+          543
+        ],
+        "page_idx": 31,
+        "img_caption": [
+          "菜螟幼虫危害萝卜叶片"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/1a66676a1429c547d018c5d4212702402f0fa3b6af2dfa08d789ab4f5f14022c.jpg",
+        "image_caption": [
+          "菜螟幼虫危害萝卜心叶 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          502,
+          313,
+          952,
+          543
+        ],
+        "page_idx": 31,
+        "img_caption": [
+          "菜螟幼虫危害萝卜心叶 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/451379f036c7df95ba80082d4ef9ac95b7ace77fbf5abde0a9a302fe226b8505.jpg",
+        "image_caption": [
+          "菜螟幼虫严重危害萝卜 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          42,
+          593,
+          494,
+          825
+        ],
+        "page_idx": 31,
+        "img_caption": [
+          "菜螟幼虫严重危害萝卜 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/e19b4b24e41dcdb030920051d2c93d4db8fb7579fe32f073754abcf9647d8780.jpg",
+        "image_caption": [
+          "菜螟幼虫危害芥菜 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          505,
+          593,
+          954,
+          825
+        ],
+        "page_idx": 31,
+        "img_caption": [
+          "菜螟幼虫危害芥菜 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "生活习性：1年发生3～9代，北京、山东3～4代，上海、浙江6～7代，广西柳州9代，以老熟幼虫在地表吐丝黏着泥土、枯叶做囊越冬。在",
+        "bbox": [
+          42,
+          879,
+          954,
+          930
+        ],
+        "page_idx": 31
+      },
+      {
+        "type": "page_number",
+        "text": "32 ",
+        "bbox": [
+          37,
+          36,
+          70,
+          51
+        ],
+        "page_idx": 31
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          97,
+          32,
+          432,
+          52
+        ],
+        "page_idx": 31
+      },
+      {
+        "type": "text",
+        "text": "广州地区无明显越冬现象。越冬幼虫于翌年春在 $6\\sim 10$ 厘米深的土中结茧化蛹，也有在土壤表面残株落叶间化蛹。成虫昼伏夜出，稍有趋光性，飞翔力弱。幼虫有吐丝下垂及转株危害的习性，1头幼虫可转株危害 $4\\sim 5$ 株。世代重叠。秋季天气高温干燥，有利于菜螟发生。菜螟幼虫危害期为5—11月，春、秋两季都有发生，以秋季危害较重，长江中下游地区以8—9月危害最重。",
+        "bbox": [
+          20,
+          80,
+          949,
+          239
+        ],
+        "page_idx": 32
+      },
+      {
+        "type": "text",
+        "text": "防治方法：①及时春耕灭茬，可消灭部分越冬虫源。②在间苗、定苗时，如发现菜心被丝缠住，可随手捏杀。③掌握在幼虫孵化始盛期，菜苗初见心叶被害时防治，施药部位尽量喷到心叶上，防治间隔期 $7\\sim 10$ 天，连续喷雾防治 $1\\sim 3$ 次。药剂可选用 $5\\%$ 虱螨脲乳油 $1000\\sim 1500$ 倍液，或 $24\\%$ 甲氧虫酰肼乳油 $2500\\sim 3000$ 倍液，或 $10\\%$ 溴氰虫酰胺可分散油悬浮剂2000倍液，或 $30\\%$ 氯虫·噻虫嗪悬浮剂2500倍液，或 $2.5\\%$ 氯氟氰菊酯乳油3000倍液，或 $5\\%$ 定虫隆乳油 $2000\\sim 2500$ 倍液，或 $2.5\\%$ 联苯菊酯乳油3000倍液。",
+        "bbox": [
+          20,
+          244,
+          949,
+          459
+        ],
+        "page_idx": 32
+      },
+      {
+        "type": "text",
+        "text": "斜纹夜蛾 ",
+        "text_level": 1,
+        "bbox": [
+          77,
+          477,
+          201,
+          500
+        ],
+        "page_idx": 32
+      },
+      {
+        "type": "text",
+        "text": "斜纹夜蛾属鳞翅目夜蛾科，别名莲纹夜蛾、莲纹夜盗蛾，俗称花虫、黑头虫，是我国农业生产上的主要害虫之一。寄生",
+        "bbox": [
+          25,
+          518,
+          798,
+          569
+        ],
+        "page_idx": 32
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/d81d14e77bf6bfc7b80cfffe3475669a6c5f9d8d017ad31529714dbdb55b52d5.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          811,
+          479,
+          942,
+          566
+        ],
+        "page_idx": 32,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "范围极广，包括白菜、甘蓝、芋、莲藕及豆类等多达99科290多种植物，是一种间歇性发生的暴食性、杂食性害虫。",
+        "bbox": [
+          25,
+          574,
+          944,
+          625
+        ],
+        "page_idx": 32
+      },
+      {
+        "type": "text",
+        "text": "形态特征：成虫体深褐色，前翅灰褐色，前翅环纹和肾纹之间由3条白线组成明显的较宽斜纹，呈波浪形，故名斜纹夜蛾。自基部向外缘有1条白纹，外缘各脉间有1列黑点。前、后翅常有紫红色闪光。后翅白色，无斑纹。卵馒头状、块产，表面覆盖有灰黄色或棕黄色的疏松绒毛。老熟幼虫头部黑褐色，体色多变，胴部体色因寄主和虫口密度不同而呈土黄色、青黄色、灰褐色及暗绿色，背线、亚背线及气门下线均为灰黄色及橙色。从中胸到第九腹节上有近似三角形的黑斑各1对，其中第一、第七、第八腹节上的黑斑最大。蛹赭红色，腹背面第四至七节近前缘处有1个小刻点，有1对强大的臀刺，刺基分开。气门黑褐色，椭圆形隆起。",
+        "bbox": [
+          25,
+          630,
+          949,
+          873
+        ],
+        "page_idx": 32
+      },
+      {
+        "type": "text",
+        "text": "危害状：主要以幼虫咬食叶、蕾、花及果实。初孵幼虫群集取食，三龄前低龄幼虫啃食叶肉，残留表皮，形成半透明纸状或“天窗”。三龄后分",
+        "bbox": [
+          25,
+          876,
+          949,
+          927
+        ],
+        "page_idx": 32
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          615,
+          32,
+          884,
+          52
+        ],
+        "page_idx": 32
+      },
+      {
+        "type": "page_number",
+        "text": "33 ",
+        "bbox": [
+          909,
+          36,
+          942,
+          50
+        ],
+        "page_idx": 32
+      },
+      {
+        "type": "text",
+        "text": "散危害叶片、嫩茎，四龄后进入暴食期，多在傍晚危害。大龄幼虫直接取食叶片、嫩茎，形成孔洞、缺刻或秃尖等。老龄时进入暴食阶段，虫口密度高时，将叶片吃光，仅留主脉，呈扫帚状。排泄粪便污染蔬菜，造成组织腐烂，严重时造成死亡。",
+        "bbox": [
+          45,
+          79,
+          969,
+          184
+        ],
+        "page_idx": 33
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/27fd8919877f263c59c771816d2ae3145abae87f64d8f3027f26107dcf50a3b7.jpg",
+        "image_caption": [
+          "斜纹夜蛾成虫 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          50,
+          205,
+          505,
+          418
+        ],
+        "page_idx": 33,
+        "img_caption": [
+          "斜纹夜蛾成虫 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/73af17c2ad7d9033c7ffb955958c44fb9293b2bed80deb1e30109e46b3d7826a.jpg",
+        "image_caption": [
+          "斜纹夜蛾卵块 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          512,
+          205,
+          967,
+          418
+        ],
+        "page_idx": 33,
+        "img_caption": [
+          "斜纹夜蛾卵块 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/173ec77d85fe1ddb3ad4d8d79b7ce1593f5b1bb41ba6a2c419b34c8ae59da114.jpg",
+        "image_caption": [
+          "斜纹夜蛾初孵幼虫 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          52,
+          462,
+          502,
+          673
+        ],
+        "page_idx": 33,
+        "img_caption": [
+          "斜纹夜蛾初孵幼虫 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/121c680da738c31af50cc7e882f3539811b524e5c026345ce52e1efdaa0408dc.jpg",
+        "image_caption": [
+          "斜纹夜蛾低龄幼虫 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          512,
+          462,
+          967,
+          673
+        ],
+        "page_idx": 33,
+        "img_caption": [
+          "斜纹夜蛾低龄幼虫 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/a9ac243b148afced305fbfa4a0cf35ba6b04c642e8a4160fac11bd2c0455d3b4.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          52,
+          721,
+          507,
+          904
+        ],
+        "page_idx": 33,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/fcb154d7ff7a0cce705290b8b75458d37d2b808956316ea14575b0382830d7b2.jpg",
+        "image_caption": [
+          "斜纹夜蛾不同体色幼虫"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          510,
+          721,
+          967,
+          904
+        ],
+        "page_idx": 33,
+        "img_caption": [
+          "斜纹夜蛾不同体色幼虫"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "page_number",
+        "text": "34 ",
+        "bbox": [
+          47,
+          34,
+          82,
+          51
+        ],
+        "page_idx": 33
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          108,
+          32,
+          447,
+          52
+        ],
+        "page_idx": 33
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/026e9caea85f0482108770d8258d2d42cea34222eae57405d1f2a6dd277147ad.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          25,
+          85,
+          331,
+          407
+        ],
+        "page_idx": 34,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/bbe78396d6a9280fd2b2bed5daca14fcb62aa3beea57227f43a135c66629571a.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          334,
+          85,
+          638,
+          407
+        ],
+        "page_idx": 34,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/6c187b89b97d3000db6c566009f89542ad14b06109009621e1902a87b033a27b.jpg",
+        "image_caption": [
+          "斜纹夜蛾不同体色幼虫"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          640,
+          85,
+          949,
+          407
+        ],
+        "page_idx": 34,
+        "img_caption": [
+          "斜纹夜蛾不同体色幼虫"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/3437b29f7ff28c7d25890c15a6113c49acdf03eb0dd096701efab585adabb605.jpg",
+        "image_caption": [
+          "斜纹夜蛾蛹背面"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          90,
+          499,
+          394,
+          569
+        ],
+        "page_idx": 34,
+        "img_caption": [
+          "斜纹夜蛾蛹背面"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/57cc8d1797393271fc75a16e1b4b1ae3f63b83ef5639d3ebc27a39f453e3eef0.jpg",
+        "image_caption": [
+          "斜纹夜蛾蛹腹面"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          567,
+          495,
+          904,
+          576
+        ],
+        "page_idx": 34,
+        "img_caption": [
+          "斜纹夜蛾蛹腹面"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/26c628e3bb253bd6ca0e3fb51ffbff9dc672127f92a17bd57f6c589211f97008.jpg",
+        "image_caption": [
+          "斜纹夜蛾初孵幼虫群集危害"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          30,
+          666,
+          482,
+          917
+        ],
+        "page_idx": 34,
+        "img_caption": [
+          "斜纹夜蛾初孵幼虫群集危害"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/eb1a0eb6c2174f0fe64594bf13b214ac8fe3819c061e083b57b63e6a22620121.jpg",
+        "image_caption": [
+          "斜纹夜蛾低龄幼虫危害造成孔洞 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          497,
+          666,
+          949,
+          916
+        ],
+        "page_idx": 34,
+        "img_caption": [
+          "斜纹夜蛾低龄幼虫危害造成孔洞 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          620,
+          37,
+          886,
+          55
+        ],
+        "page_idx": 34
+      },
+      {
+        "type": "page_number",
+        "text": "35 ",
+        "bbox": [
+          914,
+          39,
+          947,
+          55
+        ],
+        "page_idx": 34
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/db7409c920e91cfed1dd162cec55ae2422ee8377babff574614a69809965330d.jpg",
+        "image_caption": [
+          "斜纹夜蛾低龄幼虫啃食叶肉 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          42,
+          79,
+          494,
+          303
+        ],
+        "page_idx": 35,
+        "img_caption": [
+          "斜纹夜蛾低龄幼虫啃食叶肉 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/750602ed79a784c0d15abd1cb9d513f4256f75cfeca5e3de2bb1042c7c81dea6.jpg",
+        "image_caption": [
+          "斜纹夜蛾幼虫危害白菜 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          505,
+          80,
+          957,
+          303
+        ],
+        "page_idx": 35,
+        "img_caption": [
+          "斜纹夜蛾幼虫危害白菜 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/451b022bb162be63f527ab1240961e01978e9fad6c0055a04143e363eb476d57.jpg",
+        "image_caption": [
+          "斜纹夜蛾幼虫严重危害白菜 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          42,
+          380,
+          494,
+          602
+        ],
+        "page_idx": 35,
+        "img_caption": [
+          "斜纹夜蛾幼虫严重危害白菜 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/c10401cd2ebe23c9438f5ec8a2c09a428407385874e4d2543e88f8edb2bbc4ab.jpg",
+        "image_caption": [
+          "斜纹夜蛾幼虫将白菜叶片吃光 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          507,
+          380,
+          957,
+          602
+        ],
+        "page_idx": 35,
+        "img_caption": [
+          "斜纹夜蛾幼虫将白菜叶片吃光 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/1420f7e5ddfec7bdc3a70262b91002dbcda0c7665b9979190098deb0ca2ece69.jpg",
+        "image_caption": [
+          "斜纹夜蛾危害甘蓝 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          45,
+          682,
+          494,
+          904
+        ],
+        "page_idx": 35,
+        "img_caption": [
+          "斜纹夜蛾危害甘蓝 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/6a204736668929e0242c4f6dcd4197859fd770549fb8781939cdf2ca501c7442.jpg",
+        "image_caption": [
+          "斜纹夜蛾危害花椰菜 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          507,
+          682,
+          957,
+          904
+        ],
+        "page_idx": 35,
+        "img_caption": [
+          "斜纹夜蛾危害花椰菜 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "page_number",
+        "text": "36 ",
+        "bbox": [
+          42,
+          34,
+          75,
+          51
+        ],
+        "page_idx": 35
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          100,
+          32,
+          434,
+          49
+        ],
+        "page_idx": 35
+      },
+      {
+        "type": "text",
+        "text": "生活习性：长江流域1年发生 $5\\sim 6$ 代，华北地区 $4\\sim 5$ 代，华南地区 $8\\sim 9$ 代，以蛹在土下 $3\\sim 5$ 厘米处越冬，世代重叠。成虫有强烈的趋光性和趋化性，对糖酒醋液及发酵的胡萝卜、麦芽、豆饼、牛粪等也有趋性，昼伏夜出，飞翔力强。卵多产于高大、茂密、浓绿的边际作物上，以植株中部叶片背面叶脉分权处最多，多数多层排列，卵块上覆盖棕黄色绒毛。初孵时不怕光，聚集叶背附近取食，三龄后分散取食，四龄以后和成虫一样，出现背光性，白天躲在叶下土表处或土缝里，傍晚后爬到植株上取食叶片。幼虫有假死性及自相残杀现象，遇惊扰后四处爬散或吐丝下坠或假死落地。幼虫老熟后，一般在土下 $3\\sim 7$ 厘米处造一卵圆形蛹室化蛹。土壤板结，则在枯枝落叶下化蛹。降水量少、高温干旱，有利于斜纹夜蛾发生，常在夏、秋季大量发生。长江流域多在7—8月大发生，黄河流域多在8—9月大发生。浙江第一至五代发生期分别为6月中下旬至7月中下旬、7月中下旬至8月上中旬、8月上中旬至9月上中旬、9月上中旬至10月中下旬。",
+        "bbox": [
+          30,
+          85,
+          959,
+          436
+        ],
+        "page_idx": 36
+      },
+      {
+        "type": "text",
+        "text": "防治方法：①采用黑光灯或频振式杀虫灯诱杀成虫。②糖醋液诱杀成虫。③清洁田园。④全面覆盖大棚或大棚顶部覆盖防雨薄膜，大棚四周围盖防虫网。⑤在农事操作中摘除卵块和幼虫群集叶。⑥用斜纹夜蛾性诱剂诱杀。⑦应用生物农药和高效、低毒、低残留化学农药，在卵孵高峰至低龄幼虫盛发期，突击用药。最好在三龄前施药，并以傍晚喷药为佳。低龄幼虫药剂可选用 $20\\%$ 虫酰肼悬浮剂 $600\\sim 1000$ 倍液，或 $5\\%$ 氟虫脲乳油或 $5\\%$ 定虫隆乳油 $1500\\sim 2000$ 倍液，或 $24\\%$ 甲氧虫酰肼乳油 $2500\\sim 3000$ 倍液，或 $5\\%$ 氯虫苯甲酰胺悬浮剂 $1000\\sim 1500$ 倍液，或 $22\\%$ 氰氟虫脲水分散粒剂 $600\\sim 800$ 倍液，或 $10\\%$ 虫螨腈悬浮剂 $1000\\sim 2000$ 倍液，或 $15\\%$ 唑虫酰胺乳油1000倍液，高龄幼虫可用 $15\\%$ 苗虫威悬浮剂 $3500\\sim 4500$ 倍液，或 $5\\%$ 甲维盐乳油4000倍液，或 $5\\%$ 虱螨脲乳油1000倍液。隔 $7\\sim 10$ 天1次，连用 $2\\sim 3$ 次。注意交替使用农药。",
+        "bbox": [
+          30,
+          441,
+          959,
+          766
+        ],
+        "page_idx": 36
+      },
+      {
+        "type": "text",
+        "text": "甜菜夜蛾 ",
+        "text_level": 1,
+        "bbox": [
+          90,
+          783,
+          213,
+          807
+        ],
+        "page_idx": 36
+      },
+      {
+        "type": "text",
+        "text": "甜菜夜蛾属鳞翅目夜蛾科，杂食性害虫，可危害十字花科中的甘蓝、白菜、萝卜，还可危害芹菜、胡萝卜、芦笋、菠菜、苋菜、辣椒、豇豆、茄子、番茄、菠菜、大葱等蔬菜。",
+        "bbox": [
+          32,
+          825,
+          957,
+          904
+        ],
+        "page_idx": 36
+      },
+      {
+        "type": "text",
+        "text": "形态特征：成虫体灰褐色。前翅中央近前缘外方有肾形斑1个，内方有圆",
+        "bbox": [
+          85,
+          909,
+          959,
+          934
+        ],
+        "page_idx": 36
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          625,
+          37,
+          894,
+          57
+        ],
+        "page_idx": 36
+      },
+      {
+        "type": "page_number",
+        "text": "37 ",
+        "bbox": [
+          919,
+          41,
+          954,
+          57
+        ],
+        "page_idx": 36
+      },
+      {
+        "type": "text",
+        "text": "形斑1个。后翅银白色。卵圆馒头形，白色，表面有放射状的隆起线。幼虫体色变化很大，有绿色、暗绿色至黑褐色。腹部体侧气门下线为明显的黄白色纵带，有的带粉红色，带的末端直达腹部末端，不弯到臀足上。蛹黄褐色。",
+        "bbox": [
+          37,
+          84,
+          952,
+          161
+        ],
+        "page_idx": 37
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/cd06bd6112f2463c0155b178a3c73335968916bacac3fe48b9c71df16939144d.jpg",
+        "image_caption": [
+          "甜菜夜蛾成虫 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          37,
+          179,
+          484,
+          401
+        ],
+        "page_idx": 37,
+        "img_caption": [
+          "甜菜夜蛾成虫 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/0c718c9d5b0e1c466b422b6174e79ff97c94c3ea9fbc2200472a8c8d11597981.jpg",
+        "image_caption": [
+          "甜菜夜蛾卵块 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          500,
+          179,
+          949,
+          401
+        ],
+        "page_idx": 37,
+        "img_caption": [
+          "甜菜夜蛾卵块 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/279462df78ef2ba40c46048d2014414b40ceaaaabcb0dc50f07b31bb0cab43cb.jpg",
+        "image_caption": [
+          "甜菜夜蛾初孵幼虫及危害状 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          37,
+          449,
+          487,
+          652
+        ],
+        "page_idx": 37,
+        "img_caption": [
+          "甜菜夜蛾初孵幼虫及危害状 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/72a107194ebc3b4333e64e17c0ccf7c9b7caa7f2f5e8e6f0c57058b4310911e7.jpg",
+        "image_caption": [
+          "甜菜夜蛾低龄幼虫及危害状 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          500,
+          449,
+          949,
+          650
+        ],
+        "page_idx": 37,
+        "img_caption": [
+          "甜菜夜蛾低龄幼虫及危害状 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/7a42cde5d7420d83f170ae8fcc1fd4b0bbf9a4371cf145c35cc03d3e32c8f432.jpg",
+        "image_caption": [
+          "甜菜夜蛾低龄幼虫 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          37,
+          701,
+          489,
+          904
+        ],
+        "page_idx": 37,
+        "img_caption": [
+          "甜菜夜蛾低龄幼虫 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/54c9a4c23155d8926e88585fadb5de3e7d2f2c70c877a5f5c878ff9bfbeacdd2.jpg",
+        "image_caption": [
+          "甜菜夜蛾高龄幼虫及危害状 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          502,
+          701,
+          949,
+          902
+        ],
+        "page_idx": 37,
+        "img_caption": [
+          "甜菜夜蛾高龄幼虫及危害状 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "page_number",
+        "text": "38 ",
+        "bbox": [
+          35,
+          39,
+          67,
+          54
+        ],
+        "page_idx": 37
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          95,
+          37,
+          429,
+          54
+        ],
+        "page_idx": 37
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/759bd184df5be0b13e1cfce0f31ec2f21a4fd392db86d97334c8ae8cf9b689ad.jpg",
+        "image_caption": [
+          "甜菜夜蛾高龄幼虫 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          35,
+          78,
+          489,
+          274
+        ],
+        "page_idx": 38,
+        "img_caption": [
+          "甜菜夜蛾高龄幼虫 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/f5bab73bbabcbe4a2e6bf550b98f3d509abc5bb05f7f4fd9e2624a19c886d022.jpg",
+        "image_caption": [
+          "甜菜夜蛾老熟幼虫 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          500,
+          78,
+          957,
+          272
+        ],
+        "page_idx": 38,
+        "img_caption": [
+          "甜菜夜蛾老熟幼虫 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/72910bf0e110231a76c21014b04d26a32cc73331a1ef0767e6ede3f425695679.jpg",
+        "image_caption": [
+          "甜菜夜蛾预蛹 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          110,
+          382,
+          389,
+          482
+        ],
+        "page_idx": 38,
+        "img_caption": [
+          "甜菜夜蛾预蛹 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/286e4575b08bc18e5dcae41f4c26ee5eb1a6169976989a5251589e8c89870263.jpg",
+        "image_caption": [
+          "甜菜夜蛾化蛹初期"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          580,
+          377,
+          859,
+          467
+        ],
+        "page_idx": 38,
+        "img_caption": [
+          "甜菜夜蛾化蛹初期"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/2f41c7f8edfc6908daed2d93da1d59e40a16965fb0ad7ef26ad89609ab2e202a.jpg",
+        "image_caption": [
+          "甜菜夜蛾背面"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          97,
+          640,
+          439,
+          720
+        ],
+        "page_idx": 38,
+        "img_caption": [
+          "甜菜夜蛾背面"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/13c52f4ad0cb51c097401c3fb84c1508b7507950e20f35c1ab573a2522a26e56.jpg",
+        "image_caption": [
+          "甜菜夜蛾腹侧面"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          587,
+          648,
+          896,
+          720
+        ],
+        "page_idx": 38,
+        "img_caption": [
+          "甜菜夜蛾腹侧面"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "危害状：以幼虫危害叶片，初孵幼虫群集叶背，吐丝结网，在其内取食叶肉，留下表皮，吃成透明的小孔。三龄后可将叶片吃成缺刻，严重时仅余叶脉和叶柄，致使菜苗死亡，造成缺苗断垄，甚至毁种。三龄以上的幼虫还可钻蛀甜椒、番茄果实，造成落果、烂果。",
+        "bbox": [
+          35,
+          827,
+          964,
+          935
+        ],
+        "page_idx": 38
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          625,
+          29,
+          894,
+          50
+        ],
+        "page_idx": 38
+      },
+      {
+        "type": "page_number",
+        "text": "39 ",
+        "bbox": [
+          922,
+          32,
+          957,
+          50
+        ],
+        "page_idx": 38
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/7d19c30e78ec983c16f20a89bc86eb2634304142ebd5f2993d8342d727c07814.jpg",
+        "image_caption": [
+          "甜菜夜蛾幼虫危害状 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          30,
+          77,
+          479,
+          299
+        ],
+        "page_idx": 39,
+        "img_caption": [
+          "甜菜夜蛾幼虫危害状 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/aa5a3535c387a36a160a42a7c066fd4c06ab7f609d8268db401aa4b79a387198.jpg",
+        "image_caption": [
+          "甜菜夜蛾严重危害状 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          494,
+          77,
+          944,
+          299
+        ],
+        "page_idx": 39,
+        "img_caption": [
+          "甜菜夜蛾严重危害状 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "生活习性：长江流域1年发生 $4\\sim 6$ 代，广东 $10\\sim 11$ 代，华北 $3\\sim 4$ 代，以蛹在土中越冬，世代重叠。当土温升至 $10^{\\circ}\\mathrm{C}$ 以上时，蛹开始羽化。成虫昼伏夜出，有强趋光性和弱趋化性。幼虫有假死性，受震后即落地。当数量大时，有成群迁移的习性。幼虫当食料缺乏时有自相残杀的习性。幼虫畏光，通常早晚或阴天在地上部取食，白天大都藏匿于叶背或茂密植株的中下部，有时隐藏于松表土及枯枝落叶中。幼虫老熟后，钻入 $4\\sim 9$ 厘米的土内吐丝筑室化蛹。甜菜夜蛾喜温且对高温适应性强，在高温干旱年份常猖獗成灾，降水量大对其存活、繁殖和发生不利。一般以8月中旬至9月中旬虫口密度高。在北方，全年以7月以后发生严重，尤其是9、10月。",
+        "bbox": [
+          27,
+          347,
+          947,
+          589
+        ],
+        "page_idx": 39
+      },
+      {
+        "type": "text",
+        "text": "防治方法：在卵孵盛期可选用10亿 $\\mathrm{PIB}^*$ /克甜菜夜蛾核型多角体病毒悬浮剂 $1000\\sim 1500$ 倍液喷雾。其他可参考斜纹夜蛾。",
+        "bbox": [
+          30,
+          593,
+          947,
+          642
+        ],
+        "page_idx": 39
+      },
+      {
+        "type": "text",
+        "text": "银纹夜蛾",
+        "text_level": 1,
+        "bbox": [
+          87,
+          660,
+          208,
+          683
+        ],
+        "page_idx": 39
+      },
+      {
+        "type": "text",
+        "text": "银纹夜蛾属鳞翅目夜蛾科，又名黑点银纹夜蛾、豆银纹夜蛾、菜步曲、豆尺蠖、大豆造桥虫、豆青虫等，危害白菜、甘蓝、花椰菜、萝卜等十字花科蔬菜，还有豆类、瓜类作物及莴苣、茄子等。",
+        "bbox": [
+          32,
+          703,
+          947,
+          780
+        ],
+        "page_idx": 39
+      },
+      {
+        "type": "text",
+        "text": "形态特征：成虫体黑褐色。后胸及第一、三节腹节背面有褐色毛块。前翅深褐色，翅中有一显著的U形银纹和一个近三角形银斑；后翅暗褐色，有金属光泽。卵半球形，白色至淡黄绿色，表面具网纹。末龄幼虫体淡绿色，虫体前端较细，后端较粗。头部绿色，两侧有黑斑；胸足及腹足皆绿",
+        "bbox": [
+          30,
+          785,
+          947,
+          889
+        ],
+        "page_idx": 39
+      },
+      {
+        "type": "page_number",
+        "text": "40 ",
+        "bbox": [
+          30,
+          32,
+          62,
+          47
+        ],
+        "page_idx": 39
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          87,
+          29,
+          424,
+          47
+        ],
+        "page_idx": 39
+      },
+      {
+        "type": "page_footnote",
+        "text": "* PIB表示病毒的多角体。全书同。",
+        "bbox": [
+          77,
+          911,
+          414,
+          929
+        ],
+        "page_idx": 39
+      },
+      {
+        "type": "text",
+        "text": "色，第一、二对腹足退化，行走时体背拱曲。体背有纵向的白色细线6条，对称分布于背中线两侧，体侧具白色纵纹。蛹初期背面褐色，腹面绿色，末期整体黑褐色。臀刺具分叉钩刺，周围有4个小钩。",
+        "bbox": [
+          22,
+          85,
+          459,
+          244
+        ],
+        "page_idx": 40
+      },
+      {
+        "type": "text",
+        "text": "危害状：初孵幼虫取食叶肉，残留表皮，以后咬成孔洞或缺刻，排出粪便，污染叶片。大龄幼虫则可取食全叶及嫩荚。",
+        "bbox": [
+          22,
+          249,
+          459,
+          354
+        ],
+        "page_idx": 40
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/e0a05401518c79f94862956805537e6806cc4fba2fa986cddaf89a6a5ecedce5.jpg",
+        "image_caption": [
+          "银纹夜蛾成虫"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          492,
+          88,
+          949,
+          338
+        ],
+        "page_idx": 40,
+        "img_caption": [
+          "银纹夜蛾成虫"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/6db67064d0d9d1723774427f67dd39595dc87a60744aeb007be86e1817a9158e.jpg",
+        "image_caption": [
+          "银纹夜蛾幼虫"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          25,
+          385,
+          484,
+          589
+        ],
+        "page_idx": 40,
+        "img_caption": [
+          "银纹夜蛾幼虫"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/49f1b9ca5d7e9eca66fe58e7c388fc7dcb7395ee94edc30ae67b470628793c41.jpg",
+        "image_caption": [
+          "银纹夜蛾茧"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          494,
+          385,
+          952,
+          587
+        ],
+        "page_idx": 40,
+        "img_caption": [
+          "银纹夜蛾茧"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/dc051c7d639991104f66903e64a475941c122fa03971a3e188a1b6dd912bdbc3.jpg",
+        "image_caption": [
+          "银纹夜蛾蛹背面"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          27,
+          635,
+          484,
+          839
+        ],
+        "page_idx": 40,
+        "img_caption": [
+          "银纹夜蛾蛹背面"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/b6703d61b9b0dd908431190bc9448cad88955fbabb37171da4b55a4dcfcc1412.jpg",
+        "image_caption": [
+          "银纹夜蛾蛹腹面"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          494,
+          635,
+          952,
+          839
+        ],
+        "page_idx": 40,
+        "img_caption": [
+          "银纹夜蛾蛹腹面"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "生活习性：浙江1年发生4代，山东5代，湖南6代，广州7代。以蛹越冬。成虫夜间活动，有趋光性，卵产于叶背，单产。幼虫有假死习性。幼",
+        "bbox": [
+          27,
+          886,
+          954,
+          937
+        ],
+        "page_idx": 40
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          620,
+          37,
+          886,
+          55
+        ],
+        "page_idx": 40
+      },
+      {
+        "type": "page_number",
+        "text": "41 ",
+        "bbox": [
+          914,
+          39,
+          944,
+          54
+        ],
+        "page_idx": 40
+      },
+      {
+        "type": "text",
+        "text": "虫老熟后多在叶背吐丝结茧化蛹。每年春秋两季与菜粉蝶、小菜蛾同时发生，呈双峰型，但虫口绝对数量远低于前两种。危害盛期7—9月。",
+        "bbox": [
+          42,
+          79,
+          959,
+          131
+        ],
+        "page_idx": 41
+      },
+      {
+        "type": "text",
+        "text": "防治方法：可参考斜纹夜蛾。",
+        "bbox": [
+          100,
+          136,
+          447,
+          161
+        ],
+        "page_idx": 41
+      },
+      {
+        "type": "text",
+        "text": "菜蚜（甘蓝蚜、萝卜蚜、桃蚜）",
+        "text_level": 1,
+        "bbox": [
+          97,
+          177,
+          494,
+          202
+        ],
+        "page_idx": 41
+      },
+      {
+        "type": "text",
+        "text": "蚜虫有几十种，菜蚜主要有3种：甘蓝蚜主要危害甘蓝、花椰菜等；萝卜蚜又称菜缢管蚜，主要危害萝卜、白菜等；桃蚜可危害多种十字花科蔬菜及茄科、蔷薇科作物。",
+        "bbox": [
+          45,
+          222,
+          959,
+          304
+        ],
+        "page_idx": 41
+      },
+      {
+        "type": "text",
+        "text": "形态特征：见下表。",
+        "bbox": [
+          100,
+          309,
+          336,
+          332
+        ],
+        "page_idx": 41
+      },
+      {
+        "type": "table",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/fcf1c458ba6c60d2887a700099713ca83acc9548ae2b25c91e8baba438f3210c.jpg",
+        "table_caption": [
+          "甘蓝蚜、萝卜蚜、桃蚜的危害对象与形态特征比较 "
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td></td><td>甘蓝蚜</td><td>萝卜蚜(菜缢管蚜)</td><td>桃蚜(烟蚜、菜蚜)</td></tr><tr><td>危害对象</td><td>主要危害甘蓝、花椰菜等叶面光滑、蜡质较多的蔬菜。分别出现在4月下旬至7月初和10月前后。日平均温度高于25℃时田间几乎见不到踪影。寡食性</td><td>主要危害白菜、甘蓝、萝卜、芥菜等十字花科蔬菜。春秋季是发生高峰,由于比桃蚜较耐高温,秋季发生要比春季重。寡食性</td><td>主要危害辣椒、番茄、茄子、马铃薯、菠菜、瓜类及甘蓝、白菜等十字花科蔬菜。发生呈春秋双峰型,分别出现在5-6月和10-11月前后。多食性</td></tr><tr><td>成虫</td><td>成蚜头、胸部为黑色,腹部暗绿色,有数条隐约可辨的暗绿色横斑纹,两侧各有5个黑点,全身覆有明显的白色蜡粉。腹管很短,尾片有毛6~7根。无翅雌成蚜全身暗绿色,特征同有翅蚜,触角第三节无感觉圈</td><td>有翅蚜头、胸部为黑色,腹部黄绿色至绿色,第一、二节背面及腹管后各节有2条淡黑色横带斑纹,腹管前各节两侧有黑斑,有时身体上有稀少的白色蜡粉。腹管暗绿色,较短。无翅蚜全身黄绿色稍有白色蜡粉,第五、六节各有一个感觉圈,胸部各节中央隐约似有一黑色横斑纹,腹管和尾片同有翅蚜</td><td>有翅蚜头、胸部为黑色,腹部体色多变,有绿色、淡暗绿色、黄绿色、褐色、赤褐色。腹背面有黑褐色的方形斑纹一个。腹管很长,绿色,圆柱形,端部黑色。体无白蜡粉。无翅雌蚜似卵圆形,体色多变,有绿色、黄绿色、樱红色、红褐色等,低温下颜色偏深,触角第三节无感觉圈,额瘤和腹管特征同有翅蚜</td></tr><tr><td>若虫</td><td>若蚜体形、体色类似无翅成蚜,仅个体略小。触角基部额瘤明显</td><td>体形、体色似无翅成蚜,仅个体较小,略显瘦长。触角基部额瘤大,明显</td><td>若蚜体形、体色与无翅成蚜相似,个体较小。触角基部额瘤大,明显,并向内倾斜</td></tr></table>",
+        "bbox": [
+          42,
+          383,
+          959,
+          850
+        ],
+        "page_idx": 41
+      },
+      {
+        "type": "text",
+        "text": "危害状：成蚜和若蚜均群集在幼苗、嫩叶、新梢、嫩茎、花梗、幼荚和近地面的叶上，吸食叶片汁液，使叶片失水和营养不良，造成叶面卷缩",
+        "bbox": [
+          45,
+          879,
+          959,
+          934
+        ],
+        "page_idx": 41
+      },
+      {
+        "type": "page_number",
+        "text": "42 ",
+        "bbox": [
+          45,
+          34,
+          77,
+          51
+        ],
+        "page_idx": 41
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          103,
+          32,
+          439,
+          51
+        ],
+        "page_idx": 41
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/8546d3f25105cce84767f344d8ba9d4549bbeca22b354e30aa1d6c3d9e84cfda.jpg",
+        "image_caption": [
+          "甘蓝蚜若虫 ",
+          "甘蓝蚜成虫 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          25,
+          85,
+          484,
+          418
+        ],
+        "page_idx": 42,
+        "img_caption": [
+          "甘蓝蚜若虫 ",
+          "甘蓝蚜成虫 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/7ddd7aebf99bd7b362fb87cf25c285e424df72dfaaaf04f4a7b9b414e654728c.jpg",
+        "image_caption": [
+          "萝卜蚜成虫 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          494,
+          149,
+          949,
+          374
+        ],
+        "page_idx": 42,
+        "img_caption": [
+          "萝卜蚜成虫 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/7dc4e8e89e33a890acdf454d52bfae2bff726e65d9d7e8016ba0cd12d517e829.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          30,
+          467,
+          484,
+          694
+        ],
+        "page_idx": 42,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/3337b8cc444a54ca7b7ebb576994e6d8afd355a6558ea81cb67e54deb8904f1a.jpg",
+        "image_caption": [
+          "萝卜蚜若虫 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          497,
+          422,
+          954,
+          646
+        ],
+        "page_idx": 42,
+        "img_caption": [
+          "萝卜蚜若虫 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/3cfc795738156e08dba0707a7c6e199d97cf8c5e1b8d0cdc0190c7d70ee3fa07.jpg",
+        "image_caption": [
+          "桃蚜若虫"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          30,
+          694,
+          484,
+          919
+        ],
+        "page_idx": 42,
+        "img_caption": [
+          "桃蚜若虫"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/bbd79cc030a567d6e8877d342ea32110828a87e4ff652cebeb189cf05aa32009.jpg",
+        "image_caption": [
+          "桃蚜成、若虫"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          497,
+          694,
+          954,
+          919
+        ],
+        "page_idx": 42,
+        "img_caption": [
+          "桃蚜成、若虫"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          620,
+          37,
+          886,
+          55
+        ],
+        "page_idx": 42
+      },
+      {
+        "type": "page_number",
+        "text": "43 ",
+        "bbox": [
+          914,
+          39,
+          947,
+          55
+        ],
+        "page_idx": 42
+      },
+      {
+        "type": "text",
+        "text": "变形，植株生长不良和萎缩、萎蔫，甚至整株枯死。危害留种植株的嫩茎、花梗和嫩荚，使花梗扭曲畸形，不能正常抽薹、开花、结实。分泌的蜜露可诱发煤污病，污染蔬菜，影响结实。严重时大白菜、甘蓝不能结球，种株不能结实。此外，还传播多种蔬菜病毒病。",
+        "bbox": [
+          32,
+          80,
+          467,
+          296
+        ],
+        "page_idx": 43
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/9d4ad2e37b8013c0172f2a1991864d54a33ba48780021419745fc139d32b75d3.jpg",
+        "image_caption": [
+          "甘蓝蚜危害大白菜 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          500,
+          82,
+          949,
+          321
+        ],
+        "page_idx": 43,
+        "img_caption": [
+          "甘蓝蚜危害大白菜 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/d45e8cff7023655ed6daecefd588a3f601a13bc37ad96601e15bde3190449eb7.jpg",
+        "image_caption": [
+          "甘蓝蚜危害萝卜 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          37,
+          369,
+          489,
+          609
+        ],
+        "page_idx": 43,
+        "img_caption": [
+          "甘蓝蚜危害萝卜 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/574c3c533fad8fe665ac1dcd250f33b8f8e628677f73e82df24bd337c011b443.jpg",
+        "image_caption": [
+          "萝卜蚜危害芥菜 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          500,
+          369,
+          952,
+          609
+        ],
+        "page_idx": 43,
+        "img_caption": [
+          "萝卜蚜危害芥菜 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/9e9f412f53bbc3b29927aa0ada774b8f85e362d383a39477d92f0a942444702d.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          37,
+          663,
+          494,
+          904
+        ],
+        "page_idx": 43,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/4c8d1c31fe5473836ca6a9e8e06ba405421c1f8fbb0b5685e978d589216b3e67.jpg",
+        "image_caption": [
+          "桃蚜危害大白菜"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          502,
+          665,
+          954,
+          904
+        ],
+        "page_idx": 43,
+        "img_caption": [
+          "桃蚜危害大白菜"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "page_number",
+        "text": "44 ",
+        "bbox": [
+          35,
+          37,
+          67,
+          52
+        ],
+        "page_idx": 43
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          95,
+          34,
+          429,
+          52
+        ],
+        "page_idx": 43
+      },
+      {
+        "type": "text",
+        "text": "生活习性：蚜虫对黄色有较强的趋性，对银灰色有忌避习性；且具较强的迁飞和扩散能力；蚜虫在高温 $30^{\\circ}\\mathrm{C}$ 左右，特别是干旱时易发生，各种虫态集中在一起。一般春秋两季发生较多，形成两个危害高峰。由于桃蚜较萝卜蚜耐低温，而萝卜蚜较桃蚜耐高温，故每年12月下旬至翌年5月田间发生的菜蚜优势种主要是桃蚜，7月至10月上旬田间发生的是萝卜蚜，甘蓝蚜常与桃蚜混合发生。早春气温偏高、降雨偏少，发生重。",
+        "bbox": [
+          20,
+          83,
+          944,
+          243
+        ],
+        "page_idx": 44
+      },
+      {
+        "type": "text",
+        "text": "防治方法：①农业防治。菜田要合理布局，减少蚜虫在田间迁飞；夏季可不种或少种十字花科蔬菜，以切断或减少秋菜的蚜源和毒源；蔬菜收获后及时清理田间残株败叶，铲除杂草。②物理防治。在田间悬挂或覆盖银灰膜避蚜，或在田间设置黄板诱杀有翅蚜，也在塑料大棚上使用滤紫外线薄膜，或用 $40\\sim 45$ 目银灰色遮阳网。③药剂防治。宜尽早用药，将其控制在点片发生阶段，间隔期 $10\\sim 15$ 天1次，连续用药 $2\\sim 3$ 次，把有翅蚜消灭在大量发生或迁飞扩散之前，喷药时要周到细致。药剂可选用 $1\\%$ 印楝素水剂500倍液，或 $1.8\\%$ 阿维菌素乳油4000倍液，或 $10\\%$ 吡虫啉可湿性粉剂 $1500\\sim 2500$ 倍液，或 $25\\%$ 噻虫嗪水分散粒剂 $4000\\sim 6000$ 倍液，或 $20\\%$ 啶虫脒乳油5000倍液，或 $10\\%$ 烯啶虫胺水剂 $2000\\sim 3000$ 倍液，或 $20\\%$ 烯啶虫胺·噻虫啉水分散粒剂 $3000\\sim 4000$ 倍液，或 $20\\%$ 溴氰·吡虫啉悬浮剂 $1500\\sim 2000$ 倍液，或 $22\\%$ 氟啶虫胺腈悬浮剂 $4500\\sim 5000$ 倍液，或 $22.4\\%$ 螺虫乙酯悬浮剂 $3000\\sim 4000$ 倍液。",
+        "bbox": [
+          20,
+          247,
+          944,
+          600
+        ],
+        "page_idx": 44
+      },
+      {
+        "type": "text",
+        "text": "黄曲条跳甲",
+        "text_level": 1,
+        "bbox": [
+          77,
+          617,
+          228,
+          642
+        ],
+        "page_idx": 44
+      },
+      {
+        "type": "text",
+        "text": "黄曲条跳甲属鞘翅目叶甲科害虫，俗称狗虱虫、跳虱，简称跳甲，以危害甘蓝、花椰菜、白菜、萝卜、芜菁等十字花科蔬菜",
+        "bbox": [
+          20,
+          661,
+          444,
+          766
+        ],
+        "page_idx": 44
+      },
+      {
+        "type": "text",
+        "text": "为主，也危害茄果类、瓜类、豆类及绿叶菜类等蔬菜。",
+        "bbox": [
+          20,
+          771,
+          567,
+          821
+        ],
+        "page_idx": 44
+      },
+      {
+        "type": "text",
+        "text": "形态特征：成虫体黑色有光泽，前胸背板及鞘翅上有许多刻点，排成纵行。鞘翅中央有一黄色曲条，后足腿节膨大，适于跳跃。幼虫稍呈长圆筒形，头部淡褐色，胸腹",
+        "bbox": [
+          20,
+          825,
+          570,
+          932
+        ],
+        "page_idx": 44
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/052c8fd90635595a4a968d8a3a8b35cbb16eee85d67035d8c037e5c1743bd9fa.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          457,
+          663,
+          590,
+          748
+        ],
+        "page_idx": 44,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/3ca605421da5e1a80f0a23a0dc53ccb08df31a42445a6d47953376a8aef6af92.jpg",
+        "image_caption": [
+          "黄曲条跳甲成虫"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          603,
+          660,
+          944,
+          914
+        ],
+        "page_idx": 44,
+        "img_caption": [
+          "黄曲条跳甲成虫"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          613,
+          37,
+          884,
+          55
+        ],
+        "page_idx": 44
+      },
+      {
+        "type": "page_number",
+        "text": "45 ",
+        "bbox": [
+          909,
+          39,
+          942,
+          55
+        ],
+        "page_idx": 44
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/d6b8b777ccc74ebd0da6346bc859ababd4c64a63edd1b9559f3cc8f114767d7e.jpg",
+        "image_caption": [
+          "黄曲条跳甲幼虫"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          47,
+          79,
+          500,
+          250
+        ],
+        "page_idx": 45,
+        "img_caption": [
+          "黄曲条跳甲幼虫"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "部淡黄白色，尾部稍细。卵椭圆形，初产时淡黄色，后变乳白色。蛹椭圆形，乳白色，头部隐于前胸下面，腹末有一对叉状突起。",
+        "bbox": [
+          532,
+          79,
+          962,
+          182
+        ],
+        "page_idx": 45
+      },
+      {
+        "type": "text",
+        "text": "危害状：成虫、幼虫均可危害，以成虫危害较大。成虫食叶，以幼苗期危害严重，刚出土的幼苗子叶被吃光后整株死亡，造成缺",
+        "bbox": [
+          532,
+          189,
+          962,
+          291
+        ],
+        "page_idx": 45
+      },
+      {
+        "type": "text",
+        "text": "苗断垄。成虫咬食过的叶片有许多小椭圆形孔洞，严重时将叶肉全部吃光，仅剩叶脉。幼虫生活在土中，只危害菜根，剥食菜根皮或蛀入根内形成许多隧道，使植株凋萎枯死，尤其是菜苗根部受害，会造成整片死亡。萝卜被害出现许多黑斑，最后整个变黑腐烂。此外，还可传播软腐病。",
+        "bbox": [
+          47,
+          296,
+          962,
+          403
+        ],
+        "page_idx": 45
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/174b0873853d0e6330f830592e29d8cac878e796fbdc30774477b9e7ace4af00.jpg",
+        "image_caption": [
+          "黄曲条跳甲成虫危害白菜叶片"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          47,
+          418,
+          500,
+          642
+        ],
+        "page_idx": 45,
+        "img_caption": [
+          "黄曲条跳甲成虫危害白菜叶片"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/e8d74f5adf0ceb550e081a46783b6cdeb23125d4ccaedceb84be1e68438ac16a.jpg",
+        "image_caption": [
+          "黄曲条跳甲成虫危害白菜"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          512,
+          418,
+          962,
+          640
+        ],
+        "page_idx": 45,
+        "img_caption": [
+          "黄曲条跳甲成虫危害白菜"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/77cabc8f270442d58929a7d325d401f2280e9bcab274f4643d82ac731def50dd.jpg",
+        "image_caption": [
+          "黄曲条跳甲成虫危害萝卜叶片"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          50,
+          690,
+          500,
+          904
+        ],
+        "page_idx": 45,
+        "img_caption": [
+          "黄曲条跳甲成虫危害萝卜叶片"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/47bd8513a89ee6f6de5fea0724fd6561e105ed9eef2661ca214a717945e8d3d8.jpg",
+        "image_caption": [
+          "黄曲条跳甲成虫危害萝卜"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          512,
+          690,
+          962,
+          904
+        ],
+        "page_idx": 45,
+        "img_caption": [
+          "黄曲条跳甲成虫危害萝卜"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "page_number",
+        "text": "46 ",
+        "bbox": [
+          47,
+          34,
+          80,
+          49
+        ],
+        "page_idx": 45
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          105,
+          32,
+          442,
+          49
+        ],
+        "page_idx": 45
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/90bac519c46cfeaaed62ceb87bc87ac4de82983b37c3492d8e62f888d69aa691.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          22,
+          91,
+          484,
+          280
+        ],
+        "page_idx": 46,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/e3d73a1de5609d56dcbf8e3508313b381467be67b73aa697deb07f486461df46.jpg",
+        "image_caption": [
+          "黄曲条跳甲幼虫危害萝卜肉质根"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          487,
+          114,
+          909,
+          295
+        ],
+        "page_idx": 46,
+        "img_caption": [
+          "黄曲条跳甲幼虫危害萝卜肉质根"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "生活习性：南方1年发生7～8代，浙江、上海6～7代，华中5～7代，北方3～5代。在华南及福建漳州等地无越冬现象，可终年繁殖。以成虫在田间与沟边的残株落叶、杂草及土缝中越冬。越冬成虫于3月中下旬开始出蛰活动，4月上旬开始产卵，以后每月发生1代。因成虫寿命长，致使世代重叠。春季第一、二代和秋季第五、六代为主害代，秋季重于春季。成虫具趋光、趋黄、趋绿性，耐饥力很强，夜间隐蔽。偏嗜十字花科蔬菜，十字花科蔬菜连作受害重。",
+        "bbox": [
+          20,
+          343,
+          949,
+          530
+        ],
+        "page_idx": 46
+      },
+      {
+        "type": "text",
+        "text": "防治方法：①十字花科蔬菜和其他类蔬菜轮作，可减轻危害。②清除菜地残株落叶，铲除杂草，消除其越冬场所和食料基地，以减少虫源。③秋、冬季深翻，消灭越冬成虫。④土壤处理。在播种或定植前后用撒毒土、淋施药液法处理土壤，毒杀土壤中的幼虫和蛹。每亩可用 $5\\%$ 辛硫磷颗粒剂 $2\\sim 3$ 千克，或 $1\\%$ 联苯·噻虫胺颗粒剂 $4\\sim 5$ 千克，撒施或穴施；也可用 $30\\%$ 氯虫·噻虫嗪悬浮剂 $1500\\sim 2000$ 倍液，或 $25\\%$ 噬虫嗪水分散粒剂 $3000\\sim 5000$ 倍液，或 $70\\%$ 吡虫啉可湿性粉剂10000倍液，在苗床进行灌根或喷淋。⑤生长期叶面喷施抓住春夏季的发生始盛期和秋冬季的发生盛期两个重要时期，掌握苗期早治。在成虫开始活动尚未产卵时，重点在苗期，幼苗出土后发现被害，每株菜有成虫 $2\\sim 3$ 头时立即用药。药剂可选用 $5\\%$ 氯虫苯甲酰胺悬浮剂1500倍液，或 $10\\%$ 溴氰虫酰胺可分散油悬浮剂 $1500\\sim 2000$ 倍液，或 $28\\%$ 杀虫·啶虫脒可湿性粉剂 $1200\\sim 1500$ 倍液，或 $20\\%$ 啶虫·哒螨灵微乳剂 $2000\\sim 3000$ 倍液，或 $22.5\\%$ 氯氟·啶虫脒乳油 $1500\\sim 2000$ 倍液，或 $10\\%$ 氯氰菊酯乳油1500倍液。成虫善跳跃，活动性强，应在成虫活动盛期（春秋季在中午前后，夏季在早晨和傍晚）用药。",
+        "bbox": [
+          20,
+          535,
+          949,
+          945
+        ],
+        "page_idx": 46
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          618,
+          39,
+          884,
+          59
+        ],
+        "page_idx": 46
+      },
+      {
+        "type": "page_number",
+        "text": "47 ",
+        "bbox": [
+          914,
+          44,
+          944,
+          57
+        ],
+        "page_idx": 46
+      },
+      {
+        "type": "text",
+        "text": "采用包围式喷药，即应从田四周向中央喷，防止成虫逃走。喷药作业时动作宜轻，勿惊扰成虫。",
+        "bbox": [
+          42,
+          85,
+          959,
+          135
+        ],
+        "page_idx": 47
+      },
+      {
+        "type": "text",
+        "text": "小猿叶甲与大猿叶甲",
+        "text_level": 1,
+        "bbox": [
+          97,
+          151,
+          366,
+          176
+        ],
+        "page_idx": 47
+      },
+      {
+        "type": "text",
+        "text": "小猿叶甲与大猿叶甲均属鞘翅目叶甲科，是寡食性害虫，主要危害十字花科蔬菜，嗜食白菜、萝卜、花椰菜、芥菜等。小猿叶甲与大猿叶甲常混合发生。",
+        "bbox": [
+          42,
+          194,
+          811,
+          273
+        ],
+        "page_idx": 47
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/cd3e4070012809bfd8c95bf86f75ae6ab662fb9b277c80dd09ea6e1e4fe01617.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          824,
+          156,
+          957,
+          245
+        ],
+        "page_idx": 47,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "形态特征：见下表。",
+        "bbox": [
+          97,
+          276,
+          339,
+          299
+        ],
+        "page_idx": 47
+      },
+      {
+        "type": "table",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/4f9b71d6ecae564a200928070fcfb13ac8dafacdb9a285e3cf16b2d573bb54f9.jpg",
+        "table_caption": [
+          "小猿叶甲与大猿叶甲形态特征比较"
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td></td><td>小猿叶甲</td><td>大猿叶甲</td></tr><tr><td>成虫</td><td>体近圆形,蓝黑色,有明显金属光泽,小盾片近圆形,有小刻点;鞘翅上有细密点刻,排成11行,后翅退化,不能飞翔</td><td>体椭圆形,暗蓝黑色,略有金属光泽,小盾片三角形,光滑无刻点;前胸背板及鞘翅上有刻点,后翅发达,能飞翔</td></tr><tr><td>卵</td><td>长椭圆形,一端较钝,暗黄色</td><td>长椭圆形,橙黄色</td></tr><tr><td>幼虫</td><td>初孵幼虫淡黄色,后变褐色,头黑色有光泽,各体节具黑色肉瘤8个,其上有刚毛。沿亚背线的一行肉瘤最大,越向下越小</td><td>头黑色,体灰黑带黄色,各体节有大小不等的黑色肉瘤20个左右,气门下线及基线上肉瘤最显著</td></tr><tr><td>蛹</td><td>近半球形,淡黄色。体上生褐色短毛,尾端不分叉</td><td>近半球形,黄色至黄褐色。体略大,被刚毛,尾端分叉,淡紫色</td></tr></table>",
+        "bbox": [
+          42,
+          345,
+          962,
+          602
+        ],
+        "page_idx": 47
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/a92fba722f62dbb38d365cfc941ce92307d250e00d3bfc4df257cd494255713b.jpg",
+        "image_caption": [
+          "小猿叶甲成虫"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          45,
+          627,
+          500,
+          851
+        ],
+        "page_idx": 47,
+        "img_caption": [
+          "小猿叶甲成虫"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/e680e512ee5572212adf82e5102f7c73d01f0903a4669d6eb2a3a3b9272f2148.jpg",
+        "image_caption": [
+          "小猿叶甲低龄幼虫"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          510,
+          627,
+          959,
+          851
+        ],
+        "page_idx": 47,
+        "img_caption": [
+          "小猿叶甲低龄幼虫"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "page_number",
+        "text": "48 ",
+        "bbox": [
+          45,
+          39,
+          77,
+          57
+        ],
+        "page_idx": 47
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          103,
+          37,
+          442,
+          57
+        ],
+        "page_idx": 47
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/95d110b15bfaace63b001532e447dcf4cecff81aea0c59b1a78df4df419941d1.jpg",
+        "image_caption": [
+          "小猿叶甲幼虫及危害状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          0,
+          68,
+          457,
+          316
+        ],
+        "page_idx": 48,
+        "img_caption": [
+          "小猿叶甲幼虫及危害状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/0edab07217f3774f7e683e8e98333f29d3293007ed0776167433132ccdbb64dc.jpg",
+        "image_caption": [
+          "小猿叶甲高龄幼虫"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          449,
+          68,
+          922,
+          295
+        ],
+        "page_idx": 48,
+        "img_caption": [
+          "小猿叶甲高龄幼虫"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/899ebd2b3f447bb005218bdece521eb9f17e047a9a1045c1248bda152728cd80.jpg",
+        "image_caption": [
+          "大猿叶甲成虫"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          12,
+          349,
+          484,
+          577
+        ],
+        "page_idx": 48,
+        "img_caption": [
+          "大猿叶甲成虫"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/eaa254554512ad7bc9f72216751fcf7f5f638c9aa5445658b34f10709d903031.jpg",
+        "image_caption": [
+          "大猿叶甲幼虫"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          479,
+          328,
+          952,
+          556
+        ],
+        "page_idx": 48,
+        "img_caption": [
+          "大猿叶甲幼虫"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "危害状: 成虫和幼虫均食叶片, 并且群聚危害, 把叶吃成许多圆孔, 虫口多时, 致使叶片千疮百孔, 严重时吃成网状, 仅留叶脉, 残留的叶脉成扫把状。虫粪污染叶片, 降低品质。",
+        "bbox": [
+          42,
+          592,
+          959,
+          699
+        ],
+        "page_idx": 48
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/a1a281586e4f54da7e762ffaf45b58cea9d5b3d19e7fae592c898ddac0edd946.jpg",
+        "image_caption": [
+          "小猿叶甲幼虫危害萝卜"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          47,
+          704,
+          522,
+          931
+        ],
+        "page_idx": 48,
+        "img_caption": [
+          "小猿叶甲幼虫危害萝卜"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/e112aada03267f60377bbf8491d81c2c3de345714a60c9be4bc997a3f9d8de6e.jpg",
+        "image_caption": [
+          "小猿叶甲低龄幼虫危害白菜"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          515,
+          684,
+          984,
+          909
+        ],
+        "page_idx": 48,
+        "img_caption": [
+          "小猿叶甲低龄幼虫危害白菜"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "header",
+        "text": "十字花科蔬菜病虫害",
+        "bbox": [
+          572,
+          24,
+          839,
+          47
+        ],
+        "page_idx": 48
+      },
+      {
+        "type": "page_number",
+        "text": "49 ",
+        "bbox": [
+          869,
+          24,
+          899,
+          39
+        ],
+        "page_idx": 48
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/999d5ee005bc7897aad302723f603e2fa964edebf221c7831905e3d70af2333c.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          42,
+          84,
+          500,
+          308
+        ],
+        "page_idx": 49,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/d9963ffa92cc31fea283a91c83aa1450ad8499ff8610636de797ef29a6b266cd.jpg",
+        "image_caption": [
+          "小猿叶甲幼虫危害白菜"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          502,
+          85,
+          957,
+          308
+        ],
+        "page_idx": 49,
+        "img_caption": [
+          "小猿叶甲幼虫危害白菜"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/614215fce0de97f1e1ce8c93ae49ba8f2e607f105c6a124127a1e11b5e2de103.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          42,
+          355,
+          500,
+          574
+        ],
+        "page_idx": 49,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/eca0af67bd4e6c0f5a1666414b8106918404682bbdef8a8c566d39e6e9b512ea.jpg",
+        "image_caption": [
+          "大猿叶甲幼虫危害白菜"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          502,
+          355,
+          959,
+          574
+        ],
+        "page_idx": 49,
+        "img_caption": [
+          "大猿叶甲幼虫危害白菜"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/cd88b12b4691c516ef06307ebd0bd5477a2bfe79589e7af3b81a7ebacaad7e7e.jpg",
+        "image_caption": [
+          "小猿叶甲幼虫严重危害白菜"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          42,
+          619,
+          497,
+          838
+        ],
+        "page_idx": 49,
+        "img_caption": [
+          "小猿叶甲幼虫严重危害白菜"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/2609bec36171ac882b974ed150254678006d7507ce1e7f3d3992743df263e49a.jpg",
+        "image_caption": [
+          "大猿叶甲幼虫严重危害白菜"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          507,
+          619,
+          959,
+          838
+        ],
+        "page_idx": 49,
+        "img_caption": [
+          "大猿叶甲幼虫严重危害白菜"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "生活习性：1年发生代次由北到南 $1\\sim 6$ 代，北方 $1\\sim 2$ 代，长江流域 $3\\sim 4$ 代，广东、广西 $5\\sim 6$ 代。在长江流域以成虫在5厘米表土层越冬，",
+        "bbox": [
+          40,
+          884,
+          964,
+          935
+        ],
+        "page_idx": 49
+      },
+      {
+        "type": "page_number",
+        "text": "50 ",
+        "bbox": [
+          42,
+          39,
+          77,
+          57
+        ],
+        "page_idx": 49
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          103,
+          37,
+          437,
+          56
+        ],
+        "page_idx": 49
+      },
+      {
+        "type": "text",
+        "text": "少数在枯叶、土缝、石块下越冬，在广东无明显越冬现象。翌春气温上升至 $10^{\\circ}\\mathrm{C}$ 以上时越冬成虫开始活动，在浙江2月底、3月初成虫开始活动，3月中旬产卵，3月底孵化，4月成虫和幼虫混合危害最严重，每年4—5月和9—10月为两次危害高峰，通常秋季大白菜受害较重。成虫、幼虫都有假死习性，受惊即缩足落地。幼虫喜在心叶取食，昼夜活动，晚上更活跃。",
+        "bbox": [
+          22,
+          85,
+          954,
+          218
+        ],
+        "page_idx": 50
+      },
+      {
+        "type": "text",
+        "text": "防治方法：①收获后及时清除田间残株，收集落叶、杂草等，集中销毁或深埋。②利用成虫、幼虫的假死性，人工捕杀。③冬翻和夏翻消灭蛰伏成虫。④在低龄幼虫期用药防治。药剂可选 $90\\%$ 敌百虫晶体1000倍液，或 $50\\%$ 辛硫磷乳油、 $5\\%$ 氯氰菊酯乳油 $1000\\sim 1500$ 倍液，或 $10\\%$ 溴氰虫酰胺可分散油悬浮剂2000倍液，或 $30\\%$ 氯虫·噻虫嗪悬浮剂2500倍液，或 $2.5\\%$ 溴氰菊酯乳油 $3000\\sim 4000$ 倍液，或 $0.2\\%$ 阿维菌素乳油1500倍液。在春秋两季各代始盛期开始，每 $7\\sim 10$ 天防治1次，连续2次。",
+        "bbox": [
+          22,
+          221,
+          954,
+          412
+        ],
+        "page_idx": 50
+      },
+      {
+        "type": "text",
+        "text": "美洲斑潜蝇",
+        "text_level": 1,
+        "bbox": [
+          80,
+          426,
+          233,
+          449
+        ],
+        "page_idx": 50
+      },
+      {
+        "type": "text",
+        "text": "危害状：成虫、幼虫均可危害。雌成虫刺伤植物叶片进行取食和产卵，形成褪绿斑点，幼虫潜入叶片和叶柄危害，形成先细后宽的蛇形弯曲盘绕虫道，其内有交替排列整齐的黑色虫粪，老虫道后期呈棕色的干斑块区，一般1虫1道。",
+        "bbox": [
+          22,
+          469,
+          462,
+          656
+        ],
+        "page_idx": 50
+      },
+      {
+        "type": "text",
+        "text": "形态特征、生活习性及防治方法：参考茄果类蔬菜害虫美洲斑潜蝇。",
+        "bbox": [
+          22,
+          661,
+          462,
+          738
+        ],
+        "page_idx": 50
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/8f1507c9bc1c49ad66d6c084667019c61fe8d78178f84d66512c91f7bf0fded6.jpg",
+        "image_caption": [
+          "美洲斑潜蝇危害状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          492,
+          472,
+          949,
+          674
+        ],
+        "page_idx": 50,
+        "img_caption": [
+          "美洲斑潜蝇危害状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "烟粉虱 ",
+        "text_level": 1,
+        "bbox": [
+          82,
+          756,
+          175,
+          779
+        ],
+        "page_idx": 50
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/5931a6ed7464296dc14e68522a8f6b177295891598ce3d0306260992841dddeb.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          814,
+          758,
+          947,
+          847
+        ],
+        "page_idx": 50,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "危害状：以成虫和若虫群集叶背吸食植物汁液，被害叶片萎缩、褪绿、变黄、萎蔫，青花菜出现白茎，甚至全株枯死；  \n萝卜受害表现为颜色白化、无味、重量减轻。由于分泌蜜露，污染叶片和果实，往往引起煤污病的发生，影响植株光合作用，此外还传播病毒病。",
+        "bbox": [
+          22,
+          799,
+          952,
+          904
+        ],
+        "page_idx": 50
+      },
+      {
+        "type": "text",
+        "text": "形态特征、生活习性及防治方法：参考茄果类蔬菜害虫烟粉虱。",
+        "bbox": [
+          80,
+          909,
+          854,
+          932
+        ],
+        "page_idx": 50
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          620,
+          37,
+          886,
+          57
+        ],
+        "page_idx": 50
+      },
+      {
+        "type": "page_number",
+        "text": "51 ",
+        "bbox": [
+          914,
+          39,
+          944,
+          57
+        ],
+        "page_idx": 50
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/d8aafb7cd738f99e3e822039864fba8ea556be5139d233dfbb9ca721da652c92.jpg",
+        "image_caption": [
+          "烟粉虱成虫群集"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          37,
+          77,
+          489,
+          345
+        ],
+        "page_idx": 51,
+        "img_caption": [
+          "烟粉虱成虫群集"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/440c130c34f21f5ddd36ed812c0b80b01581501a9b6afd583b160377b4e12fd2.jpg",
+        "image_caption": [
+          "烟粉虱危害花椰菜造成煤污病"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          500,
+          77,
+          952,
+          345
+        ],
+        "page_idx": 51,
+        "img_caption": [
+          "烟粉虱危害花椰菜造成煤污病"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "黄守瓜",
+        "text_level": 1,
+        "bbox": [
+          92,
+          403,
+          185,
+          426
+        ],
+        "page_idx": 51
+      },
+      {
+        "type": "text",
+        "text": "形态特征、危害状、生活习性及防治方法：详见瓜类蔬菜害虫黄守瓜。",
+        "bbox": [
+          90,
+          446,
+          939,
+          469
+        ],
+        "page_idx": 51
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/5f9d82bf528e76d6cd6beaf5d8d38543c2fe1e89e1ad3cf29a32166b84af3789.jpg",
+        "image_caption": [
+          "黄守瓜成虫危害状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          37,
+          485,
+          494,
+          754
+        ],
+        "page_idx": 51,
+        "img_caption": [
+          "黄守瓜成虫危害状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/185b6f71d81f1fdf01abf61acdd56662815e5b63c03d04ed8793369a1ae1d97a.jpg",
+        "image_caption": [
+          "黄守瓜严重危害萝卜叶片"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          500,
+          485,
+          954,
+          752
+        ],
+        "page_idx": 51,
+        "img_caption": [
+          "黄守瓜严重危害萝卜叶片"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "棕榈蓟马",
+        "text_level": 1,
+        "bbox": [
+          92,
+          810,
+          213,
+          833
+        ],
+        "page_idx": 51
+      },
+      {
+        "type": "text",
+        "text": "危害状：成虫、若虫以锉吸式口器取食心叶、嫩芽，造成嫩叶皱缩卷曲，甚至黄化、干枯、凋萎，严重的可使植株枯萎，还可传播多种病毒病。",
+        "bbox": [
+          35,
+          853,
+          952,
+          902
+        ],
+        "page_idx": 51
+      },
+      {
+        "type": "text",
+        "text": "形态特征、生活习性及防治方法：参考瓜类蔬菜害虫棕榈蓟马。",
+        "bbox": [
+          90,
+          907,
+          856,
+          929
+        ],
+        "page_idx": 51
+      },
+      {
+        "type": "page_number",
+        "text": "52 ",
+        "bbox": [
+          37,
+          32,
+          70,
+          49
+        ],
+        "page_idx": 51
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          95,
+          31,
+          432,
+          49
+        ],
+        "page_idx": 51
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/f4a1ffc69f03bbf272062823005074f7045efaff6a0645f722412f8ec4c91342.jpg",
+        "image_caption": [
+          "棕榈蓟马成虫及危害状 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          25,
+          91,
+          479,
+          315
+        ],
+        "page_idx": 52,
+        "img_caption": [
+          "棕榈蓟马成虫及危害状 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/11051e3fcc64275c9bdeea489ba682c1969c96f47f8bf368dd04145726e83083.jpg",
+        "image_caption": [
+          "棕榈蓟马危害白菜 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          492,
+          91,
+          947,
+          315
+        ],
+        "page_idx": 52,
+        "img_caption": [
+          "棕榈蓟马危害白菜 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/812d899d36ec92ab88d95b991ef1d67abfdc7c40c7c4f0852adcea42f6650e10.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          25,
+          362,
+          484,
+          577
+        ],
+        "page_idx": 52,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/6903f9c42769633c87c411de825fb5ccda488749cf72bb79aa0761e7b92d234c.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          25,
+          579,
+          484,
+          794
+        ],
+        "page_idx": 52,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/aca5a40b6d08420d0f51002bfb8f9de6e7c7a7ef573305791bda15e5545245ca.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          489,
+          362,
+          947,
+          577
+        ],
+        "page_idx": 52,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/eddca3a2fcc6310b7bdeeb950dd677f73ebb93a521e981e81cce17634b0cea82.jpg",
+        "image_caption": [
+          "棕榈蓟马危害甘蓝 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          489,
+          579,
+          947,
+          794
+        ],
+        "page_idx": 52,
+        "img_caption": [
+          "棕榈蓟马危害甘蓝 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "中华稻蝗 ",
+        "text_level": 1,
+        "bbox": [
+          82,
+          855,
+          206,
+          878
+        ],
+        "page_idx": 52
+      },
+      {
+        "type": "text",
+        "text": "中华稻蝗属直翅目蝗科，主要危害水稻、玉米、茭白及其他禾本科植物及豆科、旋花科、锦葵科、茄科、十字花科等多种植物。",
+        "bbox": [
+          25,
+          896,
+          952,
+          947
+        ],
+        "page_idx": 52
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          618,
+          42,
+          886,
+          62
+        ],
+        "page_idx": 52
+      },
+      {
+        "type": "page_number",
+        "text": "53 ",
+        "bbox": [
+          914,
+          45,
+          947,
+          62
+        ],
+        "page_idx": 52
+      },
+      {
+        "type": "text",
+        "text": "形态特征：成虫黄绿色、黄褐色、绿色，前翅前缘绿色，其余淡褐色，头宽大，头顶向前伸，颜面隆起而宽，两侧缘近平行，具纵沟。复眼卵圆形，触角丝状，前胸背板发达，呈马鞍形，向后延伸覆盖中胸。中胸和后胸两侧各有一条横缝将中、后胸分别划分为前后两部分。前翅狭长，且长于后翅，革质比较坚硬，后翅宽大，柔软膜质。卵长圆筒形，中间略弯，深黄色，胶质卵囊褐色，包在卵外面。若虫（蝗蝻） $5\\sim 6$ 龄，体形与成虫相似。一龄灰绿色，无翅芽；二龄绿色，头胸侧的黑褐色纵纹开始显现；三龄浅绿色，头胸两侧黑褐色纵纹明显，沿背中线淡色中带明显，微露翅芽；四龄翅芽呈三角形，长未达腹部第一节；末龄翅芽超过腹部第三节。",
+        "bbox": [
+          42,
+          85,
+          959,
+          327
+        ],
+        "page_idx": 53
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/3b03781b68356158d9cdfa342e18b35fe3a1aeeb8cb406a43697b9388a0e4e3e.jpg",
+        "image_caption": [
+          "中华稻蝗成虫 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          42,
+          345,
+          494,
+          568
+        ],
+        "page_idx": 53,
+        "img_caption": [
+          "中华稻蝗成虫 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/d2b127da252a9289080d8385eab28d0b071c6b6b38633ec701da258a8d917f2b.jpg",
+        "image_caption": [
+          "中华稻蝗若虫 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          505,
+          345,
+          959,
+          568
+        ],
+        "page_idx": 53,
+        "img_caption": [
+          "中华稻蝗若虫 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "危害状：成虫、若虫均能取食蔬菜叶片，造成缺刻，严重时全叶被吃光，仅残留叶脉。",
+        "bbox": [
+          42,
+          614,
+          959,
+          665
+        ],
+        "page_idx": 53
+      },
+      {
+        "type": "text",
+        "text": "生活习性：长江流域及北方地区1年发生1代，广东2代，以卵块在田埂、荒滩、堤坝等土中 $1.5\\sim 4.0$ 厘米深处或杂草根际、残株间越冬。成虫、若虫日出活动，以灌渠两侧发生偏多。成虫多在早晨羽化，在性成熟前活动频繁，飞翔力强。对白光和紫光有明显趋性，夜晚闷热时有扑灯习性。产卵环境以湿度适中、土质松软的田埂两侧最为适宜。低龄若虫在孵化后有群集生活习性，三龄以后开始分散危害，迁入稻田、茭白田、莲藕田边，四、五龄若虫可扩散到全田危害。田埂边发病重于田块中间。浙江5月中下旬孵化，7、8月羽化为成虫，9月中下旬为产卵盛期。广东第一代蝗虫出现于6月上旬，第二代成虫出现于9月上中旬。越冬卵于翌年3月下旬至清明前孵化，一至二龄若虫多集中在田埂或路边杂草上；二龄开始趋向农田，",
+        "bbox": [
+          42,
+          668,
+          959,
+          940
+        ],
+        "page_idx": 53
+      },
+      {
+        "type": "page_number",
+        "text": "54 ",
+        "bbox": [
+          42,
+          39,
+          77,
+          57
+        ],
+        "page_idx": 53
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          100,
+          39,
+          434,
+          57
+        ],
+        "page_idx": 53
+      },
+      {
+        "type": "text",
+        "text": "取食危害，食量渐增；四龄起食量大增，至成虫时食量最大。 ",
+        "bbox": [
+          25,
+          80,
+          771,
+          103
+        ],
+        "page_idx": 54
+      },
+      {
+        "type": "text",
+        "text": "防治方法：①秋冬季修整渠沟、铲除杂草，春季平整田埂、除草，破坏越冬虫卵的生态环境，可大量减少越冬虫源。②保护青蛙、蟾蜍、麻雀、大寄生蝇等天敌，可有效抑制该虫发生。③抓住三龄前蝗蛹喜群集在田埂、地边、渠旁取食杂草嫩叶的特点，突击防治，减少稻蝗迁移本田的基数。主要是抓好蝗蛹未扩散前集中在田埂、地头、沟渠边等杂草上以及蝗蛹扩散前期在大田田边5米范围内危害茭白、莲藕时用药。当进入三至四龄后常转入大田，当百株有虫10头以上时，应及时喷洒 $5\\%$ 氟虫脲乳油或 $50\\%$ 辛硫磷乳油1000倍液，或 $2.5\\%$ 氯氟氰菊酯乳油 $2000\\sim 3000$ 倍液，或 $10\\%$ 氯氰菊酯乳油1500倍液，或 $2.5\\%$ 高效氟氯氰菊酯乳油 $1500\\sim 2000$ 倍液。也可每亩用 $5\\%$ 吡虫啉乳油 $15\\sim 20$ 毫升，或200亿孢子/克球孢白僵菌可分散油悬浮剂 $50\\sim 100$ 毫升。还可在低龄若虫期喷施10000倍液 $20\\%$ 灭幼脲1号悬浮乳剂，间隔10天用药1次，连续 $2\\sim 3$ 次。",
+        "bbox": [
+          25,
+          108,
+          954,
+          435
+        ],
+        "page_idx": 54
+      },
+      {
+        "type": "text",
+        "text": "短额负蝗",
+        "text_level": 1,
+        "bbox": [
+          87,
+          449,
+          208,
+          474
+        ],
+        "page_idx": 54
+      },
+      {
+        "type": "text",
+        "text": "短额负蝗属直翅目蝗科，别名中华负蝗、尖头蚱蜢，主要危害白菜、甘蓝、萝卜、茄子及豆类等多种蔬菜，还危害水稻、小麦、玉米、马铃薯、烟草、棉花、芝麻、甘薯、甘蔗及麻类等植物。",
+        "bbox": [
+          30,
+          492,
+          954,
+          571
+        ],
+        "page_idx": 54
+      },
+      {
+        "type": "text",
+        "text": "形态特征：成虫体色有绿色或褐色（冬型）。头尖削，头额前冲，尖端着生一对触角。绿色型自复眼起向斜下方有一条粉红纹，与前、中胸背板两侧下线的粉红纹衔接。体表有浅黄色瘤状突起，后翅基部红色，端部淡绿色，前翅长度超过后足腿节端部约1/3。卵长椭圆形，黄褐色至深黄色，",
+        "bbox": [
+          30,
+          574,
+          954,
+          681
+        ],
+        "page_idx": 54
+      },
+      {
+        "type": "text",
+        "text": "中间稍凹陷，一端较粗钝，卵壳表面有鱼鳞状花纹。若虫共5龄，体色草绿色或稍带黄色，形态基本同成虫，只是翅芽由发育不全过渡到翅芽发育逐步健全。",
+        "bbox": [
+          30,
+          684,
+          464,
+          819
+        ],
+        "page_idx": 54
+      },
+      {
+        "type": "text",
+        "text": "短额负蝗成虫",
+        "bbox": [
+          341,
+          893,
+          487,
+          912
+        ],
+        "page_idx": 54
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/d9b9e0208fe47aa25600db7490b7d83c91cd7040dd7a6a7886782b19ef6c3127.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          500,
+          697,
+          954,
+          937
+        ],
+        "page_idx": 54,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          623,
+          34,
+          891,
+          52
+        ],
+        "page_idx": 54
+      },
+      {
+        "type": "page_number",
+        "text": "55 ",
+        "bbox": [
+          919,
+          36,
+          954,
+          54
+        ],
+        "page_idx": 54
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/51be4cf4d3fa0018ebafed0397c4749b48920103544063310e1f019f2cea9361.jpg",
+        "image_caption": [
+          "短额负蝗成虫交尾"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          40,
+          80,
+          494,
+          304
+        ],
+        "page_idx": 55,
+        "img_caption": [
+          "短额负蝗成虫交尾"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/da456a663a811236cb0e6035c214b07d3b54e5d003045d7b78a7e87776d31d26.jpg",
+        "image_caption": [
+          "短额负蝗蝗蛹"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          502,
+          80,
+          954,
+          304
+        ],
+        "page_idx": 55,
+        "img_caption": [
+          "短额负蝗蝗蛹"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "危害状：成虫、若虫食叶成缺刻，严重时全叶被吃光，仅残留叶脉，还可传播细菌性软腐病。 ",
+        "bbox": [
+          40,
+          350,
+          469,
+          429
+        ],
+        "page_idx": 55
+      },
+      {
+        "type": "text",
+        "text": "生活习性：在华北1年发生1代，江西2代，以卵在沟边土壤中越冬。5月下旬至6月中旬为孵化盛期，初孵若虫先取食杂草，三龄后扩散危害茭白、水稻及豆类、十字花科蔬菜等。7—8月羽化为成虫。喜栖于地被多、湿度大、双子叶植物茂密的环境，在灌渠两侧发生多。",
+        "bbox": [
+          40,
+          433,
+          472,
+          647
+        ],
+        "page_idx": 55
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/88f3ae7d5a9676a1e40652c916dc9301754cadb96312c6e81ae14a1c53dd116e.jpg",
+        "image_caption": [
+          "短额负蝗危害状"
+        ],
+        "image_footnote": [],
+        "bbox": [
+          502,
+          352,
+          954,
+          576
+        ],
+        "page_idx": 55,
+        "img_caption": [
+          "短额负蝗危害状"
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "防治方法：①在秋季、春季铲除田埂、地边5厘米以上的土及杂草，把卵块暴露在地面晒干或冻死，也可重新加厚地埂，增加盖土厚度，使孵化后的蝗蛹不能出土。②抓住初孵蝗蛹在田埂、渠堰集中危害双子叶杂草，且扩散能力极弱时进行防治，药剂可参考中华稻蝗。",
+        "bbox": [
+          40,
+          652,
+          954,
+          757
+        ],
+        "page_idx": 55
+      },
+      {
+        "type": "text",
+        "text": "灰巴蜗牛",
+        "text_level": 1,
+        "bbox": [
+          97,
+          772,
+          216,
+          797
+        ],
+        "page_idx": 55
+      },
+      {
+        "type": "text",
+        "text": "灰巴蜗牛属腹足纲柄眼目巴蜗牛科，可危害葫芦科、十字花科、豆科、茄科等多种作物。",
+        "bbox": [
+          42,
+          815,
+          954,
+          864
+        ],
+        "page_idx": 55
+      },
+      {
+        "type": "text",
+        "text": "形态特征：贝壳中等大小，壳质稍厚，坚固，呈圆球形。壳有 $5.5\\sim 6.0$ 个螺层，顶部几个螺层增长缓慢、略膨胀，体螺层急剧增长、膨大。壳面",
+        "bbox": [
+          42,
+          871,
+          954,
+          922
+        ],
+        "page_idx": 55
+      },
+      {
+        "type": "page_number",
+        "text": "56 ",
+        "bbox": [
+          40,
+          36,
+          72,
+          51
+        ],
+        "page_idx": 55
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          97,
+          32,
+          434,
+          52
+        ],
+        "page_idx": 55
+      },
+      {
+        "type": "text",
+        "text": "黄褐色或琥珀色，并具有细致而稠密的生长线和螺纹。壳顶尖，缝合线深。壳口呈椭圆形，口缘完整，略外折，锋利，易碎。卵圆球形，白色。幼贝体形与成贝相似，稍小。",
+        "bbox": [
+          22,
+          87,
+          949,
+          165
+        ],
+        "page_idx": 56
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/23762ffc768507fbbc6abdb3566fc06e81212e8285e9f0480bafcfe710a71a3f.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          25,
+          180,
+          366,
+          372
+        ],
+        "page_idx": 56,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/14b23162f941ea8ca9d7567d739e549ec4c097635ddade7f533244c5d98218bc.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          371,
+          180,
+          713,
+          372
+        ],
+        "page_idx": 56,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/08bfec463597d38c0219d3d01584cd27de5e7124e31e4bd773c08798c2fea260.jpg",
+        "image_caption": [
+          "灰巴蜗牛成贝 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          718,
+          180,
+          1000,
+          372
+        ],
+        "page_idx": 56,
+        "img_caption": [
+          "灰巴蜗牛成贝 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "危害状：成贝和幼贝以齿舌刮食叶、茎，造成孔洞或缺刻，或咬断幼苗，造成缺苗断垄。",
+        "bbox": [
+          22,
+          418,
+          949,
+          469
+        ],
+        "page_idx": 56
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/37f13c395e96b36f811a30eac106a6c3cb8c96df379da0570f4283922173e804.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "bbox": [
+          25,
+          484,
+          487,
+          709
+        ],
+        "page_idx": 56,
+        "img_caption": [],
+        "img_footnote": []
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/573419676255eb195603358a98a3b74b60c6940497b73aebea808ac1b71b0e4f.jpg",
+        "image_caption": [
+          "灰色蜗牛危害状 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          489,
+          486,
+          949,
+          709
+        ],
+        "page_idx": 56,
+        "img_caption": [
+          "灰色蜗牛危害状 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "生活习性：上海、浙江1年发生1代，11月下旬以成贝和幼贝在田埂土缝、残株落叶、作物根部、草堆石块下及其他潮湿阴暗处及宅前屋后的物体下越冬。翌年3月上中旬开始活动，白天潜伏，傍晚或清晨取食，遇有阴雨天多整天栖息在植株上。初孵幼贝多群集在一起取食，长大后分散危害，喜栖息在植株茂密低洼潮湿处。阴雨天可昼夜活动取食，干旱时昼伏夜出。7—8月危害秋播作物。温暖多雨天气及田间潮湿地块受害重。",
+        "bbox": [
+          22,
+          756,
+          954,
+          917
+        ],
+        "page_idx": 56
+      },
+      {
+        "type": "text",
+        "text": "防治方法：①采用高畦栽培、地膜覆盖、破膜提苗等方法，可减少危",
+        "bbox": [
+          77,
+          922,
+          949,
+          945
+        ],
+        "page_idx": 56
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          618,
+          39,
+          886,
+          59
+        ],
+        "page_idx": 56
+      },
+      {
+        "type": "page_number",
+        "text": "57 ",
+        "bbox": [
+          914,
+          42,
+          947,
+          59
+        ],
+        "page_idx": 56
+      },
+      {
+        "type": "text",
+        "text": "害。②施用充分腐熟的有机肥。③铲除田间杂草，以减少蜗牛的食物来源；清除保护地内的垃圾、砖头、瓦片等物，减少蜗牛的躲藏之处。及时中耕，排出积水，可减轻危害。秋冬翻地可消灭越冬蜗牛。④鲜草诱捕。在保护地内栽苗前，可用新鲜的杂草、树叶、菜叶等堆放在田间，天亮前集中捕捉，将其投入放有食盐或生石灰的盆内灭杀。⑤在田边、沟边撒生石灰带或茶枯粉，可防止蜗牛进入危害。每亩用5～7.5千克生石灰，或茶枯粉3～5千克，撒于地头及作物行间（呈带状），一般需隔4～5天撒施几次。⑥药剂防治。蔬菜出苗或移栽后，一般在发生初盛期，每亩用6%四聚乙醛颗粒剂465～665克混干沙土10～15千克，于傍晚均匀撒施在田间蜗牛经常出没处或受害植株的行间垄上，也可条施、点施（点距40～50厘米），2～3天后接触药剂的蜗牛分泌大量黏液而死亡。还可用5%四聚·杀螺胺颗粒剂每亩500～600克，宜在傍晚施药。防治适期以蜗牛产卵前为宜，田间有小蜗牛时再防1次效果更好。以雨后转晴的傍晚施药效果最佳，施药后不宜浇水或进入田间踩踏，不宜与化肥或其他农药混用。",
+        "bbox": [
+          47,
+          75,
+          979,
+          464
+        ],
+        "page_idx": 57
+      },
+      {
+        "type": "text",
+        "text": "蛞蝓 ",
+        "text_level": 1,
+        "bbox": [
+          100,
+          469,
+          168,
+          492
+        ],
+        "page_idx": 57
+      },
+      {
+        "type": "text",
+        "text": "蛞蝓属腹足纲柄眼目蛞蝓科，又称水蜒蚰、蜒蚰，俗称鼻涕虫，是一种软体动物，危害草莓、菠菜、莴苣、茄子、番茄、百合、芹菜、甘蓝、花椰菜、白菜及豆类等，也可危害杂草。",
+        "bbox": [
+          42,
+          512,
+          959,
+          594
+        ],
+        "page_idx": 57
+      },
+      {
+        "type": "text",
+        "text": "形态特征：成虫体裸露，柔软无壳，暗灰色或黄白色。头前端有2对触角，暗黑色。眼长在后触角顶端，黑色。头前方有口，腹足扁平，爬过的地方留有白色痕迹。卵椭圆形，白色透明，可见卵核，近孵化时色变深。幼虫体形同成虫，稍小。",
+        "bbox": [
+          32,
+          596,
+          469,
+          785
+        ],
+        "page_idx": 57
+      },
+      {
+        "type": "text",
+        "text": "危害状：蛞蝓以齿舌刮食幼芽、嫩叶、嫩茎，幼苗受害可造成缺苗断垄，严重时成片被毁；成",
+        "bbox": [
+          25,
+          787,
+          462,
+          868
+        ],
+        "page_idx": 57
+      },
+      {
+        "type": "text",
+        "text": "株期叶片出现缺刻或孔洞，严重时仅残存叶脉。植株受其排泄的粪便污染，易诱发菌类侵染而导致腐烂，降低产量和品质。 ",
+        "bbox": [
+          25,
+          869,
+          939,
+          927
+        ],
+        "page_idx": 57
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/7fb37209a31da86686f2b2fa081295129c21ac456599b8631e1b692f3bfdce09.jpg",
+        "image_caption": [
+          "蛹 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          494,
+          612,
+          954,
+          833
+        ],
+        "page_idx": 57,
+        "img_caption": [
+          "蛹 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "page_number",
+        "text": "58 ",
+        "bbox": [
+          67,
+          29,
+          103,
+          44
+        ],
+        "page_idx": 57
+      },
+      {
+        "type": "header",
+        "text": "蔬菜病虫害诊断与防治原色图谱 ",
+        "bbox": [
+          128,
+          29,
+          464,
+          52
+        ],
+        "page_idx": 57
+      },
+      {
+        "type": "image",
+        "img_path": "/media/disk2/wzh/RAG-Anything/output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/images/6a985d0d4145266ea9fd824bf0386e2de72d50c5eac55a7d9be04644a214c6ee.jpg",
+        "image_caption": [
+          "蚜喻危害甘蓝 "
+        ],
+        "image_footnote": [],
+        "bbox": [
+          261,
+          83,
+          718,
+          308
+        ],
+        "page_idx": 58,
+        "img_caption": [
+          "蚜喻危害甘蓝 "
+        ],
+        "img_footnote": []
+      },
+      {
+        "type": "text",
+        "text": "生活习性：1年发生 $2\\sim 6$ 代，以成体或幼体在作物根部湿土下越冬。春季危害，夏季气温升高后活动减弱，秋季气候凉爽后复出危害。5—7月在田间大量活动危害。蛞蝓雌雄同体，异体受精，亦可同体受精繁殖。卵产于湿度大、隐蔽的土缝中。蛞蝓怕光，因此均夜间活动。耐饥力强，喜阴暗潮湿环境，高温、干旱或田间积水时则生长受抑制或死亡。",
+        "bbox": [
+          22,
+          356,
+          954,
+          489
+        ],
+        "page_idx": 58
+      },
+      {
+        "type": "text",
+        "text": "防治方法：参考灰巴蜗牛。",
+        "bbox": [
+          82,
+          492,
+          409,
+          515
+        ],
+        "page_idx": 58
+      },
+      {
+        "type": "header",
+        "text": "一、十字花科蔬菜病虫害",
+        "bbox": [
+          623,
+          36,
+          891,
+          55
+        ],
+        "page_idx": 58
+      },
+      {
+        "type": "page_number",
+        "text": "59 ",
+        "bbox": [
+          917,
+          39,
+          954,
+          55
+        ],
+        "page_idx": 58
+      }
+    ],
+    "doc_id": "doc-6141888874633576467c3949cd68da10",
+    "mtime": 1777357339.2630417,
+    "parse_config": {
+      "parser": "mineru",
+      "parse_method": "auto"
+    },
+    "cached_at": 1777459022.9043105,
+    "cache_version": "1.0",
+    "create_time": 1777459022,
+    "update_time": 1777459022,
+    "_id": "309115c0406f857c4d7fc75454e2b615"
+  }
+}

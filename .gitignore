@@ -21,7 +21,7 @@ build/
 site/
 
 # Logs / Reports
-*.log
+# *.log
 *.log.*
 *.logfire
 *.coverage/
@@ -36,7 +36,7 @@ docs/
 .gradio/
 .history/
 temp/
-rag_storage*/
+# rag_storage*/
 
 
 # IDE / Editor Files
@@ -50,10 +50,10 @@ neo4jWorkDir/
 
 # Data & Storage
 inputs/
-rag_storage*/
+# rag_storage*/
 examples/input/
 examples/output/
-output*/
+# output*/
 
 # Miscellaneous
 .DS_Store

@@ -1,0 +1,1929 @@
+{
+  "蛞蝓": {
+    "chunk_ids": [
+      "chunk-a770031934dc8ae2cad68c63e907465e",
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 2,
+    "create_time": 1777459191,
+    "update_time": 1777459191,
+    "_id": "蛞蝓"
+  },
+  "夜间": {
+    "chunk_ids": [
+      "chunk-a770031934dc8ae2cad68c63e907465e"
+    ],
+    "count": 1,
+    "create_time": 1777459191,
+    "update_time": 1777459191,
+    "_id": "夜间"
+  },
+  "阴暗潮湿": {
+    "chunk_ids": [
+      "chunk-a770031934dc8ae2cad68c63e907465e"
+    ],
+    "count": 1,
+    "create_time": 1777459191,
+    "update_time": 1777459191,
+    "_id": "阴暗潮湿"
+  },
+  "5-7月": {
+    "chunk_ids": [
+      "chunk-a770031934dc8ae2cad68c63e907465e"
+    ],
+    "count": 1,
+    "create_time": 1777459191,
+    "update_time": 1777459191,
+    "_id": "5-7月"
+  },
+  "灰巴蜗牛": {
+    "chunk_ids": [
+      "chunk-a770031934dc8ae2cad68c63e907465e",
+      "chunk-039c414821a18ac99777ef473c4c3eeb",
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 3,
+    "create_time": 1777459191,
+    "update_time": 1777459191,
+    "_id": "灰巴蜗牛"
+  },
+  "黑腐病": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425",
+      "chunk-c60631811c47de4ce2c79aee52951117",
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 3,
+    "create_time": 1777459191,
+    "update_time": 1777459191,
+    "_id": "黑腐病"
+  },
+  "甘蓝": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425",
+      "chunk-2de1784a101a3d8331d829acf538c9e1",
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364",
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302",
+      "chunk-2732eb6195df6f6255819cca0b42029f",
+      "chunk-c60631811c47de4ce2c79aee52951117",
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e",
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1",
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92",
+      "chunk-2102c4977ee2662531b474addbf76d25",
+      "chunk-ce8ce757d0c4c5e0d3389af1fd809ffd",
+      "chunk-089405484f7cef39ff9ff4354d1da054",
+      "chunk-039c414821a18ac99777ef473c4c3eeb",
+      "chunk-0f80ba997fa22a606c08224fef24a3e1",
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11",
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 16,
+    "create_time": 1777459191,
+    "update_time": 1777459191,
+    "_id": "甘蓝"
+  },
+  "花椰菜": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425",
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364",
+      "chunk-2732eb6195df6f6255819cca0b42029f",
+      "chunk-c60631811c47de4ce2c79aee52951117",
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e",
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1",
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92",
+      "chunk-2102c4977ee2662531b474addbf76d25",
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921",
+      "chunk-089405484f7cef39ff9ff4354d1da054",
+      "chunk-371895d9884598c227a071fa676687e0",
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11",
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 13,
+    "create_time": 1777459191,
+    "update_time": 1777459191,
+    "_id": "花椰菜"
+  },
+  "萝卜": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425",
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364",
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302",
+      "chunk-2732eb6195df6f6255819cca0b42029f",
+      "chunk-c60631811c47de4ce2c79aee52951117",
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e",
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1",
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92",
+      "chunk-2102c4977ee2662531b474addbf76d25",
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921",
+      "chunk-ce8ce757d0c4c5e0d3389af1fd809ffd",
+      "chunk-089405484f7cef39ff9ff4354d1da054",
+      "chunk-039c414821a18ac99777ef473c4c3eeb",
+      "chunk-371895d9884598c227a071fa676687e0",
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 15,
+    "create_time": 1777459192,
+    "update_time": 1777459192,
+    "_id": "萝卜"
+  },
+  "菌核病": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425"
+    ],
+    "count": 1,
+    "create_time": 1777459193,
+    "update_time": 1777459193,
+    "_id": "菌核病"
+  },
+  "白菜": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425",
+      "chunk-2de1784a101a3d8331d829acf538c9e1",
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364",
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302",
+      "chunk-2732eb6195df6f6255819cca0b42029f",
+      "chunk-c60631811c47de4ce2c79aee52951117",
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e",
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1",
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92",
+      "chunk-2102c4977ee2662531b474addbf76d25",
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921",
+      "chunk-ce8ce757d0c4c5e0d3389af1fd809ffd",
+      "chunk-089405484f7cef39ff9ff4354d1da054",
+      "chunk-039c414821a18ac99777ef473c4c3eeb",
+      "chunk-0f80ba997fa22a606c08224fef24a3e1",
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11",
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 17,
+    "create_time": 1777459194,
+    "update_time": 1777459194,
+    "_id": "白菜"
+  },
+  "黄瓜": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425",
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1"
+    ],
+    "count": 2,
+    "create_time": 1777459194,
+    "update_time": 1777459194,
+    "_id": "黄瓜"
+  },
+  "番茄": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425",
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1",
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 3,
+    "create_time": 1777459196,
+    "update_time": 1777459196,
+    "_id": "番茄"
+  },
+  "灰霉病": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425"
+    ],
+    "count": 1,
+    "create_time": 1777459196,
+    "update_time": 1777459196,
+    "_id": "灰霉病"
+  },
+  "根肿病": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425",
+      "chunk-089405484f7cef39ff9ff4354d1da054"
+    ],
+    "count": 2,
+    "create_time": 1777459198,
+    "update_time": 1777459198,
+    "_id": "根肿病"
+  },
+  "菜薹": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425",
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302",
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 3,
+    "create_time": 1777459198,
+    "update_time": 1777459198,
+    "_id": "菜薹"
+  },
+  "芥菜": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425",
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364",
+      "chunk-2102c4977ee2662531b474addbf76d25",
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921",
+      "chunk-089405484f7cef39ff9ff4354d1da054",
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 6,
+    "create_time": 1777459200,
+    "update_time": 1777459200,
+    "_id": "芥菜"
+  },
+  "芜菁": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425",
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92",
+      "chunk-2102c4977ee2662531b474addbf76d25",
+      "chunk-089405484f7cef39ff9ff4354d1da054",
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 5,
+    "create_time": 1777459200,
+    "update_time": 1777459200,
+    "_id": "芜菁"
+  },
+  "茎基部": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425",
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1"
+    ],
+    "count": 2,
+    "create_time": 1777459200,
+    "update_time": 1777459200,
+    "_id": "茎基部"
+  },
+  "根部": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425",
+      "chunk-2de1784a101a3d8331d829acf538c9e1",
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92",
+      "chunk-089405484f7cef39ff9ff4354d1da054",
+      "chunk-371895d9884598c227a071fa676687e0"
+    ],
+    "count": 5,
+    "create_time": 1777459200,
+    "update_time": 1777459200,
+    "_id": "根部"
+  },
+  "噻菌铜": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425",
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 2,
+    "create_time": 1777459202,
+    "update_time": 1777459202,
+    "_id": "噻菌铜"
+  },
+  "春雷·氧氯铜": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425"
+    ],
+    "count": 1,
+    "create_time": 1777459202,
+    "update_time": 1777459202,
+    "_id": "春雷·氧氯铜"
+  },
+  "硫酸铜钙": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425"
+    ],
+    "count": 1,
+    "create_time": 1777459202,
+    "update_time": 1777459202,
+    "_id": "硫酸铜钙"
+  },
+  "小菜蛾": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425",
+      "chunk-2732eb6195df6f6255819cca0b42029f",
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e",
+      "chunk-2102c4977ee2662531b474addbf76d25",
+      "chunk-371895d9884598c227a071fa676687e0"
+    ],
+    "count": 5,
+    "create_time": 1777459202,
+    "update_time": 1777459202,
+    "_id": "小菜蛾"
+  },
+  "菜螟": {
+    "chunk_ids": [
+      "chunk-2de1784a101a3d8331d829acf538c9e1",
+      "chunk-c60631811c47de4ce2c79aee52951117"
+    ],
+    "count": 2,
+    "create_time": 1777459203,
+    "update_time": 1777459203,
+    "_id": "菜螟"
+  },
+  "斜纹夜蛾": {
+    "chunk_ids": [
+      "chunk-2de1784a101a3d8331d829acf538c9e1",
+      "chunk-ce8ce757d0c4c5e0d3389af1fd809ffd"
+    ],
+    "count": 2,
+    "create_time": 1777459204,
+    "update_time": 1777459204,
+    "_id": "斜纹夜蛾"
+  },
+  "芋": {
+    "chunk_ids": [
+      "chunk-2de1784a101a3d8331d829acf538c9e1"
+    ],
+    "count": 1,
+    "create_time": 1777459204,
+    "update_time": 1777459204,
+    "_id": "芋"
+  },
+  "莲藕": {
+    "chunk_ids": [
+      "chunk-2de1784a101a3d8331d829acf538c9e1",
+      "chunk-ca141699f53529c2e47d2d719892c294"
+    ],
+    "count": 2,
+    "create_time": 1777459204,
+    "update_time": 1777459204,
+    "_id": "莲藕"
+  },
+  "心叶": {
+    "chunk_ids": [
+      "chunk-2de1784a101a3d8331d829acf538c9e1",
+      "chunk-c60631811c47de4ce2c79aee52951117",
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e",
+      "chunk-2102c4977ee2662531b474addbf76d25",
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921",
+      "chunk-ca141699f53529c2e47d2d719892c294",
+      "chunk-371895d9884598c227a071fa676687e0"
+    ],
+    "count": 7,
+    "create_time": 1777459205,
+    "update_time": 1777459205,
+    "_id": "心叶"
+  },
+  "茎部": {
+    "chunk_ids": [
+      "chunk-2de1784a101a3d8331d829acf538c9e1",
+      "chunk-2102c4977ee2662531b474addbf76d25",
+      "chunk-039c414821a18ac99777ef473c4c3eeb",
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 4,
+    "create_time": 1777459205,
+    "update_time": 1777459205,
+    "_id": "茎部"
+  },
+  "软腐病": {
+    "chunk_ids": [
+      "chunk-2de1784a101a3d8331d829acf538c9e1",
+      "chunk-c60631811c47de4ce2c79aee52951117",
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1"
+    ],
+    "count": 3,
+    "create_time": 1777459205,
+    "update_time": 1777459205,
+    "_id": "软腐病"
+  },
+  "鳞翅目": {
+    "chunk_ids": [
+      "chunk-2de1784a101a3d8331d829acf538c9e1",
+      "chunk-c60631811c47de4ce2c79aee52951117",
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e",
+      "chunk-ce8ce757d0c4c5e0d3389af1fd809ffd",
+      "chunk-371895d9884598c227a071fa676687e0",
+      "chunk-0f80ba997fa22a606c08224fef24a3e1"
+    ],
+    "count": 6,
+    "create_time": 1777459206,
+    "update_time": 1777459206,
+    "_id": "鳞翅目"
+  },
+  "夜蛾科": {
+    "chunk_ids": [
+      "chunk-2de1784a101a3d8331d829acf538c9e1",
+      "chunk-ce8ce757d0c4c5e0d3389af1fd809ffd",
+      "chunk-0f80ba997fa22a606c08224fef24a3e1"
+    ],
+    "count": 3,
+    "create_time": 1777459207,
+    "update_time": 1777459207,
+    "_id": "夜蛾科"
+  },
+  "莲纹夜蛾": {
+    "chunk_ids": [
+      "chunk-2de1784a101a3d8331d829acf538c9e1"
+    ],
+    "count": 1,
+    "create_time": 1777459207,
+    "update_time": 1777459207,
+    "_id": "莲纹夜蛾"
+  },
+  "虱螨脲": {
+    "chunk_ids": [
+      "chunk-2de1784a101a3d8331d829acf538c9e1"
+    ],
+    "count": 1,
+    "create_time": 1777459207,
+    "update_time": 1777459207,
+    "_id": "虱螨脲"
+  },
+  "甲氧虫酰肼": {
+    "chunk_ids": [
+      "chunk-2de1784a101a3d8331d829acf538c9e1"
+    ],
+    "count": 1,
+    "create_time": 1777459208,
+    "update_time": 1777459208,
+    "_id": "甲氧虫酰肼"
+  },
+  "炭疽病": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364"
+    ],
+    "count": 1,
+    "create_time": 1777459209,
+    "update_time": 1777459209,
+    "_id": "炭疽病"
+  },
+  "叶片": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364",
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302",
+      "chunk-c60631811c47de4ce2c79aee52951117",
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92",
+      "chunk-2102c4977ee2662531b474addbf76d25",
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921",
+      "chunk-ca141699f53529c2e47d2d719892c294",
+      "chunk-ce8ce757d0c4c5e0d3389af1fd809ffd",
+      "chunk-089405484f7cef39ff9ff4354d1da054",
+      "chunk-039c414821a18ac99777ef473c4c3eeb",
+      "chunk-0f80ba997fa22a606c08224fef24a3e1",
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11",
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 13,
+    "create_time": 1777459209,
+    "update_time": 1777459209,
+    "_id": "叶片"
+  },
+  "叶柄": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364",
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1"
+    ],
+    "count": 2,
+    "create_time": 1777459209,
+    "update_time": 1777459209,
+    "_id": "叶柄"
+  },
+  "黑斑病": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364",
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 2,
+    "create_time": 1777459209,
+    "update_time": 1777459209,
+    "_id": "黑斑病"
+  },
+  "黑霉病": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364"
+    ],
+    "count": 1,
+    "create_time": 1777459211,
+    "update_time": 1777459211,
+    "_id": "黑霉病"
+  },
+  "芸薹链格孢": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364",
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 2,
+    "create_time": 1777459211,
+    "update_time": 1777459211,
+    "_id": "芸薹链格孢"
+  },
+  "代森锰锌": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364",
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302",
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 3,
+    "create_time": 1777459211,
+    "update_time": 1777459211,
+    "_id": "代森锰锌"
+  },
+  "咪鲜胺": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364"
+    ],
+    "count": 1,
+    "create_time": 1777459213,
+    "update_time": 1777459213,
+    "_id": "咪鲜胺"
+  },
+  "苯醚甲环唑": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364",
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 2,
+    "create_time": 1777459213,
+    "update_time": 1777459213,
+    "_id": "苯醚甲环唑"
+  },
+  "多菌灵": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364"
+    ],
+    "count": 1,
+    "create_time": 1777459213,
+    "update_time": 1777459213,
+    "_id": "多菌灵"
+  },
+  "霜霉病": {
+    "chunk_ids": [
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302"
+    ],
+    "count": 1,
+    "create_time": 1777459214,
+    "update_time": 1777459214,
+    "_id": "霜霉病"
+  },
+  "霜霉菌": {
+    "chunk_ids": [
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302"
+    ],
+    "count": 1,
+    "create_time": 1777459215,
+    "update_time": 1777459215,
+    "_id": "霜霉菌"
+  },
+  "茎": {
+    "chunk_ids": [
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302"
+    ],
+    "count": 1,
+    "create_time": 1777459215,
+    "update_time": 1777459215,
+    "_id": "茎"
+  },
+  "花": {
+    "chunk_ids": [
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302"
+    ],
+    "count": 1,
+    "create_time": 1777459216,
+    "update_time": 1777459216,
+    "_id": "花"
+  },
+  "花梗": {
+    "chunk_ids": [
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302",
+      "chunk-2732eb6195df6f6255819cca0b42029f",
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 3,
+    "create_time": 1777459216,
+    "update_time": 1777459216,
+    "_id": "花梗"
+  },
+  "种荚": {
+    "chunk_ids": [
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302",
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 2,
+    "create_time": 1777459217,
+    "update_time": 1777459217,
+    "_id": "种荚"
+  },
+  "咯菌腈": {
+    "chunk_ids": [
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302",
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 2,
+    "create_time": 1777459218,
+    "update_time": 1777459218,
+    "_id": "咯菌腈"
+  },
+  "丙森锌": {
+    "chunk_ids": [
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302"
+    ],
+    "count": 1,
+    "create_time": 1777459218,
+    "update_time": 1777459218,
+    "_id": "丙森锌"
+  },
+  "霜霉威": {
+    "chunk_ids": [
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302"
+    ],
+    "count": 1,
+    "create_time": 1777459219,
+    "update_time": 1777459219,
+    "_id": "霜霉威"
+  },
+  "氰霜唑": {
+    "chunk_ids": [
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302",
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1"
+    ],
+    "count": 2,
+    "create_time": 1777459219,
+    "update_time": 1777459219,
+    "_id": "氰霜唑"
+  },
+  "菜粉蝶": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f",
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e"
+    ],
+    "count": 2,
+    "create_time": 1777459220,
+    "update_time": 1777459220,
+    "_id": "菜粉蝶"
+  },
+  "蚜虫": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f"
+    ],
+    "count": 1,
+    "create_time": 1777459220,
+    "update_time": 1777459220,
+    "_id": "蚜虫"
+  },
+  "甘蓝蚜": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f"
+    ],
+    "count": 1,
+    "create_time": 1777459220,
+    "update_time": 1777459220,
+    "_id": "甘蓝蚜"
+  },
+  "萝卜蚜": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f"
+    ],
+    "count": 1,
+    "create_time": 1777459221,
+    "update_time": 1777459221,
+    "_id": "萝卜蚜"
+  },
+  "桃蚜": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f"
+    ],
+    "count": 1,
+    "create_time": 1777459222,
+    "update_time": 1777459222,
+    "_id": "桃蚜"
+  },
+  "菜缢管蚜": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f"
+    ],
+    "count": 1,
+    "create_time": 1777459222,
+    "update_time": 1777459222,
+    "_id": "菜缢管蚜"
+  },
+  "大白菜": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f",
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921",
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 3,
+    "create_time": 1777459222,
+    "update_time": 1777459222,
+    "_id": "大白菜"
+  },
+  "煤污病": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f",
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921",
+      "chunk-ca141699f53529c2e47d2d719892c294"
+    ],
+    "count": 3,
+    "create_time": 1777459223,
+    "update_time": 1777459223,
+    "_id": "煤污病"
+  },
+  "印楝素": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f",
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e"
+    ],
+    "count": 2,
+    "create_time": 1777459224,
+    "update_time": 1777459224,
+    "_id": "印楝素"
+  },
+  "阿维菌素": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f"
+    ],
+    "count": 1,
+    "create_time": 1777459224,
+    "update_time": 1777459224,
+    "_id": "阿维菌素"
+  },
+  "吡虫啉": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f",
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92",
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 3,
+    "create_time": 1777459224,
+    "update_time": 1777459224,
+    "_id": "吡虫啉"
+  },
+  "噻虫嗪": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f"
+    ],
+    "count": 1,
+    "create_time": 1777459225,
+    "update_time": 1777459225,
+    "_id": "噻虫嗪"
+  },
+  "啶虫脒": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f"
+    ],
+    "count": 1,
+    "create_time": 1777459225,
+    "update_time": 1777459225,
+    "_id": "啶虫脒"
+  },
+  "烯啶虫胺": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f"
+    ],
+    "count": 1,
+    "create_time": 1777459226,
+    "update_time": 1777459226,
+    "_id": "烯啶虫胺"
+  },
+  "噻虫啉": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f"
+    ],
+    "count": 1,
+    "create_time": 1777459226,
+    "update_time": 1777459226,
+    "_id": "噻虫啉"
+  },
+  "溴氰": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f"
+    ],
+    "count": 1,
+    "create_time": 1777459227,
+    "update_time": 1777459227,
+    "_id": "溴氰"
+  },
+  "氟啶虫胺腈": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f"
+    ],
+    "count": 1,
+    "create_time": 1777459227,
+    "update_time": 1777459227,
+    "_id": "氟啶虫胺腈"
+  },
+  "螺虫乙酯": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f"
+    ],
+    "count": 1,
+    "create_time": 1777459227,
+    "update_time": 1777459227,
+    "_id": "螺虫乙酯"
+  },
+  "黄曲条跳甲": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f",
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1",
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92",
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 4,
+    "create_time": 1777459227,
+    "update_time": 1777459227,
+    "_id": "黄曲条跳甲"
+  },
+  "鞘翅目": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f",
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92",
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921"
+    ],
+    "count": 3,
+    "create_time": 1777459229,
+    "update_time": 1777459229,
+    "_id": "鞘翅目"
+  },
+  "叶甲科": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f",
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92",
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921"
+    ],
+    "count": 3,
+    "create_time": 1777459234,
+    "update_time": 1777459234,
+    "_id": "叶甲科"
+  },
+  "幼苗": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f"
+    ],
+    "count": 1,
+    "create_time": 1777459235,
+    "update_time": 1777459235,
+    "_id": "幼苗"
+  },
+  "嫩叶": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f"
+    ],
+    "count": 1,
+    "create_time": 1777459235,
+    "update_time": 1777459235,
+    "_id": "嫩叶"
+  },
+  "嫩荚": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f"
+    ],
+    "count": 1,
+    "create_time": 1777459235,
+    "update_time": 1777459235,
+    "_id": "嫩荚"
+  },
+  "菜青虫": {
+    "chunk_ids": [
+      "chunk-c60631811c47de4ce2c79aee52951117",
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1",
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 3,
+    "create_time": 1777459237,
+    "update_time": 1777459237,
+    "_id": "菜青虫"
+  },
+  "菠菜": {
+    "chunk_ids": [
+      "chunk-c60631811c47de4ce2c79aee52951117",
+      "chunk-089405484f7cef39ff9ff4354d1da054",
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 3,
+    "create_time": 1777459237,
+    "update_time": 1777459237,
+    "_id": "菠菜"
+  },
+  "粉蝶科": {
+    "chunk_ids": [
+      "chunk-c60631811c47de4ce2c79aee52951117",
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e"
+    ],
+    "count": 2,
+    "create_time": 1777459237,
+    "update_time": 1777459237,
+    "_id": "粉蝶科"
+  },
+  "螟蛾科": {
+    "chunk_ids": [
+      "chunk-c60631811c47de4ce2c79aee52951117"
+    ],
+    "count": 1,
+    "create_time": 1777459238,
+    "update_time": 1777459238,
+    "_id": "螟蛾科"
+  },
+  "防虫网": {
+    "chunk_ids": [
+      "chunk-c60631811c47de4ce2c79aee52951117"
+    ],
+    "count": 1,
+    "create_time": 1777459239,
+    "update_time": 1777459239,
+    "_id": "防虫网"
+  },
+  "吊丝虫": {
+    "chunk_ids": [
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e",
+      "chunk-371895d9884598c227a071fa676687e0"
+    ],
+    "count": 2,
+    "create_time": 1777459239,
+    "update_time": 1777459239,
+    "_id": "吊丝虫"
+  },
+  "白粉蝶": {
+    "chunk_ids": [
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e"
+    ],
+    "count": 1,
+    "create_time": 1777459240,
+    "update_time": 1777459240,
+    "_id": "白粉蝶"
+  },
+  "叶背": {
+    "chunk_ids": [
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e",
+      "chunk-2102c4977ee2662531b474addbf76d25",
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921",
+      "chunk-0f80ba997fa22a606c08224fef24a3e1"
+    ],
+    "count": 4,
+    "create_time": 1777459240,
+    "update_time": 1777459240,
+    "_id": "叶背"
+  },
+  "多杀霉素": {
+    "chunk_ids": [
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e"
+    ],
+    "count": 1,
+    "create_time": 1777459241,
+    "update_time": 1777459241,
+    "_id": "多杀霉素"
+  },
+  "苏云金杆菌": {
+    "chunk_ids": [
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e"
+    ],
+    "count": 1,
+    "create_time": 1777459241,
+    "update_time": 1777459241,
+    "_id": "苏云金杆菌"
+  },
+  "氯虫苯甲酰胺": {
+    "chunk_ids": [
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e",
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92"
+    ],
+    "count": 2,
+    "create_time": 1777459242,
+    "update_time": 1777459242,
+    "_id": "氯虫苯甲酰胺"
+  },
+  "烂葫芦": {
+    "chunk_ids": [
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1"
+    ],
+    "count": 1,
+    "create_time": 1777459242,
+    "update_time": 1777459242,
+    "_id": "烂葫芦"
+  },
+  "烂疮瘩": {
+    "chunk_ids": [
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1"
+    ],
+    "count": 1,
+    "create_time": 1777459243,
+    "update_time": 1777459243,
+    "_id": "烂疮瘩"
+  },
+  "水烂": {
+    "chunk_ids": [
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1"
+    ],
+    "count": 1,
+    "create_time": 1777459244,
+    "update_time": 1777459244,
+    "_id": "水烂"
+  },
+  "烂肠瘟": {
+    "chunk_ids": [
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1"
+    ],
+    "count": 1,
+    "create_time": 1777459244,
+    "update_time": 1777459244,
+    "_id": "烂肠瘟"
+  },
+  "辣椒": {
+    "chunk_ids": [
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1"
+    ],
+    "count": 1,
+    "create_time": 1777459244,
+    "update_time": 1777459244,
+    "_id": "辣椒"
+  },
+  "马铃薯": {
+    "chunk_ids": [
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1",
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 2,
+    "create_time": 1777459245,
+    "update_time": 1777459245,
+    "_id": "马铃薯"
+  },
+  "芹菜": {
+    "chunk_ids": [
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1",
+      "chunk-ce8ce757d0c4c5e0d3389af1fd809ffd",
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 3,
+    "create_time": 1777459245,
+    "update_time": 1777459245,
+    "_id": "芹菜"
+  },
+  "霜霉威水剂": {
+    "chunk_ids": [
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1"
+    ],
+    "count": 1,
+    "create_time": 1777459246,
+    "update_time": 1777459246,
+    "_id": "霜霉威水剂"
+  },
+  "唑醚·代森联": {
+    "chunk_ids": [
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1"
+    ],
+    "count": 1,
+    "create_time": 1777459246,
+    "update_time": 1777459246,
+    "_id": "唑醚·代森联"
+  },
+  "霜脲·锰锌": {
+    "chunk_ids": [
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1"
+    ],
+    "count": 1,
+    "create_time": 1777459247,
+    "update_time": 1777459247,
+    "_id": "霜脲·锰锌"
+  },
+  "嗅酮·霜脲氰": {
+    "chunk_ids": [
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1"
+    ],
+    "count": 1,
+    "create_time": 1777459247,
+    "update_time": 1777459247,
+    "_id": "嗅酮·霜脲氰"
+  },
+  "根": {
+    "chunk_ids": [
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1"
+    ],
+    "count": 1,
+    "create_time": 1777459247,
+    "update_time": 1777459247,
+    "_id": "根"
+  },
+  "莲座期": {
+    "chunk_ids": [
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1",
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 2,
+    "create_time": 1777459248,
+    "update_time": 1777459248,
+    "_id": "莲座期"
+  },
+  "猿叶甲": {
+    "chunk_ids": [
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1",
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 2,
+    "create_time": 1777459249,
+    "update_time": 1777459249,
+    "_id": "猿叶甲"
+  },
+  "狗虱虫": {
+    "chunk_ids": [
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92"
+    ],
+    "count": 1,
+    "create_time": 1777459249,
+    "update_time": 1777459249,
+    "_id": "狗虱虫"
+  },
+  "跳虱": {
+    "chunk_ids": [
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92"
+    ],
+    "count": 1,
+    "create_time": 1777459249,
+    "update_time": 1777459249,
+    "_id": "跳虱"
+  },
+  "跳甲": {
+    "chunk_ids": [
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92"
+    ],
+    "count": 1,
+    "create_time": 1777459249,
+    "update_time": 1777459249,
+    "_id": "跳甲"
+  },
+  "辛硫磷": {
+    "chunk_ids": [
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92",
+      "chunk-ca141699f53529c2e47d2d719892c294",
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 3,
+    "create_time": 1777459250,
+    "update_time": 1777459250,
+    "_id": "辛硫磷"
+  },
+  "联苯·噻虫胺": {
+    "chunk_ids": [
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92"
+    ],
+    "count": 1,
+    "create_time": 1777459251,
+    "update_time": 1777459251,
+    "_id": "联苯·噻虫胺"
+  },
+  "氯虫·噻虫嗪": {
+    "chunk_ids": [
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92"
+    ],
+    "count": 1,
+    "create_time": 1777459251,
+    "update_time": 1777459251,
+    "_id": "氯虫·噻虫嗪"
+  },
+  "溴氰虫酰胺": {
+    "chunk_ids": [
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92"
+    ],
+    "count": 1,
+    "create_time": 1777459251,
+    "update_time": 1777459251,
+    "_id": "溴氰虫酰胺"
+  },
+  "啶虫·哒螨灵": {
+    "chunk_ids": [
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92",
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921"
+    ],
+    "count": 2,
+    "create_time": 1777459252,
+    "update_time": 1777459252,
+    "_id": "啶虫·哒螨灵"
+  },
+  "病毒病": {
+    "chunk_ids": [
+      "chunk-2102c4977ee2662531b474addbf76d25",
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921",
+      "chunk-ca141699f53529c2e47d2d719892c294"
+    ],
+    "count": 3,
+    "create_time": 1777459253,
+    "update_time": 1777459253,
+    "_id": "病毒病"
+  },
+  "金针虫": {
+    "chunk_ids": [
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 1,
+    "create_time": 1777459253,
+    "update_time": 1777459253,
+    "_id": "金针虫"
+  },
+  "蝼蛄": {
+    "chunk_ids": [
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 1,
+    "create_time": 1777459253,
+    "update_time": 1777459253,
+    "_id": "蝼蛄"
+  },
+  "蛴螬": {
+    "chunk_ids": [
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 1,
+    "create_time": 1777459254,
+    "update_time": 1777459254,
+    "_id": "蛴螬"
+  },
+  "甘蓝夜蛾": {
+    "chunk_ids": [
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 1,
+    "create_time": 1777459254,
+    "update_time": 1777459254,
+    "_id": "甘蓝夜蛾"
+  },
+  "根系": {
+    "chunk_ids": [
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 1,
+    "create_time": 1777459255,
+    "update_time": 1777459255,
+    "_id": "根系"
+  },
+  "幼苗期": {
+    "chunk_ids": [
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 1,
+    "create_time": 1777459255,
+    "update_time": 1777459255,
+    "_id": "幼苗期"
+  },
+  "噻唑锌": {
+    "chunk_ids": [
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 1,
+    "create_time": 1777459256,
+    "update_time": 1777459256,
+    "_id": "噻唑锌"
+  },
+  "春雷霉素": {
+    "chunk_ids": [
+      "chunk-2102c4977ee2662531b474addbf76d25",
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 2,
+    "create_time": 1777459256,
+    "update_time": 1777459256,
+    "_id": "春雷霉素"
+  },
+  "盐酸吗啉呱": {
+    "chunk_ids": [
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 1,
+    "create_time": 1777459256,
+    "update_time": 1777459256,
+    "_id": "盐酸吗啉呱"
+  },
+  "枯草芽孢杆菌": {
+    "chunk_ids": [
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 1,
+    "create_time": 1777459257,
+    "update_time": 1777459257,
+    "_id": "枯草芽孢杆菌"
+  },
+  "小猿叶甲": {
+    "chunk_ids": [
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921"
+    ],
+    "count": 1,
+    "create_time": 1777459258,
+    "update_time": 1777459258,
+    "_id": "小猿叶甲"
+  },
+  "大猿叶甲": {
+    "chunk_ids": [
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921"
+    ],
+    "count": 1,
+    "create_time": 1777459258,
+    "update_time": 1777459258,
+    "_id": "大猿叶甲"
+  },
+  "美洲斑潜蝇": {
+    "chunk_ids": [
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921"
+    ],
+    "count": 1,
+    "create_time": 1777459258,
+    "update_time": 1777459258,
+    "_id": "美洲斑潜蝇"
+  },
+  "烟粉虱": {
+    "chunk_ids": [
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921",
+      "chunk-ca141699f53529c2e47d2d719892c294"
+    ],
+    "count": 2,
+    "create_time": 1777459259,
+    "update_time": 1777459259,
+    "_id": "烟粉虱"
+  },
+  "黄守瓜": {
+    "chunk_ids": [
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921",
+      "chunk-ca141699f53529c2e47d2d719892c294"
+    ],
+    "count": 2,
+    "create_time": 1777459259,
+    "update_time": 1777459259,
+    "_id": "黄守瓜"
+  },
+  "棕榈蓟马": {
+    "chunk_ids": [
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921",
+      "chunk-ca141699f53529c2e47d2d719892c294"
+    ],
+    "count": 2,
+    "create_time": 1777459260,
+    "update_time": 1777459260,
+    "_id": "棕榈蓟马"
+  },
+  "敌百虫": {
+    "chunk_ids": [
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921"
+    ],
+    "count": 1,
+    "create_time": 1777459260,
+    "update_time": 1777459260,
+    "_id": "敌百虫"
+  },
+  "嫩芽": {
+    "chunk_ids": [
+      "chunk-ca141699f53529c2e47d2d719892c294"
+    ],
+    "count": 1,
+    "create_time": 1777459261,
+    "update_time": 1777459261,
+    "_id": "嫩芽"
+  },
+  "中华稻蝗": {
+    "chunk_ids": [
+      "chunk-ca141699f53529c2e47d2d719892c294"
+    ],
+    "count": 1,
+    "create_time": 1777459261,
+    "update_time": 1777459261,
+    "_id": "中华稻蝗"
+  },
+  "直翅目": {
+    "chunk_ids": [
+      "chunk-ca141699f53529c2e47d2d719892c294",
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 2,
+    "create_time": 1777459262,
+    "update_time": 1777459262,
+    "_id": "直翅目"
+  },
+  "蝗科": {
+    "chunk_ids": [
+      "chunk-ca141699f53529c2e47d2d719892c294",
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 2,
+    "create_time": 1777459262,
+    "update_time": 1777459262,
+    "_id": "蝗科"
+  },
+  "水稻": {
+    "chunk_ids": [
+      "chunk-ca141699f53529c2e47d2d719892c294",
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 2,
+    "create_time": 1777459263,
+    "update_time": 1777459263,
+    "_id": "水稻"
+  },
+  "玉米": {
+    "chunk_ids": [
+      "chunk-ca141699f53529c2e47d2d719892c294",
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 2,
+    "create_time": 1777459263,
+    "update_time": 1777459263,
+    "_id": "玉米"
+  },
+  "茭白": {
+    "chunk_ids": [
+      "chunk-ca141699f53529c2e47d2d719892c294"
+    ],
+    "count": 1,
+    "create_time": 1777459263,
+    "update_time": 1777459263,
+    "_id": "茭白"
+  },
+  "氟虫脲": {
+    "chunk_ids": [
+      "chunk-ca141699f53529c2e47d2d719892c294",
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 2,
+    "create_time": 1777459264,
+    "update_time": 1777459264,
+    "_id": "氟虫脲"
+  },
+  "氯氟氰菊酯": {
+    "chunk_ids": [
+      "chunk-ca141699f53529c2e47d2d719892c294",
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 2,
+    "create_time": 1777459264,
+    "update_time": 1777459264,
+    "_id": "氯氟氰菊酯"
+  },
+  "甜菜夜蛾": {
+    "chunk_ids": [
+      "chunk-ce8ce757d0c4c5e0d3389af1fd809ffd",
+      "chunk-0f80ba997fa22a606c08224fef24a3e1"
+    ],
+    "count": 2,
+    "create_time": 1777459265,
+    "update_time": 1777459265,
+    "_id": "甜菜夜蛾"
+  },
+  "胡萝卜": {
+    "chunk_ids": [
+      "chunk-ce8ce757d0c4c5e0d3389af1fd809ffd"
+    ],
+    "count": 1,
+    "create_time": 1777459265,
+    "update_time": 1777459265,
+    "_id": "胡萝卜"
+  },
+  "嫩茎": {
+    "chunk_ids": [
+      "chunk-ce8ce757d0c4c5e0d3389af1fd809ffd"
+    ],
+    "count": 1,
+    "create_time": 1777459266,
+    "update_time": 1777459266,
+    "_id": "嫩茎"
+  },
+  "虫酰肼悬浮剂": {
+    "chunk_ids": [
+      "chunk-ce8ce757d0c4c5e0d3389af1fd809ffd"
+    ],
+    "count": 1,
+    "create_time": 1777459266,
+    "update_time": 1777459266,
+    "_id": "虫酰肼悬浮剂"
+  },
+  "甲维盐乳油": {
+    "chunk_ids": [
+      "chunk-ce8ce757d0c4c5e0d3389af1fd809ffd"
+    ],
+    "count": 1,
+    "create_time": 1777459267,
+    "update_time": 1777459267,
+    "_id": "甲维盐乳油"
+  },
+  "高温干旱": {
+    "chunk_ids": [
+      "chunk-ce8ce757d0c4c5e0d3389af1fd809ffd"
+    ],
+    "count": 1,
+    "create_time": 1777459267,
+    "update_time": 1777459267,
+    "_id": "高温干旱"
+  },
+  "芸薹根肿菌": {
+    "chunk_ids": [
+      "chunk-089405484f7cef39ff9ff4354d1da054"
+    ],
+    "count": 1,
+    "create_time": 1777459268,
+    "update_time": 1777459268,
+    "_id": "芸薹根肿菌"
+  },
+  "氯溴异氰尿酸": {
+    "chunk_ids": [
+      "chunk-089405484f7cef39ff9ff4354d1da054"
+    ],
+    "count": 1,
+    "create_time": 1777459268,
+    "update_time": 1777459268,
+    "_id": "氯溴异氰尿酸"
+  },
+  "氟啶胺": {
+    "chunk_ids": [
+      "chunk-089405484f7cef39ff9ff4354d1da054"
+    ],
+    "count": 1,
+    "create_time": 1777459269,
+    "update_time": 1777459269,
+    "_id": "氟啶胺"
+  },
+  "白锈病": {
+    "chunk_ids": [
+      "chunk-089405484f7cef39ff9ff4354d1da054"
+    ],
+    "count": 1,
+    "create_time": 1777459269,
+    "update_time": 1777459269,
+    "_id": "白锈病"
+  },
+  "苋菜": {
+    "chunk_ids": [
+      "chunk-089405484f7cef39ff9ff4354d1da054"
+    ],
+    "count": 1,
+    "create_time": 1777459270,
+    "update_time": 1777459270,
+    "_id": "苋菜"
+  },
+  "根结线虫病": {
+    "chunk_ids": [
+      "chunk-089405484f7cef39ff9ff4354d1da054",
+      "chunk-371895d9884598c227a071fa676687e0"
+    ],
+    "count": 2,
+    "create_time": 1777459270,
+    "update_time": 1777459270,
+    "_id": "根结线虫病"
+  },
+  "短额负蝗": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459271,
+    "update_time": 1777459271,
+    "_id": "短额负蝗"
+  },
+  "中华负蝗": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459271,
+    "update_time": 1777459271,
+    "_id": "中华负蝗"
+  },
+  "尖头蚱蜢": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459272,
+    "update_time": 1777459272,
+    "_id": "尖头蚱蜢"
+  },
+  "茄子": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb",
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 2,
+    "create_time": 1777459273,
+    "update_time": 1777459273,
+    "_id": "茄子"
+  },
+  "小麦": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459274,
+    "update_time": 1777459274,
+    "_id": "小麦"
+  },
+  "烟草": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459275,
+    "update_time": 1777459275,
+    "_id": "烟草"
+  },
+  "棉花": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459276,
+    "update_time": 1777459276,
+    "_id": "棉花"
+  },
+  "芝麻": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459276,
+    "update_time": 1777459276,
+    "_id": "芝麻"
+  },
+  "甘薯": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459276,
+    "update_time": 1777459276,
+    "_id": "甘薯"
+  },
+  "甘蔗": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459278,
+    "update_time": 1777459278,
+    "_id": "甘蔗"
+  },
+  "麻类": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459278,
+    "update_time": 1777459278,
+    "_id": "麻类"
+  },
+  "氯氰菊酯": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459280,
+    "update_time": 1777459280,
+    "_id": "氯氰菊酯"
+  },
+  "高效氟氯氰菊酯": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459280,
+    "update_time": 1777459280,
+    "_id": "高效氟氯氰菊酯"
+  },
+  "球孢白僵菌": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459280,
+    "update_time": 1777459280,
+    "_id": "球孢白僵菌"
+  },
+  "灭幼脲1号": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459281,
+    "update_time": 1777459281,
+    "_id": "灭幼脲1号"
+  },
+  "细菌性软腐病": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459282,
+    "update_time": 1777459282,
+    "_id": "细菌性软腐病"
+  },
+  "腹足纲": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb",
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 2,
+    "create_time": 1777459283,
+    "update_time": 1777459283,
+    "_id": "腹足纲"
+  },
+  "柄眼目": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb",
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 2,
+    "create_time": 1777459284,
+    "update_time": 1777459284,
+    "_id": "柄眼目"
+  },
+  "巴蜗牛科": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459285,
+    "update_time": 1777459285,
+    "_id": "巴蜗牛科"
+  },
+  "缺硼": {
+    "chunk_ids": [
+      "chunk-371895d9884598c227a071fa676687e0"
+    ],
+    "count": 1,
+    "create_time": 1777459285,
+    "update_time": 1777459285,
+    "_id": "缺硼"
+  },
+  "青花菜": {
+    "chunk_ids": [
+      "chunk-371895d9884598c227a071fa676687e0"
+    ],
+    "count": 1,
+    "create_time": 1777459286,
+    "update_time": 1777459286,
+    "_id": "青花菜"
+  },
+  "菜蛾科": {
+    "chunk_ids": [
+      "chunk-371895d9884598c227a071fa676687e0"
+    ],
+    "count": 1,
+    "create_time": 1777459287,
+    "update_time": 1777459287,
+    "_id": "菜蛾科"
+  },
+  "小青虫": {
+    "chunk_ids": [
+      "chunk-371895d9884598c227a071fa676687e0"
+    ],
+    "count": 1,
+    "create_time": 1777459287,
+    "update_time": 1777459287,
+    "_id": "小青虫"
+  },
+  "硼肥": {
+    "chunk_ids": [
+      "chunk-371895d9884598c227a071fa676687e0"
+    ],
+    "count": 1,
+    "create_time": 1777459288,
+    "update_time": 1777459288,
+    "_id": "硼肥"
+  },
+  "银纹夜蛾": {
+    "chunk_ids": [
+      "chunk-0f80ba997fa22a606c08224fef24a3e1"
+    ],
+    "count": 1,
+    "create_time": 1777459289,
+    "update_time": 1777459289,
+    "_id": "银纹夜蛾"
+  },
+  "甜菜夜蛾核型多角体病毒悬浮剂": {
+    "chunk_ids": [
+      "chunk-0f80ba997fa22a606c08224fef24a3e1"
+    ],
+    "count": 1,
+    "create_time": 1777459289,
+    "update_time": 1777459289,
+    "_id": "甜菜夜蛾核型多角体病毒悬浮剂"
+  },
+  "黑点银纹夜蛾": {
+    "chunk_ids": [
+      "chunk-0f80ba997fa22a606c08224fef24a3e1"
+    ],
+    "count": 1,
+    "create_time": 1777459290,
+    "update_time": 1777459290,
+    "_id": "黑点银纹夜蛾"
+  },
+  "菜步曲": {
+    "chunk_ids": [
+      "chunk-0f80ba997fa22a606c08224fef24a3e1"
+    ],
+    "count": 1,
+    "create_time": 1777459291,
+    "update_time": 1777459291,
+    "_id": "菜步曲"
+  },
+  "蛞蝓科": {
+    "chunk_ids": [
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 1,
+    "create_time": 1777459291,
+    "update_time": 1777459291,
+    "_id": "蛞蝓科"
+  },
+  "草莓": {
+    "chunk_ids": [
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 1,
+    "create_time": 1777459292,
+    "update_time": 1777459292,
+    "_id": "草莓"
+  },
+  "莴苣": {
+    "chunk_ids": [
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 1,
+    "create_time": 1777459293,
+    "update_time": 1777459293,
+    "_id": "莴苣"
+  },
+  "百合": {
+    "chunk_ids": [
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 1,
+    "create_time": 1777459293,
+    "update_time": 1777459293,
+    "_id": "百合"
+  },
+  "豆类": {
+    "chunk_ids": [
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 1,
+    "create_time": 1777459294,
+    "update_time": 1777459294,
+    "_id": "豆类"
+  },
+  "四聚乙醛": {
+    "chunk_ids": [
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 1,
+    "create_time": 1777459294,
+    "update_time": 1777459294,
+    "_id": "四聚乙醛"
+  },
+  "生石灰": {
+    "chunk_ids": [
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 1,
+    "create_time": 1777459295,
+    "update_time": 1777459295,
+    "_id": "生石灰"
+  },
+  "茶枯粉": {
+    "chunk_ids": [
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 1,
+    "create_time": 1777459295,
+    "update_time": 1777459295,
+    "_id": "茶枯粉"
+  },
+  "四聚·杀螺胺": {
+    "chunk_ids": [
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 1,
+    "create_time": 1777459296,
+    "update_time": 1777459296,
+    "_id": "四聚·杀螺胺"
+  },
+  "孔洞或缺刻": {
+    "chunk_ids": [
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 1,
+    "create_time": 1777459296,
+    "update_time": 1777459296,
+    "_id": "孔洞或缺刻"
+  },
+  "缺苗断垄": {
+    "chunk_ids": [
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 1,
+    "create_time": 1777459296,
+    "update_time": 1777459296,
+    "_id": "缺苗断垄"
+  },
+  "野油菜黄单胞菌": {
+    "chunk_ids": [
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 1,
+    "create_time": 1777459297,
+    "update_time": 1777459297,
+    "_id": "野油菜黄单胞菌"
+  },
+  "异菌脲": {
+    "chunk_ids": [
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 1,
+    "create_time": 1777459298,
+    "update_time": 1777459298,
+    "_id": "异菌脲"
+  },
+  "戊唑醇": {
+    "chunk_ids": [
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 1,
+    "create_time": 1777459298,
+    "update_time": 1777459298,
+    "_id": "戊唑醇"
+  }
+}

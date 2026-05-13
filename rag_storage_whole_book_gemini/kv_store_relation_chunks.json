@@ -1,0 +1,1450 @@
+{
+  "夜间<SEP>蛞蝓": {
+    "chunk_ids": [
+      "chunk-a770031934dc8ae2cad68c63e907465e"
+    ],
+    "count": 1,
+    "create_time": 1777459302,
+    "update_time": 1777459302,
+    "_id": "夜间<SEP>蛞蝓"
+  },
+  "甘蓝<SEP>黑腐病": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425",
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 2,
+    "create_time": 1777459302,
+    "update_time": 1777459302,
+    "_id": "甘蓝<SEP>黑腐病"
+  },
+  "茎基部<SEP>菌核病": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425"
+    ],
+    "count": 1,
+    "create_time": 1777459302,
+    "update_time": 1777459302,
+    "_id": "茎基部<SEP>菌核病"
+  },
+  "根肿病<SEP>根部": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425",
+      "chunk-089405484f7cef39ff9ff4354d1da054"
+    ],
+    "count": 2,
+    "create_time": 1777459302,
+    "update_time": 1777459302,
+    "_id": "根肿病<SEP>根部"
+  },
+  "噻菌铜<SEP>黑腐病": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425"
+    ],
+    "count": 1,
+    "create_time": 1777459304,
+    "update_time": 1777459304,
+    "_id": "噻菌铜<SEP>黑腐病"
+  },
+  "5-7月<SEP>蛞蝓": {
+    "chunk_ids": [
+      "chunk-a770031934dc8ae2cad68c63e907465e"
+    ],
+    "count": 1,
+    "create_time": 1777459304,
+    "update_time": 1777459304,
+    "_id": "5-7月<SEP>蛞蝓"
+  },
+  "甘蓝<SEP>菜螟": {
+    "chunk_ids": [
+      "chunk-2de1784a101a3d8331d829acf538c9e1"
+    ],
+    "count": 1,
+    "create_time": 1777459304,
+    "update_time": 1777459304,
+    "_id": "甘蓝<SEP>菜螟"
+  },
+  "春雷·氧氯铜<SEP>黑腐病": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425"
+    ],
+    "count": 1,
+    "create_time": 1777459306,
+    "update_time": 1777459306,
+    "_id": "春雷·氧氯铜<SEP>黑腐病"
+  },
+  "白菜<SEP>菜螟": {
+    "chunk_ids": [
+      "chunk-2de1784a101a3d8331d829acf538c9e1",
+      "chunk-c60631811c47de4ce2c79aee52951117"
+    ],
+    "count": 2,
+    "create_time": 1777459306,
+    "update_time": 1777459306,
+    "_id": "白菜<SEP>菜螟"
+  },
+  "蛞蝓<SEP>阴暗潮湿": {
+    "chunk_ids": [
+      "chunk-a770031934dc8ae2cad68c63e907465e"
+    ],
+    "count": 1,
+    "create_time": 1777459306,
+    "update_time": 1777459306,
+    "_id": "蛞蝓<SEP>阴暗潮湿"
+  },
+  "斜纹夜蛾<SEP>鳞翅目": {
+    "chunk_ids": [
+      "chunk-2de1784a101a3d8331d829acf538c9e1",
+      "chunk-ce8ce757d0c4c5e0d3389af1fd809ffd"
+    ],
+    "count": 2,
+    "create_time": 1777459306,
+    "update_time": 1777459306,
+    "_id": "斜纹夜蛾<SEP>鳞翅目"
+  },
+  "菜螟<SEP>软腐病": {
+    "chunk_ids": [
+      "chunk-2de1784a101a3d8331d829acf538c9e1"
+    ],
+    "count": 1,
+    "create_time": 1777459307,
+    "update_time": 1777459307,
+    "_id": "菜螟<SEP>软腐病"
+  },
+  "灰巴蜗牛<SEP>蛞蝓": {
+    "chunk_ids": [
+      "chunk-a770031934dc8ae2cad68c63e907465e"
+    ],
+    "count": 1,
+    "create_time": 1777459308,
+    "update_time": 1777459308,
+    "_id": "灰巴蜗牛<SEP>蛞蝓"
+  },
+  "硫酸铜钙<SEP>黑腐病": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425"
+    ],
+    "count": 1,
+    "create_time": 1777459308,
+    "update_time": 1777459308,
+    "_id": "硫酸铜钙<SEP>黑腐病"
+  },
+  "夜蛾科<SEP>斜纹夜蛾": {
+    "chunk_ids": [
+      "chunk-2de1784a101a3d8331d829acf538c9e1"
+    ],
+    "count": 1,
+    "create_time": 1777459308,
+    "update_time": 1777459308,
+    "_id": "夜蛾科<SEP>斜纹夜蛾"
+  },
+  "菜螟<SEP>虱螨脲": {
+    "chunk_ids": [
+      "chunk-2de1784a101a3d8331d829acf538c9e1"
+    ],
+    "count": 1,
+    "create_time": 1777459309,
+    "update_time": 1777459309,
+    "_id": "菜螟<SEP>虱螨脲"
+  },
+  "炭疽病<SEP>白菜": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364"
+    ],
+    "count": 1,
+    "create_time": 1777459310,
+    "update_time": 1777459310,
+    "_id": "炭疽病<SEP>白菜"
+  },
+  "小菜蛾<SEP>黑腐病": {
+    "chunk_ids": [
+      "chunk-2711af80087a36171089b13436581425"
+    ],
+    "count": 1,
+    "create_time": 1777459310,
+    "update_time": 1777459310,
+    "_id": "小菜蛾<SEP>黑腐病"
+  },
+  "斜纹夜蛾<SEP>莲纹夜蛾": {
+    "chunk_ids": [
+      "chunk-2de1784a101a3d8331d829acf538c9e1"
+    ],
+    "count": 1,
+    "create_time": 1777459310,
+    "update_time": 1777459310,
+    "_id": "斜纹夜蛾<SEP>莲纹夜蛾"
+  },
+  "甲氧虫酰肼<SEP>菜螟": {
+    "chunk_ids": [
+      "chunk-2de1784a101a3d8331d829acf538c9e1"
+    ],
+    "count": 1,
+    "create_time": 1777459311,
+    "update_time": 1777459311,
+    "_id": "甲氧虫酰肼<SEP>菜螟"
+  },
+  "炭疽病<SEP>萝卜": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364"
+    ],
+    "count": 1,
+    "create_time": 1777459311,
+    "update_time": 1777459311,
+    "_id": "炭疽病<SEP>萝卜"
+  },
+  "黑斑病<SEP>黑霉病": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364"
+    ],
+    "count": 1,
+    "create_time": 1777459311,
+    "update_time": 1777459311,
+    "_id": "黑斑病<SEP>黑霉病"
+  },
+  "炭疽病<SEP>芥菜": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364"
+    ],
+    "count": 1,
+    "create_time": 1777459313,
+    "update_time": 1777459313,
+    "_id": "炭疽病<SEP>芥菜"
+  },
+  "白菜<SEP>黑斑病": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364"
+    ],
+    "count": 1,
+    "create_time": 1777459314,
+    "update_time": 1777459314,
+    "_id": "白菜<SEP>黑斑病"
+  },
+  "叶片<SEP>炭疽病": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364"
+    ],
+    "count": 1,
+    "create_time": 1777459315,
+    "update_time": 1777459315,
+    "_id": "叶片<SEP>炭疽病"
+  },
+  "甘蓝<SEP>黑斑病": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364"
+    ],
+    "count": 1,
+    "create_time": 1777459315,
+    "update_time": 1777459315,
+    "_id": "甘蓝<SEP>黑斑病"
+  },
+  "斜纹夜蛾<SEP>白菜": {
+    "chunk_ids": [
+      "chunk-2de1784a101a3d8331d829acf538c9e1"
+    ],
+    "count": 1,
+    "create_time": 1777459315,
+    "update_time": 1777459315,
+    "_id": "斜纹夜蛾<SEP>白菜"
+  },
+  "代森锰锌<SEP>炭疽病": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364"
+    ],
+    "count": 1,
+    "create_time": 1777459317,
+    "update_time": 1777459317,
+    "_id": "代森锰锌<SEP>炭疽病"
+  },
+  "霜霉病<SEP>霜霉菌": {
+    "chunk_ids": [
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302"
+    ],
+    "count": 1,
+    "create_time": 1777459318,
+    "update_time": 1777459318,
+    "_id": "霜霉病<SEP>霜霉菌"
+  },
+  "花椰菜<SEP>黑斑病": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364"
+    ],
+    "count": 1,
+    "create_time": 1777459318,
+    "update_time": 1777459318,
+    "_id": "花椰菜<SEP>黑斑病"
+  },
+  "咪鲜胺<SEP>炭疽病": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364"
+    ],
+    "count": 1,
+    "create_time": 1777459318,
+    "update_time": 1777459318,
+    "_id": "咪鲜胺<SEP>炭疽病"
+  },
+  "白菜<SEP>霜霉病": {
+    "chunk_ids": [
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302"
+    ],
+    "count": 1,
+    "create_time": 1777459319,
+    "update_time": 1777459319,
+    "_id": "白菜<SEP>霜霉病"
+  },
+  "炭疽病<SEP>苯醚甲环唑": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364"
+    ],
+    "count": 1,
+    "create_time": 1777459320,
+    "update_time": 1777459320,
+    "_id": "炭疽病<SEP>苯醚甲环唑"
+  },
+  "芸薹链格孢<SEP>黑斑病": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364",
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 2,
+    "create_time": 1777459320,
+    "update_time": 1777459320,
+    "_id": "芸薹链格孢<SEP>黑斑病"
+  },
+  "菜薹<SEP>霜霉病": {
+    "chunk_ids": [
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302"
+    ],
+    "count": 1,
+    "create_time": 1777459321,
+    "update_time": 1777459321,
+    "_id": "菜薹<SEP>霜霉病"
+  },
+  "多菌灵<SEP>炭疽病": {
+    "chunk_ids": [
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364"
+    ],
+    "count": 1,
+    "create_time": 1777459322,
+    "update_time": 1777459322,
+    "_id": "多菌灵<SEP>炭疽病"
+  },
+  "萝卜<SEP>霜霉病": {
+    "chunk_ids": [
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302"
+    ],
+    "count": 1,
+    "create_time": 1777459323,
+    "update_time": 1777459323,
+    "_id": "萝卜<SEP>霜霉病"
+  },
+  "菜缢管蚜<SEP>萝卜蚜": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f"
+    ],
+    "count": 1,
+    "create_time": 1777459324,
+    "update_time": 1777459324,
+    "_id": "菜缢管蚜<SEP>萝卜蚜"
+  },
+  "甘蓝<SEP>霜霉病": {
+    "chunk_ids": [
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302"
+    ],
+    "count": 1,
+    "create_time": 1777459325,
+    "update_time": 1777459325,
+    "_id": "甘蓝<SEP>霜霉病"
+  },
+  "煤污病<SEP>蚜虫": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f"
+    ],
+    "count": 1,
+    "create_time": 1777459325,
+    "update_time": 1777459325,
+    "_id": "煤污病<SEP>蚜虫"
+  },
+  "萝卜<SEP>萝卜蚜": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f"
+    ],
+    "count": 1,
+    "create_time": 1777459325,
+    "update_time": 1777459325,
+    "_id": "萝卜<SEP>萝卜蚜"
+  },
+  "叶片<SEP>霜霉病": {
+    "chunk_ids": [
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302"
+    ],
+    "count": 1,
+    "create_time": 1777459327,
+    "update_time": 1777459327,
+    "_id": "叶片<SEP>霜霉病"
+  },
+  "甘蓝<SEP>甘蓝蚜": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f"
+    ],
+    "count": 1,
+    "create_time": 1777459327,
+    "update_time": 1777459327,
+    "_id": "甘蓝<SEP>甘蓝蚜"
+  },
+  "印楝素<SEP>蚜虫": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f"
+    ],
+    "count": 1,
+    "create_time": 1777459327,
+    "update_time": 1777459327,
+    "_id": "印楝素<SEP>蚜虫"
+  },
+  "菜青虫<SEP>鳞翅目": {
+    "chunk_ids": [
+      "chunk-c60631811c47de4ce2c79aee52951117"
+    ],
+    "count": 1,
+    "create_time": 1777459327,
+    "update_time": 1777459327,
+    "_id": "菜青虫<SEP>鳞翅目"
+  },
+  "菜螟<SEP>鳞翅目": {
+    "chunk_ids": [
+      "chunk-c60631811c47de4ce2c79aee52951117"
+    ],
+    "count": 1,
+    "create_time": 1777459329,
+    "update_time": 1777459329,
+    "_id": "菜螟<SEP>鳞翅目"
+  },
+  "粉蝶科<SEP>菜青虫": {
+    "chunk_ids": [
+      "chunk-c60631811c47de4ce2c79aee52951117"
+    ],
+    "count": 1,
+    "create_time": 1777459329,
+    "update_time": 1777459329,
+    "_id": "粉蝶科<SEP>菜青虫"
+  },
+  "嫩叶<SEP>蚜虫": {
+    "chunk_ids": [
+      "chunk-2732eb6195df6f6255819cca0b42029f"
+    ],
+    "count": 1,
+    "create_time": 1777459329,
+    "update_time": 1777459329,
+    "_id": "嫩叶<SEP>蚜虫"
+  },
+  "咯菌腈<SEP>霜霉病": {
+    "chunk_ids": [
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302"
+    ],
+    "count": 1,
+    "create_time": 1777459329,
+    "update_time": 1777459329,
+    "_id": "咯菌腈<SEP>霜霉病"
+  },
+  "菜螟<SEP>螟蛾科": {
+    "chunk_ids": [
+      "chunk-c60631811c47de4ce2c79aee52951117"
+    ],
+    "count": 1,
+    "create_time": 1777459331,
+    "update_time": 1777459331,
+    "_id": "菜螟<SEP>螟蛾科"
+  },
+  "丙森锌<SEP>霜霉病": {
+    "chunk_ids": [
+      "chunk-3e38741d2bfbf032bfe7da65cf5c9302"
+    ],
+    "count": 1,
+    "create_time": 1777459331,
+    "update_time": 1777459331,
+    "_id": "丙森锌<SEP>霜霉病"
+  },
+  "甘蓝<SEP>菜青虫": {
+    "chunk_ids": [
+      "chunk-c60631811c47de4ce2c79aee52951117"
+    ],
+    "count": 1,
+    "create_time": 1777459331,
+    "update_time": 1777459331,
+    "_id": "甘蓝<SEP>菜青虫"
+  },
+  "吊丝虫<SEP>小菜蛾": {
+    "chunk_ids": [
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e"
+    ],
+    "count": 1,
+    "create_time": 1777459331,
+    "update_time": 1777459331,
+    "_id": "吊丝虫<SEP>小菜蛾"
+  },
+  "心叶<SEP>菜螟": {
+    "chunk_ids": [
+      "chunk-c60631811c47de4ce2c79aee52951117"
+    ],
+    "count": 1,
+    "create_time": 1777459333,
+    "update_time": 1777459333,
+    "_id": "心叶<SEP>菜螟"
+  },
+  "菜粉蝶<SEP>鳞翅目": {
+    "chunk_ids": [
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e"
+    ],
+    "count": 1,
+    "create_time": 1777459333,
+    "update_time": 1777459333,
+    "_id": "菜粉蝶<SEP>鳞翅目"
+  },
+  "叶片<SEP>菜青虫": {
+    "chunk_ids": [
+      "chunk-c60631811c47de4ce2c79aee52951117"
+    ],
+    "count": 1,
+    "create_time": 1777459333,
+    "update_time": 1777459333,
+    "_id": "叶片<SEP>菜青虫"
+  },
+  "粉蝶科<SEP>菜粉蝶": {
+    "chunk_ids": [
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e"
+    ],
+    "count": 1,
+    "create_time": 1777459335,
+    "update_time": 1777459335,
+    "_id": "粉蝶科<SEP>菜粉蝶"
+  },
+  "菜青虫<SEP>防虫网": {
+    "chunk_ids": [
+      "chunk-c60631811c47de4ce2c79aee52951117"
+    ],
+    "count": 1,
+    "create_time": 1777459335,
+    "update_time": 1777459335,
+    "_id": "菜青虫<SEP>防虫网"
+  },
+  "叶背<SEP>小菜蛾": {
+    "chunk_ids": [
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e"
+    ],
+    "count": 1,
+    "create_time": 1777459335,
+    "update_time": 1777459335,
+    "_id": "叶背<SEP>小菜蛾"
+  },
+  "甘蓝<SEP>菜粉蝶": {
+    "chunk_ids": [
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e"
+    ],
+    "count": 1,
+    "create_time": 1777459336,
+    "update_time": 1777459336,
+    "_id": "甘蓝<SEP>菜粉蝶"
+  },
+  "菜青虫<SEP>软腐病": {
+    "chunk_ids": [
+      "chunk-c60631811c47de4ce2c79aee52951117"
+    ],
+    "count": 1,
+    "create_time": 1777459337,
+    "update_time": 1777459337,
+    "_id": "菜青虫<SEP>软腐病"
+  },
+  "小菜蛾<SEP>心叶": {
+    "chunk_ids": [
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e",
+      "chunk-371895d9884598c227a071fa676687e0"
+    ],
+    "count": 2,
+    "create_time": 1777459337,
+    "update_time": 1777459337,
+    "_id": "小菜蛾<SEP>心叶"
+  },
+  "花椰菜<SEP>菜粉蝶": {
+    "chunk_ids": [
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e"
+    ],
+    "count": 1,
+    "create_time": 1777459338,
+    "update_time": 1777459338,
+    "_id": "花椰菜<SEP>菜粉蝶"
+  },
+  "多杀霉素<SEP>小菜蛾": {
+    "chunk_ids": [
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e"
+    ],
+    "count": 1,
+    "create_time": 1777459339,
+    "update_time": 1777459339,
+    "_id": "多杀霉素<SEP>小菜蛾"
+  },
+  "烂葫芦<SEP>软腐病": {
+    "chunk_ids": [
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1"
+    ],
+    "count": 1,
+    "create_time": 1777459339,
+    "update_time": 1777459339,
+    "_id": "烂葫芦<SEP>软腐病"
+  },
+  "菜粉蝶<SEP>萝卜": {
+    "chunk_ids": [
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e"
+    ],
+    "count": 1,
+    "create_time": 1777459340,
+    "update_time": 1777459340,
+    "_id": "菜粉蝶<SEP>萝卜"
+  },
+  "小菜蛾<SEP>苏云金杆菌": {
+    "chunk_ids": [
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e"
+    ],
+    "count": 1,
+    "create_time": 1777459341,
+    "update_time": 1777459341,
+    "_id": "小菜蛾<SEP>苏云金杆菌"
+  },
+  "甘蓝<SEP>软腐病": {
+    "chunk_ids": [
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1"
+    ],
+    "count": 1,
+    "create_time": 1777459341,
+    "update_time": 1777459341,
+    "_id": "甘蓝<SEP>软腐病"
+  },
+  "鞘翅目<SEP>黄曲条跳甲": {
+    "chunk_ids": [
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92"
+    ],
+    "count": 1,
+    "create_time": 1777459341,
+    "update_time": 1777459341,
+    "_id": "鞘翅目<SEP>黄曲条跳甲"
+  },
+  "白菜<SEP>菜粉蝶": {
+    "chunk_ids": [
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e"
+    ],
+    "count": 1,
+    "create_time": 1777459342,
+    "update_time": 1777459342,
+    "_id": "白菜<SEP>菜粉蝶"
+  },
+  "叶甲科<SEP>黄曲条跳甲": {
+    "chunk_ids": [
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92"
+    ],
+    "count": 1,
+    "create_time": 1777459343,
+    "update_time": 1777459343,
+    "_id": "叶甲科<SEP>黄曲条跳甲"
+  },
+  "软腐病<SEP>霜霉威水剂": {
+    "chunk_ids": [
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1"
+    ],
+    "count": 1,
+    "create_time": 1777459343,
+    "update_time": 1777459343,
+    "_id": "软腐病<SEP>霜霉威水剂"
+  },
+  "甘蓝<SEP>黄曲条跳甲": {
+    "chunk_ids": [
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92"
+    ],
+    "count": 1,
+    "create_time": 1777459345,
+    "update_time": 1777459345,
+    "_id": "甘蓝<SEP>黄曲条跳甲"
+  },
+  "叶片<SEP>黄曲条跳甲": {
+    "chunk_ids": [
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92"
+    ],
+    "count": 1,
+    "create_time": 1777459347,
+    "update_time": 1777459347,
+    "_id": "叶片<SEP>黄曲条跳甲"
+  },
+  "根部<SEP>黄曲条跳甲": {
+    "chunk_ids": [
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92"
+    ],
+    "count": 1,
+    "create_time": 1777459349,
+    "update_time": 1777459349,
+    "_id": "根部<SEP>黄曲条跳甲"
+  },
+  "辛硫磷<SEP>黄曲条跳甲": {
+    "chunk_ids": [
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92"
+    ],
+    "count": 1,
+    "create_time": 1777459351,
+    "update_time": 1777459351,
+    "_id": "辛硫磷<SEP>黄曲条跳甲"
+  },
+  "软腐病<SEP>黄曲条跳甲": {
+    "chunk_ids": [
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1"
+    ],
+    "count": 1,
+    "create_time": 1777459353,
+    "update_time": 1777459353,
+    "_id": "软腐病<SEP>黄曲条跳甲"
+  },
+  "吡虫啉<SEP>黄曲条跳甲": {
+    "chunk_ids": [
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92"
+    ],
+    "count": 1,
+    "create_time": 1777459355,
+    "update_time": 1777459355,
+    "_id": "吡虫啉<SEP>黄曲条跳甲"
+  },
+  "白菜<SEP>软腐病": {
+    "chunk_ids": [
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1"
+    ],
+    "count": 1,
+    "create_time": 1777459355,
+    "update_time": 1777459355,
+    "_id": "白菜<SEP>软腐病"
+  },
+  "白菜<SEP>黄曲条跳甲": {
+    "chunk_ids": [
+      "chunk-38bab4e2c085cbd981e991eb6f9a8e92"
+    ],
+    "count": 1,
+    "create_time": 1777459357,
+    "update_time": 1777459357,
+    "_id": "白菜<SEP>黄曲条跳甲"
+  },
+  "病毒病<SEP>白菜": {
+    "chunk_ids": [
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 1,
+    "create_time": 1777459359,
+    "update_time": 1777459359,
+    "_id": "病毒病<SEP>白菜"
+  },
+  "病毒病<SEP>菜薹": {
+    "chunk_ids": [
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 1,
+    "create_time": 1777459360,
+    "update_time": 1777459360,
+    "_id": "病毒病<SEP>菜薹"
+  },
+  "病毒病<SEP>萝卜": {
+    "chunk_ids": [
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 1,
+    "create_time": 1777459362,
+    "update_time": 1777459362,
+    "_id": "病毒病<SEP>萝卜"
+  },
+  "白菜<SEP>金针虫": {
+    "chunk_ids": [
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 1,
+    "create_time": 1777459362,
+    "update_time": 1777459362,
+    "_id": "白菜<SEP>金针虫"
+  },
+  "白菜<SEP>菜青虫": {
+    "chunk_ids": [
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 1,
+    "create_time": 1777459364,
+    "update_time": 1777459364,
+    "_id": "白菜<SEP>菜青虫"
+  },
+  "病毒病<SEP>芥菜": {
+    "chunk_ids": [
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 1,
+    "create_time": 1777459364,
+    "update_time": 1777459364,
+    "_id": "病毒病<SEP>芥菜"
+  },
+  "小猿叶甲<SEP>鞘翅目": {
+    "chunk_ids": [
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921"
+    ],
+    "count": 1,
+    "create_time": 1777459364,
+    "update_time": 1777459364,
+    "_id": "小猿叶甲<SEP>鞘翅目"
+  },
+  "叶甲科<SEP>小猿叶甲": {
+    "chunk_ids": [
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921"
+    ],
+    "count": 1,
+    "create_time": 1777459366,
+    "update_time": 1777459366,
+    "_id": "叶甲科<SEP>小猿叶甲"
+  },
+  "病毒病<SEP>芜菁": {
+    "chunk_ids": [
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 1,
+    "create_time": 1777459366,
+    "update_time": 1777459366,
+    "_id": "病毒病<SEP>芜菁"
+  },
+  "大猿叶甲<SEP>鞘翅目": {
+    "chunk_ids": [
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921"
+    ],
+    "count": 1,
+    "create_time": 1777459366,
+    "update_time": 1777459366,
+    "_id": "大猿叶甲<SEP>鞘翅目"
+  },
+  "小猿叶甲<SEP>白菜": {
+    "chunk_ids": [
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921"
+    ],
+    "count": 1,
+    "create_time": 1777459368,
+    "update_time": 1777459368,
+    "_id": "小猿叶甲<SEP>白菜"
+  },
+  "病毒病<SEP>花椰菜": {
+    "chunk_ids": [
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 1,
+    "create_time": 1777459368,
+    "update_time": 1777459368,
+    "_id": "病毒病<SEP>花椰菜"
+  },
+  "烟粉虱<SEP>煤污病": {
+    "chunk_ids": [
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921"
+    ],
+    "count": 1,
+    "create_time": 1777459368,
+    "update_time": 1777459368,
+    "_id": "烟粉虱<SEP>煤污病"
+  },
+  "叶甲科<SEP>大猿叶甲": {
+    "chunk_ids": [
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921"
+    ],
+    "count": 1,
+    "create_time": 1777459368,
+    "update_time": 1777459368,
+    "_id": "叶甲科<SEP>大猿叶甲"
+  },
+  "小猿叶甲<SEP>敌百虫": {
+    "chunk_ids": [
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921"
+    ],
+    "count": 1,
+    "create_time": 1777459369,
+    "update_time": 1777459369,
+    "_id": "小猿叶甲<SEP>敌百虫"
+  },
+  "中华稻蝗<SEP>直翅目": {
+    "chunk_ids": [
+      "chunk-ca141699f53529c2e47d2d719892c294"
+    ],
+    "count": 1,
+    "create_time": 1777459370,
+    "update_time": 1777459370,
+    "_id": "中华稻蝗<SEP>直翅目"
+  },
+  "甘蓝<SEP>病毒病": {
+    "chunk_ids": [
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 1,
+    "create_time": 1777459370,
+    "update_time": 1777459370,
+    "_id": "甘蓝<SEP>病毒病"
+  },
+  "中华稻蝗<SEP>蝗科": {
+    "chunk_ids": [
+      "chunk-ca141699f53529c2e47d2d719892c294"
+    ],
+    "count": 1,
+    "create_time": 1777459371,
+    "update_time": 1777459371,
+    "_id": "中华稻蝗<SEP>蝗科"
+  },
+  "噻菌铜<SEP>病毒病": {
+    "chunk_ids": [
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 1,
+    "create_time": 1777459372,
+    "update_time": 1777459372,
+    "_id": "噻菌铜<SEP>病毒病"
+  },
+  "病毒病<SEP>盐酸吗啉呱": {
+    "chunk_ids": [
+      "chunk-2102c4977ee2662531b474addbf76d25"
+    ],
+    "count": 1,
+    "create_time": 1777459373,
+    "update_time": 1777459373,
+    "_id": "病毒病<SEP>盐酸吗啉呱"
+  },
+  "中华稻蝗<SEP>水稻": {
+    "chunk_ids": [
+      "chunk-ca141699f53529c2e47d2d719892c294"
+    ],
+    "count": 1,
+    "create_time": 1777459373,
+    "update_time": 1777459373,
+    "_id": "中华稻蝗<SEP>水稻"
+  },
+  "中华稻蝗<SEP>玉米": {
+    "chunk_ids": [
+      "chunk-ca141699f53529c2e47d2d719892c294"
+    ],
+    "count": 1,
+    "create_time": 1777459375,
+    "update_time": 1777459375,
+    "_id": "中华稻蝗<SEP>玉米"
+  },
+  "烟粉虱<SEP>病毒病": {
+    "chunk_ids": [
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921"
+    ],
+    "count": 1,
+    "create_time": 1777459375,
+    "update_time": 1777459375,
+    "_id": "烟粉虱<SEP>病毒病"
+  },
+  "心叶<SEP>棕榈蓟马": {
+    "chunk_ids": [
+      "chunk-ca141699f53529c2e47d2d719892c294"
+    ],
+    "count": 1,
+    "create_time": 1777459375,
+    "update_time": 1777459375,
+    "_id": "心叶<SEP>棕榈蓟马"
+  },
+  "棕榈蓟马<SEP>病毒病": {
+    "chunk_ids": [
+      "chunk-ca141699f53529c2e47d2d719892c294"
+    ],
+    "count": 1,
+    "create_time": 1777459377,
+    "update_time": 1777459377,
+    "_id": "棕榈蓟马<SEP>病毒病"
+  },
+  "夜蛾科<SEP>甜菜夜蛾": {
+    "chunk_ids": [
+      "chunk-ce8ce757d0c4c5e0d3389af1fd809ffd",
+      "chunk-0f80ba997fa22a606c08224fef24a3e1"
+    ],
+    "count": 2,
+    "create_time": 1777459377,
+    "update_time": 1777459377,
+    "_id": "夜蛾科<SEP>甜菜夜蛾"
+  },
+  "中华稻蝗<SEP>茭白": {
+    "chunk_ids": [
+      "chunk-ca141699f53529c2e47d2d719892c294"
+    ],
+    "count": 1,
+    "create_time": 1777459378,
+    "update_time": 1777459378,
+    "_id": "中华稻蝗<SEP>茭白"
+  },
+  "叶片<SEP>斜纹夜蛾": {
+    "chunk_ids": [
+      "chunk-ce8ce757d0c4c5e0d3389af1fd809ffd"
+    ],
+    "count": 1,
+    "create_time": 1777459378,
+    "update_time": 1777459378,
+    "_id": "叶片<SEP>斜纹夜蛾"
+  },
+  "甘蓝<SEP>甜菜夜蛾": {
+    "chunk_ids": [
+      "chunk-ce8ce757d0c4c5e0d3389af1fd809ffd",
+      "chunk-0f80ba997fa22a606c08224fef24a3e1"
+    ],
+    "count": 2,
+    "create_time": 1777459379,
+    "update_time": 1777459379,
+    "_id": "甘蓝<SEP>甜菜夜蛾"
+  },
+  "斜纹夜蛾<SEP>虫酰肼悬浮剂": {
+    "chunk_ids": [
+      "chunk-ce8ce757d0c4c5e0d3389af1fd809ffd"
+    ],
+    "count": 1,
+    "create_time": 1777459380,
+    "update_time": 1777459380,
+    "_id": "斜纹夜蛾<SEP>虫酰肼悬浮剂"
+  },
+  "中华稻蝗<SEP>莲藕": {
+    "chunk_ids": [
+      "chunk-ca141699f53529c2e47d2d719892c294"
+    ],
+    "count": 1,
+    "create_time": 1777459380,
+    "update_time": 1777459380,
+    "_id": "中华稻蝗<SEP>莲藕"
+  },
+  "根肿病<SEP>芸薹根肿菌": {
+    "chunk_ids": [
+      "chunk-089405484f7cef39ff9ff4354d1da054"
+    ],
+    "count": 1,
+    "create_time": 1777459380,
+    "update_time": 1777459380,
+    "_id": "根肿病<SEP>芸薹根肿菌"
+  },
+  "斜纹夜蛾<SEP>高温干旱": {
+    "chunk_ids": [
+      "chunk-ce8ce757d0c4c5e0d3389af1fd809ffd"
+    ],
+    "count": 1,
+    "create_time": 1777459381,
+    "update_time": 1777459381,
+    "_id": "斜纹夜蛾<SEP>高温干旱"
+  },
+  "根肿病<SEP>白菜": {
+    "chunk_ids": [
+      "chunk-089405484f7cef39ff9ff4354d1da054"
+    ],
+    "count": 1,
+    "create_time": 1777459382,
+    "update_time": 1777459382,
+    "_id": "根肿病<SEP>白菜"
+  },
+  "中华稻蝗<SEP>氟虫脲": {
+    "chunk_ids": [
+      "chunk-ca141699f53529c2e47d2d719892c294"
+    ],
+    "count": 1,
+    "create_time": 1777459382,
+    "update_time": 1777459382,
+    "_id": "中华稻蝗<SEP>氟虫脲"
+  },
+  "白锈病<SEP>苋菜": {
+    "chunk_ids": [
+      "chunk-089405484f7cef39ff9ff4354d1da054"
+    ],
+    "count": 1,
+    "create_time": 1777459383,
+    "update_time": 1777459383,
+    "_id": "白锈病<SEP>苋菜"
+  },
+  "根肿病<SEP>氯溴异氰尿酸": {
+    "chunk_ids": [
+      "chunk-089405484f7cef39ff9ff4354d1da054"
+    ],
+    "count": 1,
+    "create_time": 1777459384,
+    "update_time": 1777459384,
+    "_id": "根肿病<SEP>氯溴异氰尿酸"
+  },
+  "中华稻蝗<SEP>辛硫磷": {
+    "chunk_ids": [
+      "chunk-ca141699f53529c2e47d2d719892c294"
+    ],
+    "count": 1,
+    "create_time": 1777459384,
+    "update_time": 1777459384,
+    "_id": "中华稻蝗<SEP>辛硫磷"
+  },
+  "根结线虫病<SEP>萝卜": {
+    "chunk_ids": [
+      "chunk-089405484f7cef39ff9ff4354d1da054"
+    ],
+    "count": 1,
+    "create_time": 1777459384,
+    "update_time": 1777459384,
+    "_id": "根结线虫病<SEP>萝卜"
+  },
+  "白菜<SEP>白锈病": {
+    "chunk_ids": [
+      "chunk-089405484f7cef39ff9ff4354d1da054"
+    ],
+    "count": 1,
+    "create_time": 1777459386,
+    "update_time": 1777459386,
+    "_id": "白菜<SEP>白锈病"
+  },
+  "中华负蝗<SEP>短额负蝗": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459386,
+    "update_time": 1777459386,
+    "_id": "中华负蝗<SEP>短额负蝗"
+  },
+  "根肿病<SEP>氟啶胺": {
+    "chunk_ids": [
+      "chunk-089405484f7cef39ff9ff4354d1da054"
+    ],
+    "count": 1,
+    "create_time": 1777459386,
+    "update_time": 1777459386,
+    "_id": "根肿病<SEP>氟啶胺"
+  },
+  "中华稻蝗<SEP>氯氟氰菊酯": {
+    "chunk_ids": [
+      "chunk-ca141699f53529c2e47d2d719892c294"
+    ],
+    "count": 1,
+    "create_time": 1777459386,
+    "update_time": 1777459386,
+    "_id": "中华稻蝗<SEP>氯氟氰菊酯"
+  },
+  "叶片<SEP>白锈病": {
+    "chunk_ids": [
+      "chunk-089405484f7cef39ff9ff4354d1da054"
+    ],
+    "count": 1,
+    "create_time": 1777459388,
+    "update_time": 1777459388,
+    "_id": "叶片<SEP>白锈病"
+  },
+  "直翅目<SEP>短额负蝗": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459388,
+    "update_time": 1777459388,
+    "_id": "直翅目<SEP>短额负蝗"
+  },
+  "灰巴蜗牛<SEP>腹足纲": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459388,
+    "update_time": 1777459388,
+    "_id": "灰巴蜗牛<SEP>腹足纲"
+  },
+  "短额负蝗<SEP>蝗科": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459390,
+    "update_time": 1777459390,
+    "_id": "短额负蝗<SEP>蝗科"
+  },
+  "柄眼目<SEP>灰巴蜗牛": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459390,
+    "update_time": 1777459390,
+    "_id": "柄眼目<SEP>灰巴蜗牛"
+  },
+  "小菜蛾<SEP>鳞翅目": {
+    "chunk_ids": [
+      "chunk-371895d9884598c227a071fa676687e0"
+    ],
+    "count": 1,
+    "create_time": 1777459390,
+    "update_time": 1777459390,
+    "_id": "小菜蛾<SEP>鳞翅目"
+  },
+  "叶片<SEP>灰巴蜗牛": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459392,
+    "update_time": 1777459392,
+    "_id": "叶片<SEP>灰巴蜗牛"
+  },
+  "白菜<SEP>短额负蝗": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459392,
+    "update_time": 1777459392,
+    "_id": "白菜<SEP>短额负蝗"
+  },
+  "缺硼<SEP>花椰菜": {
+    "chunk_ids": [
+      "chunk-371895d9884598c227a071fa676687e0"
+    ],
+    "count": 1,
+    "create_time": 1777459392,
+    "update_time": 1777459392,
+    "_id": "缺硼<SEP>花椰菜"
+  },
+  "小菜蛾<SEP>菜蛾科": {
+    "chunk_ids": [
+      "chunk-371895d9884598c227a071fa676687e0"
+    ],
+    "count": 1,
+    "create_time": 1777459392,
+    "update_time": 1777459392,
+    "_id": "小菜蛾<SEP>菜蛾科"
+  },
+  "氟虫脲<SEP>短额负蝗": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459394,
+    "update_time": 1777459394,
+    "_id": "氟虫脲<SEP>短额负蝗"
+  },
+  "缺硼<SEP>萝卜": {
+    "chunk_ids": [
+      "chunk-371895d9884598c227a071fa676687e0"
+    ],
+    "count": 1,
+    "create_time": 1777459394,
+    "update_time": 1777459394,
+    "_id": "缺硼<SEP>萝卜"
+  },
+  "银纹夜蛾<SEP>鳞翅目": {
+    "chunk_ids": [
+      "chunk-0f80ba997fa22a606c08224fef24a3e1"
+    ],
+    "count": 1,
+    "create_time": 1777459394,
+    "update_time": 1777459394,
+    "_id": "银纹夜蛾<SEP>鳞翅目"
+  },
+  "灰巴蜗牛<SEP>茎部": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459394,
+    "update_time": 1777459394,
+    "_id": "灰巴蜗牛<SEP>茎部"
+  },
+  "甜菜夜蛾<SEP>白菜": {
+    "chunk_ids": [
+      "chunk-0f80ba997fa22a606c08224fef24a3e1"
+    ],
+    "count": 1,
+    "create_time": 1777459394,
+    "update_time": 1777459394,
+    "_id": "甜菜夜蛾<SEP>白菜"
+  },
+  "短额负蝗<SEP>细菌性软腐病": {
+    "chunk_ids": [
+      "chunk-039c414821a18ac99777ef473c4c3eeb"
+    ],
+    "count": 1,
+    "create_time": 1777459395,
+    "update_time": 1777459395,
+    "_id": "短额负蝗<SEP>细菌性软腐病"
+  },
+  "硼肥<SEP>缺硼": {
+    "chunk_ids": [
+      "chunk-371895d9884598c227a071fa676687e0"
+    ],
+    "count": 1,
+    "create_time": 1777459395,
+    "update_time": 1777459395,
+    "_id": "硼肥<SEP>缺硼"
+  },
+  "夜蛾科<SEP>银纹夜蛾": {
+    "chunk_ids": [
+      "chunk-0f80ba997fa22a606c08224fef24a3e1"
+    ],
+    "count": 1,
+    "create_time": 1777459395,
+    "update_time": 1777459395,
+    "_id": "夜蛾科<SEP>银纹夜蛾"
+  },
+  "叶片<SEP>甜菜夜蛾": {
+    "chunk_ids": [
+      "chunk-0f80ba997fa22a606c08224fef24a3e1"
+    ],
+    "count": 1,
+    "create_time": 1777459397,
+    "update_time": 1777459397,
+    "_id": "叶片<SEP>甜菜夜蛾"
+  },
+  "腹足纲<SEP>蛞蝓": {
+    "chunk_ids": [
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 1,
+    "create_time": 1777459397,
+    "update_time": 1777459397,
+    "_id": "腹足纲<SEP>蛞蝓"
+  },
+  "银纹夜蛾<SEP>黑点银纹夜蛾": {
+    "chunk_ids": [
+      "chunk-0f80ba997fa22a606c08224fef24a3e1"
+    ],
+    "count": 1,
+    "create_time": 1777459398,
+    "update_time": 1777459398,
+    "_id": "银纹夜蛾<SEP>黑点银纹夜蛾"
+  },
+  "柄眼目<SEP>蛞蝓": {
+    "chunk_ids": [
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 1,
+    "create_time": 1777459399,
+    "update_time": 1777459399,
+    "_id": "柄眼目<SEP>蛞蝓"
+  },
+  "甜菜夜蛾<SEP>甜菜夜蛾核型多角体病毒悬浮剂": {
+    "chunk_ids": [
+      "chunk-0f80ba997fa22a606c08224fef24a3e1"
+    ],
+    "count": 1,
+    "create_time": 1777459399,
+    "update_time": 1777459399,
+    "_id": "甜菜夜蛾<SEP>甜菜夜蛾核型多角体病毒悬浮剂"
+  },
+  "菜步曲<SEP>银纹夜蛾": {
+    "chunk_ids": [
+      "chunk-0f80ba997fa22a606c08224fef24a3e1"
+    ],
+    "count": 1,
+    "create_time": 1777459400,
+    "update_time": 1777459400,
+    "_id": "菜步曲<SEP>银纹夜蛾"
+  },
+  "四聚乙醛<SEP>灰巴蜗牛": {
+    "chunk_ids": [
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 1,
+    "create_time": 1777459400,
+    "update_time": 1777459400,
+    "_id": "四聚乙醛<SEP>灰巴蜗牛"
+  },
+  "蛞蝓<SEP>蛞蝓科": {
+    "chunk_ids": [
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 1,
+    "create_time": 1777459401,
+    "update_time": 1777459401,
+    "_id": "蛞蝓<SEP>蛞蝓科"
+  },
+  "叶背<SEP>银纹夜蛾": {
+    "chunk_ids": [
+      "chunk-0f80ba997fa22a606c08224fef24a3e1"
+    ],
+    "count": 1,
+    "create_time": 1777459402,
+    "update_time": 1777459402,
+    "_id": "叶背<SEP>银纹夜蛾"
+  },
+  "野油菜黄单胞菌<SEP>黑腐病": {
+    "chunk_ids": [
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 1,
+    "create_time": 1777459402,
+    "update_time": 1777459402,
+    "_id": "野油菜黄单胞菌<SEP>黑腐病"
+  },
+  "灰巴蜗牛<SEP>生石灰": {
+    "chunk_ids": [
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 1,
+    "create_time": 1777459402,
+    "update_time": 1777459402,
+    "_id": "灰巴蜗牛<SEP>生石灰"
+  },
+  "大白菜<SEP>黑斑病": {
+    "chunk_ids": [
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 1,
+    "create_time": 1777459402,
+    "update_time": 1777459402,
+    "_id": "大白菜<SEP>黑斑病"
+  },
+  "草莓<SEP>蛞蝓": {
+    "chunk_ids": [
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 1,
+    "create_time": 1777459403,
+    "update_time": 1777459403,
+    "_id": "草莓<SEP>蛞蝓"
+  },
+  "萝卜<SEP>黑腐病": {
+    "chunk_ids": [
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 1,
+    "create_time": 1777459404,
+    "update_time": 1777459404,
+    "_id": "萝卜<SEP>黑腐病"
+  },
+  "咯菌腈<SEP>黑斑病": {
+    "chunk_ids": [
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 1,
+    "create_time": 1777459405,
+    "update_time": 1777459405,
+    "_id": "咯菌腈<SEP>黑斑病"
+  },
+  "叶片<SEP>蛞蝓": {
+    "chunk_ids": [
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 1,
+    "create_time": 1777459405,
+    "update_time": 1777459405,
+    "_id": "叶片<SEP>蛞蝓"
+  },
+  "白菜<SEP>黑腐病": {
+    "chunk_ids": [
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 1,
+    "create_time": 1777459405,
+    "update_time": 1777459405,
+    "_id": "白菜<SEP>黑腐病"
+  },
+  "代森锰锌<SEP>黑斑病": {
+    "chunk_ids": [
+      "chunk-0b5f294b1c97f35cb02b8c5e97a080e9"
+    ],
+    "count": 1,
+    "create_time": 1777459406,
+    "update_time": 1777459406,
+    "_id": "代森锰锌<SEP>黑斑病"
+  },
+  "缺苗断垄<SEP>蛞蝓": {
+    "chunk_ids": [
+      "chunk-64d7ba16672b09ea0136eba5fdbd5a11"
+    ],
+    "count": 1,
+    "create_time": 1777459407,
+    "update_time": 1777459407,
+    "_id": "缺苗断垄<SEP>蛞蝓"
+  }
+}

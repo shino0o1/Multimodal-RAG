@@ -1,0 +1,1068 @@
+INFO: Prompt language set to Chinese for KG consistency
+INFO: RAGAnything initialized with config:
+INFO:   Working directory: ./rag_storage_whole_book_gemini
+INFO:   Parser: mineru
+INFO:   Parse method: auto
+INFO:   Multimodal processing - Image: True, Table: True, Equation: False
+INFO:   Max concurrent files: 1
+INFO:   KG quality - enabled: True, canonical_language: zh, relation_schema: fixed, extraction_mode: ppe, ontology_profile: cruciferous_pest_disease, enforce_ontology: True, description_policy: multimodal_only
+INFO:   KG quality - attribute_hosts: ['虫害', '病害', '病原菌'], multimodal_min_desc_chars: 30, drop_empty_multimodal: True
+INFO:   Multimodal cache - desc_cache_enabled: True, hard_skip_enabled: True
+INFO:   Query defaults - mode: hybrid, top_k: 10, vlm_enhanced: False, enable_rerank: False
+INFO:   Model routing - answer: gemini-2.5-flash, planner: gemini-2.5-flash, vision: gemini-2.5-flash, image_desc: gemini-2.5-flash, rerank: (unset)
+🚀 开始解析 PDF 并构建知识图谱（此过程可能较长，请耐心等待）...
+INFO: Parser 'mineru' installation verified
+INFO: Initializing LightRAG with parameters: {'working_dir': './rag_storage_whole_book_gemini', 'entity_extract_max_gleaning': 0, 'max_extract_input_tokens': 5120, 'llm_model_max_async': 4, 'embedding_func_max_async': 4, 'max_parallel_insert': 4, 'addon_params': {'entity_types': ['病害', '虫害', '病原菌', '作物', '生长期', '生物分类', '药剂', '别名', '部位', '时间', '危害症状', '形态特征', '发病诱因', '发生时期', '防治要点', '生活习性', '发生规律'], 'relationship_types': ['致病', '发生于', '属类隶属', '危害', '使用药剂', '防治', '生命周期', '地理位置'], 'language': 'Chinese'}}
+INFO: [] Created new empty graph file: ./rag_storage_whole_book_gemini/graph_chunk_entity_relation.graphml
+INFO:nano-vectordb:Init {'embedding_dim': 3072, 'metric': 'cosine', 'storage_file': './rag_storage_whole_book_gemini/vdb_entities.json'} 0 data
+INFO:nano-vectordb:Init {'embedding_dim': 3072, 'metric': 'cosine', 'storage_file': './rag_storage_whole_book_gemini/vdb_relationships.json'} 0 data
+INFO:nano-vectordb:Init {'embedding_dim': 3072, 'metric': 'cosine', 'storage_file': './rag_storage_whole_book_gemini/vdb_chunks.json'} 0 data
+INFO: [] Process 10702 KV load full_docs with 0 records
+INFO: [] Process 10702 KV load text_chunks with 0 records
+INFO: [] Process 10702 KV load full_entities with 0 records
+INFO: [] Process 10702 KV load full_relations with 0 records
+INFO: [] Process 10702 KV load entity_chunks with 0 records
+INFO: [] Process 10702 KV load relation_chunks with 0 records
+INFO: [] Process 10702 KV load llm_response_cache with 0 records
+INFO: [] Process 10702 doc status load doc_status with 0 records
+INFO: [] Process 10702 KV load parse_cache with 0 records
+INFO: [] Process 10702 KV load multimodal_desc_cache with 0 records
+INFO: Multimodal processors initialized with context support
+INFO: Available processors: ['image', 'table', 'generic']
+INFO: Context configuration: ContextConfig(context_window=1, context_mode='page', max_context_tokens=2000, include_headers=True, include_captions=True, filter_content_types=['text'])
+INFO: LightRAG, parse cache, multimodal desc cache, and multimodal processors initialized
+INFO: Starting complete document processing: docs/十字花科蔬菜病虫害_3.pdf
+INFO: Starting document parsing: docs/十字花科蔬菜病虫害_3.pdf
+INFO: Using mineru parser with method: auto
+INFO: Detected PDF file, using parser for PDF...
+INFO:raganything.parser:Reusing existing MinerU content list: output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/十字花科蔬菜病虫害_3_content_list.json
+INFO:raganything.parser:Found MinerU output in subdirectory: hybrid_auto
+INFO:raganything.parser:Fixing image paths in output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto/十字花科蔬菜病虫害_3_content_list.json with base directory: output/十字花科蔬菜病虫害_3_d35a9360/十字花科蔬菜病虫害_3/hybrid_auto
+INFO: Parsing docs/十字花科蔬菜病虫害_3.pdf complete! Extracted 523 content blocks
+INFO: Stored parsing result in cache: 309115c0406f857c4d7fc75454e2b615
+INFO: 
+Content Information:
+INFO: * Total blocks in content_list: 523
+INFO: * Content block types:
+INFO:   - text: 184
+INFO:   - image: 217
+INFO:   - header: 59
+INFO:   - page_number: 58
+INFO:   - page_footnote: 3
+INFO:   - table: 2
+INFO: KG source filter: kept=406 dropped=117 by_type={'header': 59, 'page_number': 58} by_pattern={}
+INFO: Content separation complete:
+INFO:   - Text content length: 21802 characters
+INFO:   - Multimodal items count: 222
+INFO:   - Multimodal type distribution: {'image': 217, 'page_footnote': 3, 'table': 2}
+INFO: Setting content source for context-aware multimodal processing...
+INFO: Content source set with format: minerU
+INFO: Content source set with format: minerU
+INFO: Content source set with format: minerU
+INFO: Content source set for context extraction (format: minerU)
+INFO: Starting text content insertion into LightRAG...
+INFO: Processing 1 document(s)
+INFO: Extracting stage 1/1: 十字花科蔬菜病虫害_3.pdf
+INFO: Processing d-id: doc-6141888874633576467c3949cd68da10
+INFO: Embedding func: 4 new workers initialized (Timeouts: Func: 30s, Worker: 60s, Health Check: 75s)
+INFO: LLM func: 4 new workers initialized (Timeouts: Func: 180s, Worker: 360s, Health Check: 375s)
+INFO:  == LLM cache == saving: default:extract:03bedb8d1ffaf4870b8fa7541bfc9b98
+INFO: Chunk 1 of 20 extracted 16 Ent + 8 Rel chunk-3e38741d2bfbf032bfe7da65cf5c9302
+INFO:  == LLM cache == saving: default:extract:bec06be1660a08fdd51883eff60cce9f
+INFO: Chunk 2 of 20 extracted 15 Ent + 13 Rel chunk-3511fba3b1d9eaeca88fc9aca1dc1364
+INFO:  == LLM cache == saving: default:extract:9b020e917fa583bbecaaae50967526a7
+INFO: Chunk 3 of 20 extracted 28 Ent + 11 Rel chunk-2102c4977ee2662531b474addbf76d25
+INFO:  == LLM cache == saving: default:extract:73b2a27858fe419ca748268a7f08af93
+INFO: Chunk 4 of 20 extracted 19 Ent + 7 Rel chunk-2711af80087a36171089b13436581425
+INFO:  == LLM cache == saving: default:extract:5830d65d463be55fe7bff402060d50ac
+INFO: Chunk 5 of 20 extracted 20 Ent + 8 Rel chunk-0b5f294b1c97f35cb02b8c5e97a080e9
+INFO:  == LLM cache == saving: default:extract:820d519fcccb4236d4138a5c184c1906
+INFO: Chunk 6 of 20 extracted 16 Ent + 9 Rel chunk-089405484f7cef39ff9ff4354d1da054
+INFO:  == LLM cache == saving: default:extract:eb855f45022ef785ac1c1b0478d4bec3
+INFO: Chunk 7 of 20 extracted 13 Ent + 6 Rel chunk-371895d9884598c227a071fa676687e0
+INFO:  == LLM cache == saving: default:extract:bb4fb03d96a487f463838d99698acd44
+INFO: Chunk 8 of 20 extracted 15 Ent + 10 Rel chunk-c60631811c47de4ce2c79aee52951117
+INFO:  == LLM cache == saving: default:extract:5467950efe1f153c691a4f48e32c1e8d
+INFO: Chunk 9 of 20 extracted 15 Ent + 9 Rel chunk-2de1784a101a3d8331d829acf538c9e1
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+INFO:openai._base_client:Retrying request to /chat/completions in 0.403856 seconds
+INFO:  == LLM cache == saving: default:extract:3aa77ba346e1378fb970d563858d41a1
+INFO: Chunk 10 of 20 extracted 26 Ent + 5 Rel chunk-6853819bd6c24f5f2236d760b9ce81b1
+INFO:openai._base_client:Retrying request to /chat/completions in 0.442764 seconds
+INFO:  == LLM cache == saving: default:extract:467fde0616c8257142b633aa413f59e5
+INFO: Chunk 11 of 20 extracted 30 Ent + 6 Rel chunk-2732eb6195df6f6255819cca0b42029f
+INFO:openai._base_client:Retrying request to /chat/completions in 0.432043 seconds
+INFO:  == LLM cache == saving: default:extract:c40a5b3a84ce7bf55fd075e4f5624105
+INFO: Chunk 12 of 20 extracted 20 Ent + 8 Rel chunk-38bab4e2c085cbd981e991eb6f9a8e92
+INFO:  == LLM cache == saving: default:extract:99ce11a4fafef39a8f1508715ddf96c2
+INFO: Chunk 13 of 20 extracted 14 Ent + 6 Rel chunk-ce8ce757d0c4c5e0d3389af1fd809ffd
+INFO:openai._base_client:Retrying request to /chat/completions in 0.375267 seconds
+INFO:  == LLM cache == saving: default:extract:2e92628d12adb2e8216c0da868cae428
+INFO: Chunk 14 of 20 extracted 18 Ent + 11 Rel chunk-ca141699f53529c2e47d2d719892c294
+INFO:  == LLM cache == saving: default:extract:51892f1e75b36281b75b2a2122a14088
+INFO: Chunk 15 of 20 extracted 34 Ent + 10 Rel chunk-039c414821a18ac99777ef473c4c3eeb
+INFO:openai._base_client:Retrying request to /chat/completions in 0.852512 seconds
+INFO:openai._base_client:Retrying request to /chat/completions in 0.433317 seconds
+INFO:  == LLM cache == saving: default:extract:19d0c206fe4976af9e58c217bec18bc7
+INFO: Chunk 16 of 20 extracted 16 Ent + 11 Rel chunk-eb8e40732cd0b5a7f534922a7ccb9a6e
+INFO:  == LLM cache == saving: default:extract:7363bed2f7c070d670ec0b14218acde9
+INFO: Chunk 17 of 20 extracted 5 Ent + 4 Rel chunk-a770031934dc8ae2cad68c63e907465e
+INFO:openai._base_client:Retrying request to /chat/completions in 0.933684 seconds
+INFO:  == LLM cache == saving: default:extract:681cbaf50fd71745a7769fda81da0289
+INFO: Chunk 18 of 20 extracted 20 Ent + 8 Rel chunk-e1ffc4d7126b3916ef88c8c7f5b1a921
+INFO:  == LLM cache == saving: default:extract:09c90252ca79a82afc415479cb5c40a6
+INFO: Chunk 19 of 20 extracted 11 Ent + 10 Rel chunk-0f80ba997fa22a606c08224fef24a3e1
+INFO:openai._base_client:Retrying request to /chat/completions in 0.441428 seconds
+INFO:  == LLM cache == saving: default:extract:29785944c3a7a3f969270101f3069a8d
+INFO: Chunk 20 of 20 extracted 24 Ent + 8 Rel chunk-64d7ba16672b09ea0136eba5fdbd5a11
+INFO: Merging stage 1/1: 十字花科蔬菜病虫害_3.pdf
+INFO: Phase 1: Processing 194 entities from doc-6141888874633576467c3949cd68da10 (async: 8)
+INFO:openai._base_client:Retrying request to /embeddings in 0.461948 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.465063 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.399322 seconds
+INFO: Phase 2: Processing 160 relations from doc-6141888874633576467c3949cd68da10 (async: 8)
+INFO: Phase 3: Updating final 194(194+0) entities and  160 relations from doc-6141888874633576467c3949cd68da10
+INFO: Completed merging: 194 entities, 0 extra entities, 160 relations
+INFO: [] Writing graph with 194 nodes, 160 edges
+INFO: In memory DB persist to disk
+INFO: Completed processing file 1/1: 十字花科蔬菜病虫害_3.pdf
+INFO: Enqueued document processing pipeline stopped
+INFO: Text content insertion complete
+INFO: Document doc-6141888874633576467c3949cd68da10 text processing is complete, but multimodal content still needs processing
+INFO: Starting multimodal content processing...
+INFO: Starting to process 222/222 remaining multimodal content items
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+WARNING: Using regex fallback for JSON parsing
+WARNING: Using regex fallback for JSON parsing
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+ERROR: Error parsing image analysis response: Missing required fields in response
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+INFO: Multimodal chunk generation progress: 22/222 (9.9%)
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+WARNING: Using regex fallback for JSON parsing
+INFO: Multimodal chunk generation progress: 44/222 (19.8%)
+WARNING: Using regex fallback for JSON parsing
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+ERROR: Error parsing image analysis response: Missing required fields in response
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+INFO: Multimodal chunk generation progress: 66/222 (29.7%)
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+ERROR: Error parsing image analysis response: Missing required fields in response
+INFO: Multimodal chunk generation progress: 88/222 (39.6%)
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+WARNING: Using regex fallback for JSON parsing
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+INFO:openai._base_client:Retrying request to /chat/completions in 0.441897 seconds
+INFO: Multimodal chunk generation progress: 110/222 (49.5%)
+INFO:openai._base_client:Retrying request to /chat/completions in 0.386914 seconds
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+INFO: Multimodal chunk generation progress: 132/222 (59.5%)
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+WARNING: Using regex fallback for JSON parsing
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+INFO: Multimodal chunk generation progress: 154/222 (69.4%)
+INFO:openai._base_client:Retrying request to /chat/completions in 0.417668 seconds
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+WARNING: Using regex fallback for JSON parsing
+WARNING: Using regex fallback for JSON parsing
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+INFO: Multimodal chunk generation progress: 176/222 (79.3%)
+WARNING: Using regex fallback for JSON parsing
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+WARNING: Using regex fallback for JSON parsing
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+INFO: Multimodal chunk generation progress: 198/222 (89.2%)
+WARNING: Using regex fallback for JSON parsing
+WARNING: Using regex fallback for JSON parsing
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+ERROR: Error parsing image analysis response: Missing required fields in response
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+INFO: Multimodal chunk generation progress: 220/222 (99.1%)
+INFO: Multimodal chunk generation progress: 222/222 (100.0%)
+INFO: Dropped 6 empty multimodal items before extraction
+INFO: Generated descriptions for 216/222 multimodal items using correct processors
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+INFO:  == LLM cache == saving: default:extract:6d0ba2c85ca0f5fd00d71e16e10bbf3d
+INFO: Chunk 1 of 216 extracted 12 Ent + 11 Rel chunk-ea3ad9de087ca853f6d9c25a2d2681c9
+INFO:  == LLM cache == saving: default:extract:745e55d01678e1aa26f421c558b78179
+INFO: Chunk 2 of 216 extracted 29 Ent + 20 Rel chunk-2d0a0e1a2ae281c246d32fd566f9339f
+INFO:  == LLM cache == saving: default:extract:7cfecbfabd73c2a4ee0251921b11a5d0
+INFO: Chunk 3 of 216 extracted 6 Ent + 5 Rel chunk-d1acbb47c0219e0636a09159f5abd319
+[watchdog] 检测到工作目录更新：./rag_storage_whole_book_gemini
+INFO:  == LLM cache == saving: default:extract:5b69179f24fcc613fc76d86ba42d09af
+INFO: Chunk 4 of 216 extracted 15 Ent + 13 Rel chunk-b519def7c9178c12ba0037aaa6c70926
+INFO:  == LLM cache == saving: default:extract:e87358249476b3ab2910a6ebe16f1f4e
+INFO:  == LLM cache == saving: default:extract:a76a0a99182af1bae93452faf2a8bcc8
+INFO: Chunk 5 of 216 extracted 8 Ent + 5 Rel chunk-a2c2df663a5b98f657d14e99fafd7203
+INFO: Chunk 6 of 216 extracted 12 Ent + 11 Rel chunk-ff618f26eaddc530ed912c48956812ad
+INFO:  == LLM cache == saving: default:extract:5e83c6132b82bcb0bd672d742ae6b3b7
+INFO: Chunk 7 of 216 extracted 7 Ent + 6 Rel chunk-e1a25ad91df4056b23309ce4d87d098e
+INFO:  == LLM cache == saving: default:extract:20e3067f405bd82cddf63a3fc4347beb
+INFO: Chunk 8 of 216 extracted 27 Ent + 25 Rel chunk-b3b74e94cd9e673214401f1d7e211970
+INFO:  == LLM cache == saving: default:extract:73ced2bf90a08b59926e924190c1ca52
+INFO: Chunk 9 of 216 extracted 10 Ent + 8 Rel chunk-6fad4f22632131c47ac7fa6e017c1365
+INFO:  == LLM cache == saving: default:extract:030ed0b5674e4257501594eef677b3c0
+INFO: Chunk 10 of 216 extracted 14 Ent + 13 Rel chunk-ce89c7a24c968edc3b8daaa4ee7e44ed
+INFO:openai._base_client:Retrying request to /chat/completions in 0.485798 seconds
+INFO:  == LLM cache == saving: default:extract:e71b6dd010fb7841551231927d63ea9a
+INFO: Chunk 11 of 216 extracted 28 Ent + 33 Rel chunk-28f88298e7316c3aca7aa7d3f9c8e8ea
+INFO:  == LLM cache == saving: default:extract:d854e8365b05867243994982fae239b4
+INFO: Chunk 12 of 216 extracted 14 Ent + 15 Rel chunk-310884df7e9f7ec7abc03ff78374fddd
+INFO:  == LLM cache == saving: default:extract:38b473f4f09d24ba1eca31e3ed08b3d0
+INFO: Chunk 13 of 216 extracted 8 Ent + 6 Rel chunk-7607a348b8d39b8ae825c84727752791
+INFO:  == LLM cache == saving: default:extract:78e14c4a9c0deb0114e6fcd9f4bce6c2
+INFO: Chunk 14 of 216 extracted 8 Ent + 5 Rel chunk-132e8f455d2d417f60b885555af0141d
+INFO:  == LLM cache == saving: default:extract:ebb91358b872fd5f635f1ae7b4b1e1a5
+INFO: Chunk 15 of 216 extracted 7 Ent + 6 Rel chunk-fd340e54e36fe920be68c4ac34586210
+INFO:  == LLM cache == saving: default:extract:f27037301c08ff73a4edff94d55e9574
+INFO: Chunk 16 of 216 extracted 4 Ent + 3 Rel chunk-379c9a8e038b134bd47ee4e60ac579ca
+INFO:  == LLM cache == saving: default:extract:68a144365ab6567a9430c0b0ab5335dc
+INFO: Chunk 17 of 216 extracted 14 Ent + 12 Rel chunk-c3cc3c96f11412119dd352621bc75a4a
+INFO:  == LLM cache == saving: default:extract:6899229509caebdabb9888de8ceb0cd4
+INFO: Chunk 18 of 216 extracted 40 Ent + 32 Rel chunk-6a566dac6682579a8b7ab6c46552d839
+INFO:  == LLM cache == saving: default:extract:b78ed92d85f6b4d27a2bdde556e8aef5
+INFO: Chunk 19 of 216 extracted 53 Ent + 50 Rel chunk-157bd3addbb38750d6dff95f3d5a9e7d
+INFO:  == LLM cache == saving: default:extract:94d72fe6e4482377e443fbb8b7ed8353
+INFO: Chunk 20 of 216 extracted 16 Ent + 21 Rel chunk-8d64d27c40d5e2c0a3a5de38821420bd
+INFO:  == LLM cache == saving: default:extract:f5b97f8bc1a8c400f12074811bdd0919
+INFO: Chunk 21 of 216 extracted 6 Ent + 5 Rel chunk-59c5bccd07c65bb2d4ee85c5819dd9d1
+INFO:  == LLM cache == saving: default:extract:bbe05f933f6f97e65bab9c2bf189d1c0
+INFO: Chunk 22 of 216 extracted 1 Ent + 0 Rel chunk-8eb1d5e3d93231e0d4db6913e0d5466e
+INFO:  == LLM cache == saving: default:extract:6ea960fd0a55e96a0308cbaebaf9121d
+INFO: Chunk 23 of 216 extracted 22 Ent + 15 Rel chunk-2f12138e59db2f07225a36a367d035a7
+INFO:  == LLM cache == saving: default:extract:ee77d8f83c830986a6dafd0e5696b2a1
+INFO: Chunk 24 of 216 extracted 10 Ent + 9 Rel chunk-06d7e433fa06c5b25d419262c858c6bb
+INFO:  == LLM cache == saving: default:extract:f752a3bb301d5f3c03b275194e448cab
+INFO: Chunk 25 of 216 extracted 15 Ent + 21 Rel chunk-3a78e3281e5a0bbc179d412851f35c67
+INFO:  == LLM cache == saving: default:extract:b29373f2b91256faa5a68bc2280592bb
+INFO: Chunk 26 of 216 extracted 21 Ent + 16 Rel chunk-dc8f89ad08f02a366bb1855964931b0b
+INFO:  == LLM cache == saving: default:extract:36dddabf45fee6ee1089b74c44d94b87
+INFO: Chunk 27 of 216 extracted 15 Ent + 11 Rel chunk-ea9349cf234838116d54e1a5e31192ff
+INFO:  == LLM cache == saving: default:extract:5dc9b885f46202b87ec8d0b64c5276b3
+INFO: Chunk 28 of 216 extracted 20 Ent + 19 Rel chunk-aa89e13f2be5973d8335d6cc12cf7a4e
+INFO:  == LLM cache == saving: default:extract:c2b588966163bb2b75ad3f98164aa45d
+INFO: Chunk 29 of 216 extracted 12 Ent + 11 Rel chunk-7847dba0e850b38d58d9919ba3f5cced
+INFO:  == LLM cache == saving: default:extract:2c8885578a2363cbc685f7f17226d058
+INFO: Chunk 30 of 216 extracted 20 Ent + 16 Rel chunk-ba83ee149a2e9cfe2bb3186d3d9ab242
+INFO:  == LLM cache == saving: default:extract:c3a51b3151d50f3092d541bfc1289430
+INFO: Chunk 31 of 216 extracted 8 Ent + 7 Rel chunk-7db27298b6bc94a19de9bdb6c76b2710
+INFO:  == LLM cache == saving: default:extract:734249b00a67ca79508979f5478fb41f
+INFO: Chunk 32 of 216 extracted 8 Ent + 4 Rel chunk-338fab7f749dc818d827561a47088f1b
+INFO:  == LLM cache == saving: default:extract:7070fec009b29f184e2e1b951bd78437
+INFO: Chunk 33 of 216 extracted 6 Ent + 5 Rel chunk-79b765b62eb3bc05922343d1d04cdc1e
+INFO:  == LLM cache == saving: default:extract:d87f187bfb29b1483a9f2d9a93609b18
+INFO: Chunk 34 of 216 extracted 10 Ent + 11 Rel chunk-26c3f4922827d7e185440701e7ced24a
+INFO:  == LLM cache == saving: default:extract:e736430d818effe42229c592aea15e7b
+INFO: Chunk 35 of 216 extracted 12 Ent + 11 Rel chunk-b2571a6903393e420ef4698741a914b5
+INFO:  == LLM cache == saving: default:extract:d117d0f5b2acff079917d3ac3126f349
+INFO: Chunk 36 of 216 extracted 18 Ent + 16 Rel chunk-3f0f7765f756333466fa2628944fb928
+INFO:  == LLM cache == saving: default:extract:ef676ed2e553003145f866ad4046ae43
+INFO: Chunk 37 of 216 extracted 9 Ent + 9 Rel chunk-65e7d10e9f2456c50b8dbadf28624a5c
+INFO:  == LLM cache == saving: default:extract:dad73bdd70d618d852262ab16704ee68
+INFO: Chunk 38 of 216 extracted 12 Ent + 13 Rel chunk-53ffdfc1690d5fc090735c408283391d
+INFO:  == LLM cache == saving: default:extract:0c19530b3ab7b1ef5fe41d400058d31e
+INFO: Chunk 39 of 216 extracted 26 Ent + 21 Rel chunk-8fcdba800e6f311738dd69c3bb11fcc6
+INFO:  == LLM cache == saving: default:extract:042dac61df00330a7885875869e07c83
+INFO: Chunk 40 of 216 extracted 28 Ent + 12 Rel chunk-eaa13fa62c2f2a3e426c1cbdefca4345
+INFO:  == LLM cache == saving: default:extract:92d9126dcbb0478dcc6c562c17007401
+INFO: Chunk 41 of 216 extracted 20 Ent + 19 Rel chunk-eeed8e4c5d0d1c051facb662f75d1e09
+INFO:  == LLM cache == saving: default:extract:62e84f83d1444ff7a19aa65056fefb67
+INFO: Chunk 42 of 216 extracted 6 Ent + 5 Rel chunk-5713aed0d0a400cd226ef28e0c1fd823
+INFO:  == LLM cache == saving: default:extract:03f067a167d4c2ef3a5f5c29f2e79590
+INFO: Chunk 43 of 216 extracted 8 Ent + 6 Rel chunk-5daed8d494fa727d409bd53e85d83c50
+INFO:  == LLM cache == saving: default:extract:37c54592c07fcac9f00d5eee041e1ffe
+INFO: Chunk 44 of 216 extracted 7 Ent + 6 Rel chunk-3f372dacdfcadb29be98d37273f433fd
+INFO:  == LLM cache == saving: default:extract:0d4d0d0fce7d1b44be63c2d6a95ffcdf
+INFO: Chunk 45 of 216 extracted 5 Ent + 4 Rel chunk-b2f5833221f84317eb94ba9755b8a06b
+INFO:  == LLM cache == saving: default:extract:e5966300357c088790014b153a0bd9c4
+INFO: Chunk 46 of 216 extracted 7 Ent + 6 Rel chunk-11c7ba1acb88a6dd394244a5be34557e
+INFO:  == LLM cache == saving: default:extract:7c3eee43023c97afbeec9315dff549a5
+INFO: Chunk 47 of 216 extracted 8 Ent + 8 Rel chunk-17ab0a21718627faacbccb7c8da47bef
+INFO:  == LLM cache == saving: default:extract:1ad4e6114481934c8fd253833c77f49c
+INFO: Chunk 48 of 216 extracted 33 Ent + 32 Rel chunk-763e288cfcac968157d417d58b877557
+INFO:  == LLM cache == saving: default:extract:6b77759656d937f414f3189eb9e3ac93
+INFO: Chunk 49 of 216 extracted 11 Ent + 10 Rel chunk-e6025ee82f5cd704cdad4f40096c55dc
+INFO:  == LLM cache == saving: default:extract:0c4ba91620e898b51b631ce6023c6850
+INFO: Chunk 50 of 216 extracted 30 Ent + 23 Rel chunk-06c4679ebf4de0a8d8224fbb2924294f
+INFO:  == LLM cache == saving: default:extract:f8395dd0dbc4bbb9f1c57cb766d88323
+INFO: Chunk 51 of 216 extracted 8 Ent + 7 Rel chunk-3432b8633ea0fc698665ef94d1ee6d37
+INFO:  == LLM cache == saving: default:extract:f4d396392b3dceceebe66b73974dbd95
+INFO: Chunk 52 of 216 extracted 15 Ent + 16 Rel chunk-072d30697d058f37fa4825ec390d9508
+INFO:  == LLM cache == saving: default:extract:51f6f2352583bfde8bcc704e3a3720d4
+INFO: Chunk 53 of 216 extracted 8 Ent + 7 Rel chunk-de1c9cadad9dd3d2754b4b1f782866a0
+INFO:  == LLM cache == saving: default:extract:5ec25ef30f27298aa70b8a4a96d10780
+INFO: Chunk 54 of 216 extracted 5 Ent + 4 Rel chunk-e124f728736920798021720adc02a59e
+INFO:openai._base_client:Retrying request to /chat/completions in 0.497938 seconds
+INFO:  == LLM cache == saving: default:extract:4f6116195a293f75fe05fd5f324c4486
+INFO: Chunk 55 of 216 extracted 8 Ent + 4 Rel chunk-61e246e90bcaaf9ad1308e02f330b201
+INFO:  == LLM cache == saving: default:extract:17865e6cf9825158d40adcf8bc7cbd8f
+INFO: Chunk 56 of 216 extracted 5 Ent + 3 Rel chunk-64dbbfe6815b715aaf473f142dcecc73
+INFO:  == LLM cache == saving: default:extract:e75dd56985bcf8001f8b9857f40b3a27
+INFO: Chunk 57 of 216 extracted 28 Ent + 19 Rel chunk-3b4748e1b515b1d16d492a54b7db5d2c
+INFO:openai._base_client:Retrying request to /chat/completions in 0.436262 seconds
+INFO:  == LLM cache == saving: default:extract:be99bad008569a4607217469b8e7ffe7
+INFO: Chunk 58 of 216 extracted 13 Ent + 9 Rel chunk-a21ba0d0d4ddb7ede46cade93c561764
+INFO:  == LLM cache == saving: default:extract:abc356f98fd749a71eee807e47b754b7
+INFO: Chunk 59 of 216 extracted 9 Ent + 5 Rel chunk-c2c46152db5ff07cdb1d6f5561cce0dc
+INFO:  == LLM cache == saving: default:extract:324f33bdb6f5d27da5f1e1308e3708da
+INFO: Chunk 60 of 216 extracted 54 Ent + 41 Rel chunk-6c9c5c1a89394df08c4521777314cc90
+INFO:  == LLM cache == saving: default:extract:f5797b7df7fdf6280b8597da89e8a56d
+INFO: Chunk 61 of 216 extracted 7 Ent + 6 Rel chunk-c4cd38a417063b510b68314037e37d36
+INFO:  == LLM cache == saving: default:extract:498201839b4e734a49b5672bb1bcc6e7
+INFO: Chunk 62 of 216 extracted 10 Ent + 6 Rel chunk-fa4fa1ff156d1b25005e299d42ec2fce
+INFO:  == LLM cache == saving: default:extract:a5ff578360d1d4f21b40e04ec45bc754
+INFO: Chunk 63 of 216 extracted 6 Ent + 4 Rel chunk-fa9f2148c0668a3696cc0a4cffb727ff
+INFO:  == LLM cache == saving: default:extract:a36600d78ca8519520b789848f74c60f
+INFO: Chunk 64 of 216 extracted 11 Ent + 5 Rel chunk-dd4f11020dd7238ceae19b1bc2e12e6d
+INFO:  == LLM cache == saving: default:extract:738794f99c32507aa71136af5ca7bdf5
+INFO: Chunk 65 of 216 extracted 8 Ent + 7 Rel chunk-3a1f6f9f0807cdecb083d00e3ee7feba
+INFO:  == LLM cache == saving: default:extract:5fc2c3971e143d2bebcbae6b76199f07
+INFO: Chunk 66 of 216 extracted 16 Ent + 17 Rel chunk-18ae905dc413db63df2e0fffe7cb0d9f
+INFO:openai._base_client:Retrying request to /chat/completions in 0.480054 seconds
+INFO:  == LLM cache == saving: default:extract:d7b7774e8003fd6573bb58a9fc34dcc8
+INFO: Chunk 67 of 216 extracted 7 Ent + 5 Rel chunk-624be2cf5f3968ab37387c2390070381
+INFO:  == LLM cache == saving: default:extract:d202c4b15e93057938b6da6f1b6a8f00
+INFO: Chunk 68 of 216 extracted 8 Ent + 7 Rel chunk-e952c6ae5e41b5b7343b726c00747606
+INFO:  == LLM cache == saving: default:extract:141280cf1317f7d5aa14baa6ce0c8556
+INFO: Chunk 69 of 216 extracted 8 Ent + 7 Rel chunk-c31283d50d160b1f299e0a202450ac31
+INFO:  == LLM cache == saving: default:extract:45ff49a1e8dbf2287a7f4fb359a5c41e
+INFO: Chunk 70 of 216 extracted 8 Ent + 5 Rel chunk-36f6674cb148459751e16cae91330c2a
+INFO:  == LLM cache == saving: default:extract:342cd34caf36f74081af8af1c2bf100b
+INFO: Chunk 71 of 216 extracted 22 Ent + 21 Rel chunk-026760796995a178eb1fdad1452f8328
+INFO:openai._base_client:Retrying request to /chat/completions in 0.406238 seconds
+INFO:  == LLM cache == saving: default:extract:9f86f7cbc4d0b192e83ce8dd46b3c4ce
+INFO: Chunk 72 of 216 extracted 6 Ent + 5 Rel chunk-6df8b3d8e37b5acf17dde5acff612916
+INFO:openai._base_client:Retrying request to /chat/completions in 0.465005 seconds
+INFO:openai._base_client:Retrying request to /chat/completions in 0.430931 seconds
+INFO:  == LLM cache == saving: default:extract:fb353f0b75bee121bcd7db8c3e111bc6
+INFO: Chunk 73 of 216 extracted 7 Ent + 6 Rel chunk-1253e4088f4e8d0960f2a2d0bb84f70d
+INFO:openai._base_client:Retrying request to /chat/completions in 0.472122 seconds
+INFO:  == LLM cache == saving: default:extract:a19a34d82f8b338c40a06c22620613b3
+INFO: Chunk 74 of 216 extracted 6 Ent + 5 Rel chunk-634971419f68bfb00f83f83d9668f2fc
+INFO:  == LLM cache == saving: default:extract:2d76cc802be1486d520cd419141943ea
+INFO: Chunk 75 of 216 extracted 14 Ent + 11 Rel chunk-bc9b6417cac748ed25b95faf0a0e98f7
+INFO:openai._base_client:Retrying request to /chat/completions in 0.407185 seconds
+INFO:  == LLM cache == saving: default:extract:f1873fd3f497461cfffd61d16855935c
+INFO: Chunk 76 of 216 extracted 11 Ent + 8 Rel chunk-26fa9146248963fad99265989a109245
+INFO:openai._base_client:Retrying request to /chat/completions in 0.831857 seconds
+INFO:  == LLM cache == saving: default:extract:3183e1a223d9fcfb697ff4ed119412f9
+INFO: Chunk 77 of 216 extracted 11 Ent + 7 Rel chunk-70c3dabe8d1badadfef137a716a043ff
+INFO:  == LLM cache == saving: default:extract:721e66675b717cc615ddad6217d26427
+INFO: Chunk 78 of 216 extracted 6 Ent + 5 Rel chunk-075bb3ace2dfb45f097400200194fa09
+INFO:  == LLM cache == saving: default:extract:ce460ecf71d7df36e361b652b14e437c
+INFO: Chunk 79 of 216 extracted 6 Ent + 5 Rel chunk-eb894f19e22eaf5521b51aa84906c1b0
+INFO:  == LLM cache == saving: default:extract:b464d9ee0f93c3f5de2b66aaa11a902e
+INFO: Chunk 80 of 216 extracted 8 Ent + 7 Rel chunk-ef7c86c3b8fca183e497fd0fbf4641af
+INFO:  == LLM cache == saving: default:extract:5dff1af32e906da41470208bf65fe488
+INFO: Chunk 81 of 216 extracted 5 Ent + 4 Rel chunk-9346c613ae16cd51d18c0d5cd2ac701d
+INFO:  == LLM cache == saving: default:extract:3140690424586ebc25a95b5ec983af71
+INFO: Chunk 82 of 216 extracted 8 Ent + 4 Rel chunk-60cb92949480597cbb7128e491470f18
+INFO:  == LLM cache == saving: default:extract:30fcd08ee333ba759b64c40f222852a2
+INFO: Chunk 83 of 216 extracted 11 Ent + 9 Rel chunk-3804e6899c46d9421cdbc913901d17a2
+INFO:  == LLM cache == saving: default:extract:8a2a3324ddad55bd6ce0e0db771db872
+INFO: Chunk 84 of 216 extracted 11 Ent + 10 Rel chunk-27f4d26b6bcac38bc856a64138d3baf7
+INFO:  == LLM cache == saving: default:extract:f1177093c0ba51090fb6a37a6184af7d
+INFO: Chunk 85 of 216 extracted 17 Ent + 9 Rel chunk-0a5a383f7804eaab55ca250a8c04eac7
+INFO:openai._base_client:Retrying request to /chat/completions in 0.809282 seconds
+INFO:  == LLM cache == saving: default:extract:028c775e9502bf79563aa0d511039c25
+INFO: Chunk 86 of 216 extracted 10 Ent + 9 Rel chunk-bf5f3b0e979a7287d55994f336876320
+INFO:  == LLM cache == saving: default:extract:34900904a74ae7723a18b8fceac91462
+INFO: Chunk 87 of 216 extracted 4 Ent + 4 Rel chunk-b9e2160f338aa7aa8806102dd36fea49
+ERROR: OpenAI API Timeout Error: Request timed out.
+INFO:  == LLM cache == saving: default:extract:d0cafb0d938d5cf76b1c9f906a65ed21
+INFO: Chunk 88 of 216 extracted 6 Ent + 4 Rel chunk-18a956ecf95a9b8ddabc1b9fe91aa320
+INFO:  == LLM cache == saving: default:extract:20d7e66febc159afdfc1b311ee775244
+INFO: Chunk 89 of 216 extracted 16 Ent + 10 Rel chunk-1fbfc726dd296f1ec43ce2aa9f0d0895
+INFO:  == LLM cache == saving: default:extract:62adc164fd10dcba1361b8f7c8cf0a92
+INFO: Chunk 90 of 216 extracted 15 Ent + 6 Rel chunk-dee1c0cb2d3ac680561c4257ac355a14
+INFO:  == LLM cache == saving: default:extract:7f9162197f6aee886a312bfd5ce06eea
+INFO: Chunk 91 of 216 extracted 6 Ent + 5 Rel chunk-a7e0d5451f4240ce6759c07058e2a43a
+INFO:  == LLM cache == saving: default:extract:289e0e08398348da39179f4e7a81de40
+INFO: Chunk 92 of 216 extracted 16 Ent + 8 Rel chunk-058bfcb505d4110825b3930b6eb972e2
+INFO:openai._base_client:Retrying request to /chat/completions in 0.454053 seconds
+INFO:openai._base_client:Retrying request to /chat/completions in 0.458161 seconds
+INFO:openai._base_client:Retrying request to /chat/completions in 0.779525 seconds
+INFO:  == LLM cache == saving: default:extract:84af71116710c04b8098e53b26632405
+INFO: Chunk 93 of 216 extracted 47 Ent + 60 Rel chunk-80be34d2e662ee0076c2d8809df4d115
+INFO:  == LLM cache == saving: default:extract:5c5a2e1eb4f34c21442c3e89929c972b
+INFO: Chunk 94 of 216 extracted 14 Ent + 10 Rel chunk-561a951e4deb74888f3eb64e5e201ff8
+INFO:openai._base_client:Retrying request to /chat/completions in 0.462238 seconds
+INFO:  == LLM cache == saving: default:extract:b1532ad80b5869e2643a8cbc949c37ba
+INFO: Chunk 95 of 216 extracted 10 Ent + 9 Rel chunk-79b786f538ba9110de2adfd6e57c7618
+INFO:  == LLM cache == saving: default:extract:2639fcea449f2a0a33bf942de9bdb6c5
+INFO: Chunk 96 of 216 extracted 15 Ent + 14 Rel chunk-602d37fbdad3894f3fd097dec446048d
+INFO:  == LLM cache == saving: default:extract:271a9c45ff7fd736949e244094afd13f
+INFO: Chunk 97 of 216 extracted 23 Ent + 14 Rel chunk-d19d7e947c23393542da83f9bbf10b07
+INFO:  == LLM cache == saving: default:extract:f0f9cbf37802ed3f52231211c89fcfaf
+INFO: Chunk 98 of 216 extracted 7 Ent + 5 Rel chunk-eb133807de2ff915d9cd628148148023
+INFO:openai._base_client:Retrying request to /chat/completions in 0.449112 seconds
+INFO:  == LLM cache == saving: default:extract:44c154f38fcbbd2d3e75e4b32077b664
+INFO: Chunk 99 of 216 extracted 8 Ent + 7 Rel chunk-849b03cd52bb68264d62993a59d36141
+INFO:  == LLM cache == saving: default:extract:a79fe797267e3ce50737aa686f408cb8
+INFO: Chunk 100 of 216 extracted 15 Ent + 12 Rel chunk-c41e49bf19f4a71064df3d77eebfb411
+INFO:  == LLM cache == saving: default:extract:52571b777051e63731b7ec8e17a21d83
+INFO: Chunk 101 of 216 extracted 7 Ent + 6 Rel chunk-a5dd5082aa7c0708134d0e024eeb5f52
+INFO:  == LLM cache == saving: default:extract:969dcfbd1f6715bd0e2c76e159264ac1
+INFO: Chunk 102 of 216 extracted 7 Ent + 5 Rel chunk-d5261c75c7e2eb3b9a74271f3ff4e048
+INFO:  == LLM cache == saving: default:extract:bdb8815ab965eb1a91458ddf52d76d14
+INFO: Chunk 103 of 216 extracted 21 Ent + 18 Rel chunk-b64d931a1bdfddeeb19bd5ec9fcbfae8
+INFO:openai._base_client:Retrying request to /chat/completions in 0.493970 seconds
+INFO:  == LLM cache == saving: default:extract:6e60168c21c8b655a4bafc38d3bde7b7
+INFO: Chunk 104 of 216 extracted 7 Ent + 6 Rel chunk-e28b536983c09a8a7efed8f351c99c0f
+INFO:  == LLM cache == saving: default:extract:38c06e0b54c34a222d361112996078a9
+INFO: Chunk 105 of 216 extracted 6 Ent + 5 Rel chunk-749648f3569db2742acde22e0ccdc771
+INFO:  == LLM cache == saving: default:extract:d4b8cce61cf54e2d40532911c956eeed
+INFO: Chunk 106 of 216 extracted 12 Ent + 10 Rel chunk-6c358d7727d47fb774fde79b593cdb64
+INFO:openai._base_client:Retrying request to /chat/completions in 0.404482 seconds
+INFO:  == LLM cache == saving: default:extract:b4680cedb921d2405743c3b26331481e
+INFO: Chunk 107 of 216 extracted 15 Ent + 10 Rel chunk-46edfbd3a10ec757b7c4b4f77709b9d3
+INFO:  == LLM cache == saving: default:extract:ff1697d43a3ecc69d3567735e2cb3af5
+INFO: Chunk 108 of 216 extracted 7 Ent + 4 Rel chunk-9de6c623c37e6db5374f7045b110ca10
+INFO:  == LLM cache == saving: default:extract:778fe6d62282d306ad7f28f065a06633
+INFO: Chunk 109 of 216 extracted 10 Ent + 11 Rel chunk-79e13eb4c78335551c4fba9ead91efa8
+INFO:  == LLM cache == saving: default:extract:33274a187926b0dd27b3214a7a055126
+INFO: Chunk 110 of 216 extracted 18 Ent + 10 Rel chunk-7b829618261d91ae767ed1131698e3a8
+INFO:  == LLM cache == saving: default:extract:4bcea38bb0fd3653b4d6770291ff1c71
+INFO: Chunk 111 of 216 extracted 16 Ent + 12 Rel chunk-c6a1c58572667dcaf6731aaf90b72d08
+INFO:  == LLM cache == saving: default:extract:e695aebce451c6cd8fc63ad13e0edd09
+INFO: Chunk 112 of 216 extracted 9 Ent + 8 Rel chunk-cef0a38360a3e2500cb25e1f6f777a8f
+INFO:  == LLM cache == saving: default:extract:92057cb20ddfd5bf6f4fd25962c51e3e
+INFO: Chunk 113 of 216 extracted 18 Ent + 11 Rel chunk-89fd1a92fac060bd5bcd453db48be5bb
+INFO:  == LLM cache == saving: default:extract:61c287ee261682476f85901c65b023b4
+INFO: Chunk 114 of 216 extracted 20 Ent + 15 Rel chunk-3420d79a9e5621d0c5a78a59239be5b5
+INFO:  == LLM cache == saving: default:extract:e4a363a4ad350488cbec1bf7efb045ca
+INFO: Chunk 115 of 216 extracted 9 Ent + 5 Rel chunk-adaeb6ba455cbb00a27118e9da2ccaca
+INFO:  == LLM cache == saving: default:extract:ac3b1965fae4a9de01b21fc3ec8e275a
+INFO: Chunk 116 of 216 extracted 28 Ent + 19 Rel chunk-16950d1361b65e692bd4c9c79222ad0e
+INFO:  == LLM cache == saving: default:extract:e1039ef8e8ba5d90986a4c8875a71b43
+INFO: Chunk 117 of 216 extracted 25 Ent + 11 Rel chunk-cdc75a846424d224be95bef5e748659b
+INFO:  == LLM cache == saving: default:extract:67da663fcaad62ad6a276f2159720934
+INFO: Chunk 118 of 216 extracted 5 Ent + 4 Rel chunk-366808974c0fcabd60213a8af86f98c2
+INFO:  == LLM cache == saving: default:extract:c2fad638e19e9a60c294a9f167ef0be9
+INFO: Chunk 119 of 216 extracted 7 Ent + 6 Rel chunk-815e4f7cee9742bc3e2e8fee86eeecdc
+INFO:  == LLM cache == saving: default:extract:fa1efae80c60a2106d6546d3ce732d00
+INFO: Chunk 120 of 216 extracted 24 Ent + 16 Rel chunk-5225b33b17e8ce25a168f6df8d8215e5
+INFO:  == LLM cache == saving: default:extract:4e6412a9f051e7779ff71e0dc53a9eb3
+INFO: Chunk 121 of 216 extracted 7 Ent + 6 Rel chunk-7a3d5184847473b74b07721739a5bfbe
+INFO:  == LLM cache == saving: default:extract:38331253431cbff1750571776ea3d969
+INFO: Chunk 122 of 216 extracted 12 Ent + 4 Rel chunk-aff554a7fea2b0174a3638024d446a56
+INFO:  == LLM cache == saving: default:extract:86cad169af3a349f165ccfea2663b28b
+INFO: Chunk 123 of 216 extracted 6 Ent + 5 Rel chunk-9c20ba1706cc7ac7726050c507d30f50
+INFO:  == LLM cache == saving: default:extract:4580eb5075f4a6351490751e77694190
+INFO: Chunk 124 of 216 extracted 13 Ent + 12 Rel chunk-0908a0340b9818d5c3d67ffd677f69df
+INFO:  == LLM cache == saving: default:extract:b967b0a4f8f9d1ab9d97667450d217c5
+INFO: Chunk 125 of 216 extracted 38 Ent + 37 Rel chunk-844030a4d8a6de0ccf527992172d7166
+INFO:  == LLM cache == saving: default:extract:078e25e81c3bee1c47838f264fa03db2
+INFO: Chunk 126 of 216 extracted 7 Ent + 6 Rel chunk-7a5b263454d8b182750b31dbe14dcdab
+INFO:  == LLM cache == saving: default:extract:6f3f665310d77b2468fc76f9ccaaef35
+INFO: Chunk 127 of 216 extracted 9 Ent + 5 Rel chunk-fa54432d372186232c5c9c4f49b861e9
+INFO:  == LLM cache == saving: default:extract:6fa1e73085b86043f6d313bb066b59b1
+INFO: Chunk 128 of 216 extracted 5 Ent + 4 Rel chunk-43efc3959ca8fe33258e06a2eb799ab5
+INFO:  == LLM cache == saving: default:extract:57204719c3876635c8fca8947bfc59fb
+INFO: Chunk 129 of 216 extracted 12 Ent + 11 Rel chunk-22ec2d63c5447f009f8e14f909cb3d39
+INFO:  == LLM cache == saving: default:extract:31fd7e16fe0486c3df22e4d0f65c92d6
+INFO: Chunk 130 of 216 extracted 6 Ent + 5 Rel chunk-6502c650bcc919b4a37d340e72611559
+INFO:  == LLM cache == saving: default:extract:1e20bc2d718116080b9562652192cca3
+INFO: Chunk 131 of 216 extracted 5 Ent + 4 Rel chunk-bc770219318b1a31007357bc8ad819d6
+INFO:  == LLM cache == saving: default:extract:2aeee6099ce75c0aac85414952f93621
+INFO: Chunk 132 of 216 extracted 9 Ent + 7 Rel chunk-70ea7481e3c4e08532f67a9abecde5f9
+INFO:  == LLM cache == saving: default:extract:824737c3375ab9370634f184fdb706dc
+INFO: Chunk 133 of 216 extracted 20 Ent + 18 Rel chunk-f9ebb1ddbe117603cd2ffff1b870e9ae
+INFO:  == LLM cache == saving: default:extract:43cabf3e151b664414665dd2b22e27db
+INFO: Chunk 134 of 216 extracted 11 Ent + 7 Rel chunk-114bf6ecc915ce50383e97cbb0199cc4
+INFO:  == LLM cache == saving: default:extract:ba05980f8fd00f58eadc2ebcb07b25a8
+INFO: Chunk 135 of 216 extracted 5 Ent + 4 Rel chunk-973dce971af31474ddd43e6e00b147f7
+INFO:  == LLM cache == saving: default:extract:641d9fb66828e12954ce6b5d929226d4
+INFO: Chunk 136 of 216 extracted 11 Ent + 7 Rel chunk-f5668c202430163cc5097604a98058ed
+INFO:  == LLM cache == saving: default:extract:cd06e99ee38e0c08f6ed6c6038ab784c
+INFO: Chunk 137 of 216 extracted 11 Ent + 12 Rel chunk-5a2a424d35c8371bfe822398161732dd
+INFO:  == LLM cache == saving: default:extract:b2cab6f53ef11780ec25b8f915a94a29
+INFO: Chunk 138 of 216 extracted 11 Ent + 9 Rel chunk-e52bb62e077d4db1eb6c925ac4a0565e
+INFO:  == LLM cache == saving: default:extract:8be549bb56bf82f6d1276c65160acedb
+INFO: Chunk 139 of 216 extracted 6 Ent + 5 Rel chunk-0c2ee414820ec7b040f63b99feb057e2
+INFO:  == LLM cache == saving: default:extract:5fb7692382017ced97f90acb0ef89423
+INFO: Chunk 140 of 216 extracted 9 Ent + 7 Rel chunk-c487d47e9d94b77bc6c6185d19a45849
+INFO:  == LLM cache == saving: default:extract:203c5b9b8ec9d527974e64f62d726390
+INFO: Chunk 141 of 216 extracted 12 Ent + 9 Rel chunk-44d22c6da1c507c187f71b1b576524ac
+INFO:  == LLM cache == saving: default:extract:9f16b3e7dd1d81ec2d1003befdc14372
+INFO: Chunk 142 of 216 extracted 8 Ent + 5 Rel chunk-91fb27c7119bdb8a5271e5ea86d39c2b
+INFO:  == LLM cache == saving: default:extract:319edba7a58c3f657dd6597495347364
+INFO: Chunk 143 of 216 extracted 9 Ent + 8 Rel chunk-6c09e84d110894b31d0ca1a2351c3eae
+INFO:  == LLM cache == saving: default:extract:458bf7c6c061895567ec345d0627c1ad
+INFO: Chunk 144 of 216 extracted 16 Ent + 13 Rel chunk-f750ab36b2f3c4736f4d211c305b36aa
+INFO:  == LLM cache == saving: default:extract:564ce56643e1b6afff8d29f05323cc47
+INFO: Chunk 145 of 216 extracted 6 Ent + 5 Rel chunk-0062a028e9dff340fab151943ea14834
+INFO:  == LLM cache == saving: default:extract:83c33675d21a52abaed6d9201a9e567e
+INFO: Chunk 146 of 216 extracted 12 Ent + 6 Rel chunk-912985f5ad6ba6992e74bb91994a8a28
+INFO:  == LLM cache == saving: default:extract:aec786d3934f17e82598bcc79a79f863
+INFO: Chunk 147 of 216 extracted 11 Ent + 10 Rel chunk-53c5eb4f63fef104b52ef1aa30f38af6
+INFO:  == LLM cache == saving: default:extract:af510c23d702bca2d05d978dead45dc2
+INFO: Chunk 148 of 216 extracted 15 Ent + 18 Rel chunk-fa81a0bde62d00db67e3f78217464e36
+INFO:  == LLM cache == saving: default:extract:1397b0ba83da6ff1f3a3fe733f87b7ac
+INFO: Chunk 149 of 216 extracted 2 Ent + 0 Rel chunk-e91882bfe6152e7b88c43f61b7614a63
+INFO:  == LLM cache == saving: default:extract:30ac286ff03237049672eeadc3b3079b
+INFO: Chunk 150 of 216 extracted 13 Ent + 14 Rel chunk-01866903c222f0a86217a8be58eb9aca
+INFO:  == LLM cache == saving: default:extract:181beb5c8e5dbc5cb967342306ad9ff0
+INFO: Chunk 151 of 216 extracted 9 Ent + 8 Rel chunk-1b21560a97097ef8c782850de81e35aa
+INFO:  == LLM cache == saving: default:extract:72f74e535690d2cc9c62efa8e795865a
+INFO: Chunk 152 of 216 extracted 11 Ent + 8 Rel chunk-4f0db3eb8e47b1168869ce73699eacd2
+INFO:  == LLM cache == saving: default:extract:5cf4768a068802eeed86996a16b45b8d
+INFO: Chunk 153 of 216 extracted 7 Ent + 6 Rel chunk-1c5a12d22cf1665308291c146f152537
+INFO:  == LLM cache == saving: default:extract:92e9f87e159f4d548d9ff01bb09a3d3c
+INFO: Chunk 154 of 216 extracted 13 Ent + 12 Rel chunk-4fab5ac32aa4dad18361b99b22fbb787
+INFO:  == LLM cache == saving: default:extract:f79049497ca703c4a0fb1b283baa84ef
+INFO: Chunk 155 of 216 extracted 4 Ent + 3 Rel chunk-508961555c467e211aad7fa4b893e675
+INFO:  == LLM cache == saving: default:extract:57520b6e2c2afa84942f501b3798f5f1
+INFO: Chunk 156 of 216 extracted 23 Ent + 25 Rel chunk-2547199e178a3bea51166c4da34b5890
+INFO:  == LLM cache == saving: default:extract:e0f939f9138ce1ce4cc518e290aded4b
+INFO: Chunk 157 of 216 extracted 28 Ent + 25 Rel chunk-53e6356230579174bc1646371ab0629d
+INFO:  == LLM cache == saving: default:extract:c38020039703e05d63081fb0bd3408a5
+INFO: Chunk 158 of 216 extracted 18 Ent + 12 Rel chunk-27d0171243706f7c20a06c9a73190c96
+INFO:  == LLM cache == saving: default:extract:69569623fdb0df3c2b6c959587d775a1
+INFO: Chunk 159 of 216 extracted 18 Ent + 9 Rel chunk-16e53f221a8aaf862ba107b114abcab2
+INFO:  == LLM cache == saving: default:extract:3af7f7c1815fc00d32aecbd7112015cd
+INFO: Chunk 160 of 216 extracted 18 Ent + 8 Rel chunk-bff12f56d0df62b0fd2dbb213026b0d6
+INFO:  == LLM cache == saving: default:extract:e06d0cd3a8a56dc7ef632f36259c5148
+INFO: Chunk 161 of 216 extracted 6 Ent + 5 Rel chunk-b07d04b001293577bf3357edee85b534
+INFO:  == LLM cache == saving: default:extract:3a86690981f0390b6cf488c46a8f1893
+INFO: Chunk 162 of 216 extracted 38 Ent + 35 Rel chunk-25a870883e30ca4e4e260db153e16de6
+INFO:  == LLM cache == saving: default:extract:d99497f7d1d1b5e888870f39fdc7e3a0
+INFO: Chunk 163 of 216 extracted 8 Ent + 7 Rel chunk-2dfd14c48b4b4598d0c8ffa221c1df81
+INFO:  == LLM cache == saving: default:extract:8918fa135c57264609a03796b1120837
+INFO: Chunk 164 of 216 extracted 38 Ent + 41 Rel chunk-86fe0a0dce4f7819d35523a45e7fd62e
+INFO:  == LLM cache == saving: default:extract:faef4d3bbf97a41705d02b7f0abc28ef
+INFO: Chunk 165 of 216 extracted 10 Ent + 8 Rel chunk-80aef901199e2ace7583bc4503b58d78
+INFO:  == LLM cache == saving: default:extract:b9f43240805d273dfbba4662ef2a4f12
+INFO: Chunk 166 of 216 extracted 15 Ent + 14 Rel chunk-bf35b6fe615bb837008bfcf5197afb12
+INFO:  == LLM cache == saving: default:extract:bd2d0ff66e295f76d9388e15d789a2f9
+INFO: Chunk 167 of 216 extracted 5 Ent + 4 Rel chunk-b468b01feae03bbeb095bda274f22463
+INFO:  == LLM cache == saving: default:extract:4064b5c5d8ceae4cb7ccc38be2d75600
+INFO: Chunk 168 of 216 extracted 11 Ent + 8 Rel chunk-f78464a2c762f2ac52cce0271de908a9
+INFO:  == LLM cache == saving: default:extract:8cd10cb7e31c343ea0255666e97b9de7
+INFO: Chunk 169 of 216 extracted 18 Ent + 10 Rel chunk-9e4557a3ad0dc9e0886fbcbc5cafce0b
+INFO:openai._base_client:Retrying request to /chat/completions in 0.437170 seconds
+INFO:  == LLM cache == saving: default:extract:2f4840f3a67e36e46f8d7bf82c50dfb3
+INFO: Chunk 170 of 216 extracted 24 Ent + 11 Rel chunk-1af2b19abb0b704d0d3c588002b68add
+INFO:openai._base_client:Retrying request to /chat/completions in 0.407539 seconds
+INFO:  == LLM cache == saving: default:extract:895f3b491fb416d37fc05368ba735ddf
+INFO: Chunk 171 of 216 extracted 7 Ent + 6 Rel chunk-c18ce75a163d535e35233bd65ab46b64
+INFO:  == LLM cache == saving: default:extract:6f4e4e41a86f9d0276e50f0881337c99
+INFO: Chunk 172 of 216 extracted 44 Ent + 43 Rel chunk-e65169eeb2407bedfb7e356dc1bbf1f8
+INFO:  == LLM cache == saving: default:extract:d1bb5795cc1d8c61d44f933f8322a994
+INFO: Chunk 173 of 216 extracted 18 Ent + 9 Rel chunk-9418342574b2792109b681e7c44601ba
+INFO:  == LLM cache == saving: default:extract:51d3b3c47a84b1b23ec9235eab3b5331
+INFO: Chunk 174 of 216 extracted 6 Ent + 5 Rel chunk-eead98c903c9cde8f64b1d2c8dae581e
+INFO:  == LLM cache == saving: default:extract:c79de00b13442f3ff60fde3ddb4f77e3
+INFO: Chunk 175 of 216 extracted 6 Ent + 4 Rel chunk-e8205ad3103ca3b9c1fb9f98d9584a03
+INFO:  == LLM cache == saving: default:extract:bc1de3903a9d317c27541bb5624b31bb
+INFO: Chunk 176 of 216 extracted 7 Ent + 6 Rel chunk-b7d37dbe266253071f05692384eaf7ec
+INFO:  == LLM cache == saving: default:extract:ce3de1ae001b441850876c6b3708d8f1
+INFO: Chunk 177 of 216 extracted 12 Ent + 12 Rel chunk-1e49bf5ab12c0677321337f83c38fe0a
+INFO:  == LLM cache == saving: default:extract:451d6ab6ed42548c3235da493aefd9e1
+INFO: Chunk 178 of 216 extracted 12 Ent + 9 Rel chunk-188d592ff3cff56c600d114b41953556
+INFO:  == LLM cache == saving: default:extract:cdc1cd6d8f379499c03c0ad6faa15775
+INFO: Chunk 179 of 216 extracted 7 Ent + 6 Rel chunk-d6e6792e62bbd9174e8ddc2dce3c4772
+INFO:  == LLM cache == saving: default:extract:95c5ca0f0cc15f02321a62d8c4697c3c
+INFO: Chunk 180 of 216 extracted 6 Ent + 5 Rel chunk-08be44a18d80d033d6d8c6eb79a3a64f
+INFO:  == LLM cache == saving: default:extract:f750fc015c2eb41e8f5ca59c258a679c
+INFO: Chunk 181 of 216 extracted 7 Ent + 6 Rel chunk-eb63d9a76b5e16b54b440b97c0ede0f6
+INFO:  == LLM cache == saving: default:extract:c10ea8de7191fdb50710c333cf0784f5
+INFO: Chunk 182 of 216 extracted 50 Ent + 57 Rel chunk-75c79c36d93e57136b72ac0107291bc6
+INFO:  == LLM cache == saving: default:extract:869cfc0c4d34fb36efc70c4282119d4a
+INFO: Chunk 183 of 216 extracted 13 Ent + 16 Rel chunk-bcba7bdeba2b73eee2708a05dfc354f1
+INFO:  == LLM cache == saving: default:extract:d34a30b07ae09f96e71b9b3d1cc3cb47
+INFO: Chunk 184 of 216 extracted 17 Ent + 7 Rel chunk-e4deaf546dd3ce6cf9f4d4298a30c16c
+INFO:  == LLM cache == saving: default:extract:0b406fa1cb7e2a68d765a417cec7487e
+INFO: Chunk 185 of 216 extracted 7 Ent + 6 Rel chunk-ad92b8e85bbcae6b658a4192d32c4bf3
+INFO:  == LLM cache == saving: default:extract:e3c23aa4a10b6e25cd1444ad0bb84303
+INFO: Chunk 186 of 216 extracted 12 Ent + 12 Rel chunk-e822b0b36bac4b88d32cca85f26cc962
+INFO:  == LLM cache == saving: default:extract:7fe21d0cccfb1fedd98db990098cc25e
+INFO: Chunk 187 of 216 extracted 15 Ent + 26 Rel chunk-8192d6faa31a6aed18c83a92fd0d4cf8
+INFO:  == LLM cache == saving: default:extract:9ee9462147fea999a9fae19828769d08
+INFO: Chunk 188 of 216 extracted 13 Ent + 11 Rel chunk-0ed5436bf3fb965fbbc7838cf37929b3
+INFO:  == LLM cache == saving: default:extract:3560ee5dc641715c3af3219a38b432f5
+INFO: Chunk 189 of 216 extracted 21 Ent + 20 Rel chunk-ca8792ea559d74a7290ea6ef526fb64f
+INFO:  == LLM cache == saving: default:extract:fca68f0e3cbff6ffa69dbf2a2e7e174c
+INFO: Chunk 190 of 216 extracted 6 Ent + 5 Rel chunk-bf76767393a4c9d7f894571646f86f0b
+INFO:  == LLM cache == saving: default:extract:d16a04975dc802ede3ff9bfbd3b80d3c
+INFO: Chunk 191 of 216 extracted 18 Ent + 18 Rel chunk-42b55ba8453375fed74e005cd3cc43ab
+INFO:openai._base_client:Retrying request to /chat/completions in 0.408961 seconds
+INFO:openai._base_client:Retrying request to /chat/completions in 0.399717 seconds
+INFO:  == LLM cache == saving: default:extract:7fca3ce067b454480e1191d7506b5e18
+INFO: Chunk 192 of 216 extracted 22 Ent + 21 Rel chunk-36a0d55340470c41badc3ab815a48b11
+INFO:  == LLM cache == saving: default:extract:9924bcc5adfb548ff95b0e7e49e588f9
+INFO: Chunk 193 of 216 extracted 8 Ent + 9 Rel chunk-af7dd67e1aecd6c6715c79478479c668
+INFO:  == LLM cache == saving: default:extract:05e2c9ed7d345fa4a51eaf28314ef2c5
+INFO: Chunk 194 of 216 extracted 5 Ent + 4 Rel chunk-9d28819c3c65f9923e36642ce9a3523a
+INFO:  == LLM cache == saving: default:extract:542a53fc759bad2478fb8cd693f81326
+INFO: Chunk 195 of 216 extracted 5 Ent + 4 Rel chunk-ef48529f2f981dcb2797307e782efe92
+INFO:openai._base_client:Retrying request to /chat/completions in 0.376122 seconds
+INFO:  == LLM cache == saving: default:extract:b9202ed0501088f208f06fcb4bcf52a8
+INFO: Chunk 196 of 216 extracted 14 Ent + 12 Rel chunk-32ddbaf2dc6854d70cd0231ee3b7b30f
+INFO:  == LLM cache == saving: default:extract:4a59a71b466f951589b0cdab26edd5c5
+INFO: Chunk 197 of 216 extracted 5 Ent + 4 Rel chunk-27af44d21900dfe9b3475d240189015b
+INFO:  == LLM cache == saving: default:extract:e963c8de17de4959bfde194e20753c04
+INFO: Chunk 198 of 216 extracted 7 Ent + 5 Rel chunk-3900bd5e92dc3ff477d7f0fabbfd0903
+INFO:  == LLM cache == saving: default:extract:74529b2482f2567eda608ed372ebedd1
+INFO: Chunk 199 of 216 extracted 7 Ent + 6 Rel chunk-565c0e054586b465c48b31b170716d5b
+INFO:  == LLM cache == saving: default:extract:8fb188efca41980dc7f278bffc9d07bb
+INFO: Chunk 200 of 216 extracted 8 Ent + 7 Rel chunk-7ad50e2d4da052bc9fee4ea624a8528f
+INFO:  == LLM cache == saving: default:extract:146db638f701e2adfc59201df80aecab
+INFO: Chunk 201 of 216 extracted 10 Ent + 18 Rel chunk-d14744286afe2dc35a5324b596629f4a
+INFO:  == LLM cache == saving: default:extract:371be6c13983be58aead8961021a2010
+INFO: Chunk 202 of 216 extracted 15 Ent + 14 Rel chunk-619596f56e73bbdb8f2bab5ff716984c
+INFO:  == LLM cache == saving: default:extract:8d3679c9c4b950cd14972bfd968403e6
+INFO: Chunk 203 of 216 extracted 18 Ent + 17 Rel chunk-a8c5a0279a56acd1c7da03467c22284e
+INFO:openai._base_client:Retrying request to /chat/completions in 0.901264 seconds
+INFO:  == LLM cache == saving: default:extract:0e0723d1f21da13af2c2c29082946149
+INFO: Chunk 204 of 216 extracted 11 Ent + 9 Rel chunk-3cc56e56f38d55964222750bf971f471
+INFO:  == LLM cache == saving: default:extract:75a1f92c3cdb8426305f9f8e9bbc1ffe
+INFO: Chunk 205 of 216 extracted 14 Ent + 11 Rel chunk-681e040359f2c6112ca35860a588dd88
+INFO:  == LLM cache == saving: default:extract:917f07bc8a843a29436b219a8e28319b
+INFO: Chunk 206 of 216 extracted 8 Ent + 7 Rel chunk-45612c9b15be60c04ace7e86ca47be4c
+INFO:  == LLM cache == saving: default:extract:e508c1048673eaf60f326e6056d0cd51
+INFO: Chunk 207 of 216 extracted 10 Ent + 11 Rel chunk-fa7d45e646da9c39534669c3a730863e
+INFO:  == LLM cache == saving: default:extract:b43d8684625b412321ca45ed4d82e040
+INFO: Chunk 208 of 216 extracted 14 Ent + 9 Rel chunk-dd1cedc8d65b907a2104d9a71428b3be
+INFO:  == LLM cache == saving: default:extract:c874917b100677d624694effee9bccf4
+INFO: Chunk 209 of 216 extracted 22 Ent + 22 Rel chunk-5fb6875781846fe98e977591bb4ff5d8
+INFO:  == LLM cache == saving: default:extract:bbc1e0e139f21ec230f5044f99e9451f
+INFO: Chunk 210 of 216 extracted 12 Ent + 11 Rel chunk-ae6ade12d6e6964fb85422f4cc485bee
+INFO:  == LLM cache == saving: default:extract:6eb75b371cae4ae444b29c8217ffff2e
+INFO: Chunk 211 of 216 extracted 12 Ent + 8 Rel chunk-a6d0c51243ca209ed10575700d7d6fcb
+INFO:  == LLM cache == saving: default:extract:e9ae590fcf74cce630d32633035f3bef
+INFO: Chunk 212 of 216 extracted 16 Ent + 15 Rel chunk-b16cd651cdc5569a6a819323b4bebdf3
+INFO:  == LLM cache == saving: default:extract:20d178869e62989f0cb82cb3a4445162
+INFO: Chunk 213 of 216 extracted 10 Ent + 7 Rel chunk-2183dd5d018c45af93c88653910c0ba1
+INFO:  == LLM cache == saving: default:extract:eabf2bd7ce6c2d6881400c78e51836f3
+INFO: Chunk 214 of 216 extracted 5 Ent + 3 Rel chunk-09fc3feaf326d3fa098b21ff07275159
+INFO:  == LLM cache == saving: default:extract:7e0328bd7c9507d861e13df51cea73f9
+INFO: Chunk 215 of 216 extracted 16 Ent + 11 Rel chunk-b0bc9c961a2342cc54041938ca465560
+INFO:openai._base_client:Retrying request to /chat/completions in 0.397822 seconds
+INFO:  == LLM cache == saving: default:extract:a7adf501a1f743ab97cab48931e2baf2
+INFO: Chunk 216 of 216 extracted 42 Ent + 49 Rel chunk-4f81aa7efe24d8dc3a429c05163875d9
+INFO: Extracted entities from 216 multimodal chunks
+INFO: Added 1978 belongs_to relations for multimodal entities
+INFO: Merging stage 1/1: 十字花科蔬菜病虫害_3.pdf
+INFO: Phase 1: Processing 447 entities from doc-6141888874633576467c3949cd68da10 (async: 8)
+INFO: Merged: `白菜` | 1+1 (dd 87)
+INFO: Merged: `萝卜` | 1+1 (dd 82)
+INFO: Merged: `花椰菜` | 1+1 (dd 53)
+INFO: Merged: `芥菜` | 1+1 (dd 18)
+INFO: Merged: `小猿叶甲` | 1+5 (dd 5)
+INFO: Merged: `大猿叶甲` | 1+3 (dd 4)
+INFO: Merged: `鞘翅目` | 1+1 (dd 14)
+INFO: Merged: `叶甲科` | 1+1 (dd 16)
+INFO: Merged: `甘蓝` | 1+1 (dd 79)
+INFO: Merged: `软腐病` | 1+6 (dd 28)
+INFO: Merged: `白锈病` | 1+3 (dd 2)
+INFO: Merged: `病毒病` | 1+2 (dd 10)
+INFO: Merged: `菜薹` | 1+1 (dd 5)
+INFO: Merged: `芜菁` | 1+1 (dd 8)
+INFO: Merged: `心叶` | 1+2 (dd 27)
+INFO: Merged: `叶背` | 1+2 (dd 8)
+INFO: Merged: `蚜虫` | 1+2 (dd 10)
+INFO:  == LLM cache == saving: default:summary:1c89acdba8a3f7acaaff4738f416338f
+INFO: LLMmrg: `叶片` | 1+11 (dd 151)
+INFO: Merged: `幼苗期` | 1+2 (dd 6)
+INFO: Merged: `黑腐病` | 2+4 (dd 16)
+INFO: Merged: `小菜蛾` | 2+5 (dd 9)
+INFO: Merged: `菜青虫` | 2+3 (dd 5)
+INFO: Merged: `猿叶甲` | 1+1 (dd 4)
+INFO: Merged: `黄曲条跳甲` | 1+5 (dd 8)
+INFO: Merged: `咯菌腈` | 1+2 (dd 4)
+INFO: Merged: `代森锰锌` | 1+2 (dd 7)
+INFO: Merged: `异菌脲` | 1+1 (dd 3)
+INFO: Merged: `春雷霉素` | 1+1 (dd 3)
+INFO: Merged: `戊唑醇` | 1+1 (dd 3)
+INFO: Merged: `苯醚甲环唑` | 1+1 (dd 4)
+INFO:  == LLM cache == saving: default:summary:a51a0655e6c63efb501db83c294ef9cd
+INFO: LLMmrg: `斜纹夜蛾` | 2+8 (dd 14)
+INFO: Merged: `噻菌铜` | 1+1 (dd 1)
+INFO: Merged: `春雷·氧氯铜` | 1+1
+INFO: Merged: `硫酸铜钙` | 1+1 (dd 2)
+INFO:  == LLM cache == saving: default:summary:b9d9f7c5b651f5e35aed7cf7811f66a5
+INFO: LLMmrg: `甜菜夜蛾` | 2+7 (dd 10)
+INFO: Merged: `灰巴蜗牛` | 1+5
+INFO: Merged: `柄眼目` | 1+1 (dd 5)
+INFO: Merged: `巴蜗牛科` | 1+1 (dd 4)
+INFO: Merged: `茎部` | 1+2 (dd 6)
+INFO: Merged: `四聚乙醛` | 1+2 (dd 3)
+INFO: Merged: `四聚·杀螺胺` | 1+1 (dd 2)
+INFO: Merged: `霜霉菌` | 1+1 (dd 6)
+INFO: Merged: `霜霉威水剂` | 1+1 (dd 1)
+INFO:openai._base_client:Retrying request to /embeddings in 0.486071 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.404418 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.460438 seconds
+INFO: Merged: `根结线虫病` | 1+2
+INFO:openai._base_client:Retrying request to /embeddings in 0.780343 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.466397 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.964970 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.852755 seconds
+INFO: Merged: `腹足纲` | 1+1 (dd 3)
+INFO: Merged: `鳞翅目` | 1+1 (dd 41)
+INFO: Merged: `菜蛾科` | 1+1 (dd 4)
+INFO: Merged: `嫩茎` | 1+1 (dd 14)
+INFO:openai._base_client:Retrying request to /embeddings in 0.499775 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.440267 seconds
+INFO: Merged: `根部` | 1+1 (dd 11)
+INFO:openai._base_client:Retrying request to /embeddings in 0.404166 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.457180 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.449414 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.398581 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.924648 seconds
+INFO: Merged: `菠菜` | 1+1 (dd 6)
+INFO: Merged: `盐酸吗啉呱` | 1+1 (dd 1)
+INFO: Merged: `粉蝶科` | 1+1 (dd 6)
+INFO:  == LLM cache == saving: default:summary:0a68ac621053c08bf74cd540de86b597
+INFO: LLMmrg: `菜粉蝶` | 2+8 (dd 10)
+INFO: Merged: `幼苗` | 1+2 (dd 4)
+INFO: Merged: `大白菜` | 1+5 (dd 34)
+INFO: Merged: `炭疽病` | 1+4 (dd 3)
+INFO: Merged: `叶柄` | 1+1 (dd 19)
+INFO: Merged: `花梗` | 1+1 (dd 12)
+INFO: Merged: `生石灰` | 1+1
+INFO: Merged: `霜霉病` | 1+1 (dd 7)
+INFO: Merged: `根肿病` | 1+4
+INFO: Merged: `芸薹根肿菌` | 1+2 (dd 2)
+INFO: Merged: `蛞蝓` | 2+2
+INFO: Merged: `蛞蝓科` | 1+1
+INFO: Merged: `草莓` | 1+1
+INFO: Merged: `豆类` | 1+1 (dd 2)
+INFO: Merged: `嫩叶` | 1+1 (dd 5)
+INFO: Merged: `菜螟` | 2+3 (dd 4)
+INFO: Merged: `螟蛾科` | 1+1 (dd 5)
+INFO: Merged: `虱螨脲` | 1+1 (dd 1)
+INFO: Merged: `甲氧虫酰肼` | 1+1 (dd 2)
+INFO: Merged: `溴氰虫酰胺` | 1+1 (dd 2)
+INFO: Merged: `氯虫·噻虫嗪` | 1+1 (dd 2)
+INFO: Merged: `氯氟氰菊酯` | 1+2
+INFO:openai._base_client:Retrying request to /embeddings in 0.484182 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.477904 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.432975 seconds
+INFO: Merged: `防虫网` | 1+1
+INFO: Merged: `茎基部` | 1+2 (dd 13)
+INFO:openai._base_client:Retrying request to /embeddings in 0.489847 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.495995 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.485701 seconds
+INFO: Merged: `番茄` | 1+1 (dd 8)
+INFO: Merged: `辣椒` | 1+1 (dd 2)
+INFO: Merged: `马铃薯` | 1+1 (dd 1)
+INFO:openai._base_client:Retrying request to /embeddings in 0.950899 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.473483 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.393988 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.449544 seconds
+INFO: Merged: `黄瓜` | 1+1
+INFO: Merged: `芹菜` | 1+1
+INFO:openai._base_client:Retrying request to /embeddings in 0.444105 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.400268 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.494866 seconds
+INFO: Merged: `茎` | 1+1 (dd 7)
+INFO: Merged: `夜蛾科` | 1+1 (dd 19)
+INFO:openai._base_client:Retrying request to /embeddings in 0.399477 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.926117 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.398546 seconds
+INFO: Merged: `虫酰肼悬浮剂` | 1+2
+INFO: Merged: `缺硼` | 1+1
+INFO:openai._base_client:Retrying request to /embeddings in 0.408277 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.451298 seconds
+INFO: Merged: `青花菜` | 1+1 (dd 2)
+INFO:openai._base_client:Retrying request to /embeddings in 0.806056 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.461404 seconds
+INFO: Merged: `硼肥` | 1+2
+INFO:openai._base_client:Retrying request to /embeddings in 0.480377 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.864250 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.488647 seconds
+INFO: Merged: `甜菜夜蛾核型多角体病毒悬浮剂` | 1+5
+INFO:openai._base_client:Retrying request to /embeddings in 0.404134 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.401541 seconds
+INFO: Merged: `花` | 1+1 (dd 2)
+INFO:openai._base_client:Retrying request to /embeddings in 0.443333 seconds
+INFO: Merged: `种荚` | 1+1 (dd 4)
+INFO: Merged: `莲座期` | 1+1 (dd 3)
+INFO: Merged: `白菜炭疽病` | 1+1
+INFO: Merged: `多菌灵` | 1+2
+INFO:openai._base_client:Retrying request to /embeddings in 0.400853 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.480114 seconds
+INFO: Merged: `咪鲜胺` | 1+2 (dd 1)
+INFO:openai._base_client:Retrying request to /embeddings in 0.470810 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.432445 seconds
+INFO: Merged: `芋` | 1+1
+INFO: Merged: `莲藕` | 1+1
+INFO: Merged: `丙森锌` | 1+1 (dd 2)
+INFO: Merged: `霜霉威` | 1+1 (dd 1)
+INFO:openai._base_client:Retrying request to /embeddings in 0.460942 seconds
+INFO: Merged: `唑醚·代森联` | 1+1 (dd 1)
+INFO: Merged: `霜脲·锰锌` | 1+1 (dd 1)
+INFO: Merged: `氰霜唑` | 2+1 (dd 1)
+INFO:openai._base_client:Retrying request to /embeddings in 0.491410 seconds
+INFO: Merged: `嗅酮·霜脲氰` | 1+1 (dd 1)
+INFO: Merged: `菌核病` | 1+4 (dd 8)
+INFO: Merged: `美洲斑潜蝇` | 1+1
+INFO: Merged: `棕榈蓟马` | 1+3 (dd 2)
+INFO: Merged: `烟粉虱` | 1+1 (dd 1)
+INFO: Merged: `煤污病` | 1+3 (dd 9)
+INFO: Merged: `敌百虫` | 1+1 (dd 1)
+INFO: Merged: `辛硫磷` | 2+2 (dd 1)
+INFO: Merged: `氯氰菊酯` | 1+2 (dd 1)
+INFO: Merged: `阿维菌素` | 1+1 (dd 2)
+INFO: Merged: `灰霉病` | 1+2 (dd 2)
+INFO: Merged: `茄子` | 1+1 (dd 4)
+INFO: Merged: `桃蚜` | 1+3 (dd 8)
+INFO: Merged: `萝卜蚜` | 1+2 (dd 6)
+INFO: Merged: `甘蓝蚜` | 1+2 (dd 7)
+INFO: Merged: `嫩荚` | 1+1 (dd 2)
+INFO: Merged: `黄守瓜` | 1+1 (dd 1)
+INFO: Merged: `印楝素` | 1+1 (dd 2)
+INFO: Merged: `吡虫啉` | 2+2 (dd 1)
+INFO: Merged: `噻虫嗪` | 1+1
+INFO: Merged: `啶虫脒` | 1+1
+INFO: Merged: `烯啶虫胺` | 1+1
+INFO: Merged: `螺虫乙酯` | 1+1
+INFO: Merged: `短额负蝗` | 1+3 (dd 1)
+INFO: Merged: `直翅目` | 1+1 (dd 6)
+INFO: Merged: `蝗科` | 1+1 (dd 6)
+INFO: Merged: `黑斑病` | 2+4
+INFO: Merged: `芸薹链格孢` | 2+4
+INFO: Merged: `细菌性软腐病` | 1+1 (dd 1)
+INFO: Merged: `氟虫脲` | 1+2
+INFO: Merged: `氯虫苯甲酰胺` | 1+1 (dd 1)
+INFO: Merged: `球孢白僵菌` | 1+1 (dd 1)
+INFO: Merged: `中华稻蝗` | 1+3
+INFO: Merged: `水稻` | 1+1 (dd 1)
+INFO: Merged: `玉米` | 1+1 (dd 1)
+INFO: Merged: `茭白` | 1+1 (dd 1)
+INFO: Merged: `高效氟氯氰菊酯` | 1+1
+INFO: Merged: `灭幼脲1号` | 1+1
+INFO: Merged: `多杀霉素` | 1+2 (dd 1)
+INFO: Merged: `苏云金杆菌` | 1+2 (dd 1)
+INFO: Merged: `银纹夜蛾` | 1+3 (dd 2)
+INFO: Merged: `莴苣` | 1+2 (dd 1)
+INFO: Merged: `跳甲` | 1+1 (dd 1)
+INFO: Phase 2: Processing 592 relations from doc-6141888874633576467c3949cd68da10 (async: 8)
+INFO:  == LLM cache == saving: default:summary:860d28cc98d3d66459463e3bd27c79e7
+INFO: LLMmrg: `小猿叶甲`~`白菜` | 1+8 (dd 1)
+INFO: Merged: `白菜`~`白锈病` | 1+1
+INFO: Merged: `大猿叶甲`~`鞘翅目` | 1+1 (dd 4)
+INFO: Merged: `病毒病`~`白菜` | 1+1 (dd 1)
+INFO: Merged: `小猿叶甲`~`鞘翅目` | 1+1 (dd 5)
+INFO: Merged: `叶甲科`~`小猿叶甲` | 1+1 (dd 6)
+INFO: Merged: `病毒病`~`菜薹` | 1+1 (dd 1)
+INFO: Merged: `病毒病`~`萝卜` | 1+4 (dd 2)
+INFO: Merged: `叶甲科`~`大猿叶甲` | 1+1 (dd 4)
+INFO: Merged: `病毒病`~`芥菜` | 1+1 (dd 1)
+INFO: Merged: `病毒病`~`芜菁` | 1+1 (dd 1)
+INFO: Merged: `病毒病`~`花椰菜` | 1+1 (dd 1)
+INFO: Merged: `萝卜`~`黑腐病` | 1+3 (dd 1)
+INFO: Merged: `甘蓝`~`病毒病` | 1+1 (dd 1)
+INFO: Merged: `白菜`~`黑腐病` | 1+1 (dd 2)
+INFO: Merged: `甘蓝`~`黑腐病` | 1+2 (dd 2)
+INFO: Merged: `柄眼目`~`灰巴蜗牛` | 1+3 (dd 2)
+INFO: Chunks appended from relation: `灰巴蜗牛`
+INFO: Merged: `灰巴蜗牛`~`茎部` | 1+3
+INFO: Merged: `四聚乙醛`~`灰巴蜗牛` | 1+4
+INFO: Chunks appended from relation: `灰巴蜗牛`
+INFO: Merged: `叶片`~`灰巴蜗牛` | 1+5
+INFO: Merged: `根结线虫病`~`萝卜` | 1+2
+INFO: Merged: `小菜蛾`~`鳞翅目` | 1+1 (dd 6)
+INFO: Merged: `小菜蛾`~`菜蛾科` | 1+1 (dd 4)
+INFO: Merged: `病毒病`~`盐酸吗啉呱` | 1+2
+INFO: Merged: `粉蝶科`~`菜粉蝶` | 1+1 (dd 6)
+INFO:  == LLM cache == saving: default:summary:a9c9a35dd3feceda8303e09e96941004
+INFO: LLMmrg: `甘蓝`~`菜粉蝶` | 1+7
+INFO: Merged: `花椰菜`~`菜粉蝶` | 1+5 (dd 1)
+INFO: Merged: `菜粉蝶`~`萝卜` | 1+4 (dd 1)
+INFO: Merged: `白菜`~`菜粉蝶` | 1+4 (dd 1)
+INFO: Merged: `菜粉蝶`~`鳞翅目` | 1+1 (dd 7)
+INFO: Merged: `灰巴蜗牛`~`腹足纲` | 1+2 (dd 1)
+INFO: Merged: `叶片`~`炭疽病` | 1+6 (dd 1)
+INFO: Merged: `灰巴蜗牛`~`生石灰` | 1+1
+INFO: Merged: `萝卜`~`霜霉病` | 1+2 (dd 3)
+INFO: Merged: `叶片`~`白锈病` | 1+3
+INFO: Merged: `根肿病`~`芸薹根肿菌` | 1+3
+INFO: Merged: `根肿病`~`根部` | 2+4
+INFO: Merged: `腹足纲`~`蛞蝓` | 1+1
+INFO: Merged: `柄眼目`~`蛞蝓` | 1+1
+INFO:  == LLM cache == saving: default:summary:8299122cc3e68f1a8f257577e8ce12a7
+INFO: LLMmrg: `斜纹夜蛾`~`白菜` | 1+7 (dd 2)
+INFO: Merged: `蛞蝓`~`蛞蝓科` | 1+1
+INFO: Merged: `根肿病`~`白菜` | 1+2
+INFO: Merged: `草莓`~`蛞蝓` | 1+1
+INFO: Merged: `菜螟`~`鳞翅目` | 1+1 (dd 5)
+INFO: Merged: `菜螟`~`螟蛾科` | 1+1 (dd 5)
+INFO:  == LLM cache == saving: default:summary:17a1d7f1e1ada3e1a2af9a7c825d8a54
+INFO: LLMmrg: `叶片`~`斜纹夜蛾` | 1+11 (dd 1)
+INFO: Merged: `叶片`~`霜霉病` | 1+6
+INFO: Merged: `心叶`~`菜螟` | 1+3 (dd 1)
+INFO: Merged: `叶片`~`蛞蝓` | 1+1
+INFO: Merged: `甘蓝`~`菜螟` | 1+5
+INFO: Merged: `白菜`~`菜螟` | 2+4
+INFO: Merged: `甘蓝`~`软腐病` | 1+3
+INFO: Merged: `菜螟`~`软腐病` | 1+3
+INFO: Merged: `斜纹夜蛾`~`鳞翅目` | 1+2 (dd 7)
+INFO: Merged: `夜蛾科`~`斜纹夜蛾` | 1+2 (dd 7)
+INFO: Merged: `斜纹夜蛾`~`虫酰肼悬浮剂` | 1+1
+INFO: Merged: `夜蛾科`~`甜菜夜蛾` | 1+3 (dd 4)
+INFO: Merged: `霜霉病`~`霜霉菌` | 1+4
+INFO: Merged: `白菜`~`霜霉病` | 1+1 (dd 2)
+INFO:  == LLM cache == saving: default:summary:8c1ee00144616031ab81a7d02b96db62
+INFO: LLMmrg: `叶片`~`甜菜夜蛾` | 1+8
+INFO: Merged: `菜薹`~`霜霉病` | 1+2 (dd 2)
+INFO: Merged: `甘蓝`~`霜霉病` | 1+2 (dd 2)
+INFO: Merged: `甜菜夜蛾`~`甜菜夜蛾核型多角体病毒悬浮剂` | 1+3
+INFO: Merged: `叶片`~`黄曲条跳甲` | 1+5
+INFO: Merged: `鞘翅目`~`黄曲条跳甲` | 1+1 (dd 6)
+INFO: Merged: `叶甲科`~`黄曲条跳甲` | 1+1 (dd 6)
+INFO: Merged: `代森锰锌`~`炭疽病` | 1+1
+INFO: Merged: `炭疽病`~`苯醚甲环唑` | 1+1
+INFO: Merged: `咪鲜胺`~`炭疽病` | 1+1
+INFO: Merged: `咯菌腈`~`霜霉病` | 1+3
+INFO: Merged: `丙森锌`~`霜霉病` | 1+3
+INFO: Merged: `茎基部`~`菌核病` | 1+5
+INFO: Merged: `白菜`~`黄曲条跳甲` | 1+2 (dd 1)
+INFO: Merged: `软腐病`~`黄曲条跳甲` | 1+4
+INFO: Merged: `甘蓝`~`黄曲条跳甲` | 1+3 (dd 3)
+INFO: Merged: `白菜`~`菜青虫` | 1+1 (dd 1)
+INFO: Merged: `烟粉虱`~`煤污病` | 1+2
+INFO: Merged: `菜青虫`~`软腐病` | 1+2
+INFO: Merged: `甘蓝`~`菜青虫` | 1+3 (dd 1)
+INFO: Merged: `甜菜夜蛾`~`白菜` | 1+3
+INFO: Merged: `甘蓝`~`甜菜夜蛾` | 2+3
+INFO: Merged: `煤污病`~`蚜虫` | 1+2
+INFO: Merged: `炭疽病`~`白菜` | 1+2
+INFO: Merged: `印楝素`~`蚜虫` | 1+1
+INFO: Merged: `甘蓝`~`甘蓝蚜` | 1+5 (dd 2)
+INFO: Chunks appended from relation: `甘蓝蚜`
+INFO: Merged: `心叶`~`棕榈蓟马` | 1+1 (dd 1)
+INFO: Merged: `直翅目`~`短额负蝗` | 1+1 (dd 3)
+INFO: Merged: `短额负蝗`~`蝗科` | 1+1 (dd 3)
+INFO:openai._base_client:Retrying request to /embeddings in 0.422550 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.451420 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.417699 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.491077 seconds
+INFO: Merged: `烟粉虱`~`病毒病` | 1+1
+INFO:openai._base_client:Retrying request to /embeddings in 0.496245 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.389187 seconds
+INFO: Merged: `花椰菜`~`黑斑病` | 1+2 (dd 2)
+INFO: Merged: `白菜`~`短额负蝗` | 1+3
+INFO: Merged: `芸薹链格孢`~`黑斑病` | 1+2 (dd 1)
+INFO: Merged: `短额负蝗`~`细菌性软腐病` | 1+2
+INFO: Merged: `萝卜`~`萝卜蚜` | 1+3 (dd 2)
+INFO: Merged: `中华稻蝗`~`直翅目` | 1+1 (dd 1)
+INFO: Merged: `中华稻蝗`~`蝗科` | 1+2 (dd 1)
+INFO: Merged: `甘蓝`~`黑斑病` | 1+1 (dd 2)
+INFO: Merged: `白菜`~`黑斑病` | 1+2 (dd 1)
+INFO: Merged: `中华稻蝗`~`水稻` | 1+2
+INFO: Merged: `硫酸铜钙`~`黑腐病` | 1+2
+INFO: Merged: `中华稻蝗`~`玉米` | 1+2
+INFO: Merged: `中华稻蝗`~`茭白` | 1+2
+INFO: Merged: `小菜蛾`~`心叶` | 2+2
+INFO: Merged: `多杀霉素`~`小菜蛾` | 1+1
+INFO: Merged: `小菜蛾`~`苏云金杆菌` | 1+1
+INFO: Merged: `银纹夜蛾`~`鳞翅目` | 1+1 (dd 3)
+INFO: Merged: `夜蛾科`~`银纹夜蛾` | 1+1 (dd 3)
+INFO: Merged: `炭疽病`~`萝卜` | 1+1
+INFO: Merged: `代森锰锌`~`黑斑病` | 1+1
+INFO: Merged: `咯菌腈`~`黑斑病` | 1+1
+INFO: Merged: `噻菌铜`~`黑腐病` | 1+1
+INFO: Merged: `叶片`~`菜青虫` | 1+1
+INFO: Phase 3: Updating final 447(447+0) entities and  592 relations from doc-6141888874633576467c3949cd68da10
+INFO: Completed merging: 447 entities, 0 extra entities, 592 relations
+INFO: [] Writing graph with 701 nodes, 640 edges
+INFO: In memory DB persist to disk
+INFO: Updated doc_status: added 216 multimodal chunks to standard chunks_list (total chunks: 236)
+INFO: Multimodal content processing complete
+INFO:raganything.kg_quality:Vector semantic dedup canonical mapping (1 rows):
++-----------+-----------+------+
+| from      | canonical | type |
++-----------+-----------+------+
+| 2%氨基寡糖素水剂 | 氨基寡糖素水剂   | 药剂   |
++-----------+-----------+------+
+INFO: KG quality cleanup complete: nodes=673, edges=415, non_cjk_ratio=0.0015, semantic_merge(mode=vector_primary_llm_gray,total_groups=1,total_mappings=1,total_node_pairs=1,total_edge_pairs=1,vector_node_pairs=1,llm_node_pairs=0)
+INFO: Document docs/十字花科蔬菜病虫害_3.pdf processing complete!
+✅ 知识图谱构建完成！数据已保存在 ./rag_storage_whole_book_gemini 目录。
+
+🔍 开始进行 RAG 查询测试...
+问：小猿叶甲幼虫的形态特征是什么？
+INFO: Executing text query: 小猿叶甲幼虫的形态特征是什么？...
+INFO: Query mode: hybrid
+INFO:  == LLM cache == saving: hybrid:keywords:e4a5a1c52c3df15a6029b7d85dc174d3
+INFO: Query nodes: 幼虫, 体色, 体形, 头部结构, 足部特征 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 5 relations
+INFO: Query edges: 小猿叶甲, 形态特征, 生物学特性 (top_k:10, cosine:0.2)
+INFO: Global query: 8 entites, 10 relations
+INFO: Raw search results: 18 entities, 15 relations, 0 vector chunks
+INFO: After truncation: 18 entities, 15 relations
+INFO: Selecting 45 from 193 entity-related chunks by vector similarity
+INFO: Find 12 additional chunks in 6 relations (deduplicated 15)
+INFO: Selecting 12 from 12 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 57 -> 57 (deduplicated 0)
+INFO: Final context: 18 entities, 15 relations, 20 chunks
+INFO: Final chunks S+F/O: E4/1 R1/1 E4/2 R1/2 E2/3 R1/3 E4/4 R1/4 E5/5 R1/5 E4/6 R1/6 E6/7 R1/7 E5/8 R1/8 E3/9 R1/9 E3/10 R1/10
+INFO:  == LLM cache == saving: hybrid:query:a4433cc6b902111b79d99e16bc038e9d
+INFO: Text query completed
+答：
+根据提供的信息，小猿叶甲幼虫的形态特征如下：
+
+*   **体色与体表：** 初孵幼虫为淡黄色，之后变为褐色。幼虫体色较深，体表布满突起，各体节上具有8个黑色肉瘤，肉瘤上生有刚毛。
+*   **肉瘤分布：** 这些肉瘤沿亚背线排列的一行最大，越向下越小。
+*   **头部：** 头部呈黑色且具有光泽。
+
+此外，小猿叶甲的高龄幼虫在形态上表现出身体深黑色且体表布满突起的特征，符合该发育阶段的典型形态。
+
+### References
+
+- [1] 十字花科蔬菜病虫害_3.pdf
+
+问（计划检索）：最近有哪些关于十字花科害虫绿色防控的新建议？
+INFO:  == LLM cache == saving: hybrid:keywords:51a0deb076c90ac6e492ccaa74da9b5f
+INFO: Query nodes: 十字花科害虫, 生物防治, 生态防治, 最新技术 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 6 relations
+INFO: Query edges: 绿色防控, 害虫管理, 农业建议 (top_k:10, cosine:0.2)
+INFO: Global query: 15 entites, 10 relations
+INFO: Raw search results: 25 entities, 16 relations, 0 vector chunks
+INFO: After truncation: 25 entities, 16 relations
+INFO: Selecting 62 from 175 entity-related chunks by vector similarity
+INFO: Find 9 additional chunks in 7 relations (deduplicated 9)
+INFO: Selecting 9 from 9 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 71 -> 71 (deduplicated 0)
+INFO: Final context: 25 entities, 16 relations, 19 chunks
+INFO: Final chunks S+F/O: E2/1 R1/1 E2/2 R1/2 E2/3 R1/3 E1/4 R1/4 E4/5 R1/5 E5/6 R2/6 E3/7 R1/7 E3/8 R1/8 E3/9 R1/9 E1/10
+答（计划检索）：
+针对十字花科蔬菜害虫的绿色防控，基于现有的知识库，主要的建议和技术手段包括以下几个方面：
+
+### 1. 十字花科蔬菜主要害虫
+十字花科蔬菜（如大白菜、甘蓝、萝卜等）的主要害虫包括：
+*   **跳甲**：成虫和幼虫均危害叶片，造成孔洞、网状缺刻，严重时仅留叶脉。
+*   **鳞翅目害虫**：如菜青虫、小菜蛾、斜纹夜蛾、银纹夜蛾、菜螟。其中小菜蛾和斜纹夜蛾幼虫在四龄后进入暴食期，对叶片危害极大。
+*   **蚜虫类**：如甘蓝蚜、萝卜蚜（菜缢管蚜）、桃蚜（菜蚜），通过吸食汁液导致叶片卷缩、枯死，并传播病毒病及诱发煤污病。
+*   **叶甲类**：如小猿叶甲、大猿叶甲，常群聚危害叶片。
+
+### 2. 绿色防控技术建议
+目前的绿色防控建议强调物理防治、农业措施与生物防治的结合：
+
+*   **物理防治**：
+    *   **防虫网**：建议在育苗阶段使用防虫网覆盖，以有效防止害虫进入并产卵。
+    *   **性诱剂**：利用性诱剂诱杀鳞翅目害虫（如斜纹夜蛾）的成虫，降低田间虫口基数。
+    *   **人工捕杀**：利用部分害虫（如跳甲、小猿叶甲）的假死性，通过人工震落并捕杀。
+*   **农业防治**：
+    *   **田间清洁**：收获后及时清除田间残株、落叶和杂草，并进行集中销毁或深埋，破坏害虫的生存和越冬环境。
+    *   **土壤耕作**：通过冬翻和夏翻土地，直接消灭在表土层、土缝中越冬或蛰伏的成虫和蛹。
+*   **施药策略改进**：
+    *   **精准用药时期**：在害虫的低龄幼虫期进行防治效果最好。
+    *   **针对性喷洒**：如防治跳甲等善跳跃的害虫，建议采用“包围式喷药”，即从田四周向中央施药，防止成虫逃窜；施药时动作应轻，避免惊扰害虫。
+
+**证据来源简表（KG）：**
+*   KG节点：防虫网、性诱剂、十字花科蔬菜跳甲危害状、小菜蛾、斜纹夜蛾、甘蓝蚜、萝卜蚜、小猿叶甲幼虫及危害状、敌百虫、辛硫磷等。
+*   参考文档：[1] 十字花科蔬菜病虫害防治手册及相关图片分析报告。
+
+INFO: Successfully finalized 12 storages
+INFO: Successfully finalized all RAGAnything storages
