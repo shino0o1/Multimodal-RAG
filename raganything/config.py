@@ -175,6 +175,39 @@ class RAGAnythingConfig:
     rerank_model: str = field(default=get_env_value("RAG_MODEL_RERANK", "", str))
     """Rerank model identifier. Empty means no rerank model configured."""
 
+    # OpenAI-Compatible Routing & Reasoning Configuration
+    # ---
+    llm_api_key: str = field(default=get_env_value("RAG_LLM_API_KEY", "sk-MwcAPesgu8ol4F0ePPNP0hkGiseYaNEbfoLv4phN03ldl3AV", str))
+    """API key for OpenAI-compatible chat completion calls."""
+
+    llm_base_url: str = field(default=get_env_value("RAG_LLM_BASE_URL", "https://yunwu.ai/v1", str))
+    """Base URL for OpenAI-compatible API endpoint, e.g. https://yunwu.ai/v1."""
+
+    reasoning_effort_default: str = field(
+        default=get_env_value("RAG_REASONING_EFFORT_DEFAULT", "medium", str)
+    )
+    """Default reasoning effort for reasoning models. Allowed: low/medium/high."""
+
+    reasoning_effort_answer: str = field(
+        default=get_env_value("RAG_REASONING_EFFORT_ANSWER", "", str)
+    )
+    """Reasoning effort for answer model stage; falls back to default when empty."""
+
+    reasoning_effort_planner: str = field(
+        default=get_env_value("RAG_REASONING_EFFORT_PLANNER", "", str)
+    )
+    """Reasoning effort for planner model stage; falls back to default when empty."""
+
+    reasoning_effort_vision: str = field(
+        default=get_env_value("RAG_REASONING_EFFORT_VISION", "", str)
+    )
+    """Reasoning effort for vision model stage; falls back to default when empty."""
+
+    reasoning_effort_image_description: str = field(
+        default=get_env_value("RAG_REASONING_EFFORT_IMAGE_DESCRIPTION", "", str)
+    )
+    """Reasoning effort for image-description stage; falls back to default when empty."""
+
     # Path Handling Configuration
     # ---
     use_full_path: bool = field(default=get_env_value("USE_FULL_PATH", False, bool))
@@ -337,8 +370,40 @@ class RAGAnythingConfig:
         if not self.model_image_description:
             self.model_image_description = self.model_vision
 
+        self.reasoning_effort_default = self._normalize_reasoning_effort(
+            self.reasoning_effort_default
+        )
+        self.reasoning_effort_answer = self._normalize_reasoning_effort(
+            self.reasoning_effort_answer
+        )
+        self.reasoning_effort_planner = self._normalize_reasoning_effort(
+            self.reasoning_effort_planner
+        )
+        self.reasoning_effort_vision = self._normalize_reasoning_effort(
+            self.reasoning_effort_vision
+        )
+        self.reasoning_effort_image_description = self._normalize_reasoning_effort(
+            self.reasoning_effort_image_description
+        )
+
         if self.query_top_k <= 0:
             self.query_top_k = 10
+
+    @staticmethod
+    def _normalize_reasoning_effort(value: str) -> str:
+        if not value:
+            return ""
+        normalized = value.strip().lower()
+        return normalized if normalized in {"low", "medium", "high"} else ""
+
+    def get_reasoning_effort(self, stage: str) -> str:
+        stage_to_effort = {
+            "answer": self.reasoning_effort_answer,
+            "planner": self.reasoning_effort_planner,
+            "vision": self.reasoning_effort_vision,
+            "image_description": self.reasoning_effort_image_description,
+        }
+        return stage_to_effort.get(stage, "") or self.reasoning_effort_default
 
     @property
     def mineru_parse_method(self) -> str:

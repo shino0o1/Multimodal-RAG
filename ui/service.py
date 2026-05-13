@@ -311,18 +311,6 @@ class RAGUIService:
 
         fallback_cfg = load_api_config_from_pipeline()
 
-        api_key = os.getenv("OPENAI_API_KEY", "").strip()
-        if not api_key:
-            api_key = fallback_cfg.get("api_key", "").strip()
-        if not api_key:
-            raise RuntimeError(
-                "OPENAI_API_KEY is required for UI querying/ingestion "
-                "(or define api_key in pdf_rag_pipeline.py main())"
-            )
-
-        base_url_env = os.getenv("OPENAI_BASE_URL", "").strip()
-        base_url = base_url_env or fallback_cfg.get("base_url", "").strip() or None
-
         config = RAGAnythingConfig(
             working_dir=working_dir,
             parser_output_dir=output_dir,
@@ -347,12 +335,34 @@ class RAGUIService:
         if legacy_embed_model:
             config.model_embedding = legacy_embed_model
 
+        api_key = (
+            config.llm_api_key.strip()
+            or os.getenv("OPENAI_API_KEY", "").strip()
+            or fallback_cfg.get("api_key", "").strip()
+        )
+        if not api_key:
+            raise RuntimeError(
+                "Missing API key. Set RAG_LLM_API_KEY in RAGAnythingConfig "
+                "(or OPENAI_API_KEY / pdf_rag_pipeline.py fallback)."
+            )
+
+        base_url = (
+            config.llm_base_url.strip()
+            or os.getenv("OPENAI_BASE_URL", "").strip()
+            or fallback_cfg.get("base_url", "").strip()
+            or None
+        )
+
         llm_model = config.model_answer
         planner_model = config.model_planner
         vision_model = config.model_vision
         image_desc_model = config.model_image_description
         embedding_model = config.model_embedding
         embedding_dim = config.embedding_dim
+        answer_reasoning_effort = config.get_reasoning_effort("answer")
+        planner_reasoning_effort = config.get_reasoning_effort("planner")
+        vision_reasoning_effort = config.get_reasoning_effort("vision")
+        image_desc_reasoning_effort = config.get_reasoning_effort("image_description")
 
         set_prompt_language("zh")
         os.environ.setdefault("SUMMARY_LANGUAGE", "Chinese")
@@ -360,6 +370,11 @@ class RAGUIService:
         def _text_model_func(
             model_name: str, prompt, system_prompt=None, history_messages=[], **kwargs
         ):
+            if "reasoning_effort" not in kwargs:
+                if model_name == planner_model and planner_reasoning_effort:
+                    kwargs["reasoning_effort"] = planner_reasoning_effort
+                elif answer_reasoning_effort:
+                    kwargs["reasoning_effort"] = answer_reasoning_effort
             return openai_complete_if_cache(
                 model_name,
                 prompt,
@@ -380,6 +395,8 @@ class RAGUIService:
             )
 
         def planner_model_func(prompt, system_prompt=None, history_messages=[], **kwargs):
+            if "reasoning_effort" not in kwargs and planner_reasoning_effort:
+                kwargs["reasoning_effort"] = planner_reasoning_effort
             return _text_model_func(
                 planner_model,
                 prompt,
@@ -396,6 +413,8 @@ class RAGUIService:
             messages=None,
             **kwargs,
         ):
+            if "reasoning_effort" not in kwargs and vision_reasoning_effort:
+                kwargs["reasoning_effort"] = vision_reasoning_effort
             if messages:
                 return openai_complete_if_cache(
                     vision_model,
@@ -446,6 +465,11 @@ class RAGUIService:
             messages=None,
             **kwargs,
         ):
+            if (
+                "reasoning_effort" not in kwargs
+                and image_desc_reasoning_effort
+            ):
+                kwargs["reasoning_effort"] = image_desc_reasoning_effort
             if messages:
                 return openai_complete_if_cache(
                     image_desc_model,

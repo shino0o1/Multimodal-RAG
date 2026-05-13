@@ -1,4 +1,4 @@
-import asyncio
+﻿import asyncio
 import os
 import time
 from pathlib import Path
@@ -107,9 +107,9 @@ async def main():
     # 1. 环境与模型配置
     # ==========================================
     # api_key = "sk-uwqgblktuqsujrieppjbujsrdkwtirmxtlkfjuwsmwcaloag" # 替换为您的 API Key
-    api_key = "sk-MwcAPesgu8ol4F0ePPNP0hkGiseYaNEbfoLv4phN03ldl3AV" # yunwu api
+    api_key = ""  # Prefer config.llm_api_key
     # base_url = "https://api.siliconflow.cn/v1" # 如果使用代理可以修改此处
-    base_url = "https://yunwu.ai/v1" # 如果使用代理可以修改此处
+    base_url = ""  # Prefer config.llm_base_url
     set_prompt_language("zh")
     os.environ["SUMMARY_LANGUAGE"] = "Chinese"
     # LLM 单次调用超时（秒）
@@ -149,7 +149,25 @@ async def main():
         kg_llm_timeout_seconds=90,
     )
 
+    api_key = config.llm_api_key.strip() or api_key or os.getenv("OPENAI_API_KEY", "").strip()
+    if not api_key:
+        raise RuntimeError(
+            "Missing API key: set config.llm_api_key in pdf_rag_pipeline.py "
+            "or export OPENAI_API_KEY."
+        )
+    base_url = config.llm_base_url.strip() or base_url or os.getenv("OPENAI_BASE_URL", "").strip() or None
+
+    answer_reasoning_effort = config.get_reasoning_effort("answer")
+    planner_reasoning_effort = config.get_reasoning_effort("planner")
+    vision_reasoning_effort = config.get_reasoning_effort("vision")
+    image_desc_reasoning_effort = config.get_reasoning_effort("image_description")
+
     def text_model_func(model_name, prompt, system_prompt=None, history_messages=[], **kwargs):
+        if "reasoning_effort" not in kwargs:
+            if model_name == config.model_planner and planner_reasoning_effort:
+                kwargs["reasoning_effort"] = planner_reasoning_effort
+            elif answer_reasoning_effort:
+                kwargs["reasoning_effort"] = answer_reasoning_effort
         return openai_complete_if_cache(
             model_name,
             prompt,
@@ -162,6 +180,8 @@ async def main():
 
     # 答案生成模型（Answer）
     def llm_model_func(prompt, system_prompt=None, history_messages=[], **kwargs):
+        if "reasoning_effort" not in kwargs and answer_reasoning_effort:
+            kwargs["reasoning_effort"] = answer_reasoning_effort
         return text_model_func(
             config.model_answer,
             prompt,
@@ -172,6 +192,8 @@ async def main():
 
     # 规划模型（Planner）
     def planner_model_func(prompt, system_prompt=None, history_messages=[], **kwargs):
+        if "reasoning_effort" not in kwargs and planner_reasoning_effort:
+            kwargs["reasoning_effort"] = planner_reasoning_effort
         return text_model_func(
             config.model_planner,
             prompt,
@@ -182,6 +204,8 @@ async def main():
 
     # 视觉问答模型（Vision）
     def vision_model_func(prompt, system_prompt=None, history_messages=[], image_data=None, messages=None, **kwargs):
+        if "reasoning_effort" not in kwargs and vision_reasoning_effort:
+            kwargs["reasoning_effort"] = vision_reasoning_effort
         if messages:
             return openai_complete_if_cache(config.model_vision, "", system_prompt=None, history_messages=[], messages=messages, api_key=api_key, base_url=base_url, **kwargs)
         elif image_data:
@@ -216,6 +240,8 @@ async def main():
         messages=None,
         **kwargs,
     ):
+        if "reasoning_effort" not in kwargs and image_desc_reasoning_effort:
+            kwargs["reasoning_effort"] = image_desc_reasoning_effort
         if messages:
             return openai_complete_if_cache(
                 config.model_image_description,
