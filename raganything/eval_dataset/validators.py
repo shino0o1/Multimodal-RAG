@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import math
 from typing import Any, Dict, List, Tuple
 
 from .loaders import KnowledgeBase
@@ -42,20 +43,37 @@ def validate_candidate(sample: Dict[str, Any], kb: KnowledgeBase) -> Tuple[bool,
 def select_accepted_samples(
     candidates: List[Dict[str, Any]],
     target_size: int,
+    min_image_ratio: float = 0.0,
 ) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
-    ordered = sorted(
-        candidates,
-        key=lambda item: (
+    def sort_key(item: Dict[str, Any]) -> tuple[int, float, str]:
+        return (
             -int(item.get("quality", {}).get("judge_score", 0)),
             -float(item.get("quality", {}).get("evidence_score", 0)),
             item.get("id", ""),
-        ),
+        )
+
+    ordered = sorted(
+        candidates,
+        key=sort_key,
     )
+    image_quota = min(
+        target_size,
+        math.ceil(target_size * max(0.0, min_image_ratio)),
+    )
+    image_candidates = [item for item in ordered if item.get("modality") == "image"]
+    required_images = min(image_quota, len(image_candidates))
+    selected_ids = {id(item) for item in image_candidates[:required_images]}
+    for sample in ordered:
+        if len(selected_ids) >= target_size:
+            break
+        selected_ids.add(id(sample))
+
     accepted: List[Dict[str, Any]] = []
     rejected: List[Dict[str, Any]] = []
-    for idx, sample in enumerate(ordered):
-        if idx >= target_size:
-            rejected.append(mark_rejected(sample, ["over_target_size"]))
+    for sample in ordered:
+        if id(sample) not in selected_ids:
+            if target_size >= 0:
+                rejected.append(mark_rejected(sample, ["over_target_size"]))
             continue
         sample["quality"]["status"] = "accepted"
         accepted.append(sample)
@@ -89,4 +107,3 @@ def apply_judge(sample: Dict[str, Any], judge: Dict[str, Any]) -> Dict[str, Any]
 def judge_passed(sample: Dict[str, Any]) -> bool:
     judge = sample.get("quality", {}).get("judge", {})
     return int(judge.get("evidence_consistency", 0)) >= 3
-

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import math
 import random
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -28,6 +29,8 @@ DEFAULT_QUOTAS = {
     "图像问答": 30,
     "证据不足": 10,
 }
+IMAGE_TASK_TYPE = "图像问答"
+DEFAULT_IMAGE_MIN_RATIO = 0.30
 
 
 @dataclass
@@ -38,11 +41,13 @@ class EvalDatasetBuildConfig:
     target_size: int = 200
     seed: int = 42
     candidate_multiplier: float = 1.5
+    max_workers: int = 6
     generator_model: Optional[str] = None
     judge_model: Optional[str] = None
     vision_model: Optional[str] = None
     api_key: Optional[str] = None
     base_url: Optional[str] = None
+    image_min_ratio: float = DEFAULT_IMAGE_MIN_RATIO
 
 
 class EvalDatasetBuilder:
@@ -81,64 +86,24 @@ class EvalDatasetBuilder:
             if not task_packs:
                 continue
             needed = max(quota, math.ceil(quota * self.config.candidate_multiplier))
-            for pack in self._sample_packs(task_packs, needed):
+            sampled_packs = self._sample_packs(task_packs, needed)
+            jobs: List[tuple[str, EvidencePack]] = []
+            for pack in sampled_packs:
                 counters[task_type] += 1
                 sample_id = f"{TASK_PREFIX.get(task_type, 'qa')}_{counters[task_type]:04d}"
-                if pack.modality == "image":
-                    try:
-                        match = self.generator.verify_image_match(pack)
-                    except Exception as exc:
-                        preselection_rejected.append(
-                            _generation_error_sample(
-                                sample_id,
-                                task_type,
-                                pack,
-                                RuntimeError("image_verification_error:" + str(exc)[:180]),
-                            )
-                        )
-                        continue
-                    if (not match.get("match")) or float(match.get("confidence", 0.0)) < 0.5:
-                        rejected = {
-                            "id": sample_id,
-                            "task_type": task_type,
-                            "modality": "image",
-                            "question": "",
-                            "image_path": pack.image_path,
-                            "gold_answer": "",
-                            "evidence": [item.__dict__ for item in pack.evidence],
-                            "metadata": {"core_entity": pack.core_entity},
-                            "quality": {
-                                "status": "rejected",
-                                "reasons": ["image_target_mismatch"],
-                                "reason": "image_target_mismatch",
-                            },
-                        }
-                        preselection_rejected.append(rejected)
-                        continue
-                try:
-                    sample = self.generator.generate(sample_id, task_type, pack)
-                except Exception as exc:
-                    preselection_rejected.append(
-                        _generation_error_sample(sample_id, task_type, pack, exc)
-                    )
-                    continue
-                ok, reasons, scores = validate_candidate(sample, kb)
-                sample["quality"].update(scores)
-                if not ok:
-                    preselection_rejected.append(mark_rejected(sample, reasons))
-                    continue
+                jobs.append((sample_id, pack))
 
-                try:
-                    judged = apply_judge(sample, self.generator.judge(sample))
-                except Exception as exc:
-                    preselection_rejected.append(
-                        mark_rejected(sample, ["judge_error:" + str(exc)[:200]])
-                    )
-                    continue
-                if not judge_passed(judged):
-                    preselection_rejected.append(mark_rejected(judged, ["judge_rejected"]))
-                else:
-                    candidates.append(_minimize_sample(judged))
+            with ThreadPoolExecutor(max_workers=max(1, self.config.max_workers)) as pool:
+                future_map = {
+                    pool.submit(self._process_pack, kb, task_type, sample_id, pack): (sample_id, pack)
+                    for sample_id, pack in jobs
+                }
+                for future in as_completed(future_map):
+                    accepted_row, rejected_rows = future.result()
+                    if accepted_row:
+                        candidates.append(accepted_row)
+                    if rejected_rows:
+                        preselection_rejected.extend(rejected_rows)
 
         valid_candidates = [
             row
@@ -149,8 +114,9 @@ class EvalDatasetBuilder:
         accepted, overflow_rejected = select_accepted_samples(
             valid_candidates,
             target_size=self.config.target_size,
+            min_image_ratio=self.config.image_min_ratio if image_rows else 0.0,
         )
-        rejected = preselection_rejected + overflow_rejected
+        rejected = preselection_rejected + [_minimize_rejected(row) for row in overflow_rejected]
 
         out = Path(self.config.output_dir)
         write_jsonl(out / "candidates.jsonl", candidates)
@@ -160,10 +126,84 @@ class EvalDatasetBuilder:
         report = write_report(out / "report.json", accepted, rejected, candidates)
         return report
 
+    def _process_pack(
+        self,
+        kb,
+        task_type: str,
+        sample_id: str,
+        pack: EvidencePack,
+    ) -> tuple[Optional[Dict[str, Any]], List[Dict[str, Any]]]:
+        rejected_rows: List[Dict[str, Any]] = []
+        image_match: Optional[Dict[str, Any]] = None
+        if pack.modality == "image":
+            try:
+                image_match = self.generator.verify_image_match(pack)
+            except Exception as exc:
+                rejected_rows.append(
+                    _generation_error_sample(
+                        sample_id,
+                        task_type,
+                        pack,
+                        RuntimeError("image_verification_error:" + str(exc)[:180]),
+                    )
+                )
+                return None, rejected_rows
+            if not image_match.get("match"):
+                rejected_rows.append(
+                    _minimize_rejected(
+                        {
+                            "id": sample_id,
+                            "task_type": task_type,
+                            "modality": "image",
+                            "question": "",
+                            "image_path": pack.image_path,
+                            "gold_answer": "",
+                            "evidence": [item.__dict__ for item in pack.evidence],
+                            "metadata": {
+                                "core_entity": pack.core_entity,
+                                "image_match": _image_match_metadata(image_match),
+                            },
+                            "quality": {
+                                "status": "rejected",
+                                "reasons": ["image_target_mismatch"],
+                                "reason": "image_target_mismatch",
+                            },
+                        }
+                    )
+                )
+                return None, rejected_rows
+
+        try:
+            sample = self.generator.generate(sample_id, task_type, pack)
+        except Exception as exc:
+            rejected_rows.append(_generation_error_sample(sample_id, task_type, pack, exc))
+            return None, rejected_rows
+        if image_match is not None:
+            sample.setdefault("metadata", {})["image_match"] = _image_match_metadata(image_match)
+
+        ok, reasons, scores = validate_candidate(sample, kb)
+        sample["quality"].update(scores)
+        if not ok:
+            rejected_rows.append(_minimize_rejected(mark_rejected(sample, reasons)))
+            return None, rejected_rows
+
+        try:
+            judged = apply_judge(sample, self.generator.judge(sample))
+        except Exception as exc:
+            rejected_rows.append(
+                _minimize_rejected(mark_rejected(sample, ["judge_error:" + str(exc)[:200]]))
+            )
+            return None, rejected_rows
+
+        if not judge_passed(judged):
+            rejected_rows.append(_minimize_rejected(mark_rejected(judged, ["judge_rejected"])))
+            return None, rejected_rows
+        return _minimize_sample(judged), rejected_rows
+
     def _scaled_quotas(self, has_images: bool) -> Dict[str, int]:
         base = dict(DEFAULT_QUOTAS)
         if not has_images:
-            base["图像问答"] = 0
+            base[IMAGE_TASK_TYPE] = 0
 
         total = sum(base.values())
         if total <= 0:
@@ -185,10 +225,36 @@ class EvalDatasetBuilder:
                 quotas[task] -= 1
                 diff += 1
             idx += 1
+        if has_images:
+            self._enforce_min_image_quota(quotas)
         return quotas
 
+    def _enforce_min_image_quota(self, quotas: Dict[str, int]) -> None:
+        image_quota = min(
+            self.config.target_size,
+            math.ceil(self.config.target_size * max(0.0, self.config.image_min_ratio)),
+        )
+        current = quotas.get(IMAGE_TASK_TYPE, 0)
+        if current >= image_quota:
+            return
+        quotas[IMAGE_TASK_TYPE] = image_quota
+        overflow = sum(quotas.values()) - self.config.target_size
+        reducible = [
+            task
+            for task, quota in sorted(quotas.items(), key=lambda item: -item[1])
+            if task != IMAGE_TASK_TYPE and quota > 1
+        ]
+        idx = 0
+        while overflow > 0 and reducible:
+            task = reducible[idx % len(reducible)]
+            if quotas[task] > 1:
+                quotas[task] -= 1
+                overflow -= 1
+            reducible = [item for item in reducible if quotas[item] > 1]
+            idx += 1
+
     def _packs_for_task(self, packs: List[EvidencePack], task_type: str) -> List[EvidencePack]:
-        if task_type == "图像问答":
+        if task_type == IMAGE_TASK_TYPE:
             return [pack for pack in packs if pack.modality == "image"]
         text_packs = [pack for pack in packs if pack.modality == "text"]
         if task_type == "病虫害诊断":
@@ -270,28 +336,49 @@ def _context_has(pack: EvidencePack, terms: List[str]) -> bool:
 def _generation_error_sample(
     sample_id: str, task_type: str, pack: EvidencePack, exc: Exception
 ) -> Dict[str, Any]:
+    return _minimize_rejected(
+        {
+            "id": sample_id,
+            "task_type": task_type,
+            "modality": pack.modality,
+            "question": "",
+            "image_path": pack.image_path,
+            "gold_answer": "",
+            "evidence": [
+                {
+                    "chunk_id": item.chunk_id,
+                    "quote": item.quote,
+                    "file_path": item.file_path,
+                }
+                for item in pack.evidence
+            ],
+            "metadata": {
+                "core_entity": pack.core_entity,
+            },
+            "quality": {
+                "status": "rejected",
+                "reasons": ["generation_error:" + str(exc)[:200]],
+                "reason": "generation_error",
+            },
+        }
+    )
+
+
+def _image_match_metadata(match: Dict[str, Any]) -> Dict[str, Any]:
     return {
-        "id": sample_id,
-        "task_type": task_type,
-        "modality": pack.modality,
-        "question": "",
-        "image_path": pack.image_path,
-        "gold_answer": "",
-        "evidence": [item.__dict__ for item in pack.evidence],
-        "metadata": {
-            "core_entity": pack.core_entity,
-        },
-        "quality": {
-            "status": "rejected",
-            "reasons": ["generation_error:" + str(exc)[:200]],
-            "reason": "generation_error",
-        },
+        "match": bool(match.get("match", False)),
+        "confidence": float(match.get("confidence", 0.0) or 0.0),
+        "visible_clues": list(match.get("visible_clues") or []),
+        "reason": str(match.get("reason", "")),
     }
 
 
 def _minimize_sample(sample: Dict[str, Any]) -> Dict[str, Any]:
     quality = sample.get("quality", {}) or {}
     metadata = sample.get("metadata", {}) or {}
+    minimized_metadata = {"core_entity": metadata.get("core_entity", "")}
+    if "image_match" in metadata:
+        minimized_metadata["image_match"] = metadata["image_match"]
     minimized = {
         "id": sample.get("id", ""),
         "task_type": sample.get("task_type", ""),
@@ -307,7 +394,7 @@ def _minimize_sample(sample: Dict[str, Any]) -> Dict[str, Any]:
             }
             for item in sample.get("evidence", [])
         ],
-        "metadata": {"core_entity": metadata.get("core_entity", "")},
+        "metadata": minimized_metadata,
         "quality": {
             "status": quality.get("status", "candidate"),
             "reason": quality.get("reason", ""),
@@ -320,4 +407,12 @@ def _minimize_sample(sample: Dict[str, Any]) -> Dict[str, Any]:
     reasons = quality.get("reasons")
     if reasons:
         minimized["quality"]["reasons"] = list(reasons)
+    return minimized
+
+
+def _minimize_rejected(sample: Dict[str, Any]) -> Dict[str, Any]:
+    minimized = _minimize_sample(sample)
+    quality = minimized.get("quality", {}) or {}
+    quality.pop("judge", None)
+    minimized["quality"] = quality
     return minimized

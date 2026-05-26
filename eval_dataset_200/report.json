@@ -1,0 +1,77 @@
+{
+  "counts": {
+    "candidates": 253,
+    "accepted": 215,
+    "rejected": 87,
+    "acceptance_rate": 0.8498
+  },
+  "accepted_distribution": {
+    "task_type": {
+      "病虫害诊断": 60,
+      "防治建议": 57,
+      "药剂推荐": 45,
+      "图像问答": 32,
+      "症状识别": 21
+    },
+    "modality": {
+      "text": 183,
+      "image": 32
+    },
+    "difficulty": {},
+    "entity_type": {},
+    "core_entity_top20": {
+      "霜霉病": 23,
+      "黑斑病": 20,
+      "小菜蛾": 12,
+      "菜螟": 10,
+      "黑腐病": 9,
+      "黄曲条跳甲": 8,
+      "菜粉蝶": 8,
+      "病毒病": 8,
+      "中华稻蝗": 7,
+      "灰巴蜗牛": 7,
+      "菜青虫": 7,
+      "萝卜霜霉病": 6,
+      "软腐病": 6,
+      "炭疽病": 5,
+      "根肿病": 5,
+      "斜纹夜蛾": 5,
+      "甜菜夜蛾": 4,
+      "蛞蝓": 4,
+      "甘蓝蚜": 4,
+      "菌核病": 4
+    },
+    "evidence_chunk_top20": {
+      "chunk-2711af80087a36171089b13436581425": 22,
+      "chunk-2732eb6195df6f6255819cca0b42029f": 19,
+      "chunk-763e288cfcac968157d417d58b877557": 15,
+      "chunk-eb8e40732cd0b5a7f534922a7ccb9a6e": 15,
+      "chunk-c60631811c47de4ce2c79aee52951117": 12,
+      "chunk-b3b74e94cd9e673214401f1d7e211970": 11,
+      "chunk-157bd3addbb38750d6dff95f3d5a9e7d": 11,
+      "chunk-2d0a0e1a2ae281c246d32fd566f9339f": 10,
+      "chunk-2102c4977ee2662531b474addbf76d25": 10,
+      "chunk-6853819bd6c24f5f2236d760b9ce81b1": 9,
+      "chunk-28f88298e7316c3aca7aa7d3f9c8e8ea": 8,
+      "chunk-e1ffc4d7126b3916ef88c8c7f5b1a921": 8,
+      "chunk-844030a4d8a6de0ccf527992172d7166": 8,
+      "chunk-3511fba3b1d9eaeca88fc9aca1dc1364": 7,
+      "chunk-4f81aa7efe24d8dc3a429c05163875d9": 7,
+      "chunk-039c414821a18ac99777ef473c4c3eeb": 7,
+      "chunk-ca141699f53529c2e47d2d719892c294": 6,
+      "chunk-6c9c5c1a89394df08c4521777314cc90": 5,
+      "chunk-3b4748e1b515b1d16d492a54b7db5d2c": 5,
+      "chunk-75c79c36d93e57136b72ac0107291bc6": 5
+    }
+  },
+  "rejection_reasons": {
+    "over_target_size": 51,
+    "judge_rejected": 23,
+    "image_target_mismatch": 13
+  },
+  "quality": {
+    "avg_rule_score": 1.0,
+    "avg_evidence_score": 1.0,
+    "avg_judge_score": 19.6791
+  }
+}

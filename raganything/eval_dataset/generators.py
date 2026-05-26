@@ -10,6 +10,8 @@ import json
 import mimetypes
 import os
 import re
+import urllib.error
+import urllib.request
 from dataclasses import asdict
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -25,7 +27,7 @@ TASK_PREFIX = {
     "图像问答": "image",
     "证据不足": "unknown",
 }
-MAX_RETRIES = 3
+MAX_RETRIES = 1
 
 
 class EvalLLMClient:
@@ -59,32 +61,68 @@ class EvalLLMClient:
         )
         self.api_key = (
             api_key
+            or cfg.get("llm_api_key")
             or os.getenv("OPENAI_API_KEY")
             or os.getenv("API_KEY")
             or pipeline_secrets.get("api_key")
         )
         self.base_url = (
             base_url
+            or cfg.get("llm_base_url")
             or os.getenv("OPENAI_BASE_URL")
             or pipeline_secrets.get("base_url")
         )
+        self.reasoning_effort_default = cfg.get("reasoning_effort_default", "")
+        self.reasoning_effort_answer = cfg.get("reasoning_effort_answer", "")
+        self.reasoning_effort_judge = cfg.get("reasoning_effort_judge", "")
+        self.reasoning_effort_vision = cfg.get("reasoning_effort_vision", "")
+        self.openai_llm_extra_body: Dict[str, Any] = {}
+        raw_extra_body = os.getenv("OPENAI_LLM_EXTRA_BODY", "").strip()
+        if raw_extra_body:
+            try:
+                loaded = json.loads(raw_extra_body)
+                if isinstance(loaded, dict):
+                    self.openai_llm_extra_body = loaded
+            except Exception:
+                self.openai_llm_extra_body = {}
         self.enabled = enabled and bool(self.api_key)
 
     def complete(self, prompt: str, system_prompt: str, model: Optional[str] = None) -> str:
         if not self.enabled:
             raise RuntimeError("LLM client disabled or missing API key")
-        from lightrag.llm.openai import openai_complete_if_cache
+        model_name = model or self.generator_model
+        kwargs: Dict[str, Any] = {}
+        reasoning_effort = self._resolve_reasoning_effort(model_name)
+        if reasoning_effort:
+            kwargs["reasoning_effort"] = reasoning_effort
+        self._merge_extra_body(kwargs)
 
-        return _resolve_maybe_awaitable(
-            openai_complete_if_cache(
-                model or self.generator_model,
-                prompt,
-                system_prompt=system_prompt,
-                history_messages=[],
-                api_key=self.api_key,
-                base_url=self.base_url,
+        try:
+            from lightrag.llm.openai import openai_complete_if_cache
+        except ModuleNotFoundError:
+            return self._direct_chat_complete(
+                model_name,
+                [
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": prompt},
+                ],
+                **kwargs,
             )
-        )
+
+        try:
+            return _resolve_maybe_awaitable(
+                openai_complete_if_cache(
+                    model_name,
+                    prompt,
+                    system_prompt=system_prompt,
+                    history_messages=[],
+                    api_key=self.api_key,
+                    base_url=self.base_url,
+                    **kwargs,
+                )
+            )
+        except Exception:
+            raise
 
     def complete_json(
         self, prompt: str, system_prompt: str, model: Optional[str] = None
@@ -105,13 +143,97 @@ class EvalLLMClient:
             raise RuntimeError(f"LLM JSON call failed after {MAX_RETRIES} retries: {last_exc}") from last_exc
         return {}
 
+    def complete_json_with_image(
+        self,
+        prompt: str,
+        system_prompt: str,
+        image_path: str,
+        model: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        if not self.enabled:
+            raise RuntimeError("LLM client disabled or missing API key")
+        path = Path(image_path)
+        if not path.exists():
+            raise FileNotFoundError(f"Image file does not exist: {image_path}")
+
+        model_name = model or self.vision_model
+        media_type = mimetypes.guess_type(path.name)[0] or "image/jpeg"
+        encoded = base64.b64encode(path.read_bytes()).decode("ascii")
+        messages = [
+            {"role": "system", "content": system_prompt},
+            {
+                "role": "user",
+                "content": [
+                    {"type": "text", "text": prompt},
+                    {
+                        "type": "image_url",
+                        "image_url": {"url": f"data:{media_type};base64,{encoded}"},
+                    },
+                ],
+            },
+        ]
+        kwargs: Dict[str, Any] = {}
+        reasoning_effort = self._resolve_reasoning_effort(model_name)
+        if reasoning_effort:
+            kwargs["reasoning_effort"] = reasoning_effort
+        self._merge_extra_body(kwargs)
+
+        try:
+            from lightrag.llm.openai import openai_complete_if_cache
+        except ModuleNotFoundError:
+            last_exc: Optional[Exception] = None
+            for _ in range(MAX_RETRIES):
+                try:
+                    raw = self._direct_chat_complete(model_name, messages, **kwargs)
+                    payload = extract_json_object(raw)
+                    if payload:
+                        return payload
+                except Exception as exc:
+                    if not _is_retryable_error(exc):
+                        raise
+                    last_exc = exc
+            if last_exc is not None:
+                raise RuntimeError(
+                    f"LLM image JSON call failed after {MAX_RETRIES} retries: {last_exc}"
+                ) from last_exc
+            return {}
+
+        last_exc: Optional[Exception] = None
+        for _ in range(MAX_RETRIES):
+            try:
+                try:
+                    raw = _resolve_maybe_awaitable(
+                        openai_complete_if_cache(
+                            model_name,
+                            "",
+                            system_prompt=None,
+                            history_messages=[],
+                            messages=messages,
+                            api_key=self.api_key,
+                            base_url=self.base_url,
+                            **kwargs,
+                        )
+                    )
+                except Exception:
+                    raise
+                payload = extract_json_object(raw)
+                if payload:
+                    return payload
+            except Exception as exc:
+                if not _is_retryable_error(exc):
+                    raise
+                last_exc = exc
+                continue
+        if last_exc is not None:
+            raise RuntimeError(f"LLM image JSON call failed after {MAX_RETRIES} retries: {last_exc}") from last_exc
+        return {}
+
     def describe_image(self, image_path: str, labels: Dict[str, Any], notes: str) -> str:
         if not self.enabled:
             raise RuntimeError("LLM client disabled or missing API key")
         path = Path(image_path)
         if not path.exists():
             raise FileNotFoundError(f"Image file does not exist: {image_path}")
-        from lightrag.llm.openai import openai_complete_if_cache
 
         media_type = mimetypes.guess_type(path.name)[0] or "image/jpeg"
         encoded = base64.b64encode(path.read_bytes()).decode("ascii")
@@ -139,6 +261,25 @@ class EvalLLMClient:
             },
         ]
         last_exc: Optional[Exception] = None
+        direct_kwargs = (
+            {"reasoning_effort": self._resolve_reasoning_effort(self.vision_model)}
+            if self._resolve_reasoning_effort(self.vision_model)
+            else {}
+        )
+        try:
+            from lightrag.llm.openai import openai_complete_if_cache
+        except ModuleNotFoundError:
+            for _ in range(MAX_RETRIES):
+                try:
+                    return self._direct_chat_complete(
+                        self.vision_model, messages, **direct_kwargs
+                    )
+                except Exception as exc:
+                    if not _is_retryable_error(exc):
+                        raise
+                    last_exc = exc
+            raise RuntimeError(f"Image describe failed after {MAX_RETRIES} retries: {last_exc}")
+
         for _ in range(MAX_RETRIES):
             try:
                 return _resolve_maybe_awaitable(
@@ -150,6 +291,7 @@ class EvalLLMClient:
                         messages=messages,
                         api_key=self.api_key,
                         base_url=self.base_url,
+                        **direct_kwargs,
                     )
                 )
             except Exception as exc:
@@ -162,7 +304,6 @@ class EvalLLMClient:
         path = Path(image_path)
         if not path.exists():
             return {"match": False, "confidence": 0.0, "reason": "image_not_found"}
-        from lightrag.llm.openai import openai_complete_if_cache
 
         media_type = mimetypes.guess_type(path.name)[0] or "image/jpeg"
         encoded = base64.b64encode(path.read_bytes()).decode("ascii")
@@ -201,6 +342,37 @@ class EvalLLMClient:
         ]
         payload: Dict[str, Any] = {}
         last_exc: Optional[Exception] = None
+        direct_kwargs = (
+            {"reasoning_effort": self._resolve_reasoning_effort(self.vision_model)}
+            if self._resolve_reasoning_effort(self.vision_model)
+            else {}
+        )
+        try:
+            from lightrag.llm.openai import openai_complete_if_cache
+        except ModuleNotFoundError:
+            for _ in range(MAX_RETRIES):
+                try:
+                    raw = self._direct_chat_complete(
+                        self.vision_model, messages, **direct_kwargs
+                    )
+                    payload = extract_json_object(raw)
+                    if payload:
+                        break
+                except Exception as exc:
+                    if not _is_retryable_error(exc):
+                        raise
+                    last_exc = exc
+            if not payload and last_exc is not None:
+                raise RuntimeError(
+                    f"Image verify failed after {MAX_RETRIES} retries: {last_exc}"
+                ) from last_exc
+            return {
+                "match": bool(payload.get("match", False)),
+                "confidence": float(payload.get("confidence", 0.0) or 0.0),
+                "visible_clues": _string_list(payload.get("visible_clues")),
+                "reason": str(payload.get("reason", "")).strip(),
+            }
+
         for _ in range(MAX_RETRIES):
             try:
                 raw = _resolve_maybe_awaitable(
@@ -212,6 +384,7 @@ class EvalLLMClient:
                         messages=messages,
                         api_key=self.api_key,
                         base_url=self.base_url,
+                        **direct_kwargs,
                     )
                 )
                 payload = extract_json_object(raw)
@@ -229,6 +402,72 @@ class EvalLLMClient:
             "visible_clues": _string_list(payload.get("visible_clues")),
             "reason": str(payload.get("reason", "")).strip(),
         }
+
+    def _resolve_reasoning_effort(self, model_name: str) -> str:
+        if model_name == self.judge_model:
+            return self.reasoning_effort_judge or self.reasoning_effort_default
+        if model_name == self.vision_model:
+            return self.reasoning_effort_vision or self.reasoning_effort_default
+        if model_name == self.generator_model:
+            return self.reasoning_effort_answer or self.reasoning_effort_default
+        return self.reasoning_effort_default
+
+    def _merge_extra_body(self, kwargs: Dict[str, Any]) -> None:
+        if not self.openai_llm_extra_body:
+            return
+        existing = kwargs.get("extra_body")
+        if isinstance(existing, dict):
+            merged = dict(self.openai_llm_extra_body)
+            merged.update(existing)
+            kwargs["extra_body"] = merged
+        else:
+            kwargs["extra_body"] = dict(self.openai_llm_extra_body)
+
+    def _direct_chat_complete(
+        self, model_name: str, messages: List[Dict[str, Any]], **kwargs: Any
+    ) -> str:
+        base_url = (self.base_url or "").rstrip("/")
+        if not base_url:
+            raise RuntimeError("Missing LLM base_url")
+        url = base_url + "/chat/completions"
+        payload: Dict[str, Any] = {
+            "model": model_name,
+            "messages": messages,
+        }
+        flat_kwargs = {key: value for key, value in kwargs.items() if value not in ("", None)}
+        extra_body = flat_kwargs.pop("extra_body", None)
+        if isinstance(extra_body, dict):
+            payload.update(extra_body)
+        payload.update(flat_kwargs)
+        data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+        request = urllib.request.Request(
+            url,
+            data=data,
+            headers={
+                "Authorization": f"Bearer {self.api_key}",
+                "Content-Type": "application/json",
+            },
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=120) as response:
+                raw = response.read().decode("utf-8")
+        except urllib.error.HTTPError as exc:
+            body = exc.read().decode("utf-8", errors="replace")
+            raise RuntimeError(f"HTTP {exc.code} from LLM API: {body[:500]}") from exc
+        payload = json.loads(raw)
+        choices = payload.get("choices") or []
+        if not choices:
+            raise RuntimeError("LLM API returned no choices")
+        message = choices[0].get("message") or {}
+        content = message.get("content")
+        if isinstance(content, list):
+            return "".join(
+                str(item.get("text", ""))
+                for item in content
+                if isinstance(item, dict)
+            )
+        return str(content or "")
 
 
 class SampleGenerator:
@@ -257,14 +496,23 @@ class SampleGenerator:
 
     def judge(self, sample: Dict[str, Any]) -> Dict[str, Any]:
         prompt = _judge_prompt(sample)
+        system_prompt = "你是评测集质量裁判，只能依据给定证据和随请求提供的原图评分并输出JSON。"
         last_exc: Optional[Exception] = None
         for _ in range(MAX_RETRIES):
             try:
-                payload = self.llm_client.complete_json(
-                    prompt,
-                    system_prompt="你是评测集质量裁判，只能依据给定证据评分并输出JSON。",
-                    model=self.llm_client.judge_model,
-                )
+                if sample.get("modality") == "image" and sample.get("image_path"):
+                    payload = self.llm_client.complete_json_with_image(
+                        prompt,
+                        system_prompt=system_prompt,
+                        image_path=str(sample.get("image_path")),
+                        model=self.llm_client.judge_model,
+                    )
+                else:
+                    payload = self.llm_client.complete_json(
+                        prompt,
+                        system_prompt=system_prompt,
+                        model=self.llm_client.judge_model,
+                    )
                 if payload:
                     return normalize_judge(payload)
             except Exception as exc:
@@ -399,13 +647,17 @@ def _generation_prompt(sample_id: str, task_type: str, pack: EvidencePack) -> st
 
 def _judge_prompt(sample: Dict[str, Any]) -> str:
     payload = {
+        "modality": sample.get("modality"),
+        "image_path": sample.get("image_path"),
         "question": sample.get("question"),
         "gold_answer": sample.get("gold_answer"),
         "evidence": sample.get("evidence"),
+        "metadata": sample.get("metadata", {}),
     }
     return f"""
 请只依据给定证据判断评测样本质量，不能使用外部知识。
-重点检查 gold_answer 是否由 evidence 支持，不要引入证据外细节。
+对于图像问答样本，随请求附带的原图也属于给定证据，可用于判断图片中可见对象、症状、作物和部位是否支持问题与答案。
+重点检查 gold_answer 是否由 evidence 和原图支持，不要引入证据外细节。
 评分范围均为1-5分。
 
 样本：
@@ -460,21 +712,92 @@ def _is_retryable_error(exc: Exception) -> bool:
 
 
 def _load_rag_config_defaults() -> Dict[str, str]:
+    def _prefer_env(value: str, env_name: str) -> str:
+        if env_name in os.environ:
+            return os.environ.get(env_name, "")
+        return value
+
     try:
         from raganything.config import RAGAnythingConfig
 
         cfg = RAGAnythingConfig()
-        return {
-            "model_answer": cfg.model_answer,
-            "model_judge": getattr(cfg, "model_judge", "gemini-3.1-pro-preview"),
-            "model_vision": cfg.model_vision,
+        values = {
+            "model_answer": _prefer_env(cfg.model_answer, "RAG_MODEL_ANSWER"),
+            "model_judge": _prefer_env(
+                getattr(cfg, "model_judge", "gemini-3.1-pro-preview"),
+                "RAG_MODEL_JUDGE",
+            ),
+            "model_vision": _prefer_env(cfg.model_vision, "RAG_MODEL_VISION"),
+            "llm_api_key": _prefer_env(getattr(cfg, "llm_api_key", ""), "RAG_LLM_API_KEY"),
+            "llm_base_url": _prefer_env(
+                getattr(cfg, "llm_base_url", ""), "RAG_LLM_BASE_URL"
+            ),
+            "reasoning_effort_default": _prefer_env(
+                getattr(cfg, "reasoning_effort_default", ""),
+                "RAG_REASONING_EFFORT_DEFAULT",
+            ),
+            "reasoning_effort_answer": _prefer_env(
+                getattr(cfg, "reasoning_effort_answer", ""),
+                "RAG_REASONING_EFFORT_ANSWER",
+            ),
+            "reasoning_effort_judge": _prefer_env(
+                getattr(cfg, "reasoning_effort_judge", ""),
+                "RAG_REASONING_EFFORT_JUDGE",
+            ),
+            "reasoning_effort_vision": _prefer_env(
+                getattr(cfg, "reasoning_effort_vision", ""),
+                "RAG_REASONING_EFFORT_VISION",
+            ),
         }
+        return values
     except Exception:
+        defaults = _load_config_file_defaults()
         return {
             "model_answer": os.getenv("RAG_MODEL_ANSWER", "gemini-2.5-flash"),
             "model_judge": os.getenv("RAG_MODEL_JUDGE", "gemini-3.1-pro-preview"),
             "model_vision": os.getenv("RAG_MODEL_VISION", "gemini-2.5-flash"),
+            "llm_api_key": os.getenv("RAG_LLM_API_KEY", defaults.get("llm_api_key", "")),
+            "llm_base_url": os.getenv("RAG_LLM_BASE_URL", defaults.get("llm_base_url", "")),
+            "reasoning_effort_default": os.getenv("RAG_REASONING_EFFORT_DEFAULT", ""),
+            "reasoning_effort_answer": os.getenv("RAG_REASONING_EFFORT_ANSWER", ""),
+            "reasoning_effort_judge": os.getenv("RAG_REASONING_EFFORT_JUDGE", ""),
+            "reasoning_effort_vision": os.getenv("RAG_REASONING_EFFORT_VISION", ""),
         }
+
+
+def _load_config_file_defaults() -> Dict[str, str]:
+    path = Path("raganything/config.py")
+    if not path.exists():
+        return {}
+    try:
+        tree = ast.parse(path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+    defaults: Dict[str, str] = {}
+    wanted = {"llm_api_key", "llm_base_url"}
+    for node in ast.walk(tree):
+        if not isinstance(node, ast.AnnAssign) or not isinstance(node.target, ast.Name):
+            continue
+        name = node.target.id
+        if name not in wanted or not isinstance(node.value, ast.Call):
+            continue
+        call = node.value
+        if not isinstance(call.func, ast.Name) or call.func.id != "field":
+            continue
+        for keyword in call.keywords:
+            if keyword.arg != "default" or not isinstance(keyword.value, ast.Call):
+                continue
+            default_call = keyword.value
+            if (
+                isinstance(default_call.func, ast.Name)
+                and default_call.func.id == "get_env_value"
+                and len(default_call.args) >= 2
+                and isinstance(default_call.args[1], ast.Constant)
+                and isinstance(default_call.args[1].value, str)
+            ):
+                defaults[name] = default_call.args[1].value
+    return defaults
 
 
 def _load_pipeline_api_defaults() -> Dict[str, str]:

@@ -328,12 +328,36 @@ class RAGUIService:
         legacy_embed_model = os.getenv("RAG_UI_EMBED_MODEL", "").strip()
         if legacy_llm_model:
             config.model_answer = legacy_llm_model
+            # Keep planner aligned with system-level answer model when no explicit override.
+            if not os.getenv("RAG_MODEL_PLANNER", "").strip():
+                config.model_planner = legacy_llm_model
         if legacy_vision_model:
             config.model_vision = legacy_vision_model
             if not os.getenv("RAG_MODEL_IMAGE_DESCRIPTION", "").strip():
                 config.model_image_description = legacy_vision_model
         if legacy_embed_model:
             config.model_embedding = legacy_embed_model
+
+        # Runtime env overrides to avoid dataclass default snapshot issues.
+        env_answer_model = os.getenv("RAG_MODEL_ANSWER", "").strip()
+        env_planner_model = os.getenv("RAG_MODEL_PLANNER", "").strip()
+        env_vision_model = os.getenv("RAG_MODEL_VISION", "").strip()
+        env_image_desc_model = os.getenv("RAG_MODEL_IMAGE_DESCRIPTION", "").strip()
+        env_embed_model = os.getenv("RAG_MODEL_EMBEDDING", "").strip()
+        if env_answer_model:
+            config.model_answer = env_answer_model
+        if env_planner_model:
+            config.model_planner = env_planner_model
+        if env_vision_model:
+            config.model_vision = env_vision_model
+        if env_image_desc_model:
+            config.model_image_description = env_image_desc_model
+        if env_embed_model:
+            config.model_embedding = env_embed_model
+        if not config.model_planner:
+            config.model_planner = config.model_answer
+        if not config.model_image_description:
+            config.model_image_description = config.model_vision
 
         api_key = (
             config.llm_api_key.strip()
@@ -352,6 +376,29 @@ class RAGUIService:
             or fallback_cfg.get("base_url", "").strip()
             or None
         )
+        raw_extra_body = os.getenv("OPENAI_LLM_EXTRA_BODY", "").strip()
+        parsed_extra_body: Dict[str, Any] = {}
+        if raw_extra_body:
+            try:
+                loaded = json.loads(raw_extra_body)
+                if isinstance(loaded, dict):
+                    parsed_extra_body = loaded
+                else:
+                    logger.warning(
+                        "OPENAI_LLM_EXTRA_BODY is not a JSON object, ignored: %s",
+                        raw_extra_body,
+                    )
+            except Exception:
+                logger.warning(
+                    "OPENAI_LLM_EXTRA_BODY is invalid JSON, ignored: %s",
+                    raw_extra_body,
+                )
+        disable_llm_cache = os.getenv("RAG_DISABLE_LLM_CACHE", "").strip().lower() in {
+            "1",
+            "true",
+            "yes",
+            "on",
+        }
 
         llm_model = config.model_answer
         planner_model = config.model_planner
@@ -359,17 +406,42 @@ class RAGUIService:
         image_desc_model = config.model_image_description
         embedding_model = config.model_embedding
         embedding_dim = config.embedding_dim
-        answer_reasoning_effort = config.get_reasoning_effort("answer")
-        planner_reasoning_effort = config.get_reasoning_effort("planner")
-        vision_reasoning_effort = config.get_reasoning_effort("vision")
-        image_desc_reasoning_effort = config.get_reasoning_effort("image_description")
+        def _normalize_reasoning(value: str) -> str:
+            norm = (value or "").strip().lower()
+            return norm if norm in {"low", "medium", "high"} else ""
 
+        def _resolve_reasoning_env(var_name: str, fallback: str) -> str:
+            if var_name in os.environ:
+                return _normalize_reasoning(os.environ.get(var_name, ""))
+            return _normalize_reasoning(fallback)
+
+        answer_reasoning_effort = _resolve_reasoning_env(
+            "RAG_REASONING_EFFORT_ANSWER", config.get_reasoning_effort("answer")
+        )
+        planner_reasoning_effort = _resolve_reasoning_env(
+            "RAG_REASONING_EFFORT_PLANNER", config.get_reasoning_effort("planner")
+        )
+        vision_reasoning_effort = _resolve_reasoning_env(
+            "RAG_REASONING_EFFORT_VISION", config.get_reasoning_effort("vision")
+        )
+        image_desc_reasoning_effort = _resolve_reasoning_env(
+            "RAG_REASONING_EFFORT_IMAGE_DESCRIPTION",
+            config.get_reasoning_effort("image_description"),
+        )
         set_prompt_language("zh")
         os.environ.setdefault("SUMMARY_LANGUAGE", "Chinese")
 
         def _text_model_func(
             model_name: str, prompt, system_prompt=None, history_messages=[], **kwargs
         ):
+            if parsed_extra_body:
+                existing = kwargs.get("extra_body")
+                if isinstance(existing, dict):
+                    merged = dict(parsed_extra_body)
+                    merged.update(existing)
+                    kwargs["extra_body"] = merged
+                else:
+                    kwargs["extra_body"] = dict(parsed_extra_body)
             if "reasoning_effort" not in kwargs:
                 if model_name == planner_model and planner_reasoning_effort:
                     kwargs["reasoning_effort"] = planner_reasoning_effort
@@ -413,6 +485,14 @@ class RAGUIService:
             messages=None,
             **kwargs,
         ):
+            if parsed_extra_body:
+                existing = kwargs.get("extra_body")
+                if isinstance(existing, dict):
+                    merged = dict(parsed_extra_body)
+                    merged.update(existing)
+                    kwargs["extra_body"] = merged
+                else:
+                    kwargs["extra_body"] = dict(parsed_extra_body)
             if "reasoning_effort" not in kwargs and vision_reasoning_effort:
                 kwargs["reasoning_effort"] = vision_reasoning_effort
             if messages:
@@ -465,6 +545,14 @@ class RAGUIService:
             messages=None,
             **kwargs,
         ):
+            if parsed_extra_body:
+                existing = kwargs.get("extra_body")
+                if isinstance(existing, dict):
+                    merged = dict(parsed_extra_body)
+                    merged.update(existing)
+                    kwargs["extra_body"] = merged
+                else:
+                    kwargs["extra_body"] = dict(parsed_extra_body)
             if (
                 "reasoning_effort" not in kwargs
                 and image_desc_reasoning_effort
@@ -530,6 +618,7 @@ class RAGUIService:
             vision_model_func=vision_model_func,
             image_description_model_func=image_description_model_func,
             embedding_func=embedding_func,
+            lightrag_kwargs={"enable_llm_cache": (not disable_llm_cache)},
         )
         if callback is None:
             callback = ProcessingCallback()
@@ -1237,6 +1326,7 @@ class RAGUIService:
         mode: str = "hybrid",
         debug: bool = False,
         planner_enabled: bool = False,
+        include_evidence: bool = True,
     ) -> Dict[str, Any]:
         """Run query and return structured answer + citations + graph focus."""
         total_started_at = time.perf_counter()
@@ -1277,29 +1367,30 @@ class RAGUIService:
         citations: List[Dict[str, Any]] = []
         graph_focus = {"node_ids": [], "edge_ids": [], "chunk_ids": []}
 
-        try:
-            stage_started_at = time.perf_counter()
-            context_raw = self._fetch_query_context(rag, question, mode)
-            self._record_timing(timings, "context_fetch", stage_started_at)
+        if include_evidence:
+            try:
+                stage_started_at = time.perf_counter()
+                context_raw = self._fetch_query_context(rag, question, mode)
+                self._record_timing(timings, "context_fetch", stage_started_at)
 
-            stage_started_at = time.perf_counter()
-            citation_bundle = self._build_citations(kb_id, context_raw)
-            citations = citation_bundle["citations"]
-            chunk_ids = citation_bundle["chunk_ids"]
-            self._record_timing(timings, "citation_build", stage_started_at)
+                stage_started_at = time.perf_counter()
+                citation_bundle = self._build_citations(kb_id, context_raw)
+                citations = citation_bundle["citations"]
+                chunk_ids = citation_bundle["chunk_ids"]
+                self._record_timing(timings, "citation_build", stage_started_at)
 
-            stage_started_at = time.perf_counter()
-            graph_payload = self.get_graph(kb_id, focus_chunk_ids=chunk_ids, full=False)
-            graph_focus = {
-                "node_ids": graph_payload.get("highlight_node_ids", []),
-                "edge_ids": graph_payload.get("highlight_edge_ids", []),
-                "chunk_ids": chunk_ids,
-            }
-            self._record_timing(timings, "graph_focus", stage_started_at)
-        except Exception:
-            # Keep answer available even if evidence extraction fails.
-            citations = []
-            graph_focus = {"node_ids": [], "edge_ids": [], "chunk_ids": []}
+                stage_started_at = time.perf_counter()
+                graph_payload = self.get_graph(kb_id, focus_chunk_ids=chunk_ids, full=False)
+                graph_focus = {
+                    "node_ids": graph_payload.get("highlight_node_ids", []),
+                    "edge_ids": graph_payload.get("highlight_edge_ids", []),
+                    "chunk_ids": chunk_ids,
+                }
+                self._record_timing(timings, "graph_focus", stage_started_at)
+            except Exception:
+                # Keep answer available even if evidence extraction fails.
+                citations = []
+                graph_focus = {"node_ids": [], "edge_ids": [], "chunk_ids": []}
 
         self._record_timing(timings, "backend_total", total_started_at)
         self._log_query_timings(
@@ -1334,6 +1425,7 @@ class RAGUIService:
         mode: str = "hybrid",
         debug: bool = False,
         planner_enabled: bool = False,
+        include_evidence: bool = True,
     ) -> Dict[str, Any]:
         """Run multimodal query with user-provided image + optional text question."""
         total_started_at = time.perf_counter()
@@ -1383,28 +1475,29 @@ class RAGUIService:
         context_raw = ""
         citations: List[Dict[str, Any]] = []
         graph_focus = {"node_ids": [], "edge_ids": [], "chunk_ids": []}
-        try:
-            stage_started_at = time.perf_counter()
-            context_raw = self._fetch_query_context(rag, query_text, mode)
-            self._record_timing(timings, "context_fetch", stage_started_at)
+        if include_evidence:
+            try:
+                stage_started_at = time.perf_counter()
+                context_raw = self._fetch_query_context(rag, query_text, mode)
+                self._record_timing(timings, "context_fetch", stage_started_at)
 
-            stage_started_at = time.perf_counter()
-            citation_bundle = self._build_citations(kb_id, context_raw)
-            citations = citation_bundle["citations"]
-            chunk_ids = citation_bundle["chunk_ids"]
-            self._record_timing(timings, "citation_build", stage_started_at)
+                stage_started_at = time.perf_counter()
+                citation_bundle = self._build_citations(kb_id, context_raw)
+                citations = citation_bundle["citations"]
+                chunk_ids = citation_bundle["chunk_ids"]
+                self._record_timing(timings, "citation_build", stage_started_at)
 
-            stage_started_at = time.perf_counter()
-            graph_payload = self.get_graph(kb_id, focus_chunk_ids=chunk_ids, full=False)
-            graph_focus = {
-                "node_ids": graph_payload.get("highlight_node_ids", []),
-                "edge_ids": graph_payload.get("highlight_edge_ids", []),
-                "chunk_ids": chunk_ids,
-            }
-            self._record_timing(timings, "graph_focus", stage_started_at)
-        except Exception:
-            citations = []
-            graph_focus = {"node_ids": [], "edge_ids": [], "chunk_ids": []}
+                stage_started_at = time.perf_counter()
+                graph_payload = self.get_graph(kb_id, focus_chunk_ids=chunk_ids, full=False)
+                graph_focus = {
+                    "node_ids": graph_payload.get("highlight_node_ids", []),
+                    "edge_ids": graph_payload.get("highlight_edge_ids", []),
+                    "chunk_ids": chunk_ids,
+                }
+                self._record_timing(timings, "graph_focus", stage_started_at)
+            except Exception:
+                citations = []
+                graph_focus = {"node_ids": [], "edge_ids": [], "chunk_ids": []}
 
         debug_payload: Dict[str, Any] = {}
         if debug:

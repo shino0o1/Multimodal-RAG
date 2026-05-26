@@ -177,7 +177,7 @@ class RAGAnythingConfig:
 
     # OpenAI-Compatible Routing & Reasoning Configuration
     # ---
-    llm_api_key: str = field(default=get_env_value("RAG_LLM_API_KEY", "sk-MwcAPesgu8ol4F0ePPNP0hkGiseYaNEbfoLv4phN03ldl3AV", str))
+    llm_api_key: str = field(default=get_env_value("RAG_LLM_API_KEY", "sk-ZtWiLrC1L8eiZq8fS1K1k3FCPiPEk675q0KwZGm7GVpXjGLa", str))
     """API key for OpenAI-compatible chat completion calls."""
 
     llm_base_url: str = field(default=get_env_value("RAG_LLM_BASE_URL", "https://yunwu.ai/v1", str))
@@ -197,6 +197,11 @@ class RAGAnythingConfig:
         default=get_env_value("RAG_REASONING_EFFORT_PLANNER", "", str)
     )
     """Reasoning effort for planner model stage; falls back to default when empty."""
+
+    reasoning_effort_judge: str = field(
+        default=get_env_value("RAG_REASONING_EFFORT_JUDGE", "", str)
+    )
+    """Reasoning effort for judge/evaluation stage; falls back to default when empty."""
 
     reasoning_effort_vision: str = field(
         default=get_env_value("RAG_REASONING_EFFORT_VISION", "", str)
@@ -379,6 +384,9 @@ class RAGAnythingConfig:
         self.reasoning_effort_planner = self._normalize_reasoning_effort(
             self.reasoning_effort_planner
         )
+        self.reasoning_effort_judge = self._normalize_reasoning_effort(
+            self.reasoning_effort_judge
+        )
         self.reasoning_effort_vision = self._normalize_reasoning_effort(
             self.reasoning_effort_vision
         )
@@ -400,6 +408,7 @@ class RAGAnythingConfig:
         stage_to_effort = {
             "answer": self.reasoning_effort_answer,
             "planner": self.reasoning_effort_planner,
+            "judge": self.reasoning_effort_judge,
             "vision": self.reasoning_effort_vision,
             "image_description": self.reasoning_effort_image_description,
         }

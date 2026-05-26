@@ -1,4 +1,4 @@
-# 本地知识库驱动的评测集自动构建 Pipeline - codex计划-复杂版-已废弃
+# 本地知识库驱动的评测集自动构建 Pipeline - codex计划-复杂版-现已废弃
 
 ## Summary
 
@@ -175,7 +175,7 @@ LLM judge：
 - 默认目标为 `200` 条 accepted 样本，实际会先生成更多候选再筛选。
 - 初版只做命令行工具，不接入 Streamlit 前端。
 
-# 评测集构建流程-复杂版-已废弃
+# 评测集构建流程-复杂版-现已废弃
 现在 pipeline 流程是：
 
 1. 读取本地知识库  
@@ -307,7 +307,7 @@ eval_dataset/
 # 评测集构建-简单版
 可以，直接砍成一个“极简版”就行。
 
-**极简流程（建议）**
+**流程**
 1. 从 `rag-dir` 抽证据（entity/relation/chunk）。
 2. LLM 生成 `question + gold_answer + evidence`。
 3. 只做 3 条校验：
@@ -340,7 +340,7 @@ eval_dataset/
 - 错判主要来自“规则过多”，不是答案本身差。
 - 只保留“证据存在 + 基本一致性”能大幅减少误拒。
 
-如果你同意，我下一步可以直接把当前脚本改成这个极简模式（默认开启）。
+
 python scripts/build_eval_dataset.py \
   --rag-dir rag_storage_whole_book_gemini \
   --image-manifest raganything/eval_dataset/manifest.jsonl \
@@ -349,3 +349,124 @@ python scripts/build_eval_dataset.py \
 
 powershell命令：
 python .\scripts\build_eval_dataset.py --rag-dir .\rag_storage_whole_book_gemini --image-manifest .\raganything\eval_dataset\manifest.jsonl --output-dir .\eval_dataset_test --target-size 20
+
+
+
+Query：我想针对当前的系统和应用场景构建一个 100～300 条高质量问答评测集，覆盖：病虫害诊断、防治建议、药剂推荐、症状识别、图像问答。用于评估这个基于知识图谱的问答系统的回答效果，比如准确率和证据一致性。该怎么构建这个数据集
+
+Answer：
+可以把评测集做成“问题 + 标准答案 + 证据约束 + 评分维度”的结构，而不是只做普通 QA。因为你的系统是基于知识图谱和本地知识库的 RAG，评估重点不只是答对，还要看回答是否能被图谱/文档证据支持。
+
+建议分布：
+
+| 类型 | 数量 | 目的 |
+|---|---:|---|
+| 病虫害诊断 | 35 | 判断系统能否根据症状推断病虫害 |
+| 防治建议 | 35 | 判断回答是否给出合理综合防治措施 |
+| 药剂推荐 | 25 | 判断药剂、剂量、使用注意事项是否准确 |
+| 症状识别 | 30 | 判断对叶片、茎秆、果实等症状描述是否准确 |
+| 图像问答 | 25 | 判断 VLM + KG 检索链路是否有效 |
+| 反事实/证据不足问题 | 10 | 测系统是否会乱答 |
+
+
+**数据格式**
+建议用 `jsonl`，一行一个样本，方便自动评测。
+
+```json
+{
+  "id": "pest_diag_001",
+  "type": "病虫害诊断",
+  "question": "甘蓝叶片出现不规则孔洞，并发现黑绿色幼虫取食，可能是什么害虫？应该如何防治？",
+  "image_path": null,
+  "gold_answer": "可能为菜青虫或小菜蛾危害，应结合幼虫形态进一步判断。防治上可采用人工摘除、诱杀、生物防治和必要时使用登记药剂。",
+  "expected_entities": ["菜青虫", "小菜蛾", "叶片孔洞", "生物防治"],
+  "expected_relations": ["危害部位", "防治方法", "症状表现"],
+  "evidence_chunks": ["chunk-xxx", "chunk-yyy"],
+  "must_include": ["结合幼虫形态判断", "综合防治", "避免滥用药剂"],
+  "must_not_include": ["无依据确定为单一病虫害", "推荐禁用药剂"],
+  "difficulty": "medium",
+  "scoring_focus": ["准确性", "证据一致性", "安全性"]
+}
+```
+
+图像问答样本可以加：
+
+```json
+{
+  "id": "image_qa_001",
+  "type": "图像问答",
+  "question": "图中叶片上的害虫可能是什么？如何防治？",
+  "image_path": "eval_images/image_001.jpg",
+  "gold_answer": "...",
+  "expected_entities": ["菜粉蝶", "菜青虫"],
+  "evidence_chunks": ["chunk-abc"],
+  "visual_clues": ["白色蝶类", "叶片取食", "十字花科作物"]
+}
+```
+
+**构建流程**
+1. 从现有知识库抽样  
+优先从 `rag_storage/kv_store_entity_chunks.json`、知识图谱节点、边关系中抽取高频实体：病害名、虫害名、症状、作物、药剂、防治方法。
+
+2. 设计问题模板  
+不要只写“XX是什么”，要覆盖真实农业问答场景：
+
+```text
+诊断类：作物 + 症状 + 发生部位 + 环境 → 判断可能病虫害
+防治类：病虫害名 + 作物阶段 → 给出综合防治方案
+药剂类：病虫害名 + 作物 + 场景 → 推荐药剂及注意事项
+症状类：症状描述 → 识别可能原因
+图像类：图片 + 简短问题 → 识别对象并给建议
+证据不足类：模糊问题 → 要求系统说明无法确定
+```
+
+3. 人工审核标准答案  
+不要完全用 LLM 生成 gold answer。可以让 LLM 先生成候选，再人工根据文档证据修订。高质量评测集的关键是：每条答案都能追溯到本地文档或图谱证据。
+
+4. 标注证据  
+每条样本至少绑定 `1-3 个 evidence_chunks` 或 KG 实体/关系。这样你才能评估“证据一致性”。
+
+5. 划分难度  
+建议分为：
+`easy`：单一实体、答案明确。  
+`medium`：多个症状，需要综合判断。  
+`hard`：相似病虫害区分、多跳推理、图像 + 文本联合。
+
+**评分维度**
+建议每条回答打 5 个分数：
+
+| 维度 | 分值 | 含义 |
+|---|---:|---|
+| 答案准确性 | 0-2 | 是否答对病虫害/防治要点 |
+| 证据一致性 | 0-2 | 是否被 KG/文档证据支持 |
+| 完整性 | 0-2 | 是否覆盖诊断、防治、注意事项 |
+| 安全性 | 0-2 | 药剂建议是否谨慎、无禁用/乱用 |
+| 表达可用性 | 0-1 | 是否清晰、适合农技问答 |
+
+总分 `9 分` 或归一化成百分制。
+
+**自动评估指标**
+可以做三类：
+
+1. 实体命中率  
+看回答是否包含 `expected_entities`。
+
+2. 证据一致性  
+看回答中的关键结论是否能在检索到的 chunks / KG triples 中找到支持。
+
+3. LLM-as-Judge  
+让评审模型根据 `question + gold_answer + evidence + system_answer` 打分，但必须限制它只基于给定证据判断。
+
+**建议目录结构**
+```text
+eval/
+  qa_eval.jsonl
+  image_qa_eval.jsonl
+  eval_images/
+  rubric.md
+  run_eval.py
+  results/
+```
+
+
+评测数据集不能只是数量多，而是真正能暴露Agentic-KG-RAG的系统问题：检索不到、证据不一致、图像识别错、药剂建议不安全、多病虫害混淆等。

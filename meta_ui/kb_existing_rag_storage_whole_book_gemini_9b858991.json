@@ -1,0 +1,16 @@
+{
+  "kb_id": "kb_existing_rag_storage_whole_book_gemini_9b858991",
+  "file_name": "[existing] rag_storage_whole_book_gemini",
+  "upload_path": "",
+  "working_dir": "E:\\Research\\Project\\RAG-Anything\\rag_storage_whole_book_gemini",
+  "output_dir": "E:\\Research\\Project\\RAG-Anything\\output",
+  "status": "ready",
+  "stage": "ready",
+  "progress": 100,
+  "error": "",
+  "parser": "mineru",
+  "job_id": "",
+  "source": "existing",
+  "created_at": 1778747717.5636919,
+  "updated_at": 1778747717.5636919
+}

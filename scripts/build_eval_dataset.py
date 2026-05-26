@@ -25,6 +25,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--target-size", type=int, default=200)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--candidate-multiplier", type=float, default=1.5)
+    parser.add_argument("--image-min-ratio", type=float, default=0.30)
+    parser.add_argument("--max-workers", type=int, default=6)
     parser.add_argument("--generator-model", default=None)
     parser.add_argument("--judge-model", default=None)
     parser.add_argument("--vision-model", default=None)
@@ -42,6 +44,8 @@ def main() -> None:
         target_size=args.target_size,
         seed=args.seed,
         candidate_multiplier=args.candidate_multiplier,
+        image_min_ratio=args.image_min_ratio,
+        max_workers=args.max_workers,
         generator_model=args.generator_model,
         judge_model=args.judge_model,
         vision_model=args.vision_model,
