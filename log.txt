@@ -1,6 +1,23 @@
+(rag_anything) PS E:\Research\Project\RAG-Anything> python .\scripts\eval_runner.py `
+>>   --eval-file .\eval_dataset_200\Eval.jsonl `
+>>   --rag-dir .\rag_storage_whole_book_gemini `
+>>   --output-dir .\eval_results `
+>>   --concurrency 6 `
+>>   --system-model Qwen/Qwen3.5-397B-A17B `
+>>   --judge-model deepseek-ai/DeepSeek-V4-Pro `
+>>   --disable-planner `
+>>   --enable-judge `
+>>   --image-timeout-sec 300
+[reasoning] thinking: not_explicitly_set
+[reasoning] system_effort: answer=none, planner=none, vision=none, image_desc=none, default=none
+[reasoning] judge_effort: none
+[reasoning] OPENAI_LLM_EXTRA_BODY: (empty)
+[reasoning] llm_cache_disabled: True
+[reasoning] notice: system reasoning not active in current run.
+[stage1] answer/retrieval started. total=215
 INFO: Prompt language set to Chinese for KG consistency
 INFO: RAGAnything initialized with config:
-INFO:   Working directory: E:\Research\Project\RAG-Anything\rag_storage_whole_book_gemini
+INFO:   Working directory: E:\Research\Project\RAG-Anything\rag_storage_whole_book_gemini    
 INFO:   Parser: mineru
 INFO:   Parse method: auto
 INFO:   Multimodal processing - Image: True, Table: True, Equation: False
@@ -8,57 +25,2026 @@ INFO:   Max concurrent files: 1
 INFO:   KG quality - enabled: True, canonical_language: zh, relation_schema: fixed, extraction_mode: ppe, ontology_profile: cruciferous_pest_disease, enforce_ontology: True, description_policy: multimodal_only
 INFO:   KG quality - attribute_hosts: ['虫害', '病害', '病原菌'], multimodal_min_desc_chars: 30, drop_empty_multimodal: True
 INFO:   Multimodal cache - desc_cache_enabled: True, hard_skip_enabled: True
-INFO:   Query defaults - mode: hybrid, top_k: 10, vlm_enhanced: False, enable_rerank: False
-INFO:   Model routing - answer: qwen3-8b, planner: qwen3-8b, vision: qwen3-8b, image_desc: qwen3-8b, rerank: (unset)     
+INFO:   Query defaults - mode: hybrid, top_k: 10, vlm_enhanced: False, enable_rerank: False  
+INFO:   Model routing - answer: Qwen/Qwen3.5-397B-A17B, planner: Qwen/Qwen3.5-397B-A17B, vision: Qwen/Qwen3.5-397B-A17B, image_desc: Qwen/Qwen3.5-397B-A17B, rerank: (unset)
 INFO: Parser 'mineru' installation verified
-INFO: Initializing LightRAG with parameters: {'working_dir': 'E:\\Research\\Project\\RAG-Anything\\rag_storage_whole_book_gemini', 'addon_params': {'entity_types': ['病害', '虫害', '病原菌', '作物', '生长期', '生物分类', '药剂', '别名', '部位', '时间', '危害症状', '形态特征', '发病诱因', '发生时期', '防治要点', '生活习性', '发生规律'], 'relationship_types': [' 致病', '发生于', '属类隶属', '危害', '使用药剂', '防治', '生命周期', '地理位置'], 'language': 'Chinese'}}
+INFO: Initializing LightRAG with parameters: {'working_dir': 'E:\\Research\\Project\\RAG-Anything\\rag_storage_whole_book_gemini', 'enable_llm_cache': False, 'addon_params': {'entity_types': ['病害', '虫害', '病原菌', '作物', '生长期', '生物分类', '药剂', '别名', '部位', '时间', '危害症状', '形态特征', '发病诱因', '发生时期', '防治要点', '生活习性', '发生规律'], 'relationship_types': ['致病', '发生于', '属类隶属', '危害', '使用药剂', '防治', '生命周期', '地理位置'], 'language': 'Chinese'}}
 INFO: [] Loaded graph from E:\Research\Project\RAG-Anything\rag_storage_whole_book_gemini\graph_chunk_entity_relation.graphml with 673 nodes, 415 edges
 INFO:nano-vectordb:Load (701, 3072) data
-INFO:nano-vectordb:Init {'embedding_dim': 3072, 'metric': 'cosine', 'storage_file': 'E:\\Research\\Project\\RAG-Anything\\rag_storage_whole_book_gemini\\vdb_entities.json'} 701 data
+INFO:nano-vectordb:Init {'embedding_dim': 3072, 'metric': 'cosine', 'storage_file': 'E:\\Research\\Project\\RAG-Anything\\rag_storage_whole_book_gemini\\vdb_entities.json'} 701 data     
 INFO:nano-vectordb:Load (640, 3072) data
 INFO:nano-vectordb:Init {'embedding_dim': 3072, 'metric': 'cosine', 'storage_file': 'E:\\Research\\Project\\RAG-Anything\\rag_storage_whole_book_gemini\\vdb_relationships.json'} 640 data
 INFO:nano-vectordb:Load (236, 3072) data
-INFO:nano-vectordb:Init {'embedding_dim': 3072, 'metric': 'cosine', 'storage_file': 'E:\\Research\\Project\\RAG-Anything\\rag_storage_whole_book_gemini\\vdb_chunks.json'} 236 data
-INFO: [] Process 23416 KV load full_docs with 1 records
-INFO: [] Process 23416 KV load text_chunks with 236 records
-INFO: [] Process 23416 KV load full_entities with 1 records
-INFO: [] Process 23416 KV load full_relations with 1 records
-INFO: [] Process 23416 KV load entity_chunks with 194 records
-INFO: [] Process 23416 KV load relation_chunks with 160 records
-INFO: [] Process 23416 KV load llm_response_cache with 248 records
-INFO: [] Process 23416 doc status load doc_status with 1 records
-INFO: [] Process 23416 KV load parse_cache with 1 records
-INFO: [] Process 23416 KV load multimodal_desc_cache with 223 records
+INFO:nano-vectordb:Init {'embedding_dim': 3072, 'metric': 'cosine', 'storage_file': 'E:\\Research\\Project\\RAG-Anything\\rag_storage_whole_book_gemini\\vdb_chunks.json'} 236 data       
+INFO: [] Process 17604 KV load full_docs with 1 records
+INFO: [] Process 17604 KV load full_entities with 1 records
+INFO: [] Process 17604 KV load full_relations with 1 records
+INFO: [] Process 17604 KV load entity_chunks with 194 records
+INFO: [] Process 17604 KV load relation_chunks with 160 records
+INFO: [] Process 17604 KV load llm_response_cache with 820 records
+INFO: [] Process 17604 doc status load doc_status with 1 records
+INFO: [] Process 17604 KV load parse_cache with 1 records
+INFO: [] Process 17604 KV load multimodal_desc_cache with 223 records
 INFO: Multimodal processors initialized with context support
 INFO: Available processors: ['image', 'table', 'generic']
 INFO: Context configuration: ContextConfig(context_window=1, context_mode='page', max_context_tokens=2000, include_headers=True, include_captions=True, filter_content_types=['text'])
 INFO: LightRAG, parse cache, multimodal desc cache, and multimodal processors initialized
-ERROR: OpenAI API Call Failed,
-Model: qwen3-8b,
-Params: {'reasoning_effort': 'medium', 'enable_thinking': False}, Got: AsyncCompletions.create() got an unexpected keyword argument 'enable_thinking'
-WARNING: Plan generation failed, using heuristic fallback: AsyncCompletions.create() got an unexpected keyword argument 'enable_thinking'
+INFO: Executing text query: 银纹夜蛾有什么防治方法？...
+INFO: Query mode: hybrid
 INFO: LLM func: 4 new workers initialized (Timeouts: Func: 180s, Worker: 360s, Health Check: 375s)
-ERROR: OpenAI API Call Failed,
-Model: qwen3-8b,
-Params: {'reasoning_effort': 'medium', 'enable_thinking': False, 'response_format': <class 'lightrag.types.GPTKeywordExtractionFormat'>}, Got: AsyncCompletions.parse() got an unexpected keyword argument 'enable_thinking'
-ERROR: LLM func: Error in decorated function for task 2626594741824_55084.515: AsyncCompletions.parse() got an unexpected keyword argument 'enable_thinking'
-ERROR: Query failed: AsyncCompletions.parse() got an unexpected keyword argument 'enable_thinking'
-ERROR: OpenAI API Call Failed,
-Model: qwen3-8b,
-Params: {'reasoning_effort': 'medium', 'enable_thinking': False}, Got: AsyncCompletions.create() got an unexpected keyword argument 'enable_thinking'
-[progress] 1/215
-ERROR: OpenAI API Call Failed,
-Model: qwen3-8b,
-Params: {'reasoning_effort': 'medium', 'enable_thinking': False}, Got: AsyncCompletions.create() got an unexpected keyword argument 'enable_thinking'
-WARNING: Plan generation failed, using heuristic fallback: AsyncCompletions.create() got an unexpected keyword argument 'enable_thinking'
-ERROR: OpenAI API Call Failed,
-Model: qwen3-8b,
-Params: {'reasoning_effort': 'medium', 'enable_thinking': False}, Got: AsyncCompletions.create() got an unexpected keyword argument 'enable_thinking'
-WARNING: Plan generation failed, using heuristic fallback: AsyncCompletions.create() got an unexpected keyword argument 'enable_thinking'
-ERROR: OpenAI API Call Failed,
-Model: qwen3-8b,
-Params: {'reasoning_effort': 'medium', 'enable_thinking': False}, Got: AsyncCompletions.create() got an unexpected keyword argument 'enable_thinking'
-WARNING: Plan generation failed, using heuristic fallback: AsyncCompletions.create() got an unexpected keyword argument 'enable_thinking'
-ERROR: OpenAI API Call Failed,
-Model: qwen3-8b,
-Params: {'reasoning_effort': 'medium', 'enable_thinking': False}, Got: AsyncCompletions.create() got an unexpected keyword argument 'enable_thinking'
+INFO: Embedding func: 8 new workers initialized (Timeouts: Func: 30s, Worker: 60s, Health Check: 75s)
+INFO: Query nodes: 银纹夜蛾, 化学防治, 生物防治 (top_k:10, cosine:0.2)
+WARNING: Some nodes are missing, maybe the storage is damaged
+INFO: Local query: 9 entites, 24 relations
+INFO: Query edges: 害虫防治, 防治方法, 农业病虫害 (top_k:10, cosine:0.2)
+INFO: Global query: 14 entites, 8 relations
+INFO: Raw search results: 22 entities, 31 relations, 0 vector chunks
+INFO: After truncation: 22 entities, 31 relations
+INFO: Selecting 55 from 75 entity-related chunks by vector similarity
+INFO: Find 3 additional chunks in 3 relations (deduplicated 23)
+INFO: Selecting 3 from 3 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 58 -> 58 (deduplicated 0)
+INFO: Final context: 22 entities, 31 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 R1/1 E2/2 R1/2 E2/3 R1/3 E3/4 E2/5 E2/6 E2/7 E1/8 E2/9 E2/10 E2/11 E1/12 E2/13 E3/14 E1/15 E2/16 E1/17
+INFO: Text query completed
+INFO: Query nodes: 银纹夜蛾, 夜蛾 (top_k:10, cosine:0.2)
+WARNING: Some nodes are missing, maybe the storage is damaged
+INFO: Local query: 8 entites, 23 relations
+INFO: Query edges: 防治方法, 害虫防治 (top_k:10, cosine:0.2)
+INFO: Global query: 15 entites, 10 relations
+INFO: Raw search results: 22 entities, 32 relations, 0 vector chunks
+INFO: After truncation: 22 entities, 32 relations
+INFO: Selecting 55 from 70 entity-related chunks by vector similarity
+INFO: Find 2 additional chunks in 2 relations (deduplicated 30)
+INFO: Selecting 2 from 2 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 57 -> 57 (deduplicated 0)
+INFO: Final context: 22 entities, 32 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 R1/1 E3/2 R4/2 E3/3 E4/4 E3/5 E3/6 E3/7 E2/8 E3/9 E2/10 E1/11 E2/12 E1/13 E5/14 E2/15 E1/16 E2/17 E1/18
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0579s, initialize_lightrag=7.2975s, answer_generation=186.3701s, context_fetch=159.9549s, citation_build=0.0060s, graph_focus=0.0401s, backend_total=353.7266s
+[stage1][progress] [1/215]
+INFO: Executing text query: 萝卜霜霉病用什么药可以防治？...
+INFO: Query mode: hybrid
+INFO: Executing text query: 十字花科蔬菜得了黑腐病，可以用哪些药剂防治？具体怎么用？...
+INFO: Query mode: hybrid
+INFO: Executing text query: 大白菜得了黑斑病该如何防治？...
+INFO: Query mode: hybrid
+INFO: Executing text query: 白菜黑斑病可以用什么药剂防治？...
+INFO: Query mode: hybrid
+INFO: Executing text query: 请问银纹夜蛾主要在什么时候发生？对于银纹夜蛾的防治有什么建议吗？...
+INFO: Query mode: hybrid
+INFO: Executing text query: 烟粉虱应该怎么防治？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 黑腐病, 药剂, 防治, 具体用法 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 31 relations
+INFO: Query edges: 十字花科蔬菜, 黑腐病防治, 药剂使用 (top_k:10, cosine:0.2)
+INFO: Global query: 9 entites, 9 relations
+INFO: Raw search results: 18 entities, 34 relations, 0 vector chunks
+INFO: After truncation: 18 entities, 34 relations
+INFO: Selecting 45 from 101 entity-related chunks by vector similarity
+INFO: Find 10 additional chunks in 4 relations (deduplicated 16)
+INFO: Selecting 10 from 10 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 55 -> 55 (deduplicated 0)
+INFO: Final context: 18 entities, 34 relations, 20 chunks
+INFO: Final chunks S+F/O: E6/1 R1/1 E8/2 R1/2 E3/3 R1/3 E8/4 R1/4 E1/5 R1/5 E3/6 R1/6 E3/7 R1/7 E1/8 R1/8 E3/9 R1/9 E2/10 R1/10
+INFO: Query nodes: 萝卜, 霜霉病, 药剂, 防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 75 relations
+INFO: Query edges: 萝卜霜霉病, 病害防治, 用药指导 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 9 relations
+INFO: Raw search results: 19 entities, 75 relations, 0 vector chunks
+INFO: After truncation: 19 entities, 75 relations
+INFO: Selecting 37 from 37 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 75 relations
+INFO: Round-robin merged chunks: 37 -> 37 (deduplicated 0)
+INFO: Final context: 19 entities, 75 relations, 20 chunks
+INFO: Final chunks S+F/O: E11/1 E2/2 E1/3 E3/4 E2/5 E10/6 E1/7 E1/8 E1/9 E3/10 E2/11 E1/12 E1/13 E1/14 E1/15 E1/16 E1/17 E1/18 E3/19 E1/20
+INFO: Query nodes: 白菜, 黑斑病, 药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 96 relations
+INFO: Query edges: 白菜黑斑病, 药剂防治 (top_k:10, cosine:0.2)
+INFO: Global query: 11 entites, 10 relations
+INFO: Raw search results: 20 entities, 96 relations, 0 vector chunks
+INFO: After truncation: 20 entities, 96 relations
+INFO: Selecting 50 from 122 entity-related chunks by vector similarity
+INFO: Find 9 additional chunks in 5 relations (deduplicated 21)
+INFO: Selecting 9 from 9 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 59 -> 59 (deduplicated 0)
+INFO: Final context: 20 entities, 96 relations, 20 chunks
+INFO: Final chunks S+F/O: E11/1 R1/1 E5/2 R9/2 E5/3 R3/3 E3/4 R1/4 E2/5 R1/5 E1/6 R3/6 E8/7 R1/7 E2/8 R1/8 E7/9 R1/9 E7/10 E1/11
+INFO: Text query completed
+INFO: Query nodes: 烟粉虱, 防治措施, 生物防治, 化学防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 49 relations
+INFO: Query edges: 烟粉虱防治, 害虫控制, 农业植保 (top_k:10, cosine:0.2)
+INFO: Global query: 13 entites, 7 relations
+INFO: Raw search results: 21 entities, 54 relations, 0 vector chunks
+INFO: After truncation: 21 entities, 54 relations
+INFO: Selecting 52 from 106 entity-related chunks by vector similarity
+INFO: Find 18 additional chunks in 13 relations (deduplicated 30)
+INFO: Selecting 18 from 18 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 70 -> 70 (deduplicated 0)
+INFO: Final context: 21 entities, 54 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 R2/1 E3/2 R1/2 E2/3 R3/3 E1/4 R1/4 E1/5 R3/5 E1/6 R2/6 E2/7 R2/7 E1/8 R2/8 E3/9 R2/9 E2/10 R2/10
+INFO: Query nodes: 大白菜, 黑斑病, 防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 92 relations
+INFO: Query edges: 大白菜种植, 病害防治, 农业管理 (top_k:10, cosine:0.2)
+INFO: Global query: 9 entites, 8 relations
+INFO: Raw search results: 16 entities, 95 relations, 0 vector chunks
+INFO: After truncation: 16 entities, 95 relations
+INFO: Selecting 40 from 114 entity-related chunks by vector similarity
+INFO: Find 6 additional chunks in 5 relations (deduplicated 23)
+INFO: Selecting 6 from 6 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 46 -> 46 (deduplicated 0)
+INFO: Final context: 16 entities, 95 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 R3/1 E2/2 R3/2 E1/3 R15/3 E3/4 R2/4 E1/5 R1/5 E3/6 R9/6 E1/7 E3/8 E1/9 E3/10 E2/11 E1/12 E1/13 E1/14
+INFO: Text query completed
+INFO: Text query completed
+INFO: Query nodes: 银纹夜蛾, 发生时间, 防治措施 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 64 relations
+INFO: Query edges: 银纹夜蛾发生规律, 银纹夜蛾防治建议 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 8 relations
+INFO: Raw search results: 18 entities, 65 relations, 0 vector chunks
+INFO: After truncation: 18 entities, 65 relations
+INFO: Selecting 45 from 78 entity-related chunks by vector similarity
+INFO: Find 8 additional chunks in 4 relations (deduplicated 33)
+INFO: Selecting 8 from 8 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 53 -> 53 (deduplicated 0)
+INFO: Final context: 18 entities, 65 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 R19/1 E5/2 R5/2 E3/3 R4/3 E4/4 R1/4 E2/5 R1/5 E2/6 R2/6 E3/7 R3/7 E4/8 R2/8 E1/9 E2/10 E1/11 E3/12
+INFO: Text query completed
+INFO: Query nodes: 十字花科蔬菜, 黑腐病, 防治药剂, 使用方法 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 85 relations
+INFO: Query edges: 蔬菜病害防治, 农业用药, 种植管理 (top_k:10, cosine:0.2)
+INFO: Global query: 14 entites, 8 relations
+INFO: Raw search results: 23 entities, 92 relations, 0 vector chunks
+INFO: After truncation: 23 entities, 92 relations
+INFO: Selecting 57 from 73 entity-related chunks by vector similarity
+INFO: Find 2 additional chunks in 2 relations (deduplicated 27)
+INFO: Selecting 2 from 2 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 59 -> 59 (deduplicated 0)
+INFO: Final context: 23 entities, 92 relations, 20 chunks
+INFO: Final chunks S+F/O: E4/1 R1/1 E5/2 R1/2 E2/3 E4/4 E3/5 E2/6 E2/7 E2/8 E1/9 E1/10 E2/11 E2/12 E1/13 E3/14 E3/15 E1/16 E3/17 E2/18
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0065s, answer_generation=167.7769s, context_fetch=185.5515s, citation_build=0.0074s, graph_focus=0.0735s, backend_total=353.4158s
+[stage1][progress] [2/215]
+INFO: Executing text query: 白菜得了黑斑病，茎部也出现了症状，有什么药可以治吗？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Query nodes: 白菜, 黑斑病, 药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 96 relations
+INFO: Query edges: 白菜黑斑病, 药剂防治, 病害防治 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 9 relations
+INFO: Raw search results: 19 entities, 96 relations, 0 vector chunks
+INFO: After truncation: 19 entities, 96 relations
+INFO: Selecting 47 from 148 entity-related chunks by vector similarity
+INFO: Find 9 additional chunks in 5 relations (deduplicated 21)
+INFO: Selecting 9 from 9 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 56 -> 56 (deduplicated 0)
+INFO: Final context: 19 entities, 96 relations, 20 chunks
+INFO: Final chunks S+F/O: E10/1 R1/1 E4/2 R9/2 E5/3 R3/3 E3/4 R1/4 E1/5 R1/5 E1/6 R3/6 E8/7 R1/7 E3/8 R1/8 E6/9 R1/9 E6/10 E1/11
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0388s, answer_generation=241.2406s, context_fetch=157.0422s, citation_build=0.0056s, graph_focus=0.0354s, backend_total=398.3627s
+[stage1][progress] [3/215]
+INFO: Executing text query: 白菜上发现黄曲条跳甲了，有什么推荐的防治药剂和用法吗？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 萝卜, 霜霉病, 药, 防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 75 relations
+INFO: Query edges: 萝卜霜霉病, 病害防治, 用药指导 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 9 relations
+INFO: Raw search results: 19 entities, 75 relations, 0 vector chunks
+INFO: After truncation: 19 entities, 75 relations
+INFO: Selecting 37 from 37 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 75 relations
+INFO: Round-robin merged chunks: 37 -> 37 (deduplicated 0)
+INFO: Final context: 19 entities, 75 relations, 20 chunks
+INFO: Final chunks S+F/O: E11/1 E2/2 E1/3 E3/4 E2/5 E10/6 E1/7 E1/8 E1/9 E3/10 E2/11 E1/12 E1/13 E1/14 E1/15 E1/16 E1/17 E1/18 E3/19 E1/20
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0009s, answer_generation=232.7712s, context_fetch=170.0000s, citation_build=0.0074s, graph_focus=0.0559s, backend_total=402.8355s
+[stage1][progress] [4/215]
+INFO: Executing text query: 十字花科蔬菜霜霉病有哪些推荐的防治药剂？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Query nodes: 大白菜, 黑斑病, 防治方法, 病害症状, 农业措施 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 92 relations
+INFO: Query edges: 大白菜种植, 病害综合防治, 植物保护, 农业生产 (top_k:10, cosine:0.2)
+INFO: Global query: 9 entites, 7 relations
+INFO: Raw search results: 16 entities, 96 relations, 0 vector chunks
+INFO: After truncation: 16 entities, 96 relations
+INFO: Selecting 40 from 113 entity-related chunks by vector similarity
+INFO: Find 6 additional chunks in 5 relations (deduplicated 25)
+INFO: Selecting 6 from 6 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 46 -> 46 (deduplicated 0)
+INFO: Final context: 16 entities, 96 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 R3/1 E2/2 R3/2 E1/3 R15/3 E3/4 R2/4 E1/5 R9/5 E3/6 R1/6 E1/7 E3/8 E1/9 E3/10 E2/11 E1/12 E1/13 E1/14
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0401s, answer_generation=281.7481s, context_fetch=196.9524s, citation_build=0.0056s, graph_focus=0.1991s, backend_total=478.9453s
+[stage1][progress] [5/215]
+INFO: Executing text query: 甜菜夜蛾有哪些防治方法，可以推荐哪些药剂？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 白菜, 黑斑病, 茎部症状, 治疗药物 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 97 relations
+INFO: Query edges: 白菜病害防治, 黑斑病治疗方案, 蔬菜茎部病害 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 6 relations
+INFO: Raw search results: 17 entities, 99 relations, 0 vector chunks
+INFO: After truncation: 17 entities, 99 relations
+INFO: Selecting 42 from 171 entity-related chunks by vector similarity
+INFO: Find 11 additional chunks in 9 relations (deduplicated 23)
+INFO: Selecting 11 from 11 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 53 -> 53 (deduplicated 0)
+INFO: Final context: 17 entities, 99 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 R2/1 E3/2 R1/2 E2/3 R1/3 E4/4 R3/4 E3/5 R1/5 E1/6 R15/6 E2/7 R2/7 E2/8 R1/8 E1/9 R3/9 E1/10 R9/10
+INFO: Query nodes: 烟粉虱, 防治方法, 病虫害, 治理措施 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 55 relations
+INFO: Query edges: 烟粉虱防治, 害虫综合治理, 农业植保 (top_k:10, cosine:0.2)
+INFO: Global query: 14 entites, 9 relations
+INFO: Raw search results: 22 entities, 62 relations, 0 vector chunks
+INFO: After truncation: 22 entities, 62 relations
+INFO: Selecting 55 from 100 entity-related chunks by vector similarity
+INFO: Find 16 additional chunks in 11 relations (deduplicated 33)
+INFO: Selecting 16 from 16 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 71 -> 71 (deduplicated 0)
+INFO: Final context: 22 entities, 62 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 R3/1 E1/2 R1/2 E2/3 R3/3 E1/4 R4/4 E1/5 R2/5 E1/6 R2/6 E2/7 R2/7 E2/8 R2/8 E1/9 R1/9 E2/10 R3/10
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0397s, answer_generation=355.5479s, context_fetch=152.9559s, citation_build=0.0055s, graph_focus=0.0367s, backend_total=508.5858s
+[stage1][progress] [6/215]
+INFO: Executing text query: 炭疽病在发病初期，可以使用哪些药剂进行防治？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 白菜, 黄曲条跳甲, 防治药剂, 用法 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 16 relations
+INFO: Query edges: 病虫害防治, 蔬菜种植, 药剂使用 (top_k:10, cosine:0.2)
+INFO: Global query: 14 entites, 9 relations
+INFO: Raw search results: 24 entities, 25 relations, 0 vector chunks
+INFO: After truncation: 24 entities, 25 relations
+INFO: Selecting 60 from 96 entity-related chunks by vector similarity
+INFO: Find 3 additional chunks in 2 relations (deduplicated 26)
+INFO: Selecting 3 from 3 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 63 -> 63 (deduplicated 0)
+INFO: Final context: 24 entities, 25 relations, 16 chunks
+INFO: Final chunks S+F/O: E1/1 R1/1 E1/2 R1/2 E3/3 R1/3 E2/4 E2/5 E1/6 E2/7 E2/8 E3/9 E2/10 E2/11 E2/12 E2/13
+INFO: Text query completed
+INFO: Query nodes: 甜菜夜蛾, 防治方法, 药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 45 relations
+INFO: Query edges: 甜菜夜蛾防治, 药剂推荐, 害虫控制 (top_k:10, cosine:0.2)
+INFO: Global query: 12 entites, 9 relations
+INFO: Raw search results: 19 entities, 48 relations, 0 vector chunks
+INFO: After truncation: 19 entities, 48 relations
+INFO: Selecting 47 from 72 entity-related chunks by vector similarity
+INFO: Find 5 additional chunks in 2 relations (deduplicated 34)
+INFO: Selecting 5 from 5 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 52 -> 52 (deduplicated 0)
+INFO: Final context: 19 entities, 48 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 R2/1 E3/2 R4/2 E3/3 R1/3 E2/4 R1/4 E3/5 R3/5 E2/6 E3/7 E2/8 E2/9 E1/10 E2/11 E1/12 E1/13 E1/14 E1/15
+INFO: Query nodes: 十字花科, 蔬菜, 霜霉病, 防治药剂, 推荐 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 97 relations
+INFO: Query edges: 十字花科蔬菜, 霜霉病防治, 药剂推荐 (top_k:10, cosine:0.2)
+INFO: Global query: 9 entites, 7 relations
+INFO: Raw search results: 16 entities, 98 relations, 0 vector chunks
+INFO: After truncation: 16 entities, 98 relations
+INFO: Selecting 40 from 97 entity-related chunks by vector similarity
+INFO: Find 7 additional chunks in 5 relations (deduplicated 22)
+INFO: Selecting 7 from 7 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 47 -> 47 (deduplicated 0)
+INFO: Final context: 16 entities, 98 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 R2/1 E4/2 R5/2 E5/3 R3/3 E1/4 R1/4 E1/5 R3/5 E2/6 R9/6 E2/7 R1/7 E2/8 E1/9 E2/10 E2/11 E3/12 E2/13
+INFO: Query nodes: 银纹夜蛾, 发生时期, 防治措施 (top_k:10, cosine:0.2)
+WARNING: Some nodes are missing, maybe the storage is damaged
+INFO: Local query: 9 entites, 64 relations
+INFO: Query edges: 银纹夜蛾发生时间, 银纹夜蛾防治建议 (top_k:10, cosine:0.2)
+INFO: Global query: 11 entites, 8 relations
+INFO: Raw search results: 16 entities, 65 relations, 0 vector chunks
+INFO: After truncation: 16 entities, 65 relations
+INFO: Selecting 40 from 77 entity-related chunks by vector similarity
+INFO: Find 11 additional chunks in 5 relations (deduplicated 30)
+INFO: Selecting 11 from 11 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 51 -> 51 (deduplicated 0)
+INFO: Final context: 16 entities, 65 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 R2/1 E4/2 R1/2 E2/3 R3/3 E3/4 R19/4 E1/5 R5/5 E1/6 R4/6 E1/7 R1/7 E3/8 R1/8 E1/9 R2/9 E1/10 R3/10
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0382s, answer_generation=439.3378s, context_fetch=220.1848s, citation_build=0.0045s, graph_focus=0.0309s, backend_total=659.5964s
+[stage1][progress] [7/215]
+INFO: Executing text query: 甲霜·锰锌可以用来防治霜霉病吗？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Text query completed
+INFO: Text query completed
+INFO: Query nodes: 白菜, 黑斑病, 茎部, 症状, 药 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 56 relations
+INFO: Query edges: 白菜黑斑病, 病害治疗, 茎部症状 (top_k:10, cosine:0.2)
+INFO: Global query: 12 entites, 9 relations
+INFO: Raw search results: 19 entities, 59 relations, 0 vector chunks
+INFO: After truncation: 19 entities, 59 relations
+INFO: Selecting 47 from 167 entity-related chunks by vector similarity
+INFO: Find 7 additional chunks in 5 relations (deduplicated 16)
+INFO: Selecting 7 from 7 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 54 -> 54 (deduplicated 0)
+INFO: Final context: 19 entities, 59 relations, 20 chunks
+INFO: Final chunks S+F/O: E6/1 R3/1 E4/2 R1/2 E2/3 R1/3 E4/4 R1/4 E4/5 R3/5 E1/6 R1/6 E3/7 R9/7 E2/8 E1/9 E1/10 E2/11 E2/12 E1/13
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0005s, answer_generation=284.6014s, context_fetch=145.1850s, citation_build=0.0050s, graph_focus=0.0389s, backend_total=429.8308s
+[stage1][progress] [8/215]
+INFO: Executing text query: 有什么办法可以防止菜粉蝶在作物上产卵吗？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 炭疽病, 药剂, 防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 36 relations
+INFO: Query edges: 炭疽病防治, 发病初期, 药剂使用 (top_k:10, cosine:0.2)
+INFO: Global query: 11 entites, 7 relations
+INFO: Raw search results: 18 entities, 37 relations, 0 vector chunks
+INFO: After truncation: 18 entities, 37 relations
+INFO: Selecting 45 from 68 entity-related chunks by vector similarity
+INFO: Find 3 additional chunks in 2 relations (deduplicated 27)
+INFO: Selecting 3 from 3 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 48 -> 48 (deduplicated 0)
+INFO: Final context: 18 entities, 37 relations, 20 chunks
+INFO: Final chunks S+F/O: E4/1 R1/1 E1/2 R1/2 E4/3 R1/3 E3/4 E3/5 E3/6 E1/7 E2/8 E6/9 E3/10 E4/11 E3/12 E2/13 E4/14 E2/15 E1/16 E2/17
+INFO: Query nodes: 白菜, 黄曲条跳甲, 防治药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 22 relations
+INFO: Query edges: 害虫防治, 药剂推荐, 用法指导 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 6 relations
+INFO: Raw search results: 20 entities, 28 relations, 0 vector chunks
+INFO: After truncation: 20 entities, 28 relations
+INFO: Selecting 50 from 145 entity-related chunks by vector similarity
+INFO: Find 18 additional chunks in 9 relations (deduplicated 19)
+INFO: Selecting 18 from 18 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 68 -> 68 (deduplicated 0)
+INFO: Final context: 20 entities, 28 relations, 18 chunks
+INFO: Final chunks S+F/O: E2/1 R1/1 E2/2 R1/2 E4/3 R1/3 E2/4 R2/4 E1/5 R2/5 E2/6 R1/6 E3/7 R1/7 E3/8 R1/8 E4/9 R1/9
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=277.8541s, context_fetch=207.0497s, citation_build=0.0065s, graph_focus=0.0514s, backend_total=484.9622s
+[stage1][progress] [9/215]
+INFO: Executing text query: 白菜得了黑斑病，能用43%戊唑醇悬浮剂防治吗？具体怎么用？...
+INFO: Query mode: hybrid
+INFO:openai._base_client:Retrying request to /embeddings in 0.415835 seconds
+INFO: Query nodes: 甜菜夜蛾, 药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 15 relations
+INFO: Query edges: 甜菜夜蛾防治, 防治方法, 药剂推荐 (top_k:10, cosine:0.2)
+INFO: Global query: 13 entites, 10 relations
+INFO: Raw search results: 21 entities, 22 relations, 0 vector chunks
+INFO: After truncation: 21 entities, 22 relations
+INFO: Selecting 52 from 70 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 22 relations
+INFO: Round-robin merged chunks: 52 -> 52 (deduplicated 0)
+INFO: Final context: 21 entities, 22 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 E3/2 E3/3 E3/4 E3/5 E2/6 E3/7 E2/8 E2/9 E1/10 E2/11 E1/12 E1/13 E2/14 E1/15 E4/16 E3/17 E1/18 E3/19 E4/20
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=223.1795s, context_fetch=193.0596s, citation_build=0.0059s, graph_focus=0.0374s, backend_total=416.2829s
+[stage1][progress] [10/215]
+INFO: Executing text query: 黄曲条跳甲幼虫应该用什么药防治？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 甲霜·锰锌, 霜霉病 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 50 relations
+INFO: Query edges: 病害防治, 农药用途 (top_k:10, cosine:0.2)
+INFO: Global query: 15 entites, 9 relations
+INFO: Raw search results: 24 entities, 58 relations, 0 vector chunks
+INFO: After truncation: 24 entities, 58 relations
+INFO: Selecting 60 from 70 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 58 relations
+INFO: Round-robin merged chunks: 60 -> 60 (deduplicated 0)
+INFO: Final context: 24 entities, 58 relations, 20 chunks
+INFO: Final chunks S+F/O: E6/1 E2/2 E4/3 E5/4 E5/5 E5/6 E2/7 E2/8 E1/9 E1/10 E1/11 E1/12 E2/13 E7/14 E6/15 E1/16 E3/17 E4/18 E3/19 E4/20
+INFO: Query nodes: 防治药剂, 杀菌剂, 农药推荐, 化学防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 8 relations
+INFO: Query edges: 十字花科蔬菜, 霜霉病, 病害防治 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 7 relations
+INFO: Raw search results: 20 entities, 15 relations, 0 vector chunks
+INFO: After truncation: 20 entities, 15 relations
+INFO: Selecting 50 from 140 entity-related chunks by vector similarity
+INFO: Find 16 additional chunks in 8 relations (deduplicated 7)
+INFO: Selecting 16 from 16 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 66 -> 66 (deduplicated 0)
+INFO: Final context: 20 entities, 15 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 R1/1 E2/2 R1/2 E5/3 R1/3 E5/4 R1/4 E2/5 R1/5 E2/6 R1/6 E2/7 R2/7 E2/8 R1/8 E2/9 R1/9 E2/10 R2/10
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0005s, answer_generation=337.5015s, context_fetch=172.1365s, citation_build=0.0058s, graph_focus=0.0426s, backend_total=509.6869s
+[stage1][progress] [11/215]
+INFO: Executing text query: 十字花科蔬菜黑斑病有哪些推荐的防治药剂？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Text query completed
+INFO: Query nodes: 黄曲条跳甲幼虫, 防治用药, 农药 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 19 relations
+INFO: Query edges: 黄曲条跳甲, 害虫防治, 幼虫防治 (top_k:10, cosine:0.2)
+INFO: Global query: 7 entites, 6 relations
+INFO: Raw search results: 16 entities, 19 relations, 0 vector chunks
+INFO: After truncation: 16 entities, 19 relations
+INFO: Selecting 24 from 24 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 19 relations
+INFO: Round-robin merged chunks: 24 -> 24 (deduplicated 0)
+INFO: Final context: 16 entities, 19 relations, 16 chunks
+INFO: Final chunks S+F/O: E2/1 E1/2 E3/3 E1/4 E5/5 E1/6 E6/7 E4/8 E1/9 E2/10 E2/11 E2/12 E1/13 E1/14 E1/15 E1/16
+INFO: Query nodes: 白菜, 黑斑病, 43% 戊唑醇悬浮剂, 戊唑醇 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 13 relations
+INFO: Query edges: 白菜黑斑病, 病害防治, 防治方法 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 9 relations
+INFO: Raw search results: 19 entities, 21 relations, 0 vector chunks
+INFO: After truncation: 19 entities, 21 relations
+INFO: Selecting 47 from 151 entity-related chunks by vector similarity
+INFO: Find 6 additional chunks in 3 relations (deduplicated 11)
+INFO: Selecting 6 from 6 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 53 -> 53 (deduplicated 0)
+INFO: Final context: 19 entities, 21 relations, 20 chunks
+INFO: Final chunks S+F/O: E8/1 R1/1 E6/2 R1/2 E4/3 R1/3 E4/4 R1/4 E1/5 R2/5 E2/6 R1/6 E8/7 E3/8 E1/9 E6/10 E3/11 E1/12 E6/13 E1/14
+INFO: Query nodes: 菜粉蝶, 作物, 产卵 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 11 relations
+INFO: Query edges: 防止产卵, 害虫防治, 作物保护 (top_k:10, cosine:0.2)
+INFO: Global query: 15 entites, 10 relations
+INFO: Raw search results: 25 entities, 21 relations, 0 vector chunks
+INFO: After truncation: 25 entities, 21 relations
+INFO: Selecting 62 from 90 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 21 relations
+INFO: Round-robin merged chunks: 62 -> 62 (deduplicated 0)
+INFO: Final context: 25 entities, 21 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 E2/2 E1/3 E2/4 E3/5 E3/6 E1/7 E1/8 E3/9 E1/10 E2/11 E1/12 E3/13 E1/14 E2/15 E2/16 E2/17 E3/18 E1/19 E2/20
+INFO: Text query completed
+INFO: Query nodes: 十字花科, 蔬菜, 黑斑病, 防治药剂, 推荐 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 90 relations
+INFO: Query edges: 十字花科蔬菜, 黑斑病防治, 药剂推荐 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 9 relations
+INFO: Raw search results: 18 entities, 90 relations, 0 vector chunks
+INFO: After truncation: 18 entities, 90 relations
+INFO: Selecting 45 from 85 entity-related chunks by vector similarity
+INFO: Find 2 additional chunks in 2 relations (deduplicated 24)
+INFO: Selecting 2 from 2 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 47 -> 47 (deduplicated 0)
+INFO: Final context: 18 entities, 90 relations, 20 chunks
+INFO: Final chunks S+F/O: E9/1 R1/1 E3/2 R1/2 E3/3 E3/4 E1/5 E7/6 E7/7 E1/8 E9/9 E2/10 E1/11 E1/12 E1/13 E2/14 E2/15 E4/16 E2/17 E2/18
+INFO: Text query completed
+INFO: Query nodes: 炭疽病, 药剂, 防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 36 relations
+INFO: Query edges: 炭疽病防治, 发病初期, 药剂使用 (top_k:10, cosine:0.2)
+INFO: Global query: 11 entites, 7 relations
+INFO: Raw search results: 18 entities, 37 relations, 0 vector chunks
+INFO: After truncation: 18 entities, 37 relations
+INFO: Selecting 45 from 68 entity-related chunks by vector similarity
+INFO: Find 3 additional chunks in 2 relations (deduplicated 27)
+INFO: Selecting 3 from 3 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 48 -> 48 (deduplicated 0)
+INFO: Final context: 18 entities, 37 relations, 20 chunks
+INFO: Final chunks S+F/O: E4/1 R1/1 E1/2 R1/2 E4/3 R1/3 E3/4 E3/5 E3/6 E1/7 E2/8 E6/9 E3/10 E4/11 E3/12 E2/13 E4/14 E2/15 E1/16 E2/17
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=415.3362s, context_fetch=237.1631s, citation_build=0.0068s, graph_focus=0.0367s, backend_total=652.5431s
+[stage1][progress] [12/215]
+INFO: Executing text query: 香菇多糖在防治十字花科蔬菜病毒病方面有什么具体用法？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Query nodes: 甲霜·锰锌, 霜霉病 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 50 relations
+INFO: Query edges: 病害防治, 适用性咨询 (top_k:10, cosine:0.2)
+INFO: Global query: 12 entites, 9 relations
+INFO: Raw search results: 22 entities, 59 relations, 0 vector chunks
+INFO: After truncation: 22 entities, 59 relations
+INFO: Selecting 55 from 61 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 59 relations
+INFO: Round-robin merged chunks: 55 -> 55 (deduplicated 0)
+INFO: Final context: 22 entities, 59 relations, 20 chunks
+INFO: Final chunks S+F/O: E5/1 E2/2 E3/3 E5/4 E5/5 E5/6 E2/7 E1/8 E3/9 E1/10 E2/11 E1/12 E1/13 E2/14 E6/15 E4/16 E4/17 E5/18 E2/19 E2/20
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0006s, answer_generation=317.9817s, context_fetch=194.1407s, citation_build=0.0066s, graph_focus=0.0600s, backend_total=512.1896s
+[stage1][progress] [13/215]
+INFO: Executing text query: 十字花科蔬菜霜霉病发病后，有哪些药剂可以用来治疗？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Query nodes: 白菜, 黑斑病, 43% 戊唑醇悬浮剂, 戊唑醇 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 13 relations
+INFO: Query edges: 白菜病害防治, 黑斑病治理, 农药使用方法 (top_k:10, cosine:0.2)
+INFO: Global query: 9 entites, 8 relations
+INFO: Raw search results: 18 entities, 20 relations, 0 vector chunks
+INFO: After truncation: 18 entities, 20 relations
+INFO: Selecting 45 from 151 entity-related chunks by vector similarity
+INFO: Find 6 additional chunks in 3 relations (deduplicated 11)
+INFO: Selecting 6 from 6 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 51 -> 51 (deduplicated 0)
+INFO: Final context: 18 entities, 20 relations, 20 chunks
+INFO: Final chunks S+F/O: E6/1 R1/1 E7/2 R1/2 E3/3 R1/3 E4/4 R1/4 E2/5 R2/5 E1/6 R1/6 E7/7 E4/8 E1/9 E5/10 E3/11 E1/12 E5/13 E1/14
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0005s, answer_generation=271.0883s, context_fetch=123.9715s, citation_build=0.0058s, graph_focus=0.0360s, backend_total=395.1022s
+[stage1][progress] [14/215]
+INFO: Executing text query: 根肿病在苗期或成株期发生时，可以使用哪些药剂进行防治？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 黄曲条跳甲幼虫, 用什么药, 防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 19 relations
+INFO: Query edges: 黄曲条跳甲, 幼虫防治, 用药防治 (top_k:10, cosine:0.2)
+INFO: Global query: 7 entites, 6 relations
+INFO: Raw search results: 16 entities, 19 relations, 0 vector chunks
+INFO: After truncation: 16 entities, 19 relations
+INFO: Selecting 23 from 23 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 19 relations
+INFO: Round-robin merged chunks: 23 -> 23 (deduplicated 0)
+INFO: Final context: 16 entities, 19 relations, 17 chunks
+INFO: Final chunks S+F/O: E2/1 E2/2 E3/3 E1/4 E5/5 E1/6 E5/7 E4/8 E1/9 E3/10 E2/11 E2/12 E1/13 E1/14 E1/15 E1/16 E1/17
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0005s, answer_generation=228.7873s, context_fetch=161.2692s, citation_build=0.0108s, graph_focus=0.0413s, backend_total=390.1092s
+[stage1][progress] [15/215]
+INFO: Executing text query: 蛞蝓主要危害作物的哪些部位？有什么有效的防治方法吗？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 菜粉蝶, 作物, 产卵, 防治办法 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 14 relations
+INFO: Query edges: 害虫防治, 防止产卵, 作物保护 (top_k:10, cosine:0.2)
+INFO: Global query: 15 entites, 10 relations
+INFO: Raw search results: 24 entities, 23 relations, 0 vector chunks
+INFO: After truncation: 24 entities, 23 relations
+INFO: Selecting 60 from 90 entity-related chunks by vector similarity
+INFO: Find 1 additional chunks in 1 relations (deduplicated 22)
+INFO: Selecting 1 from 1 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 61 -> 61 (deduplicated 0)
+INFO: Final context: 24 entities, 23 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 R2/1 E2/2 E2/3 E2/4 E3/5 E3/6 E2/7 E1/8 E1/9 E1/10 E1/11 E1/12 E3/13 E1/14 E1/15 E2/16 E2/17 E3/18 E1/19
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=379.2579s, context_fetch=167.7177s, citation_build=0.0053s, graph_focus=0.0441s, backend_total=547.0254s
+[stage1][progress] [16/215]
+INFO: Executing text query: 大猿叶甲要怎么防治？有什么推荐的农药吗？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 十字花科蔬菜, 病毒病, 香菇多糖 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 22 relations
+INFO: Query edges: 香菇多糖, 病毒病防治, 具体用法 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 9 relations
+INFO: Raw search results: 19 entities, 22 relations, 0 vector chunks
+INFO: After truncation: 19 entities, 22 relations
+INFO: Selecting 30 from 30 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 22 relations
+INFO: Round-robin merged chunks: 30 -> 30 (deduplicated 0)
+INFO: Final context: 19 entities, 22 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 E5/2 E4/3 E5/4 E6/5 E3/6 E1/7 E1/8 E1/9 E1/10 E1/11 E1/12 E1/13 E1/14 E2/15 E1/16 E1/17 E1/18 E1/19 E1/20
+INFO:openai._base_client:Retrying request to /embeddings in 0.407573 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.783144 seconds
+INFO: Query nodes: 药剂, 发病后 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 10 relations
+INFO: Query edges: 十字花科蔬菜, 霜霉病, 治疗 (top_k:10, cosine:0.2)
+INFO: Global query: 13 entites, 8 relations
+INFO: Raw search results: 23 entities, 18 relations, 0 vector chunks
+INFO: After truncation: 23 entities, 18 relations
+INFO: Selecting 57 from 113 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 18 relations
+INFO: Round-robin merged chunks: 57 -> 57 (deduplicated 0)
+INFO: Final context: 23 entities, 18 relations, 20 chunks
+INFO: Final chunks S+F/O: E4/1 E1/2 E9/3 E6/4 E4/5 E3/6 E2/7 E2/8 E3/9 E5/10 E3/11 E1/12 E2/13 E5/14 E3/15 E2/16 E2/17 E1/18 E3/19 E2/20
+INFO: Query nodes: 蛞蝓, 作物, 危害部位, 有效防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 49 relations
+INFO: Query edges: 蛞蝓危害, 作物部位, 防治方法 (top_k:10, cosine:0.2)
+INFO: Global query: 8 entites, 5 relations
+INFO: Raw search results: 17 entities, 51 relations, 0 vector chunks
+INFO: After truncation: 17 entities, 51 relations
+INFO: Selecting 42 from 99 entity-related chunks by vector similarity
+INFO: Find 3 additional chunks in 3 relations (deduplicated 19)
+INFO: Selecting 3 from 3 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 45 -> 45 (deduplicated 0)
+INFO: Final context: 17 entities, 51 relations, 19 chunks
+INFO: Final chunks S+F/O: E1/1 R3/1 E3/2 R14/2 E2/3 R3/3 E5/4 E2/5 E1/6 E2/7 E1/8 E3/9 E1/10 E1/11 E2/12 E1/13 E1/14 E2/15 E1/16
+INFO: Query nodes: 十字花科, 蔬菜, 黑斑病, 药剂, 推荐 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 52 relations
+INFO: Query edges: 十字花科蔬菜, 黑斑病, 防治药剂 (top_k:10, cosine:0.2)
+INFO: Global query: 11 entites, 10 relations
+INFO: Raw search results: 19 entities, 52 relations, 0 vector chunks
+INFO: After truncation: 19 entities, 52 relations
+INFO: Selecting 47 from 49 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 52 relations
+INFO: Round-robin merged chunks: 47 -> 47 (deduplicated 0)
+INFO: Final context: 19 entities, 52 relations, 20 chunks
+INFO: Final chunks S+F/O: E10/1 E4/2 E3/3 E2/4 E1/5 E7/6 E8/7 E1/8 E8/9 E2/10 E1/11 E1/12 E1/13 E1/14 E1/15 E2/16 E1/17 E1/18 E2/19 E1/20
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0008s, answer_generation=293.4145s, context_fetch=265.3554s, citation_build=0.0064s, graph_focus=0.0424s, backend_total=558.8195s
+[stage1][progress] [17/215]
+INFO: Executing text query: 十字花科蔬菜得了霜霉病，有哪些防治药剂可以选择？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 根肿病, 苗期, 成株期, 药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 51 relations
+INFO: Query edges: 根肿病防治, 药剂防治, 发病时期防治 (top_k:10, cosine:0.2)
+INFO: Global query: 13 entites, 10 relations
+INFO: Raw search results: 20 entities, 57 relations, 0 vector chunks
+INFO: After truncation: 20 entities, 57 relations
+INFO: Selecting 50 from 85 entity-related chunks by vector similarity
+INFO: Find 7 additional chunks in 7 relations (deduplicated 21)
+INFO: Selecting 7 from 7 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 57 -> 57 (deduplicated 0)
+INFO: Final context: 20 entities, 57 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 R1/1 E1/2 R1/2 E3/3 R15/3 E3/4 R1/4 E1/5 R1/5 E6/6 R1/6 E5/7 R1/7 E3/8 E5/9 E1/10 E3/11 E1/12 E1/13
+INFO: Text query completed
+INFO: Text query completed
+INFO: Text query completed
+INFO: Text query completed
+INFO: Query nodes: 大猿叶甲, 农药 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 8 relations
+INFO: Query edges: 大猿叶甲防治, 农药推荐, 防治方法 (top_k:10, cosine:0.2)
+INFO: Global query: 12 entites, 7 relations
+INFO: Raw search results: 21 entities, 14 relations, 0 vector chunks
+INFO: After truncation: 21 entities, 14 relations
+INFO: Selecting 52 from 62 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 14 relations
+INFO: Round-robin merged chunks: 52 -> 52 (deduplicated 0)
+INFO: Final context: 21 entities, 14 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 E4/2 E2/3 E3/4 E1/5 E2/6 E2/7 E2/8 E1/9 E2/10 E1/11 E2/12 E2/13 E2/14 E2/15 E2/16 E1/17 E1/18 E1/19 E1/20
+INFO: Query nodes: 十字花科蔬菜, 霜霉病, 防治药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 92 relations
+INFO: Query edges: 病害防治, 药剂选择, 蔬菜种植 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 6 relations
+INFO: Raw search results: 19 entities, 97 relations, 0 vector chunks
+INFO: After truncation: 19 entities, 97 relations
+INFO: Selecting 47 from 73 entity-related chunks by vector similarity
+INFO: Find 5 additional chunks in 4 relations (deduplicated 25)
+INFO: Selecting 5 from 5 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 52 -> 52 (deduplicated 0)
+INFO: Final context: 19 entities, 97 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 R3/1 E4/2 R3/2 E2/3 R9/3 E1/4 R1/4 E2/5 R1/5 E1/6 E1/7 E2/8 E2/9 E2/10 E1/11 E2/12 E2/13 E1/14 E1/15
+INFO: Query nodes: 发病后, 药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 12 relations
+INFO: Query edges: 十字花科蔬菜, 霜霉病, 治疗 (top_k:10, cosine:0.2)
+INFO: Global query: 13 entites, 8 relations
+INFO: Raw search results: 23 entities, 20 relations, 0 vector chunks
+INFO: After truncation: 23 entities, 20 relations
+INFO: Selecting 57 from 112 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 20 relations
+INFO: Round-robin merged chunks: 57 -> 57 (deduplicated 0)
+INFO: Final context: 23 entities, 20 relations, 20 chunks
+INFO: Final chunks S+F/O: E5/1 E1/2 E10/3 E7/4 E4/5 E3/6 E2/7 E2/8 E3/9 E5/10 E3/11 E1/12 E3/13 E5/14 E3/15 E2/16 E2/17 E1/18 E3/19 E2/20
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0005s, answer_generation=324.9023s, context_fetch=179.1510s, citation_build=0.0054s, graph_focus=0.0353s, backend_total=504.0946s
+[stage1][progress] [18/215]
+INFO: Executing text query: 请问有哪些药剂可以用来防治黑腐病？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 香菇多糖, 十字花科, 蔬菜, 病毒病, 防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 54 relations
+INFO: Query edges: 香菇多糖防治, 十字花科蔬菜病毒病, 具体用法 (top_k:10, cosine:0.2)
+INFO: Global query: 12 entites, 9 relations
+INFO: Raw search results: 18 entities, 56 relations, 0 vector chunks
+INFO: After truncation: 18 entities, 56 relations
+INFO: Selecting 34 from 34 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 56 relations
+INFO: Round-robin merged chunks: 34 -> 34 (deduplicated 0)
+INFO: Final context: 18 entities, 56 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 E4/2 E2/3 E3/4 E4/5 E3/6 E2/7 E2/8 E2/9 E2/10 E2/11 E1/12 E1/13 E1/14 E1/15 E1/16 E1/17 E2/18 E1/19 E2/20
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=319.5854s, context_fetch=224.3598s, citation_build=0.0072s, graph_focus=0.0546s, backend_total=544.0074s
+[stage1][progress] [19/215]
+INFO: Executing text query: 菜螟这种虫害，有哪些推荐的防治药剂？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO:openai._base_client:Retrying request to /embeddings in 0.482531 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.971660 seconds
+INFO: Query nodes: 根肿病, 苗期, 成株期, 药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 51 relations
+INFO: Query edges: 根肿病防治, 病害发生时期, 药剂使用 (top_k:10, cosine:0.2)
+INFO: Global query: 15 entites, 10 relations
+INFO: Raw search results: 21 entities, 56 relations, 0 vector chunks
+INFO: After truncation: 21 entities, 56 relations
+INFO: Selecting 52 from 85 entity-related chunks by vector similarity
+INFO: Find 7 additional chunks in 7 relations (deduplicated 24)
+INFO: Selecting 7 from 7 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 59 -> 59 (deduplicated 0)
+INFO: Final context: 21 entities, 56 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 R1/1 E1/2 R1/2 E4/3 R15/3 E3/4 R1/4 E3/5 R1/5 E6/6 R1/6 E5/7 R1/7 E3/8 E6/9 E4/10 E2/11 E1/12 E2/13
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=242.0120s, context_fetch=200.5160s, citation_build=0.0050s, graph_focus=0.0478s, backend_total=442.5812s
+[stage1][progress] [20/215]
+INFO: Executing text query: 蛞蝓有哪些防治方法？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 蛞蝓, 作物, 危害部位, 防治方法 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 30 relations
+INFO: Query edges: 蛞蝓危害, 作物受害部位, 病虫害防治 (top_k:10, cosine:0.2)
+INFO: Global query: 9 entites, 6 relations
+INFO: Raw search results: 18 entities, 32 relations, 0 vector chunks
+INFO: After truncation: 18 entities, 32 relations
+INFO: Selecting 45 from 196 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 32 relations
+INFO: Round-robin merged chunks: 45 -> 45 (deduplicated 0)
+INFO: Final context: 18 entities, 32 relations, 18 chunks
+INFO: Final chunks S+F/O: E1/1 E4/2 E3/3 E5/4 E3/5 E2/6 E3/7 E1/8 E3/9 E1/10 E1/11 E2/12 E2/13 E2/14 E3/15 E2/16 E2/17 E3/18
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0006s, answer_generation=241.5695s, context_fetch=198.2785s, citation_build=0.0069s, graph_focus=0.0462s, backend_total=439.9016s
+[stage1][progress] [21/215]
+INFO: Executing text query: 软腐病有什么防治措施？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Query nodes: 大猿叶甲, 农药 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 8 relations
+INFO: Query edges: 大猿叶甲防治, 农药推荐 (top_k:10, cosine:0.2)
+INFO: Global query: 13 entites, 7 relations
+INFO: Raw search results: 22 entities, 14 relations, 0 vector chunks
+INFO: After truncation: 22 entities, 14 relations
+INFO: Selecting 55 from 76 entity-related chunks by vector similarity
+INFO: Find 1 additional chunks in 1 relations (deduplicated 14)
+INFO: Selecting 1 from 1 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 56 -> 56 (deduplicated 0)
+INFO: Final context: 22 entities, 14 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 R1/1 E4/2 E2/3 E4/4 E1/5 E2/6 E2/7 E2/8 E1/9 E3/10 E1/11 E2/12 E2/13 E3/14 E2/15 E2/16 E1/17 E1/18 E2/19
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=377.0097s, context_fetch=133.8839s, citation_build=0.0053s, graph_focus=0.0427s, backend_total=510.9422s
+[stage1][progress] [22/215]
+INFO: Executing text query: 请问中华稻蝗的防治药剂有哪些？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 菜螟 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 35 relations
+INFO: Query edges: 虫害防治, 防治药剂 (top_k:10, cosine:0.2)
+INFO: Global query: 12 entites, 7 relations
+INFO: Raw search results: 20 entities, 40 relations, 0 vector chunks
+INFO: After truncation: 20 entities, 40 relations
+INFO: Selecting 50 from 85 entity-related chunks by vector similarity
+INFO: Find 3 additional chunks in 3 relations (deduplicated 25)
+INFO: Selecting 3 from 3 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 53 -> 53 (deduplicated 0)
+INFO: Final context: 20 entities, 40 relations, 16 chunks
+INFO: Final chunks S+F/O: E2/1 R1/1 E1/2 R3/2 E2/3 R2/3 E3/4 E2/5 E1/6 E2/7 E2/8 E2/9 E1/10 E1/11 E2/12 E3/13
+INFO: Query nodes: 药剂, 黑腐病, 防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 68 relations
+INFO: Query edges: 药剂防治, 黑腐病防治, 防治方案 (top_k:10, cosine:0.2)
+INFO: Global query: 9 entites, 8 relations
+INFO: Raw search results: 18 entities, 68 relations, 0 vector chunks
+INFO: After truncation: 18 entities, 68 relations
+INFO: Selecting 45 from 51 entity-related chunks by vector similarity
+INFO: Find 1 additional chunks in 1 relations (deduplicated 28)
+INFO: Selecting 1 from 1 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 46 -> 46 (deduplicated 0)
+INFO: Final context: 18 entities, 68 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 R1/1 E8/2 E7/3 E3/4 E6/5 E5/6 E1/7 E2/8 E2/9 E2/10 E1/11 E3/12 E2/13 E2/14 E5/15 E2/16 E2/17 E2/18 E1/19
+INFO: Query nodes: 蛞蝓, 鼻涕虫 (top_k:10, cosine:0.2)
+WARNING: Some nodes are missing, maybe the storage is damaged
+INFO: Local query: 7 entites, 10 relations
+INFO: Query edges: 防治方法, 病虫害防治, 农业防治 (top_k:10, cosine:0.2)
+INFO: Global query: 13 entites, 9 relations
+INFO: Raw search results: 20 entities, 19 relations, 0 vector chunks
+INFO: After truncation: 20 entities, 19 relations
+INFO: Selecting 50 from 79 entity-related chunks by vector similarity
+INFO: Find 2 additional chunks in 2 relations (deduplicated 7)
+INFO: Selecting 2 from 2 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 52 -> 52 (deduplicated 0)
+INFO: Final context: 20 entities, 19 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 R2/1 E2/2 R1/2 E3/3 E1/4 E1/5 E2/6 E1/7 E1/8 E2/9 E3/10 E1/11 E1/12 E1/13 E2/14 E1/15 E1/16 E1/17 E2/18
+INFO: Text query completed
+INFO: Query nodes: 农业防治, 化学防治, 生物防治, 病原细菌, 栽培管理 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 66 relations
+INFO: Query edges: 软腐病, 防治措施, 植物病害 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 8 relations
+INFO: Raw search results: 19 entities, 70 relations, 0 vector chunks
+INFO: After truncation: 19 entities, 70 relations
+INFO: Selecting 47 from 197 entity-related chunks by vector similarity
+INFO: Find 9 additional chunks in 5 relations (deduplicated 20)
+INFO: Selecting 9 from 9 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 56 -> 56 (deduplicated 0)
+INFO: Final context: 19 entities, 70 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 R1/1 E7/2 R15/2 E2/3 R1/3 E1/4 R1/4 E1/5 R1/5 E1/6 R1/6 E1/7 R2/7 E1/8 R1/8 E3/9 R1/9 E1/10 E1/11
+INFO: Query nodes: 十字花科, 蔬菜, 霜霉病, 防治药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 75 relations
+INFO: Query edges: 十字花科蔬菜, 霜霉病防治, 药剂选择 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 7 relations
+INFO: Raw search results: 18 entities, 77 relations, 0 vector chunks
+INFO: After truncation: 18 entities, 77 relations
+INFO: Selecting 45 from 99 entity-related chunks by vector similarity
+INFO: Find 6 additional chunks in 4 relations (deduplicated 23)
+INFO: Selecting 6 from 6 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 51 -> 51 (deduplicated 0)
+INFO: Final context: 18 entities, 77 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 R5/1 E5/2 R3/2 E4/3 R3/3 E2/4 R9/4 E2/5 R1/5 E3/6 R1/6 E2/7 E2/8 E2/9 E2/10 E2/11 E2/12 E2/13 E1/14
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=276.6320s, context_fetch=214.7938s, citation_build=0.0049s, graph_focus=0.0419s, backend_total=491.4730s
+[stage1][progress] [23/215]
+INFO: Executing text query: 大白菜得了黑腐病用什么药防治效果好？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 中华稻蝗, 药剂, 农药, 杀虫剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 23 relations
+INFO: Query edges: 中华稻蝗防治, 防治药剂, 害虫管理 (top_k:10, cosine:0.2)
+INFO: Global query: 8 entites, 7 relations
+INFO: Raw search results: 17 entities, 23 relations, 0 vector chunks
+INFO: After truncation: 17 entities, 23 relations
+INFO: Selecting 23 from 23 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 23 relations
+INFO: Round-robin merged chunks: 23 -> 23 (deduplicated 0)
+INFO: Final context: 17 entities, 23 relations, 18 chunks
+INFO: Final chunks S+F/O: E2/1 E9/2 E1/3 E1/4 E1/5 E1/6 E2/7 E1/8 E1/9 E1/10 E1/11 E2/12 E1/13 E1/14 E1/15 E1/16 E1/17 E1/18
+INFO: Text query completed
+INFO: Text query completed
+INFO: Query nodes: 菜螟, 防治药剂, 推荐的防治药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 33 relations
+INFO: Query edges: 菜螟防治, 虫害防治, 药剂推荐 (top_k:10, cosine:0.2)
+INFO: Global query: 12 entites, 9 relations
+INFO: Raw search results: 19 entities, 34 relations, 0 vector chunks
+INFO: After truncation: 19 entities, 34 relations
+INFO: Selecting 47 from 56 entity-related chunks by vector similarity
+INFO: Find 1 additional chunks in 1 relations (deduplicated 23)
+INFO: Selecting 1 from 1 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 48 -> 48 (deduplicated 0)
+INFO: Final context: 19 entities, 34 relations, 18 chunks
+INFO: Final chunks S+F/O: E1/1 R1/1 E1/2 E2/3 E3/4 E7/5 E1/6 E1/7 E1/8 E1/9 E2/10 E2/11 E1/12 E1/13 E1/14 E1/15 E7/16 E1/17
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=220.8379s, context_fetch=154.8768s, citation_build=0.0059s, graph_focus=0.0456s, backend_total=375.7666s
+[stage1][progress] [24/215]
+INFO: Executing text query: 我的蔬菜上发现了菜螟，请问使用氯虫·噻虫嗪悬浮剂可以防治吗？除了这个，还有哪些农药推荐呢？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Query nodes: 大白菜, 黑腐病, 用药 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 69 relations
+INFO: Query edges: 大白菜病害防治, 黑腐病防治, 用药效果 (top_k:10, cosine:0.2)
+INFO: Global query: 8 entites, 8 relations
+INFO: Raw search results: 16 entities, 71 relations, 0 vector chunks
+INFO: After truncation: 16 entities, 71 relations
+INFO: Selecting 40 from 165 entity-related chunks by vector similarity
+INFO: Find 6 additional chunks in 6 relations (deduplicated 18)
+INFO: Selecting 6 from 6 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 46 -> 46 (deduplicated 0)
+INFO: Final context: 16 entities, 71 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 R3/1 E3/2 R15/2 E2/3 R1/3 E4/4 R2/4 E3/5 R3/5 E3/6 R9/6 E2/7 E2/8 E3/9 E3/10 E3/11 E2/12 E2/13 E3/14
+INFO: Text query completed
+INFO:openai._base_client:Retrying request to /embeddings in 0.496458 seconds
+INFO: Query nodes: 黑腐病, 药剂, 杀菌剂, 化学防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 34 relations
+INFO: Query edges: 病害防治, 药剂选择, 黑腐病防治 (top_k:10, cosine:0.2)
+INFO: Global query: 9 entites, 9 relations
+INFO: Raw search results: 18 entities, 36 relations, 0 vector chunks
+INFO: After truncation: 18 entities, 36 relations
+INFO: Selecting 45 from 53 entity-related chunks by vector similarity
+INFO: Find 2 additional chunks in 2 relations (deduplicated 26)
+INFO: Selecting 2 from 2 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 47 -> 47 (deduplicated 0)
+INFO: Final context: 18 entities, 36 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 R1/1 E7/2 R1/2 E7/3 E3/4 E4/5 E6/6 E1/7 E1/8 E1/9 E1/10 E1/11 E2/12 E1/13 E1/14 E6/15 E1/16 E1/17 E1/18
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0005s, answer_generation=356.0940s, context_fetch=172.6434s, citation_build=0.0072s, graph_focus=0.0681s, backend_total=528.8132s
+[stage1][progress] [25/215]
+INFO: Executing text query: 如果作物得了黑斑病，可以使用80%代森锰锌可湿性粉剂进行防治吗？具体应该如何使用？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Query nodes: 菜螟, 氯虫·噻虫嗪悬浮剂, 农药 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 6 relations
+INFO: Query edges: 蔬菜害虫防治, 农药推荐, 防治效果 (top_k:10, cosine:0.2)
+INFO: Global query: 6 entites, 5 relations
+INFO: Raw search results: 15 entities, 10 relations, 0 vector chunks
+INFO: After truncation: 15 entities, 10 relations
+INFO: Selecting 37 from 85 entity-related chunks by vector similarity
+INFO: Find 5 additional chunks in 4 relations (deduplicated 6)
+INFO: Selecting 5 from 5 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 42 -> 42 (deduplicated 0)
+INFO: Final context: 15 entities, 10 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 R2/1 E1/2 R1/2 E2/3 R1/3 E1/4 R1/4 E4/5 R1/5 E2/6 E1/7 E1/8 E2/9 E1/10 E2/11 E1/12 E1/13 E4/14 E1/15
+INFO: Query nodes: 蛞蝓, 杀灭方法, 防治措施, 害虫控制 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 44 relations
+INFO: Query edges: 蛞蝓防治, 防治方法, 农业害虫管理 (top_k:10, cosine:0.2)
+INFO: Global query: 12 entites, 9 relations
+INFO: Raw search results: 20 entities, 45 relations, 0 vector chunks
+INFO: After truncation: 20 entities, 45 relations
+INFO: Selecting 50 from 63 entity-related chunks by vector similarity
+INFO: Find 2 additional chunks in 2 relations (deduplicated 25)
+INFO: Selecting 2 from 2 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 52 -> 52 (deduplicated 0)
+INFO: Final context: 20 entities, 45 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 R1/1 E3/2 R3/2 E5/3 E1/4 E7/5 E1/6 E1/7 E1/8 E1/9 E1/10 E1/11 E1/12 E1/13 E2/14 E1/15 E2/16 E1/17 E1/18
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=274.8434s, context_fetch=271.1173s, citation_build=0.0093s, graph_focus=0.0572s, backend_total=546.0277s
+[stage1][progress] [26/215]
+INFO: Executing text query: 黑斑病用什么药可以防治？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 防治, 农业防治, 化学防治, 生物防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 62 relations
+INFO: Query edges: 软腐病, 防治措施, 病害管理 (top_k:10, cosine:0.2)
+INFO: Global query: 9 entites, 8 relations
+INFO: Raw search results: 19 entities, 70 relations, 0 vector chunks
+INFO: After truncation: 19 entities, 70 relations
+INFO: Selecting 47 from 70 entity-related chunks by vector similarity
+INFO: Find 7 additional chunks in 3 relations (deduplicated 15)
+INFO: Selecting 7 from 7 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 54 -> 54 (deduplicated 0)
+INFO: Final context: 19 entities, 70 relations, 20 chunks
+INFO: Final chunks S+F/O: E6/1 R1/1 E1/2 R1/2 E1/3 R2/3 E2/4 R5/4 E5/5 R1/5 E2/6 R2/6 E1/7 R1/7 E3/8 E1/9 E2/10 E2/11 E1/12 E1/13
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0005s, answer_generation=374.4784s, context_fetch=222.8764s, citation_build=0.0077s, graph_focus=0.0612s, backend_total=597.4243s
+[stage1][progress] [27/215]
+INFO: Executing text query: 萝卜霜霉病应该怎么防治？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Query nodes: 作物, 黑斑病, 80% 代森锰锌可湿性粉剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 45 relations
+INFO: Query edges: 黑斑病防治, 作物病害防治, 代森锰锌使用 (top_k:10, cosine:0.2)
+INFO: Global query: 11 entites, 10 relations
+INFO: Raw search results: 16 entities, 49 relations, 0 vector chunks
+INFO: After truncation: 16 entities, 49 relations
+INFO: Selecting 40 from 48 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 49 relations
+INFO: Round-robin merged chunks: 40 -> 40 (deduplicated 0)
+INFO: Final context: 16 entities, 49 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 E4/2 E3/3 E2/4 E2/5 E3/6 E2/7 E3/8 E1/9 E5/10 E2/11 E5/12 E1/13 E2/14 E1/15 E2/16 E1/17 E1/18 E1/19 E1/20
+INFO: Query nodes: 防治用药, 防治效果 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 6 relations
+INFO: Query edges: 大白菜, 黑腐病, 病害防治 (top_k:10, cosine:0.2)
+INFO: Global query: 9 entites, 8 relations
+INFO: Raw search results: 19 entities, 14 relations, 0 vector chunks
+INFO: After truncation: 19 entities, 14 relations
+INFO: Selecting 47 from 181 entity-related chunks by vector similarity
+INFO: Find 13 additional chunks in 6 relations (deduplicated 12)
+INFO: Selecting 13 from 13 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 60 -> 60 (deduplicated 0)
+INFO: Final context: 19 entities, 14 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 R2/1 E3/2 R1/2 E3/3 R1/3 E5/4 R1/4 E2/5 R1/5 E3/6 R1/6 E3/7 R1/7 E2/8 R2/8 E2/9 R1/9 E2/10 R1/10
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=268.9868s, context_fetch=144.2900s, citation_build=0.0093s, graph_focus=0.0590s, backend_total=413.3454s
+[stage1][progress] [28/215]
+INFO: Executing text query: 防治菜螟可以使用什么药剂？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 中华稻蝗, 药剂 (top_k:10, cosine:0.2)
+WARNING: Some nodes are missing, maybe the storage is damaged
+INFO: Local query: 9 entites, 20 relations
+INFO: Query edges: 防治药剂, 中华稻蝗防治 (top_k:10, cosine:0.2)
+INFO: Global query: 8 entites, 7 relations
+INFO: Raw search results: 16 entities, 20 relations, 0 vector chunks
+INFO: After truncation: 16 entities, 20 relations
+INFO: Selecting 18 from 18 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 20 relations
+INFO: Round-robin merged chunks: 18 -> 18 (deduplicated 0)
+INFO: Final context: 16 entities, 20 relations, 18 chunks
+INFO: Final chunks S+F/O: E2/1 E9/2 E1/3 E1/4 E2/5 E2/6 E2/7 E1/8 E3/9 E2/10 E1/11 E1/12 E1/13 E1/14 E1/15 E2/16 E1/17 E1/18
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=301.8194s, context_fetch=264.2610s, citation_build=0.0092s, graph_focus=0.0371s, backend_total=566.1272s
+[stage1][progress] [29/215]
+INFO: Executing text query: 小白菜如果得了霜霉病，在11月该怎么防治？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Query nodes: 蔬菜, 菜螟, 氯虫·噻虫嗪悬浮剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 6 relations
+INFO: Query edges: 菜螟防治, 农药使用咨询, 替代农药推荐 (top_k:10, cosine:0.2)
+INFO: Global query: 12 entites, 9 relations
+INFO: Raw search results: 20 entities, 13 relations, 0 vector chunks
+INFO: After truncation: 20 entities, 13 relations
+INFO: Selecting 50 from 55 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 13 relations
+INFO: Round-robin merged chunks: 50 -> 50 (deduplicated 0)
+INFO: Final context: 20 entities, 13 relations, 18 chunks
+INFO: Final chunks S+F/O: E1/1 E2/2 E2/3 E7/4 E1/5 E1/6 E2/7 E2/8 E1/9 E1/10 E1/11 E5/12 E1/13 E2/14 E2/15 E2/16 E1/17 E7/18
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=268.7897s, context_fetch=107.4156s, citation_build=0.0102s, graph_focus=0.0680s, backend_total=376.2839s
+[stage1][progress] [30/215]
+INFO: Executing text query: 灰巴蜗牛有哪些防治方法？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 黑斑病, 防治药物 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 87 relations
+INFO: Query edges: 病害防治, 用药指导 (top_k:10, cosine:0.2)
+INFO: Global query: 11 entites, 8 relations
+INFO: Raw search results: 19 entities, 91 relations, 0 vector chunks
+INFO: After truncation: 19 entities, 91 relations
+INFO: Selecting 47 from 63 entity-related chunks by vector similarity
+INFO: Find 2 additional chunks in 2 relations (deduplicated 28)
+INFO: Selecting 2 from 2 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 49 -> 49 (deduplicated 0)
+INFO: Final context: 19 entities, 91 relations, 19 chunks
+INFO: Final chunks S+F/O: E4/1 R3/1 E4/2 R1/2 E3/3 E4/4 E1/5 E1/6 E5/7 E2/8 E2/9 E3/10 E1/11 E1/12 E4/13 E1/14 E2/15 E1/16 E2/17
+INFO: Query nodes: 萝卜, 霜霉病, 防治措施 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 74 relations
+INFO: Query edges: 萝卜霜霉病, 病害防治, 萝卜种植 (top_k:10, cosine:0.2)
+INFO: Global query: 7 entites, 6 relations
+INFO: Raw search results: 16 entities, 74 relations, 0 vector chunks
+INFO: After truncation: 16 entities, 74 relations
+INFO: Selecting 37 from 37 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 74 relations
+INFO: Round-robin merged chunks: 37 -> 37 (deduplicated 0)
+INFO: Final context: 16 entities, 74 relations, 20 chunks
+INFO: Final chunks S+F/O: E8/1 E2/2 E3/3 E1/4 E2/5 E1/6 E7/7 E1/8 E1/9 E1/10 E3/11 E1/12 E1/13 E2/14 E1/15 E1/16 E1/17 E1/18 E3/19 E1/20
+INFO: Query nodes: 黑斑病, 80% 代森锰锌可湿性粉剂, 作物 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 48 relations
+INFO: Query edges: 作物病害防治, 农药使用指导, 农业种植管理 (top_k:10, cosine:0.2)
+INFO: Global query: 11 entites, 8 relations
+INFO: Raw search results: 20 entities, 55 relations, 0 vector chunks
+INFO: After truncation: 20 entities, 55 relations
+INFO: Selecting 50 from 53 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 55 relations
+INFO: Round-robin merged chunks: 50 -> 50 (deduplicated 0)
+INFO: Final context: 20 entities, 55 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 E3/2 E1/3 E1/4 E1/5 E3/6 E2/7 E1/8 E6/9 E2/10 E6/11 E2/12 E1/13 E1/14 E2/15 E1/16 E1/17 E1/18 E3/19 E2/20
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0005s, answer_generation=248.1460s, context_fetch=76.4610s, citation_build=0.0060s, graph_focus=0.0489s, backend_total=324.6624s
+[stage1][progress] [31/215]
+INFO: Executing text query: 萝卜得了霜霉病应该怎么防治？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 菜螟, 药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 17 relations
+INFO: Query edges: 菜螟防治, 药剂使用 (top_k:10, cosine:0.2)
+INFO: Global query: 8 entites, 6 relations
+INFO: Raw search results: 17 entities, 18 relations, 0 vector chunks
+INFO: After truncation: 17 entities, 18 relations
+INFO: Selecting 38 from 38 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 18 relations
+INFO: Round-robin merged chunks: 38 -> 38 (deduplicated 0)
+INFO: Final context: 17 entities, 18 relations, 19 chunks
+INFO: Final chunks S+F/O: E1/1 E5/2 E3/3 E2/4 E1/5 E2/6 E1/7 E1/8 E2/9 E2/10 E2/11 E1/12 E1/13 E2/14 E1/15 E1/16 E1/17 E1/18 E2/19
+INFO: Query nodes: 小白菜, 霜霉病, 11 月, 防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 62 relations
+INFO: Query edges: 小白菜病害防治, 霜霉病治理, 11 月农事管理 (top_k:10, cosine:0.2)
+INFO: Global query: 9 entites, 8 relations
+INFO: Raw search results: 17 entities, 64 relations, 0 vector chunks
+INFO: After truncation: 17 entities, 64 relations
+INFO: Selecting 42 from 89 entity-related chunks by vector similarity
+INFO: Find 3 additional chunks in 2 relations (deduplicated 21)
+INFO: Selecting 3 from 3 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 45 -> 45 (deduplicated 0)
+INFO: Final context: 17 entities, 64 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 R3/1 E6/2 R3/2 E3/3 R9/3 E3/4 E3/5 E4/6 E2/7 E2/8 E1/9 E1/10 E1/11 E3/12 E1/13 E3/14 E1/15 E3/16 E1/17
+INFO: Text query completed
+INFO: Text query completed
+INFO: Text query completed
+INFO: Query nodes: 灰巴蜗牛, 软体动物, 杀螺剂, 物理防治, 化学防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 21 relations
+INFO: Query edges: 防治方法, 蜗牛防治, 农业害虫治理 (top_k:10, cosine:0.2)
+INFO: Global query: 15 entites, 9 relations
+INFO: Raw search results: 21 entities, 27 relations, 0 vector chunks
+INFO: After truncation: 21 entities, 27 relations
+INFO: Selecting 52 from 72 entity-related chunks by vector similarity
+INFO: Find 2 additional chunks in 2 relations (deduplicated 10)
+INFO: Selecting 2 from 2 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 54 -> 54 (deduplicated 0)
+INFO: Final context: 21 entities, 27 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 R1/1 E4/2 R1/2 E3/3 E4/4 E5/5 E4/6 E1/7 E1/8 E1/9 E1/10 E2/11 E2/12 E3/13 E1/14 E2/15 E3/16 E1/17 E2/18
+INFO: Text query completed
+INFO: Query nodes: 萝卜, 霜霉病, 防治方法 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 74 relations
+INFO: Query edges: 萝卜病害防治, 霜霉病治理, 蔬菜种植技术 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 8 relations
+INFO: Raw search results: 19 entities, 75 relations, 0 vector chunks
+INFO: After truncation: 19 entities, 75 relations
+INFO: Selecting 45 from 45 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 75 relations
+INFO: Round-robin merged chunks: 45 -> 45 (deduplicated 0)
+INFO: Final context: 19 entities, 75 relations, 20 chunks
+INFO: Final chunks S+F/O: E9/1 E2/2 E3/3 E3/4 E1/5 E1/6 E8/7 E1/8 E3/9 E1/10 E1/11 E1/12 E1/13 E2/14 E1/15 E1/16 E1/17 E1/18 E3/19 E2/20
+INFO: Text query completed
+INFO: Query nodes: 黑斑病, 防治药物, 药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 32 relations
+INFO: Query edges: 黑斑病防治, 病害用药, 治疗方法 (top_k:10, cosine:0.2)
+INFO: Global query: 11 entites, 10 relations
+INFO: Raw search results: 19 entities, 32 relations, 0 vector chunks
+INFO: After truncation: 19 entities, 32 relations
+INFO: Selecting 27 from 27 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 32 relations
+INFO: Round-robin merged chunks: 27 -> 27 (deduplicated 0)
+INFO: Final context: 19 entities, 32 relations, 20 chunks
+INFO: Final chunks S+F/O: E9/1 E5/2 E5/3 E7/4 E1/5 E2/6 E7/7 E2/8 E1/9 E2/10 E5/11 E1/12 E1/13 E3/14 E1/15 E1/16 E5/17 E2/18 E1/19 E1/20
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0005s, answer_generation=365.2155s, context_fetch=119.5293s, citation_build=0.0068s, graph_focus=0.0358s, backend_total=484.7880s
+[stage1][progress] [32/215]
+INFO: Executing text query: 请问68.75%唑菌酮·代森锰锌水分散粒剂能用来防治黑斑病吗？具体怎么使用？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 菜螟, 药剂, 防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 20 relations
+INFO: Query edges: 菜螟防治, 药剂使用, 害虫控制 (top_k:10, cosine:0.2)
+INFO: Global query: 9 entites, 6 relations
+INFO: Raw search results: 18 entities, 22 relations, 0 vector chunks
+INFO: After truncation: 18 entities, 22 relations
+INFO: Selecting 45 from 55 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 22 relations
+INFO: Round-robin merged chunks: 45 -> 45 (deduplicated 0)
+INFO: Final context: 18 entities, 22 relations, 17 chunks
+INFO: Final chunks S+F/O: E1/1 E5/2 E3/3 E2/4 E1/5 E2/6 E1/7 E1/8 E1/9 E1/10 E2/11 E2/12 E1/13 E2/14 E1/15 E2/16 E1/17
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0005s, answer_generation=263.2684s, context_fetch=114.2967s, citation_build=0.0112s, graph_focus=0.0380s, backend_total=377.6148s
+[stage1][progress] [33/215]
+INFO: Executing text query: 跳甲主要危害哪些作物？该如何防治？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 萝卜, 霜霉病 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 51 relations
+INFO: Query edges: 萝卜霜霉病, 病害防治 (top_k:10, cosine:0.2)
+INFO: Global query: 8 entites, 7 relations
+INFO: Raw search results: 17 entities, 51 relations, 0 vector chunks
+INFO: After truncation: 17 entities, 51 relations
+INFO: Selecting 16 from 16 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 51 relations
+INFO: Round-robin merged chunks: 16 -> 16 (deduplicated 0)
+INFO: Final context: 17 entities, 51 relations, 16 chunks
+INFO: Final chunks S+F/O: E9/1 E2/2 E3/3 E1/4 E2/5 E8/6 E1/7 E2/8 E2/9 E1/10 E2/11 E1/12 E1/13 E1/14 E1/15 E2/16
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0005s, answer_generation=287.4795s, context_fetch=153.1390s, citation_build=0.0057s, graph_focus=0.0378s, backend_total=440.6625s
+[stage1][progress] [34/215]
+INFO: Executing text query: 黑斑病用什么药可以防治？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Query nodes: 蜗牛, 农业害虫, 化学防治, 物理防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 36 relations
+INFO: Query edges: 灰巴蜗牛, 防治方法, 害虫治理 (top_k:10, cosine:0.2)
+INFO: Global query: 11 entites, 9 relations
+INFO: Raw search results: 19 entities, 37 relations, 0 vector chunks
+INFO: After truncation: 19 entities, 37 relations
+INFO: Selecting 47 from 61 entity-related chunks by vector similarity
+INFO: Find 7 additional chunks in 5 relations (deduplicated 18)
+INFO: Selecting 7 from 7 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 54 -> 54 (deduplicated 0)
+INFO: Final context: 19 entities, 37 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 R3/1 E5/2 R2/2 E4/3 R1/3 E5/4 R2/4 E6/5 R2/5 E5/6 R3/6 E5/7 R1/7 E1/8 E1/9 E1/10 E3/11 E2/12 E2/13
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0006s, answer_generation=285.1321s, context_fetch=152.8251s, citation_build=0.0109s, graph_focus=0.0390s, backend_total=438.0078s
+[stage1][progress] [35/215]
+INFO: Executing text query: 十字花科蔬菜得了根肿病，应该怎么防治？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 小白菜, 霜霉病, 11 月, 防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 62 relations
+INFO: Query edges: 小白菜霜霉病防治, 霜霉病防治, 11 月防治 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 8 relations
+INFO: Raw search results: 18 entities, 65 relations, 0 vector chunks
+INFO: After truncation: 18 entities, 65 relations
+INFO: Selecting 45 from 83 entity-related chunks by vector similarity
+INFO: Find 3 additional chunks in 2 relations (deduplicated 21)
+INFO: Selecting 3 from 3 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 48 -> 48 (deduplicated 0)
+INFO: Final context: 18 entities, 65 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 R3/1 E6/2 R3/2 E3/3 R9/3 E3/4 E3/5 E6/6 E3/7 E2/8 E1/9 E1/10 E2/11 E1/12 E3/13 E1/14 E2/15 E1/16 E3/17
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=260.8438s, context_fetch=230.6362s, citation_build=0.0054s, graph_focus=0.0424s, backend_total=491.5282s
+[stage1][progress] [36/215]
+INFO: Executing text query: 丙森锌可以用于防治十字花科蔬菜霜霉病吗？还有哪些推荐的防治药剂？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 68.75% 唑菌酮·代森锰锌水分散粒剂, 唑菌酮, 代森锰锌, 黑斑病, 水分散粒剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 12 relations
+INFO: Query edges: 黑斑病防治, 使用方法, 药剂适用性 (top_k:10, cosine:0.2)
+INFO: Global query: 11 entites, 10 relations
+INFO: Raw search results: 16 entities, 17 relations, 0 vector chunks
+INFO: After truncation: 16 entities, 17 relations
+INFO: Selecting 17 from 17 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 17 relations
+INFO: Round-robin merged chunks: 17 -> 17 (deduplicated 0)
+INFO: Final context: 16 entities, 17 relations, 17 chunks
+INFO: Final chunks S+F/O: E5/1 E8/2 E2/3 E4/4 E3/5 E4/6 E3/7 E4/8 E1/9 E2/10 E2/11 E2/12 E4/13 E1/14 E1/15 E3/16 E1/17
+INFO: Query nodes: 跳甲, 危害作物, 如何防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 21 relations
+INFO: Query edges: 跳甲危害, 作物防治 (top_k:10, cosine:0.2)
+INFO: Global query: 8 entites, 6 relations
+INFO: Raw search results: 16 entities, 21 relations, 0 vector chunks
+INFO: After truncation: 16 entities, 21 relations
+INFO: Selecting 34 from 34 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 21 relations
+INFO: Round-robin merged chunks: 34 -> 34 (deduplicated 0)
+INFO: Final context: 16 entities, 21 relations, 20 chunks
+INFO: Final chunks S+F/O: E6/1 E6/2 E2/3 E3/4 E1/5 E1/6 E1/7 E3/8 E1/9 E2/10 E2/11 E2/12 E1/13 E1/14 E2/15 E2/16 E1/17 E1/18 E1/19 E1/20
+INFO: Query nodes: 黑斑病, 防治药 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 87 relations
+INFO: Query edges: 黑斑病防治, 病害用药 (top_k:10, cosine:0.2)
+INFO: Global query: 11 entites, 10 relations
+INFO: Raw search results: 20 entities, 87 relations, 0 vector chunks
+INFO: After truncation: 20 entities, 87 relations
+INFO: Selecting 48 from 48 entity-related chunks by vector similarity        
+INFO: Find no additional relations-related chunks from 87 relations
+INFO: Round-robin merged chunks: 48 -> 48 (deduplicated 0)
+INFO: Final context: 20 entities, 87 relations, 20 chunks
+INFO: Final chunks S+F/O: E8/1 E8/2 E4/3 E6/4 E1/5 E7/6 E2/7 E2/8 E3/9 E5/10 E1/11 E1/12 E1/13 E1/14 E1/15 E1/16 E2/17 E1/18 E1/19 E2/20
+INFO: Query nodes: 萝卜, 霜霉病, 防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 75 relations
+INFO: Query edges: 病害防治, 霜霉病防治, 种植管理 (top_k:10, cosine:0.2)     
+INFO: Global query: 13 entites, 10 relations
+INFO: Raw search results: 21 entities, 77 relations, 0 vector chunks
+INFO: After truncation: 21 entities, 77 relations
+INFO: Selecting 44 from 44 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 77 relations
+INFO: Round-robin merged chunks: 44 -> 44 (deduplicated 0)
+INFO: Final context: 21 entities, 77 relations, 20 chunks
+INFO: Final chunks S+F/O: E8/1 E3/2 E2/3 E3/4 E1/5 E5/6 E7/7 E1/8 E3/9 E1/10 E1/11 E1/12 E1/13 E1/14 E2/15 E1/16 E1/17 E1/18 E4/19 E4/20
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0006s, answer_generation=275.2682s, context_fetch=228.0610s, citation_build=0.0066s, graph_focus=0.0389s, backend_total=503.3753s
+[stage1][progress] [37/215]
+INFO: Executing text query: 请问黑腐病有什么推荐的防治药剂吗？不同作物的防治 方法一样吗？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Text query completed
+INFO: Query nodes: 丙森锌, 十字花科蔬菜, 霜霉病 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 97 relations
+INFO: Query edges: 霜霉病防治, 防治药剂推荐, 十字花科蔬菜病害 (top_k:10, cosine:0.2)
+INFO: Global query: 11 entites, 10 relations
+INFO: Raw search results: 20 entities, 106 relations, 0 vector chunks        
+INFO: After truncation: 20 entities, 106 relations
+INFO: Selecting 50 from 50 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 106 relations
+INFO: Round-robin merged chunks: 50 -> 50 (deduplicated 0)
+INFO: Final context: 20 entities, 106 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 E2/2 E1/3 E1/4 E10/5 E1/6 E1/7 E1/8 E1/9 E10/10 E1/11 E2/12 E2/13 E1/14 E2/15 E1/16 E1/17 E2/18 E1/19 E1/20
+INFO: Query nodes: 十字花科, 蔬菜, 根肿病 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 11 relations
+INFO: Query edges: 十字花科蔬菜, 根肿病, 防治 (top_k:10, cosine:0.2)
+INFO: Global query: 9 entites, 6 relations
+INFO: Raw search results: 17 entities, 13 relations, 0 vector chunks
+INFO: After truncation: 17 entities, 13 relations    
+INFO: Selecting 42 from 149 entity-related chunks by vector similarity
+INFO: Find 3 additional chunks in 3 relations (deduplicated 10)
+INFO: Selecting 3 from 3 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 45 -> 45 (deduplicated 0)
+INFO: Final context: 17 entities, 13 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 R1/1 E3/2 R1/2 E2/3 R1/3 E2/4 E1/5 E2/6 E2/7 E1/8 E5/9 E3/10 E3/11 E2/12 E2/13 E1/14 E1/15 E1/16 E1/17
+INFO: Query nodes: 跳甲, 作物, 防治方法, 危害对象, 防治措施 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 21 relations
+INFO: Query edges: 跳甲危害, 作物防治, 害虫管理 (top_k:10, cosine:0.2)
+INFO: Global query: 8 entites, 6 relations
+INFO: Raw search results: 16 entities, 21 relations, 0 vector chunks
+INFO: After truncation: 16 entities, 21 relations    
+INFO: Selecting 34 from 34 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 21 relations
+INFO: Round-robin merged chunks: 34 -> 34 (deduplicated 0)
+INFO: Final context: 16 entities, 21 relations, 20 chunks
+INFO: Final chunks S+F/O: E6/1 E6/2 E2/3 E4/4 E1/5 E1/6 E1/7 E3/8 E1/9 E2/10 E2/11 E2/12 E1/13 E1/14 E2/15 E1/16 E1/17 E1/18 E1/19 E1/20
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0005s, answer_generation=325.6655s, context_fetch=110.3445s, citation_build=0.0222s, graph_focus=0.0290s, backend_total=436.0617s      
+[stage1][progress] [38/215]
+INFO: Executing text query: 请问萝卜霜霉病应该怎么防 治？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 黑腐病, 防治药剂, 不同作物, 防治方法 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 94 relations
+INFO: Query edges: 黑腐病防治, 防治药剂推荐, 作物防治方法 (top_k:10, cosine:0.2)
+INFO: Global query: 9 entites, 9 relations
+INFO: Raw search results: 17 entities, 94 relations, 0 vector chunks
+INFO: After truncation: 17 entities, 94 relations    
+INFO: Selecting 42 from 48 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 94 relations
+INFO: Round-robin merged chunks: 42 -> 42 (deduplicated 0)
+INFO: Final context: 17 entities, 94 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 E6/2 E5/3 E7/4 E3/5 E4/6 E2/7 E2/8 E2/9 E3/10 E3/11 E1/12 E2/13 E2/14 E1/15 E5/16 E1/17 E2/18 E1/19 E2/20
+INFO: Text query completed
+INFO: Text query completed
+INFO: Text query completed
+INFO: Query nodes: 68.75% 唑菌酮·代森锰锌水分散粒剂, 黑斑病, 唑菌酮, 代森锰锌, 水分散粒剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 12 relations
+INFO: Query edges: 病害防治, 使用方法, 药剂适用性 (top_k:10, cosine:0.2)
+INFO: Global query: 13 entites, 8 relations
+INFO: Raw search results: 22 entities, 19 relations, 0 vector chunks
+INFO: After truncation: 22 entities, 19 relations    
+INFO: Selecting 55 from 68 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 19 relations
+INFO: Round-robin merged chunks: 55 -> 55 (deduplicated 0)
+INFO: Final context: 22 entities, 19 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 E6/2 E1/3 E2/4 E3/5 E4/6 E5/7 E3/8 E1/9 E3/10 E2/11 E3/12 E2/13 E4/14 E1/15 E1/16 E1/17 E1/18 E1/19 E5/20
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=339.2311s, context_fetch=213.7504s, citation_build=0.0059s, graph_focus=0.0368s, backend_total=553.0246s      
+[stage1][progress] [39/215]
+INFO: Executing text query: 灰巴蜗牛可以用什么药剂进 行防治？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 丙森锌, 十字花科蔬菜, 霜霉病, 防治药剂 (top_k:10, cosine:0.2)
+WARNING: Some nodes are missing, maybe the storage is damaged
+INFO: Local query: 9 entites, 42 relations
+INFO: Query edges: 病害防治, 药剂推荐, 农药适用性 (top_k:10, cosine:0.2)
+INFO: Global query: 14 entites, 9 relations
+INFO: Raw search results: 21 entities, 49 relations, 0 vector chunks
+INFO: After truncation: 21 entities, 49 relations    
+INFO: Selecting 52 from 60 entity-related chunks by vector similarity
+INFO: Find 1 additional chunks in 1 relations (deduplicated 17)
+INFO: Selecting 1 from 1 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 53 -> 53 (deduplicated 0)
+INFO: Final context: 21 entities, 49 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 R1/1 E3/2 E2/3 E1/4 E2/5 E4/6 E1/7 E4/8 E2/9 E4/10 E1/11 E1/12 E1/13 E4/14 E1/15 E1/16 E1/17 E1/18 E2/19
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0003s, answer_generation=326.5957s, context_fetch=97.9098s, citation_build=0.0046s, graph_focus=0.0461s, backend_total=424.5566s       
+[stage1][progress] [40/215]
+INFO: Executing text query: 根肿病有什么推荐的防治药 剂和方法吗？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Query nodes: 萝卜, 霜霉病, 防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 75 relations
+INFO: Query edges: 萝卜霜霉病, 病害防治 (top_k:10, cosine:0.2)
+INFO: Global query: 8 entites, 7 relations
+INFO: Raw search results: 17 entities, 75 relations, 0 vector chunks
+INFO: After truncation: 17 entities, 75 relations    
+INFO: Selecting 37 from 37 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 75 relations
+INFO: Round-robin merged chunks: 37 -> 37 (deduplicated 0)
+INFO: Final context: 17 entities, 75 relations, 20 chunks
+INFO: Final chunks S+F/O: E9/1 E2/2 E3/3 E1/4 E2/5 E8/6 E1/7 E1/8 E1/9 E3/10 E1/11 E1/12 E1/13 E1/14 E1/15 E2/16 E1/17 E1/18 E1/19 E3/20
+INFO: Query nodes: 黑斑病, 药, 杀菌剂, 防治药物 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 49 relations
+INFO: Query edges: 黑斑病, 病害防治, 用药指导 (top_k:10, cosine:0.2)
+INFO: Global query: 11 entites, 10 relations
+INFO: Raw search results: 20 entities, 49 relations, 0 vector chunks
+INFO: After truncation: 20 entities, 49 relations
+INFO: Selecting 43 from 43 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 49 relations
+INFO: Round-robin merged chunks: 43 -> 43 (deduplicated 0)
+INFO: Final context: 20 entities, 49 relations, 20 chunks
+INFO: Final chunks S+F/O: E6/1 E9/2 E4/3 E4/4 E1/5 E1/6 E5/7 E2/8 E1/9 E2/10 E3/11 E1/12 E1/13 E1/14 E1/15 E1/16 E1/17 E2/18 E1/19 E1/20
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0005s, answer_generation=463.1707s, context_fetch=267.0800s, citation_build=0.0068s, graph_focus=0.0331s, backend_total=730.2912s      
+[stage1][progress] [41/215]
+INFO: Executing text query: 请问20%咪鲜胺乳油能用于防治白菜黑斑病吗？如果可以，具体使用方法是什么？...    
+INFO: Query mode: hybrid
+INFO: Query nodes: 灰巴蜗牛, 药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 21 relations
+INFO: Query edges: 灰巴蜗牛防治, 药剂防治 (top_k:10, cosine:0.2)
+INFO: Global query: 14 entites, 9 relations
+INFO: Raw search results: 21 entities, 27 relations, 0 vector chunks
+INFO: After truncation: 21 entities, 27 relations    
+INFO: Selecting 52 from 73 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 27 relations
+INFO: Round-robin merged chunks: 52 -> 52 (deduplicated 0)
+INFO: Final context: 21 entities, 27 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 E1/2 E4/3 E5/4 E4/5 E4/6 E1/7 E1/8 E1/9 E4/10 E1/11 E2/12 E1/13 E1/14 E2/15 E1/16 E1/17 E5/18 E4/19 E3/20
+INFO: Query nodes: 十字花科, 蔬菜, 根肿病 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 11 relations
+INFO: Query edges: 十字花科蔬菜, 根肿病, 防治 (top_k:10, cosine:0.2)
+INFO: Global query: 9 entites, 6 relations
+INFO: Raw search results: 17 entities, 13 relations, 0 vector chunks
+INFO: After truncation: 17 entities, 13 relations    
+INFO: Selecting 42 from 149 entity-related chunks by vector similarity
+INFO: Find 3 additional chunks in 3 relations (deduplicated 10)
+INFO: Selecting 3 from 3 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 45 -> 45 (deduplicated 0)
+INFO: Final context: 17 entities, 13 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 R1/1 E3/2 R1/2 E2/3 R1/3 E2/4 E1/5 E2/6 E2/7 E1/8 E5/9 E3/10 E3/11 E2/12 E2/13 E1/14 E1/15 E1/16 E1/17
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0007s, answer_generation=365.7962s, context_fetch=249.4245s, citation_build=0.0052s, graph_focus=0.0380s, backend_total=615.2646s      
+[stage1][progress] [42/215]
+INFO: Executing text query: 请问跳甲的防治方法有哪些 ？有没有推荐的药剂？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 防治药剂, 防治方法, 推荐药剂, 栽培措施 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 43 relations
+INFO: Query edges: 根肿病, 病害防治, 防治建议 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 7 relations
+INFO: Raw search results: 20 entities, 50 relations, 0 vector chunks
+INFO: After truncation: 20 entities, 50 relations    
+INFO: Selecting 50 from 90 entity-related chunks by vector similarity
+INFO: Find 8 additional chunks in 5 relations (deduplicated 16)
+INFO: Selecting 8 from 8 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 58 -> 58 (deduplicated 0)
+INFO: Final context: 20 entities, 50 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 R15/1 E3/2 R1/2 E2/3 R1/3 E1/4 R2/4 E5/5 R1/5 E3/6 R1/6 E3/7 R1/7 E3/8 R1/8 E1/9 E2/10 E1/11 E1/12
+INFO: Query nodes: 黑腐病, 防治药剂, 作物 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 72 relations
+INFO: Query edges: 黑腐病防治, 防治药剂推荐, 作物防治方法 (top_k:10, cosine:0.2)
+INFO: Global query: 9 entites, 9 relations
+INFO: Raw search results: 18 entities, 75 relations, 0 vector chunks
+INFO: Round-robin merged chunks: 47 -> 47 (deduplicated 0)
+INFO: Final context: 18 entities, 75 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 R1/1 E3/2 R1/2 E6/3 E6/4 E7/5 E2/6 E5/7 E2/8 E2/9 E2/10 E2/11 E2/12 E2/13 E1/14 E2/15 E2/16 E1/17 E5/18        
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0007s, answer_generation=311.7710s, context_fetch=243.4047s, citation_build=0.0129s, graph_focus=0.1228s, backend_total=555.3122s
+[stage1][progress] [43/215]
+INFO: Executing text query: 十字花科蔬菜得了黑腐病，用什么药剂进行防治 比较好？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Text query completed
+INFO: Query nodes: 20% 咪鲜胺乳油, 白菜, 黑斑病 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 68 relations
+INFO: Query edges: 农药使用, 病害防治, 使用方法 (top_k:10, cosine:0.2)
+INFO: Global query: 11 entites, 7 relations
+INFO: Raw search results: 20 entities, 74 relations, 0 vector chunks   
+INFO: After truncation: 20 entities, 74 relations
+INFO: Selecting 50 from 77 entity-related chunks by vector similarity
+INFO: Find 3 additional chunks in 2 relations (deduplicated 29)
+INFO: Selecting 3 from 3 relation-related chunks by vector similarity  
+INFO: Round-robin merged chunks: 53 -> 53 (deduplicated 0)
+INFO: Final context: 20 entities, 74 relations, 19 chunks
+INFO: Final chunks S+F/O: E3/1 R1/1 E3/2 R1/2 E1/3 R1/3 E2/4 E3/5 E4/6 E2/7 E3/8 E2/9 E1/10 E2/11 E2/12 E2/13 E3/14 E1/15 E1/16
+INFO: Text query completed
+INFO: Query nodes: 跳甲, 药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 12 relations
+INFO: Query edges: 跳甲防治, 防治方法, 药剂推荐 (top_k:10, cosine:0.2) 
+INFO: Global query: 12 entites, 9 relations
+INFO: Raw search results: 21 entities, 15 relations, 0 vector chunks   
+INFO: After truncation: 21 entities, 15 relations
+INFO: Selecting 42 from 42 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 15 relations
+INFO: Round-robin merged chunks: 42 -> 42 (deduplicated 0)
+INFO: Final context: 21 entities, 15 relations, 19 chunks
+INFO: Final chunks S+F/O: E2/1 E8/2 E8/3 E1/4 E2/5 E2/6 E5/7 E1/8 E1/9 E3/10 E7/11 E2/12 E1/13 E1/14 E2/15 E1/16 E1/17 E1/18 E1/19
+INFO: Query nodes: 萝卜, 霜霉病, 防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 75 relations
+INFO: Query edges: 萝卜霜霉病, 病害防治 (top_k:10, cosine:0.2)
+INFO: Global query: 8 entites, 7 relations
+INFO: Raw search results: 17 entities, 75 relations, 0 vector chunks   
+INFO: After truncation: 17 entities, 75 relations
+INFO: Selecting 37 from 37 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 75 relations    
+INFO: Round-robin merged chunks: 37 -> 37 (deduplicated 0)
+INFO: Final context: 17 entities, 75 relations, 20 chunks
+INFO: Final chunks S+F/O: E9/1 E2/2 E3/3 E1/4 E2/5 E8/6 E1/7 E1/8 E1/9 E3/10 E1/11 E1/12 E1/13 E1/14 E1/15 E2/16 E1/17 E1/18 E1/19 E3/20      
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=412.1260s, context_fetch=114.7496s, citation_build=0.0053s, graph_focus=0.0366s, backend_total=526.9180s
+[stage1][progress] [44/215]
+INFO: Executing text query: 氯氟氰菊酯乳油能用于防治菜螟吗？还有哪些药 剂可以用来防治菜螟？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Query nodes: 十字花科, 蔬菜, 黑腐病, 药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 52 relations
+INFO: Query edges: 十字花科蔬菜, 黑腐病防治, 药剂防治 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 10 relations
+INFO: Raw search results: 17 entities, 52 relations, 0 vector chunks   
+INFO: After truncation: 17 entities, 52 relations
+INFO: Selecting 42 from 93 entity-related chunks by vector similarity
+INFO: Find 2 additional chunks in 2 relations (deduplicated 16)
+INFO: Selecting 2 from 2 relation-related chunks by vector similarity  
+INFO: Round-robin merged chunks: 44 -> 44 (deduplicated 0)
+INFO: Final context: 17 entities, 52 relations, 20 chunks
+INFO: Final chunks S+F/O: E7/1 R1/1 E1/2 R1/2 E3/3 E7/4 E7/5 E2/6 E4/7 E2/8 E2/9 E1/10 E1/11 E1/12 E2/13 E1/14 E2/15 E6/16 E3/17 E1/18        
+INFO: Text query completed
+INFO: Query nodes: 药剂, 杀螺剂, 农药, 化学防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 10 relations
+INFO: Query edges: 灰巴蜗牛, 蜗牛防治, 药剂防治 (top_k:10, cosine:0.2) 
+INFO: Global query: 13 entites, 9 relations
+INFO: Raw search results: 19 entities, 15 relations, 0 vector chunks   
+INFO: After truncation: 19 entities, 15 relations
+INFO: Selecting 47 from 53 entity-related chunks by vector similarity
+INFO: Find 2 additional chunks in 2 relations (deduplicated 17)        
+INFO: Selecting 2 from 2 relation-related chunks by vector similarity  
+INFO: Round-robin merged chunks: 49 -> 49 (deduplicated 0)
+INFO: Final context: 19 entities, 15 relations, 20 chunks
+INFO: Final chunks S+F/O: E4/1 R1/1 E2/2 R1/2 E3/3 E6/4 E4/5 E4/6 E3/7 E2/8 E1/9 E1/10 E1/11 E1/12 E3/13 E2/14 E2/15 E3/16 E1/17 E1/18        
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=298.8283s, context_fetch=178.2667s, citation_build=0.0051s, graph_focus=0.0366s, backend_total=477.1372s
+[stage1][progress] [45/215]
+INFO: Executing text query: 菜粉蝶的幼虫期有哪些推荐的防治药剂？...    
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Query nodes: 氯氟氰菊酯乳油, 菜螟, 药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 6 relations
+INFO: Query edges: 菜螟防治, 农药适用性, 替代药剂 (top_k:10, cosine:0.2)
+INFO: Global query: 11 entites, 8 relations
+INFO: Raw search results: 20 entities, 13 relations, 0 vector chunks   
+INFO: After truncation: 20 entities, 13 relations
+INFO: Selecting 50 from 58 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 13 relations    
+INFO: Round-robin merged chunks: 50 -> 50 (deduplicated 0)
+INFO: Final context: 20 entities, 13 relations, 18 chunks
+INFO: Final chunks S+F/O: E2/1 E6/2 E2/3 E2/4 E1/5 E2/6 E1/7 E1/8 E2/9 E2/10 E1/11 E2/12 E1/13 E4/14 E2/15 E1/16 E1/17 E1/18
+INFO: Query nodes: 根肿病, 防治药剂, 防治方法 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 69 relations
+INFO: Query edges: 根肿病防治, 防治药剂推荐 (top_k:10, cosine:0.2)     
+INFO: Global query: 11 entites, 9 relations
+INFO: Raw search results: 18 entities, 73 relations, 0 vector chunks   
+INFO: After truncation: 18 entities, 73 relations
+INFO: Selecting 45 from 46 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 73 relations    
+INFO: Round-robin merged chunks: 45 -> 45 (deduplicated 0)
+INFO: Final context: 18 entities, 73 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 E2/2 E1/3 E2/4 E4/5 E1/6 E3/7 E3/8 E2/9 E2/10 E3/11 E2/12 E5/13 E2/14 E5/15 E1/16 E2/17 E1/18 E1/19 E1/20      
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=343.1427s, context_fetch=204.6546s, citation_build=0.0056s, graph_focus=0.0366s, backend_total=547.8400s
+[stage1][progress] [46/215]
+INFO: Executing text query: 防治菜螟有哪些推荐的药剂？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 20% 咪鲜胺乳油, 白菜, 黑斑病 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 68 relations
+INFO: Query edges: 病害防治, 使用方法, 农药适用性 (top_k:10, cosine:0.2)
+INFO: Global query: 12 entites, 8 relations
+INFO: Raw search results: 20 entities, 73 relations, 0 vector chunks   
+INFO: After truncation: 20 entities, 73 relations
+INFO: Selecting 50 from 75 entity-related chunks by vector similarity
+INFO: Find 3 additional chunks in 2 relations (deduplicated 27)
+INFO: Selecting 3 from 3 relation-related chunks by vector similarity  
+INFO: Round-robin merged chunks: 53 -> 53 (deduplicated 0)
+INFO: Final context: 20 entities, 73 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 R1/1 E2/2 R1/2 E1/3 R1/3 E2/4 E3/5 E4/6 E1/7 E2/8 E2/9 E2/10 E3/11 E3/12 E1/13 E1/14 E3/15 E2/16 E1/17
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=223.2324s, context_fetch=182.4415s, citation_build=0.0063s, graph_focus=0.0416s, backend_total=405.7223s
+[stage1][progress] [47/215]
+INFO: Executing text query: 萝卜霜霉病怎么防治？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 跳甲, 药剂, 农药 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 10 relations
+INFO: Query edges: 跳甲防治, 防治方法, 药剂推荐 (top_k:10, cosine:0.2) 
+INFO: Global query: 12 entites, 9 relations
+INFO: Raw search results: 21 entities, 13 relations, 0 vector chunks   
+INFO: After truncation: 21 entities, 13 relations
+INFO: Selecting 44 from 44 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 13 relations    
+INFO: Round-robin merged chunks: 44 -> 44 (deduplicated 0)
+INFO: Final context: 21 entities, 13 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 E8/2 E8/3 E1/4 E3/5 E2/6 E6/7 E1/8 E1/9 E3/10 E7/11 E2/12 E1/13 E1/14 E2/15 E1/16 E1/17 E1/18 E1/19 E1/20      
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0005s, answer_generation=257.0929s, context_fetch=154.4383s, citation_build=0.0104s, graph_focus=0.0408s, backend_total=411.5829s
+[stage1][progress] [48/215]
+INFO: Executing text query: 黄曲条跳甲在幼苗期危害子叶，有什么药剂可以 用于防治吗？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Query nodes: 菜粉蝶, 幼虫期, 防治药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 15 relations
+INFO: Query edges: 菜粉蝶防治, 幼虫期防治, 药剂推荐 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 7 relations
+INFO: Raw search results: 20 entities, 22 relations, 0 vector chunks   
+INFO: After truncation: 20 entities, 22 relations
+INFO: Selecting 50 from 81 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 22 relations
+INFO: Round-robin merged chunks: 50 -> 50 (deduplicated 0)
+INFO: Final context: 20 entities, 22 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 E2/2 E2/3 E4/4 E3/5 E1/6 E1/7 E1/8 E2/9 E1/10 E1/11 E2/12 E2/13 E2/14 E3/15 E2/16 E1/17 E2/18 E1/19 E2/20      
+INFO: Query nodes: 十字花科, 蔬菜, 黑腐病, 药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 52 relations
+INFO: Query edges: 十字花科蔬菜, 黑腐病防治, 药剂防治 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 10 relations
+INFO: Raw search results: 17 entities, 52 relations, 0 vector chunks   
+INFO: After truncation: 17 entities, 52 relations
+INFO: Selecting 42 from 93 entity-related chunks by vector similarity
+INFO: Find 2 additional chunks in 2 relations (deduplicated 16)
+INFO: Selecting 2 from 2 relation-related chunks by vector similarity  
+INFO: Round-robin merged chunks: 44 -> 44 (deduplicated 0)
+INFO: Final context: 17 entities, 52 relations, 20 chunks
+INFO: Final chunks S+F/O: E7/1 R1/1 E1/2 R1/2 E3/3 E7/4 E7/5 E2/6 E4/7 E2/8 E2/9 E1/10 E1/11 E1/12 E2/13 E1/14 E2/15 E6/16 E3/17 E1/18        
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0008s, answer_generation=230.1888s, context_fetch=201.1083s, citation_build=0.0072s, graph_focus=0.0358s, backend_total=431.3410s
+[stage1][progress] [49/215]
+INFO: Executing text query: 小白菜得了病毒病，有什么推荐的防治药剂吗？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 菜螟, 药剂, 防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 20 relations
+INFO: Query edges: 菜螟防治, 药剂推荐, 防治药剂 (top_k:10, cosine:0.2) 
+INFO: Global query: 13 entites, 9 relations
+INFO: Raw search results: 22 entities, 23 relations, 0 vector chunks   
+INFO: After truncation: 22 entities, 23 relations
+INFO: Selecting 55 from 71 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 23 relations
+INFO: Round-robin merged chunks: 55 -> 55 (deduplicated 0)
+INFO: Final context: 22 entities, 23 relations, 17 chunks
+INFO: Final chunks S+F/O: E1/1 E1/2 E7/3 E3/4 E2/5 E2/6 E1/7 E2/8 E2/9 E2/10 E1/11 E1/12 E1/13 E2/14 E2/15 E2/16 E2/17
+INFO: Query nodes: 黄曲条跳甲, 幼苗期, 子叶, 药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 19 relations
+INFO: Query edges: 黄曲条跳甲防治, 幼苗期危害, 药剂防治 (top_k:10, cosine:0.2)
+INFO: Global query: 9 entites, 8 relations
+INFO: Raw search results: 18 entities, 19 relations, 0 vector chunks   
+INFO: After truncation: 18 entities, 19 relations
+INFO: Selecting 36 from 36 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 19 relations
+INFO: Round-robin merged chunks: 36 -> 36 (deduplicated 0)
+INFO: Final context: 18 entities, 19 relations, 18 chunks
+INFO: Final chunks S+F/O: E2/1 E2/2 E3/3 E6/4 E1/5 E8/6 E1/7 E4/8 E1/9 E3/10 E2/11 E2/12 E2/13 E1/14 E1/15 E1/16 E2/17 E2/18
+INFO: Text query completed
+INFO: Query nodes: 萝卜, 霜霉病, 防治方法, 农业防治, 化学防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 74 relations
+INFO: Query edges: 萝卜霜霉病, 病害防治, 种植管理 (top_k:10, cosine:0.2)
+INFO: Global query: 8 entites, 7 relations
+INFO: Raw search results: 17 entities, 74 relations, 0 vector chunks   
+INFO: After truncation: 17 entities, 74 relations
+INFO: Selecting 35 from 35 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 74 relations    
+INFO: Round-robin merged chunks: 35 -> 35 (deduplicated 0)
+INFO: Final context: 17 entities, 74 relations, 20 chunks
+INFO: Final chunks S+F/O: E9/1 E2/2 E3/3 E1/4 E3/5 E1/6 E8/7 E1/8 E1/9 E1/10 E3/11 E1/12 E1/13 E2/14 E1/15 E2/16 E3/17 E1/18 E1/19 E1/20      
+INFO: Text query completed
+INFO: Text query completed
+INFO: Query nodes: 氯氟氰菊酯乳油, 菜螟, 药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 6 relations
+INFO: Query edges: 菜螟防治, 药剂用途, 农药适用性 (top_k:10, cosine:0.2)
+INFO: Global query: 8 entites, 6 relations
+INFO: Raw search results: 17 entities, 11 relations, 0 vector chunks   
+INFO: After truncation: 17 entities, 11 relations
+INFO: Selecting 41 from 41 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 11 relations    
+INFO: Round-robin merged chunks: 41 -> 41 (deduplicated 0)
+INFO: Final context: 17 entities, 11 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 E6/2 E1/3 E1/4 E1/5 E2/6 E1/7 E2/8 E2/9 E3/10 E1/11 E4/12 E3/13 E1/14 E1/15 E1/16 E3/17 E1/18 E6/19 E1/20      
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=225.7833s, context_fetch=201.2170s, citation_build=0.0052s, graph_focus=0.0566s, backend_total=427.0626s
+[stage1][progress] [50/215]
+INFO: Executing text query: 请问防治黑斑病有什么推荐的药剂吗？...      
+INFO: Query mode: hybrid
+INFO: Query nodes: 小白菜, 病毒病, 防治药剂, 推荐药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 86 relations
+INFO: Query edges: 小白菜病害防治, 病毒病防治, 药剂推荐 (top_k:10, cosine:0.2)
+INFO: Global query: 7 entites, 7 relations
+INFO: Raw search results: 12 entities, 87 relations, 0 vector chunks   
+INFO: After truncation: 12 entities, 87 relations
+INFO: Selecting 30 from 93 entity-related chunks by vector similarity
+INFO: Find 18 additional chunks in 13 relations (deduplicated 21)
+INFO: Selecting 18 from 18 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 48 -> 48 (deduplicated 0)
+INFO: Final context: 12 entities, 87 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 R15/1 E1/2 R15/2 E2/3 R1/3 E1/4 R1/4 E4/5 R2/5 E1/6 R1/6 E1/7 R1/7 E1/8 R1/8 E1/9 R2/9 E2/10 R2/10
+INFO: Text query completed
+INFO: Query nodes: 菜螟, 药剂, 农药, 杀虫剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 20 relations
+INFO: Query edges: 菜螟防治, 药剂推荐, 害虫治理 (top_k:10, cosine:0.2) 
+INFO: Global query: 13 entites, 9 relations
+INFO: Raw search results: 22 entities, 23 relations, 0 vector chunks   
+INFO: After truncation: 22 entities, 23 relations
+INFO: Selecting 55 from 69 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 23 relations
+INFO: Round-robin merged chunks: 55 -> 55 (deduplicated 0)
+INFO: Final context: 22 entities, 23 relations, 17 chunks
+INFO: Final chunks S+F/O: E1/1 E7/2 E2/3 E2/4 E1/5 E2/6 E2/7 E2/8 E1/9 E2/10 E1/11 E2/12 E2/13 E2/14 E2/15 E2/16 E2/17
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=251.8966s, context_fetch=102.0395s, citation_build=0.0073s, graph_focus=0.0421s, backend_total=353.9859s
+[stage1][progress] [51/215]
+INFO: Executing text query: 中华稻蝗有什么防治药剂推荐吗？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 菜粉蝶, 幼虫期, 防治药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 15 relations
+INFO: Query edges: 菜粉蝶防治, 幼虫期防治, 防治药剂推荐 (top_k:10, cosine:0.2)
+INFO: Global query: 11 entites, 8 relations
+INFO: Raw search results: 21 entities, 23 relations, 0 vector chunks   
+INFO: After truncation: 21 entities, 23 relations
+INFO: Selecting 52 from 81 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 23 relations
+INFO: Round-robin merged chunks: 52 -> 52 (deduplicated 0)
+INFO: Final context: 21 entities, 23 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 E2/2 E2/3 E4/4 E3/5 E1/6 E1/7 E1/8 E2/9 E1/10 E1/11 E2/12 E2/13 E2/14 E3/15 E1/16 E1/17 E2/18 E1/19 E1/20      
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0008s, answer_generation=313.4587s, context_fetch=137.4384s, citation_build=0.0069s, graph_focus=0.5781s, backend_total=451.4830s
+[stage1][progress] [52/215]
+INFO: Executing text query: 霜霉病发病后，可以使用哪些药剂进行治疗？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 黄曲条跳甲, 子叶, 幼苗期 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 20 relations
+INFO: Query edges: 幼苗期危害, 药剂防治 (top_k:10, cosine:0.2)
+INFO: Global query: 9 entites, 5 relations
+INFO: Raw search results: 18 entities, 23 relations, 0 vector chunks   
+INFO: After truncation: 18 entities, 23 relations
+INFO: Selecting 45 from 75 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 23 relations
+INFO: Round-robin merged chunks: 45 -> 45 (deduplicated 0)
+INFO: Final context: 18 entities, 23 relations, 18 chunks
+INFO: Final chunks S+F/O: E2/1 E1/2 E2/3 E5/4 E1/5 E4/6 E1/7 E2/8 E2/9 E2/10 E2/11 E1/12 E1/13 E4/14 E2/15 E2/16 E1/17 E2/18
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=217.1012s, context_fetch=156.4910s, citation_build=0.0081s, graph_focus=0.0461s, backend_total=373.6468s
+[stage1][progress] [53/215]
+INFO: Executing text query: 请问斜纹夜蛾的幼虫通常在什么时间段对作物造 成危害？它们主要危害哪些部位？以及在哪个生长阶段进入暴食期？...        
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Query nodes: 黑斑病, 药剂 (top_k:10, cosine:0.2)
+WARNING: Some nodes are missing, maybe the storage is damaged
+INFO: Local query: 9 entites, 32 relations
+INFO: Query edges: 黑斑病防治, 药剂推荐 (top_k:10, cosine:0.2)
+INFO: Global query: 11 entites, 10 relations
+INFO: Raw search results: 18 entities, 32 relations, 0 vector chunks   
+INFO: After truncation: 18 entities, 32 relations
+INFO: Selecting 25 from 25 entity-related chunks by vector similarity  
+INFO: Find no additional relations-related chunks from 32 relations    
+INFO: Round-robin merged chunks: 25 -> 25 (deduplicated 0)
+INFO: Final context: 18 entities, 32 relations, 20 chunks
+INFO: Final chunks S+F/O: E6/1 E9/2 E3/3 E5/4 E1/5 E2/6 E5/7 E3/8 E3/9 E1/10 E2/11 E1/12 E1/13 E1/14 E1/15 E3/16 E1/17 E3/18 E1/19 E1/20      
+INFO: Query nodes: 萝卜, 霜霉病, 防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 75 relations
+INFO: Query edges: 萝卜霜霉病, 霜霉病防治 (top_k:10, cosine:0.2)       
+INFO: Global query: 9 entites, 8 relations
+INFO: Raw search results: 18 entities, 75 relations, 0 vector chunks   
+INFO: After truncation: 18 entities, 75 relations
+INFO: Selecting 37 from 37 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 75 relations
+INFO: Round-robin merged chunks: 37 -> 37 (deduplicated 0)
+INFO: Final context: 18 entities, 75 relations, 20 chunks
+INFO: Final chunks S+F/O: E10/1 E2/2 E3/3 E1/4 E2/5 E1/6 E9/7 E1/8 E1/9 E1/10 E3/11 E1/12 E1/13 E1/14 E2/15 E1/16 E1/17 E1/18 E3/19 E1/20     
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0006s, answer_generation=290.5159s, context_fetch=169.7283s, citation_build=0.0048s, graph_focus=0.0456s, backend_total=460.2952s
+[stage1][progress] [54/215]
+INFO: Executing text query: 我家菜地里的萝卜、白菜和甘蓝老是被一种虫子 钻蛀，听说是叫菜心野螟或者萝卜螟。请问这是什么虫害？用什么药能治？...  
+INFO: Query mode: hybrid
+INFO: Query nodes: 斜纹夜蛾, 幼虫, 作物, 暴食期, 生长阶段 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 25 relations
+INFO: Query edges: 斜纹夜蛾幼虫危害, 危害时间段, 危害部位, 暴食期生长阶段 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 8 relations
+INFO: Raw search results: 18 entities, 27 relations, 0 vector chunks   
+INFO: After truncation: 18 entities, 27 relations
+INFO: Selecting 45 from 187 entity-related chunks by vector similarity
+INFO: Find 2 additional chunks in 2 relations (deduplicated 20)
+INFO: Selecting 2 from 2 relation-related chunks by vector similarity  
+INFO: Round-robin merged chunks: 47 -> 47 (deduplicated 0)
+INFO: Final context: 18 entities, 27 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 R3/1 E6/2 R1/2 E4/3 E2/4 E2/5 E3/6 E4/7 E5/8 E3/9 E2/10 E4/11 E3/12 E3/13 E2/14 E3/15 E2/16 E3/17 E1/18        
+INFO: Query nodes: 中华稻蝗, 防治药剂, 农药, 杀虫剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 25 relations
+INFO: Query edges: 中华稻蝗, 害虫防治, 药剂推荐 (top_k:10, cosine:0.2) 
+INFO: Global query: 8 entites, 7 relations
+INFO: Raw search results: 17 entities, 25 relations, 0 vector chunks   
+INFO: After truncation: 17 entities, 25 relations
+INFO: Selecting 22 from 22 entity-related chunks by vector similarity  
+INFO: Find no additional relations-related chunks from 25 relations
+INFO: Round-robin merged chunks: 22 -> 22 (deduplicated 0)
+INFO: Final context: 17 entities, 25 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 E9/2 E1/3 E2/4 E2/5 E1/6 E2/7 E2/8 E1/9 E1/10 E1/11 E2/12 E1/13 E1/14 E1/15 E2/16 E1/17 E1/18 E2/19 E1/20      
+INFO: Query nodes: 霜霉病, 药剂, 治疗, 发病后 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 74 relations
+INFO: Query edges: 霜霉病防治, 病害治疗, 药剂使用 (top_k:10, cosine:0.2)
+INFO: Global query: 9 entites, 9 relations
+INFO: Raw search results: 14 entities, 74 relations, 0 vector chunks   
+INFO: After truncation: 14 entities, 74 relations
+INFO: Selecting 34 from 34 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 74 relations    
+INFO: Round-robin merged chunks: 34 -> 34 (deduplicated 0)
+INFO: Final context: 14 entities, 74 relations, 20 chunks
+INFO: Final chunks S+F/O: E5/1 E1/2 E7/3 E4/4 E6/5 E2/6 E4/7 E2/8 E1/9 E1/10 E1/11 E1/12 E1/13 E1/14 E6/15 E1/16 E1/17 E1/18 E1/19 E1/20      
+INFO: Text query completed
+INFO: Query nodes: 萝卜, 白菜, 甘蓝, 菜心野螟, 萝卜螟, 钻蛀 (top_k:10, cosine:0.2)
+WARNING: Some nodes are missing, maybe the storage is damaged
+INFO: Local query: 9 entites, 40 relations
+INFO: Query edges: 蔬菜虫害, 虫害防治, 害虫识别 (top_k:10, cosine:0.2) 
+INFO: Global query: 5 entites, 3 relations
+INFO: Raw search results: 13 entities, 42 relations, 0 vector chunks   
+INFO: After truncation: 13 entities, 42 relations
+INFO: Selecting 32 from 71 entity-related chunks by vector similarity
+INFO: Find 2 additional chunks in 2 relations (deduplicated 18)
+INFO: Selecting 2 from 2 relation-related chunks by vector similarity  
+INFO: Round-robin merged chunks: 34 -> 34 (deduplicated 0)
+INFO: Final context: 13 entities, 42 relations, 17 chunks
+INFO: Final chunks S+F/O: E2/1 R4/1 E2/2 R1/2 E1/3 E1/4 E2/5 E1/6 E5/7 E3/8 E4/9 E1/10 E1/11 E4/12 E1/13 E1/14 E1/15
+INFO: Text query completed
+INFO: Query nodes: 小白菜, 病毒病, 防治药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 78 relations
+INFO: Query edges: 小白菜病毒病, 防治药剂推荐 (top_k:10, cosine:0.2)   
+INFO: Global query: 8 entites, 7 relations
+INFO: Raw search results: 15 entities, 79 relations, 0 vector chunks   
+INFO: After truncation: 15 entities, 79 relations
+INFO: Selecting 37 from 61 entity-related chunks by vector similarity
+INFO: Find 10 additional chunks in 8 relations (deduplicated 24)
+INFO: Selecting 10 from 10 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 47 -> 47 (deduplicated 0)
+INFO: Final context: 15 entities, 79 relations, 20 chunks
+INFO: Final chunks S+F/O: E4/1 R1/1 E1/2 R1/2 E1/3 R2/3 E1/4 R2/4 E3/5 R5/5 E1/6 R1/6 E1/7 R1/7 E1/8 R3/8 E1/9 R9/9 E3/10 R3/10
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0005s, answer_generation=286.1028s, context_fetch=204.2087s, citation_build=0.0065s, graph_focus=0.0415s, backend_total=490.3601s
+[stage1][progress] [55/215]
+INFO: Executing text query: 我家种的甘蓝，最近发现幼苗、嫩叶和新梢上有 很多小虫子群集，叶子开始卷曲变形，植株看起来生长不良，有些甚至枯萎了。 请问这是什么虫害？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Text query completed
+INFO: Text query completed
+INFO: Query nodes: 斜纹夜蛾, 幼虫, 作物, 暴食期, 生长阶段 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 25 relations
+INFO: Query edges: 斜纹夜蛾幼虫危害, 作物危害时间段, 作物危害部位, 幼虫暴食期 (top_k:10, cosine:0.2)
+INFO: Global query: 8 entites, 6 relations
+INFO: Raw search results: 16 entities, 26 relations, 0 vector chunks   
+INFO: After truncation: 16 entities, 26 relations
+INFO: Selecting 40 from 191 entity-related chunks by vector similarity
+INFO: Find 3 additional chunks in 2 relations (deduplicated 18)
+INFO: Selecting 3 from 3 relation-related chunks by vector similarity  
+INFO: Round-robin merged chunks: 43 -> 43 (deduplicated 0)
+INFO: Final context: 16 entities, 26 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 R1/1 E4/2 R3/2 E4/3 R1/3 E2/4 E3/5 E4/6 E4/7 E5/8 E3/9 E2/10 E5/11 E3/12 E3/13 E2/14 E3/15 E2/16 E2/17
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0005s, answer_generation=181.5940s, context_fetch=111.9712s, citation_build=0.0084s, graph_focus=0.0773s, backend_total=293.6515s
+[stage1][progress] [56/215]
+INFO: Executing text query: 大白菜霜霉病主要在什么时期发生？...        
+INFO: Query mode: hybrid
+INFO: Query nodes: 甘蓝, 幼苗, 嫩叶, 新梢, 小虫子群集, 叶子卷曲变形, 枯萎 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 4 relations
+INFO: Query edges: 甘蓝种植, 植株生长不良, 虫害问题 (top_k:10, cosine:0.2)
+INFO: Global query: 2 entites, 1 relations
+INFO: Raw search results: 12 entities, 5 relations, 0 vector chunks    
+INFO: After truncation: 12 entities, 5 relations
+INFO: Selecting 30 from 103 entity-related chunks by vector similarity
+INFO: Find 8 additional chunks in 2 relations (deduplicated 2)
+INFO: Selecting 5 from 8 relation-related chunks by vector similarity  
+INFO: Round-robin merged chunks: 35 -> 35 (deduplicated 0)
+INFO: Final context: 12 entities, 5 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 R1/1 E3/2 R1/2 E3/3 R1/3 E2/4 R1/4 E2/5 R1/5 E1/6 E1/7 E1/8 E1/9 E1/10 E3/11 E1/12 E1/13 E1/14 E2/15
+INFO: Query nodes: 中华稻蝗, 防治药剂, 农药, 杀虫剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 25 relations
+INFO: Query edges: 中华稻蝗防治, 药剂推荐, 农业害虫防治 (top_k:10, cosine:0.2)
+INFO: Global query: 8 entites, 7 relations
+INFO: Raw search results: 17 entities, 25 relations, 0 vector chunks   
+INFO: After truncation: 17 entities, 25 relations
+INFO: Selecting 22 from 22 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 25 relations    
+INFO: Round-robin merged chunks: 22 -> 22 (deduplicated 0)
+INFO: Final context: 17 entities, 25 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 E9/2 E1/3 E2/4 E2/5 E1/6 E2/7 E2/8 E1/9 E1/10 E1/11 E2/12 E1/13 E1/14 E1/15 E2/16 E1/17 E1/18 E2/19 E1/20      
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=284.7855s, context_fetch=143.8895s, citation_build=0.0072s, graph_focus=0.0501s, backend_total=428.7327s
+[stage1][progress] [57/215]
+INFO: Executing text query: 灰霉病主要危害植物的哪些部位？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 黑斑病, 药剂, 防治 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 52 relations
+INFO: Query edges: 黑斑病防治, 药剂推荐 (top_k:10, cosine:0.2)
+INFO: Global query: 11 entites, 10 relations
+INFO: Raw search results: 20 entities, 52 relations, 0 vector chunks   
+INFO: After truncation: 20 entities, 52 relations
+INFO: Selecting 48 from 48 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 52 relations
+INFO: Round-robin merged chunks: 48 -> 48 (deduplicated 0)
+INFO: Final context: 20 entities, 52 relations, 20 chunks
+INFO: Final chunks S+F/O: E7/1 E9/2 E3/3 E5/4 E1/5 E2/6 E6/7 E4/8 E3/9 E1/10 E2/11 E1/12 E1/13 E1/14 E1/15 E1/16 E1/17 E1/18 E1/19 E4/20      
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0005s, answer_generation=357.6681s, context_fetch=179.5882s, citation_build=0.0096s, graph_focus=0.0653s, backend_total=537.3317s
+[stage1][progress] [58/215]
+INFO: Executing text query: 萝卜霜霉病在萝卜叶片上会表现出哪些危害症状 ？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 霜霉病, 发病后, 药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 75 relations
+INFO: Query edges: 霜霉病治疗, 药剂使用 (top_k:10, cosine:0.2)
+INFO: Global query: 9 entites, 8 relations
+INFO: Raw search results: 14 entities, 75 relations, 0 vector chunks   
+INFO: After truncation: 14 entities, 75 relations
+INFO: Selecting 35 from 36 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 75 relations    
+INFO: Round-robin merged chunks: 35 -> 35 (deduplicated 0)
+INFO: Final context: 14 entities, 75 relations, 20 chunks
+INFO: Final chunks S+F/O: E7/1 E4/2 E5/3 E4/4 E5/5 E2/6 E2/7 E2/8 E1/9 E1/10 E1/11 E1/12 E1/13 E1/14 E1/15 E7/16 E1/17 E1/18 E1/19 E1/20      
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=289.7820s, context_fetch=172.1376s, citation_build=0.0078s, graph_focus=0.0501s, backend_total=461.9779s
+[stage1][progress] [59/215]
+INFO: Executing text query: 菜粉蝶有哪些别称？它属于哪个目和科？主要危 害哪些作物，以及会造成哪些危害症状？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Query nodes: 萝卜, 白菜, 甘蓝, 菜心野螟, 萝卜螟, 虫子钻蛀 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 49 relations
+INFO: Query edges: 菜地虫害, 虫害识别, 用药治疗 (top_k:10, cosine:0.2) 
+INFO: Global query: 4 entites, 2 relations
+INFO: Raw search results: 13 entities, 50 relations, 0 vector chunks   
+INFO: After truncation: 13 entities, 50 relations
+INFO: Selecting 32 from 78 entity-related chunks by vector similarity
+INFO: Find 8 additional chunks in 5 relations (deduplicated 21)
+INFO: Selecting 8 from 8 relation-related chunks by vector similarity  
+INFO: Round-robin merged chunks: 40 -> 40 (deduplicated 0)
+INFO: Final context: 13 entities, 50 relations, 18 chunks
+INFO: Final chunks S+F/O: E2/1 R4/1 E2/2 R4/2 E1/3 R4/3 E1/4 R4/4 E2/5 R2/5 E1/6 R1/6 E4/7 R3/7 E3/8 R2/8 E5/9 E1/10
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0006s, answer_generation=222.1711s, context_fetch=144.4012s, citation_build=0.0047s, graph_focus=0.0325s, backend_total=366.6101s
+[stage1][progress] [60/215]
+INFO: Executing text query: 请问菜粉蝶的幼虫主要通过什么方式危害作物？ 它会引起哪些具体症状和次生病害？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 大白菜, 霜霉病, 时期 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 59 relations
+INFO: Query edges: 大白菜霜霉病, 病害发生时期, 主要发生阶段 (top_k:10, cosine:0.2)
+INFO: Global query: 11 entites, 9 relations
+INFO: Raw search results: 18 entities, 62 relations, 0 vector chunks   
+INFO: After truncation: 18 entities, 62 relations
+INFO: Selecting 45 from 214 entity-related chunks by vector similarity
+INFO: Find 11 additional chunks in 7 relations (deduplicated 16)
+INFO: Selecting 11 from 11 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 56 -> 56 (deduplicated 0)
+INFO: Final context: 18 entities, 62 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 R2/1 E6/2 R2/2 E2/3 R2/3 E6/4 R1/4 E9/5 R1/5 E6/6 R1/6 E3/7 R1/7 E1/8 R1/8 E1/9 R1/9 E7/10 R1/10
+INFO: Query nodes: 甘蓝, 幼苗, 嫩叶, 新梢, 小虫子群集, 叶子卷曲变形, 枯萎 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 4 relations
+INFO: Query edges: 甘蓝虫害, 虫害识别, 植株生长不良 (top_k:10, cosine:0.2)
+INFO: Global query: 3 entites, 2 relations
+INFO: Raw search results: 13 entities, 6 relations, 0 vector chunks    
+INFO: After truncation: 13 entities, 6 relations
+INFO: Selecting 32 from 105 entity-related chunks by vector similarity
+INFO: Find 8 additional chunks in 2 relations (deduplicated 3)
+INFO: Selecting 5 from 8 relation-related chunks by vector similarity  
+INFO: Round-robin merged chunks: 37 -> 37 (deduplicated 0)
+INFO: Final context: 13 entities, 6 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 R1/1 E3/2 R1/2 E3/3 R1/3 E2/4 R1/4 E2/5 R1/5 E1/6 E1/7 E1/8 E1/9 E1/10 E3/11 E1/12 E1/13 E1/14 E2/15
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0005s, answer_generation=198.6323s, context_fetch=102.3846s, citation_build=0.0083s, graph_focus=0.0457s, backend_total=301.0715s
+[stage1][progress] [61/215]
+INFO: Executing text query: 请问菜螟是一种什么害虫？它主要危害哪些作物 ？有没有推荐的防治药剂？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 萝卜, 霜霉病, 叶片 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 13 relations
+INFO: Query edges: 萝卜霜霉病, 危害症状, 萝卜叶片 (top_k:10, cosine:0.2)
+INFO: Global query: 4 entites, 2 relations
+INFO: Raw search results: 13 entities, 14 relations, 0 vector chunks   
+INFO: After truncation: 13 entities, 14 relations
+INFO: Selecting 27 from 27 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 14 relations    
+INFO: Round-robin merged chunks: 27 -> 27 (deduplicated 0)
+INFO: Final context: 13 entities, 14 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 E3/2 E1/3 E2/4 E3/5 E2/6 E2/7 E1/8 E1/9 E2/10 E2/11 E2/12 E3/13 E1/14 E1/15 E1/16 E1/17 E1/18 E1/19 E1/20      
+INFO: Text query completed
+INFO: Query nodes: 菜粉蝶, 目, 科, 作物, 症状 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 23 relations
+INFO: Query edges: 菜粉蝶, 别称, 目和科, 危害作物, 危害症状 (top_k:10, cosine:0.2)
+INFO: Global query: 7 entites, 5 relations
+INFO: Raw search results: 16 entities, 24 relations, 0 vector chunks   
+INFO: After truncation: 16 entities, 24 relations
+INFO: Selecting 40 from 203 entity-related chunks by vector similarity
+INFO: Find 5 additional chunks in 5 relations (deduplicated 21)
+INFO: Selecting 5 from 5 relation-related chunks by vector similarity  
+INFO: Round-robin merged chunks: 45 -> 45 (deduplicated 0)
+INFO: Final context: 16 entities, 24 relations, 20 chunks
+INFO: Final chunks S+F/O: E4/1 R1/1 E2/2 R1/2 E4/3 R4/3 E4/4 R3/4 E3/5 R2/5 E2/6 E3/7 E4/8 E3/9 E2/10 E3/11 E5/12 E2/13 E3/14 E3/15
+INFO: Query nodes: 灰霉病, 植物, 部位 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 13 relations
+INFO: Query edges: 灰霉病, 主要危害 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 7 relations
+INFO: Raw search results: 19 entities, 19 relations, 0 vector chunks   
+INFO: After truncation: 19 entities, 19 relations
+INFO: Selecting 47 from 94 entity-related chunks by vector similarity
+INFO: Find 2 additional chunks in 2 relations (deduplicated 17)
+INFO: Selecting 2 from 2 relation-related chunks by vector similarity  
+INFO: Round-robin merged chunks: 49 -> 49 (deduplicated 0)
+INFO: Final context: 19 entities, 19 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 R1/1 E6/2 R1/2 E2/3 E2/4 E4/5 E2/6 E2/7 E1/8 E1/9 E1/10 E2/11 E1/12 E1/13 E1/14 E1/15 E1/16 E2/17 E5/18        
+INFO: Text query completed
+INFO: Text query completed
+INFO: Query nodes: 菜粉蝶, 幼虫, 作物 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 14 relations
+INFO: Query edges: 菜粉蝶幼虫, 危害作物方式, 具体症状, 次生病害 (top_k:10, cosine:0.2)
+INFO: Global query: 5 entites, 4 relations
+INFO: Raw search results: 14 entities, 14 relations, 0 vector chunks   
+INFO: After truncation: 14 entities, 14 relations
+INFO: Selecting 35 from 87 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 14 relations
+INFO: Round-robin merged chunks: 35 -> 35 (deduplicated 0)
+INFO: Final context: 14 entities, 14 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 E3/2 E3/3 E2/4 E3/5 E2/6 E3/7 E2/8 E2/9 E4/10 E1/11 E1/12 E2/13 E2/14 E2/15 E1/16 E1/17 E2/18 E1/19 E2/20      
+INFO: Query nodes: 菜螟, 作物, 药剂 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 16 relations
+INFO: Query edges: 害虫, 危害作物, 防治药剂 (top_k:10, cosine:0.2)     
+INFO: Global query: 2 entites, 1 relations
+INFO: Raw search results: 12 entities, 17 relations, 0 vector chunks   
+INFO: After truncation: 12 entities, 17 relations
+INFO: Selecting 30 from 31 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 17 relations    
+INFO: Round-robin merged chunks: 30 -> 30 (deduplicated 0)
+INFO: Final context: 12 entities, 17 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 E2/2 E2/3 E2/4 E1/5 E2/6 E2/7 E2/8 E1/9 E2/10 E1/11 E1/12 E1/13 E1/14 E1/15 E1/16 E1/17 E1/18 E1/19 E1/20      
+INFO: Text query completed
+INFO: Query nodes: 大白菜, 霜霉病 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 38 relations
+INFO: Query edges: 大白菜霜霉病, 主要发生时期 (top_k:10, cosine:0.2)   
+INFO: Global query: 12 entites, 9 relations
+INFO: Raw search results: 21 entities, 42 relations, 0 vector chunks   
+INFO: After truncation: 21 entities, 42 relations
+INFO: Selecting 52 from 106 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 42 relations
+INFO: Round-robin merged chunks: 52 -> 52 (deduplicated 0)
+INFO: Final context: 21 entities, 42 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 E5/2 E2/3 E5/4 E9/5 E4/6 E2/7 E6/8 E2/9 E3/10 E2/11 E3/12 E2/13 E4/14 E5/15 E2/16 E3/17 E3/18 E4/19 E1/20      
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0007s, answer_generation=237.7838s, context_fetch=206.0427s, citation_build=0.0060s, graph_focus=0.0712s, backend_total=443.9045s
+[stage1][progress] [62/215]
+INFO: Executing text query: 我家的菜苗叶片被吃出了透明小孔和缺刻，甚至 有些只剩下叶脉了，请问这是什么虫害造成的？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Text query completed
+INFO: Query nodes: 萝卜, 叶片, 霜霉病 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 12 relations
+INFO: Query edges: 萝卜霜霉病, 危害症状 (top_k:10, cosine:0.2)
+INFO: After truncation: 15 entities, 14 relations
+INFO: Selecting 37 from 120 entity-related chunks by vector similarity
+INFO: Find 1 additional chunks in 1 relations (deduplicated 8)
+INFO: Selecting 1 from 1 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 38 -> 38 (deduplicated 0)
+INFO: Final context: 15 entities, 14 relations, 20 chunks
+INFO: Final chunks S+F/O: E4/1 R1/1 E4/2 E2/3 E2/4 E1/5 E1/6 E3/7 E3/8 E2/9 E2/10 E2/11 E2/12 E2/13 E2/14 E3/15 E1/16 E2/17 E3/18 E2/19
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0005s, answer_generation=223.2451s, context_fetch=161.4041s, citation_build=0.0101s, graph_focus=0.0377s, backend_total=384.6975s
+[stage1][progress] [63/215]
+INFO: Executing text query: 我的蔬菜幼苗和叶片被刮食，严重时只剩下叶脉，而且这种虫害在5—7月特别活跃。请问这是什么虫害？应该如 何防治？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 菜苗, 叶片, 透明小孔, 缺刻, 叶脉 (top_k:10, cosine:0.2)
+WARNING: Some nodes are missing, maybe the storage is damaged
+INFO: Local query: 9 entites, 23 relations
+INFO: Query edges: 菜苗虫害, 叶片损伤症状, 虫害识别 (top_k:10, cosine:0.2)
+INFO: Global query: 4 entites, 2 relations
+INFO: Raw search results: 12 entities, 24 relations, 0 vector chunks
+INFO: After truncation: 12 entities, 24 relations
+INFO: Selecting 30 from 188 entity-related chunks by vector similarity
+INFO: Find 43 additional chunks in 15 relations (deduplicated 13)
+INFO: Selecting 37 from 43 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 67 -> 67 (deduplicated 0)
+INFO: Final context: 12 entities, 24 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 R1/1 E3/2 R1/2 E1/3 R1/3 E1/4 R1/4 E1/5 R1/5 E1/6 R1/6 E3/7 R1/7 E1/8 R1/8 E2/9 R1/9 E1/10 R1/10
+INFO: Query nodes: 灰霉病, 植物, 部位 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 13 relations
+INFO: Query edges: 灰霉病危害, 植物部位, 病害症状 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 7 relations
+INFO: Raw search results: 16 entities, 15 relations, 0 vector chunks
+INFO: After truncation: 16 entities, 15 relations
+INFO: Selecting 40 from 206 entity-related chunks by vector similarity
+INFO: Find 9 additional chunks in 5 relations (deduplicated 10)
+INFO: Selecting 9 from 9 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 49 -> 49 (deduplicated 0)
+INFO: Final context: 16 entities, 15 relations, 20 chunks
+INFO: Final chunks S+F/O: E4/1 R1/1 E7/2 R2/2 E3/3 R2/3 E2/4 R1/4 E5/5 R1/5 E3/6 R1/6 E1/7 R1/7 E2/8 R1/8 E2/9 R1/9 E2/10 E2/11
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0005s, answer_generation=362.5540s, context_fetch=140.5095s, citation_build=0.0052s, graph_focus=0.0312s, backend_total=503.1004s
+[stage1][progress] [64/215]
+INFO: Executing text query: 炭疽病的病原菌是怎样越冬的？它在什么环境下容易流行？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 菜粉蝶, 目, 科, 作物, 症状 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 23 relations
+INFO: Query edges: 菜粉蝶, 别称, 目和科, 危害作物, 危害症状 (top_k:10, cosine:0.2)
+INFO: Global query: 7 entites, 5 relations
+INFO: Raw search results: 16 entities, 24 relations, 0 vector chunks
+INFO: After truncation: 16 entities, 24 relations
+INFO: Selecting 40 from 203 entity-related chunks by vector similarity
+INFO: Find 5 additional chunks in 5 relations (deduplicated 21)
+INFO: Selecting 5 from 5 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 45 -> 45 (deduplicated 0)
+INFO: Final context: 16 entities, 24 relations, 20 chunks
+INFO: Final chunks S+F/O: E4/1 R1/1 E2/2 R1/2 E4/3 R4/3 E4/4 R3/4 E3/5 R2/5 E2/6 E3/7 E4/8 E3/9 E2/10 E3/11 E5/12 E2/13 E3/14 E3/15
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=234.8156s, context_fetch=227.2941s, citation_build=0.0045s, graph_focus=0.0415s, backend_total=462.1562s
+[stage1][progress] [65/215]
+INFO: Executing text query: 请问银纹夜蛾的幼虫通常在什么月份出现？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 菜粉蝶, 幼虫, 次生病害, 危害方式, 具体症状 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 14 relations
+INFO: Query edges: 菜粉蝶幼虫, 作物危害, 病害症状 (top_k:10, cosine:0.2)
+INFO: Global query: 5 entites, 4 relations
+INFO: Raw search results: 14 entities, 14 relations, 0 vector chunks
+INFO: After truncation: 14 entities, 14 relations
+INFO: Selecting 35 from 86 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 14 relations
+INFO: Round-robin merged chunks: 35 -> 35 (deduplicated 0)
+INFO: Final context: 14 entities, 14 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 E3/2 E3/3 E3/4 E2/5 E2/6 E3/7 E2/8 E1/9 E4/10 E1/11 E1/12 E3/13 E2/14 E2/15 E1/16 E1/17 E1/18 E1/19 E2/20
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0003s, answer_generation=312.0696s, context_fetch=139.3841s, citation_build=0.0097s, graph_focus=0.0400s, backend_total=451.5039s
+[stage1][progress] [66/215]
+INFO: Executing text query: 请问菜粉蝶的卵长什么样子？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Query nodes: 炭疽病原菌, 越冬方式, 环境条件 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 13 relations
+INFO: Query edges: 炭疽病, 病原菌越冬, 病害流行 (top_k:10, cosine:0.2)
+INFO: Global query: 4 entites, 3 relations
+INFO: Raw search results: 13 entities, 13 relations, 0 vector chunks
+INFO: After truncation: 13 entities, 13 relations
+INFO: Selecting 32 from 51 entity-related chunks by vector similarity
+INFO: Find 1 additional chunks in 1 relations (deduplicated 20)
+INFO: Selecting 1 from 1 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 33 -> 33 (deduplicated 0)
+INFO: Final context: 13 entities, 13 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 R1/1 E1/2 E2/3 E2/4 E3/5 E1/6 E3/7 E1/8 E1/9 E2/10 E3/11 E1/12 E2/13 E2/14 E1/15 E2/16 E2/17 E1/18 E1/19
+INFO:openai._base_client:Retrying request to /embeddings in 0.481007 seconds
+INFO:openai._base_client:Retrying request to /embeddings in 0.800319 seconds
+INFO: Query nodes: 蔬菜幼苗, 叶片被刮食, 只剩下叶脉, 5—7 月 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 5 relations
+INFO: Query edges: 蔬菜虫害, 虫害防治, 害虫识别 (top_k:10, cosine:0.2)
+INFO: Global query: 5 entites, 3 relations
+INFO: Raw search results: 15 entities, 8 relations, 0 vector chunks
+INFO: After truncation: 15 entities, 8 relations
+INFO: Selecting 37 from 88 entity-related chunks by vector similarity
+INFO: Find 4 additional chunks in 4 relations (deduplicated 4)
+INFO: Selecting 4 from 4 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 41 -> 41 (deduplicated 0)
+INFO: Final context: 15 entities, 8 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 R1/1 E1/2 R1/2 E3/3 R1/3 E2/4 R1/4 E1/5 E2/6 E3/7 E2/8 E1/9 E1/10 E1/11 E1/12 E1/13 E1/14 E1/15 E1/16
+INFO:openai._base_client:Retrying request to /embeddings in 0.485266 seconds
+INFO: Query nodes: 菜螟, 害虫, 作物, 防治药剂, 农药 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 39 relations
+INFO: Query edges: 菜螟特性, 作物危害, 防治方法 (top_k:10, cosine:0.2)
+INFO: Global query: 5 entites, 4 relations
+INFO: After truncation: 14 entities, 40 relations
+INFO: Selecting 35 from 198 entity-related chunks by vector similarity
+INFO: Find 18 additional chunks in 10 relations (deduplicated 16)
+INFO: Selecting 18 from 18 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 53 -> 53 (deduplicated 0)
+INFO: Final context: 14 entities, 40 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 R2/1 E4/2 R3/2 E5/3 R4/3 E4/4 R1/4 E3/5 R2/5 E3/6 R3/6 E2/7 R2/7 E1/8 R3/8 E1/9 R3/9 E2/10 R2/10
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0004s, answer_generation=253.9720s, context_fetch=231.5826s, citation_build=0.0050s, graph_focus=0.0418s, backend_total=485.6019s   
+[stage1][progress] [67/215]
+INFO: Executing text query: 我家白菜叶片上出现了近圆形灰褐色斑，斑点中间还有明显的同心轮纹，请问这可能是 得了什么病？...
+INFO: Query mode: hybrid
+INFO: Text query completed
+INFO: Text query completed
+INFO: Query nodes: 银纹夜蛾, 幼虫, 月份 (top_k:10, cosine:0.2)
+WARNING: Some nodes are missing, maybe the storage is damaged
+INFO: Local query: 9 entites, 21 relations
+INFO: Query edges: 银纹夜蛾, 幼虫出现, 出现月份 (top_k:10, cosine:0.2)
+INFO: Global query: 11 entites, 8 relations
+INFO: Raw search results: 18 entities, 26 relations, 0 vector chunks
+INFO: After truncation: 18 entities, 26 relations
+INFO: Selecting 45 from 74 entity-related chunks by vector similarity
+INFO: Find 1 additional chunks in 1 relations (deduplicated 22)
+INFO: Selecting 1 from 1 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 46 -> 46 (deduplicated 0)
+INFO: Final context: 18 entities, 26 relations, 20 chunks
+INFO: Final chunks S+F/O: E2/1 R2/1 E4/2 E3/3 E2/4 E2/5 E2/6 E1/7 E2/8 E1/9 E2/10 E2/11 E2/12 E2/13 E2/14 E2/15 E3/16 E1/17 E1/18 E1/19
+INFO: Query nodes: 透明小孔, 缺刻, 只剩下叶脉, 菜苗叶片 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 15 relations
+INFO: Query edges: 菜苗虫害, 叶片损害, 虫害原因 (top_k:10, cosine:0.2)
+INFO: Global query: 4 entites, 2 relations
+INFO: Raw search results: 13 entities, 16 relations, 0 vector chunks
+INFO: After truncation: 13 entities, 16 relations
+INFO: Selecting 32 from 185 entity-related chunks by vector similarity
+INFO: Find 41 additional chunks in 13 relations (deduplicated 10)
+INFO: Selecting 32 from 41 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 64 -> 64 (deduplicated 0)
+INFO: Final context: 13 entities, 16 relations, 20 chunks
+INFO: Final chunks S+F/O: E1/1 R1/1 E2/2 R1/2 E1/3 R1/3 E1/4 R1/4 E1/5 R1/5 E1/6 R1/6 E2/7 R1/7 E1/8 R1/8 E1/9 R1/9 E1/10 R1/10
+INFO:ui.service:UI query timing | kb_id=kb_existing_rag_storage_whole_book_gemini_9b858991 mode=hybrid has_image=False planner_enabled=False | load_rag=0.0000s, initialize_lightrag=0.0007s, answer_generation=198.0133s, context_fetch=142.1892s, citation_build=0.0067s, graph_focus=0.0307s, backend_total=340.2406s   
+[stage1][progress] [68/215]
+INFO: Executing text query: 白菜感染黑斑病后，除了叶片，花梗等部位会受到影响吗？...
+INFO: Query mode: hybrid
+INFO: Query nodes: 菜粉蝶卵, 外观, 颜色, 形状 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 11 relations
+INFO: Query edges: 菜粉蝶, 昆虫卵, 形态特征 (top_k:10, cosine:0.2)
+INFO: Global query: 10 entites, 10 relations
+INFO: Raw search results: 18 entities, 13 relations, 0 vector chunks
+INFO: After truncation: 18 entities, 13 relations
+INFO: Selecting 45 from 87 entity-related chunks by vector similarity
+INFO: Find no additional relations-related chunks from 13 relations
+INFO: Round-robin merged chunks: 45 -> 45 (deduplicated 0)
+INFO: Final context: 18 entities, 13 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 E5/2 E2/3 E5/4 E2/5 E3/6 E4/7 E5/8 E5/9 E4/10 E2/11 E2/12 E3/13 E4/14 E1/15 E6/16 E1/17 E3/18 E1/19 E1/20
+INFO: Text query completed
+INFO: Query nodes: 白菜, 叶片, 近圆形灰褐色斑, 同心轮纹 (top_k:10, cosine:0.2)
+INFO: Local query: 10 entites, 7 relations
+INFO: Query edges: 白菜病害, 叶片病斑, 病害诊断 (top_k:10, cosine:0.2)
+INFO: Global query: 8 entites, 4 relations
+INFO: Raw search results: 18 entities, 11 relations, 0 vector chunks
+INFO: After truncation: 18 entities, 11 relations
+INFO: Selecting 45 from 166 entity-related chunks by vector similarity
+INFO: Find 2 additional chunks in 2 relations (deduplicated 5)
+INFO: Selecting 2 from 2 relation-related chunks by vector similarity
+INFO: Round-robin merged chunks: 47 -> 47 (deduplicated 0)
+INFO: Final context: 18 entities, 11 relations, 20 chunks
+INFO: Final chunks S+F/O: E3/1 R1/1 E1/2 R1/2 E2/3 E2/4 E1/5 E4/6 E2/7 E3/8 E1/9 E2/10 E2/11 E2/12 E1/13 E2/14 E2/15 E1/16 E2/17 E2/18
+INFO: Text query completed

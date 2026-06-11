@@ -1,0 +1,55 @@
+{
+  "config": {
+    "eval_file": "eval_dataset_200\\Eval.jsonl",
+    "rag_dir": "rag_storage_whole_book_gemini",
+    "resolved_mode": "hybrid",
+    "planner_enabled": false,
+    "ablate_no_kg": false,
+    "ablate_no_rag": false,
+    "system_model": "Qwen/Qwen3.5-9B",
+    "judge_model": "deepseek-ai/DeepSeek-V4-Pro",
+    "enable_judge": true,
+    "disable_llm_cache": true,
+    "include_evidence": true,
+    "concurrency": 4,
+    "sample_count": 215,
+    "reasoning": {
+      "thinking_mode": "not_explicitly_set",
+      "system_reasoning_efforts": {
+        "default": "none",
+        "answer": "none",
+        "planner": "none",
+        "vision": "none",
+        "image_description": "none"
+      },
+      "judge_reasoning_effort": "none",
+      "openai_llm_extra_body": "",
+      "llm_cache_disabled": true
+    }
+  },
+  "timing": {
+    "total_wall_time_sec": 26894.8157,
+    "avg_latency_sec": 403.1206,
+    "p95_latency_sec": 382.9113
+  },
+  "counts": {
+    "total": 215,
+    "success": 215,
+    "errors": 0,
+    "pass": 72,
+    "pass_rate": 0.3349
+  },
+  "scores": {
+    "avg_total_score": 19.9953,
+    "avg_correctness": 3.9721,
+    "avg_evidence_consistency": 2.7535,
+    "avg_completeness": 4.0977,
+    "avg_clarity": 4.7581,
+    "avg_safety": 4.414
+  },
+  "retrieval": {
+    "avg_recall": 0.0,
+    "avg_precision": 0.0,
+    "avg_f1": 0.0
+  }
+}

@@ -29,10 +29,9 @@ from dotenv import load_dotenv
 
 load_dotenv(dotenv_path=".env", override=False)
 
-
 def configure_logging():
     """Configure logging for the application"""
-    # Get log directory path from environment variable or use current directory
+    # Get log directory pah from environment variable or use current directory
     log_dir = os.getenv("LOG_DIR", os.getcwd())
     log_file_path = os.path.abspath(os.path.join(log_dir, "raganything_example.log"))
 

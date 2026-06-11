@@ -22,7 +22,14 @@ except ImportError:
     # Fallback when imported as top-level module (e.g. from ui/app.py local import).
     from job_manager import JobManager
 
-CHUNK_ID_PATTERN = re.compile(r"\bchunk-[0-9a-f]{32}\b", re.IGNORECASE)
+# Be tolerant to chunk id variants in retrieval context:
+# - chunk-<hash32>
+# - chunk_<hash32>
+# - longer alnum hashes produced by upstream variants
+CHUNK_ID_PATTERN = re.compile(
+    r"\bchunk[-_][0-9a-z]{8,128}\b",
+    re.IGNORECASE,
+)
 IMAGE_PATH_PATTERN = re.compile(
     r"(?:Image\s*Path|图片路径)\s*[:：]\s*([^\n\r]*?\.(?:jpg|jpeg|png|gif|bmp|webp|tiff|tif))",
     re.IGNORECASE,
@@ -121,7 +128,7 @@ def extract_chunk_ids(text: str) -> List[str]:
     seen = set()
     ordered: List[str] = []
     for m in CHUNK_ID_PATTERN.finditer(text):
-        cid = m.group(0)
+        cid = m.group(0).replace("_", "-")
         if cid not in seen:
             seen.add(cid)
             ordered.append(cid)
@@ -162,6 +169,7 @@ def split_source_ids(value: Any) -> List[str]:
         return []
 
     raw = raw.replace("&lt;SEP&gt;", "<SEP>")
+    raw = raw.replace("_", "-")
     parts = re.split(r"<SEP>|[;,]\s*", raw)
 
     seen = set()
@@ -287,10 +295,14 @@ class RAGUIService:
         asyncio.set_event_loop(self._async_loop)
         self._async_loop.run_forever()
 
-    def _run_async(self, coro: Any) -> Any:
+    def _run_async(self, coro: Any, timeout: Optional[float] = None) -> Any:
         """Run coroutine on the dedicated persistent event loop."""
         future = asyncio.run_coroutine_threadsafe(coro, self._async_loop)
-        return future.result()
+        try:
+            return future.result(timeout=timeout)
+        except Exception:
+            future.cancel()
+            raise
 
     def _build_rag(
         self,
@@ -375,6 +387,18 @@ class RAGUIService:
             or os.getenv("OPENAI_BASE_URL", "").strip()
             or fallback_cfg.get("base_url", "").strip()
             or None
+        )
+        embed_api_key = (
+            getattr(config, "embedding_api_key", "").strip()
+            or os.getenv("RAG_EMBED_API_KEY", "").strip()
+            or os.getenv("OPENAI_EMBED_API_KEY", "").strip()
+            or api_key
+        )
+        embed_base_url = (
+            getattr(config, "embedding_base_url", "").strip()
+            or os.getenv("RAG_EMBED_BASE_URL", "").strip()
+            or os.getenv("OPENAI_EMBED_BASE_URL", "").strip()
+            or base_url
         )
         raw_extra_body = os.getenv("OPENAI_LLM_EXTRA_BODY", "").strip()
         parsed_extra_body: Dict[str, Any] = {}
@@ -606,8 +630,8 @@ class RAGUIService:
             func=lambda texts: openai_embed.func(
                 texts,
                 model=embedding_model,
-                api_key=api_key,
-                base_url=base_url,
+                api_key=embed_api_key,
+                base_url=embed_base_url,
             ),
         )
 
@@ -1167,6 +1191,9 @@ class RAGUIService:
 
         citations: List[Dict[str, Any]] = []
 
+        # Keep only chunk ids that actually exist in local chunk storage.
+        chunk_ids = [cid for cid in chunk_ids if cid in chunks_db]
+
         for chunk_id in chunk_ids:
             chunk_data = chunks_db.get(chunk_id, {})
             content = str(chunk_data.get("content", ""))
@@ -1426,6 +1453,7 @@ class RAGUIService:
         debug: bool = False,
         planner_enabled: bool = False,
         include_evidence: bool = True,
+        query_timeout_sec: Optional[float] = None,
     ) -> Dict[str, Any]:
         """Run multimodal query with user-provided image + optional text question."""
         total_started_at = time.perf_counter()
@@ -1468,7 +1496,8 @@ class RAGUIService:
                 query=answer_query_text,
                 multimodal_content=multimodal_content,
                 mode=mode,
-            )
+            ),
+            timeout=query_timeout_sec,
         )
         self._record_timing(timings, "answer_generation", stage_started_at)
 

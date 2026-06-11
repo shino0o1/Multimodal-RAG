@@ -1,0 +1,2 @@
+﻿total,success,errors,pass,pass_rate,avg_total_score,avg_correctness,avg_evidence_consistency,avg_completeness,avg_clarity,avg_safety,avg_recall,avg_precision,avg_f1
+215,215,0,72,0.3349,19.9953,3.9721,2.7535,4.0977,4.7581,4.414,0.0,0.0,0.0

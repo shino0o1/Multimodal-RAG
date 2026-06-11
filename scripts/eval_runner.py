@@ -74,6 +74,10 @@ class EvalConfig:
     openai_llm_extra_body: str = ""
     enable_judge: bool = False
     disable_llm_cache: bool = True
+    include_evidence: bool = True
+    image_timeout_sec: int = 300
+    resume: bool = False
+    save_every: int = 1
 
 
 class _MemoryUpload:
@@ -105,6 +109,23 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--system-model", default="qwen3-8b")
     parser.add_argument("--judge-model", default="qwen3.5-plus")
     parser.add_argument(
+        "--image-timeout-sec",
+        type=int,
+        default=300,
+        help="single image-query timeout in seconds (default: 300)",
+    )
+    parser.add_argument(
+        "--resume",
+        action="store_true",
+        help="resume from existing output-dir/results.jsonl and skip completed samples",
+    )
+    parser.add_argument(
+        "--save-every",
+        type=int,
+        default=1,
+        help="persist intermediate results every N finished samples (default: 1)",
+    )
+    parser.add_argument(
         "--openai-llm-extra-body",
         default="",
         help="raw JSON string for OPENAI_LLM_EXTRA_BODY, provider-specific",
@@ -129,6 +150,20 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="enable LLM judge step (disabled by default for speed)",
     )
+    evidence_group = parser.add_mutually_exclusive_group()
+    evidence_group.add_argument(
+        "--include-evidence",
+        dest="include_evidence",
+        action="store_true",
+        help="build evidence/citations context during query (default: true)",
+    )
+    evidence_group.add_argument(
+        "--no-include-evidence",
+        dest="include_evidence",
+        action="store_false",
+        help="skip evidence/citations context build for speed",
+    )
+    parser.set_defaults(include_evidence=True)
     parser.add_argument(
         "--disable-llm-cache",
         action="store_true",
@@ -367,17 +402,18 @@ def _evaluate_one(
     judge_client: Optional[EvalLLMClient],
     cfg: EvalConfig,
     row: Dict[str, Any],
+    run_judge: bool = True,
 ) -> Dict[str, Any]:
     mode = _resolve_query_mode(cfg)
     planner_enabled = cfg.planner_enabled and (not cfg.ablate_no_rag)
     sample_id = str(row.get("id", "")).strip()
     question = str(row.get("question", "")).strip()
+    modality = str(row.get("modality", "")).lower().strip()
     started = time.perf_counter()
     query_time = 0.0
     judge_time = 0.0
 
     try:
-        modality = str(row.get("modality", "")).lower().strip()
         t_query_start = time.perf_counter()
         if modality == "image" and row.get("image_path"):
             image_path = _resolve_image_path(str(row.get("image_path")), cfg.eval_file)
@@ -390,7 +426,8 @@ def _evaluate_one(
                 mode=mode,
                 planner_enabled=planner_enabled,
                 debug=False,
-                include_evidence=False,
+                include_evidence=cfg.include_evidence,
+                query_timeout_sec=float(cfg.image_timeout_sec),
             )
         else:
             response = service.query(
@@ -399,7 +436,7 @@ def _evaluate_one(
                 mode=mode,
                 planner_enabled=planner_enabled,
                 debug=False,
-                include_evidence=False,
+                include_evidence=cfg.include_evidence,
             )
         query_time = round(time.perf_counter() - t_query_start, 4)
 
@@ -411,7 +448,7 @@ def _evaluate_one(
         judge: Dict[str, Any] = {}
         total_score: Optional[int] = None
         pass_flag: Optional[bool] = None
-        if cfg.enable_judge:
+        if run_judge and cfg.enable_judge:
             if judge_client is None:
                 raise RuntimeError("judge enabled but judge client is not initialized")
             t_judge_start = time.perf_counter()
@@ -450,6 +487,9 @@ def _evaluate_one(
             "error": "",
         }
     except Exception as exc:
+        err_msg = str(exc)[:500]
+        if modality == "image" and ("TimeoutError" in type(exc).__name__ or "timed out" in str(exc).lower()):
+            err_msg = f"image_timeout_{cfg.image_timeout_sec}s"
         return {
             "id": sample_id,
             "task_type": row.get("task_type", ""),
@@ -468,8 +508,49 @@ def _evaluate_one(
             "judge": {},
             "total_score": None,
             "pass": False,
-            "error": str(exc)[:500],
+            "error": err_msg,
         }
+
+
+def _judge_on_result(
+    judge_client: EvalLLMClient,
+    cfg: EvalConfig,
+    base_result: Dict[str, Any],
+    source_row: Dict[str, Any],
+) -> Dict[str, Any]:
+    started = time.perf_counter()
+    updated = dict(base_result)
+    try:
+        answer = str(updated.get("system_answer", "")).strip()
+        pred_chunk_ids = list(updated.get("pred_chunk_ids", []) or [])
+        judge = _judge_one(judge_client, cfg.judge_model, source_row, answer, pred_chunk_ids)
+        judge_time = round(time.perf_counter() - started, 4)
+        total_score = (
+            judge["correctness"]
+            + judge["evidence_consistency"]
+            + judge["completeness"]
+            + judge["clarity"]
+            + judge["safety"]
+        )
+        pass_flag = (
+            judge["correctness"] >= 4
+            and judge["evidence_consistency"] >= 4
+            and judge["safety"] >= 4
+        )
+        updated["judge"] = judge
+        updated["judge_time_sec"] = judge_time
+        updated["total_score"] = total_score
+        updated["pass"] = pass_flag
+        return updated
+    except Exception as exc:
+        updated["judge"] = {}
+        updated["judge_time_sec"] = round(time.perf_counter() - started, 4)
+        updated["total_score"] = None
+        updated["pass"] = False
+        old_error = str(updated.get("error", "")).strip()
+        judge_error = f"judge_error: {str(exc)[:350]}"
+        updated["error"] = f"{old_error}; {judge_error}" if old_error else judge_error
+        return updated
 
 
 def _build_group_report(results: List[Dict[str, Any]], group_key: str) -> List[Dict[str, Any]]:
@@ -538,6 +619,47 @@ def _p95(values: List[float]) -> float:
     return round(arr[idx], 4)
 
 
+def _judge_done(result: Dict[str, Any]) -> bool:
+    judge = result.get("judge")
+    return isinstance(judge, dict) and ("correctness" in judge)
+
+
+def _load_existing_results(path: Path) -> Dict[str, Dict[str, Any]]:
+    out: Dict[str, Dict[str, Any]] = {}
+    if not path.exists():
+        return out
+    for line in path.read_text(encoding="utf-8").splitlines():
+        text = line.strip()
+        if not text:
+            continue
+        try:
+            item = json.loads(text)
+        except Exception:
+            continue
+        sid = str(item.get("id", "")).strip()
+        if not sid:
+            continue
+        out[sid] = item
+    return out
+
+
+def _persist_results_incremental(
+    output_dir: Path,
+    id_order: List[str],
+    result_map: Dict[str, Dict[str, Any]],
+) -> None:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    ordered: List[Dict[str, Any]] = []
+    for sid in id_order:
+        item = result_map.get(sid)
+        if item is not None:
+            ordered.append(item)
+    (output_dir / "results.jsonl").write_text(
+        "\n".join(json.dumps(r, ensure_ascii=False) for r in ordered) + ("\n" if ordered else ""),
+        encoding="utf-8",
+    )
+
+
 def main() -> None:
     args = parse_args()
     cfg = EvalConfig(
@@ -555,6 +677,10 @@ def main() -> None:
         openai_llm_extra_body=str(args.openai_llm_extra_body or ""),
         enable_judge=bool(args.enable_judge),
         disable_llm_cache=(not bool(args.enable_llm_cache)),
+        include_evidence=bool(args.include_evidence),
+        image_timeout_sec=max(10, int(args.image_timeout_sec)),
+        resume=bool(args.resume),
+        save_every=max(1, int(args.save_every)),
     )
 
     if not cfg.eval_file.exists():
@@ -591,28 +717,107 @@ def main() -> None:
     _print_reasoning_runtime(reasoning_runtime)
 
     rows = _load_rows(cfg.eval_file, cfg.limit)
-    results: List[Dict[str, Any]] = []
+    id_order: List[str] = [str(r.get("id", "")).strip() for r in rows if str(r.get("id", "")).strip()]
+    result_map: Dict[str, Dict[str, Any]] = {}
+    if cfg.resume:
+        result_map = _load_existing_results(cfg.output_dir / "results.jsonl")
+        if result_map:
+            print(f"[resume] loaded completed samples: {len(result_map)}")
+    row_map: Dict[str, Dict[str, Any]] = {
+        str(r.get("id", "")).strip(): r for r in rows
+    }
 
     started = time.perf_counter()
-    if rows:
-        # Warm up once to avoid race-driven duplicate RAG initialization under concurrency.
-        first = _evaluate_one(service, kb_id, judge_client, cfg, rows[0])
-        results.append(first)
-        print(f"[progress] 1/{len(rows)}")
+    text_rows = [
+        r for r in rows if str(r.get("modality", "")).lower().strip() != "image"
+    ]
+    image_rows = [
+        r for r in rows if str(r.get("modality", "")).lower().strip() == "image"
+    ]
+    ordered_rows = text_rows + image_rows
 
-    remaining = rows[1:] if len(rows) > 1 else []
+    # Stage 1: system answer + retrieval metrics only (text first, then image).
+    stage1_pending = [
+        r for r in ordered_rows if str(r.get("id", "")).strip() and str(r.get("id", "")).strip() not in result_map
+    ]
+    stage1_done = len(ordered_rows) - len(stage1_pending)
+    print(f"[stage1] answer/retrieval started. total={len(ordered_rows)}, pending={len(stage1_pending)}")
+    if stage1_done:
+        print(f"[stage1][progress] [{stage1_done}/{len(ordered_rows)}]")
+    local_finished_since_save = 0
+    if stage1_pending:
+        first = _evaluate_one(service, kb_id, None, cfg, stage1_pending[0], run_judge=False)
+        sid = str(first.get("id", "")).strip()
+        if sid:
+            result_map[sid] = first
+            local_finished_since_save += 1
+            if local_finished_since_save >= cfg.save_every:
+                _persist_results_incremental(cfg.output_dir, id_order, result_map)
+                local_finished_since_save = 0
+        print(f"[stage1][progress] [{stage1_done + 1}/{len(ordered_rows)}]")
+
+    remaining = stage1_pending[1:] if len(stage1_pending) > 1 else []
     with ThreadPoolExecutor(max_workers=cfg.concurrency) as pool:
         futures = [
-            pool.submit(_evaluate_one, service, kb_id, judge_client, cfg, row)
+            pool.submit(_evaluate_one, service, kb_id, None, cfg, row, False)
             for row in remaining
         ]
-        done = 1 if rows else 0
-        total = len(rows)
+        done = stage1_done + (1 if stage1_pending else 0)
+        total = len(ordered_rows)
         for fut in as_completed(futures):
             done += 1
-            results.append(fut.result())
-            if done % 10 == 0 or done == total:
-                print(f"[progress] {done}/{total}")
+            try:
+                item = fut.result()
+                sid = str(item.get("id", "")).strip()
+                if sid:
+                    result_map[sid] = item
+                    local_finished_since_save += 1
+                    if local_finished_since_save >= cfg.save_every:
+                        _persist_results_incremental(cfg.output_dir, id_order, result_map)
+                        local_finished_since_save = 0
+            except Exception as exc:
+                print(f"[stage1][future_error] {str(exc)[:300]}")
+            print(f"[stage1][progress] [{done}/{total}]")
+    if local_finished_since_save > 0:
+        _persist_results_incremental(cfg.output_dir, id_order, result_map)
+    results: List[Dict[str, Any]] = [result_map[sid] for sid in id_order if sid in result_map]
+
+    # Stage 2: full judge on all samples.
+    if cfg.enable_judge:
+        if judge_client is None:
+            raise RuntimeError("Judge stage enabled but judge client is not initialized.")
+        stage2_pending_ids = [sid for sid in id_order if sid in result_map and not _judge_done(result_map[sid])]
+        print(f"[stage2] judge started. total={len(id_order)}, pending={len(stage2_pending_ids)}")
+        judged: List[Dict[str, Any]] = []
+        stage2_done = len(id_order) - len(stage2_pending_ids)
+        if stage2_done:
+            print(f"[stage2][progress] [{stage2_done}/{len(id_order)}]")
+        local_judged_since_save = 0
+        with ThreadPoolExecutor(max_workers=cfg.concurrency) as pool:
+            judge_futures = []
+            for sid in stage2_pending_ids:
+                base = result_map[sid]
+                src = row_map.get(sid, {})
+                judge_futures.append(pool.submit(_judge_on_result, judge_client, cfg, base, src))
+            done2 = stage2_done
+            total2 = len(id_order)
+            for fut in as_completed(judge_futures):
+                done2 += 1
+                try:
+                    item = fut.result()
+                    sid = str(item.get("id", "")).strip()
+                    if sid:
+                        result_map[sid] = item
+                        local_judged_since_save += 1
+                        if local_judged_since_save >= cfg.save_every:
+                            _persist_results_incremental(cfg.output_dir, id_order, result_map)
+                            local_judged_since_save = 0
+                except Exception as exc:
+                    print(f"[stage2][future_error] {str(exc)[:300]}")
+                print(f"[stage2][progress] [{done2}/{total2}]")
+        if local_judged_since_save > 0:
+            _persist_results_incremental(cfg.output_dir, id_order, result_map)
+        results = [result_map[sid] for sid in id_order if sid in result_map]
     total_wall = round(time.perf_counter() - started, 4)
 
     ok = [r for r in results if not r.get("error")]
@@ -630,9 +835,15 @@ def main() -> None:
             "judge_model": cfg.judge_model,
             "enable_judge": cfg.enable_judge,
             "disable_llm_cache": cfg.disable_llm_cache,
+            "include_evidence": cfg.include_evidence,
             "concurrency": cfg.concurrency,
             "sample_count": len(rows),
             "reasoning": reasoning_runtime,
+            "image_timeout_sec": cfg.image_timeout_sec,
+            "staged_eval": True,
+            "execution_order": "text_first_then_image",
+            "resume": cfg.resume,
+            "save_every": cfg.save_every,
         },
         "timing": {
             "total_wall_time_sec": total_wall,
@@ -688,10 +899,7 @@ def main() -> None:
     errors = [r for r in results if r.get("error")]
 
     cfg.output_dir.mkdir(parents=True, exist_ok=True)
-    (cfg.output_dir / "results.jsonl").write_text(
-        "\n".join(json.dumps(r, ensure_ascii=False) for r in results) + "\n",
-        encoding="utf-8",
-    )
+    _persist_results_incremental(cfg.output_dir, id_order, {str(r.get("id", "")).strip(): r for r in results if str(r.get("id", "")).strip()})
     (cfg.output_dir / "summary.json").write_text(
         json.dumps(summary, ensure_ascii=False, indent=2),
         encoding="utf-8",

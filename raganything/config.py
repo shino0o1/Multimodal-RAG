@@ -167,21 +167,33 @@ class RAGAnythingConfig:
     model_embedding: str = field(
         default=get_env_value("RAG_MODEL_EMBEDDING", "text-embedding-3-large", str)
     )
-    """Embedding model for vector retrieval."""
+    """Embedding model for vector retrieval. 备选：text-embedding-3-large、Qwen/Qwen3-Embedding-8B"""
 
     embedding_dim: int = field(default=get_env_value("EMBEDDING_DIM", 3072, int))
-    """Embedding vector dimension."""
+    """Embedding vector dimension.Qwen/Qwen3-Embedding-8B是4096维，text-embedding-3-large为3072维"""
 
     rerank_model: str = field(default=get_env_value("RAG_MODEL_RERANK", "", str))
     """Rerank model identifier. Empty means no rerank model configured."""
 
     # OpenAI-Compatible Routing & Reasoning Configuration
     # ---
-    llm_api_key: str = field(default=get_env_value("RAG_LLM_API_KEY", "sk-ZtWiLrC1L8eiZq8fS1K1k3FCPiPEk675q0KwZGm7GVpXjGLa", str))
-    """API key for OpenAI-compatible chat completion calls."""
+    # llm_api_key: str = field(default=get_env_value("RAG_LLM_API_KEY", "sk-ZtWiLrC1L8eiZq8fS1K1k3FCPiPEk675q0KwZGm7GVpXjGLa", str))
+    llm_api_key: str = field(default=get_env_value("RAG_LLM_API_KEY", "sk-ogovdxkkwlralaizsukmwwgieeqcacnaljonjbjxzxjfvhxl", str))
+    """API key for OpenAI-compatible chat completion calls. siliconflow:sk-ogovdxkkwlralaizsukmwwgieeqcacnaljonjbjxzxjfvhxl"""
 
-    llm_base_url: str = field(default=get_env_value("RAG_LLM_BASE_URL", "https://yunwu.ai/v1", str))
-    """Base URL for OpenAI-compatible API endpoint, e.g. https://yunwu.ai/v1."""
+    # llm_base_url: str = field(default=get_env_value("RAG_LLM_BASE_URL", "https://yunwu.ai/v1", str))
+    llm_base_url: str = field(default=get_env_value("RAG_LLM_BASE_URL", "https://api.siliconflow.cn/v1", str))
+    """Base URL for OpenAI-compatible API endpoint, e.g. https://api.siliconflow.cn/v1"""
+
+    embedding_api_key: str = field(
+        default=get_env_value("RAG_EMBED_API_KEY", "sk-of-veBlvMXJDXNFliZVNQxtXBSuRSIfkZQyXckQzyUoZxWXGuWTIfRxmJUKqcTeXZSd", str)
+    )
+    """Optional dedicated API key for embedding calls. Empty means fallback to llm_api_key."""
+
+    embedding_base_url: str = field(
+        default=get_env_value("RAG_EMBED_BASE_URL", "https://api.ofox.ai/v1", str)
+    )
+    """Optional dedicated base URL for embedding calls. Empty means fallback to llm_base_url."""
 
     reasoning_effort_default: str = field(
         default=get_env_value("RAG_REASONING_EFFORT_DEFAULT", "medium", str)
@@ -374,6 +386,10 @@ class RAGAnythingConfig:
             self.model_vision = self.model_answer
         if not self.model_image_description:
             self.model_image_description = self.model_vision
+        if not self.embedding_api_key:
+            self.embedding_api_key = self.llm_api_key
+        if not self.embedding_base_url:
+            self.embedding_base_url = self.llm_base_url
 
         self.reasoning_effort_default = self._normalize_reasoning_effort(
             self.reasoning_effort_default

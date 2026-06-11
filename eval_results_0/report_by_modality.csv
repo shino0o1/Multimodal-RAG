@@ -1,0 +1,3 @@
+﻿modality,samples,success,error_count,pass_rate,avg_total_score,avg_correctness,avg_evidence_consistency,avg_completeness,avg_clarity,avg_safety,avg_recall,avg_precision,avg_f1,avg_latency_sec
+image,3,3,0,0.3333,16.3333,2.6667,2.6667,2.6667,4.6667,3.6667,0.0,0.0,0.0,206.1549
+text,7,7,0,0.1429,17.4286,3.1429,2.1429,3.2857,4.4286,4.4286,0.0,0.0,0.0,181.4736

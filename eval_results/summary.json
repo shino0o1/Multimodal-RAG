@@ -1,0 +1,60 @@
+{
+  "config": {
+    "eval_file": "eval_dataset_200\\Eval.jsonl",
+    "rag_dir": "rag_storage_whole_book_gemini",
+    "resolved_mode": "hybrid",
+    "planner_enabled": false,
+    "ablate_no_kg": false,
+    "ablate_no_rag": false,
+    "system_model": "deepseek-ai/DeepSeek-V4-Flash",
+    "judge_model": "deepseek-ai/DeepSeek-V4-Pro",
+    "enable_judge": true,
+    "disable_llm_cache": true,
+    "include_evidence": true,
+    "concurrency": 6,
+    "sample_count": 215,
+    "reasoning": {
+      "thinking_mode": "not_explicitly_set",
+      "system_reasoning_efforts": {
+        "default": "none",
+        "answer": "none",
+        "planner": "none",
+        "vision": "none",
+        "image_description": "none"
+      },
+      "judge_reasoning_effort": "none",
+      "openai_llm_extra_body": "",
+      "llm_cache_disabled": true
+    },
+    "image_timeout_sec": 180,
+    "staged_eval": true,
+    "execution_order": "text_first_then_image",
+    "resume": true,
+    "save_every": 1
+  },
+  "timing": {
+    "total_wall_time_sec": 4604.4975,
+    "avg_latency_sec": 88.2666,
+    "p95_latency_sec": 145.5679
+  },
+  "counts": {
+    "total": 215,
+    "success": 215,
+    "errors": 0,
+    "pass": 75,
+    "pass_rate": 0.3488
+  },
+  "scores": {
+    "avg_total_score": 19.893,
+    "avg_correctness": 3.8977,
+    "avg_evidence_consistency": 2.8093,
+    "avg_completeness": 4.0465,
+    "avg_clarity": 4.7628,
+    "avg_safety": 4.3767
+  },
+  "retrieval": {
+    "avg_recall": 0.0,
+    "avg_precision": 0.0,
+    "avg_f1": 0.0
+  }
+}
