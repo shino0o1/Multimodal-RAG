@@ -1,0 +1,13 @@
+{
+  "input": "synthetic_qa\\generated_qa_train.jsonl",
+  "output": "synthetic_qa\\generated_qa_train_dedup.jsonl",
+  "threshold": 0.88,
+  "total": 1392,
+  "kept": 1206,
+  "rejected": 186,
+  "reason_counts": {
+    "near_duplicate": 74,
+    "exact_duplicate": 112
+  },
+  "rejected_output": "synthetic_qa\\generated_qa_train_duplicates.jsonl"
+}

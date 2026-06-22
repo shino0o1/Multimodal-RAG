@@ -1,0 +1,761 @@
+{"id": "gap-0001", "crop": "甘蓝", "target": "根肿病", "task_type": "symptom_diagnosis", "query": "甘蓝 根肿病 症状 识别 图片 农技 植保", "priority_score": 329, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0002", "crop": "青花菜", "target": "根肿病", "task_type": "symptom_diagnosis", "query": "青花菜 根肿病 症状 识别 图片 农技 植保", "priority_score": 322, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0003", "crop": "大白菜", "target": "蓟马", "task_type": "symptom_diagnosis", "query": "大白菜 蓟马 症状 识别 图片 农技 植保", "priority_score": 318, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0004", "crop": "小白菜", "target": "黑腐病", "task_type": "symptom_diagnosis", "query": "小白菜 黑腐病 症状 识别 图片 农技 植保", "priority_score": 318, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0005", "crop": "甘蓝", "target": "甜菜夜蛾", "task_type": "symptom_diagnosis", "query": "甘蓝 甜菜夜蛾 症状 识别 图片 农技 植保", "priority_score": 317, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0006", "crop": "甘蓝", "target": "霜霉病", "task_type": "control_timing", "query": "甘蓝 霜霉病 防治时期 最佳时间 农技 植保", "priority_score": 317, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0007", "crop": "花椰菜", "target": "病毒病", "task_type": "symptom_diagnosis", "query": "花椰菜 病毒病 症状 识别 图片 农技 植保", "priority_score": 316, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0008", "crop": "甘蓝", "target": "斜纹夜蛾", "task_type": "symptom_diagnosis", "query": "甘蓝 斜纹夜蛾 症状 识别 图片 农技 植保", "priority_score": 315, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0009", "crop": "甘蓝", "target": "黑腐病", "task_type": "control_timing", "query": "甘蓝 黑腐病 防治时期 最佳时间 农技 植保", "priority_score": 315, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0010", "crop": "甘蓝", "target": "蓟马", "task_type": "symptom_diagnosis", "query": "甘蓝 蓟马 症状 识别 图片 农技 植保", "priority_score": 313, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0011", "crop": "甘蓝", "target": "软腐病", "task_type": "control_timing", "query": "甘蓝 软腐病 防治时期 最佳时间 农技 植保", "priority_score": 313, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0012", "crop": "甘蓝", "target": "霜霉病", "task_type": "occurrence_condition", "query": "甘蓝 霜霉病 发生条件 发病原因 农技 植保", "priority_score": 313, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0013", "crop": "甘蓝", "target": "小菜蛾", "task_type": "control_timing", "query": "甘蓝 小菜蛾 防治时期 最佳时间 农技 植保", "priority_score": 312, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0014", "crop": "花椰菜", "target": "霜霉病", "task_type": "control_timing", "query": "花椰菜 霜霉病 防治时期 最佳时间 农技 植保", "priority_score": 312, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0015", "crop": "甘蓝", "target": "根肿病", "task_type": "control_timing", "query": "甘蓝 根肿病 防治时期 最佳时间 农技 植保", "priority_score": 311, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0016", "crop": "大白菜", "target": "菌核病", "task_type": "control_timing", "query": "大白菜 菌核病 防治时期 最佳时间 农技 植保", "priority_score": 310, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0017", "crop": "甘蓝", "target": "黄曲条跳甲", "task_type": "agronomic_control", "query": "甘蓝 黄曲条跳甲 农业防治 田间管理 农技 植保", "priority_score": 310, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0018", "crop": "花椰菜", "target": "黑腐病", "task_type": "control_timing", "query": "花椰菜 黑腐病 防治时期 最佳时间 农技 植保", "priority_score": 310, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0019", "crop": "甘蓝", "target": "蓟马", "task_type": "chemical_control", "query": "甘蓝 蓟马 药剂防治 用药技术 农技 植保", "priority_score": 309, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0020", "crop": "花椰菜", "target": "软腐病", "task_type": "control_timing", "query": "花椰菜 软腐病 防治时期 最佳时间 农技 植保", "priority_score": 308, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0021", "crop": "花椰菜", "target": "霜霉病", "task_type": "occurrence_condition", "query": "花椰菜 霜霉病 发生条件 发病原因 农技 植保", "priority_score": 308, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0022", "crop": "青花菜", "target": "根肿病", "task_type": "agronomic_control", "query": "青花菜 根肿病 农业防治 田间管理 农技 植保", "priority_score": 308, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0023", "crop": "甘蓝", "target": "蚜虫", "task_type": "control_timing", "query": "甘蓝 蚜虫 防治时期 最佳时间 农技 植保", "priority_score": 307, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0024", "crop": "小白菜", "target": "病毒病", "task_type": "symptom_diagnosis", "query": "小白菜 病毒病 症状 识别 图片 农技 植保", "priority_score": 306, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0025", "crop": "甘蓝", "target": "黄曲条跳甲", "task_type": "control_timing", "query": "甘蓝 黄曲条跳甲 防治时期 最佳时间 农技 植保", "priority_score": 306, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0026", "crop": "花椰菜", "target": "根肿病", "task_type": "control_timing", "query": "花椰菜 根肿病 防治时期 最佳时间 农技 植保", "priority_score": 306, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0027", "crop": "花椰菜", "target": "蚜虫", "task_type": "agronomic_control", "query": "花椰菜 蚜虫 农业防治 田间管理 农技 植保", "priority_score": 306, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0028", "crop": "青花菜", "target": "蓟马", "task_type": "symptom_diagnosis", "query": "青花菜 蓟马 症状 识别 图片 农技 植保", "priority_score": 306, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0029", "crop": "青花菜", "target": "小菜蛾", "task_type": "control_timing", "query": "青花菜 小菜蛾 防治时期 最佳时间 农技 植保", "priority_score": 305, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0030", "crop": "大白菜", "target": "蓟马", "task_type": "agronomic_control", "query": "大白菜 蓟马 农业防治 田间管理 农技 植保", "priority_score": 304, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0031", "crop": "油菜", "target": "黑腐病", "task_type": "chemical_control", "query": "油菜 黑腐病 药剂防治 用药技术 农技 植保", "priority_score": 304, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0032", "crop": "花椰菜", "target": "菜青虫", "task_type": "control_timing", "query": "花椰菜 菜青虫 防治时期 最佳时间 农技 植保", "priority_score": 304, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0033", "crop": "青花菜", "target": "根肿病", "task_type": "control_timing", "query": "青花菜 根肿病 防治时期 最佳时间 农技 植保", "priority_score": 304, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0034", "crop": "甘蓝", "target": "病毒病", "task_type": "control_timing", "query": "甘蓝 病毒病 防治时期 最佳时间 农技 植保", "priority_score": 303, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0035", "crop": "花椰菜", "target": "小菜蛾", "task_type": "occurrence_condition", "query": "花椰菜 小菜蛾 发生条件 发病原因 农技 植保", "priority_score": 303, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0036", "crop": "青花菜", "target": "黄曲条跳甲", "task_type": "agronomic_control", "query": "青花菜 黄曲条跳甲 农业防治 田间管理 农技 植保", "priority_score": 303, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0037", "crop": "小白菜", "target": "甜菜夜蛾", "task_type": "symptom_diagnosis", "query": "小白菜 甜菜夜蛾 症状 识别 图片 农技 植保", "priority_score": 302, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0038", "crop": "甘蓝", "target": "黄曲条跳甲", "task_type": "occurrence_condition", "query": "甘蓝 黄曲条跳甲 发生条件 发病原因 农技 植保", "priority_score": 302, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0039", "crop": "花椰菜", "target": "根肿病", "task_type": "occurrence_condition", "query": "花椰菜 根肿病 发生条件 发病原因 农技 植保", "priority_score": 302, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0040", "crop": "花椰菜", "target": "病毒病", "task_type": "agronomic_control", "query": "花椰菜 病毒病 农业防治 田间管理 农技 植保", "priority_score": 302, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0041", "crop": "花椰菜", "target": "蚜虫", "task_type": "control_timing", "query": "花椰菜 蚜虫 防治时期 最佳时间 农技 植保", "priority_score": 302, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0042", "crop": "萝卜", "target": "蓟马", "task_type": "symptom_diagnosis", "query": "萝卜 蓟马 症状 识别 图片 农技 植保", "priority_score": 302, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0043", "crop": "青花菜", "target": "蓟马", "task_type": "chemical_control", "query": "青花菜 蓟马 药剂防治 用药技术 农技 植保", "priority_score": 302, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0044", "crop": "小白菜", "target": "小菜蛾", "task_type": "agronomic_control", "query": "小白菜 小菜蛾 农业防治 田间管理 农技 植保", "priority_score": 301, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0045", "crop": "甘蓝", "target": "菌核病", "task_type": "occurrence_condition", "query": "甘蓝 菌核病 发生条件 发病原因 农技 植保", "priority_score": 301, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0046", "crop": "甘蓝", "target": "黑斑病", "task_type": "control_timing", "query": "甘蓝 黑斑病 防治时期 最佳时间 农技 植保", "priority_score": 301, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0047", "crop": "萝卜", "target": "小菜蛾", "task_type": "control_timing", "query": "萝卜 小菜蛾 防治时期 最佳时间 农技 植保", "priority_score": 301, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0048", "crop": "大白菜", "target": "甜菜夜蛾", "task_type": "occurrence_condition", "query": "大白菜 甜菜夜蛾 发生条件 发病原因 农技 植保", "priority_score": 300, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0049", "crop": "大白菜", "target": "蓟马", "task_type": "control_timing", "query": "大白菜 蓟马 防治时期 最佳时间 农技 植保", "priority_score": 300, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0050", "crop": "小白菜", "target": "斜纹夜蛾", "task_type": "symptom_diagnosis", "query": "小白菜 斜纹夜蛾 症状 识别 图片 农技 植保", "priority_score": 300, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0051", "crop": "小白菜", "target": "黑腐病", "task_type": "control_timing", "query": "小白菜 黑腐病 防治时期 最佳时间 农技 植保", "priority_score": 300, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0052", "crop": "芥菜", "target": "小菜蛾", "task_type": "symptom_diagnosis", "query": "芥菜 小菜蛾 症状 识别 图片 农技 植保", "priority_score": 300, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0053", "crop": "花椰菜", "target": "菌核病", "task_type": "control_timing", "query": "花椰菜 菌核病 防治时期 最佳时间 农技 植保", "priority_score": 300, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0054", "crop": "花椰菜", "target": "菜青虫", "task_type": "occurrence_condition", "query": "花椰菜 菜青虫 发生条件 发病原因 农技 植保", "priority_score": 300, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0055", "crop": "萝卜", "target": "根肿病", "task_type": "control_timing", "query": "萝卜 根肿病 防治时期 最佳时间 农技 植保", "priority_score": 300, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0056", "crop": "青花菜", "target": "根肿病", "task_type": "occurrence_condition", "query": "青花菜 根肿病 发生条件 发病原因 农技 植保", "priority_score": 300, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0057", "crop": "甘蓝", "target": "根肿病", "task_type": "biological_control", "query": "甘蓝 根肿病 生物防治 绿色防控 农技 植保", "priority_score": 299, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0058", "crop": "甘蓝", "target": "蓟马", "task_type": "agronomic_control", "query": "甘蓝 蓟马 农业防治 田间管理 农技 植保", "priority_score": 299, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0059", "crop": "甘蓝", "target": "黄曲条跳甲", "task_type": "symptom_diagnosis", "query": "甘蓝 黄曲条跳甲 症状 识别 图片 农技 植保", "priority_score": 299, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0060", "crop": "芥菜", "target": "根肿病", "task_type": "symptom_diagnosis", "query": "芥菜 根肿病 症状 识别 图片 农技 植保", "priority_score": 299, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0061", "crop": "花椰菜", "target": "根肿病", "task_type": "symptom_diagnosis", "query": "花椰菜 根肿病 症状 识别 图片 农技 植保", "priority_score": 299, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0062", "crop": "大白菜", "target": "斜纹夜蛾", "task_type": "occurrence_condition", "query": "大白菜 斜纹夜蛾 发生条件 发病原因 农技 植保", "priority_score": 298, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0063", "crop": "大白菜", "target": "菌核病", "task_type": "biological_control", "query": "大白菜 菌核病 生物防治 绿色防控 农技 植保", "priority_score": 298, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0064", "crop": "大白菜", "target": "菌核病", "task_type": "symptom_diagnosis", "query": "大白菜 菌核病 症状 识别 图片 农技 植保", "priority_score": 298, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0065", "crop": "小白菜", "target": "甜菜夜蛾", "task_type": "chemical_control", "query": "小白菜 甜菜夜蛾 药剂防治 用药技术 农技 植保", "priority_score": 298, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0066", "crop": "小白菜", "target": "蓟马", "task_type": "symptom_diagnosis", "query": "小白菜 蓟马 症状 识别 图片 农技 植保", "priority_score": 298, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0067", "crop": "小白菜", "target": "软腐病", "task_type": "control_timing", "query": "小白菜 软腐病 防治时期 最佳时间 农技 植保", "priority_score": 298, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0068", "crop": "花椰菜", "target": "病毒病", "task_type": "control_timing", "query": "花椰菜 病毒病 防治时期 最佳时间 农技 植保", "priority_score": 298, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0069", "crop": "花椰菜", "target": "蚜虫", "task_type": "occurrence_condition", "query": "花椰菜 蚜虫 发生条件 发病原因 农技 植保", "priority_score": 298, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0070", "crop": "萝卜", "target": "蓟马", "task_type": "chemical_control", "query": "萝卜 蓟马 药剂防治 用药技术 农技 植保", "priority_score": 298, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0071", "crop": "青花菜", "target": "菌核病", "task_type": "control_timing", "query": "青花菜 菌核病 防治时期 最佳时间 农技 植保", "priority_score": 298, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0072", "crop": "小白菜", "target": "小菜蛾", "task_type": "control_timing", "query": "小白菜 小菜蛾 防治时期 最佳时间 农技 植保", "priority_score": 297, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0073", "crop": "甘蓝", "target": "斜纹夜蛾", "task_type": "control_timing", "query": "甘蓝 斜纹夜蛾 防治时期 最佳时间 农技 植保", "priority_score": 297, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0074", "crop": "芥菜", "target": "菜青虫", "task_type": "symptom_diagnosis", "query": "芥菜 菜青虫 症状 识别 图片 农技 植保", "priority_score": 297, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0075", "crop": "花椰菜", "target": "黄曲条跳甲", "task_type": "occurrence_condition", "query": "花椰菜 黄曲条跳甲 发生条件 发病原因 农技 植保", "priority_score": 297, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0076", "crop": "萝卜", "target": "小菜蛾", "task_type": "occurrence_condition", "query": "萝卜 小菜蛾 发生条件 发病原因 农技 植保", "priority_score": 297, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0077", "crop": "大白菜", "target": "小菜蛾", "task_type": "agronomic_control", "query": "大白菜 小菜蛾 农业防治 田间管理 农技 植保", "priority_score": 296, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0078", "crop": "大白菜", "target": "蓟马", "task_type": "occurrence_condition", "query": "大白菜 蓟马 发生条件 发病原因 农技 植保", "priority_score": 296, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0079", "crop": "小白菜", "target": "根肿病", "task_type": "control_timing", "query": "小白菜 根肿病 防治时期 最佳时间 农技 植保", "priority_score": 296, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0080", "crop": "花椰菜", "target": "斜纹夜蛾", "task_type": "agronomic_control", "query": "花椰菜 斜纹夜蛾 农业防治 田间管理 农技 植保", "priority_score": 296, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0081", "crop": "花椰菜", "target": "黑斑病", "task_type": "control_timing", "query": "花椰菜 黑斑病 防治时期 最佳时间 农技 植保", "priority_score": 296, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0082", "crop": "青花菜", "target": "病毒病", "task_type": "control_timing", "query": "青花菜 病毒病 防治时期 最佳时间 农技 植保", "priority_score": 296, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0083", "crop": "青花菜", "target": "黑腐病", "task_type": "symptom_diagnosis", "query": "青花菜 黑腐病 症状 识别 图片 农技 植保", "priority_score": 296, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0084", "crop": "大白菜", "target": "小菜蛾", "task_type": "symptom_diagnosis", "query": "大白菜 小菜蛾 症状 识别 图片 农技 植保", "priority_score": 295, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0085", "crop": "甘蓝", "target": "甜菜夜蛾", "task_type": "occurrence_condition", "query": "甘蓝 甜菜夜蛾 发生条件 发病原因 农技 植保", "priority_score": 295, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0086", "crop": "甘蓝", "target": "蓟马", "task_type": "control_timing", "query": "甘蓝 蓟马 防治时期 最佳时间 农技 植保", "priority_score": 295, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0087", "crop": "甘蓝", "target": "霜霉病", "task_type": "symptom_diagnosis", "query": "甘蓝 霜霉病 症状 识别 图片 农技 植保", "priority_score": 295, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0088", "crop": "甘蓝", "target": "黄曲条跳甲", "task_type": "chemical_control", "query": "甘蓝 黄曲条跳甲 药剂防治 用药技术 农技 植保", "priority_score": 295, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0089", "crop": "芥菜", "target": "蚜虫", "task_type": "symptom_diagnosis", "query": "芥菜 蚜虫 症状 识别 图片 农技 植保", "priority_score": 295, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0090", "crop": "小白菜", "target": "菌核病", "task_type": "agronomic_control", "query": "小白菜 菌核病 农业防治 田间管理 农技 植保", "priority_score": 294, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0091", "crop": "小白菜", "target": "菜青虫", "task_type": "control_timing", "query": "小白菜 菜青虫 防治时期 最佳时间 农技 植保", "priority_score": 294, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0092", "crop": "花椰菜", "target": "根肿病", "task_type": "biological_control", "query": "花椰菜 根肿病 生物防治 绿色防控 农技 植保", "priority_score": 294, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0093", "crop": "花椰菜", "target": "病毒病", "task_type": "occurrence_condition", "query": "花椰菜 病毒病 发生条件 发病原因 农技 植保", "priority_score": 294, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0094", "crop": "花椰菜", "target": "蓟马", "task_type": "agronomic_control", "query": "花椰菜 蓟马 农业防治 田间管理 农技 植保", "priority_score": 294, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0095", "crop": "萝卜", "target": "小菜蛾", "task_type": "symptom_diagnosis", "query": "萝卜 小菜蛾 症状 识别 图片 农技 植保", "priority_score": 294, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0096", "crop": "萝卜", "target": "菌核病", "task_type": "control_timing", "query": "萝卜 菌核病 防治时期 最佳时间 农技 植保", "priority_score": 294, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0097", "crop": "萝卜", "target": "菜青虫", "task_type": "occurrence_condition", "query": "萝卜 菜青虫 发生条件 发病原因 农技 植保", "priority_score": 294, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0098", "crop": "萝卜", "target": "霜霉病", "task_type": "biological_control", "query": "萝卜 霜霉病 生物防治 绿色防控 农技 植保", "priority_score": 294, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0099", "crop": "青花菜", "target": "软腐病", "task_type": "symptom_diagnosis", "query": "青花菜 软腐病 症状 识别 图片 农技 植保", "priority_score": 294, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0100", "crop": "青花菜", "target": "黑斑病", "task_type": "control_timing", "query": "青花菜 黑斑病 防治时期 最佳时间 农技 植保", "priority_score": 294, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0101", "crop": "甘蓝", "target": "斜纹夜蛾", "task_type": "occurrence_condition", "query": "甘蓝 斜纹夜蛾 发生条件 发病原因 农技 植保", "priority_score": 293, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0102", "crop": "芥菜", "target": "菜青虫", "task_type": "chemical_control", "query": "芥菜 菜青虫 药剂防治 用药技术 农技 植保", "priority_score": 293, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0103", "crop": "花椰菜", "target": "菌核病", "task_type": "symptom_diagnosis", "query": "花椰菜 菌核病 症状 识别 图片 农技 植保", "priority_score": 293, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0104", "crop": "青花菜", "target": "根肿病", "task_type": "chemical_control", "query": "青花菜 根肿病 药剂防治 用药技术 农技 植保", "priority_score": 293, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0105", "crop": "大白菜", "target": "小菜蛾", "task_type": "control_timing", "query": "大白菜 小菜蛾 防治时期 最佳时间 农技 植保", "priority_score": 292, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0106", "crop": "小白菜", "target": "蚜虫", "task_type": "control_timing", "query": "小白菜 蚜虫 防治时期 最佳时间 农技 植保", "priority_score": 292, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0107", "crop": "油菜", "target": "甜菜夜蛾", "task_type": "symptom_diagnosis", "query": "油菜 甜菜夜蛾 症状 识别 图片 农技 植保", "priority_score": 292, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0108", "crop": "油菜", "target": "软腐病", "task_type": "agronomic_control", "query": "油菜 软腐病 农业防治 田间管理 农技 植保", "priority_score": 292, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0109", "crop": "花椰菜", "target": "斜纹夜蛾", "task_type": "control_timing", "query": "花椰菜 斜纹夜蛾 防治时期 最佳时间 农技 植保", "priority_score": 292, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0110", "crop": "萝卜", "target": "甜菜夜蛾", "task_type": "agronomic_control", "query": "萝卜 甜菜夜蛾 农业防治 田间管理 农技 植保", "priority_score": 292, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0111", "crop": "青花菜", "target": "蓟马", "task_type": "agronomic_control", "query": "青花菜 蓟马 农业防治 田间管理 农技 植保", "priority_score": 292, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0112", "crop": "大白菜", "target": "根肿病", "task_type": "control_timing", "query": "大白菜 根肿病 防治时期 最佳时间 农技 植保", "priority_score": 291, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0113", "crop": "甘蓝", "target": "蓟马", "task_type": "occurrence_condition", "query": "甘蓝 蓟马 发生条件 发病原因 农技 植保", "priority_score": 291, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0114", "crop": "芥菜", "target": "霜霉病", "task_type": "agronomic_control", "query": "芥菜 霜霉病 农业防治 田间管理 农技 植保", "priority_score": 291, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0115", "crop": "花椰菜", "target": "霜霉病", "task_type": "agronomic_control", "query": "花椰菜 霜霉病 农业防治 田间管理 农技 植保", "priority_score": 291, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0116", "crop": "萝卜", "target": "黄曲条跳甲", "task_type": "occurrence_condition", "query": "萝卜 黄曲条跳甲 发生条件 发病原因 农技 植保", "priority_score": 291, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0117", "crop": "青花菜", "target": "菌核病", "task_type": "symptom_diagnosis", "query": "青花菜 菌核病 症状 识别 图片 农技 植保", "priority_score": 291, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0118", "crop": "大白菜", "target": "地蛆", "task_type": "symptom_diagnosis", "query": "大白菜 地蛆 症状 识别 图片 农技 植保", "priority_score": 290, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0119", "crop": "大白菜", "target": "斜纹夜蛾", "task_type": "biological_control", "query": "大白菜 斜纹夜蛾 生物防治 绿色防控 农技 植保", "priority_score": 290, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0120", "crop": "大白菜", "target": "斜纹夜蛾", "task_type": "symptom_diagnosis", "query": "大白菜 斜纹夜蛾 症状 识别 图片 农技 植保", "priority_score": 290, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0121", "crop": "小白菜", "target": "小菜蛾", "task_type": "symptom_diagnosis", "query": "小白菜 小菜蛾 症状 识别 图片 农技 植保", "priority_score": 290, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0122", "crop": "小白菜", "target": "菌核病", "task_type": "control_timing", "query": "小白菜 菌核病 防治时期 最佳时间 农技 植保", "priority_score": 290, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0123", "crop": "小白菜", "target": "菜青虫", "task_type": "occurrence_condition", "query": "小白菜 菜青虫 发生条件 发病原因 农技 植保", "priority_score": 290, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0124", "crop": "油菜", "target": "斜纹夜蛾", "task_type": "symptom_diagnosis", "query": "油菜 斜纹夜蛾 症状 识别 图片 农技 植保", "priority_score": 290, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0125", "crop": "油菜", "target": "黑腐病", "task_type": "control_timing", "query": "油菜 黑腐病 防治时期 最佳时间 农技 植保", "priority_score": 290, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0126", "crop": "甘蓝", "target": "蚜虫", "task_type": "symptom_diagnosis", "query": "甘蓝 蚜虫 症状 识别 图片 农技 植保", "priority_score": 290, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0127", "crop": "花椰菜", "target": "蓟马", "task_type": "control_timing", "query": "花椰菜 蓟马 防治时期 最佳时间 农技 植保", "priority_score": 290, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0128", "crop": "花椰菜", "target": "蚜虫", "task_type": "symptom_diagnosis", "query": "花椰菜 蚜虫 症状 识别 图片 农技 植保", "priority_score": 290, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0129", "crop": "大白菜", "target": "蓟马", "task_type": "chemical_control", "query": "大白菜 蓟马 药剂防治 用药技术 农技 植保", "priority_score": 289, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0130", "crop": "芥菜", "target": "黑腐病", "task_type": "agronomic_control", "query": "芥菜 黑腐病 农业防治 田间管理 农技 植保", "priority_score": 289, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0131", "crop": "花椰菜", "target": "黄曲条跳甲", "task_type": "biological_control", "query": "花椰菜 黄曲条跳甲 生物防治 绿色防控 农技 植保", "priority_score": 289, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0132", "crop": "大白菜", "target": "蓟马", "task_type": "biological_control", "query": "大白菜 蓟马 生物防治 绿色防控 农技 植保", "priority_score": 288, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0133", "crop": "小白菜", "target": "甜菜夜蛾", "task_type": "agronomic_control", "query": "小白菜 甜菜夜蛾 农业防治 田间管理 农技 植保", "priority_score": 288, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0134", "crop": "小白菜", "target": "病毒病", "task_type": "control_timing", "query": "小白菜 病毒病 防治时期 最佳时间 农技 植保", "priority_score": 288, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0135", "crop": "油菜", "target": "甜菜夜蛾", "task_type": "chemical_control", "query": "油菜 甜菜夜蛾 药剂防治 用药技术 农技 植保", "priority_score": 288, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0136", "crop": "油菜", "target": "蓟马", "task_type": "symptom_diagnosis", "query": "油菜 蓟马 症状 识别 图片 农技 植保", "priority_score": 288, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0137", "crop": "油菜", "target": "软腐病", "task_type": "control_timing", "query": "油菜 软腐病 防治时期 最佳时间 农技 植保", "priority_score": 288, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0138", "crop": "甘蓝", "target": "甜菜夜蛾", "task_type": "chemical_control", "query": "甘蓝 甜菜夜蛾 药剂防治 用药技术 农技 植保", "priority_score": 288, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0139", "crop": "花椰菜", "target": "斜纹夜蛾", "task_type": "occurrence_condition", "query": "花椰菜 斜纹夜蛾 发生条件 发病原因 农技 植保", "priority_score": 288, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0140", "crop": "萝卜", "target": "根肿病", "task_type": "symptom_diagnosis", "query": "萝卜 根肿病 症状 识别 图片 农技 植保", "priority_score": 288, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0141", "crop": "萝卜", "target": "甜菜夜蛾", "task_type": "control_timing", "query": "萝卜 甜菜夜蛾 防治时期 最佳时间 农技 植保", "priority_score": 288, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0142", "crop": "萝卜", "target": "蓟马", "task_type": "agronomic_control", "query": "萝卜 蓟马 农业防治 田间管理 农技 植保", "priority_score": 288, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0143", "crop": "青花菜", "target": "小菜蛾", "task_type": "symptom_diagnosis", "query": "青花菜 小菜蛾 症状 识别 图片 农技 植保", "priority_score": 288, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0144", "crop": "青花菜", "target": "蓟马", "task_type": "control_timing", "query": "青花菜 蓟马 防治时期 最佳时间 农技 植保", "priority_score": 288, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0145", "crop": "大白菜", "target": "根肿病", "task_type": "occurrence_condition", "query": "大白菜 根肿病 发生条件 发病原因 农技 植保", "priority_score": 287, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0146", "crop": "小白菜", "target": "菜青虫", "task_type": "symptom_diagnosis", "query": "小白菜 菜青虫 症状 识别 图片 农技 植保", "priority_score": 287, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0147", "crop": "小白菜", "target": "黄曲条跳甲", "task_type": "occurrence_condition", "query": "小白菜 黄曲条跳甲 发生条件 发病原因 农技 植保", "priority_score": 287, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0148", "crop": "甘蓝", "target": "甜菜夜蛾", "task_type": "biological_control", "query": "甘蓝 甜菜夜蛾 生物防治 绿色防控 农技 植保", "priority_score": 287, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0149", "crop": "芥菜", "target": "甜菜夜蛾", "task_type": "symptom_diagnosis", "query": "芥菜 甜菜夜蛾 症状 识别 图片 农技 植保", "priority_score": 287, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0150", "crop": "芥菜", "target": "霜霉病", "task_type": "control_timing", "query": "芥菜 霜霉病 防治时期 最佳时间 农技 植保", "priority_score": 287, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0151", "crop": "萝卜", "target": "菌核病", "task_type": "symptom_diagnosis", "query": "萝卜 菌核病 症状 识别 图片 农技 植保", "priority_score": 287, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0152", "crop": "小白菜", "target": "菌核病", "task_type": "occurrence_condition", "query": "小白菜 菌核病 发生条件 发病原因 农技 植保", "priority_score": 286, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0153", "crop": "小白菜", "target": "黑斑病", "task_type": "control_timing", "query": "小白菜 黑斑病 防治时期 最佳时间 农技 植保", "priority_score": 286, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0154", "crop": "油菜", "target": "斜纹夜蛾", "task_type": "chemical_control", "query": "油菜 斜纹夜蛾 药剂防治 用药技术 农技 植保", "priority_score": 286, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0155", "crop": "油菜", "target": "根肿病", "task_type": "control_timing", "query": "油菜 根肿病 防治时期 最佳时间 农技 植保", "priority_score": 286, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0156", "crop": "甘蓝", "target": "小菜蛾", "task_type": "agronomic_control", "query": "甘蓝 小菜蛾 农业防治 田间管理 农技 植保", "priority_score": 286, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0157", "crop": "甘蓝", "target": "斜纹夜蛾", "task_type": "chemical_control", "query": "甘蓝 斜纹夜蛾 药剂防治 用药技术 农技 植保", "priority_score": 286, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0158", "crop": "芥菜", "target": "小菜蛾", "task_type": "agronomic_control", "query": "芥菜 小菜蛾 农业防治 田间管理 农技 植保", "priority_score": 286, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0159", "crop": "花椰菜", "target": "小菜蛾", "task_type": "agronomic_control", "query": "花椰菜 小菜蛾 农业防治 田间管理 农技 植保", "priority_score": 286, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0160", "crop": "花椰菜", "target": "病毒病", "task_type": "biological_control", "query": "花椰菜 病毒病 生物防治 绿色防控 农技 植保", "priority_score": 286, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0161", "crop": "花椰菜", "target": "软腐病", "task_type": "symptom_diagnosis", "query": "花椰菜 软腐病 症状 识别 图片 农技 植保", "priority_score": 286, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0162", "crop": "萝卜", "target": "菜青虫", "task_type": "symptom_diagnosis", "query": "萝卜 菜青虫 症状 识别 图片 农技 植保", "priority_score": 286, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0163", "crop": "小白菜", "target": "蚜虫", "task_type": "symptom_diagnosis", "query": "小白菜 蚜虫 症状 识别 图片 农技 植保", "priority_score": 285, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0164", "crop": "小白菜", "target": "霜霉病", "task_type": "symptom_diagnosis", "query": "小白菜 霜霉病 症状 识别 图片 农技 植保", "priority_score": 285, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0165", "crop": "甘蓝", "target": "地蛆", "task_type": "symptom_diagnosis", "query": "甘蓝 地蛆 症状 识别 图片 农技 植保", "priority_score": 285, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0166", "crop": "甘蓝", "target": "斜纹夜蛾", "task_type": "biological_control", "query": "甘蓝 斜纹夜蛾 生物防治 绿色防控 农技 植保", "priority_score": 285, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0167", "crop": "甘蓝", "target": "根肿病", "task_type": "agronomic_control", "query": "甘蓝 根肿病 农业防治 田间管理 农技 植保", "priority_score": 285, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0168", "crop": "甘蓝", "target": "根肿病", "task_type": "chemical_control", "query": "甘蓝 根肿病 药剂防治 用药技术 农技 植保", "priority_score": 285, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0169", "crop": "甘蓝", "target": "白锈病", "task_type": "symptom_diagnosis", "query": "甘蓝 白锈病 症状 识别 图片 农技 植保", "priority_score": 285, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0170", "crop": "甘蓝", "target": "菜螟", "task_type": "symptom_diagnosis", "query": "甘蓝 菜螟 症状 识别 图片 农技 植保", "priority_score": 285, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0171", "crop": "芥菜", "target": "斜纹夜蛾", "task_type": "symptom_diagnosis", "query": "芥菜 斜纹夜蛾 症状 识别 图片 农技 植保", "priority_score": 285, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0172", "crop": "芥菜", "target": "根肿病", "task_type": "agronomic_control", "query": "芥菜 根肿病 农业防治 田间管理 农技 植保", "priority_score": 285, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0173", "crop": "芥菜", "target": "黑腐病", "task_type": "control_timing", "query": "芥菜 黑腐病 防治时期 最佳时间 农技 植保", "priority_score": 285, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0174", "crop": "花椰菜", "target": "斜纹夜蛾", "task_type": "symptom_diagnosis", "query": "花椰菜 斜纹夜蛾 症状 识别 图片 农技 植保", "priority_score": 285, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0175", "crop": "青花菜", "target": "甜菜夜蛾", "task_type": "symptom_diagnosis", "query": "青花菜 甜菜夜蛾 症状 识别 图片 农技 植保", "priority_score": 285, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0176", "crop": "青花菜", "target": "病毒病", "task_type": "chemical_control", "query": "青花菜 病毒病 药剂防治 用药技术 农技 植保", "priority_score": 285, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0177", "crop": "大白菜", "target": "菌核病", "task_type": "agronomic_control", "query": "大白菜 菌核病 农业防治 田间管理 农技 植保", "priority_score": 284, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0178", "crop": "大白菜", "target": "菜青虫", "task_type": "control_timing", "query": "大白菜 菜青虫 防治时期 最佳时间 农技 植保", "priority_score": 284, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0179", "crop": "小白菜", "target": "根肿病", "task_type": "biological_control", "query": "小白菜 根肿病 生物防治 绿色防控 农技 植保", "priority_score": 284, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0180", "crop": "小白菜", "target": "甜菜夜蛾", "task_type": "control_timing", "query": "小白菜 甜菜夜蛾 防治时期 最佳时间 农技 植保", "priority_score": 284, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0181", "crop": "小白菜", "target": "病毒病", "task_type": "occurrence_condition", "query": "小白菜 病毒病 发生条件 发病原因 农技 植保", "priority_score": 284, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0182", "crop": "小白菜", "target": "黄曲条跳甲", "task_type": "symptom_diagnosis", "query": "小白菜 黄曲条跳甲 症状 识别 图片 农技 植保", "priority_score": 284, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0183", "crop": "油菜", "target": "菜青虫", "task_type": "control_timing", "query": "油菜 菜青虫 防治时期 最佳时间 农技 植保", "priority_score": 284, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0184", "crop": "油菜", "target": "蓟马", "task_type": "chemical_control", "query": "油菜 蓟马 药剂防治 用药技术 农技 植保", "priority_score": 284, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0185", "crop": "甘蓝", "target": "软腐病", "task_type": "occurrence_condition", "query": "甘蓝 软腐病 发生条件 发病原因 农技 植保", "priority_score": 284, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0186", "crop": "花椰菜", "target": "菌核病", "task_type": "chemical_control", "query": "花椰菜 菌核病 药剂防治 用药技术 农技 植保", "priority_score": 284, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0187", "crop": "花椰菜", "target": "黑斑病", "task_type": "biological_control", "query": "花椰菜 黑斑病 生物防治 绿色防控 农技 植保", "priority_score": 284, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0188", "crop": "萝卜", "target": "甜菜夜蛾", "task_type": "occurrence_condition", "query": "萝卜 甜菜夜蛾 发生条件 发病原因 农技 植保", "priority_score": 284, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0189", "crop": "萝卜", "target": "蓟马", "task_type": "control_timing", "query": "萝卜 蓟马 防治时期 最佳时间 农技 植保", "priority_score": 284, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0190", "crop": "萝卜", "target": "蚜虫", "task_type": "symptom_diagnosis", "query": "萝卜 蚜虫 症状 识别 图片 农技 植保", "priority_score": 284, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0191", "crop": "青花菜", "target": "小菜蛾", "task_type": "agronomic_control", "query": "青花菜 小菜蛾 农业防治 田间管理 农技 植保", "priority_score": 284, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0192", "crop": "青花菜", "target": "病毒病", "task_type": "biological_control", "query": "青花菜 病毒病 生物防治 绿色防控 农技 植保", "priority_score": 284, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0193", "crop": "青花菜", "target": "蓟马", "task_type": "occurrence_condition", "query": "青花菜 蓟马 发生条件 发病原因 农技 植保", "priority_score": 284, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0194", "crop": "大白菜", "target": "小菜蛾", "task_type": "occurrence_condition", "query": "大白菜 小菜蛾 发生条件 发病原因 农技 植保", "priority_score": 283, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0195", "crop": "小白菜", "target": "菌核病", "task_type": "symptom_diagnosis", "query": "小白菜 菌核病 症状 识别 图片 农技 植保", "priority_score": 283, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0196", "crop": "油菜", "target": "小菜蛾", "task_type": "occurrence_condition", "query": "油菜 小菜蛾 发生条件 发病原因 农技 植保", "priority_score": 283, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0197", "crop": "油菜", "target": "黑腐病", "task_type": "symptom_diagnosis", "query": "油菜 黑腐病 症状 识别 图片 农技 植保", "priority_score": 283, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0198", "crop": "甘蓝", "target": "小菜蛾", "task_type": "occurrence_condition", "query": "甘蓝 小菜蛾 发生条件 发病原因 农技 植保", "priority_score": 283, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0199", "crop": "甘蓝", "target": "蓟马", "task_type": "biological_control", "query": "甘蓝 蓟马 生物防治 绿色防控 农技 植保", "priority_score": 283, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0200", "crop": "芥菜", "target": "甜菜夜蛾", "task_type": "chemical_control", "query": "芥菜 甜菜夜蛾 药剂防治 用药技术 农技 植保", "priority_score": 283, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0201", "crop": "芥菜", "target": "菜青虫", "task_type": "agronomic_control", "query": "芥菜 菜青虫 农业防治 田间管理 农技 植保", "priority_score": 283, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0202", "crop": "芥菜", "target": "蓟马", "task_type": "symptom_diagnosis", "query": "芥菜 蓟马 症状 识别 图片 农技 植保", "priority_score": 283, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0203", "crop": "芥菜", "target": "软腐病", "task_type": "control_timing", "query": "芥菜 软腐病 防治时期 最佳时间 农技 植保", "priority_score": 283, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0204", "crop": "芥菜", "target": "霜霉病", "task_type": "occurrence_condition", "query": "芥菜 霜霉病 发生条件 发病原因 农技 植保", "priority_score": 283, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0205", "crop": "花椰菜", "target": "菜青虫", "task_type": "agronomic_control", "query": "花椰菜 菜青虫 农业防治 田间管理 农技 植保", "priority_score": 283, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0206", "crop": "萝卜", "target": "菌核病", "task_type": "chemical_control", "query": "萝卜 菌核病 药剂防治 用药技术 农技 植保", "priority_score": 283, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0207", "crop": "青花菜", "target": "斜纹夜蛾", "task_type": "symptom_diagnosis", "query": "青花菜 斜纹夜蛾 症状 识别 图片 农技 植保", "priority_score": 283, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0208", "crop": "青花菜", "target": "蚜虫", "task_type": "symptom_diagnosis", "query": "青花菜 蚜虫 症状 识别 图片 农技 植保", "priority_score": 283, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0209", "crop": "青花菜", "target": "黑腐病", "task_type": "control_timing", "query": "青花菜 黑腐病 防治时期 最佳时间 农技 植保", "priority_score": 283, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0210", "crop": "大白菜", "target": "甜菜夜蛾", "task_type": "symptom_diagnosis", "query": "大白菜 甜菜夜蛾 症状 识别 图片 农技 植保", "priority_score": 282, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0211", "crop": "小白菜", "target": "斜纹夜蛾", "task_type": "control_timing", "query": "小白菜 斜纹夜蛾 防治时期 最佳时间 农技 植保", "priority_score": 282, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0212", "crop": "小白菜", "target": "黑斑病", "task_type": "occurrence_condition", "query": "小白菜 黑斑病 发生条件 发病原因 农技 植保", "priority_score": 282, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0213", "crop": "油菜", "target": "根肿病", "task_type": "occurrence_condition", "query": "油菜 根肿病 发生条件 发病原因 农技 植保", "priority_score": 282, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0214", "crop": "甘蓝", "target": "根肿病", "task_type": "occurrence_condition", "query": "甘蓝 根肿病 发生条件 发病原因 农技 植保", "priority_score": 282, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0215", "crop": "芥菜", "target": "小菜蛾", "task_type": "control_timing", "query": "芥菜 小菜蛾 防治时期 最佳时间 农技 植保", "priority_score": 282, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0216", "crop": "花椰菜", "target": "甜菜夜蛾", "task_type": "symptom_diagnosis", "query": "花椰菜 甜菜夜蛾 症状 识别 图片 农技 植保", "priority_score": 282, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0217", "crop": "萝卜", "target": "斜纹夜蛾", "task_type": "occurrence_condition", "query": "萝卜 斜纹夜蛾 发生条件 发病原因 农技 植保", "priority_score": 282, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0218", "crop": "萝卜", "target": "菌核病", "task_type": "biological_control", "query": "萝卜 菌核病 生物防治 绿色防控 农技 植保", "priority_score": 282, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0219", "crop": "青花菜", "target": "黑斑病", "task_type": "biological_control", "query": "青花菜 黑斑病 生物防治 绿色防控 农技 植保", "priority_score": 282, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0220", "crop": "青花菜", "target": "黑腐病", "task_type": "agronomic_control", "query": "青花菜 黑腐病 农业防治 田间管理 农技 植保", "priority_score": 282, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0221", "crop": "大白菜", "target": "斜纹夜蛾", "task_type": "agronomic_control", "query": "大白菜 斜纹夜蛾 农业防治 田间管理 农技 植保", "priority_score": 281, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0222", "crop": "大白菜", "target": "菌核病", "task_type": "occurrence_condition", "query": "大白菜 菌核病 发生条件 发病原因 农技 植保", "priority_score": 281, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0223", "crop": "甘蓝", "target": "地蛆", "task_type": "chemical_control", "query": "甘蓝 地蛆 药剂防治 用药技术 农技 植保", "priority_score": 281, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0224", "crop": "甘蓝", "target": "白锈病", "task_type": "chemical_control", "query": "甘蓝 白锈病 药剂防治 用药技术 农技 植保", "priority_score": 281, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0225", "crop": "甘蓝", "target": "黑腐病", "task_type": "occurrence_condition", "query": "甘蓝 黑腐病 发生条件 发病原因 农技 植保", "priority_score": 281, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0226", "crop": "芥菜", "target": "根肿病", "task_type": "control_timing", "query": "芥菜 根肿病 防治时期 最佳时间 农技 植保", "priority_score": 281, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0227", "crop": "芥菜", "target": "蚜虫", "task_type": "agronomic_control", "query": "芥菜 蚜虫 农业防治 田间管理 农技 植保", "priority_score": 281, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0228", "crop": "芥菜", "target": "黑腐病", "task_type": "occurrence_condition", "query": "芥菜 黑腐病 发生条件 发病原因 农技 植保", "priority_score": 281, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0229", "crop": "花椰菜", "target": "黑腐病", "task_type": "occurrence_condition", "query": "花椰菜 黑腐病 发生条件 发病原因 农技 植保", "priority_score": 281, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0230", "crop": "萝卜", "target": "霜霉病", "task_type": "control_timing", "query": "萝卜 霜霉病 防治时期 最佳时间 农技 植保", "priority_score": 281, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0231", "crop": "大白菜", "target": "黑腐病", "task_type": "control_timing", "query": "大白菜 黑腐病 防治时期 最佳时间 农技 植保", "priority_score": 280, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0232", "crop": "小白菜", "target": "甜菜夜蛾", "task_type": "occurrence_condition", "query": "小白菜 甜菜夜蛾 发生条件 发病原因 农技 植保", "priority_score": 280, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0233", "crop": "小白菜", "target": "蓟马", "task_type": "control_timing", "query": "小白菜 蓟马 防治时期 最佳时间 农技 植保", "priority_score": 280, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0234", "crop": "小白菜", "target": "蚜虫", "task_type": "biological_control", "query": "小白菜 蚜虫 生物防治 绿色防控 农技 植保", "priority_score": 280, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0235", "crop": "油菜", "target": "菜青虫", "task_type": "occurrence_condition", "query": "油菜 菜青虫 发生条件 发病原因 农技 植保", "priority_score": 280, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0236", "crop": "甘蓝", "target": "菜青虫", "task_type": "occurrence_condition", "query": "甘蓝 菜青虫 发生条件 发病原因 农技 植保", "priority_score": 280, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0237", "crop": "芥菜", "target": "黄曲条跳甲", "task_type": "agronomic_control", "query": "芥菜 黄曲条跳甲 农业防治 田间管理 农技 植保", "priority_score": 280, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0238", "crop": "花椰菜", "target": "地蛆", "task_type": "symptom_diagnosis", "query": "花椰菜 地蛆 症状 识别 图片 农技 植保", "priority_score": 280, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0239", "crop": "花椰菜", "target": "斜纹夜蛾", "task_type": "biological_control", "query": "花椰菜 斜纹夜蛾 生物防治 绿色防控 农技 植保", "priority_score": 280, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0240", "crop": "花椰菜", "target": "灰霉病", "task_type": "symptom_diagnosis", "query": "花椰菜 灰霉病 症状 识别 图片 农技 植保", "priority_score": 280, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0241", "crop": "花椰菜", "target": "白锈病", "task_type": "symptom_diagnosis", "query": "花椰菜 白锈病 症状 识别 图片 农技 植保", "priority_score": 280, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0242", "crop": "花椰菜", "target": "菜螟", "task_type": "symptom_diagnosis", "query": "花椰菜 菜螟 症状 识别 图片 农技 植保", "priority_score": 280, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0243", "crop": "萝卜", "target": "蓟马", "task_type": "occurrence_condition", "query": "萝卜 蓟马 发生条件 发病原因 农技 植保", "priority_score": 280, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0244", "crop": "萝卜", "target": "软腐病", "task_type": "symptom_diagnosis", "query": "萝卜 软腐病 症状 识别 图片 农技 植保", "priority_score": 280, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0245", "crop": "青花菜", "target": "菜青虫", "task_type": "symptom_diagnosis", "query": "青花菜 菜青虫 症状 识别 图片 农技 植保", "priority_score": 280, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0246", "crop": "青花菜", "target": "霜霉病", "task_type": "control_timing", "query": "青花菜 霜霉病 防治时期 最佳时间 农技 植保", "priority_score": 280, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0247", "crop": "大白菜", "target": "甜菜夜蛾", "task_type": "control_timing", "query": "大白菜 甜菜夜蛾 防治时期 最佳时间 农技 植保", "priority_score": 279, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0248", "crop": "小白菜", "target": "根肿病", "task_type": "symptom_diagnosis", "query": "小白菜 根肿病 症状 识别 图片 农技 植保", "priority_score": 279, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0249", "crop": "小白菜", "target": "黄曲条跳甲", "task_type": "biological_control", "query": "小白菜 黄曲条跳甲 生物防治 绿色防控 农技 植保", "priority_score": 279, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0250", "crop": "小白菜", "target": "黑斑病", "task_type": "symptom_diagnosis", "query": "小白菜 黑斑病 症状 识别 图片 农技 植保", "priority_score": 279, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0251", "crop": "小白菜", "target": "黑腐病", "task_type": "agronomic_control", "query": "小白菜 黑腐病 农业防治 田间管理 农技 植保", "priority_score": 279, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0252", "crop": "小白菜", "target": "黑腐病", "task_type": "chemical_control", "query": "小白菜 黑腐病 药剂防治 用药技术 农技 植保", "priority_score": 279, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0253", "crop": "甘蓝", "target": "黑斑病", "task_type": "symptom_diagnosis", "query": "甘蓝 黑斑病 症状 识别 图片 农技 植保", "priority_score": 279, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0254", "crop": "芥菜", "target": "菜青虫", "task_type": "control_timing", "query": "芥菜 菜青虫 防治时期 最佳时间 农技 植保", "priority_score": 279, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0255", "crop": "芥菜", "target": "蓟马", "task_type": "chemical_control", "query": "芥菜 蓟马 药剂防治 用药技术 农技 植保", "priority_score": 279, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0256", "crop": "花椰菜", "target": "蓟马", "task_type": "chemical_control", "query": "花椰菜 蓟马 药剂防治 用药技术 农技 植保", "priority_score": 279, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0257", "crop": "花椰菜", "target": "黄曲条跳甲", "task_type": "symptom_diagnosis", "query": "花椰菜 黄曲条跳甲 症状 识别 图片 农技 植保", "priority_score": 279, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0258", "crop": "萝卜", "target": "斜纹夜蛾", "task_type": "symptom_diagnosis", "query": "萝卜 斜纹夜蛾 症状 识别 图片 农技 植保", "priority_score": 279, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0259", "crop": "萝卜", "target": "黑腐病", "task_type": "control_timing", "query": "萝卜 黑腐病 防治时期 最佳时间 农技 植保", "priority_score": 279, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0260", "crop": "青花菜", "target": "病毒病", "task_type": "symptom_diagnosis", "query": "青花菜 病毒病 症状 识别 图片 农技 植保", "priority_score": 279, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0261", "crop": "青花菜", "target": "霜霉病", "task_type": "agronomic_control", "query": "青花菜 霜霉病 农业防治 田间管理 农技 植保", "priority_score": 279, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0262", "crop": "大白菜", "target": "甜菜夜蛾", "task_type": "agronomic_control", "query": "大白菜 甜菜夜蛾 农业防治 田间管理 农技 植保", "priority_score": 278, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0263", "crop": "大白菜", "target": "菜青虫", "task_type": "agronomic_control", "query": "大白菜 菜青虫 农业防治 田间管理 农技 植保", "priority_score": 278, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0264", "crop": "小白菜", "target": "斜纹夜蛾", "task_type": "occurrence_condition", "query": "小白菜 斜纹夜蛾 发生条件 发病原因 农技 植保", "priority_score": 278, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0265", "crop": "小白菜", "target": "菌核病", "task_type": "biological_control", "query": "小白菜 菌核病 生物防治 绿色防控 农技 植保", "priority_score": 278, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0266", "crop": "油菜", "target": "甜菜夜蛾", "task_type": "agronomic_control", "query": "油菜 甜菜夜蛾 农业防治 田间管理 农技 植保", "priority_score": 278, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0267", "crop": "油菜", "target": "黑腐病", "task_type": "biological_control", "query": "油菜 黑腐病 生物防治 绿色防控 农技 植保", "priority_score": 278, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0268", "crop": "甘蓝", "target": "蚜虫", "task_type": "occurrence_condition", "query": "甘蓝 蚜虫 发生条件 发病原因 农技 植保", "priority_score": 278, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0269", "crop": "芥菜", "target": "小菜蛾", "task_type": "occurrence_condition", "query": "芥菜 小菜蛾 发生条件 发病原因 农技 植保", "priority_score": 278, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0270", "crop": "芥菜", "target": "黑腐病", "task_type": "symptom_diagnosis", "query": "芥菜 黑腐病 症状 识别 图片 农技 植保", "priority_score": 278, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0271", "crop": "花椰菜", "target": "蓟马", "task_type": "biological_control", "query": "花椰菜 蓟马 生物防治 绿色防控 农技 植保", "priority_score": 278, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0272", "crop": "花椰菜", "target": "蓟马", "task_type": "symptom_diagnosis", "query": "花椰菜 蓟马 症状 识别 图片 农技 植保", "priority_score": 278, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0273", "crop": "青花菜", "target": "地蛆", "task_type": "symptom_diagnosis", "query": "青花菜 地蛆 症状 识别 图片 农技 植保", "priority_score": 278, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0274", "crop": "青花菜", "target": "菜螟", "task_type": "symptom_diagnosis", "query": "青花菜 菜螟 症状 识别 图片 农技 植保", "priority_score": 278, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0275", "crop": "大白菜", "target": "斜纹夜蛾", "task_type": "control_timing", "query": "大白菜 斜纹夜蛾 防治时期 最佳时间 农技 植保", "priority_score": 277, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0276", "crop": "小白菜", "target": "病毒病", "task_type": "chemical_control", "query": "小白菜 病毒病 药剂防治 用药技术 农技 植保", "priority_score": 277, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0277", "crop": "小白菜", "target": "霜霉病", "task_type": "control_timing", "query": "小白菜 霜霉病 防治时期 最佳时间 农技 植保", "priority_score": 277, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0278", "crop": "甘蓝", "target": "软腐病", "task_type": "agronomic_control", "query": "甘蓝 软腐病 农业防治 田间管理 农技 植保", "priority_score": 277, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0279", "crop": "芥菜", "target": "根肿病", "task_type": "occurrence_condition", "query": "芥菜 根肿病 发生条件 发病原因 农技 植保", "priority_score": 277, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0280", "crop": "芥菜", "target": "病毒病", "task_type": "agronomic_control", "query": "芥菜 病毒病 农业防治 田间管理 农技 植保", "priority_score": 277, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0281", "crop": "芥菜", "target": "蚜虫", "task_type": "control_timing", "query": "芥菜 蚜虫 防治时期 最佳时间 农技 植保", "priority_score": 277, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0282", "crop": "花椰菜", "target": "小菜蛾", "task_type": "control_timing", "query": "花椰菜 小菜蛾 防治时期 最佳时间 农技 植保", "priority_score": 277, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0283", "crop": "花椰菜", "target": "软腐病", "task_type": "agronomic_control", "query": "花椰菜 软腐病 农业防治 田间管理 农技 植保", "priority_score": 277, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0284", "crop": "萝卜", "target": "甜菜夜蛾", "task_type": "chemical_control", "query": "萝卜 甜菜夜蛾 药剂防治 用药技术 农技 植保", "priority_score": 277, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0285", "crop": "萝卜", "target": "软腐病", "task_type": "control_timing", "query": "萝卜 软腐病 防治时期 最佳时间 农技 植保", "priority_score": 277, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0286", "crop": "萝卜", "target": "霜霉病", "task_type": "occurrence_condition", "query": "萝卜 霜霉病 发生条件 发病原因 农技 植保", "priority_score": 277, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0287", "crop": "青花菜", "target": "菌核病", "task_type": "agronomic_control", "query": "青花菜 菌核病 农业防治 田间管理 农技 植保", "priority_score": 277, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0288", "crop": "青花菜", "target": "菌核病", "task_type": "chemical_control", "query": "青花菜 菌核病 药剂防治 用药技术 农技 植保", "priority_score": 277, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0289", "crop": "青花菜", "target": "软腐病", "task_type": "occurrence_condition", "query": "青花菜 软腐病 发生条件 发病原因 农技 植保", "priority_score": 277, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0290", "crop": "青花菜", "target": "黄曲条跳甲", "task_type": "symptom_diagnosis", "query": "青花菜 黄曲条跳甲 症状 识别 图片 农技 植保", "priority_score": 277, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0291", "crop": "大白菜", "target": "地蛆", "task_type": "agronomic_control", "query": "大白菜 地蛆 农业防治 田间管理 农技 植保", "priority_score": 276, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0292", "crop": "大白菜", "target": "斜纹夜蛾", "task_type": "chemical_control", "query": "大白菜 斜纹夜蛾 药剂防治 用药技术 农技 植保", "priority_score": 276, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0293", "crop": "大白菜", "target": "灰霉病", "task_type": "agronomic_control", "query": "大白菜 灰霉病 农业防治 田间管理 农技 植保", "priority_score": 276, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0294", "crop": "大白菜", "target": "菜螟", "task_type": "agronomic_control", "query": "大白菜 菜螟 农业防治 田间管理 农技 植保", "priority_score": 276, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0295", "crop": "大白菜", "target": "蚜虫", "task_type": "agronomic_control", "query": "大白菜 蚜虫 农业防治 田间管理 农技 植保", "priority_score": 276, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0296", "crop": "小白菜", "target": "病毒病", "task_type": "biological_control", "query": "小白菜 病毒病 生物防治 绿色防控 农技 植保", "priority_score": 276, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0297", "crop": "小白菜", "target": "蓟马", "task_type": "occurrence_condition", "query": "小白菜 蓟马 发生条件 发病原因 农技 植保", "priority_score": 276, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0298", "crop": "小白菜", "target": "软腐病", "task_type": "symptom_diagnosis", "query": "小白菜 软腐病 症状 识别 图片 农技 植保", "priority_score": 276, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0299", "crop": "小白菜", "target": "霜霉病", "task_type": "agronomic_control", "query": "小白菜 霜霉病 农业防治 田间管理 农技 植保", "priority_score": 276, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0300", "crop": "油菜", "target": "斜纹夜蛾", "task_type": "agronomic_control", "query": "油菜 斜纹夜蛾 农业防治 田间管理 农技 植保", "priority_score": 276, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0301", "crop": "油菜", "target": "软腐病", "task_type": "biological_control", "query": "油菜 软腐病 生物防治 绿色防控 农技 植保", "priority_score": 276, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0302", "crop": "甘蓝", "target": "斜纹夜蛾", "task_type": "agronomic_control", "query": "甘蓝 斜纹夜蛾 农业防治 田间管理 农技 植保", "priority_score": 276, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0303", "crop": "甘蓝", "target": "蚜虫", "task_type": "agronomic_control", "query": "甘蓝 蚜虫 农业防治 田间管理 农技 植保", "priority_score": 276, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0304", "crop": "芥菜", "target": "黄曲条跳甲", "task_type": "control_timing", "query": "芥菜 黄曲条跳甲 防治时期 最佳时间 农技 植保", "priority_score": 276, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0305", "crop": "花椰菜", "target": "白锈病", "task_type": "chemical_control", "query": "花椰菜 白锈病 药剂防治 用药技术 农技 植保", "priority_score": 276, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0306", "crop": "花椰菜", "target": "菜螟", "task_type": "chemical_control", "query": "花椰菜 菜螟 药剂防治 用药技术 农技 植保", "priority_score": 276, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0307", "crop": "萝卜", "target": "甜菜夜蛾", "task_type": "biological_control", "query": "萝卜 甜菜夜蛾 生物防治 绿色防控 农技 植保", "priority_score": 276, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0308", "crop": "萝卜", "target": "甜菜夜蛾", "task_type": "symptom_diagnosis", "query": "萝卜 甜菜夜蛾 症状 识别 图片 农技 植保", "priority_score": 276, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0309", "crop": "青花菜", "target": "小菜蛾", "task_type": "occurrence_condition", "query": "青花菜 小菜蛾 发生条件 发病原因 农技 植保", "priority_score": 276, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0310", "crop": "青花菜", "target": "蓟马", "task_type": "biological_control", "query": "青花菜 蓟马 生物防治 绿色防控 农技 植保", "priority_score": 276, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0311", "crop": "青花菜", "target": "软腐病", "task_type": "control_timing", "query": "青花菜 软腐病 防治时期 最佳时间 农技 植保", "priority_score": 276, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0312", "crop": "大白菜", "target": "黄曲条跳甲", "task_type": "agronomic_control", "query": "大白菜 黄曲条跳甲 农业防治 田间管理 农技 植保", "priority_score": 275, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0313", "crop": "油菜", "target": "小菜蛾", "task_type": "biological_control", "query": "油菜 小菜蛾 生物防治 绿色防控 农技 植保", "priority_score": 275, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0314", "crop": "油菜", "target": "小菜蛾", "task_type": "symptom_diagnosis", "query": "油菜 小菜蛾 症状 识别 图片 农技 植保", "priority_score": 275, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0315", "crop": "甘蓝", "target": "菌核病", "task_type": "control_timing", "query": "甘蓝 菌核病 防治时期 最佳时间 农技 植保", "priority_score": 275, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0316", "crop": "芥菜", "target": "菌核病", "task_type": "control_timing", "query": "芥菜 菌核病 防治时期 最佳时间 农技 植保", "priority_score": 275, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0317", "crop": "芥菜", "target": "菜青虫", "task_type": "occurrence_condition", "query": "芥菜 菜青虫 发生条件 发病原因 农技 植保", "priority_score": 275, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0318", "crop": "芥菜", "target": "霜霉病", "task_type": "biological_control", "query": "芥菜 霜霉病 生物防治 绿色防控 农技 植保", "priority_score": 275, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0319", "crop": "芥菜", "target": "黑斑病", "task_type": "agronomic_control", "query": "芥菜 黑斑病 农业防治 田间管理 农技 植保", "priority_score": 275, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0320", "crop": "萝卜", "target": "小菜蛾", "task_type": "chemical_control", "query": "萝卜 小菜蛾 药剂防治 用药技术 农技 植保", "priority_score": 275, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0321", "crop": "青花菜", "target": "软腐病", "task_type": "agronomic_control", "query": "青花菜 软腐病 农业防治 田间管理 农技 植保", "priority_score": 275, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0322", "crop": "大白菜", "target": "根肿病", "task_type": "biological_control", "query": "大白菜 根肿病 生物防治 绿色防控 农技 植保", "priority_score": 274, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0323", "crop": "大白菜", "target": "黄曲条跳甲", "task_type": "biological_control", "query": "大白菜 黄曲条跳甲 生物防治 绿色防控 农技 植保", "priority_score": 274, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0324", "crop": "小白菜", "target": "菌核病", "task_type": "chemical_control", "query": "小白菜 菌核病 药剂防治 用药技术 农技 植保", "priority_score": 274, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0325", "crop": "小白菜", "target": "黑斑病", "task_type": "biological_control", "query": "小白菜 黑斑病 生物防治 绿色防控 农技 植保", "priority_score": 274, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0326", "crop": "油菜", "target": "根肿病", "task_type": "biological_control", "query": "油菜 根肿病 生物防治 绿色防控 农技 植保", "priority_score": 274, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0327", "crop": "油菜", "target": "根肿病", "task_type": "symptom_diagnosis", "query": "油菜 根肿病 症状 识别 图片 农技 植保", "priority_score": 274, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0328", "crop": "油菜", "target": "甜菜夜蛾", "task_type": "control_timing", "query": "油菜 甜菜夜蛾 防治时期 最佳时间 农技 植保", "priority_score": 274, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0329", "crop": "油菜", "target": "蓟马", "task_type": "agronomic_control", "query": "油菜 蓟马 农业防治 田间管理 农技 植保", "priority_score": 274, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0330", "crop": "甘蓝", "target": "甜菜夜蛾", "task_type": "control_timing", "query": "甘蓝 甜菜夜蛾 防治时期 最佳时间 农技 植保", "priority_score": 274, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0331", "crop": "甘蓝", "target": "菜青虫", "task_type": "control_timing", "query": "甘蓝 菜青虫 防治时期 最佳时间 农技 植保", "priority_score": 274, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0332", "crop": "芥菜", "target": "黑腐病", "task_type": "chemical_control", "query": "芥菜 黑腐病 药剂防治 用药技术 农技 植保", "priority_score": 274, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0333", "crop": "花椰菜", "target": "菌核病", "task_type": "agronomic_control", "query": "花椰菜 菌核病 农业防治 田间管理 农技 植保", "priority_score": 274, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0334", "crop": "花椰菜", "target": "软腐病", "task_type": "occurrence_condition", "query": "花椰菜 软腐病 发生条件 发病原因 农技 植保", "priority_score": 274, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0335", "crop": "萝卜", "target": "斜纹夜蛾", "task_type": "biological_control", "query": "萝卜 斜纹夜蛾 生物防治 绿色防控 农技 植保", "priority_score": 274, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0336", "crop": "青花菜", "target": "地蛆", "task_type": "chemical_control", "query": "青花菜 地蛆 药剂防治 用药技术 农技 植保", "priority_score": 274, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0337", "crop": "青花菜", "target": "蚜虫", "task_type": "agronomic_control", "query": "青花菜 蚜虫 农业防治 田间管理 农技 植保", "priority_score": 274, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0338", "crop": "小白菜", "target": "霜霉病", "task_type": "occurrence_condition", "query": "小白菜 霜霉病 发生条件 发病原因 农技 植保", "priority_score": 273, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0339", "crop": "甘蓝", "target": "甜菜夜蛾", "task_type": "agronomic_control", "query": "甘蓝 甜菜夜蛾 农业防治 田间管理 农技 植保", "priority_score": 273, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0340", "crop": "芥菜", "target": "甜菜夜蛾", "task_type": "agronomic_control", "query": "芥菜 甜菜夜蛾 农业防治 田间管理 农技 植保", "priority_score": 273, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0341", "crop": "芥菜", "target": "蚜虫", "task_type": "occurrence_condition", "query": "芥菜 蚜虫 发生条件 发病原因 农技 植保", "priority_score": 273, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0342", "crop": "芥菜", "target": "黑腐病", "task_type": "biological_control", "query": "芥菜 黑腐病 生物防治 绿色防控 农技 植保", "priority_score": 273, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0343", "crop": "花椰菜", "target": "甜菜夜蛾", "task_type": "agronomic_control", "query": "花椰菜 甜菜夜蛾 农业防治 田间管理 农技 植保", "priority_score": 273, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0344", "crop": "萝卜", "target": "菜青虫", "task_type": "control_timing", "query": "萝卜 菜青虫 防治时期 最佳时间 农技 植保", "priority_score": 273, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0345", "crop": "青花菜", "target": "菜青虫", "task_type": "occurrence_condition", "query": "青花菜 菜青虫 发生条件 发病原因 农技 植保", "priority_score": 273, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0346", "crop": "青花菜", "target": "霜霉病", "task_type": "biological_control", "query": "青花菜 霜霉病 生物防治 绿色防控 农技 植保", "priority_score": 273, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0347", "crop": "青花菜", "target": "黄曲条跳甲", "task_type": "chemical_control", "query": "青花菜 黄曲条跳甲 药剂防治 用药技术 农技 植保", "priority_score": 273, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0348", "crop": "大白菜", "target": "地蛆", "task_type": "control_timing", "query": "大白菜 地蛆 防治时期 最佳时间 农技 植保", "priority_score": 272, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0349", "crop": "大白菜", "target": "灰霉病", "task_type": "control_timing", "query": "大白菜 灰霉病 防治时期 最佳时间 农技 植保", "priority_score": 272, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0350", "crop": "大白菜", "target": "白锈病", "task_type": "control_timing", "query": "大白菜 白锈病 防治时期 最佳时间 农技 植保", "priority_score": 272, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0351", "crop": "大白菜", "target": "菜螟", "task_type": "control_timing", "query": "大白菜 菜螟 防治时期 最佳时间 农技 植保", "priority_score": 272, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0352", "crop": "大白菜", "target": "蚜虫", "task_type": "control_timing", "query": "大白菜 蚜虫 防治时期 最佳时间 农技 植保", "priority_score": 272, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0353", "crop": "大白菜", "target": "黄曲条跳甲", "task_type": "occurrence_condition", "query": "大白菜 黄曲条跳甲 发生条件 发病原因 农技 植保", "priority_score": 272, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0354", "crop": "小白菜", "target": "甜菜夜蛾", "task_type": "biological_control", "query": "小白菜 甜菜夜蛾 生物防治 绿色防控 农技 植保", "priority_score": 272, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0355", "crop": "油菜", "target": "斜纹夜蛾", "task_type": "control_timing", "query": "油菜 斜纹夜蛾 防治时期 最佳时间 农技 植保", "priority_score": 272, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0356", "crop": "油菜", "target": "菜青虫", "task_type": "biological_control", "query": "油菜 菜青虫 生物防治 绿色防控 农技 植保", "priority_score": 272, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0357", "crop": "甘蓝", "target": "病毒病", "task_type": "agronomic_control", "query": "甘蓝 病毒病 农业防治 田间管理 农技 植保", "priority_score": 272, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0358", "crop": "甘蓝", "target": "黑斑病", "task_type": "occurrence_condition", "query": "甘蓝 黑斑病 发生条件 发病原因 农技 植保", "priority_score": 272, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0359", "crop": "萝卜", "target": "蓟马", "task_type": "biological_control", "query": "萝卜 蓟马 生物防治 绿色防控 农技 植保", "priority_score": 272, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0360", "crop": "青花菜", "target": "黑斑病", "task_type": "symptom_diagnosis", "query": "青花菜 黑斑病 症状 识别 图片 农技 植保", "priority_score": 272, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0361", "crop": "大白菜", "target": "黄曲条跳甲", "task_type": "control_timing", "query": "大白菜 黄曲条跳甲 防治时期 最佳时间 农技 植保", "priority_score": 271, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0362", "crop": "小白菜", "target": "斜纹夜蛾", "task_type": "chemical_control", "query": "小白菜 斜纹夜蛾 药剂防治 用药技术 农技 植保", "priority_score": 271, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0363", "crop": "小白菜", "target": "蚜虫", "task_type": "agronomic_control", "query": "小白菜 蚜虫 农业防治 田间管理 农技 植保", "priority_score": 271, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0364", "crop": "小白菜", "target": "黑腐病", "task_type": "occurrence_condition", "query": "小白菜 黑腐病 发生条件 发病原因 农技 植保", "priority_score": 271, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0365", "crop": "油菜", "target": "软腐病", "task_type": "symptom_diagnosis", "query": "油菜 软腐病 症状 识别 图片 农技 植保", "priority_score": 271, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0366", "crop": "甘蓝", "target": "地蛆", "task_type": "agronomic_control", "query": "甘蓝 地蛆 农业防治 田间管理 农技 植保", "priority_score": 271, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0367", "crop": "甘蓝", "target": "白锈病", "task_type": "agronomic_control", "query": "甘蓝 白锈病 农业防治 田间管理 农技 植保", "priority_score": 271, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0368", "crop": "甘蓝", "target": "菜螟", "task_type": "agronomic_control", "query": "甘蓝 菜螟 农业防治 田间管理 农技 植保", "priority_score": 271, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0369", "crop": "芥菜", "target": "斜纹夜蛾", "task_type": "agronomic_control", "query": "芥菜 斜纹夜蛾 农业防治 田间管理 农技 植保", "priority_score": 271, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0370", "crop": "芥菜", "target": "菌核病", "task_type": "occurrence_condition", "query": "芥菜 菌核病 发生条件 发病原因 农技 植保", "priority_score": 271, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0371", "crop": "芥菜", "target": "软腐病", "task_type": "biological_control", "query": "芥菜 软腐病 生物防治 绿色防控 农技 植保", "priority_score": 271, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0372", "crop": "芥菜", "target": "软腐病", "task_type": "symptom_diagnosis", "query": "芥菜 软腐病 症状 识别 图片 农技 植保", "priority_score": 271, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0373", "crop": "芥菜", "target": "黑斑病", "task_type": "control_timing", "query": "芥菜 黑斑病 防治时期 最佳时间 农技 植保", "priority_score": 271, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0374", "crop": "花椰菜", "target": "斜纹夜蛾", "task_type": "chemical_control", "query": "花椰菜 斜纹夜蛾 药剂防治 用药技术 农技 植保", "priority_score": 271, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0375", "crop": "花椰菜", "target": "菌核病", "task_type": "occurrence_condition", "query": "花椰菜 菌核病 发生条件 发病原因 农技 植保", "priority_score": 271, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0376", "crop": "花椰菜", "target": "软腐病", "task_type": "biological_control", "query": "花椰菜 软腐病 生物防治 绿色防控 农技 植保", "priority_score": 271, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0377", "crop": "萝卜", "target": "根肿病", "task_type": "occurrence_condition", "query": "萝卜 根肿病 发生条件 发病原因 农技 植保", "priority_score": 271, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0378", "crop": "青花菜", "target": "甜菜夜蛾", "task_type": "agronomic_control", "query": "青花菜 甜菜夜蛾 农业防治 田间管理 农技 植保", "priority_score": 271, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0379", "crop": "青花菜", "target": "菜青虫", "task_type": "agronomic_control", "query": "青花菜 菜青虫 农业防治 田间管理 农技 植保", "priority_score": 271, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0380", "crop": "青花菜", "target": "蚜虫", "task_type": "occurrence_condition", "query": "青花菜 蚜虫 发生条件 发病原因 农技 植保", "priority_score": 271, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0381", "crop": "青花菜", "target": "霜霉病", "task_type": "occurrence_condition", "query": "青花菜 霜霉病 发生条件 发病原因 农技 植保", "priority_score": 271, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0382", "crop": "青花菜", "target": "黑腐病", "task_type": "biological_control", "query": "青花菜 黑腐病 生物防治 绿色防控 农技 植保", "priority_score": 271, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0383", "crop": "大白菜", "target": "小菜蛾", "task_type": "biological_control", "query": "大白菜 小菜蛾 生物防治 绿色防控 农技 植保", "priority_score": 270, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0384", "crop": "大白菜", "target": "菜青虫", "task_type": "occurrence_condition", "query": "大白菜 菜青虫 发生条件 发病原因 农技 植保", "priority_score": 270, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0385", "crop": "大白菜", "target": "蚜虫", "task_type": "biological_control", "query": "大白菜 蚜虫 生物防治 绿色防控 农技 植保", "priority_score": 270, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0386", "crop": "小白菜", "target": "地蛆", "task_type": "symptom_diagnosis", "query": "小白菜 地蛆 症状 识别 图片 农技 植保", "priority_score": 270, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0387", "crop": "小白菜", "target": "斜纹夜蛾", "task_type": "biological_control", "query": "小白菜 斜纹夜蛾 生物防治 绿色防控 农技 植保", "priority_score": 270, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0388", "crop": "小白菜", "target": "菜螟", "task_type": "symptom_diagnosis", "query": "小白菜 菜螟 症状 识别 图片 农技 植保", "priority_score": 270, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0389", "crop": "小白菜", "target": "黑斑病", "task_type": "chemical_control", "query": "小白菜 黑斑病 药剂防治 用药技术 农技 植保", "priority_score": 270, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0390", "crop": "油菜", "target": "甜菜夜蛾", "task_type": "occurrence_condition", "query": "油菜 甜菜夜蛾 发生条件 发病原因 农技 植保", "priority_score": 270, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0391", "crop": "油菜", "target": "蓟马", "task_type": "control_timing", "query": "油菜 蓟马 防治时期 最佳时间 农技 植保", "priority_score": 270, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0392", "crop": "油菜", "target": "蚜虫", "task_type": "biological_control", "query": "油菜 蚜虫 生物防治 绿色防控 农技 植保", "priority_score": 270, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0393", "crop": "甘蓝", "target": "霜霉病", "task_type": "biological_control", "query": "甘蓝 霜霉病 生物防治 绿色防控 农技 植保", "priority_score": 270, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0394", "crop": "芥菜", "target": "小菜蛾", "task_type": "biological_control", "query": "芥菜 小菜蛾 生物防治 绿色防控 农技 植保", "priority_score": 270, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0395", "crop": "芥菜", "target": "霜霉病", "task_type": "symptom_diagnosis", "query": "芥菜 霜霉病 症状 识别 图片 农技 植保", "priority_score": 270, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0396", "crop": "花椰菜", "target": "霜霉病", "task_type": "biological_control", "query": "花椰菜 霜霉病 生物防治 绿色防控 农技 植保", "priority_score": 270, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0397", "crop": "花椰菜", "target": "黄曲条跳甲", "task_type": "agronomic_control", "query": "花椰菜 黄曲条跳甲 农业防治 田间管理 农技 植保", "priority_score": 270, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0398", "crop": "萝卜", "target": "小菜蛾", "task_type": "agronomic_control", "query": "萝卜 小菜蛾 农业防治 田间管理 农技 植保", "priority_score": 270, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0399", "crop": "萝卜", "target": "斜纹夜蛾", "task_type": "chemical_control", "query": "萝卜 斜纹夜蛾 药剂防治 用药技术 农技 植保", "priority_score": 270, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0400", "crop": "青花菜", "target": "病毒病", "task_type": "agronomic_control", "query": "青花菜 病毒病 农业防治 田间管理 农技 植保", "priority_score": 270, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0401", "crop": "青花菜", "target": "蚜虫", "task_type": "control_timing", "query": "青花菜 蚜虫 防治时期 最佳时间 农技 植保", "priority_score": 270, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0402", "crop": "青花菜", "target": "黄曲条跳甲", "task_type": "occurrence_condition", "query": "青花菜 黄曲条跳甲 发生条件 发病原因 农技 植保", "priority_score": 270, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0403", "crop": "小白菜", "target": "蓟马", "task_type": "chemical_control", "query": "小白菜 蓟马 药剂防治 用药技术 农技 植保", "priority_score": 269, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0404", "crop": "小白菜", "target": "软腐病", "task_type": "occurrence_condition", "query": "小白菜 软腐病 发生条件 发病原因 农技 植保", "priority_score": 269, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0405", "crop": "油菜", "target": "黄曲条跳甲", "task_type": "biological_control", "query": "油菜 黄曲条跳甲 生物防治 绿色防控 农技 植保", "priority_score": 269, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0406", "crop": "油菜", "target": "黑腐病", "task_type": "agronomic_control", "query": "油菜 黑腐病 农业防治 田间管理 农技 植保", "priority_score": 269, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0407", "crop": "甘蓝", "target": "菌核病", "task_type": "agronomic_control", "query": "甘蓝 菌核病 农业防治 田间管理 农技 植保", "priority_score": 269, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0408", "crop": "甘蓝", "target": "黄曲条跳甲", "task_type": "biological_control", "query": "甘蓝 黄曲条跳甲 生物防治 绿色防控 农技 植保", "priority_score": 269, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0409", "crop": "芥菜", "target": "根肿病", "task_type": "biological_control", "query": "芥菜 根肿病 生物防治 绿色防控 农技 植保", "priority_score": 269, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0410", "crop": "芥菜", "target": "甜菜夜蛾", "task_type": "control_timing", "query": "芥菜 甜菜夜蛾 防治时期 最佳时间 农技 植保", "priority_score": 269, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0411", "crop": "芥菜", "target": "蓟马", "task_type": "agronomic_control", "query": "芥菜 蓟马 农业防治 田间管理 农技 植保", "priority_score": 269, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0412", "crop": "芥菜", "target": "黄曲条跳甲", "task_type": "symptom_diagnosis", "query": "芥菜 黄曲条跳甲 症状 识别 图片 农技 植保", "priority_score": 269, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0413", "crop": "花椰菜", "target": "甜菜夜蛾", "task_type": "control_timing", "query": "花椰菜 甜菜夜蛾 防治时期 最佳时间 农技 植保", "priority_score": 269, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0414", "crop": "青花菜", "target": "斜纹夜蛾", "task_type": "agronomic_control", "query": "青花菜 斜纹夜蛾 农业防治 田间管理 农技 植保", "priority_score": 269, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0415", "crop": "青花菜", "target": "斜纹夜蛾", "task_type": "chemical_control", "query": "青花菜 斜纹夜蛾 药剂防治 用药技术 农技 植保", "priority_score": 269, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0416", "crop": "青花菜", "target": "黄曲条跳甲", "task_type": "control_timing", "query": "青花菜 黄曲条跳甲 防治时期 最佳时间 农技 植保", "priority_score": 269, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0417", "crop": "大白菜", "target": "地蛆", "task_type": "occurrence_condition", "query": "大白菜 地蛆 发生条件 发病原因 农技 植保", "priority_score": 268, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0418", "crop": "大白菜", "target": "灰霉病", "task_type": "occurrence_condition", "query": "大白菜 灰霉病 发生条件 发病原因 农技 植保", "priority_score": 268, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0419", "crop": "大白菜", "target": "病毒病", "task_type": "control_timing", "query": "大白菜 病毒病 防治时期 最佳时间 农技 植保", "priority_score": 268, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0420", "crop": "大白菜", "target": "白锈病", "task_type": "occurrence_condition", "query": "大白菜 白锈病 发生条件 发病原因 农技 植保", "priority_score": 268, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0421", "crop": "大白菜", "target": "菜螟", "task_type": "occurrence_condition", "query": "大白菜 菜螟 发生条件 发病原因 农技 植保", "priority_score": 268, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0422", "crop": "大白菜", "target": "黑腐病", "task_type": "biological_control", "query": "大白菜 黑腐病 生物防治 绿色防控 农技 植保", "priority_score": 268, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0423", "crop": "小白菜", "target": "小菜蛾", "task_type": "occurrence_condition", "query": "小白菜 小菜蛾 发生条件 发病原因 农技 植保", "priority_score": 268, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0424", "crop": "小白菜", "target": "菜青虫", "task_type": "agronomic_control", "query": "小白菜 菜青虫 农业防治 田间管理 农技 植保", "priority_score": 268, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0425", "crop": "小白菜", "target": "菜青虫", "task_type": "chemical_control", "query": "小白菜 菜青虫 药剂防治 用药技术 农技 植保", "priority_score": 268, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0426", "crop": "小白菜", "target": "蓟马", "task_type": "biological_control", "query": "小白菜 蓟马 生物防治 绿色防控 农技 植保", "priority_score": 268, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0427", "crop": "油菜", "target": "斜纹夜蛾", "task_type": "occurrence_condition", "query": "油菜 斜纹夜蛾 发生条件 发病原因 农技 植保", "priority_score": 268, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0428", "crop": "花椰菜", "target": "甜菜夜蛾", "task_type": "chemical_control", "query": "花椰菜 甜菜夜蛾 药剂防治 用药技术 农技 植保", "priority_score": 268, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0429", "crop": "萝卜", "target": "菌核病", "task_type": "agronomic_control", "query": "萝卜 菌核病 农业防治 田间管理 农技 植保", "priority_score": 268, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0430", "crop": "青花菜", "target": "小菜蛾", "task_type": "biological_control", "query": "青花菜 小菜蛾 生物防治 绿色防控 农技 植保", "priority_score": 268, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0431", "crop": "小白菜", "target": "病毒病", "task_type": "agronomic_control", "query": "小白菜 病毒病 农业防治 田间管理 农技 植保", "priority_score": 267, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0432", "crop": "小白菜", "target": "软腐病", "task_type": "agronomic_control", "query": "小白菜 软腐病 农业防治 田间管理 农技 植保", "priority_score": 267, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0433", "crop": "油菜", "target": "菜青虫", "task_type": "symptom_diagnosis", "query": "油菜 菜青虫 症状 识别 图片 农技 植保", "priority_score": 267, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0434", "crop": "甘蓝", "target": "地蛆", "task_type": "control_timing", "query": "甘蓝 地蛆 防治时期 最佳时间 农技 植保", "priority_score": 267, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0435", "crop": "甘蓝", "target": "灰霉病", "task_type": "control_timing", "query": "甘蓝 灰霉病 防治时期 最佳时间 农技 植保", "priority_score": 267, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0436", "crop": "甘蓝", "target": "炭疽病", "task_type": "control_timing", "query": "甘蓝 炭疽病 防治时期 最佳时间 农技 植保", "priority_score": 267, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0437", "crop": "甘蓝", "target": "白锈病", "task_type": "control_timing", "query": "甘蓝 白锈病 防治时期 最佳时间 农技 植保", "priority_score": 267, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0438", "crop": "甘蓝", "target": "菜螟", "task_type": "control_timing", "query": "甘蓝 菜螟 防治时期 最佳时间 农技 植保", "priority_score": 267, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0439", "crop": "芥菜", "target": "斜纹夜蛾", "task_type": "control_timing", "query": "芥菜 斜纹夜蛾 防治时期 最佳时间 农技 植保", "priority_score": 267, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0440", "crop": "芥菜", "target": "菜青虫", "task_type": "biological_control", "query": "芥菜 菜青虫 生物防治 绿色防控 农技 植保", "priority_score": 267, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0441", "crop": "芥菜", "target": "黑斑病", "task_type": "occurrence_condition", "query": "芥菜 黑斑病 发生条件 发病原因 农技 植保", "priority_score": 267, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0442", "crop": "花椰菜", "target": "菜青虫", "task_type": "biological_control", "query": "花椰菜 菜青虫 生物防治 绿色防控 农技 植保", "priority_score": 267, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0443", "crop": "青花菜", "target": "根肿病", "task_type": "biological_control", "query": "青花菜 根肿病 生物防治 绿色防控 农技 植保", "priority_score": 267, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0444", "crop": "青花菜", "target": "甜菜夜蛾", "task_type": "control_timing", "query": "青花菜 甜菜夜蛾 防治时期 最佳时间 农技 植保", "priority_score": 267, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0445", "crop": "青花菜", "target": "病毒病", "task_type": "occurrence_condition", "query": "青花菜 病毒病 发生条件 发病原因 农技 植保", "priority_score": 267, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0446", "crop": "青花菜", "target": "菜青虫", "task_type": "control_timing", "query": "青花菜 菜青虫 防治时期 最佳时间 农技 植保", "priority_score": 267, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0447", "crop": "小白菜", "target": "地蛆", "task_type": "chemical_control", "query": "小白菜 地蛆 药剂防治 用药技术 农技 植保", "priority_score": 266, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0448", "crop": "小白菜", "target": "菜螟", "task_type": "chemical_control", "query": "小白菜 菜螟 药剂防治 用药技术 农技 植保", "priority_score": 266, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0449", "crop": "油菜", "target": "小菜蛾", "task_type": "chemical_control", "query": "油菜 小菜蛾 药剂防治 用药技术 农技 植保", "priority_score": 266, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0450", "crop": "油菜", "target": "病毒病", "task_type": "biological_control", "query": "油菜 病毒病 生物防治 绿色防控 农技 植保", "priority_score": 266, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0451", "crop": "油菜", "target": "蓟马", "task_type": "occurrence_condition", "query": "油菜 蓟马 发生条件 发病原因 农技 植保", "priority_score": 266, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0452", "crop": "甘蓝", "target": "病毒病", "task_type": "biological_control", "query": "甘蓝 病毒病 生物防治 绿色防控 农技 植保", "priority_score": 266, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0453", "crop": "甘蓝", "target": "软腐病", "task_type": "biological_control", "query": "甘蓝 软腐病 生物防治 绿色防控 农技 植保", "priority_score": 266, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0454", "crop": "芥菜", "target": "蚜虫", "task_type": "chemical_control", "query": "芥菜 蚜虫 药剂防治 用药技术 农技 植保", "priority_score": 266, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0455", "crop": "花椰菜", "target": "地蛆", "task_type": "agronomic_control", "query": "花椰菜 地蛆 农业防治 田间管理 农技 植保", "priority_score": 266, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0456", "crop": "花椰菜", "target": "灰霉病", "task_type": "agronomic_control", "query": "花椰菜 灰霉病 农业防治 田间管理 农技 植保", "priority_score": 266, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0457", "crop": "花椰菜", "target": "炭疽病", "task_type": "agronomic_control", "query": "花椰菜 炭疽病 农业防治 田间管理 农技 植保", "priority_score": 266, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0458", "crop": "花椰菜", "target": "白锈病", "task_type": "agronomic_control", "query": "花椰菜 白锈病 农业防治 田间管理 农技 植保", "priority_score": 266, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0459", "crop": "花椰菜", "target": "菜螟", "task_type": "agronomic_control", "query": "花椰菜 菜螟 农业防治 田间管理 农技 植保", "priority_score": 266, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0460", "crop": "花椰菜", "target": "黄曲条跳甲", "task_type": "control_timing", "query": "花椰菜 黄曲条跳甲 防治时期 最佳时间 农技 植保", "priority_score": 266, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0461", "crop": "青花菜", "target": "甜菜夜蛾", "task_type": "chemical_control", "query": "青花菜 甜菜夜蛾 药剂防治 用药技术 农技 植保", "priority_score": 266, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0462", "crop": "大白菜", "target": "白锈病", "task_type": "symptom_diagnosis", "query": "大白菜 白锈病 症状 识别 图片 农技 植保", "priority_score": 265, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0463", "crop": "大白菜", "target": "菜螟", "task_type": "symptom_diagnosis", "query": "大白菜 菜螟 症状 识别 图片 农技 植保", "priority_score": 265, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0464", "crop": "小白菜", "target": "黄曲条跳甲", "task_type": "agronomic_control", "query": "小白菜 黄曲条跳甲 农业防治 田间管理 农技 植保", "priority_score": 265, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0465", "crop": "小白菜", "target": "黑斑病", "task_type": "agronomic_control", "query": "小白菜 黑斑病 农业防治 田间管理 农技 植保", "priority_score": 265, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0466", "crop": "芥菜", "target": "根肿病", "task_type": "chemical_control", "query": "芥菜 根肿病 药剂防治 用药技术 农技 植保", "priority_score": 265, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0467", "crop": "芥菜", "target": "甜菜夜蛾", "task_type": "occurrence_condition", "query": "芥菜 甜菜夜蛾 发生条件 发病原因 农技 植保", "priority_score": 265, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0468", "crop": "芥菜", "target": "蓟马", "task_type": "control_timing", "query": "芥菜 蓟马 防治时期 最佳时间 农技 植保", "priority_score": 265, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0469", "crop": "芥菜", "target": "蚜虫", "task_type": "biological_control", "query": "芥菜 蚜虫 生物防治 绿色防控 农技 植保", "priority_score": 265, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0470", "crop": "花椰菜", "target": "小菜蛾", "task_type": "biological_control", "query": "花椰菜 小菜蛾 生物防治 绿色防控 农技 植保", "priority_score": 265, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0471", "crop": "花椰菜", "target": "甜菜夜蛾", "task_type": "occurrence_condition", "query": "花椰菜 甜菜夜蛾 发生条件 发病原因 农技 植保", "priority_score": 265, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0472", "crop": "花椰菜", "target": "蚜虫", "task_type": "biological_control", "query": "花椰菜 蚜虫 生物防治 绿色防控 农技 植保", "priority_score": 265, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0473", "crop": "萝卜", "target": "斜纹夜蛾", "task_type": "agronomic_control", "query": "萝卜 斜纹夜蛾 农业防治 田间管理 农技 植保", "priority_score": 265, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0474", "crop": "萝卜", "target": "菌核病", "task_type": "occurrence_condition", "query": "萝卜 菌核病 发生条件 发病原因 农技 植保", "priority_score": 265, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0475", "crop": "青花菜", "target": "斜纹夜蛾", "task_type": "control_timing", "query": "青花菜 斜纹夜蛾 防治时期 最佳时间 农技 植保", "priority_score": 265, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0476", "crop": "甘蓝", "target": "病毒病", "task_type": "occurrence_condition", "query": "甘蓝 病毒病 发生条件 发病原因 农技 植保", "priority_score": 264, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0477", "crop": "芥菜", "target": "黄曲条跳甲", "task_type": "biological_control", "query": "芥菜 黄曲条跳甲 生物防治 绿色防控 农技 植保", "priority_score": 264, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0478", "crop": "芥菜", "target": "黑斑病", "task_type": "symptom_diagnosis", "query": "芥菜 黑斑病 症状 识别 图片 农技 植保", "priority_score": 264, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0479", "crop": "青花菜", "target": "地蛆", "task_type": "agronomic_control", "query": "青花菜 地蛆 农业防治 田间管理 农技 植保", "priority_score": 264, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0480", "crop": "青花菜", "target": "灰霉病", "task_type": "agronomic_control", "query": "青花菜 灰霉病 农业防治 田间管理 农技 植保", "priority_score": 264, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0481", "crop": "青花菜", "target": "炭疽病", "task_type": "agronomic_control", "query": "青花菜 炭疽病 农业防治 田间管理 农技 植保", "priority_score": 264, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0482", "crop": "青花菜", "target": "菌核病", "task_type": "occurrence_condition", "query": "青花菜 菌核病 发生条件 发病原因 农技 植保", "priority_score": 264, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0483", "crop": "青花菜", "target": "菜螟", "task_type": "agronomic_control", "query": "青花菜 菜螟 农业防治 田间管理 农技 植保", "priority_score": 264, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0484", "crop": "青花菜", "target": "软腐病", "task_type": "biological_control", "query": "青花菜 软腐病 生物防治 绿色防控 农技 植保", "priority_score": 264, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0485", "crop": "青花菜", "target": "黑腐病", "task_type": "occurrence_condition", "query": "青花菜 黑腐病 发生条件 发病原因 农技 植保", "priority_score": 264, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0486", "crop": "甘蓝", "target": "地蛆", "task_type": "occurrence_condition", "query": "甘蓝 地蛆 发生条件 发病原因 农技 植保", "priority_score": 263, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0487", "crop": "甘蓝", "target": "炭疽病", "task_type": "occurrence_condition", "query": "甘蓝 炭疽病 发生条件 发病原因 农技 植保", "priority_score": 263, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0488", "crop": "甘蓝", "target": "白锈病", "task_type": "occurrence_condition", "query": "甘蓝 白锈病 发生条件 发病原因 农技 植保", "priority_score": 263, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0489", "crop": "甘蓝", "target": "菌核病", "task_type": "biological_control", "query": "甘蓝 菌核病 生物防治 绿色防控 农技 植保", "priority_score": 263, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0490", "crop": "甘蓝", "target": "菜螟", "task_type": "occurrence_condition", "query": "甘蓝 菜螟 发生条件 发病原因 农技 植保", "priority_score": 263, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0491", "crop": "甘蓝", "target": "黑腐病", "task_type": "biological_control", "query": "甘蓝 黑腐病 生物防治 绿色防控 农技 植保", "priority_score": 263, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0492", "crop": "芥菜", "target": "斜纹夜蛾", "task_type": "occurrence_condition", "query": "芥菜 斜纹夜蛾 发生条件 发病原因 农技 植保", "priority_score": 263, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0493", "crop": "芥菜", "target": "菌核病", "task_type": "symptom_diagnosis", "query": "芥菜 菌核病 症状 识别 图片 农技 植保", "priority_score": 263, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0494", "crop": "花椰菜", "target": "菌核病", "task_type": "biological_control", "query": "花椰菜 菌核病 生物防治 绿色防控 农技 植保", "priority_score": 263, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0495", "crop": "萝卜", "target": "病毒病", "task_type": "occurrence_condition", "query": "萝卜 病毒病 发生条件 发病原因 农技 植保", "priority_score": 263, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0496", "crop": "萝卜", "target": "软腐病", "task_type": "occurrence_condition", "query": "萝卜 软腐病 发生条件 发病原因 农技 植保", "priority_score": 263, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0497", "crop": "青花菜", "target": "甜菜夜蛾", "task_type": "occurrence_condition", "query": "青花菜 甜菜夜蛾 发生条件 发病原因 农技 植保", "priority_score": 263, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0498", "crop": "青花菜", "target": "蚜虫", "task_type": "biological_control", "query": "青花菜 蚜虫 生物防治 绿色防控 农技 植保", "priority_score": 263, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0499", "crop": "青花菜", "target": "黑斑病", "task_type": "agronomic_control", "query": "青花菜 黑斑病 农业防治 田间管理 农技 植保", "priority_score": 263, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0500", "crop": "大白菜", "target": "甜菜夜蛾", "task_type": "biological_control", "query": "大白菜 甜菜夜蛾 生物防治 绿色防控 农技 植保", "priority_score": 262, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0501", "crop": "大白菜", "target": "菜青虫", "task_type": "biological_control", "query": "大白菜 菜青虫 生物防治 绿色防控 农技 植保", "priority_score": 262, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0502", "crop": "小白菜", "target": "根肿病", "task_type": "occurrence_condition", "query": "小白菜 根肿病 发生条件 发病原因 农技 植保", "priority_score": 262, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0503", "crop": "油菜", "target": "甜菜夜蛾", "task_type": "biological_control", "query": "油菜 甜菜夜蛾 生物防治 绿色防控 农技 植保", "priority_score": 262, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0504", "crop": "油菜", "target": "软腐病", "task_type": "chemical_control", "query": "油菜 软腐病 药剂防治 用药技术 农技 植保", "priority_score": 262, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0505", "crop": "芥菜", "target": "软腐病", "task_type": "agronomic_control", "query": "芥菜 软腐病 农业防治 田间管理 农技 植保", "priority_score": 262, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0506", "crop": "花椰菜", "target": "地蛆", "task_type": "control_timing", "query": "花椰菜 地蛆 防治时期 最佳时间 农技 植保", "priority_score": 262, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0507", "crop": "花椰菜", "target": "灰霉病", "task_type": "control_timing", "query": "花椰菜 灰霉病 防治时期 最佳时间 农技 植保", "priority_score": 262, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0508", "crop": "花椰菜", "target": "炭疽病", "task_type": "control_timing", "query": "花椰菜 炭疽病 防治时期 最佳时间 农技 植保", "priority_score": 262, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0509", "crop": "花椰菜", "target": "白锈病", "task_type": "control_timing", "query": "花椰菜 白锈病 防治时期 最佳时间 农技 植保", "priority_score": 262, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0510", "crop": "花椰菜", "target": "菜螟", "task_type": "control_timing", "query": "花椰菜 菜螟 防治时期 最佳时间 农技 植保", "priority_score": 262, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0511", "crop": "萝卜", "target": "病毒病", "task_type": "control_timing", "query": "萝卜 病毒病 防治时期 最佳时间 农技 植保", "priority_score": 262, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0512", "crop": "萝卜", "target": "蚜虫", "task_type": "occurrence_condition", "query": "萝卜 蚜虫 发生条件 发病原因 农技 植保", "priority_score": 262, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0513", "crop": "青花菜", "target": "黄曲条跳甲", "task_type": "biological_control", "query": "青花菜 黄曲条跳甲 生物防治 绿色防控 农技 植保", "priority_score": 262, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0514", "crop": "大白菜", "target": "病毒病", "task_type": "biological_control", "query": "大白菜 病毒病 生物防治 绿色防控 农技 植保", "priority_score": 261, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0515", "crop": "小白菜", "target": "斜纹夜蛾", "task_type": "agronomic_control", "query": "小白菜 斜纹夜蛾 农业防治 田间管理 农技 植保", "priority_score": 261, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0516", "crop": "小白菜", "target": "黄曲条跳甲", "task_type": "control_timing", "query": "小白菜 黄曲条跳甲 防治时期 最佳时间 农技 植保", "priority_score": 261, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0517", "crop": "油菜", "target": "小菜蛾", "task_type": "agronomic_control", "query": "油菜 小菜蛾 农业防治 田间管理 农技 植保", "priority_score": 261, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0518", "crop": "油菜", "target": "黑腐病", "task_type": "occurrence_condition", "query": "油菜 黑腐病 发生条件 发病原因 农技 植保", "priority_score": 261, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0519", "crop": "芥菜", "target": "小菜蛾", "task_type": "chemical_control", "query": "芥菜 小菜蛾 药剂防治 用药技术 农技 植保", "priority_score": 261, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0520", "crop": "芥菜", "target": "病毒病", "task_type": "biological_control", "query": "芥菜 病毒病 生物防治 绿色防控 农技 植保", "priority_score": 261, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0521", "crop": "芥菜", "target": "蓟马", "task_type": "occurrence_condition", "query": "芥菜 蓟马 发生条件 发病原因 农技 植保", "priority_score": 261, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0522", "crop": "芥菜", "target": "霜霉病", "task_type": "chemical_control", "query": "芥菜 霜霉病 药剂防治 用药技术 农技 植保", "priority_score": 261, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0523", "crop": "花椰菜", "target": "蓟马", "task_type": "occurrence_condition", "query": "花椰菜 蓟马 发生条件 发病原因 农技 植保", "priority_score": 261, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0524", "crop": "萝卜", "target": "斜纹夜蛾", "task_type": "control_timing", "query": "萝卜 斜纹夜蛾 防治时期 最佳时间 农技 植保", "priority_score": 261, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0525", "crop": "青花菜", "target": "斜纹夜蛾", "task_type": "occurrence_condition", "query": "青花菜 斜纹夜蛾 发生条件 发病原因 农技 植保", "priority_score": 261, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0526", "crop": "青花菜", "target": "菌核病", "task_type": "biological_control", "query": "青花菜 菌核病 生物防治 绿色防控 农技 植保", "priority_score": 261, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0527", "crop": "大白菜", "target": "地蛆", "task_type": "biological_control", "query": "大白菜 地蛆 生物防治 绿色防控 农技 植保", "priority_score": 260, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0528", "crop": "大白菜", "target": "灰霉病", "task_type": "symptom_diagnosis", "query": "大白菜 灰霉病 症状 识别 图片 农技 植保", "priority_score": 260, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0529", "crop": "大白菜", "target": "菜螟", "task_type": "biological_control", "query": "大白菜 菜螟 生物防治 绿色防控 农技 植保", "priority_score": 260, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0530", "crop": "小白菜", "target": "小菜蛾", "task_type": "biological_control", "query": "小白菜 小菜蛾 生物防治 绿色防控 农技 植保", "priority_score": 260, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0531", "crop": "油菜", "target": "地蛆", "task_type": "symptom_diagnosis", "query": "油菜 地蛆 症状 识别 图片 农技 植保", "priority_score": 260, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0532", "crop": "油菜", "target": "斜纹夜蛾", "task_type": "biological_control", "query": "油菜 斜纹夜蛾 生物防治 绿色防控 农技 植保", "priority_score": 260, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0533", "crop": "油菜", "target": "根肿病", "task_type": "agronomic_control", "query": "油菜 根肿病 农业防治 田间管理 农技 植保", "priority_score": 260, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0534", "crop": "油菜", "target": "灰霉病", "task_type": "symptom_diagnosis", "query": "油菜 灰霉病 症状 识别 图片 农技 植保", "priority_score": 260, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0535", "crop": "油菜", "target": "菜螟", "task_type": "symptom_diagnosis", "query": "油菜 菜螟 症状 识别 图片 农技 植保", "priority_score": 260, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0536", "crop": "甘蓝", "target": "小菜蛾", "task_type": "biological_control", "query": "甘蓝 小菜蛾 生物防治 绿色防控 农技 植保", "priority_score": 260, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0537", "crop": "甘蓝", "target": "蚜虫", "task_type": "biological_control", "query": "甘蓝 蚜虫 生物防治 绿色防控 农技 植保", "priority_score": 260, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0538", "crop": "芥菜", "target": "黑斑病", "task_type": "chemical_control", "query": "芥菜 黑斑病 药剂防治 用药技术 农技 植保", "priority_score": 260, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0539", "crop": "花椰菜", "target": "黑斑病", "task_type": "agronomic_control", "query": "花椰菜 黑斑病 农业防治 田间管理 农技 植保", "priority_score": 260, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0540", "crop": "萝卜", "target": "黄曲条跳甲", "task_type": "control_timing", "query": "萝卜 黄曲条跳甲 防治时期 最佳时间 农技 植保", "priority_score": 260, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0541", "crop": "萝卜", "target": "黑斑病", "task_type": "control_timing", "query": "萝卜 黑斑病 防治时期 最佳时间 农技 植保", "priority_score": 260, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0542", "crop": "青花菜", "target": "地蛆", "task_type": "control_timing", "query": "青花菜 地蛆 防治时期 最佳时间 农技 植保", "priority_score": 260, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0543", "crop": "青花菜", "target": "灰霉病", "task_type": "control_timing", "query": "青花菜 灰霉病 防治时期 最佳时间 农技 植保", "priority_score": 260, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0544", "crop": "青花菜", "target": "炭疽病", "task_type": "control_timing", "query": "青花菜 炭疽病 防治时期 最佳时间 农技 植保", "priority_score": 260, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0545", "crop": "青花菜", "target": "白锈病", "task_type": "control_timing", "query": "青花菜 白锈病 防治时期 最佳时间 农技 植保", "priority_score": 260, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0546", "crop": "青花菜", "target": "菜螟", "task_type": "control_timing", "query": "青花菜 菜螟 防治时期 最佳时间 农技 植保", "priority_score": 260, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0547", "crop": "青花菜", "target": "菜青虫", "task_type": "biological_control", "query": "青花菜 菜青虫 生物防治 绿色防控 农技 植保", "priority_score": 260, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0548", "crop": "青花菜", "target": "黑斑病", "task_type": "occurrence_condition", "query": "青花菜 黑斑病 发生条件 发病原因 农技 植保", "priority_score": 260, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0549", "crop": "小白菜", "target": "蓟马", "task_type": "agronomic_control", "query": "小白菜 蓟马 农业防治 田间管理 农技 植保", "priority_score": 259, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0550", "crop": "油菜", "target": "软腐病", "task_type": "occurrence_condition", "query": "油菜 软腐病 发生条件 发病原因 农技 植保", "priority_score": 259, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0551", "crop": "油菜", "target": "黄曲条跳甲", "task_type": "symptom_diagnosis", "query": "油菜 黄曲条跳甲 症状 识别 图片 农技 植保", "priority_score": 259, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0552", "crop": "甘蓝", "target": "黑斑病", "task_type": "biological_control", "query": "甘蓝 黑斑病 生物防治 绿色防控 农技 植保", "priority_score": 259, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0553", "crop": "芥菜", "target": "黑斑病", "task_type": "biological_control", "query": "芥菜 黑斑病 生物防治 绿色防控 农技 植保", "priority_score": 259, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0554", "crop": "萝卜", "target": "小菜蛾", "task_type": "biological_control", "query": "萝卜 小菜蛾 生物防治 绿色防控 农技 植保", "priority_score": 259, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0555", "crop": "萝卜", "target": "蚜虫", "task_type": "biological_control", "query": "萝卜 蚜虫 生物防治 绿色防控 农技 植保", "priority_score": 259, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0556", "crop": "小白菜", "target": "蚜虫", "task_type": "occurrence_condition", "query": "小白菜 蚜虫 发生条件 发病原因 农技 植保", "priority_score": 258, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0557", "crop": "小白菜", "target": "黑腐病", "task_type": "biological_control", "query": "小白菜 黑腐病 生物防治 绿色防控 农技 植保", "priority_score": 258, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0558", "crop": "油菜", "target": "蓟马", "task_type": "biological_control", "query": "油菜 蓟马 生物防治 绿色防控 农技 植保", "priority_score": 258, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0559", "crop": "花椰菜", "target": "灰霉病", "task_type": "occurrence_condition", "query": "花椰菜 灰霉病 发生条件 发病原因 农技 植保", "priority_score": 258, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0560", "crop": "花椰菜", "target": "炭疽病", "task_type": "occurrence_condition", "query": "花椰菜 炭疽病 发生条件 发病原因 农技 植保", "priority_score": 258, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0561", "crop": "花椰菜", "target": "白锈病", "task_type": "occurrence_condition", "query": "花椰菜 白锈病 发生条件 发病原因 农技 植保", "priority_score": 258, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0562", "crop": "花椰菜", "target": "菜螟", "task_type": "occurrence_condition", "query": "花椰菜 菜螟 发生条件 发病原因 农技 植保", "priority_score": 258, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0563", "crop": "花椰菜", "target": "黑腐病", "task_type": "biological_control", "query": "花椰菜 黑腐病 生物防治 绿色防控 农技 植保", "priority_score": 258, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0564", "crop": "萝卜", "target": "根肿病", "task_type": "biological_control", "query": "萝卜 根肿病 生物防治 绿色防控 农技 植保", "priority_score": 258, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0565", "crop": "小白菜", "target": "菜青虫", "task_type": "biological_control", "query": "小白菜 菜青虫 生物防治 绿色防控 农技 植保", "priority_score": 257, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0566", "crop": "油菜", "target": "小菜蛾", "task_type": "control_timing", "query": "油菜 小菜蛾 防治时期 最佳时间 农技 植保", "priority_score": 257, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0567", "crop": "芥菜", "target": "甜菜夜蛾", "task_type": "biological_control", "query": "芥菜 甜菜夜蛾 生物防治 绿色防控 农技 植保", "priority_score": 257, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0568", "crop": "芥菜", "target": "病毒病", "task_type": "chemical_control", "query": "芥菜 病毒病 药剂防治 用药技术 农技 植保", "priority_score": 257, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0569", "crop": "花椰菜", "target": "甜菜夜蛾", "task_type": "biological_control", "query": "花椰菜 甜菜夜蛾 生物防治 绿色防控 农技 植保", "priority_score": 257, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0570", "crop": "大白菜", "target": "地蛆", "task_type": "chemical_control", "query": "大白菜 地蛆 药剂防治 用药技术 农技 植保", "priority_score": 256, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0571", "crop": "小白菜", "target": "地蛆", "task_type": "agronomic_control", "query": "小白菜 地蛆 农业防治 田间管理 农技 植保", "priority_score": 256, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0572", "crop": "小白菜", "target": "灰霉病", "task_type": "agronomic_control", "query": "小白菜 灰霉病 农业防治 田间管理 农技 植保", "priority_score": 256, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0573", "crop": "小白菜", "target": "白锈病", "task_type": "agronomic_control", "query": "小白菜 白锈病 农业防治 田间管理 农技 植保", "priority_score": 256, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0574", "crop": "小白菜", "target": "菜螟", "task_type": "agronomic_control", "query": "小白菜 菜螟 农业防治 田间管理 农技 植保", "priority_score": 256, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0575", "crop": "油菜", "target": "地蛆", "task_type": "chemical_control", "query": "油菜 地蛆 药剂防治 用药技术 农技 植保", "priority_score": 256, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0576", "crop": "油菜", "target": "菜螟", "task_type": "chemical_control", "query": "油菜 菜螟 药剂防治 用药技术 农技 植保", "priority_score": 256, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0577", "crop": "油菜", "target": "黄曲条跳甲", "task_type": "control_timing", "query": "油菜 黄曲条跳甲 防治时期 最佳时间 农技 植保", "priority_score": 256, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0578", "crop": "甘蓝", "target": "菜螟", "task_type": "chemical_control", "query": "甘蓝 菜螟 药剂防治 用药技术 农技 植保", "priority_score": 256, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0579", "crop": "芥菜", "target": "病毒病", "task_type": "symptom_diagnosis", "query": "芥菜 病毒病 症状 识别 图片 农技 植保", "priority_score": 256, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0580", "crop": "萝卜", "target": "灰霉病", "task_type": "control_timing", "query": "萝卜 灰霉病 防治时期 最佳时间 农技 植保", "priority_score": 256, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0581", "crop": "萝卜", "target": "炭疽病", "task_type": "control_timing", "query": "萝卜 炭疽病 防治时期 最佳时间 农技 植保", "priority_score": 256, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0582", "crop": "萝卜", "target": "白锈病", "task_type": "control_timing", "query": "萝卜 白锈病 防治时期 最佳时间 农技 植保", "priority_score": 256, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0583", "crop": "萝卜", "target": "蚜虫", "task_type": "control_timing", "query": "萝卜 蚜虫 防治时期 最佳时间 农技 植保", "priority_score": 256, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0584", "crop": "青花菜", "target": "地蛆", "task_type": "occurrence_condition", "query": "青花菜 地蛆 发生条件 发病原因 农技 植保", "priority_score": 256, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0585", "crop": "青花菜", "target": "炭疽病", "task_type": "occurrence_condition", "query": "青花菜 炭疽病 发生条件 发病原因 农技 植保", "priority_score": 256, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0586", "crop": "小白菜", "target": "霜霉病", "task_type": "biological_control", "query": "小白菜 霜霉病 生物防治 绿色防控 农技 植保", "priority_score": 255, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0587", "crop": "油菜", "target": "霜霉病", "task_type": "biological_control", "query": "油菜 霜霉病 生物防治 绿色防控 农技 植保", "priority_score": 255, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0588", "crop": "甘蓝", "target": "地蛆", "task_type": "biological_control", "query": "甘蓝 地蛆 生物防治 绿色防控 农技 植保", "priority_score": 255, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0589", "crop": "甘蓝", "target": "灰霉病", "task_type": "symptom_diagnosis", "query": "甘蓝 灰霉病 症状 识别 图片 农技 植保", "priority_score": 255, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0590", "crop": "甘蓝", "target": "炭疽病", "task_type": "biological_control", "query": "甘蓝 炭疽病 生物防治 绿色防控 农技 植保", "priority_score": 255, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0591", "crop": "甘蓝", "target": "白锈病", "task_type": "biological_control", "query": "甘蓝 白锈病 生物防治 绿色防控 农技 植保", "priority_score": 255, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0592", "crop": "甘蓝", "target": "菜螟", "task_type": "biological_control", "query": "甘蓝 菜螟 生物防治 绿色防控 农技 植保", "priority_score": 255, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0593", "crop": "芥菜", "target": "地蛆", "task_type": "symptom_diagnosis", "query": "芥菜 地蛆 症状 识别 图片 农技 植保", "priority_score": 255, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0594", "crop": "芥菜", "target": "斜纹夜蛾", "task_type": "biological_control", "query": "芥菜 斜纹夜蛾 生物防治 绿色防控 农技 植保", "priority_score": 255, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0595", "crop": "芥菜", "target": "灰霉病", "task_type": "symptom_diagnosis", "query": "芥菜 灰霉病 症状 识别 图片 农技 植保", "priority_score": 255, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0596", "crop": "芥菜", "target": "炭疽病", "task_type": "symptom_diagnosis", "query": "芥菜 炭疽病 症状 识别 图片 农技 植保", "priority_score": 255, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0597", "crop": "芥菜", "target": "菜螟", "task_type": "symptom_diagnosis", "query": "芥菜 菜螟 症状 识别 图片 农技 植保", "priority_score": 255, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0598", "crop": "花椰菜", "target": "炭疽病", "task_type": "symptom_diagnosis", "query": "花椰菜 炭疽病 症状 识别 图片 农技 植保", "priority_score": 255, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0599", "crop": "萝卜", "target": "病毒病", "task_type": "biological_control", "query": "萝卜 病毒病 生物防治 绿色防控 农技 植保", "priority_score": 255, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0600", "crop": "萝卜", "target": "软腐病", "task_type": "biological_control", "query": "萝卜 软腐病 生物防治 绿色防控 农技 植保", "priority_score": 255, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0601", "crop": "芥菜", "target": "菌核病", "task_type": "chemical_control", "query": "芥菜 菌核病 药剂防治 用药技术 农技 植保", "priority_score": 254, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0602", "crop": "芥菜", "target": "软腐病", "task_type": "occurrence_condition", "query": "芥菜 软腐病 发生条件 发病原因 农技 植保", "priority_score": 254, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0603", "crop": "油菜", "target": "病毒病", "task_type": "control_timing", "query": "油菜 病毒病 防治时期 最佳时间 农技 植保", "priority_score": 253, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0604", "crop": "芥菜", "target": "蓟马", "task_type": "biological_control", "query": "芥菜 蓟马 生物防治 绿色防控 农技 植保", "priority_score": 253, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0605", "crop": "萝卜", "target": "黄曲条跳甲", "task_type": "biological_control", "query": "萝卜 黄曲条跳甲 生物防治 绿色防控 农技 植保", "priority_score": 253, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0606", "crop": "青花菜", "target": "斜纹夜蛾", "task_type": "biological_control", "query": "青花菜 斜纹夜蛾 生物防治 绿色防控 农技 植保", "priority_score": 253, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0607", "crop": "青花菜", "target": "白锈病", "task_type": "symptom_diagnosis", "query": "青花菜 白锈病 症状 识别 图片 农技 植保", "priority_score": 253, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0608", "crop": "小白菜", "target": "地蛆", "task_type": "control_timing", "query": "小白菜 地蛆 防治时期 最佳时间 农技 植保", "priority_score": 252, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0609", "crop": "小白菜", "target": "灰霉病", "task_type": "control_timing", "query": "小白菜 灰霉病 防治时期 最佳时间 农技 植保", "priority_score": 252, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0610", "crop": "小白菜", "target": "炭疽病", "task_type": "control_timing", "query": "小白菜 炭疽病 防治时期 最佳时间 农技 植保", "priority_score": 252, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0611", "crop": "小白菜", "target": "白锈病", "task_type": "control_timing", "query": "小白菜 白锈病 防治时期 最佳时间 农技 植保", "priority_score": 252, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0612", "crop": "小白菜", "target": "菜螟", "task_type": "control_timing", "query": "小白菜 菜螟 防治时期 最佳时间 农技 植保", "priority_score": 252, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0613", "crop": "油菜", "target": "霜霉病", "task_type": "control_timing", "query": "油菜 霜霉病 防治时期 最佳时间 农技 植保", "priority_score": 252, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0614", "crop": "油菜", "target": "黄曲条跳甲", "task_type": "occurrence_condition", "query": "油菜 黄曲条跳甲 发生条件 发病原因 农技 植保", "priority_score": 252, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0615", "crop": "萝卜", "target": "菜螟", "task_type": "occurrence_condition", "query": "萝卜 菜螟 发生条件 发病原因 农技 植保", "priority_score": 252, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0616", "crop": "大白菜", "target": "白锈病", "task_type": "agronomic_control", "query": "大白菜 白锈病 农业防治 田间管理 农技 植保", "priority_score": 251, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0617", "crop": "小白菜", "target": "软腐病", "task_type": "biological_control", "query": "小白菜 软腐病 生物防治 绿色防控 农技 植保", "priority_score": 251, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0618", "crop": "甘蓝", "target": "炭疽病", "task_type": "chemical_control", "query": "甘蓝 炭疽病 药剂防治 用药技术 农技 植保", "priority_score": 251, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0619", "crop": "芥菜", "target": "灰霉病", "task_type": "chemical_control", "query": "芥菜 灰霉病 药剂防治 用药技术 农技 植保", "priority_score": 251, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0620", "crop": "芥菜", "target": "炭疽病", "task_type": "chemical_control", "query": "芥菜 炭疽病 药剂防治 用药技术 农技 植保", "priority_score": 251, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0621", "crop": "芥菜", "target": "菜螟", "task_type": "chemical_control", "query": "芥菜 菜螟 药剂防治 用药技术 农技 植保", "priority_score": 251, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0622", "crop": "萝卜", "target": "菜青虫", "task_type": "biological_control", "query": "萝卜 菜青虫 生物防治 绿色防控 农技 植保", "priority_score": 251, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0623", "crop": "油菜", "target": "黄曲条跳甲", "task_type": "agronomic_control", "query": "油菜 黄曲条跳甲 农业防治 田间管理 农技 植保", "priority_score": 250, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0624", "crop": "油菜", "target": "黑斑病", "task_type": "agronomic_control", "query": "油菜 黑斑病 农业防治 田间管理 农技 植保", "priority_score": 250, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0625", "crop": "甘蓝", "target": "炭疽病", "task_type": "symptom_diagnosis", "query": "甘蓝 炭疽病 症状 识别 图片 农技 植保", "priority_score": 250, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0626", "crop": "芥菜", "target": "黄曲条跳甲", "task_type": "chemical_control", "query": "芥菜 黄曲条跳甲 药剂防治 用药技术 农技 植保", "priority_score": 250, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0627", "crop": "花椰菜", "target": "地蛆", "task_type": "biological_control", "query": "花椰菜 地蛆 生物防治 绿色防控 农技 植保", "priority_score": 250, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0628", "crop": "花椰菜", "target": "灰霉病", "task_type": "biological_control", "query": "花椰菜 灰霉病 生物防治 绿色防控 农技 植保", "priority_score": 250, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0629", "crop": "花椰菜", "target": "炭疽病", "task_type": "biological_control", "query": "花椰菜 炭疽病 生物防治 绿色防控 农技 植保", "priority_score": 250, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0630", "crop": "花椰菜", "target": "白锈病", "task_type": "biological_control", "query": "花椰菜 白锈病 生物防治 绿色防控 农技 植保", "priority_score": 250, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0631", "crop": "花椰菜", "target": "菜螟", "task_type": "biological_control", "query": "花椰菜 菜螟 生物防治 绿色防控 农技 植保", "priority_score": 250, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0632", "crop": "青花菜", "target": "甜菜夜蛾", "task_type": "biological_control", "query": "青花菜 甜菜夜蛾 生物防治 绿色防控 农技 植保", "priority_score": 250, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0633", "crop": "油菜", "target": "病毒病", "task_type": "occurrence_condition", "query": "油菜 病毒病 发生条件 发病原因 农技 植保", "priority_score": 249, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0634", "crop": "芥菜", "target": "菌核病", "task_type": "agronomic_control", "query": "芥菜 菌核病 农业防治 田间管理 农技 植保", "priority_score": 249, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0635", "crop": "萝卜", "target": "地蛆", "task_type": "symptom_diagnosis", "query": "萝卜 地蛆 症状 识别 图片 农技 植保", "priority_score": 249, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0636", "crop": "萝卜", "target": "灰霉病", "task_type": "symptom_diagnosis", "query": "萝卜 灰霉病 症状 识别 图片 农技 植保", "priority_score": 249, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0637", "crop": "萝卜", "target": "炭疽病", "task_type": "symptom_diagnosis", "query": "萝卜 炭疽病 症状 识别 图片 农技 植保", "priority_score": 249, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0638", "crop": "萝卜", "target": "菜螟", "task_type": "symptom_diagnosis", "query": "萝卜 菜螟 症状 识别 图片 农技 植保", "priority_score": 249, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0639", "crop": "青花菜", "target": "灰霉病", "task_type": "chemical_control", "query": "青花菜 灰霉病 药剂防治 用药技术 农技 植保", "priority_score": 249, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0640", "crop": "青花菜", "target": "白锈病", "task_type": "chemical_control", "query": "青花菜 白锈病 药剂防治 用药技术 农技 植保", "priority_score": 249, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0641", "crop": "小白菜", "target": "地蛆", "task_type": "occurrence_condition", "query": "小白菜 地蛆 发生条件 发病原因 农技 植保", "priority_score": 248, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0642", "crop": "小白菜", "target": "灰霉病", "task_type": "occurrence_condition", "query": "小白菜 灰霉病 发生条件 发病原因 农技 植保", "priority_score": 248, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0643", "crop": "小白菜", "target": "炭疽病", "task_type": "occurrence_condition", "query": "小白菜 炭疽病 发生条件 发病原因 农技 植保", "priority_score": 248, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0644", "crop": "小白菜", "target": "白锈病", "task_type": "occurrence_condition", "query": "小白菜 白锈病 发生条件 发病原因 农技 植保", "priority_score": 248, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0645", "crop": "小白菜", "target": "菜螟", "task_type": "occurrence_condition", "query": "小白菜 菜螟 发生条件 发病原因 农技 植保", "priority_score": 248, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0646", "crop": "芥菜", "target": "病毒病", "task_type": "control_timing", "query": "芥菜 病毒病 防治时期 最佳时间 农技 植保", "priority_score": 248, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0647", "crop": "青花菜", "target": "地蛆", "task_type": "biological_control", "query": "青花菜 地蛆 生物防治 绿色防控 农技 植保", "priority_score": 248, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0648", "crop": "青花菜", "target": "灰霉病", "task_type": "biological_control", "query": "青花菜 灰霉病 生物防治 绿色防控 农技 植保", "priority_score": 248, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0649", "crop": "油菜", "target": "蚜虫", "task_type": "control_timing", "query": "油菜 蚜虫 防治时期 最佳时间 农技 植保", "priority_score": 247, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0650", "crop": "油菜", "target": "黑斑病", "task_type": "occurrence_condition", "query": "油菜 黑斑病 发生条件 发病原因 农技 植保", "priority_score": 247, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0651", "crop": "芥菜", "target": "黄曲条跳甲", "task_type": "occurrence_condition", "query": "芥菜 黄曲条跳甲 发生条件 发病原因 农技 植保", "priority_score": 247, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0652", "crop": "大白菜", "target": "菜螟", "task_type": "chemical_control", "query": "大白菜 菜螟 药剂防治 用药技术 农技 植保", "priority_score": 246, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0653", "crop": "油菜", "target": "地蛆", "task_type": "agronomic_control", "query": "油菜 地蛆 农业防治 田间管理 农技 植保", "priority_score": 246, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0654", "crop": "油菜", "target": "灰霉病", "task_type": "agronomic_control", "query": "油菜 灰霉病 农业防治 田间管理 农技 植保", "priority_score": 246, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0655", "crop": "油菜", "target": "炭疽病", "task_type": "agronomic_control", "query": "油菜 炭疽病 农业防治 田间管理 农技 植保", "priority_score": 246, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0656", "crop": "油菜", "target": "菜螟", "task_type": "agronomic_control", "query": "油菜 菜螟 农业防治 田间管理 农技 植保", "priority_score": 246, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0657", "crop": "油菜", "target": "黑斑病", "task_type": "control_timing", "query": "油菜 黑斑病 防治时期 最佳时间 农技 植保", "priority_score": 246, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0658", "crop": "甘蓝", "target": "灰霉病", "task_type": "agronomic_control", "query": "甘蓝 灰霉病 农业防治 田间管理 农技 植保", "priority_score": 246, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0659", "crop": "甘蓝", "target": "炭疽病", "task_type": "agronomic_control", "query": "甘蓝 炭疽病 农业防治 田间管理 农技 植保", "priority_score": 246, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0660", "crop": "芥菜", "target": "斜纹夜蛾", "task_type": "chemical_control", "query": "芥菜 斜纹夜蛾 药剂防治 用药技术 农技 植保", "priority_score": 246, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0661", "crop": "花椰菜", "target": "地蛆", "task_type": "chemical_control", "query": "花椰菜 地蛆 药剂防治 用药技术 农技 植保", "priority_score": 246, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0662", "crop": "花椰菜", "target": "炭疽病", "task_type": "chemical_control", "query": "花椰菜 炭疽病 药剂防治 用药技术 农技 植保", "priority_score": 246, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0663", "crop": "小白菜", "target": "炭疽病", "task_type": "symptom_diagnosis", "query": "小白菜 炭疽病 症状 识别 图片 农技 植保", "priority_score": 245, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0664", "crop": "芥菜", "target": "病毒病", "task_type": "occurrence_condition", "query": "芥菜 病毒病 发生条件 发病原因 农技 植保", "priority_score": 244, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0665", "crop": "萝卜", "target": "地蛆", "task_type": "biological_control", "query": "萝卜 地蛆 生物防治 绿色防控 农技 植保", "priority_score": 244, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0666", "crop": "萝卜", "target": "灰霉病", "task_type": "biological_control", "query": "萝卜 灰霉病 生物防治 绿色防控 农技 植保", "priority_score": 244, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0667", "crop": "萝卜", "target": "白锈病", "task_type": "biological_control", "query": "萝卜 白锈病 生物防治 绿色防控 农技 植保", "priority_score": 244, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0668", "crop": "萝卜", "target": "白锈病", "task_type": "symptom_diagnosis", "query": "萝卜 白锈病 症状 识别 图片 农技 植保", "priority_score": 244, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0669", "crop": "青花菜", "target": "菜螟", "task_type": "chemical_control", "query": "青花菜 菜螟 药剂防治 用药技术 农技 植保", "priority_score": 244, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0670", "crop": "青花菜", "target": "炭疽病", "task_type": "symptom_diagnosis", "query": "青花菜 炭疽病 症状 识别 图片 农技 植保", "priority_score": 243, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0671", "crop": "油菜", "target": "地蛆", "task_type": "control_timing", "query": "油菜 地蛆 防治时期 最佳时间 农技 植保", "priority_score": 242, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0672", "crop": "油菜", "target": "灰霉病", "task_type": "control_timing", "query": "油菜 灰霉病 防治时期 最佳时间 农技 植保", "priority_score": 242, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0673", "crop": "油菜", "target": "炭疽病", "task_type": "control_timing", "query": "油菜 炭疽病 防治时期 最佳时间 农技 植保", "priority_score": 242, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0674", "crop": "油菜", "target": "菜螟", "task_type": "control_timing", "query": "油菜 菜螟 防治时期 最佳时间 农技 植保", "priority_score": 242, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0675", "crop": "芥菜", "target": "地蛆", "task_type": "agronomic_control", "query": "芥菜 地蛆 农业防治 田间管理 农技 植保", "priority_score": 241, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0676", "crop": "芥菜", "target": "灰霉病", "task_type": "agronomic_control", "query": "芥菜 灰霉病 农业防治 田间管理 农技 植保", "priority_score": 241, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0677", "crop": "芥菜", "target": "炭疽病", "task_type": "agronomic_control", "query": "芥菜 炭疽病 农业防治 田间管理 农技 植保", "priority_score": 241, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0678", "crop": "芥菜", "target": "白锈病", "task_type": "agronomic_control", "query": "芥菜 白锈病 农业防治 田间管理 农技 植保", "priority_score": 241, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0679", "crop": "芥菜", "target": "菜螟", "task_type": "agronomic_control", "query": "芥菜 菜螟 农业防治 田间管理 农技 植保", "priority_score": 241, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0680", "crop": "花椰菜", "target": "灰霉病", "task_type": "chemical_control", "query": "花椰菜 灰霉病 药剂防治 用药技术 农技 植保", "priority_score": 241, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0681", "crop": "小白菜", "target": "地蛆", "task_type": "biological_control", "query": "小白菜 地蛆 生物防治 绿色防控 农技 植保", "priority_score": 240, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0682", "crop": "小白菜", "target": "灰霉病", "task_type": "symptom_diagnosis", "query": "小白菜 灰霉病 症状 识别 图片 农技 植保", "priority_score": 240, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0683", "crop": "小白菜", "target": "炭疽病", "task_type": "biological_control", "query": "小白菜 炭疽病 生物防治 绿色防控 农技 植保", "priority_score": 240, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0684", "crop": "小白菜", "target": "白锈病", "task_type": "biological_control", "query": "小白菜 白锈病 生物防治 绿色防控 农技 植保", "priority_score": 240, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0685", "crop": "小白菜", "target": "白锈病", "task_type": "symptom_diagnosis", "query": "小白菜 白锈病 症状 识别 图片 农技 植保", "priority_score": 240, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0686", "crop": "小白菜", "target": "菜螟", "task_type": "biological_control", "query": "小白菜 菜螟 生物防治 绿色防控 农技 植保", "priority_score": 240, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0687", "crop": "萝卜", "target": "灰霉病", "task_type": "chemical_control", "query": "萝卜 灰霉病 药剂防治 用药技术 农技 植保", "priority_score": 240, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0688", "crop": "油菜", "target": "黑斑病", "task_type": "biological_control", "query": "油菜 黑斑病 生物防治 绿色防控 农技 植保", "priority_score": 239, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0689", "crop": "青花菜", "target": "炭疽病", "task_type": "chemical_control", "query": "青花菜 炭疽病 药剂防治 用药技术 农技 植保", "priority_score": 239, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0690", "crop": "青花菜", "target": "白锈病", "task_type": "agronomic_control", "query": "青花菜 白锈病 农业防治 田间管理 农技 植保", "priority_score": 239, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0691", "crop": "油菜", "target": "地蛆", "task_type": "occurrence_condition", "query": "油菜 地蛆 发生条件 发病原因 农技 植保", "priority_score": 238, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0692", "crop": "油菜", "target": "灰霉病", "task_type": "occurrence_condition", "query": "油菜 灰霉病 发生条件 发病原因 农技 植保", "priority_score": 238, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0693", "crop": "油菜", "target": "炭疽病", "task_type": "occurrence_condition", "query": "油菜 炭疽病 发生条件 发病原因 农技 植保", "priority_score": 238, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0694", "crop": "油菜", "target": "菜螟", "task_type": "occurrence_condition", "query": "油菜 菜螟 发生条件 发病原因 农技 植保", "priority_score": 238, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0695", "crop": "油菜", "target": "蚜虫", "task_type": "occurrence_condition", "query": "油菜 蚜虫 发生条件 发病原因 农技 植保", "priority_score": 238, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0696", "crop": "甘蓝", "target": "灰霉病", "task_type": "occurrence_condition", "query": "甘蓝 灰霉病 发生条件 发病原因 农技 植保", "priority_score": 238, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0697", "crop": "芥菜", "target": "菌核病", "task_type": "biological_control", "query": "芥菜 菌核病 生物防治 绿色防控 农技 植保", "priority_score": 238, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0698", "crop": "萝卜", "target": "黑斑病", "task_type": "biological_control", "query": "萝卜 黑斑病 生物防治 绿色防控 农技 植保", "priority_score": 238, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0699", "crop": "青花菜", "target": "灰霉病", "task_type": "symptom_diagnosis", "query": "青花菜 灰霉病 症状 识别 图片 农技 植保", "priority_score": 238, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0700", "crop": "芥菜", "target": "地蛆", "task_type": "control_timing", "query": "芥菜 地蛆 防治时期 最佳时间 农技 植保", "priority_score": 237, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0701", "crop": "芥菜", "target": "灰霉病", "task_type": "control_timing", "query": "芥菜 灰霉病 防治时期 最佳时间 农技 植保", "priority_score": 237, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0702", "crop": "芥菜", "target": "炭疽病", "task_type": "control_timing", "query": "芥菜 炭疽病 防治时期 最佳时间 农技 植保", "priority_score": 237, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0703", "crop": "芥菜", "target": "白锈病", "task_type": "control_timing", "query": "芥菜 白锈病 防治时期 最佳时间 农技 植保", "priority_score": 237, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0704", "crop": "芥菜", "target": "菜螟", "task_type": "control_timing", "query": "芥菜 菜螟 防治时期 最佳时间 农技 植保", "priority_score": 237, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0705", "crop": "小白菜", "target": "灰霉病", "task_type": "chemical_control", "query": "小白菜 灰霉病 药剂防治 用药技术 农技 植保", "priority_score": 236, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0706", "crop": "大白菜", "target": "白锈病", "task_type": "biological_control", "query": "大白菜 白锈病 生物防治 绿色防控 农技 植保", "priority_score": 235, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0707", "crop": "油菜", "target": "炭疽病", "task_type": "symptom_diagnosis", "query": "油菜 炭疽病 症状 识别 图片 农技 植保", "priority_score": 235, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0708", "crop": "萝卜", "target": "灰霉病", "task_type": "agronomic_control", "query": "萝卜 灰霉病 农业防治 田间管理 农技 植保", "priority_score": 235, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0709", "crop": "萝卜", "target": "炭疽病", "task_type": "agronomic_control", "query": "萝卜 炭疽病 农业防治 田间管理 农技 植保", "priority_score": 235, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0710", "crop": "萝卜", "target": "炭疽病", "task_type": "chemical_control", "query": "萝卜 炭疽病 药剂防治 用药技术 农技 植保", "priority_score": 235, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0711", "crop": "萝卜", "target": "白锈病", "task_type": "chemical_control", "query": "萝卜 白锈病 药剂防治 用药技术 农技 植保", "priority_score": 235, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0712", "crop": "芥菜", "target": "地蛆", "task_type": "occurrence_condition", "query": "芥菜 地蛆 发生条件 发病原因 农技 植保", "priority_score": 233, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0713", "crop": "芥菜", "target": "灰霉病", "task_type": "occurrence_condition", "query": "芥菜 灰霉病 发生条件 发病原因 农技 植保", "priority_score": 233, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0714", "crop": "芥菜", "target": "炭疽病", "task_type": "occurrence_condition", "query": "芥菜 炭疽病 发生条件 发病原因 农技 植保", "priority_score": 233, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0715", "crop": "芥菜", "target": "白锈病", "task_type": "occurrence_condition", "query": "芥菜 白锈病 发生条件 发病原因 农技 植保", "priority_score": 233, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0716", "crop": "芥菜", "target": "菜螟", "task_type": "occurrence_condition", "query": "芥菜 菜螟 发生条件 发病原因 农技 植保", "priority_score": 233, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0717", "crop": "花椰菜", "target": "地蛆", "task_type": "occurrence_condition", "query": "花椰菜 地蛆 发生条件 发病原因 农技 植保", "priority_score": 233, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0718", "crop": "大白菜", "target": "炭疽病", "task_type": "control_timing", "query": "大白菜 炭疽病 防治时期 最佳时间 农技 植保", "priority_score": 232, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0719", "crop": "小白菜", "target": "白锈病", "task_type": "chemical_control", "query": "小白菜 白锈病 药剂防治 用药技术 农技 植保", "priority_score": 231, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0720", "crop": "油菜", "target": "灰霉病", "task_type": "chemical_control", "query": "油菜 灰霉病 药剂防治 用药技术 农技 植保", "priority_score": 231, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0721", "crop": "萝卜", "target": "菜螟", "task_type": "control_timing", "query": "萝卜 菜螟 防治时期 最佳时间 农技 植保", "priority_score": 231, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0722", "crop": "青花菜", "target": "灰霉病", "task_type": "occurrence_condition", "query": "青花菜 灰霉病 发生条件 发病原因 农技 植保", "priority_score": 231, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0723", "crop": "青花菜", "target": "白锈病", "task_type": "occurrence_condition", "query": "青花菜 白锈病 发生条件 发病原因 农技 植保", "priority_score": 231, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0724", "crop": "青花菜", "target": "菜螟", "task_type": "occurrence_condition", "query": "青花菜 菜螟 发生条件 发病原因 农技 植保", "priority_score": 231, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0725", "crop": "大白菜", "target": "灰霉病", "task_type": "biological_control", "query": "大白菜 灰霉病 生物防治 绿色防控 农技 植保", "priority_score": 230, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0726", "crop": "大白菜", "target": "炭疽病", "task_type": "biological_control", "query": "大白菜 炭疽病 生物防治 绿色防控 农技 植保", "priority_score": 230, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0727", "crop": "油菜", "target": "地蛆", "task_type": "biological_control", "query": "油菜 地蛆 生物防治 绿色防控 农技 植保", "priority_score": 230, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0728", "crop": "油菜", "target": "灰霉病", "task_type": "biological_control", "query": "油菜 灰霉病 生物防治 绿色防控 农技 植保", "priority_score": 230, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0729", "crop": "油菜", "target": "炭疽病", "task_type": "biological_control", "query": "油菜 炭疽病 生物防治 绿色防控 农技 植保", "priority_score": 230, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0730", "crop": "油菜", "target": "菜螟", "task_type": "biological_control", "query": "油菜 菜螟 生物防治 绿色防控 农技 植保", "priority_score": 230, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0731", "crop": "甘蓝", "target": "灰霉病", "task_type": "biological_control", "query": "甘蓝 灰霉病 生物防治 绿色防控 农技 植保", "priority_score": 230, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0732", "crop": "芥菜", "target": "白锈病", "task_type": "symptom_diagnosis", "query": "芥菜 白锈病 症状 识别 图片 农技 植保", "priority_score": 230, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0733", "crop": "萝卜", "target": "地蛆", "task_type": "agronomic_control", "query": "萝卜 地蛆 农业防治 田间管理 农技 植保", "priority_score": 230, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0734", "crop": "萝卜", "target": "菜螟", "task_type": "agronomic_control", "query": "萝卜 菜螟 农业防治 田间管理 农技 植保", "priority_score": 230, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0735", "crop": "萝卜", "target": "菜螟", "task_type": "chemical_control", "query": "萝卜 菜螟 药剂防治 用药技术 农技 植保", "priority_score": 230, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0736", "crop": "萝卜", "target": "灰霉病", "task_type": "occurrence_condition", "query": "萝卜 灰霉病 发生条件 发病原因 农技 植保", "priority_score": 227, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0737", "crop": "萝卜", "target": "炭疽病", "task_type": "occurrence_condition", "query": "萝卜 炭疽病 发生条件 发病原因 农技 植保", "priority_score": 227, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0738", "crop": "小白菜", "target": "炭疽病", "task_type": "agronomic_control", "query": "小白菜 炭疽病 农业防治 田间管理 农技 植保", "priority_score": 226, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0739", "crop": "小白菜", "target": "炭疽病", "task_type": "chemical_control", "query": "小白菜 炭疽病 药剂防治 用药技术 农技 植保", "priority_score": 226, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0740", "crop": "油菜", "target": "炭疽病", "task_type": "chemical_control", "query": "油菜 炭疽病 药剂防治 用药技术 农技 植保", "priority_score": 226, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0741", "crop": "芥菜", "target": "地蛆", "task_type": "chemical_control", "query": "芥菜 地蛆 药剂防治 用药技术 农技 植保", "priority_score": 226, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0742", "crop": "芥菜", "target": "白锈病", "task_type": "chemical_control", "query": "芥菜 白锈病 药剂防治 用药技术 农技 植保", "priority_score": 226, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0743", "crop": "萝卜", "target": "地蛆", "task_type": "control_timing", "query": "萝卜 地蛆 防治时期 最佳时间 农技 植保", "priority_score": 226, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0744", "crop": "芥菜", "target": "地蛆", "task_type": "biological_control", "query": "芥菜 地蛆 生物防治 绿色防控 农技 植保", "priority_score": 225, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0745", "crop": "芥菜", "target": "灰霉病", "task_type": "biological_control", "query": "芥菜 灰霉病 生物防治 绿色防控 农技 植保", "priority_score": 225, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0746", "crop": "芥菜", "target": "炭疽病", "task_type": "biological_control", "query": "芥菜 炭疽病 生物防治 绿色防控 农技 植保", "priority_score": 225, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0747", "crop": "芥菜", "target": "白锈病", "task_type": "biological_control", "query": "芥菜 白锈病 生物防治 绿色防控 农技 植保", "priority_score": 225, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0748", "crop": "芥菜", "target": "菜螟", "task_type": "biological_control", "query": "芥菜 菜螟 生物防治 绿色防控 农技 植保", "priority_score": 225, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0749", "crop": "萝卜", "target": "白锈病", "task_type": "agronomic_control", "query": "萝卜 白锈病 农业防治 田间管理 农技 植保", "priority_score": 225, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0750", "crop": "青花菜", "target": "炭疽病", "task_type": "biological_control", "query": "青花菜 炭疽病 生物防治 绿色防控 农技 植保", "priority_score": 223, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0751", "crop": "青花菜", "target": "白锈病", "task_type": "biological_control", "query": "青花菜 白锈病 生物防治 绿色防控 农技 植保", "priority_score": 223, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0752", "crop": "青花菜", "target": "菜螟", "task_type": "biological_control", "query": "青花菜 菜螟 生物防治 绿色防控 农技 植保", "priority_score": 223, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0753", "crop": "萝卜", "target": "地蛆", "task_type": "occurrence_condition", "query": "萝卜 地蛆 发生条件 发病原因 农技 植保", "priority_score": 222, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0754", "crop": "萝卜", "target": "白锈病", "task_type": "occurrence_condition", "query": "萝卜 白锈病 发生条件 发病原因 农技 植保", "priority_score": 222, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0755", "crop": "油菜", "target": "白锈病", "task_type": "symptom_diagnosis", "query": "油菜 白锈病 症状 识别 图片 农技 植保", "priority_score": 220, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0756", "crop": "萝卜", "target": "炭疽病", "task_type": "biological_control", "query": "萝卜 炭疽病 生物防治 绿色防控 农技 植保", "priority_score": 219, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0757", "crop": "萝卜", "target": "菜螟", "task_type": "biological_control", "query": "萝卜 菜螟 生物防治 绿色防控 农技 植保", "priority_score": 219, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0758", "crop": "油菜", "target": "白锈病", "task_type": "occurrence_condition", "query": "油菜 白锈病 发生条件 发病原因 农技 植保", "priority_score": 213, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0759", "crop": "油菜", "target": "白锈病", "task_type": "control_timing", "query": "油菜 白锈病 防治时期 最佳时间 农技 植保", "priority_score": 212, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0760", "crop": "小白菜", "target": "灰霉病", "task_type": "biological_control", "query": "小白菜 灰霉病 生物防治 绿色防控 农技 植保", "priority_score": 210, "source_policy": "prefer_authoritative_sources"}
+{"id": "gap-0761", "crop": "油菜", "target": "白锈病", "task_type": "biological_control", "query": "油菜 白锈病 生物防治 绿色防控 农技 植保", "priority_score": 200, "source_policy": "prefer_authoritative_sources"}

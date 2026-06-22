@@ -1,0 +1,15 @@
+{
+  "input": "evidence_cache\\scored\\usable_evidence.jsonl",
+  "output": "synthetic_qa\\generated_qa_raw_v2.jsonl",
+  "train_output": "synthetic_qa\\generated_qa_train_v2.jsonl",
+  "processed": 14,
+  "skipped": 682,
+  "errors": 0,
+  "train_rows_written": 40,
+  "total_requested": 696,
+  "dry_run": false,
+  "model": "deepseek-ai/DeepSeek-V4-Flash",
+  "workers_requested": 8,
+  "workers_final": 8,
+  "rate_limit_reduced": false
+}

@@ -1,0 +1,121 @@
+﻿crop,target,task_type,current_count,min_count,gap_level,priority_score,query
+甘蓝,根肿病,symptom_diagnosis,0,3,empty,329,甘蓝 根肿病 症状 识别 图片 农技推广 植保站 农科院 农业农村
+青花菜,根肿病,symptom_diagnosis,0,3,empty,322,青花菜 根肿病 症状 识别 图片 农技推广 植保站 农科院 农业农村
+甘蓝,根肿病,safety_correction,0,3,empty,321,甘蓝 根肿病 安全用药 注意事项 禁用 农技推广 植保站 农科院 农业农村
+大白菜,蓟马,symptom_diagnosis,0,3,empty,318,大白菜 蓟马 症状 识别 图片 农技推广 植保站 农科院 农业农村
+小白菜,黑腐病,symptom_diagnosis,0,3,empty,318,小白菜 黑腐病 症状 识别 图片 农技推广 植保站 农科院 农业农村
+花椰菜,软腐病,safety_correction,0,3,empty,318,花椰菜 软腐病 安全用药 注意事项 禁用 农技推广 植保站 农科院 农业农村
+甘蓝,甜菜夜蛾,symptom_diagnosis,0,3,empty,317,甘蓝 甜菜夜蛾 症状 识别 图片 农技推广 植保站 农科院 农业农村
+甘蓝,霜霉病,control_timing,0,3,empty,317,甘蓝 霜霉病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+甘蓝,黄曲条跳甲,safety_correction,0,3,empty,316,甘蓝 黄曲条跳甲 安全用药 注意事项 禁用 农技推广 植保站 农科院 农业农村
+花椰菜,病毒病,symptom_diagnosis,0,3,empty,316,花椰菜 病毒病 症状 识别 图片 农技推广 植保站 农科院 农业农村
+甘蓝,斜纹夜蛾,symptom_diagnosis,0,3,empty,315,甘蓝 斜纹夜蛾 症状 识别 图片 农技推广 植保站 农科院 农业农村
+甘蓝,黑腐病,control_timing,0,3,empty,315,甘蓝 黑腐病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+青花菜,根肿病,safety_correction,0,3,empty,314,青花菜 根肿病 安全用药 注意事项 禁用 农技推广 植保站 农科院 农业农村
+甘蓝,蓟马,symptom_diagnosis,0,3,empty,313,甘蓝 蓟马 症状 识别 图片 农技推广 植保站 农科院 农业农村
+甘蓝,软腐病,control_timing,0,3,empty,313,甘蓝 软腐病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+甘蓝,霜霉病,occurrence_condition,0,3,empty,313,甘蓝 霜霉病 发生条件 发病原因 农技推广 植保站 农科院 农业农村
+甘蓝,小菜蛾,control_timing,0,3,empty,312,甘蓝 小菜蛾 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+花椰菜,霜霉病,control_timing,0,3,empty,312,花椰菜 霜霉病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+甘蓝,根肿病,control_timing,0,3,empty,311,甘蓝 根肿病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+大白菜,菌核病,control_timing,0,3,empty,310,大白菜 菌核病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+甘蓝,黄曲条跳甲,agronomic_control,0,3,empty,310,甘蓝 黄曲条跳甲 农业防治 田间管理 农技推广 植保站 农科院 农业农村
+花椰菜,菌核病,safety_correction,0,3,empty,310,花椰菜 菌核病 安全用药 注意事项 禁用 农技推广 植保站 农科院 农业农村
+花椰菜,黑腐病,control_timing,0,3,empty,310,花椰菜 黑腐病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+甘蓝,蓟马,chemical_control,0,3,empty,309,甘蓝 蓟马 药剂防治 安全用药 农技推广 植保站 农科院 农业农村
+花椰菜,软腐病,control_timing,0,3,empty,308,花椰菜 软腐病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+花椰菜,霜霉病,occurrence_condition,0,3,empty,308,花椰菜 霜霉病 发生条件 发病原因 农技推广 植保站 农科院 农业农村
+青花菜,根肿病,agronomic_control,0,3,empty,308,青花菜 根肿病 农业防治 田间管理 农技推广 植保站 农科院 农业农村
+甘蓝,蚜虫,control_timing,0,3,empty,307,甘蓝 蚜虫 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+小白菜,根肿病,safety_correction,0,3,empty,306,小白菜 根肿病 安全用药 注意事项 禁用 农技推广 植保站 农科院 农业农村
+小白菜,病毒病,symptom_diagnosis,0,3,empty,306,小白菜 病毒病 症状 识别 图片 农技推广 植保站 农科院 农业农村
+甘蓝,黄曲条跳甲,control_timing,0,3,empty,306,甘蓝 黄曲条跳甲 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+花椰菜,根肿病,control_timing,0,3,empty,306,花椰菜 根肿病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+花椰菜,蚜虫,agronomic_control,0,3,empty,306,花椰菜 蚜虫 农业防治 田间管理 农技推广 植保站 农科院 农业农村
+青花菜,病毒病,safety_correction,0,3,empty,306,青花菜 病毒病 安全用药 注意事项 禁用 农技推广 植保站 农科院 农业农村
+青花菜,蓟马,symptom_diagnosis,0,3,empty,306,青花菜 蓟马 症状 识别 图片 农技推广 植保站 农科院 农业农村
+甘蓝,蓟马,safety_correction,0,3,empty,305,甘蓝 蓟马 安全用药 注意事项 禁用 农技推广 植保站 农科院 农业农村
+青花菜,小菜蛾,control_timing,0,3,empty,305,青花菜 小菜蛾 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+大白菜,蓟马,agronomic_control,0,3,empty,304,大白菜 蓟马 农业防治 田间管理 农技推广 植保站 农科院 农业农村
+油菜,黑腐病,chemical_control,0,3,empty,304,油菜 黑腐病 药剂防治 安全用药 农技推广 植保站 农科院 农业农村
+花椰菜,菜青虫,control_timing,0,3,empty,304,花椰菜 菜青虫 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+萝卜,菌核病,safety_correction,0,3,empty,304,萝卜 菌核病 安全用药 注意事项 禁用 农技推广 植保站 农科院 农业农村
+青花菜,根肿病,control_timing,0,3,empty,304,青花菜 根肿病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+甘蓝,病毒病,control_timing,0,3,empty,303,甘蓝 病毒病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+花椰菜,小菜蛾,occurrence_condition,0,3,empty,303,花椰菜 小菜蛾 发生条件 发病原因 农技推广 植保站 农科院 农业农村
+青花菜,黄曲条跳甲,agronomic_control,0,3,empty,303,青花菜 黄曲条跳甲 农业防治 田间管理 农技推广 植保站 农科院 农业农村
+小白菜,甜菜夜蛾,symptom_diagnosis,0,3,empty,302,小白菜 甜菜夜蛾 症状 识别 图片 农技推广 植保站 农科院 农业农村
+甘蓝,黄曲条跳甲,occurrence_condition,0,3,empty,302,甘蓝 黄曲条跳甲 发生条件 发病原因 农技推广 植保站 农科院 农业农村
+花椰菜,根肿病,occurrence_condition,0,3,empty,302,花椰菜 根肿病 发生条件 发病原因 农技推广 植保站 农科院 农业农村
+花椰菜,病毒病,agronomic_control,0,3,empty,302,花椰菜 病毒病 农业防治 田间管理 农技推广 植保站 农科院 农业农村
+花椰菜,蚜虫,control_timing,0,3,empty,302,花椰菜 蚜虫 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+萝卜,蓟马,symptom_diagnosis,0,3,empty,302,萝卜 蓟马 症状 识别 图片 农技推广 植保站 农科院 农业农村
+青花菜,蓟马,chemical_control,0,3,empty,302,青花菜 蓟马 药剂防治 安全用药 农技推广 植保站 农科院 农业农村
+小白菜,小菜蛾,agronomic_control,0,3,empty,301,小白菜 小菜蛾 农业防治 田间管理 农技推广 植保站 农科院 农业农村
+甘蓝,菌核病,occurrence_condition,0,3,empty,301,甘蓝 菌核病 发生条件 发病原因 农技推广 植保站 农科院 农业农村
+甘蓝,黑斑病,control_timing,0,3,empty,301,甘蓝 黑斑病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+萝卜,小菜蛾,control_timing,0,3,empty,301,萝卜 小菜蛾 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+大白菜,甜菜夜蛾,occurrence_condition,0,3,empty,300,大白菜 甜菜夜蛾 发生条件 发病原因 农技推广 植保站 农科院 农业农村
+大白菜,蓟马,control_timing,0,3,empty,300,大白菜 蓟马 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+小白菜,斜纹夜蛾,symptom_diagnosis,0,3,empty,300,小白菜 斜纹夜蛾 症状 识别 图片 农技推广 植保站 农科院 农业农村
+小白菜,黑腐病,control_timing,0,3,empty,300,小白菜 黑腐病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+油菜,黑腐病,safety_correction,0,3,empty,300,油菜 黑腐病 安全用药 注意事项 禁用 农技推广 植保站 农科院 农业农村
+芥菜,小菜蛾,symptom_diagnosis,0,3,empty,300,芥菜 小菜蛾 症状 识别 图片 农技推广 植保站 农科院 农业农村
+花椰菜,菌核病,control_timing,0,3,empty,300,花椰菜 菌核病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+花椰菜,菜青虫,occurrence_condition,0,3,empty,300,花椰菜 菜青虫 发生条件 发病原因 农技推广 植保站 农科院 农业农村
+花椰菜,蓟马,safety_correction,0,3,empty,300,花椰菜 蓟马 安全用药 注意事项 禁用 农技推广 植保站 农科院 农业农村
+萝卜,根肿病,control_timing,0,3,empty,300,萝卜 根肿病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+青花菜,根肿病,occurrence_condition,0,3,empty,300,青花菜 根肿病 发生条件 发病原因 农技推广 植保站 农科院 农业农村
+甘蓝,根肿病,biological_control,0,3,empty,299,甘蓝 根肿病 生物防治 绿色防控 农技推广 植保站 农科院 农业农村
+甘蓝,蓟马,agronomic_control,0,3,empty,299,甘蓝 蓟马 农业防治 田间管理 农技推广 植保站 农科院 农业农村
+甘蓝,黄曲条跳甲,symptom_diagnosis,1,3,thin,299,甘蓝 黄曲条跳甲 症状 识别 图片 农技推广 植保站 农科院 农业农村
+芥菜,根肿病,symptom_diagnosis,0,3,empty,299,芥菜 根肿病 症状 识别 图片 农技推广 植保站 农科院 农业农村
+花椰菜,根肿病,symptom_diagnosis,1,3,thin,299,花椰菜 根肿病 症状 识别 图片 农技推广 植保站 农科院 农业农村
+大白菜,斜纹夜蛾,occurrence_condition,0,3,empty,298,大白菜 斜纹夜蛾 发生条件 发病原因 农技推广 植保站 农科院 农业农村
+大白菜,菌核病,biological_control,0,3,empty,298,大白菜 菌核病 生物防治 绿色防控 农技推广 植保站 农科院 农业农村
+大白菜,菌核病,symptom_diagnosis,2,3,thin,298,大白菜 菌核病 症状 识别 图片 农技推广 植保站 农科院 农业农村
+小白菜,甜菜夜蛾,chemical_control,0,3,empty,298,小白菜 甜菜夜蛾 药剂防治 安全用药 农技推广 植保站 农科院 农业农村
+小白菜,蓟马,symptom_diagnosis,0,3,empty,298,小白菜 蓟马 症状 识别 图片 农技推广 植保站 农科院 农业农村
+小白菜,软腐病,control_timing,0,3,empty,298,小白菜 软腐病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+花椰菜,病毒病,control_timing,0,3,empty,298,花椰菜 病毒病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+花椰菜,蚜虫,occurrence_condition,0,3,empty,298,花椰菜 蚜虫 发生条件 发病原因 农技推广 植保站 农科院 农业农村
+萝卜,甜菜夜蛾,safety_correction,0,3,empty,298,萝卜 甜菜夜蛾 安全用药 注意事项 禁用 农技推广 植保站 农科院 农业农村
+萝卜,蓟马,chemical_control,0,3,empty,298,萝卜 蓟马 药剂防治 安全用药 农技推广 植保站 农科院 农业农村
+青花菜,菌核病,control_timing,0,3,empty,298,青花菜 菌核病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+青花菜,蓟马,safety_correction,0,3,empty,298,青花菜 蓟马 安全用药 注意事项 禁用 农技推广 植保站 农科院 农业农村
+小白菜,小菜蛾,control_timing,0,3,empty,297,小白菜 小菜蛾 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+甘蓝,斜纹夜蛾,control_timing,0,3,empty,297,甘蓝 斜纹夜蛾 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+芥菜,菜青虫,symptom_diagnosis,0,3,empty,297,芥菜 菜青虫 症状 识别 图片 农技推广 植保站 农科院 农业农村
+花椰菜,霜霉病,safety_correction,1,3,thin,297,花椰菜 霜霉病 安全用药 注意事项 禁用 农技推广 植保站 农科院 农业农村
+花椰菜,黄曲条跳甲,occurrence_condition,0,3,empty,297,花椰菜 黄曲条跳甲 发生条件 发病原因 农技推广 植保站 农科院 农业农村
+萝卜,小菜蛾,occurrence_condition,0,3,empty,297,萝卜 小菜蛾 发生条件 发病原因 农技推广 植保站 农科院 农业农村
+大白菜,小菜蛾,agronomic_control,1,3,thin,296,大白菜 小菜蛾 农业防治 田间管理 农技推广 植保站 农科院 农业农村
+大白菜,蓟马,occurrence_condition,0,3,empty,296,大白菜 蓟马 发生条件 发病原因 农技推广 植保站 农科院 农业农村
+小白菜,根肿病,control_timing,0,3,empty,296,小白菜 根肿病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+花椰菜,斜纹夜蛾,agronomic_control,0,3,empty,296,花椰菜 斜纹夜蛾 农业防治 田间管理 农技推广 植保站 农科院 农业农村
+花椰菜,黑斑病,control_timing,0,3,empty,296,花椰菜 黑斑病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+青花菜,病毒病,control_timing,0,3,empty,296,青花菜 病毒病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+青花菜,黑腐病,symptom_diagnosis,2,3,thin,296,青花菜 黑腐病 症状 识别 图片 农技推广 植保站 农科院 农业农村
+甘蓝,甜菜夜蛾,occurrence_condition,0,3,empty,295,甘蓝 甜菜夜蛾 发生条件 发病原因 农技推广 植保站 农科院 农业农村
+甘蓝,蓟马,control_timing,0,3,empty,295,甘蓝 蓟马 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+甘蓝,黄曲条跳甲,chemical_control,1,3,thin,295,甘蓝 黄曲条跳甲 药剂防治 安全用药 农技推广 植保站 农科院 农业农村
+芥菜,蚜虫,symptom_diagnosis,0,3,empty,295,芥菜 蚜虫 症状 识别 图片 农技推广 植保站 农科院 农业农村
+小白菜,甜菜夜蛾,safety_correction,0,3,empty,294,小白菜 甜菜夜蛾 安全用药 注意事项 禁用 农技推广 植保站 农科院 农业农村
+小白菜,菌核病,agronomic_control,0,3,empty,294,小白菜 菌核病 农业防治 田间管理 农技推广 植保站 农科院 农业农村
+小白菜,菜青虫,control_timing,0,3,empty,294,小白菜 菜青虫 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+花椰菜,根肿病,biological_control,0,3,empty,294,花椰菜 根肿病 生物防治 绿色防控 农技推广 植保站 农科院 农业农村
+花椰菜,病毒病,occurrence_condition,0,3,empty,294,花椰菜 病毒病 发生条件 发病原因 农技推广 植保站 农科院 农业农村
+花椰菜,蓟马,agronomic_control,0,3,empty,294,花椰菜 蓟马 农业防治 田间管理 农技推广 植保站 农科院 农业农村
+萝卜,小菜蛾,symptom_diagnosis,1,3,thin,294,萝卜 小菜蛾 症状 识别 图片 农技推广 植保站 农科院 农业农村
+萝卜,菌核病,control_timing,0,3,empty,294,萝卜 菌核病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+萝卜,菜青虫,occurrence_condition,0,3,empty,294,萝卜 菜青虫 发生条件 发病原因 农技推广 植保站 农科院 农业农村
+萝卜,蓟马,safety_correction,0,3,empty,294,萝卜 蓟马 安全用药 注意事项 禁用 农技推广 植保站 农科院 农业农村
+萝卜,霜霉病,biological_control,0,3,empty,294,萝卜 霜霉病 生物防治 绿色防控 农技推广 植保站 农科院 农业农村
+青花菜,软腐病,symptom_diagnosis,2,3,thin,294,青花菜 软腐病 症状 识别 图片 农技推广 植保站 农科院 农业农村
+青花菜,黑斑病,control_timing,0,3,empty,294,青花菜 黑斑病 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+甘蓝,斜纹夜蛾,occurrence_condition,0,3,empty,293,甘蓝 斜纹夜蛾 发生条件 发病原因 农技推广 植保站 农科院 农业农村
+芥菜,菜青虫,chemical_control,0,3,empty,293,芥菜 菜青虫 药剂防治 安全用药 农技推广 植保站 农科院 农业农村
+花椰菜,菌核病,symptom_diagnosis,1,3,thin,293,花椰菜 菌核病 症状 识别 图片 农技推广 植保站 农科院 农业农村
+青花菜,根肿病,chemical_control,1,3,thin,293,青花菜 根肿病 药剂防治 安全用药 农技推广 植保站 农科院 农业农村
+大白菜,小菜蛾,control_timing,1,3,thin,292,大白菜 小菜蛾 防治时期 最佳时间 农技推广 植保站 农科院 农业农村
+小白菜,蚜虫,control_timing,0,3,empty,292,小白菜 蚜虫 防治时期 最佳时间 农技推广 植保站 农科院 农业农村

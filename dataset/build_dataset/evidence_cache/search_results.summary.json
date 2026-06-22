@@ -1,0 +1,7 @@
+{
+  "input": "gaps\\priority_search_queries_top1000.jsonl",
+  "output": "evidence_cache\\search_results.jsonl",
+  "processed": 23,
+  "skipped": 738,
+  "total_requested": 761
+}

@@ -1,0 +1,10 @@
+{
+  "coverage": "curated\\coverage_matrix.csv",
+  "min_count": 5,
+  "top_n": 1000,
+  "gap_targets": 761,
+  "priority_targets": 761,
+  "empty": 390,
+  "thin": 371,
+  "output_dir": "gaps"
+}

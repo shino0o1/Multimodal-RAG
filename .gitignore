@@ -19,6 +19,7 @@ venv/
 dist/
 build/
 site/
+images/
 
 # Logs / Reports
 # *.log
