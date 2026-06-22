@@ -477,3 +477,44 @@ python deduplicate_qa_dataset.py `
    - 输出 `accepted.jsonl`、`rejected.jsonl`、证据缓存和质量报告。
 
 实现上建议写一个统一的 `repair_qa_dataset.py`，内部完成“检索→补充检索→纠偏→审核→导出”，支持缓存、并发和 `--resume`。先自动跑200条验证通过率，再完整处理6761条。最终不足6000条时，再从已经验证过的高质量 Evidence 中扩充，而不是保留错误样本凑数量。
+
+## 百炼联网纠偏脚本
+
+> 当前采用该轻量化方案；上文较复杂的 evidence cache / 多阶段审查方案仅作为历史设计参考。
+
+已新增一个轻量化脚本，仅处理已有 QA 数据文件，不再读取缺口 `gap-queries`，也不生成中间 evidence cache。
+
+```bash
+python dataset/build_dataset/repair_qa_with_bailian.py \
+  --input dataset/build_dataset/synthetic_qa/generated_qa_train.jsonl \
+  --input dataset/build_dataset/synthetic_qa/generated_qa_train_v2.jsonl \
+  --output dataset/build_dataset/synthetic_qa/bailian_repaired_full_qa.jsonl \
+  --change-log dataset/build_dataset/synthetic_qa/bailian_change_log.jsonl \
+  --model qwen-plus
+```
+
+脚本默认读取环境变量：
+
+```bash
+export DASHSCOPE_API_KEY="你的百炼 API Key"
+export BAILIAN_BASE_URL="https://dashscope.aliyuncs.com/compatible-mode/v1"
+export BAILIAN_MODEL="qwen-plus"
+```
+
+输出只保留两个文件：
+
+- `bailian_repaired_full_qa.jsonl`：纠偏后的完整 QA 数据集。
+- `bailian_change_log.jsonl`：只记录被修改或删除的样本、原答案、新答案和修改原因。
+
+脚本不会向训练样本新增 `evidence_urls`、`evidence_snippets`、`generation_method`、`is_synthetic` 等证据字段。百炼联网模型只在内部用于检查、纠偏和必要删除。纠偏规则重点包括：补足关键信息、修正回答方向不匹配、删除或重写无实质信息回答、防治时期尽量写到生育期或病虫发生期，以及药剂使用和药剂效果必须严格遵循联网搜索到的证据。
+
+小批量验证可先使用：
+
+```bash
+python dataset/build_dataset/repair_qa_with_bailian.py \
+  --input dataset/build_dataset/synthetic_qa/generated_qa_train.jsonl \
+  --output /tmp/bailian_repaired_sample.jsonl \
+  --change-log /tmp/bailian_change_sample.jsonl \
+  --dry-run \
+  --limit 20
+```
