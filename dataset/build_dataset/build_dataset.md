@@ -533,16 +533,16 @@ python repair_qa_with_bailian.py `
   --api-key "sk-ws-H.RPYDYIL.NzHK.MEUCIQDUcz5nvcfPmWr5-5nvsLpdQhmChq2iIfn8LriVDW-pSwIgNZpTaTgdlkjrED11J-cSHJoB-JUMyahTNliwDijWo70" `
   --base-url "https://llm-spviccrprng0lel1.cn-beijing.maas.aliyuncs.com/compatible-mode/v1"
 
-  python repair_qa_with_bailian.py `
->>   --input synthetic_qa/generated_qa_train.jsonl `
->>   --output synthetic_qa/bailian_repaired_sample.jsonl `
->>   --change-log synthetic_qa/bailian_change_sample.jsonl `
->>   --model qwen3.6-flash `
->>   --timeout 60 `
->>   --retries 2 ` 
->>   --on-error keep `
->>   --workers 8 `    
->>   --api-key "sk-ws-H.RPYDYIL.NzHK.MEUCIQDUcz5nvcfPmWr5-5nvsLpdQhmChq2iIfn8LriVDW-pSwIgNZpTaTgdlkjrED11J-cSHJoB-JUMyahTNliwDijWo70" `
->>   --base-url "https://llm-spviccrprng0lel1.cn-beijing.maas.aliyuncs.com/compatible-mode/v1" `
-     --resume `
-     --batch-size 8 
+python repair_qa_with_bailian.py `
+   --input synthetic_qa/generated_qa_train_v2.jsonl `
+   --output synthetic_qa/bailian_repaired_sample_v2.jsonl `
+   --change-log synthetic_qa/bailian_change_sample_v2.jsonl `
+   --model qwen3.6-flash `
+   --timeout 60 `
+   --retries 2 ` 
+   --on-error keep `
+   --workers 8 `    
+   --api-key "sk-ws-H.RPYDYIL.NzHK.MEUCIQDUcz5nvcfPmWr5-5nvsLpdQhmChq2iIfn8LriVDW-pSwIgNZpTaTgdlkjrED11J-cSHJoB-JUMyahTNliwDijWo70" `
+   --base-url "https://llm-spviccrprng0lel1.cn-beijing.maas.aliyuncs.com/compatible-mode/v1" `
+   --resume `
+   --batch-size 8 

@@ -111,7 +111,7 @@ def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
     with temporary.open("w", encoding="utf-8", newline="\n") as handle:
         for row in rows:
             handle.write(json.dumps(row, ensure_ascii=False) + "\n")
-    os.replace(temporary, path)
+    replace_with_retry(temporary, path)
 
 
 def write_json(path: Path, data: dict[str, Any]) -> None:
@@ -120,7 +120,28 @@ def write_json(path: Path, data: dict[str, Any]) -> None:
     with temporary.open("w", encoding="utf-8", newline="\n") as handle:
         json.dump(data, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
-    os.replace(temporary, path)
+    replace_with_retry(temporary, path)
+
+
+def replace_with_retry(temporary: Path, destination: Path, attempts: int = 8) -> None:
+    """Handle transient Windows locks while retaining the complete temp file."""
+    for attempt in range(attempts):
+        try:
+            os.replace(temporary, destination)
+            return
+        except PermissionError as exc:
+            if attempt + 1 >= attempts:
+                raise BailianError(
+                    f"Cannot replace {destination} because Windows is still locking it after "
+                    f"{attempts} attempts. The complete temporary file is preserved at {temporary}."
+                ) from exc
+            delay = min(0.2 * (2**attempt), 2.0)
+            progress(
+                f"WARNING: Windows temporarily locked {destination}; "
+                f"retrying atomic save in {delay:g}s ({attempt + 1}/{attempts})...",
+                error=True,
+            )
+            time.sleep(delay)
 
 
 def selection_signature(selected: list[dict[str, Any]], args: argparse.Namespace) -> str:
@@ -466,24 +487,42 @@ def load_checkpoint(
     expected_config: dict[str, Any],
     total: int,
 ) -> dict[str, Any]:
-    try:
-        with path.open("r", encoding="utf-8") as handle:
-            state = json.load(handle)
-    except (OSError, json.JSONDecodeError) as exc:
-        raise BailianError(f"Cannot read checkpoint {path}: {exc}") from exc
-    if state.get("version") != 1:
-        raise BailianError(f"Unsupported checkpoint version in {path}")
-    if state.get("selection_signature") != expected_signature:
-        raise BailianError("Checkpoint does not match the selected input rows. Run without --resume to restart.")
-    if state.get("config") != expected_config:
-        raise BailianError("Checkpoint does not match the current model/output configuration. Run without --resume to restart.")
-    completed = state.get("completed")
-    if not isinstance(completed, dict):
-        raise BailianError(f"Invalid completed results in checkpoint {path}")
-    for key, result in completed.items():
-        if not key.isdigit() or not 0 <= int(key) < total or not isinstance(result, dict):
-            raise BailianError(f"Invalid completed row {key!r} in checkpoint {path}")
-    return state
+    temporary = path.with_name(path.name + ".tmp")
+    valid_states: list[tuple[int, float, Path, dict[str, Any]]] = []
+    errors: list[str] = []
+    for candidate in (path, temporary):
+        if not candidate.exists():
+            continue
+        try:
+            with candidate.open("r", encoding="utf-8") as handle:
+                state = json.load(handle)
+            if state.get("version") != 1:
+                raise ValueError("unsupported checkpoint version")
+            if state.get("selection_signature") != expected_signature:
+                raise ValueError("selected input rows do not match")
+            if state.get("config") != expected_config:
+                raise ValueError("model/output configuration does not match")
+            completed = state.get("completed")
+            if not isinstance(completed, dict):
+                raise ValueError("completed results are invalid")
+            for key, result in completed.items():
+                if not key.isdigit() or not 0 <= int(key) < total or not isinstance(result, dict):
+                    raise ValueError(f"completed row {key!r} is invalid")
+            valid_states.append((len(completed), candidate.stat().st_mtime, candidate, state))
+        except (OSError, json.JSONDecodeError, ValueError) as exc:
+            errors.append(f"{candidate}: {exc}")
+
+    if not valid_states:
+        detail = "; ".join(errors) or "checkpoint and temporary checkpoint are missing"
+        raise BailianError(f"Cannot load a matching checkpoint: {detail}. Run without --resume to restart.")
+
+    _, _, selected_path, selected_state = max(valid_states, key=lambda entry: (entry[0], entry[1]))
+    if selected_path == temporary:
+        progress(
+            f"RECOVERED newer temporary checkpoint: completed={len(selected_state['completed'])} "
+            f"from {temporary}"
+        )
+    return selected_state
 
 
 def main() -> int:
@@ -515,7 +554,8 @@ def main() -> int:
     outcomes: list[dict[str, Any] | None] = [None] * total
 
     if args.resume:
-        if not checkpoint_path.exists():
+        checkpoint_temporary = checkpoint_path.with_name(checkpoint_path.name + ".tmp")
+        if not checkpoint_path.exists() and not checkpoint_temporary.exists():
             print(f"ERROR: checkpoint not found: {checkpoint_path}", file=sys.stderr)
             return 2
         try:
